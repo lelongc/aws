@@ -230,13 +230,6 @@ Quản lý Spot Instances yêu cầu thực hiện theo trình tự sau:
 
 ---
 
-### 7. **Nguồn Học Tập và Tài Liệu Tham Khảo**  
-
-- **Spot Instance Pricing:** [AWS EC2 Spot Pricing Console](https://console.aws.amazon.com/ec2sp/v1/spot/home?region=us-east-1#).  
-- **Spot Instance Management:** [AWS Documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html).  
-
----
-
 ### Kết Luận  
 
 **EC2 Spot Instances** là lựa chọn tuyệt vời để tối ưu chi phí trong các workload không yêu cầu tính liên tục cao. Việc sử dụng **Spot Fleet** với chiến lược **priceCapacityOptimized** giúp đảm bảo hiệu suất tốt nhất với giá thành thấp. Tuy nhiên, cần cân nhắc kỹ nếu workload của bạn yêu cầu **high availability** hoặc không thể bị gián đoạn.  
