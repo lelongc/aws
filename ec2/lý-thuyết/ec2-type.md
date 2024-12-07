@@ -86,18 +86,10 @@ Tối ưu cho các ứng dụng cần xử lý dữ liệu lớn trong bộ nh�
 #### **Storage Optimized (Tối ưu lưu trữ)**  
 Dành cho các tác vụ yêu cầu truy cập dữ liệu lớn, với tốc độ đọc/ghi cao:  
 - **Online Transaction Processing (OLTP – Xử lý giao dịch trực tuyến):**  
-  Hệ thống xử lý các giao dịch như thanh toán hoặc đặt hàng trong thời gian thực. Hoặc OLTP (Online Transaction Processing) là một loại hệ thống xử lý giao dịch trực tuyến, thường được thiết kế để hỗ trợ các hoạt động giao dịch thường xuyên, nhanh chóng, và đáng tin cậy trong các ứng dụng kinh doanh. ( Đặc điểm của OLTP
-  Tập trung vào giao dịch ngắn gọn:
-  Giao dịch OLTP thường là các tác vụ nhỏ gọn và có thời gian xử lý nhanh (ví dụ: thêm, sửa, xóa, hoặc đọc dữ liệu).
-  Các giao dịch như mua hàng, cập nhật thông tin tài khoản, hoặc đặt vé đều là ví dụ điển hình.
-  Đọc/ghi thường xuyên:
-  OLTP có lượng lớn các thao tác đọc và ghi vào cơ sở dữ liệu.
-  Đảm bảo tính toàn vẹn dữ liệu:
-  Tuân theo các nguyên tắc ACID (Atomicity, Consistency, Isolation, Durability) để đảm bảo dữ liệu luôn chính xác, ngay cả khi có sự cố xảy ra.
-  Hỗ trợ nhiều người dùng đồng thời:
+  Hệ thống xử lý các giao dịch như thanh toán hoặc đặt hàng trong thời gian thực. Hoặc OLTP (Online Transaction Processing) là một loại hệ thống xử lý giao dịch trực tuyến, thường được thiết kế để hỗ trợ các hoạt động giao dịch thường xuyên, nhanh chóng, và đáng tin cậy trong các ứng dụng kinh doanh. 
+  [lý thuyết thêm về oltp](../lý-thuyết-bên-lề/OLTP-xử-lý-giao-dịch-online.md)
 
-  OLTP được tối ưu hóa để xử lý số lượng lớn giao dịch từ nhiều người dùng cùng lúc.
-  Cơ sở dữ liệu quan hệ (RDBMS):)
+
 
   Hệ thống OLTP thường sử dụng cơ sở dữ liệu quan hệ như MySQL, PostgreSQL, SQL Server hoặc Oracle.
   - **Ví dụ:** Xử lý thanh toán qua thẻ tín dụng ngay khi mua hàng.  

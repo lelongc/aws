@@ -120,7 +120,7 @@ Spot Instances rất phù hợp cho các workload có khả năng bị gián đo
 
 ---
 
-<!-- ### 2. **Spot Block: Giải Pháp Duy Trì Liên Tục Ngắn Hạn**  
+<!-- lỗi thời ### 2. **Spot Block: Giải Pháp Duy Trì Liên Tục Ngắn Hạn**  
 
 **Spot Block** cho phép bạn giữ Spot Instances trong một khoảng thời gian cố định từ **1 đến 6 giờ**, mà ít khả năng bị gián đoạn. Tuy nhiên, trong một số trường hợp hiếm, AWS có thể thu hồi Spot Block nếu tài nguyên khan hiếm.  
 
