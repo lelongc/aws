@@ -1,4 +1,4 @@
-
+https://aws.amazon.com/blogs/aws/new-elastic-network-interfaces-in-the-virtual-private-cloud/
 ### **ENI là gì?**
 - **Elastic Network Interface (ENI)** là một thành phần logic trong VPC, đại diện cho một **card mạng ảo**.
 - ENI cho phép các **EC2 instances** kết nối với mạng và cũng có thể được sử dụng ngoài EC2 instances.
