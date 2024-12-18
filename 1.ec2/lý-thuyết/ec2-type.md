@@ -31,7 +31,7 @@ AWS sử dụng quy ước đặt tên theo dạng:
 
 #### **Compute Optimized (Tối ưu xử lý)**  
 Dành cho các tác vụ yêu cầu hiệu suất xử lý cao:  
-- **Batch Processing (Xử lý theo lô):**  
+- **[Batch Processing](../../ec2-storage/lý-thuyết-bên-lề/batch-processing.md) (Xử lý theo lô):**  
   Xử lý dữ liệu hoặc công việc lớn theo từng nhóm (batch) thay vì từng cái một.  
   - **Ví dụ:** Tạo báo cáo tài chính cho 1 triệu khách hàng cùng lúc thay vì xử lý từng người.  
   - **Ứng dụng:** Tính toán khối lượng lớn như báo cáo dữ liệu hoặc chuyển đổi file.  
