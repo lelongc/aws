@@ -1,8 +1,5 @@
 
 
-
-
-
 ---
 
 ### **1. Tổng quan về Application Load Balancer (ALB):**
@@ -73,6 +70,11 @@
 
 ### **7. Thông tin bổ sung:**
 - ALB sử dụng một IP riêng để giao tiếp với EC2 instances. Để biết địa chỉ IP thực của client, bạn cần kiểm tra các header như `X-Forwarded-For`.
+- When using an Application Load Balancer (ALB), the traffic from clients (users) first passes through the load balancer before reaching your EC2 instances. The ALB forwards requests to your EC2 instances, but by default, the IP address visible on the backend is that of the ALB, not the client. To capture the actual IP address of the client (the user), the ALB adds an HTTP header called X-Forwarded-For, which contains the real client IP address.X-Forwarded-For Header: This header is specifically used to pass the original client IP address through the load balancer. It holds a comma-separated list of IP addresses where the left-most IP is the real client IP, and the rest are intermediate proxies (like your ALB).
+
+- The X-Forwarded-Proto header indicates the protocol (HTTP or HTTPS) used by the client to connect to the load balancer. It does not contain the client IP address
+- The X-Forwarded-Port header contains the port number that the client used to connect to the load balancer. It also does not hold the client IP address.
+
 ![good-to-know](./image/good-to-know.png)
 ---
 
