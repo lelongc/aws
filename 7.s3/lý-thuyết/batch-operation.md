@@ -1,13 +1,14 @@
-![alt text](batch-ops.png)
+![alt text](image/batch-ops.png)
 
 ---
 
 ### **Phân tích nội dung:**
 
 #### **Giới thiệu về S3 Batch Operation**
-1. **Nội dung:** 
+
+1. **Nội dung:**
    - S3 Batch Operation cho phép thực hiện các thao tác hàng loạt (bulk operations) trên các đối tượng S3 hiện có chỉ với một yêu cầu duy nhất.
-2. **Ví dụ:** 
+2. **Ví dụ:**
    - Thay đổi metadata và thuộc tính của nhiều đối tượng cùng lúc.
    - Sao chép các đối tượng giữa các bucket.
    - Mã hóa lại (encrypt) tất cả các đối tượng chưa được mã hóa.
@@ -16,22 +17,26 @@
    - Gọi Lambda function để thực hiện các hành động tùy chỉnh trên từng đối tượng.
 
 #### **Cách hoạt động của S3 Batch Operation**
+
 - Một công việc (job) bao gồm:
   - **Danh sách các đối tượng:** Được tạo từ S3 Inventory.
   - **Thao tác cần thực hiện:** Ví dụ: mã hóa hoặc sao chép.
   - **Các tham số tùy chọn:** Như cấu hình, thông báo hoàn tất, và báo cáo.
 
 #### **Lợi ích so với tự viết script**
+
 - Quản lý việc thử lại (retries).
 - Theo dõi tiến trình.
 - Gửi thông báo hoàn tất.
 - Tự động tạo báo cáo.
 
 #### **Cách tạo danh sách đối tượng**
+
 - Sử dụng **S3 Inventory** để liệt kê các đối tượng.
 - Dùng **S3 Select** để lọc danh sách theo điều kiện.
 
 #### **Ứng dụng chính**
+
 - Tìm các đối tượng chưa mã hóa và mã hóa chúng hàng loạt.
 
 ---
@@ -48,4 +53,3 @@
 10. **Select:** Bộ lọc để tìm các đối tượng thỏa mãn điều kiện cụ thể.
 
 ---
-

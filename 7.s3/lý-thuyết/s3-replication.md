@@ -1,3 +1,7 @@
+lab của a Việt Trần https://youtu.be/T-Rhn9pR3Bc?si=2ikqPmBXXi2nyUBr
+
+![alt text](image/so-sánh-deletemarker.png)
+
 ### **Chi tiết kiến thức về Amazon S3 Replication**
 
 #### 1. **Giới thiệu về Amazon S3 Replication**:

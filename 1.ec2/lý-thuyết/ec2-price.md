@@ -9,7 +9,7 @@
   - Dùng cho ứng dụng có khối lượng công việc không liên tục hoặc không thể đoán trước, ví dụ như ứng dụng thử nghiệm, phát triển.
 
 ---
-
+![alt text](saving-reverse.png)
 #### 2. **Reserved Instances (RI)**
 - **Đặc điểm:**
   - Giảm giá lên đến **72%** so với On-Demand.
