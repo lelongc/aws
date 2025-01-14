@@ -54,7 +54,7 @@ Dưới đây là tổng hợp chi tiết các dịch vụ lưu trữ AWS, cùng
 ### 8. **AWS DataSync**:
 
 - **Loại dịch vụ**: Đồng bộ hóa dữ liệu từ các hệ thống tại chỗ hoặc từ AWS tới AWS.
-- **Sử dụng**: Di chuyển dữ liệu giữa các hệ thống lưu trữ trên AWS và hệ thống lưu trữ tại chỗ, hỗ trợ các giao thức NFS, SMB, HDFS.
+- **Sử dụng**: Di chuyển dữ liệu giữa các hệ thống lưu trữ trên AWS(s3,fsx window ,efs ) và hệ thống lưu trữ tại chỗ, hỗ trợ các giao thức NFS, SMB, HDFS.
 - **Tính năng**: Duy trì metadata và quyền truy cập tệp khi di chuyển dữ liệu.
 
 ### 9. **AWS Snow Family**:
@@ -76,4 +76,10 @@ Dưới đây là tổng hợp chi tiết các dịch vụ lưu trữ AWS, cùng
 - **DataSync**: Đồng bộ hóa dữ liệu on-prem/cloud khác qua các dịch vụ lưu trữ của AWS.
 - **Snow Family**: Giải pháp di chuyển dữ liệu vật lý khi không đủ băng thông mạng.
 
-Hiểu được sự khác biệt giữa các dịch vụ lưu trữ này sẽ giúp bạn chọn được giải pháp phù hợp cho nhu cầu cụ thể của mình, đặc biệt khi thiết kế kiến trúc trên AWS.
+---
+FSx file gateway k còn hỗ trợ nên dùng 
+
+VPN hoặc Direct Connect kết hợp với Amazon FSx for Windows File Server:
+
+Nếu yêu cầu của bạn là truy cập dữ liệu từ Amazon FSx for Windows File Server trực tiếp trên AWS từ môi trường on-premises, bạn có thể sử dụng AWS Direct Connect hoặc VPN để kết nối on-premises với AWS.
+Sau khi kết nối, bạn có thể trực tiếp truy cập FSx for Windows File Server qua SMB từ các máy chủ Windows của bạn.
