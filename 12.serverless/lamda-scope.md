@@ -8,7 +8,7 @@ AWS Lambda cho phép bạn chạy mã mà không cần quản lý server. Tuy nh
 
 ### **Mạng mặc định của Lambda**
 
-![alt text](lamda-vpc.png)
+![alt text](image/lamda-vpc.png)
 
 - Khi bạn chạy một hàm Lambda, mặc định nó sẽ **không chạy trong VPC của bạn**. Thay vào đó, nó được chạy trong một VPC do AWS quản lý.
 - Hệ quả:
@@ -24,7 +24,7 @@ AWS Lambda cho phép bạn chạy mã mà không cần quản lý server. Tuy nh
 
 ### **Chạy Lambda trong VPC của bạn**
 
-![alt text](lamda-vpc2.png)
+![alt text](image/lamda-vpc2.png)
 
 - Nếu Lambda cần truy cập các tài nguyên riêng tư trong VPC (như cơ sở dữ liệu RDS), bạn phải cấu hình để chạy Lambda **bên trong VPC** của bạn.
 - Cách thực hiện:
@@ -44,7 +44,7 @@ AWS Lambda cho phép bạn chạy mã mà không cần quản lý server. Tuy nh
 
 ### **Sử dụng Lambda với RDS Proxy**
 
-![alt text](lamda-rdsProxy.png)
+![alt text](image/lamda-rdsProxy.png)
 Một vấn đề phổ biến khi Lambda kết nối trực tiếp với cơ sở dữ liệu RDS là:
 
 - Lambda tạo rất nhiều **kết nối trực tiếp đến RDS** khi có nhiều hàm Lambda chạy đồng thời.

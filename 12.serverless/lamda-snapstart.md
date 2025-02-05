@@ -1,4 +1,4 @@
-![alt text](snapstart.png)
+![alt text](image/snapstart.png)
 
 Lambda SnapStart là một tính năng giúp cải thiện hiệu suất của hàm AWS Lambda lên tới 10 lần mà **không tốn thêm chi phí**. Tính năng này hiện hỗ trợ các ngôn ngữ **Java**, **Python**, và **.NET**.
 

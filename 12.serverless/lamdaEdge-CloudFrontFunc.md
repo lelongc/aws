@@ -30,7 +30,7 @@ Edge Functions có thể được sử dụng cho các trường hợp như:
 
 ### 3. **CloudFront Functions**
 
-![alt text](cloudfront-func.png)
+![alt text](image/cloudfront-func.png)
 
 - **Đặc điểm:**
   - Viết bằng JavaScript.
@@ -48,7 +48,7 @@ Edge Functions có thể được sử dụng cho các trường hợp như:
 
 ### 4. **Lambda@Edge**
 
-![alt text](lamdaEdge.png)
+![alt text](image/lamdaEdge.png)
 
 - **Đặc điểm:**
 
@@ -73,7 +73,7 @@ Edge Functions có thể được sử dụng cho các trường hợp như:
 
 ### 5. **So sánh giữa CloudFront Functions và Lambda@Edge**
 
-![alt text](cloudFrontFunc-lamdaEdge.png)
+![alt text](image/cloudFrontFunc-lamdaEdge.png)
 | **Tiêu chí** | **CloudFront Functions** | **Lambda@Edge** |
 |--------------------------|---------------------------------------------|--------------------------------------------|
 | **Ngôn ngữ hỗ trợ** | JavaScript | NodeJS, Python |
@@ -89,11 +89,11 @@ Edge Functions có thể được sử dụng cho các trường hợp như:
 - **CloudFront Functions**:
 
   - Khi cần xử lý **nhẹ, đơn giản** và độ trễ thấp (< 1ms).
-  - Ví dụ: [Chỉnh sửa header, cache key, hoặc chuyển hướng URL](./lý-thuyết-bên-lề/case-cloudfrontFunc-lamdaEdge.md).
+  - Ví dụ: [Chỉnh sửa header, cache key, hoặc chuyển hướng URL](image/./lý-thuyết-bên-lề/case-cloudfrontFunc-lamdaEdge.md).
 
 - **Lambda@Edge**:
   - Khi cần thực hiện **logic phức tạp** và tích hợp với các dịch vụ khác.
-  - Ví dụ: [Phân tích dữ liệu, xác thực người dùng, hoặc xử lý file và body của HTTP request](./lý-thuyết-bên-lề/case-cloudfrontFunc-lamdaEdge.md#phân-tích-chi-tiết).
+  - Ví dụ: [Phân tích dữ liệu, xác thực người dùng, hoặc xử lý file và body của HTTP request](image/./lý-thuyết-bên-lề/case-cloudfrontFunc-lamdaEdge.md#phân-tích-chi-tiết).
 
 ---
 

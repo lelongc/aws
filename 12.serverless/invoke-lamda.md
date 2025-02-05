@@ -1,7 +1,7 @@
 ---
 
 ### **1. Gọi Lambda từ cơ sở dữ liệu (RDS/Aurora):**
-![alt text](lamda-rds1.png)
+![alt text](image/lamda-rds1.png)
 
 - Một số cơ sở dữ liệu như **RDS for PostgreSQL** và **Aurora MySQL** cho phép **gọi hàm Lambda trực tiếp từ bên trong cơ sở dữ liệu**.
 - Lợi ích:
@@ -28,7 +28,7 @@
 
 ### **2 So sánh với RDS Event Notifications:**
 
-![alt text](rds-event.png)
+![alt text](image/rds-event.png)
 
 - **RDS Event Notifications** cung cấp các thông tin về **trạng thái và sự kiện của cơ sở dữ liệu**, như:
 

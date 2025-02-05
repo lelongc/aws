@@ -19,7 +19,7 @@ Serverless là một mô hình cho phép nhà phát triển tập trung vào vi�
 
 ### **Serverless hoạt động như thế nào trên AWS?**
 
-![alt text](Serverless.png)
+![alt text](image/Serverless.png)
 
 1. **Kiến trúc tham khảo**:
 

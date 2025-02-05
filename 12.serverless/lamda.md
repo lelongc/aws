@@ -75,7 +75,7 @@ Trong ví dụ này, giả sử bạn có một **S3 bucket** nơi các hình �
 
 ### **Tổng Quan Kiến Trúc**
 
-![alt text](lamda-image.png)
+![alt text](image/lamda-image.png)
 
 1. **Tải ảnh lên S3**:
 
@@ -103,7 +103,7 @@ Trong ví dụ này, giả sử bạn có một **S3 bucket** nơi các hình �
 
 ### **Serverless CRON Jobs với Lambda**
 
-![alt text](cronjob-lamda.png)
+![alt text](image/cronjob-lamda.png)
 Một ví dụ khác rất phổ biến cho Lambda là **serverless CRON job**. Các CRON job thường được dùng để lên lịch thực hiện các tác vụ tại những thời điểm cố định (ví dụ: mỗi 5 phút hoặc mỗi thứ Hai lúc 10:00 AM).
 
 #### **Ví Dụ về Serverless CRON Job**:

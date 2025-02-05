@@ -1,4 +1,4 @@
-![alt text](dynamodb.png)
+![alt text](image/dynamodb.png)
 
 ### DynamoDB: Tổng Quan Dễ Hiểu
 
@@ -101,5 +101,3 @@
   - Xử lý khối lượng công việc không đoán trước.
 
 ---
-
-Hy vọng bài viết giúp bạn nắm rõ hơn về DynamoDB! Nếu bạn có thắc mắc cụ thể, cứ hỏi nhé! 😊
