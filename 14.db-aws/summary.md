@@ -1,5 +1,5 @@
-![alt text](rds.png)
-![alt text](aurora.png)
+![alt text](image/rds.png)
+![alt text](image/aurora.png)
 
 ### **Tổng hợp về Amazon Aurora**
 
@@ -86,7 +86,7 @@ Amazon Aurora là một dịch vụ cơ sở dữ liệu quan hệ (RDBMS) đư�
 
 ---
 
-![alt text](elasticache.png)
+![alt text](image/elasticache.png)
 
 ### **Tổng hợp về Amazon ElastiCache**
 
@@ -162,7 +162,7 @@ Hy vọng phần tổng hợp này sẽ giúp bạn nắm vững kiến thức v
 
 ---
 
-![alt text](dynamodb.png)
+![alt text](image/dynamodb.png)
 
 ### **Tổng hợp về Amazon DynamoDB**
 
@@ -272,4 +272,241 @@ Amazon DynamoDB là một dịch vụ cơ sở dữ liệu NoSQL được quản
 
 Amazon DynamoDB là một dịch vụ cơ sở dữ liệu NoSQL mạnh mẽ, phù hợp cho các ứng dụng cần hiệu suất cao, khả năng mở rộng linh hoạt và tích hợp với hệ sinh thái AWS. Với các tính năng như DAX, Global Tables, và DynamoDB Streams, DynamoDB là lựa chọn hàng đầu cho nhiều use case khác nhau.
 
-Hy vọng phần tổng hợp này sẽ giúp bạn nắm vững kiến thức về Amazon DynamoDB! 🚀
+## Hy vọng phần tổng hợp này sẽ giúp bạn nắm vững kiến thức về Amazon DynamoDB! 🚀
+
+![alt text](image/s3.png)
+
+### Tổng quan về Amazon S3 từ góc độ cơ sở dữ liệu
+
+Amazon S3 (Simple Storage Service) là một dịch vụ lưu trữ đối tượng (object storage) của AWS, được thiết kế để lưu trữ và truy xuất dữ liệu với khả năng mở rộng vô hạn. Dưới đây là các điểm chính về Amazon S3:
+
+#### 1. **Kiến trúc lưu trữ**
+
+- **Key-Value Store**: S3 là một kho lưu trữ dữ liệu dạng key-value, nơi mỗi đối tượng được lưu trữ với một key duy nhất.
+- **Lưu trữ đối tượng lớn**: S3 phù hợp để lưu trữ các đối tượng lớn (lên đến 5TB mỗi đối tượng), nhưng không phù hợp cho việc lưu trữ nhiều đối tượng nhỏ.
+- **Serverless**: S3 là dịch vụ serverless, không yêu cầu quản lý cơ sở hạ tầng.
+- **Versioning**: S3 hỗ trợ versioning, cho phép bạn lưu trữ nhiều phiên bản của cùng một đối tượng.
+
+#### 2. **Các lớp lưu trữ**
+
+- **S3 Standard**: Dành cho dữ liệu thường xuyên truy cập.
+- **S3 Infrequent Access (IA)**: Dành cho dữ liệu ít truy cập hơn nhưng vẫn cần truy xuất nhanh.
+- **S3 Intelligent-Tiering**: Tự động di chuyển dữ liệu giữa các lớp dựa trên mô hình truy cập.
+- **S3 Glacier và Glacier Deep Archive**: Dành cho dữ liệu lưu trữ dài hạn, ít truy cập.
+
+#### 3. **Tính năng quan trọng**
+
+- **Lifecycle Policies**: Tự động chuyển đổi giữa các lớp lưu trữ dựa trên thời gian.
+- **Versioning**: Quản lý các phiên bản của đối tượng.
+- **Encryption**: Hỗ trợ nhiều cơ chế mã hóa như SSE-S3, SSE-KMS, SSE-C, và mã hóa phía client.
+- **Replication**: Sao chép dữ liệu giữa các bucket hoặc các region.
+- **MFA Delete**: Yêu cầu xác thực đa yếu tố để xóa đối tượng.
+- **Access Logs**: Ghi lại các yêu cầu truy cập vào bucket.
+
+#### 4. **Bảo mật**
+
+- **IAM Policies**: Quản lý quyền truy cập thông qua IAM.
+- **Bucket Policies**: Định nghĩa các quyền truy cập ở cấp độ bucket.
+- **ACL (Access Control Lists)**: Quản lý quyền truy cập ở cấp độ đối tượng.
+- **Access Points**: Tạo các điểm truy cập riêng biệt cho các ứng dụng khác nhau.
+- **Object Lock/Vault Lock**: Khóa đối tượng để ngăn chặn xóa hoặc sửa đổi.
+
+#### 5. **Tính năng nâng cao**
+
+- **S3 Object Lambda**: Cho phép biến đổi đối tượng trước khi trả về ứng dụng.
+- **CORS (Cross-Origin Resource Sharing)**: Cho phép truy cập tài nguyên từ các domain khác nhau.
+- **S3 Batch Operations**: Thực hiện các thao tác hàng loạt trên nhiều đối tượng.
+- **S3 Inventory**: Tạo báo cáo về các đối tượng trong bucket.
+
+#### 6. **Cải thiện hiệu suất**
+
+- **Multi-Part Upload**: Tải lên các tệp lớn bằng cách chia nhỏ thành nhiều phần.
+- **S3 Transfer Acceleration**: Tăng tốc độ truyền tải dữ liệu giữa các region.
+- **S3 Select**: Truy vấn và lấy dữ liệu cụ thể từ các đối tượng mà không cần tải toàn bộ.
+
+#### 7. **Tự động hóa**
+
+- **S3 Event Notifications**: Kích hoạt các sự kiện khi có thay đổi trong bucket, tích hợp với SNS, SQS, Lambda, và EventBridge.
+
+#### 8. **Use Cases**
+
+- **Lưu trữ tệp tĩnh**: Phù hợp cho việc lưu trữ các tệp tĩnh như hình ảnh, video, và tài liệu.
+- **Hosting website**: S3 có thể được sử dụng để host các website tĩnh.
+- **Lưu trữ dữ liệu lớn**: Lý tưởng cho việc lưu trữ dữ liệu lớn như backup, log, và dữ liệu phân tích.
+
+### Kết luận
+
+Amazon S3 là một dịch vụ linh hoạt và mạnh mẽ, cung cấp nhiều tính năng và tùy chọn để quản lý dữ liệu một cách hiệu quả. Hiểu rõ các tính năng và cách sử dụng S3 sẽ giúp bạn tối ưu hóa việc lưu trữ và quản lý dữ liệu trên AWS.
+
+---
+
+![alt text](image/DocumentDB.png)
+
+### Tổng quan về Amazon DocumentDB
+
+Amazon DocumentDB là một dịch vụ cơ sở dữ liệu NoSQL được quản lý hoàn toàn bởi AWS, được thiết kế để tương thích với MongoDB. Dưới đây là các điểm chính về Amazon DocumentDB:
+
+#### 1. **Giới thiệu về DocumentDB**
+
+- **NoSQL Database**: DocumentDB là một cơ sở dữ liệu NoSQL, phù hợp cho việc lưu trữ và truy vấn dữ liệu dạng JSON.
+- **Tương thích với MongoDB**: DocumentDB tương thích với MongoDB, cho phép bạn sử dụng các công cụ và ứng dụng MongoDB hiện có.
+
+#### 2. **Tính năng chính**
+
+- **Fully Managed**: DocumentDB là một dịch vụ được quản lý hoàn toàn, giúp giảm bớt gánh nặng quản lý cơ sở hạ tầng.
+- **High Availability**: Dữ liệu được sao chép tự động qua ba Availability Zones (AZs), đảm bảo tính sẵn sàng cao.
+- **Automatic Storage Scaling**: Dung lượng lưu trữ của DocumentDB tự động tăng lên theo từng bước 10GB khi cần thiết.
+- **Scalability**: DocumentDB được thiết kế để có thể mở rộng quy mô để xử lý các tải công việc với hàng triệu yêu cầu mỗi giây.
+
+#### 3. **So sánh với Aurora**
+
+- **Aurora**: Là một dịch vụ cơ sở dữ liệu quan hệ (RDS) tương thích với MySQL và PostgreSQL, được tối ưu hóa cho các tải công việc OLTP.
+- **DocumentDB**: Là một dịch vụ cơ sở dữ liệu NoSQL tương thích với MongoDB, phù hợp cho việc lưu trữ và truy vấn dữ liệu dạng JSON.
+
+#### 4. **Use Cases**
+
+- **Lưu trữ và truy vấn dữ liệu JSON**: DocumentDB lý tưởng cho các ứng dụng cần lưu trữ và truy vấn dữ liệu dạng JSON.
+- **Ứng dụng NoSQL**: Phù hợp cho các ứng dụng NoSQL cần tính sẵn sàng cao và khả năng mở rộng.
+
+#### 5. **Điểm cần nhớ cho kỳ thi**
+
+- **MongoDB và DocumentDB**: Khi gặp các câu hỏi liên quan đến MongoDB trong kỳ thi, hãy nghĩ đến DocumentDB.
+- **NoSQL Databases**: Khi gặp các câu hỏi về cơ sở dữ liệu NoSQL, hãy nghĩ đến cả DocumentDB và DynamoDB.
+
+### Kết luận
+
+Amazon DocumentDB là một dịch vụ cơ sở dữ liệu NoSQL mạnh mẽ và linh hoạt, tương thích với MongoDB, giúp bạn dễ dàng lưu trữ và truy vấn dữ liệu dạng JSON. Hiểu rõ các tính năng và cách sử dụng DocumentDB sẽ giúp bạn tối ưu hóa việc quản lý dữ liệu NoSQL trên AWS.
+
+---
+
+### Tổng quan về Amazon Neptune
+
+![alt text](image/Neptune.png)
+![alt text](image/Neptune-stream.png)
+Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị (graph database) được quản lý hoàn toàn bởi AWS, được thiết kế để xử lý các tập dữ liệu có tính kết nối cao. Dưới đây là các điểm chính về Amazon Neptune:
+
+#### 1. **Giới thiệu về Neptune**
+
+- **Graph Database**: Neptune là một cơ sở dữ liệu đồ thị, lý tưởng cho việc lưu trữ và truy vấn các tập dữ liệu có tính kết nối cao như mạng xã hội, hệ thống đề xuất, và phát hiện gian lận.
+- **Fully Managed**: Neptune là một dịch vụ được quản lý hoàn toàn, giúp giảm bớt gánh nặng quản lý cơ sở hạ tầng.
+
+#### 2. **Tính năng chính**
+
+- **High Availability**: Neptune sao chép dữ liệu qua ba Availability Zones (AZs), đảm bảo tính sẵn sàng cao.
+- **Scalability**: Hỗ trợ tới 15 read replicas để mở rộng quy mô đọc.
+- **Performance**: Có thể lưu trữ hàng tỷ mối quan hệ và truy vấn với độ trễ chỉ vài mili giây.
+- **Knowledge Graphs**: Phù hợp cho việc lưu trữ các đồ thị tri thức, ví dụ như cơ sở dữ liệu Wikipedia.
+
+#### 3. **Use Cases**
+
+- **Mạng xã hội**: Lưu trữ và truy vấn các mối quan hệ phức tạp giữa người dùng, bài đăng, bình luận, và lượt thích.
+- **Hệ thống đề xuất**: Xây dựng các hệ thống đề xuất dựa trên các mối quan hệ phức tạp giữa người dùng và sản phẩm.
+- **Phát hiện gian lận**: Phân tích các mối quan hệ phức tạp để phát hiện các hành vi gian lận.
+- **Đồ thị tri thức**: Lưu trữ và truy vấn các đồ thị tri thức như cơ sở dữ liệu Wikipedia.
+
+#### 4. **Neptune Streams**
+
+- **Real-time Changes**: Neptune Streams cung cấp một chuỗi dữ liệu thay đổi theo thời gian thực cho mọi thay đổi xảy ra trong cơ sở dữ liệu đồ thị.
+- **No Duplicates and Strict Ordering**: Đảm bảo không có dữ liệu trùng lặp và thứ tự nghiêm ngặt của các thay đổi.
+- **HTTP REST API**: Dữ liệu stream có thể truy cập thông qua API REST, cho phép các ứng dụng đọc các thay đổi trong thời gian thực.
+
+#### 5. **Use Cases for Neptune Streams**
+
+- **Gửi thông báo**: Gửi thông báo khi có thay đổi trong dữ liệu đồ thị.
+- **Đồng bộ hóa dữ liệu**: Duy trì đồng bộ hóa dữ liệu với các kho lưu trữ khác như Amazon S3, OpenSearch, ElastiCache.
+- **Replication Across Regions**: Sao chép dữ liệu giữa các region bằng cách sử dụng các thay đổi trong stream.
+
+### Kết luận
+
+## Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị mạnh mẽ và linh hoạt, lý tưởng cho các ứng dụng có tính kết nối cao. Hiểu rõ các tính năng và cách sử dụng Neptune sẽ giúp bạn tối ưu hóa việc quản lý và truy vấn dữ liệu đồ thị trên AWS.
+
+---
+
+![alt text](image/Keyspaces.png)
+
+### Tổng quan về Amazon Keyspaces (Apache Cassandra trên AWS)
+
+Amazon Keyspaces là một dịch vụ cơ sở dữ liệu NoSQL được quản lý hoàn toàn bởi AWS, tương thích với Apache Cassandra. Dưới đây là các điểm chính về Amazon Keyspaces:
+
+#### 1. **Giới thiệu về Amazon Keyspaces**
+
+- **Managed Apache Cassandra**: Keyspaces là phiên bản được quản lý hoàn toàn của Apache Cassandra trên AWS.
+- **NoSQL Distributed Database**: Cassandra là một cơ sở dữ liệu NoSQL phân tán, phù hợp cho các ứng dụng cần khả năng mở rộng và tính sẵn sàng cao.
+
+#### 2. **Tính năng chính**
+
+- **Serverless**: Keyspaces là một dịch vụ serverless, không yêu cầu quản lý cơ sở hạ tầng.
+- **Scalability**: Tự động mở rộng quy mô bảng dữ liệu dựa trên lưu lượng ứng dụng.
+- **High Availability**: Dữ liệu được sao chép ba lần qua nhiều Availability Zones (AZs), đảm bảo tính sẵn sàng cao.
+- **Cassandra Query Language (CQL)**: Sử dụng CQL để thực hiện các truy vấn trên Keyspaces.
+- **Low Latency**: Độ trễ chỉ vài mili giây ở bất kỳ quy mô nào, hỗ trợ hàng nghìn yêu cầu mỗi giây.
+
+#### 3. **Chế độ dung lượng**
+
+- **On-Demand Mode**: Thanh toán dựa trên lượng yêu cầu thực tế, không cần dự đoán trước dung lượng.
+- **Provisioned Mode with Auto-Scaling**: Cung cấp dung lượng trước và tự động điều chỉnh dựa trên nhu cầu.
+
+#### 4. **Bảo mật và sao lưu**
+
+- **Encryption**: Hỗ trợ mã hóa dữ liệu ở trạng thái nghỉ và trong quá trình truyền tải.
+- **Backup và Point-In-Time Recovery**: Hỗ trợ sao lưu và khôi phục dữ liệu đến bất kỳ thời điểm nào trong vòng 35 ngày.
+
+#### 5. **Use Cases**
+
+- **Lưu trữ thông tin thiết bị IoT**: Phù hợp cho việc lưu trữ và truy vấn dữ liệu từ các thiết bị IoT.
+- **Dữ liệu chuỗi thời gian**: Lý tưởng cho việc lưu trữ và phân tích dữ liệu chuỗi thời gian.
+- **Ứng dụng NoSQL**: Phù hợp cho các ứng dụng NoSQL cần khả năng mở rộng và tính sẵn sàng cao.
+
+#### 6. **Điểm cần nhớ cho kỳ thi**
+
+- **Apache Cassandra và Amazon Keyspaces**: Khi gặp các câu hỏi liên quan đến Apache Cassandra trong kỳ thi, hãy nghĩ đến Amazon Keyspaces.
+
+### Kết luận
+
+Amazon Keyspaces là một dịch vụ cơ sở dữ liệu NoSQL mạnh mẽ và linh hoạt, tương thích với Apache Cassandra, giúp bạn dễ dàng lưu trữ và truy vấn dữ liệu phân tán. Hiểu rõ các tính năng và cách sử dụng Keyspaces sẽ giúp bạn tối ưu hóa việc quản lý dữ liệu NoSQL trên AWS.
+
+---
+
+## oldb sẽ ngừng vào tháng 3/2025 nên thôi khỏi học
+
+---
+
+![alt text](image/Timestream.png)
+![alt text](image/Timestream-arc.png)
+
+### Tổng quan về Amazon Timestream
+
+Amazon Timestream là một dịch vụ cơ sở dữ liệu chuỗi thời gian (time series database) được quản lý hoàn toàn bởi AWS, được thiết kế để lưu trữ và phân tích dữ liệu chuỗi thời gian một cách hiệu quả. Dưới đây là các điểm chính về Amazon Timestream:
+
+#### 1. **Giới thiệu về Timestream**
+
+- **Time Series Database**: Timestream là một cơ sở dữ liệu chuỗi thời gian, lý tưởng cho việc lưu trữ và phân tích dữ liệu có yếu tố thời gian.
+- **Fully Managed**: Timestream là một dịch vụ được quản lý hoàn toàn, giúp giảm bớt gánh nặng quản lý cơ sở hạ tầng.
+- **Serverless**: Không yêu cầu quản lý cơ sở hạ tầng, tự động điều chỉnh dung lượng dựa trên nhu cầu.
+
+#### 2. **Tính năng chính**
+
+- **Scalability**: Có thể lưu trữ và phân tích hàng nghìn tỷ sự kiện mỗi ngày.
+- **Performance**: Nhanh hơn và rẻ hơn so với việc sử dụng cơ sở dữ liệu quan hệ cho dữ liệu chuỗi thời gian.
+- **SQL Compatibility**: Hỗ trợ đầy đủ SQL, cho phép thực hiện các truy vấn phức tạp.
+- **Multi-Tier Storage**: Dữ liệu gần đây được lưu trữ trong bộ nhớ, trong khi dữ liệu lịch sử được lưu trữ trong một lớp lưu trữ tối ưu chi phí.
+- **Time Series Analytics**: Cung cấp các hàm phân tích chuỗi thời gian để giúp bạn phân tích dữ liệu và tìm kiếm các mẫu trong thời gian gần thực.
+
+#### 3. **Bảo mật**
+
+- **Encryption**: Hỗ trợ mã hóa dữ liệu ở trạng thái nghỉ và trong quá trình truyền tải.
+
+#### 4. **Use Cases**
+
+- **Ứng dụng IoT**: Lưu trữ và phân tích dữ liệu từ các thiết bị IoT.
+- **Ứng dụng vận hành**: Theo dõi và phân tích hiệu suất của các hệ thống vận hành.
+- **Phân tích thời gian thực**: Phân tích dữ liệu chuỗi thời gian trong thời gian gần thực.
+
+#### 5. **Kiến trúc tích hợp**
+
+- **Data Ingestion**: Timestream có thể nhận dữ liệu từ các nguồn như AWS IoT, Kinesis Data Streams, Prometheus, Telegraf, và Amazon MSK.
+- **Data Consumption**: Dữ liệu từ Timestream có thể được sử dụng để xây dựng bảng điều khiển với Amazon QuickSight, thực hiện machine learning với Amazon SageMaker, và tích hợp với các ứng dụng khác thông qua kết nối JDBC-java Database Connectivity.
+
+### Kết luận
+
+Amazon Timestream là một dịch vụ cơ sở dữ liệu chuỗi thời gian mạnh mẽ và linh hoạt, lý tưởng cho các ứng dụng cần lưu trữ và phân tích dữ liệu có yếu tố thời gian. Hiểu rõ các tính năng và cách sử dụng Timestream sẽ giúp bạn tối ưu hóa việc quản lý và phân tích dữ liệu chuỗi thời gian trên AWS.

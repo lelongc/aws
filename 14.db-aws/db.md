@@ -6,7 +6,7 @@ Trong phần này, chúng ta sẽ tìm hiểu về các loại cơ sở dữ li�
 
 ### **1. Các yếu tố cần xem xét khi chọn cơ sở dữ liệu**
 
-![alt text](choose-db.png)
+![alt text](image/choose-db.png)
 
 - **Workload (Khối lượng công việc):**
   - **Write-heavy (Ghi nhiều):** Cần cơ sở dữ liệu tối ưu cho việc ghi dữ liệu.
@@ -37,7 +37,7 @@ Trong phần này, chúng ta sẽ tìm hiểu về các loại cơ sở dữ li�
 
 ### **2. Các loại cơ sở dữ liệu trên AWS**
 
-![alt text](db-type.png)
+![alt text](image/db-type.png)
 
 #### **2.1. Cơ sở dữ liệu quan hệ (RDBMS - Relational Database Management System)**
 
