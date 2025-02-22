@@ -23,7 +23,7 @@ Amazon Redshift là một dịch vụ kho dữ liệu (data warehouse) được 
 
 ### 5. **Snapshots và Disaster Recovery (DR)**
 
-![alt text](redshift-Snapshots-DR.png)
+![alt text](image/redshift-Snapshots-DR.png)
 
 - **Snapshots**: Là các bản sao lưu theo thời điểm (point-in-time backups) của một cụm Redshift. Snapshots được lưu trữ trong S3 và chỉ lưu các thay đổi (incremental), giúp tiết kiệm không gian lưu trữ.
   - **Manual Snapshots**: Bạn có thể tạo snapshot thủ công và giữ chúng cho đến khi bạn xóa.
@@ -49,7 +49,7 @@ Amazon Redshift cung cấp nhiều cách để đưa dữ liệu vào cụm (clu
 
 ### 1. **Các phương pháp nhập dữ liệu vào Redshift**
 
-![alt text](Redshift-insert-data.png)
+![alt text](image/Redshift-insert-data.png)
 
 #### **a. Sử dụng Amazon Kinesis Data Firehose**
 
@@ -84,7 +84,7 @@ Amazon Redshift cung cấp nhiều cách để đưa dữ liệu vào cụm (clu
 
 ### 2. **Redshift Spectrum: Phân tích dữ liệu trực tiếp từ S3**
 
-![alt text](Redshift-Spectrum.png)
+![alt text](image/Redshift-Spectrum.png)
 
 #### **a. Tổng quan**
 

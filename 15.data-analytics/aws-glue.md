@@ -4,7 +4,7 @@ AWS Glue là một dịch vụ **Extract, Transform, Load (ETL)** được quả
 
 ### 1. **Tổng quan về AWS Glue**
 
-![alt text](Glue.png)
+![alt text](image/Glue.png)
 
 - **Mục đích**: Glue được sử dụng để trích xuất (extract), biến đổi (transform) và tải (load) dữ liệu từ các nguồn khác nhau vào các kho dữ liệu hoặc dịch vụ phân tích.
 - **Tính năng chính**:
@@ -26,7 +26,7 @@ AWS Glue là một dịch vụ **Extract, Transform, Load (ETL)** được quả
 
 #### **a. Glue-Data-Catalog**
 
-![alt text](Glue-Data-Catalog.png)
+![alt text](image/Glue-Data-Catalog.png)
 
 - **Mục đích**: Lưu trữ metadata của các bảng và cột dữ liệu.
 - **Cách thức hoạt động**:
@@ -36,7 +36,7 @@ AWS Glue là một dịch vụ **Extract, Transform, Load (ETL)** được quả
 
 #### **b. Glue ETL Jobs**
 
-![alt text](Glue-ETL-Job.png)
+![alt text](image/Glue-ETL-Job.png)
 
 - **Mục đích**: Thực hiện các tác vụ ETL (Extract, Transform, Load).
 - **Cách thức hoạt động**:

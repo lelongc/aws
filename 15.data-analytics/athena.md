@@ -1,5 +1,5 @@
 Amazon Athena là một dịch vụ truy vấn dữ liệu không cần máy chủ (serverless) của AWS, cho phép bạn phân tích dữ liệu trực tiếp từ Amazon S3 bằng cách sử dụng ngôn ngữ SQL tiêu chuẩn. Dưới đây là các chi tiết quan trọng về Amazon Athena:
-![alt text](Athena.png)
+![alt text](image/Athena.png)
 
 ### 1. **Cách thức hoạt động**
 
@@ -36,7 +36,7 @@ Athena hỗ trợ nhiều định dạng dữ liệu khác nhau, bao gồm:
 
 ### 6. **Truy vấn liên kết (Federated Query)**
 
-![alt text](Federated-Query.png)
+![alt text](image/Federated-Query.png)
 
 - **Truy vấn dữ liệu từ nhiều nguồn**: Ngoài việc truy vấn dữ liệu từ S3, Athena còn có thể truy vấn dữ liệu từ các cơ sở dữ liệu quan hệ và phi quan hệ khác, cả trên AWS và on-premises.
 - **Data Source Connector**: Athena sử dụng các kết nối dữ liệu (Data Source Connector) dưới dạng Lambda function để thực hiện các truy vấn liên kết. Các kết nối này có thể kết nối với các dịch vụ như CloudWatch Logs, DynamoDB, RDS, và nhiều dịch vụ khác.

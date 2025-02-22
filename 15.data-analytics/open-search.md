@@ -52,7 +52,7 @@ Dữ liệu có thể được nhập vào OpenSearch từ nhiều nguồn khác
 
 ### 7. **Các mẫu kiến trúc phổ biến**
 
-![alt text](open-search-DynamoDB.png)
+![alt text](image/open-search-DynamoDB.png)
 
 #### **a. Tích hợp với DynamoDB**
 
@@ -66,7 +66,7 @@ Dữ liệu có thể được nhập vào OpenSearch từ nhiều nguồn khác
 
 #### **b. Nhập CloudWatch Logs vào OpenSearch**
 
-![alt text](OpenSearch-CloudWatchLogs.png)
+![alt text](image/OpenSearch-CloudWatchLogs.png)
 
 - **Cách 1: Sử dụng Lambda Function**:
   1. **CloudWatch Logs Subscription Filter** gửi dữ liệu logs đến một Lambda Function.
@@ -77,7 +77,7 @@ Dữ liệu có thể được nhập vào OpenSearch từ nhiều nguồn khác
 
 #### **c. Nhập dữ liệu từ Kinesis Data Streams**
 
-![alt text](OpenSearch-Kinesis-Data-Streams.png)
+![alt text](image/OpenSearch-Kinesis-Data-Streams.png)
 
 - **Cách 1: Sử dụng Kinesis Data Firehose**:
   1. Kinesis Data Firehose đọc dữ liệu từ Kinesis Data Streams.

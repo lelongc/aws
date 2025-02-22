@@ -1,4 +1,4 @@
-![alt text](QuickSight.png)
+![alt text](image/QuickSight.png)
 Amazon QuickSight là một dịch vụ **business intelligence (BI)** không cần máy chủ (serverless) của AWS, giúp bạn tạo các bảng điều khiển (dashboards) tương tác và trực quan hóa dữ liệu một cách nhanh chóng và hiệu quả. Dưới đây là các chi tiết quan trọng về Amazon QuickSight:
 
 ---
