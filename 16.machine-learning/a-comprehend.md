@@ -69,4 +69,4 @@ Amazon Comprehend có thể được sử dụng trong nhiều tình huống th�
 - **Khả năng mở rộng**: Có thể xử lý lượng lớn dữ liệu văn bản một cách nhanh chóng và hiệu quả.
 - **Tích hợp với các dịch vụ AWS khác**: Comprehend có thể kết hợp với các dịch vụ như S3, Lambda, và SageMaker để xây dựng các giải pháp phức tạp hơn.
 
----
+---22
