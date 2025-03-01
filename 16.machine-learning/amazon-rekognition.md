@@ -1,4 +1,4 @@
-![alt text](amazon-rekognition.png)
+![alt text](image/amazon-rekognition.png)
 Amazon Rekognition là một dịch vụ mạnh mẽ dựa trên machine learning được cung cấp bởi AWS (Amazon Web Services), cho phép các nhà phát triển phân tích hình ảnh và video để phát hiện đối tượng, cảnh quan, văn bản và khuôn mặt. Dịch vụ này cung cấp nhiều tính năng đa dạng, phù hợp cho các ứng dụng như an ninh, phân tích media và xác thực người dùng. Dưới đây là chi tiết về các tính năng chính và trường hợp sử dụng của Amazon Rekognition:
 
 ---

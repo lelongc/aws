@@ -38,4 +38,4 @@ Amazon Polly là một dịch vụ chuyển đổi văn bản thành giọng nó
 
 ---
 
-![alt text](translate.png)
+![alt text](image/translate.png)

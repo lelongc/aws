@@ -1,4 +1,4 @@
-![alt text](lex-connect.png)
+![alt text](image/lex-connect.png)
 
 ### Chi Tiết Kiến Thức về Amazon Lex và Amazon Connect
 
