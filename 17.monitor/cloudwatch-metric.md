@@ -1,4 +1,4 @@
-![alt text](cloudwatch-metric.png)
+![alt text](image/cloudwatch-metric.png)
 
 ### **Amazon CloudWatch Metrics: Tổng Quan Chi Tiết**
 

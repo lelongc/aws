@@ -72,7 +72,7 @@ Amazon CloudWatch Logs là một dịch vụ cho phép bạn thu thập, lưu tr
 
 #### **b. Stream Nhật Ký Thời Gian Thực (Real-Time Streaming)**
 
-![alt text](CloudWatchLogsSubscription.png)
+![alt text](image/CloudWatchLogsSubscription.png)
 
 - Bạn có thể stream nhật ký thời gian thực đến các dịch vụ khác thông qua **CloudWatch Logs Subscription**.
 - Các điểm đến phổ biến:
@@ -86,8 +86,8 @@ Amazon CloudWatch Logs là một dịch vụ cho phép bạn thu thập, lưu tr
 ### **5. Tích Hợp Đa Tài Khoản và Đa Vùng**
 
 - CloudWatch Logs hỗ trợ tích hợp nhật ký từ nhiều tài khoản và nhiều vùng (regions) vào một điểm đến chung.
-  ![alt text](log-aggregation.png)
-  ![alt text](Subscription.png)
+  ![alt text](image/log-aggregation.png)
+  ![alt text](image/Subscription.png)
 - Cách thức hoạt động:
   1. Tạo một **CloudWatch Logs Subscription Filter** trong tài khoản gửi.
   2. Tạo một **Destination** (điểm đến) trong tài khoản nhận (ví dụ: Kinesis Data Stream).

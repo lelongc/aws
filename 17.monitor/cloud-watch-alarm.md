@@ -51,7 +51,7 @@ Một CloudWatch Alarm có ba trạng thái chính:
 
 ### **4. Composite Alarms (Alarms Tổng Hợp)**
 
-![alt text](Composite-Alarms.png)
+![alt text](image/Composite-Alarms.png)
 
 - **Composite Alarms** cho phép bạn kết hợp nhiều alarms thành một alarm tổng hợp.
 - Bạn có thể sử dụng các điều kiện **AND** hoặc **OR** để tạo các alarm phức tạp hơn.
@@ -68,7 +68,7 @@ Một CloudWatch Alarm có ba trạng thái chính:
 
 ### **5. EC2 Instance Recovery (Khôi Phục EC2 Instance)**
 
-![alt text](EC2InstanceRecovery.png)
+![alt text](image/EC2InstanceRecovery.png)
 
 - CloudWatch Alarms có thể được sử dụng để khôi phục EC2 instances khi có sự cố.
 - Các loại **status checks** mà bạn có thể theo dõi:
@@ -87,7 +87,7 @@ Một CloudWatch Alarm có ba trạng thái chính:
 
 ### **6. CloudWatch Alarms Với CloudWatch Logs**
 
-![alt text](AlarmsLogs.png)
+![alt text](image/AlarmsLogs.png)
 
 - Bạn có thể tạo alarms dựa trên các **metric filters** trong CloudWatch Logs.
 - Ví dụ: Nếu có quá nhiều log chứa từ khóa "error", bạn có thể tạo một alarm để gửi thông báo qua SNS.

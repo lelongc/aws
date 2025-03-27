@@ -17,7 +17,7 @@ Amazon EventBridge (trước đây được gọi là **CloudWatch Events**) là
 
 ### 3. **Tích hợp với nhiều dịch vụ AWS**
 
-![alt text](even-bridge.png)
+![alt text](image/even-bridge.png)
 
 EventBridge có thể nhận sự kiện từ nhiều dịch vụ AWS như:
 
@@ -32,7 +32,7 @@ Bên cạnh đó, EventBridge có thể kết hợp với **AWS CloudTrail** đ�
 
 ## **Luồng hoạt động của Amazon EventBridge**
 
-![alt text](even-bridge-rule.png)
+![alt text](image/even-bridge-rule.png)
 
 1. **Nguồn sự kiện (Event Sources)**  
    Các dịch vụ AWS hoặc ứng dụng bên ngoài gửi sự kiện vào **EventBridge**.
@@ -57,7 +57,7 @@ Bên cạnh đó, EventBridge có thể kết hợp với **AWS CloudTrail** đ�
 
 ## **Các loại Event Bus trong EventBridge**
 
-![alt text](even-bridge-custom.png)
+![alt text](image/even-bridge-custom.png)
 
 Amazon EventBridge có 3 loại **Event Bus** chính:
 
@@ -119,7 +119,7 @@ Ngoài ra, có thể sử dụng **Resource-based Policies** để chia sẻ Eve
 
 ### **Resource-Based Policies là gì?**
 
-![alt text](even-bridge-policy.png)
+![alt text](image/even-bridge-policy.png)
 
 - Cho phép **quản lý quyền truy cập** cho một Event Bus cụ thể.
 - Có thể **cho phép hoặc từ chối** các sự kiện từ tài khoản AWS khác hoặc từ các vùng khác nhau.
