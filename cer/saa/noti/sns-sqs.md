@@ -1,4 +1,4 @@
-# 1.sqs
+# 1.sqs/sns
 
 ## 1.A company has an application that ingests incoming messages. Dozens of other applications and microservices then quickly consume these messages. The number of messages varies drastically and sometimes increases suddenly to 100,000 each second. The company wants to decouple the solution and increase scalability.
 
@@ -59,3 +59,12 @@ Which solution meets these requirements?
 ![1743179815797](image/sqs/1743179815797.png)
 
 ![1743179835088](image/sqs/1743179835088.png)
+
+## 2.![1744096744910](image/sns-sqs/1744096744910.png)B
+
+![1744096852408](image/sns-sqs/1744096852408.png)
+![1744096910935](image/sns-sqs/1744096910935.png)
+
+## 3.![1744097429809](image/sns-sqs/1744097429809.png)
+
+![1744097481314](image/sns-sqs/1744097481314.png)
