@@ -1,201 +1,226 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Repository Browser</title>
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- GitHub Markdown CSS for nice Markdown rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Duyệt Repository</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <style>
+      /* Một vài tùy chỉnh nhỏ bổ sung */
       body {
-        background-color: #f8f9fa;
-      }
-      .folder {
-        cursor: pointer;
-        font-weight: bold;
-        color: #0d6efd;
-      }
-      .folder:hover {
-        text-decoration: underline;
-      }
-      .file {
-        padding-left: 20px;
-      }
-      .container {
-        margin-top: 40px;
-      }
-      .card {
-        margin-top: 20px;
-      }
-      .markdown-body {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        background-color: #fff;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0; /* Pico đã có style, bỏ padding mặc định */
+      }
+      li {
+        margin-bottom: 8px;
+        padding: 5px 0;
+      }
+      a {
+        text-decoration: none; /* Pico xử lý phần này */
+      }
+      /* Giữ lại icon cho dễ nhìn */
+      .folder::before {
+        content: "📁 ";
+        margin-right: 5px;
+      }
+      .file::before {
+        content: "📄 ";
+        margin-right: 5px;
+      }
+      #loading,
+      #error {
+        margin-top: 15px;
+      }
+      nav#breadcrumb {
+        margin-bottom: 20px;
+        font-size: 0.9em;
+      }
+      nav#breadcrumb a {
+        font-weight: bold;
+      }
+      nav#breadcrumb span {
+        margin: 0 5px;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1 class="text-center">Repository Browser</h1>
-      <div class="card">
-        <div class="card-body">
-          <ul id="directory-list" class="list-unstyled"></ul>
-        </div>
-      </div>
-      <!-- Phần hiển thị nội dung của file (Markdown hoặc HTML) -->
-      <div class="card mt-4" id="file-display" style="display: none">
-        <div class="card-body">
-          <!-- Nội dung Markdown sẽ được hiển thị tại đây -->
-          <div id="markdown-content" class="markdown-body"></div>
-          <!-- Hoặc nếu file HTML sẽ được hiển thị qua iframe -->
-          <div id="html-content" style="display: none">
-            <iframe
-              id="html-iframe"
-              src=""
-              width="100%"
-              height="600"
-              style="border: none"
-            ></iframe>
-          </div>
-          <!-- Nút đóng -->
-          <button class="btn btn-secondary mt-3" onclick="closeFileDisplay()">
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
+    <main class="container">
+      <hgroup>
+        <h1>Duyệt Repository</h1>
+        <p>
+          Xem nội dung của repo
+          <strong><span id="repo-name-display"></span></strong>
+        </p>
+      </hgroup>
 
-    <!-- Thư viện Marked.js -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+      <nav id="breadcrumb"></nav>
 
+      <div id="file-browser">
+        <ul id="file-list"></ul>
+      </div>
+
+      <div id="loading" aria-busy="true" style="display: none">
+        Đang tải, vui lòng đợi...
+      </div>
+      <div id="error" style="display: none; color: var(--pico-color-red)"></div>
+    </main>
     <script>
-      // Cấu hình repo
-      const repo = "lelongc/aws"; // Thay bằng repo của bạn
-      const branch = "main"; // Thay đổi nếu cần
-      // API lấy cây repo đệ quy
-      const apiUrl = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
+      const username = "lelongc"; // <-- THAY TÊN USERNAME GITHUB CỦA BẠN
+      const repoName = "aws"; // <-- THAY TÊN REPOSITORY CỦA BẠN
+      const fileList = document.getElementById("file-list");
+      const loadingIndicator = document.getElementById("loading");
+      const errorDisplay = document.getElementById("error");
+      const breadcrumbNav = document.getElementById("breadcrumb");
+      const repoNameDisplay = document.getElementById("repo-name-display");
 
-      // Fetch dữ liệu repo và render cây thư mục
-      async function fetchFiles() {
+      // Hiển thị tên repo
+      repoNameDisplay.textContent = `${username}/${repoName}`;
+
+      function updateBreadcrumb(path) {
+        breadcrumbNav.innerHTML = ""; // Xóa breadcrumb cũ
+        const parts = path.split("/").filter((p) => p); // Tách path thành các phần, loại bỏ rỗng
+
+        // Thêm link gốc
+        const rootLink = document.createElement("a");
+        rootLink.href = "#";
+        rootLink.textContent = "Gốc";
+        rootLink.onclick = (e) => {
+          e.preventDefault();
+          fetchContents("");
+        };
+        breadcrumbNav.appendChild(rootLink);
+
+        let currentPath = "";
+        parts.forEach((part, index) => {
+          const separator = document.createElement("span");
+          separator.textContent = "/";
+          breadcrumbNav.appendChild(separator);
+
+          currentPath += (index > 0 ? "/" : "") + part;
+          if (index === parts.length - 1) {
+            // Phần tử cuối cùng (thư mục hiện tại) là text
+            const currentFolder = document.createElement("span");
+            currentFolder.textContent = part;
+            breadcrumbNav.appendChild(currentFolder);
+          } else {
+            // Các phần tử trước là link
+            const partLink = document.createElement("a");
+            partLink.href = "#";
+            partLink.textContent = part;
+            // Capture currentPath tại thời điểm tạo link
+            const pathForLink = currentPath;
+            partLink.onclick = (e) => {
+              e.preventDefault();
+              fetchContents(pathForLink);
+            };
+            breadcrumbNav.appendChild(partLink);
+          }
+        });
+      }
+
+      async function fetchContents(path = "") {
+        fileList.innerHTML = "";
+        loadingIndicator.style.display = "block";
+        loadingIndicator.setAttribute("aria-busy", "true");
+        errorDisplay.style.display = "none";
+        updateBreadcrumb(path); // Cập nhật breadcrumb
+
+        const apiUrl = `https://api.github.com/repos/${username}/${repoName}/contents/${path}`;
+
         try {
           const response = await fetch(apiUrl);
+          if (!response.ok) {
+            let errorMsg = `Lỗi ${response.status}: ${response.statusText}`;
+            try {
+              const errorData = await response.json();
+              errorMsg += ` - ${errorData.message || ""}`;
+            } catch (e) {
+              /* Ignore JSON parsing error */
+            }
+            // Check for rate limit specifically
+            if (response.status === 403) {
+              errorMsg +=
+                ". Có thể bạn đã vượt quá giới hạn truy cập API của GitHub (60 yêu cầu/giờ nếu không đăng nhập). Thử lại sau.";
+            }
+            throw new Error(errorMsg);
+          }
           const data = await response.json();
-          const tree = buildTree(data.tree);
-          const list = document.getElementById("directory-list");
-          renderTree(list, tree);
+
+          data.sort((a, b) => {
+            if (a.type === b.type) return a.name.localeCompare(b.name);
+            return a.type === "dir" ? -1 : 1;
+          });
+
+          // Thêm link ".." nếu không ở gốc
+          if (path !== "") {
+            const parentPath = path.substring(0, path.lastIndexOf("/"));
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = "#";
+            link.innerHTML = "<strong>🔙 .. (Lên trên)</strong>"; // Dùng innerHTML để dùng strong
+            link.onclick = (e) => {
+              e.preventDefault();
+              fetchContents(parentPath);
+            };
+            listItem.appendChild(link);
+            fileList.appendChild(listItem);
+          }
+
+          data.forEach((item) => {
+            const listItem = document.createElement("li");
+            const link = document.createElement("a");
+            listItem.classList.add(item.type === "dir" ? "folder" : "file");
+
+            link.textContent = item.name;
+
+            if (item.type === "dir") {
+              link.href = "#";
+              link.onclick = (e) => {
+                e.preventDefault();
+                fetchContents(item.path);
+              };
+            } else {
+              // Link tới trang xem file trên GitHub (mở tab mới)
+              link.href = item.html_url;
+              link.target = "_blank";
+              // Thêm thông tin kích thước file nếu có
+              if (item.size) {
+                const sizeKb = (item.size / 1024).toFixed(1);
+                const sizeSpan = document.createElement("span");
+                sizeSpan.textContent = ` (${sizeKb} KB)`;
+                sizeSpan.style.fontSize = "0.8em";
+                sizeSpan.style.color = "grey";
+                link.appendChild(sizeSpan);
+              }
+            }
+            listItem.appendChild(link);
+            fileList.appendChild(listItem);
+          });
+
+          if (data.length === 0 && path !== "") {
+            const emptyMsg = document.createElement("li");
+            emptyMsg.textContent = "(Thư mục này trống)";
+            emptyMsg.style.fontStyle = "italic";
+            emptyMsg.style.color = "grey";
+            fileList.appendChild(emptyMsg);
+          }
         } catch (error) {
-          console.error("Error fetching files:", error);
+          console.error("Lỗi khi lấy dữ liệu:", error);
+          errorDisplay.textContent = `Không thể tải nội dung: ${error.message}`;
+          errorDisplay.style.display = "block";
+        } finally {
+          loadingIndicator.style.display = "none";
+          loadingIndicator.setAttribute("aria-busy", "false");
         }
       }
 
-      // Build cây các thư mục dạng object từ mảng API trả về
-      function buildTree(items) {
-        const tree = {};
-        items.forEach((item) => {
-          const parts = item.path.split("/");
-          let current = tree;
-          parts.forEach((part, index) => {
-            if (!current[part]) {
-              // Nếu là file (blob) thì gán null, ngược lại tạo object
-              current[part] =
-                index === parts.length - 1 && item.type === "blob" ? null : {};
-            }
-            current = current[part];
-          });
-        });
-        return tree;
-      }
-
-      // Render cây thư mục ra HTML
-      function renderTree(container, tree) {
-        Object.keys(tree).forEach((key) => {
-          const li = document.createElement("li");
-          li.className = "mb-2";
-
-          if (tree[key] !== null) {
-            // Nếu là thư mục (folder)
-            const folder = document.createElement("span");
-            folder.textContent = `[Folder] ${key}`;
-            folder.className = "folder";
-            folder.onclick = () => {
-              const subList = li.querySelector("ul");
-              if (subList) {
-                subList.classList.toggle("d-none");
-              }
-            };
-            li.appendChild(folder);
-
-            const subList = document.createElement("ul");
-            subList.className = "list-unstyled d-none";
-            renderTree(subList, tree[key]);
-            li.appendChild(subList);
-          } else {
-            // Nếu là file
-            const fileLink = document.createElement("a");
-            fileLink.textContent = key;
-            fileLink.href = "#"; // Không chuyển trang ngay
-            fileLink.className = "file text-decoration-none text-dark";
-            fileLink.onclick = async (e) => {
-              e.preventDefault();
-              // Ẩn hiển thị HTML hoặc Markdown trước khi set nội dung
-              document.getElementById("markdown-content").innerHTML = "";
-              document.getElementById("html-content").style.display = "none";
-              // Hiển thị card chứa nội dung file
-              document.getElementById("file-display").style.display = "block";
-
-              // Nếu file là Markdown (.md)
-              if (key.endsWith(".md")) {
-                const url = `https://raw.githubusercontent.com/${repo}/${branch}/${key}`;
-                try {
-                  const response = await fetch(url);
-                  const mdText = await response.text();
-                  // Sử dụng Marked.js để chuyển đổi markdown sang HTML
-                  document.getElementById("markdown-content").innerHTML =
-                    marked.parse(mdText);
-                  document.getElementById("markdown-content").style.display =
-                    "block";
-                } catch (err) {
-                  document.getElementById("markdown-content").innerHTML =
-                    "<p>Error loading markdown file.</p>";
-                }
-              }
-              // Nếu file là HTML
-              else if (key.endsWith(".html")) {
-                let htmlUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${key}`;
-                // Nếu bạn đã cấu hình GitHub Pages và file có thể truy cập dưới dạng website, thay đổi URL cho phù hợp
-                // Ví dụ: htmlUrl = `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/${key}`;
-                document.getElementById("html-iframe").src = htmlUrl;
-                document.getElementById("html-content").style.display = "block";
-              } else {
-                document.getElementById("markdown-content").innerHTML =
-                  "<p>File type not supported.</p>";
-              }
-            };
-            li.appendChild(fileLink);
-          }
-          container.appendChild(li);
-        });
-      }
-
-      // Đóng khung hiển thị file
-      function closeFileDisplay() {
-        document.getElementById("file-display").style.display = "none";
-        // Xoá nội dung hiển thị
-        document.getElementById("markdown-content").innerHTML = "";
-        document.getElementById("html-iframe").src = "";
-      }
-
-      fetchFiles();
+      document.addEventListener("DOMContentLoaded", () => fetchContents());
     </script>
   </body>
 </html>
