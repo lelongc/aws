@@ -1,4 +1,4 @@
----
+
 
 ## 1. Tổng Quan Về Tích Hợp CloudTrail và Amazon EventBridge
 
@@ -8,7 +8,7 @@
 - **Amazon EventBridge nhận các sự kiện:**  
   Sau khi CloudTrail ghi nhận các API call, những sự kiện đó cũng sẽ được chuyển tới Amazon EventBridge dưới dạng event. EventBridge có khả năng xử lý, lọc và định tuyến các sự kiện này dựa theo các quy tắc (rules) mà bạn thiết lập.
 
----
+
 
 ## 2. Cách Tạo Cảnh Báo và Tự Động Hóa Với Amazon EventBridge
 
