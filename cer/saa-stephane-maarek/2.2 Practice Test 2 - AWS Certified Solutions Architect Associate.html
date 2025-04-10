@@ -323,10 +323,10 @@
         passPercentElement.innerHTML = passPercent + '%';
         totalNumberOfQuestions = questionData.length;
         // shuffle the questionData to randomize the order of the questions
-        for (let i = questionData.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
-        }
+        // for (let i = questionData.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+        // }
 
         let formattedQuestions = questionData.map(formatSingleQuestionData);
         updateScore();
@@ -374,10 +374,10 @@
       const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
         const { id, explanation, answers, correctAnswer, question } = singleQuestionData;
         // shuffle the answers to randomize the order of the answers
-        for (let i = answers.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [answers[i], answers[j]] = [answers[j], answers[i]];
-        }
+        // for (let i = answers.length - 1; i > 0; i--) {
+        //   const j = Math.floor(Math.random() * (i + 1));
+        //   [answers[i], answers[j]] = [answers[j], answers[i]];
+        // }
         const optionsHTML = answers
           .map((option, index) => {
             const optionId = `${id}_${index}`;
