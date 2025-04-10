@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Duyệt Repository Trực Tiếp</title>
+    <title>Duyệt Repository Chuyên Nghiệp</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -17,7 +17,7 @@
     />
 
     <style>
-      /* Giữ nguyên các style từ phiên bản trước */
+      /* Tùy chỉnh nhỏ */
       body {
         padding-top: 20px;
         padding-bottom: 40px;
@@ -25,17 +25,17 @@
       .list-group-item {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 10px; /* Khoảng cách giữa icon và text */
       }
       .list-group-item i {
-        font-size: 1.2em;
-        min-width: 20px;
+        font-size: 1.2em; /* Kích thước icon */
+        min-width: 20px; /* Đảm bảo icon thẳng hàng */
         text-align: center;
       }
       .list-group-item a {
         text-decoration: none;
-        flex-grow: 1;
-        color: var(--bs-body-color);
+        flex-grow: 1; /* Link chiếm hết phần còn lại */
+        color: var(--bs-body-color); /* Màu link theo theme */
       }
       .list-group-item a:hover {
         text-decoration: underline;
@@ -44,7 +44,7 @@
       .file-size {
         font-size: 0.85em;
         color: var(--bs-secondary-color);
-        margin-left: auto;
+        margin-left: auto; /* Đẩy kích thước file sang phải */
         padding-left: 15px;
       }
       #readme-content {
@@ -57,9 +57,11 @@
       #readme-content h2:first-child {
         margin-top: 0;
       }
+      /* Thêm style cho breadcrumb */
       .breadcrumb {
         margin-bottom: 1.5rem;
       }
+      /* Loading spinner */
       #loading-spinner {
         width: 3rem;
         height: 3rem;
@@ -68,29 +70,13 @@
       #error-alert {
         margin-top: 1.5rem;
       }
+      /* Nút đổi theme */
       #theme-toggler {
         position: fixed;
         top: 15px;
         right: 20px;
         z-index: 1000;
       }
-      /* Style thêm cho link file trực tiếp */
-      .list-group-item a.direct-link {
-        /* Có thể thêm style riêng nếu cần */
-      }
-      /* Style cho README rendering */
-      #readme-html img {
-        max-width: 100%;
-        height: auto;
-      } /* Đảm bảo ảnh trong README không tràn */
-      #readme-html pre {
-        background-color: var(--bs-light-bg-subtle);
-        padding: 1em;
-        border-radius: 0.3rem;
-      } /* Style khối code */
-      #readme-html code {
-        font-size: 0.9em;
-      } /* Style code inline */
     </style>
   </head>
   <body>
@@ -145,7 +131,6 @@
         </div>
       </div>
     </div>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -153,10 +138,9 @@
     ></script>
 
     <script>
-      const username = "YOUR_GITHUB_USERNAME"; // <-- THAY TÊN USERNAME GITHUB CỦA BẠN
-      const repoName = "YOUR_REPO_NAME"; // <-- THAY TÊN REPOSITORY CỦA BẠN
+      const username = "lelongc"; // <-- THAY TÊN USERNAME GITHUB CỦA BẠN
+      const repoName = "aws"; // <-- THAY TÊN REPOSITORY CỦA BẠN
 
-      // Lấy các element cần thiết (giống như trước)
       const fileList = document.getElementById("file-list");
       const loadingIndicator = document.getElementById("loading");
       const errorDisplay = document.getElementById("error");
@@ -171,12 +155,13 @@
       // Hiển thị tên repo và link repo
       const repoUrl = `https://github.com/${username}/${repoName}`;
       repoNameDisplay.textContent = `${username}/${repoName}`;
-      repoNameDisplay.parentElement.href = repoUrl;
+      repoNameDisplay.parentElement.href = repoUrl; // Cập nhật link ở header
 
-      // --- Xử lý đổi Theme (giữ nguyên) ---
+      // --- Xử lý đổi Theme ---
       const savedTheme = localStorage.getItem("bsTheme") || "light";
       currentHtml.setAttribute("data-bs-theme", savedTheme);
       updateThemeTogglerIcon(savedTheme);
+
       themeToggler.addEventListener("click", () => {
         const newTheme =
           currentHtml.getAttribute("data-bs-theme") === "light"
@@ -186,16 +171,19 @@
         localStorage.setItem("bsTheme", newTheme);
         updateThemeTogglerIcon(newTheme);
       });
+
       function updateThemeTogglerIcon(theme) {
         const icon = theme === "light" ? "bi-moon-stars-fill" : "bi-sun-fill";
         themeToggler.querySelector("i").className = `bi ${icon}`;
       }
       // --- Kết thúc xử lý đổi Theme ---
 
-      // --- Xử lý Breadcrumb (giữ nguyên) ---
+      // --- Xử lý Breadcrumb ---
       function updateBreadcrumb(path) {
-        breadcrumbList.innerHTML = "";
+        breadcrumbList.innerHTML = ""; // Xóa cũ
         const parts = path.split("/").filter((p) => p);
+
+        // Thêm link gốc
         const rootItem = document.createElement("li");
         rootItem.classList.add("breadcrumb-item");
         const rootLink = document.createElement("a");
@@ -207,16 +195,20 @@
         };
         rootItem.appendChild(rootLink);
         breadcrumbList.appendChild(rootItem);
+
         let currentPath = "";
         parts.forEach((part, index) => {
           const item = document.createElement("li");
           item.classList.add("breadcrumb-item");
           currentPath += (index > 0 ? "/" : "") + part;
+
           if (index === parts.length - 1) {
+            // Mục cuối cùng là active
             item.classList.add("active");
             item.setAttribute("aria-current", "page");
             item.textContent = part;
           } else {
+            // Các mục trước là link
             const link = document.createElement("a");
             link.href = "#";
             link.textContent = part;
@@ -232,10 +224,9 @@
       }
       // --- Kết thúc xử lý Breadcrumb ---
 
-      // --- Hàm lấy Icon cho file (giữ nguyên) ---
+      // --- Hàm lấy Icon cho file ---
       function getIconForFile(filename) {
         const extension = filename.split(".").pop().toLowerCase();
-        // (Giữ nguyên nội dung hàm này)
         switch (extension) {
           case "md":
             return "bi-markdown-fill";
@@ -284,14 +275,15 @@
           case "cpp":
           case "h":
             return "bi-filetype-c";
+          // Thêm các loại file khác nếu cần
           default:
             return "bi-file-earmark"; // Icon mặc định
         }
       }
       // --- Kết thúc hàm lấy Icon ---
 
-      // --- Hàm render Markdown (giữ nguyên) ---
-      async function renderMarkdown(markdownContent, contextPath) {
+      // --- Hàm render Markdown ---
+      async function renderMarkdown(markdownContent) {
         const apiUrl = "https://api.github.com/markdown";
         try {
           const response = await fetch(apiUrl, {
@@ -302,31 +294,29 @@
             },
             body: JSON.stringify({
               text: markdownContent,
-              mode: "gfm",
-              context: `${username}/${repoName}${
-                contextPath ? "/" + contextPath : ""
-              }`,
+              mode: "gfm", // Github Flavored Markdown
+              context: `${username}/${repoName}`, // Cần để link tương đối hoạt động
             }),
           });
-          if (!response.ok)
+          if (!response.ok) {
             throw new Error(`Markdown render error: ${response.status}`);
-          return await response.text();
+          }
+          return await response.text(); // Trả về HTML đã được render
         } catch (error) {
           console.error("Error rendering Markdown:", error);
-          return `<p class="text-danger">Lỗi khi hiển thị Markdown: ${error.message}</p><hr><pre>${markdownContent}</pre>`;
+          return `<p class="text-danger">Lỗi khi hiển thị README: ${error.message}</p><hr><pre>${markdownContent}</pre>`; // Hiển thị lỗi hoặc raw markdown
         }
       }
       // --- Kết thúc hàm render Markdown ---
 
       // --- Hàm chính: Lấy và hiển thị nội dung ---
       async function fetchContents(path = "") {
-        // (Phần khởi tạo và gọi API giữ nguyên)
-        fileList.innerHTML = "";
-        readmeContainer.style.display = "none";
-        readmeHtmlContainer.innerHTML = "";
-        loadingIndicator.style.display = "block";
-        errorDisplay.classList.add("d-none");
-        updateBreadcrumb(path);
+        fileList.innerHTML = ""; // Xóa danh sách file cũ
+        readmeContainer.style.display = "none"; // Ẩn khu vực README cũ
+        readmeHtmlContainer.innerHTML = ""; // Xóa nội dung README cũ
+        loadingIndicator.style.display = "block"; // Hiện loading chính
+        errorDisplay.classList.add("d-none"); // Ẩn lỗi cũ
+        updateBreadcrumb(path); // Cập nhật breadcrumb
 
         const apiUrl = `https://api.github.com/repos/${username}/${repoName}/contents/${path}`;
         let readmeFile = null;
@@ -338,10 +328,13 @@
             try {
               const errorData = await response.json();
               errorMsg += ` - ${errorData.message || ""}`;
-            } catch (e) {}
-            if (response.status === 403 || response.status === 429)
+            } catch (e) {
+              /* Ignore JSON parsing error */
+            }
+            if (response.status === 403 || response.status === 429) {
               errorMsg +=
                 ". Có thể bạn đã vượt quá giới hạn truy cập API của GitHub. Thử lại sau.";
+            }
             throw new Error(errorMsg);
           }
           const data = await response.json();
@@ -351,16 +344,17 @@
             return a.type === "dir" ? -1 : 1;
           });
 
-          // Thêm link ".." nếu không ở gốc (giữ nguyên)
+          // Thêm link ".." nếu không ở gốc
           if (path !== "") {
             const parentPath = path.substring(0, path.lastIndexOf("/"));
             const listItem = document.createElement("div");
             listItem.classList.add("list-group-item", "list-group-item-action");
             const icon = document.createElement("i");
-            icon.className = "bi bi-arrow-90deg-up";
+            icon.className = "bi bi-arrow-90deg-up"; // Icon đi lên
             const link = document.createElement("a");
             link.href = "#";
-            link.innerHTML = "<strong>.. (Lên trên)</strong>";
+            link.textContent = ".. (Lên trên)";
+            link.style.fontWeight = "bold";
             link.onclick = (e) => {
               e.preventDefault();
               fetchContents(parentPath);
@@ -370,71 +364,44 @@
             fileList.appendChild(listItem);
           }
 
-          // *** THAY ĐỔI QUAN TRỌNG Ở ĐÂY: Tạo link cho file ***
           data.forEach((item) => {
             const listItem = document.createElement("div");
-            listItem.classList.add("list-group-item", "list-group-item-action");
-            const icon = document.createElement("i");
+            listItem.classList.add("list-group-item", "list-group-item-action"); // Thêm class Bootstrap
+            const icon = document.createElement("i"); // Thẻ icon
             const link = document.createElement("a");
             link.textContent = item.name;
 
             if (item.type === "dir") {
-              // Thư mục: vẫn dùng JS để load nội dung
-              icon.className = "bi bi-folder-fill text-primary";
+              icon.className = "bi bi-folder-fill text-primary"; // Icon thư mục
               link.href = "#";
               link.onclick = (e) => {
                 e.preventDefault();
                 fetchContents(item.path);
               };
-            } else if (item.type === "file") {
-              icon.className = getIconForFile(item.name) + " text-secondary";
+            } else {
+              icon.className = getIconForFile(item.name) + " text-secondary"; // Icon file + màu
+              link.href = item.html_url; // Link xem trên GitHub
+              link.target = "_blank";
 
-              const fileExtension = item.name.split(".").pop().toLowerCase();
-
-              if (fileExtension === "md") {
-                // File Markdown: link đến trang viewer mới
-                // Truyền download_url đã được encode vào URL
-                link.href = `./md-viewer.html?url=${encodeURIComponent(
-                  item.download_url
-                )}&name=${encodeURIComponent(item.name)}`;
-                // KHÔNG dùng target="_blank" để mở trong cùng tab
-                link.classList.add("direct-link"); // Thêm class để phân biệt nếu cần style riêng
-              } else if (fileExtension === "html") {
-                // File HTML: link trực tiếp đến file trên Pages site
-                // Dùng đường dẫn tương đối từ gốc repo
-                link.href = `./${item.path}`;
-                // KHÔNG dùng target="_blank"
-                link.classList.add("direct-link");
-              } else {
-                // Các file khác (ảnh, txt, css, js, pdf, zip...): link trực tiếp
-                // Trình duyệt sẽ tự xử lý (hiển thị hoặc tải về)
-                link.href = `./${item.path}`;
-                // Có thể thêm target="_blank" nếu muốn mở ảnh/pdf/txt trong tab mới
-                // link.target = '_blank';
-                link.classList.add("direct-link");
-              }
-
-              // Thêm kích thước file (giữ nguyên)
+              // Thêm kích thước file
               if (item.size) {
                 const sizeKb = (item.size / 1024).toFixed(1);
                 const sizeSpan = document.createElement("span");
                 sizeSpan.className = "file-size";
                 sizeSpan.textContent = `${sizeKb} KB`;
-                listItem.appendChild(sizeSpan);
+                listItem.appendChild(sizeSpan); // Thêm size vào cuối item
               }
 
-              // Kiểm tra README để hiển thị inline (giữ nguyên)
+              // Kiểm tra nếu là README
               if (item.name.toLowerCase() === "readme.md") {
-                readmeFile = item;
+                readmeFile = item; // Lưu lại thông tin file README
               }
             }
             listItem.appendChild(icon);
             listItem.appendChild(link);
             fileList.appendChild(listItem);
           });
-          // *** KẾT THÚC THAY ĐỔI QUAN TRỌNG ***
 
-          // (Phần hiển thị thư mục trống và xử lý README inline giữ nguyên)
           if (data.length === 0 && path !== "") {
             const emptyMsg = document.createElement("div");
             emptyMsg.classList.add("list-group-item");
@@ -442,18 +409,20 @@
             emptyMsg.style.fontStyle = "italic";
             fileList.appendChild(emptyMsg);
           }
+
+          // --- Xử lý hiển thị README ---
           if (readmeFile) {
             readmeContainer.style.display = "block";
             readmeLoadingIndicator.style.display = "block";
             try {
+              // 1. Lấy nội dung raw của README
               const readmeResponse = await fetch(readmeFile.download_url);
               if (!readmeResponse.ok)
                 throw new Error(`Lỗi tải README: ${readmeResponse.status}`);
               const readmeMarkdown = await readmeResponse.text();
-              const readmeRenderedHtml = await renderMarkdown(
-                readmeMarkdown,
-                path
-              ); // Truyền path để xử lý link tương đối trong README
+
+              // 2. Render Markdown thành HTML bằng API của GitHub
+              const readmeRenderedHtml = await renderMarkdown(readmeMarkdown);
               readmeHtmlContainer.innerHTML = readmeRenderedHtml;
             } catch (error) {
               console.error("Error fetching or rendering README:", error);
@@ -462,14 +431,13 @@
               readmeLoadingIndicator.style.display = "none";
             }
           }
+          // --- Kết thúc xử lý README ---
         } catch (error) {
-          // (Xử lý lỗi giữ nguyên)
           console.error("Lỗi khi lấy dữ liệu:", error);
           errorDisplay.textContent = `Không thể tải nội dung: ${error.message}`;
-          errorDisplay.classList.remove("d-none");
+          errorDisplay.classList.remove("d-none"); // Hiện thông báo lỗi
         } finally {
-          // (Ẩn loading giữ nguyên)
-          loadingIndicator.style.display = "none";
+          loadingIndicator.style.display = "none"; // Ẩn loading chính
         }
       }
       // --- Kết thúc hàm chính ---
