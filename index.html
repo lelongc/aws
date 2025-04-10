@@ -393,25 +393,15 @@
 
               if (fileExtension === "md") {
                 // File Markdown: link đến trang viewer mới
-                // Truyền download_url đã được encode vào URL
                 link.href = `./md-viewer.html?url=${encodeURIComponent(
                   item.download_url
-                )}&name=${encodeURIComponent(item.name)}`;
-                // KHÔNG dùng target="_blank" để mở trong cùng tab
-                link.classList.add("direct-link"); // Thêm class để phân biệt nếu cần style riêng
+                )}&name=${encodeURIComponent(item.path)}`; // Sử dụng path thay vì chỉ name
               } else if (fileExtension === "html") {
                 // File HTML: link trực tiếp đến file trên Pages site
-                // Dùng đường dẫn tương đối từ gốc repo
-                link.href = `./${item.path}`;
-                // KHÔNG dùng target="_blank"
-                link.classList.add("direct-link");
+                link.href = `./${item.path}`; // Đường dẫn tương đối từ gốc repo
               } else {
                 // Các file khác (ảnh, txt, css, js, pdf, zip...): link trực tiếp
-                // Trình duyệt sẽ tự xử lý (hiển thị hoặc tải về)
-                link.href = `./${item.path}`;
-                // Có thể thêm target="_blank" nếu muốn mở ảnh/pdf/txt trong tab mới
-                // link.target = '_blank';
-                link.classList.add("direct-link");
+                link.href = `./${item.path}`; // Đường dẫn tương đối từ gốc repo
               }
 
               // Thêm kích thước file (giữ nguyên)
