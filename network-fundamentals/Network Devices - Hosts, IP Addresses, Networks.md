@@ -1,4 +1,4 @@
----
+
 
 #### **2. Host (Thiết bị gửi/nhận dữ liệu)**
 - **Định nghĩa**: 

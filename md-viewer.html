@@ -158,9 +158,9 @@
         // ---
 
         try {
-          // *** THÊM THẺ BASE ***
+          // *** THÊM THẺ BASE - SỬA ĐƯỜNG DẪN ***
           const markdownDirectoryPath = getBasePath(decodedFilePath); // Ví dụ: "docs/images/" hoặc "folder/" hoặc ""
-          const baseHref = pagesRoot + markdownDirectoryPath; // Ví dụ: "/repo-name/docs/images/" hoặc "/repo-name/folder/" hoặc "/repo-name/"
+          const baseHref = `${getPagesRootPath()}${markdownDirectoryPath}`; // Đường dẫn base bao gồm cả tên repo
 
           const existingBase = document.querySelector("base");
           if (existingBase) {
