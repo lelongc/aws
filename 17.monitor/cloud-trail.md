@@ -1,4 +1,4 @@
----
+
 
 ## 1. Tổng Quan Về AWS CloudTrail
 
@@ -13,7 +13,7 @@
 - **CloudTrail được bật mặc định:**  
   Mỗi tài khoản AWS khi được tạo ra đều có CloudTrail bật theo mặc định, giúp ghi lại các sự kiện xảy ra mà không cần cấu hình thêm ban đầu.
 
----
+
 
 ## 2. Nguồn Ghi Log và Phương Thức Ghi Nhận Sự Kiện
 
