@@ -99,7 +99,9 @@
         } else {
           const fileLink = document.createElement("a");
           fileLink.textContent = key;
-          fileLink.href = `https://raw.githubusercontent.com/${repo}/${branch}/${key}`;
+          fileLink.href = key.endsWith(".md")
+            ? `https://github.com/${repo}/blob/${branch}/${key}`
+            : `https://raw.githubusercontent.com/${repo}/${branch}/${key}`;
           fileLink.target = "_blank"; // Open in a new tab
           fileLink.className = "file text-decoration-none text-dark";
           li.appendChild(fileLink);
