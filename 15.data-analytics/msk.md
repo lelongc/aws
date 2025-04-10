@@ -1,9 +1,8 @@
----
 
 ### **Amazon Managed Streaming for Apache Kafka (Amazon MSK)**
 **Amazon MSK** là một dịch vụ được quản lý bởi AWS, giúp bạn dễ dàng triển khai và quản lý các cụm **Apache Kafka** trên nền tảng đám mây của AWS. **Apache Kafka** là một nền tảng mã nguồn mở dùng để xử lý luồng dữ liệu (data streaming) theo thời gian thực, tương tự như **Amazon Kinesis**, nhưng có một số khác biệt quan trọng.
 
----
+
 
 ### **Apache Kafka là gì?**
 
