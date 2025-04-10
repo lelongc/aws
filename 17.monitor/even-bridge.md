@@ -1,7 +1,7 @@
----
+
 ## **Amazon EventBridge là gì?**
 Amazon EventBridge (trước đây được gọi là **CloudWatch Events**) là một dịch vụ quản lý sự kiện của AWS, cho phép các dịch vụ AWS, ứng dụng của bên thứ ba và các ứng dụng tùy chỉnh có thể giao tiếp với nhau thông qua các sự kiện.
----
+
 
 ## **Chức năng của Amazon EventBridge**
 
