@@ -1,115 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Repository Browser</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-    .folder {
-      cursor: pointer;
-      font-weight: bold;
-      color: #0d6efd;
-    }
-    .folder:hover {
-      text-decoration: underline;
-    }
-    .file {
-      padding-left: 20px;
-    }
-    .container {
-      margin-top: 40px;
-    }
-    .card {
-      margin-top: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1 class="text-center">Repository Browser</h1>
-    <div class="card">
-      <div class="card-body">
-        <ul id="directory-list" class="list-unstyled"></ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Repository Browser</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- GitHub Markdown CSS for nice Markdown rendering -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .folder {
+        cursor: pointer;
+        font-weight: bold;
+        color: #0d6efd;
+      }
+      .folder:hover {
+        text-decoration: underline;
+      }
+      .file {
+        padding-left: 20px;
+      }
+      .container {
+        margin-top: 40px;
+      }
+      .card {
+        margin-top: 20px;
+      }
+      .markdown-body {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Repository Browser</h1>
+      <div class="card">
+        <div class="card-body">
+          <ul id="directory-list" class="list-unstyled"></ul>
+        </div>
+      </div>
+      <!-- Phần hiển thị nội dung của file (Markdown hoặc HTML) -->
+      <div class="card mt-4" id="file-display" style="display: none">
+        <div class="card-body">
+          <!-- Nội dung Markdown sẽ được hiển thị tại đây -->
+          <div id="markdown-content" class="markdown-body"></div>
+          <!-- Hoặc nếu file HTML sẽ được hiển thị qua iframe -->
+          <div id="html-content" style="display: none">
+            <iframe
+              id="html-iframe"
+              src=""
+              width="100%"
+              height="600"
+              style="border: none"
+            ></iframe>
+          </div>
+          <!-- Nút đóng -->
+          <button class="btn btn-secondary mt-3" onclick="closeFileDisplay()">
+            Close
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    const repo = "lelongc/aws";
-    const branch = "main"; // Change this if using another branch
-    const apiUrl = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
+    <!-- Thư viện Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
-    async function fetchFiles() {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        const tree = buildTree(data.tree);
-        const list = document.getElementById("directory-list");
-        renderTree(list, tree);
-      } catch (error) {
-        console.error("Error fetching files:", error);
-      }
-    }
+    <script>
+      // Cấu hình repo
+      const repo = "lelongc/aws"; // Thay bằng repo của bạn
+      const branch = "main"; // Thay đổi nếu cần
+      // API lấy cây repo đệ quy
+      const apiUrl = `https://api.github.com/repos/${repo}/git/trees/${branch}?recursive=1`;
 
-    function buildTree(items) {
-      const tree = {};
-      items.forEach(item => {
-        const parts = item.path.split('/');
-        let current = tree;
-        parts.forEach((part, index) => {
-          if (!current[part]) {
-            current[part] = index === parts.length - 1 && item.type === "blob" ? null : {};
-          }
-          current = current[part];
-        });
-      });
-      return tree;
-    }
-
-    function renderTree(container, tree) {
-      Object.keys(tree).forEach(key => {
-        const li = document.createElement("li");
-        li.className = "mb-2";
-
-        if (tree[key] !== null) {
-          const folder = document.createElement("span");
-          folder.textContent = `[Folder] ${key}`;
-          folder.className = "folder";
-          folder.onclick = () => {
-            const subList = li.querySelector("ul");
-            if (subList) {
-              subList.classList.toggle("d-none");
-            }
-          };
-          li.appendChild(folder);
-
-          const subList = document.createElement("ul");
-          subList.className = "list-unstyled d-none";
-          renderTree(subList, tree[key]);
-          li.appendChild(subList);
-        } else {
-          const fileLink = document.createElement("a");
-          fileLink.textContent = key;
-
-          // Render HTML or Markdown as a webpage
-          fileLink.href = key.endsWith(".md")
-            ? `${key.replace('.md', '.html')}` // Convert Markdown to HTML
-            : key; // Directly link to HTML files
-
-          fileLink.target = "_blank"; // Open in a new tab
-          fileLink.className = "file text-decoration-none text-dark";
-          li.appendChild(fileLink);
+      // Fetch dữ liệu repo và render cây thư mục
+      async function fetchFiles() {
+        try {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+          const tree = buildTree(data.tree);
+          const list = document.getElementById("directory-list");
+          renderTree(list, tree);
+        } catch (error) {
+          console.error("Error fetching files:", error);
         }
-        container.appendChild(li);
-      });
-    }
+      }
 
-    fetchFiles();
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+      // Build cây các thư mục dạng object từ mảng API trả về
+      function buildTree(items) {
+        const tree = {};
+        items.forEach((item) => {
+          const parts = item.path.split("/");
+          let current = tree;
+          parts.forEach((part, index) => {
+            if (!current[part]) {
+              // Nếu là file (blob) thì gán null, ngược lại tạo object
+              current[part] =
+                index === parts.length - 1 && item.type === "blob" ? null : {};
+            }
+            current = current[part];
+          });
+        });
+        return tree;
+      }
+
+      // Render cây thư mục ra HTML
+      function renderTree(container, tree) {
+        Object.keys(tree).forEach((key) => {
+          const li = document.createElement("li");
+          li.className = "mb-2";
+
+          if (tree[key] !== null) {
+            // Nếu là thư mục (folder)
+            const folder = document.createElement("span");
+            folder.textContent = `[Folder] ${key}`;
+            folder.className = "folder";
+            folder.onclick = () => {
+              const subList = li.querySelector("ul");
+              if (subList) {
+                subList.classList.toggle("d-none");
+              }
+            };
+            li.appendChild(folder);
+
+            const subList = document.createElement("ul");
+            subList.className = "list-unstyled d-none";
+            renderTree(subList, tree[key]);
+            li.appendChild(subList);
+          } else {
+            // Nếu là file
+            const fileLink = document.createElement("a");
+            fileLink.textContent = key;
+            fileLink.href = "#"; // Không chuyển trang ngay
+            fileLink.className = "file text-decoration-none text-dark";
+            fileLink.onclick = async (e) => {
+              e.preventDefault();
+              // Ẩn hiển thị HTML hoặc Markdown trước khi set nội dung
+              document.getElementById("markdown-content").innerHTML = "";
+              document.getElementById("html-content").style.display = "none";
+              // Hiển thị card chứa nội dung file
+              document.getElementById("file-display").style.display = "block";
+
+              // Nếu file là Markdown (.md)
+              if (key.endsWith(".md")) {
+                const url = `https://raw.githubusercontent.com/${repo}/${branch}/${key}`;
+                try {
+                  const response = await fetch(url);
+                  const mdText = await response.text();
+                  // Sử dụng Marked.js để chuyển đổi markdown sang HTML
+                  document.getElementById("markdown-content").innerHTML =
+                    marked.parse(mdText);
+                  document.getElementById("markdown-content").style.display =
+                    "block";
+                } catch (err) {
+                  document.getElementById("markdown-content").innerHTML =
+                    "<p>Error loading markdown file.</p>";
+                }
+              }
+              // Nếu file là HTML
+              else if (key.endsWith(".html")) {
+                let htmlUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${key}`;
+                // Nếu bạn đã cấu hình GitHub Pages và file có thể truy cập dưới dạng website, thay đổi URL cho phù hợp
+                // Ví dụ: htmlUrl = `https://${repo.split('/')[0]}.github.io/${repo.split('/')[1]}/${key}`;
+                document.getElementById("html-iframe").src = htmlUrl;
+                document.getElementById("html-content").style.display = "block";
+              } else {
+                document.getElementById("markdown-content").innerHTML =
+                  "<p>File type not supported.</p>";
+              }
+            };
+            li.appendChild(fileLink);
+          }
+          container.appendChild(li);
+        });
+      }
+
+      // Đóng khung hiển thị file
+      function closeFileDisplay() {
+        document.getElementById("file-display").style.display = "none";
+        // Xoá nội dung hiển thị
+        document.getElementById("markdown-content").innerHTML = "";
+        document.getElementById("html-iframe").src = "";
+      }
+
+      fetchFiles();
+    </script>
+  </body>
 </html>
