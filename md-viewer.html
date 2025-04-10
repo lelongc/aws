@@ -86,7 +86,7 @@
     </div>
 
     <script>
-      // Thêm repoName ở đây, cần giống với index.html
+      // !!! QUAN TRỌNG: Thay YOUR_REPO_NAME bằng tên repository của bạn !!!
       const repoName = "aws"; // <-- THAY TÊN REPOSITORY CỦA BẠN
 
       const loadingEl = document.getElementById("loading");
@@ -115,54 +115,67 @@
         if (lastSlash === -1) {
           return ""; // File ở thư mục gốc
         }
-        return filePath.substring(0, lastSlash + 1); // Bao gồm dấu / cuối cùng
+        // Trả về đường dẫn thư mục, bao gồm dấu / nếu có, hoặc '' nếu ở gốc
+        return filePath.substring(0, lastSlash + 1);
       }
 
       function getPagesRootPath() {
         // Kiểm tra xem trang có được phục vụ từ thư mục con /repo-name/ không
         const pathName = window.location.pathname;
-        const expectedPrefix = `/${repoName}/`;
-        if (repoName && pathName.startsWith(expectedPrefix)) {
-          return expectedPrefix;
+        // Chuyển repoName thành chữ thường để so sánh không phân biệt hoa thường
+        const lowerCaseRepoName = repoName ? repoName.toLowerCase() : "";
+        const lowerCasePathName = pathName.toLowerCase();
+        const expectedPrefix = `/${lowerCaseRepoName}/`;
+
+        if (lowerCaseRepoName && lowerCasePathName.startsWith(expectedPrefix)) {
+          // Trả về đường dẫn gốc có kèm tên repo và dấu /
+          // Lấy đúng trường hợp gốc từ window.location.pathname
+          const actualRepoSegment = pathName.substring(1, 1 + repoName.length);
+          return `/${actualRepoSegment}/`;
         }
         return "/"; // Mặc định là gốc domain
       }
 
       async function loadMarkdown() {
         const urlParams = new URLSearchParams(window.location.search);
-        const mdFileUrl = urlParams.get("url"); // download_url
-        const mdFilePath = urlParams.get("name") || "Markdown File"; // path của file
-
-        titleEl.textContent = mdFilePath.split("/").pop(); // Chỉ lấy tên file cho title
-        filenameBreadcrumb.textContent = mdFilePath;
-
-        // --- Cập nhật link trang chủ ---
-        const pagesRoot = getPagesRootPath();
-        homeLink.href = `${pagesRoot}index.html`; // Đảm bảo link này đúng
-        // ---
+        const mdFileUrl = urlParams.get("url"); // download_url đã encode
+        const mdFilePath = urlParams.get("name"); // path của file đã encode
 
         if (!mdFileUrl || !mdFilePath) {
           showError("Thiếu thông tin file Markdown (URL hoặc Path).");
           return;
         }
 
+        const decodedFilePath = decodeURIComponent(mdFilePath);
+        const decodedFileUrl = decodeURIComponent(mdFileUrl);
+
+        titleEl.textContent = decodedFilePath.split("/").pop(); // Chỉ lấy tên file cho title
+        filenameBreadcrumb.textContent = decodedFilePath;
+
+        // --- Cập nhật link trang chủ ---
+        const pagesRoot = getPagesRootPath();
+        homeLink.href = `${pagesRoot}index.html`; // Đảm bảo link này đúng
+        // ---
+
         try {
           // *** THÊM THẺ BASE ***
-          const markdownDirectoryPath = getBasePath(mdFilePath); // Ví dụ: "docs/images/"
-          const baseHref = pagesRoot + markdownDirectoryPath; // Ví dụ: "/repo-name/docs/images/" hoặc "/docs/images/"
+          const markdownDirectoryPath = getBasePath(decodedFilePath); // Ví dụ: "docs/images/" hoặc "folder/" hoặc ""
+          const baseHref = pagesRoot + markdownDirectoryPath; // Ví dụ: "/repo-name/docs/images/" hoặc "/repo-name/folder/" hoặc "/repo-name/"
 
           const existingBase = document.querySelector("base");
           if (existingBase) {
-            existingBase.remove(); // Xóa base cũ nếu có (phòng trường hợp)
+            existingBase.remove(); // Xóa base cũ nếu có
           }
 
           const baseTag = document.createElement("base");
           baseTag.setAttribute("href", baseHref);
-          document.head.insertBefore(baseTag, document.head.firstChild); // Chèn vào đầu <head>
+          // Chèn vào đầu <head> để nó có hiệu lực trước khi nội dung được render
+          document.head.insertBefore(baseTag, document.head.firstChild);
+          console.log(`Base href set to: ${baseHref}`); // Log để kiểm tra
           // *** KẾT THÚC THÊM THẺ BASE ***
 
           // 1. Tải nội dung Markdown gốc
-          const response = await fetch(decodeURIComponent(mdFileUrl));
+          const response = await fetch(decodedFileUrl);
           if (!response.ok) {
             throw new Error(
               `Lỗi tải file: ${response.status} ${response.statusText}`
@@ -170,29 +183,36 @@
           }
           const markdownText = await response.text();
 
-          // 2. Render Markdown sang HTML bằng marked.js (giữ nguyên)
+          // 2. Render Markdown sang HTML bằng marked.js
           marked.setOptions({
-            gfm: true,
-            breaks: true,
-            headerIds: true,
-            mangle: false,
+            gfm: true, // Github Flavored Markdown
+            breaks: true, // Xuống dòng bằng Enter
+            headerIds: true, // Tự tạo ID cho heading
+            mangle: false, // Giữ nguyên email
           });
+
+          // Ghi đè renderer để thêm class Bootstrap cho bảng
           const renderer = new marked.Renderer();
           renderer.table = function (header, body) {
             return `<div class="table-responsive"><table class="table table-bordered table-striped">\n<thead>\n${header}</thead>\n<tbody>\n${body}</tbody>\n</table></div>\n`;
           };
+          // (Có thể thêm các tùy chỉnh renderer khác ở đây nếu cần)
+
           contentEl.innerHTML = marked.parse(markdownText, {
             renderer: renderer,
           });
 
-          // 3. Highlight code block bằng Prism.js (giữ nguyên)
+          // 3. Highlight code block bằng Prism.js sau khi nội dung được thêm vào DOM
+          // Đảm bảo Prism chạy sau khi nội dung đã có trong DOM
           Prism.highlightAllUnder(contentEl);
 
-          loadingEl.style.display = "none";
-          errorEl.classList.add("d-none");
+          loadingEl.style.display = "none"; // Ẩn loading
+          errorEl.classList.add("d-none"); // Ẩn lỗi nếu có
         } catch (error) {
           console.error("Lỗi khi tải hoặc hiển thị Markdown:", error);
-          showError(`Không thể hiển thị file: ${error.message}`);
+          showError(
+            `Không thể hiển thị file: ${error.message}. Kiểm tra Console (F12) để biết thêm chi tiết.`
+          );
         }
       }
 
@@ -202,6 +222,7 @@
         errorEl.classList.remove("d-none");
       }
 
+      // Load nội dung khi trang được tải
       document.addEventListener("DOMContentLoaded", loadMarkdown);
     </script>
     <script
