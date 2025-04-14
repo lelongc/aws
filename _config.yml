@@ -1,0 +1,19 @@
+title: My Docs
+description: Tài liệu hệ thống
+
+theme: just-the-docs
+
+# Áp dụng layout tự động cho mọi .md
+defaults:
+  - scope:
+      path: ""
+      ext: "md"
+    values:
+      layout: default
+
+# Tree view
+just_the_docs:
+  collections:
+    docs:
+      name: Docs
+      nav_fold: true
