@@ -14,3 +14,13 @@ defaults:
 # Cấu hình Just the Docs
 just_the_docs:
   nav_sort: case_sensitive
+  collections:
+    enabled: true # Kích hoạt navigation từ collections
+  search:
+    enabled: true # Kích hoạt tìm kiếm
+
+# Định nghĩa collections cho các folder/file
+collections:
+  docs:
+    output: true # Cho phép hiển thị nội dung trong nav
+    permalink: /:collection/:path/
