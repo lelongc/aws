@@ -3,17 +3,14 @@ description: Tài liệu hệ thống
 
 theme: just-the-docs
 
-# Áp dụng layout tự động cho mọi .md
+# Tự động áp dụng layout mặc định cho tất cả trang
 defaults:
   - scope:
       path: ""
-      ext: "md"
+      type: "pages"
     values:
       layout: default
 
-# Tree view
+# Cấu hình Just the Docs
 just_the_docs:
-  collections:
-    docs:
-      name: Docs
-      nav_fold: true
+  nav_sort: case_sensitive
