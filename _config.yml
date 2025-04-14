@@ -1,7 +1,7 @@
 title: My Docs
 description: Tài liệu hệ thống
 
-theme: just-the-docs
+remote_theme: just-the-docs
 
 # Tự động áp dụng layout mặc định cho tất cả trang
 defaults:
