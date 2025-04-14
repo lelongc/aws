@@ -3,19 +3,17 @@ description: Tài liệu hệ thống
 
 remote_theme: just-the-docs
 
-# Tự động áp dụng layout mặc định cho tất cả markdown
+# Sử dụng defaults để gán layout mặc định cho các file markdown
 defaults:
   - scope:
-      path: ""
-      type: "pages"
+      path: ""         # áp dụng cho tất cả file trong repo
+      type: "pages"    # áp dụng cho các file trang
     values:
       layout: default
       nav_exclude: false
 
-# Kích hoạt cấu trúc điều hướng tự động
+# Cấu hình Just the Docs
 just_the_docs:
   nav_sort: case_sensitive
-  collections: # tắt collections
-    enabled: false
   search:
     enabled: true
