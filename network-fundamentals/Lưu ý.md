@@ -1,0 +1,1 @@
+mọi thông tin trên đây được tham khảo hoặc lấy hoàn toàn có sự thêm bớt 1 tí với chatgpt từ các bài viết trên web devops.vn series về network for devops 
