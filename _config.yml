@@ -19,6 +19,9 @@ just_the_docs:
     enabled: false # Không cần dùng collections
   search:
     enabled: true # Kích hoạt tìm kiếm
+  # Ensure navigation bar is enabled
+  navigation:
+    structure: true # Kích hoạt cấu trúc nav
 
 # Định nghĩa collections cho các folder/file
 collections:

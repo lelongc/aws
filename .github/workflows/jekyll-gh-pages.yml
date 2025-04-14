@@ -36,6 +36,7 @@ jobs:
           source: ./ # Thư mục nguồn (nơi chứa file Jekyll)
           destination: ./_site # Thư mục đích (nơi build site)
           bundler-cache: true # Tăng tốc độ build bằng cách cache Bundler
+          config: _config.yml # Đảm bảo sử dụng đúng file cấu hình
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
