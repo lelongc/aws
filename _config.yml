@@ -6,16 +6,17 @@ remote_theme: just-the-docs
 # Tự động áp dụng layout mặc định cho tất cả trang
 defaults:
   - scope:
-      path: ""
+      path: "" # Áp dụng cho tất cả file
       type: "pages"
     values:
       layout: default
+      nav_exclude: false # Đảm bảo file không bị loại khỏi nav
 
 # Cấu hình Just the Docs
 just_the_docs:
   nav_sort: case_sensitive
   collections:
-    enabled: true # Kích hoạt navigation từ collections
+    enabled: false # Không cần dùng collections
   search:
     enabled: true # Kích hoạt tìm kiếm
 
@@ -24,3 +25,6 @@ collections:
   docs:
     output: true # Cho phép hiển thị nội dung trong nav
     permalink: /:collection/:path/
+
+plugins:
+  - jekyll-titles-from-headings # Tự động lấy tiêu đề từ heading đầu tiên trong file .md
