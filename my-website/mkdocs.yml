@@ -22,3 +22,6 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Chuyển sang chế độ sáng
+
+repo_url: https://github.com/lelongc/aws
+edit_uri: edit/main/my-website/docs/ # Hãy chắc chắn đường dẫn này đúng với cấu trúc thư mục của bạn
