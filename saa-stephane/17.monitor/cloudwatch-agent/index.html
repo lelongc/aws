@@ -8457,20 +8457,22 @@
 <li>Trên Windows: Tải và cài đặt từ AWS Management Console.</li>
 <li><strong>Cấu hình Agent</strong>:</li>
 <li>Tạo một tệp cấu hình JSON hoặc sử dụng SSM Parameter Store.</li>
-<li>Ví dụ cấu hình thu thập CPU và RAM metrics:
-     <code>json
-     {
-       "metrics": {
-         "metrics_collected": {
-           "cpu": {
-             "measurement": ["cpu_usage_idle", "cpu_usage_system"]
+<li>Ví dụ cấu hình thu thập CPU và RAM metrics:</li>
+</ol>
+<pre><code class="language-json">     {
+       &quot;metrics&quot;: {
+         &quot;metrics_collected&quot;: {
+           &quot;cpu&quot;: {
+             &quot;measurement&quot;: [&quot;cpu_usage_idle&quot;, &quot;cpu_usage_system&quot;]
            },
-           "mem": {
-             "measurement": ["mem_used", "mem_free"]
+           &quot;mem&quot;: {
+             &quot;measurement&quot;: [&quot;mem_used&quot;, &quot;mem_free&quot;]
            }
          }
        }
-     }</code></li>
+     }
+</code></pre>
+<ol>
 <li><strong>Khởi động Agent</strong>:</li>
 <li>Trên Linux: <code>sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/path/to/config.json</code>.</li>
 <li>Trên Windows: Sử dụng PowerShell để khởi động agent.</li>

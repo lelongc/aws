@@ -8261,18 +8261,22 @@
 <h3 id="5-cach-kich-hoat-mfa-delete"><strong>5. Cách kích hoạt MFA Delete</strong></h3>
 <ol>
 <li><strong>Bật Versioning cho bucket</strong>:</li>
-<li>Lệnh AWS CLI:
-     <code>bash
-     aws s3api put-bucket-versioning --bucket &lt;Bucket-Name&gt; --versioning-configuration Status=Enabled</code></li>
+<li>Lệnh AWS CLI:</li>
+</ol>
+<pre><code class="language-bash">     aws s3api put-bucket-versioning --bucket &lt;Bucket-Name&gt; --versioning-configuration Status=Enabled
+</code></pre>
+<ol>
 <li><strong>Kích hoạt MFA Delete</strong>:</li>
-<li>Lệnh AWS CLI:
-     <code>bash
-     aws s3api put-bucket-versioning --bucket &lt;Bucket-Name&gt; \
+<li>Lệnh AWS CLI:</li>
+</ol>
+<pre><code class="language-bash">     aws s3api put-bucket-versioning --bucket &lt;Bucket-Name&gt; \
      --versioning-configuration Status=Enabled,MFADelete=Enabled \
-     --mfa "arn-of-mfa-device mfa-code"</code></li>
+     --mfa &quot;arn-of-mfa-device mfa-code&quot;
+</code></pre>
+<ul>
 <li><strong>arn-of-mfa-device</strong>: ARN của thiết bị MFA.</li>
 <li><strong>mfa-code</strong>: Mã MFA hiện tại từ ứng dụng hoặc thiết bị.</li>
-</ol>
+</ul>
 <hr />
 <h3 id="6-loi-ich-cua-mfa-delete"><strong>6. Lợi ích của MFA Delete</strong></h3>
 <ul>

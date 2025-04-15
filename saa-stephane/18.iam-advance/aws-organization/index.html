@@ -8201,22 +8201,24 @@ Giờ hãy cùng thảo luận về <strong>AWS Organizations</strong>.</p>
 <ul>
 <li><strong>Scenario 1</strong>: Chặn dịch vụ cụ thể</li>
 </ul>
-<p><code>json
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      { "Effect": "Allow", "Action": "*", "Resource": "*" },  // Cho phép mọi thứ
-      { "Effect": "Deny", "Action": "dynamodb:*", "Resource": "*" }  // Chặn DynamoDB
+<pre><code class="language-json">  {
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+      { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Action&quot;: &quot;*&quot;, &quot;Resource&quot;: &quot;*&quot; },  // Cho phép mọi thứ
+      { &quot;Effect&quot;: &quot;Deny&quot;, &quot;Action&quot;: &quot;dynamodb:*&quot;, &quot;Resource&quot;: &quot;*&quot; }  // Chặn DynamoDB
     ]
-  }</code>
-- <strong>Scenario 2</strong>: Chỉ cho phép EC2 và CloudWatch</p>
-<p><code>json
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      { "Effect": "Allow", "Action": ["ec2:*", "cloudwatch:*"], "Resource": "*" }  // Whitelist
+  }
+</code></pre>
+<ul>
+<li><strong>Scenario 2</strong>: Chỉ cho phép EC2 và CloudWatch</li>
+</ul>
+<pre><code class="language-json">  {
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+      { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Action&quot;: [&quot;ec2:*&quot;, &quot;cloudwatch:*&quot;], &quot;Resource&quot;: &quot;*&quot; }  // Whitelist
     ]
-  }</code></p>
+  }
+</code></pre>
 <hr />
 <h3 id="co-che-ap-dung-scp"><strong>Cơ Chế Áp Dụng SCP</strong></h3>
 <p><img alt="1743955576269" src="../image/aws-organization/1743955576269.png" /></p>

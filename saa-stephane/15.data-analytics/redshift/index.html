@@ -8459,9 +8459,11 @@
 </ul>
 <h4 id="b-vi-du"><strong>b. Ví dụ</strong></h4>
 <ul>
-<li><strong>Truy vấn dữ liệu từ S3</strong>:
-  <code>sql
-  SELECT * FROM s3://your-bucket/path/to/data;</code></li>
+<li><strong>Truy vấn dữ liệu từ S3</strong>:</li>
+</ul>
+<pre><code class="language-sql">  SELECT * FROM s3://your-bucket/path/to/data;
+</code></pre>
+<ul>
 <li>Redshift Spectrum sẽ tự động xử lý truy vấn này bằng cách sử dụng hàng nghìn nodes để đọc dữ liệu từ S3.</li>
 <li><strong>Kết quả</strong>: Dữ liệu được xử lý và trả về Redshift cluster, sau đó hiển thị cho người dùng.</li>
 </ul>

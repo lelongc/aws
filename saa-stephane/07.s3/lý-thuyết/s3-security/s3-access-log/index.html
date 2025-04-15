@@ -8405,15 +8405,13 @@
 <h3 id="7-cach-bat-s3-access-logs"><strong>7. Cách bật S3 Access Logs</strong></h3>
 <p>Sử dụng AWS CLI hoặc Console:</p>
 <ol>
-<li>
-<p><strong>Sử dụng AWS CLI</strong>:
-   <code>bash
-   aws s3api put-bucket-logging --bucket &lt;Monitored-Bucket-Name&gt; \
-   --bucket-logging-status '{"LoggingEnabled":{"TargetBucket":"&lt;Logging-Bucket-Name&gt;","TargetPrefix":"logs/"}}'</code></p>
-</li>
-<li>
-<p><strong>Sử dụng AWS Console</strong>:</p>
-</li>
+<li><strong>Sử dụng AWS CLI</strong>:</li>
+</ol>
+<pre><code class="language-bash">   aws s3api put-bucket-logging --bucket &lt;Monitored-Bucket-Name&gt; \
+   --bucket-logging-status '{&quot;LoggingEnabled&quot;:{&quot;TargetBucket&quot;:&quot;&lt;Logging-Bucket-Name&gt;&quot;,&quot;TargetPrefix&quot;:&quot;logs/&quot;}}'
+</code></pre>
+<ol>
+<li><strong>Sử dụng AWS Console</strong>:</li>
 <li>Vào bucket cần bật logging.</li>
 <li>Tìm mục "Server Access Logging" và bật lên.</li>
 <li>Chọn bucket mục tiêu để lưu log (logging bucket).</li>

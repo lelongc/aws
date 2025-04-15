@@ -8099,139 +8099,143 @@
 <li>
 <p><strong>Mục đích</strong>: Giới hạn địa chỉ IP nguồn thực hiện API calls.</p>
 </li>
-<li>
-<p><strong>Ví dụ Policy</strong>:</p>
-<p><code>json
- {
-   "Version": "2012-10-17",
-   "Statement": [
-     {
-       "Effect": "Deny",
-       "Action": "*",
-       "Resource": "*",
-       "Condition": {
-         "NotIpAddress": {
-           "aws:SourceIp": ["192.0.2.0/24", "203.0.113.0/24"]
+<li><strong>Ví dụ Policy</strong>:</li>
+</ol>
+<pre><code class="language-json">     {
+       &quot;Version&quot;: &quot;2012-10-17&quot;,
+       &quot;Statement&quot;: [
+         {
+           &quot;Effect&quot;: &quot;Deny&quot;,
+           &quot;Action&quot;: &quot;*&quot;,
+           &quot;Resource&quot;: &quot;*&quot;,
+           &quot;Condition&quot;: {
+             &quot;NotIpAddress&quot;: {
+               &quot;aws:SourceIp&quot;: [&quot;192.0.2.0/24&quot;, &quot;203.0.113.0/24&quot;]
+             }
+           }
          }
-       }
+       ]
      }
-   ]
- }</code></p>
-<p>→ <strong>Ý nghĩa</strong>: Từ chối mọi hành động nếu API call không đến từ các dải IP <code>192.0.2.0/24</code> hoặc <code>203.0.113.0/24</code>.
- → <strong>Ứng dụng</strong>: Chỉ cho phép truy cập AWS từ mạng công ty, đảm bảo an toàn.
-2. <strong><code>aws:RequestedRegion</code></strong></p>
+</code></pre>
+<pre><code> → **Ý nghĩa**: Từ chối mọi hành động nếu API call không đến từ các dải IP `192.0.2.0/24` hoặc `203.0.113.0/24`.
+ → **Ứng dụng**: Chỉ cho phép truy cập AWS từ mạng công ty, đảm bảo an toàn.
+</code></pre>
+<ol>
+<li>
+<p><strong><code>aws:RequestedRegion</code></strong></p>
 </li>
 <li>
 <p><strong>Mục đích</strong>: Giới hạn region mà API call được thực hiện.</p>
 </li>
-<li>
-<p><strong>Ví dụ Policy</strong>:</p>
-<p><code>json
- {
-   "Version": "2012-10-17",
-   "Statement": [
-     {
-       "Effect": "Deny",
-       "Action": ["ec2:*", "rds:*", "dynamodb:*"],
-       "Resource": "*",
-       "Condition": {
-         "StringEquals": {
-           "aws:RequestedRegion": ["eu-central-1", "eu-west-1"]
+<li><strong>Ví dụ Policy</strong>:</li>
+</ol>
+<pre><code class="language-json">     {
+       &quot;Version&quot;: &quot;2012-10-17&quot;,
+       &quot;Statement&quot;: [
+         {
+           &quot;Effect&quot;: &quot;Deny&quot;,
+           &quot;Action&quot;: [&quot;ec2:*&quot;, &quot;rds:*&quot;, &quot;dynamodb:*&quot;],
+           &quot;Resource&quot;: &quot;*&quot;,
+           &quot;Condition&quot;: {
+             &quot;StringEquals&quot;: {
+               &quot;aws:RequestedRegion&quot;: [&quot;eu-central-1&quot;, &quot;eu-west-1&quot;]
+             }
+           }
          }
-       }
+       ]
      }
-   ]
- }</code></p>
-<p>→ <strong>Ý nghĩa</strong>: Từ chối mọi hành động trên EC2, RDS, DynamoDB tại các region <strong>eu-central-1</strong> và <strong>eu-west-1</strong>.
- → <strong>Ứng dụng</strong>: Áp dụng trong SCP của tổ chức để chỉ cho phép truy cập dịch vụ ở region cụ thể.
-3. **<code>ec2:ResourceTag</code> và `aws:PrincipalTag</p>
-</li>
+</code></pre>
+<pre><code> → **Ý nghĩa**: Từ chối mọi hành động trên EC2, RDS, DynamoDB tại các region **eu-central-1** và **eu-west-1**.
+ → **Ứng dụng**: Áp dụng trong SCP của tổ chức để chỉ cho phép truy cập dịch vụ ở region cụ thể.
+</code></pre>
+<ol>
+<li>**<code>ec2:ResourceTag</code> và `aws:PrincipalTag</li>
 </ol>
 <p>`**</p>
 <p><img alt="1743958040144" src="../image/aws-policy/1743958040144.png" /></p>
 <ul>
 <li><strong><code>ec2:ResourceTag</code></strong>: Kiểm tra tag trên EC2 instance.</li>
 <li><strong><code>aws:PrincipalTag</code></strong>: Kiểm tra tag trên người dùng (user).</li>
-<li>
-<p><strong>Ví dụ Policy</strong>:</p>
-<p><code>json
- {
-   "Version": "2012-10-17",
-   "Statement": [
-     {
-       "Effect": "Allow",
-       "Action": ["ec2:StartInstances", "ec2:StopInstances"],
-       "Resource": "*",
-       "Condition": {
-         "StringEquals": {
-           "ec2:ResourceTag/Project": "DataAnalytics",
-           "aws:PrincipalTag/Department": "Data"
-         }
-       }
-     }
-   ]
- }</code></p>
-<p>→ <strong>Ý nghĩa</strong>:- Chỉ cho phép <strong>start/stop instances</strong> nếu:</p>
-<ul>
-<li>Instance có tag <strong>Project=DataAnalytics</strong>.</li>
-<li>User có tag <strong>Department=Data</strong>.</li>
-<li><strong><code>aws:MultiFactorAuthPresent</code></strong></li>
+<li><strong>Ví dụ Policy</strong>:</li>
 </ul>
+<pre><code class="language-json">     {
+       &quot;Version&quot;: &quot;2012-10-17&quot;,
+       &quot;Statement&quot;: [
+         {
+           &quot;Effect&quot;: &quot;Allow&quot;,
+           &quot;Action&quot;: [&quot;ec2:StartInstances&quot;, &quot;ec2:StopInstances&quot;],
+           &quot;Resource&quot;: &quot;*&quot;,
+           &quot;Condition&quot;: {
+             &quot;StringEquals&quot;: {
+               &quot;ec2:ResourceTag/Project&quot;: &quot;DataAnalytics&quot;,
+               &quot;aws:PrincipalTag/Department&quot;: &quot;Data&quot;
+             }
+           }
+         }
+       ]
+     }
+</code></pre>
+<pre><code> → **Ý nghĩa**:- Chỉ cho phép **start/stop instances** nếu:
+
+ - Instance có tag **Project=DataAnalytics**.
+ - User có tag **Department=Data**.
+</code></pre>
+<ol>
+<li>
+<p><strong><code>aws:MultiFactorAuthPresent</code></strong></p>
 </li>
 <li>
 <p><strong>Mục đích</strong>: Yêu cầu xác thực đa yếu tố (MFA).</p>
 </li>
-<li>
-<p><strong>Ví dụ Policy</strong>:</p>
-<p><code>json
- {
-   "Version": "2012-10-17",
-   "Statement": [
-     {
-       "Effect": "Allow",
-       "Action": "ec2:*",
-       "Resource": "*"
-     },
-     {
-       "Effect": "Deny",
-       "Action": ["ec2:StopInstances", "ec2:TerminateInstances"],
-       "Resource": "*",
-       "Condition": {
-         "BoolIfExists": {
-           "aws:MultiFactorAuthPresent": "false"
+<li><strong>Ví dụ Policy</strong>:</li>
+</ol>
+<pre><code class="language-json">     {
+       &quot;Version&quot;: &quot;2012-10-17&quot;,
+       &quot;Statement&quot;: [
+         {
+           &quot;Effect&quot;: &quot;Allow&quot;,
+           &quot;Action&quot;: &quot;ec2:*&quot;,
+           &quot;Resource&quot;: &quot;*&quot;
+         },
+         {
+           &quot;Effect&quot;: &quot;Deny&quot;,
+           &quot;Action&quot;: [&quot;ec2:StopInstances&quot;, &quot;ec2:TerminateInstances&quot;],
+           &quot;Resource&quot;: &quot;*&quot;,
+           &quot;Condition&quot;: {
+             &quot;BoolIfExists&quot;: {
+               &quot;aws:MultiFactorAuthPresent&quot;: &quot;false&quot;
+             }
+           }
          }
-       }
+       ]
      }
-   ]
- }</code></p>
-<p>→ <strong>Ý nghĩa</strong>:- Cho phép mọi hành động trên EC2.</p>
-<ul>
-<li><strong>Chặn stop/terminate instances</strong> nếu không có MFA.</li>
-</ul>
-</li>
-</ul>
+</code></pre>
+<pre><code> → **Ý nghĩa**:- Cho phép mọi hành động trên EC2.
+
+ - **Chặn stop/terminate instances** nếu không có MFA.
+</code></pre>
 <hr />
 <h3 id="policy-cho-s3-bucket"><strong>Policy Cho S3 Bucket</strong></h3>
 <p><img alt="1743958058295" src="../image/aws-policy/1743958058295.png" /></p>
 <ul>
 <li><strong>Phân biệt quyền cấp bucket và object</strong>:</li>
 </ul>
-<p><code>json
-  {
-    "Version": "2012-10-17",
-    "Statement": [
+<pre><code class="language-json">  {
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
       {
-        "Effect": "Allow",
-        "Action": "s3:ListBucket",
-        "Resource": "arn:aws:s3:::test"  // Quyền cấp bucket
+        &quot;Effect&quot;: &quot;Allow&quot;,
+        &quot;Action&quot;: &quot;s3:ListBucket&quot;,
+        &quot;Resource&quot;: &quot;arn:aws:s3:::test&quot;  // Quyền cấp bucket
       },
       {
-        "Effect": "Allow",
-        "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
-        "Resource": "arn:aws:s3:::test/*"  // Quyền cấp object (tất cả objects trong bucket)
+        &quot;Effect&quot;: &quot;Allow&quot;,
+        &quot;Action&quot;: [&quot;s3:GetObject&quot;, &quot;s3:PutObject&quot;, &quot;s3:DeleteObject&quot;],
+        &quot;Resource&quot;: &quot;arn:aws:s3:::test/*&quot;  // Quyền cấp object (tất cả objects trong bucket)
       }
     ]
-  }</code></p>
+  }
+</code></pre>
 <p>→ <strong>Lưu ý</strong>:- <code>s3:ListBucket</code> yêu cầu ARN bucket (<code>arn:aws:s3:::test</code>).</p>
 <ul>
 <li><code>s3:GetObject/PutObject/DeleteObject</code> yêu cầu ARN object (<code>arn:aws:s3:::test/*</code>).</li>
@@ -8243,22 +8247,22 @@
 <li><strong>Mục đích</strong>: Giới hạn truy cập chỉ cho các account trong tổ chức AWS.</li>
 <li><strong>Ví dụ Policy S3</strong>:</li>
 </ul>
-<p><code>json
-  {
-    "Version": "2012-10-17",
-    "Statement": [
+<pre><code class="language-json">  {
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
       {
-        "Effect": "Allow",
-        "Action": ["s3:PutObject", "s3:GetObject"],
-        "Resource": "arn:aws:s3:::example-bucket/*",
-        "Condition": {
-          "StringEquals": {
-            "aws:PrincipalOrgID": "o-1234567890"  // ID tổ chức của bạn
+        &quot;Effect&quot;: &quot;Allow&quot;,
+        &quot;Action&quot;: [&quot;s3:PutObject&quot;, &quot;s3:GetObject&quot;],
+        &quot;Resource&quot;: &quot;arn:aws:s3:::example-bucket/*&quot;,
+        &quot;Condition&quot;: {
+          &quot;StringEquals&quot;: {
+            &quot;aws:PrincipalOrgID&quot;: &quot;o-1234567890&quot;  // ID tổ chức của bạn
           }
         }
       }
     ]
-  }</code></p>
+  }
+</code></pre>
 <p>→ <strong>Ý nghĩa</strong>: Chỉ các account thuộc tổ chức <strong>o-1234567890</strong> mới được phép <strong>PutObject/GetObject</strong> trên bucket này.</p>
 <hr />
 <h3 id="ket-luan"><strong>Kết Luận</strong></h3>

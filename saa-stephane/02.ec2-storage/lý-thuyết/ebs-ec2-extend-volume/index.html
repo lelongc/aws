@@ -8330,7 +8330,6 @@
 
   <h1>Ebs ec2 extend volume</h1>
 
-<hr />
 <h2 id="1-ebs-volume"><strong>1. EBS Volume</strong></h2>
 <p>EBS (Elastic Block Store) là một dịch vụ lưu trữ do AWS cung cấp, thường được gắn vào EC2 Instances như các ổ đĩa.  </p>
 <ul>
@@ -8382,9 +8381,9 @@
 <h3 id="mount-la-gi"><strong>Mount là gì?</strong></h3>
 <p>Mount là quá trình "gắn kết" hệ thống tệp của ổ đĩa vào một thư mục trong hệ thống Linux.<br />
 - Ví dụ:<br />
-  - Mount ổ đĩa <code>/dev/xvdf1</code> vào thư mục <code>/data</code>:<br />
-<code>bash
-    sudo mount /dev/xvdf1 /data</code></p>
+  - Mount ổ đĩa <code>/dev/xvdf1</code> vào thư mục <code>/data</code>:  </p>
+<pre><code class="language-bash">    sudo mount /dev/xvdf1 /data
+</code></pre>
 <h3 id="tai-sao-can-mount"><strong>Tại sao cần Mount?</strong></h3>
 <ul>
 <li>Để hệ điều hành có thể truy cập dữ liệu trên ổ đĩa.  </li>
@@ -8395,9 +8394,11 @@
 <h3 id="etcfstab-la-gi"><strong>/etc/fstab là gì?</strong></h3>
 <p>Là file cấu hình được dùng để tự động mount các ổ đĩa mỗi khi hệ thống khởi động lại.  </p>
 <ul>
-<li><strong>Ví dụ dòng trong /etc/fstab</strong>:<br />
-<code>bash
-  UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /data  xfs  defaults,nofail  0  2</code></li>
+<li><strong>Ví dụ dòng trong /etc/fstab</strong>:  </li>
+</ul>
+<pre><code class="language-bash">  UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /data  xfs  defaults,nofail  0  2
+</code></pre>
+<ul>
 <li><strong>UUID</strong>: Định danh duy nhất của ổ đĩa (thay đổi theo thiết bị).  </li>
 <li><strong>/data</strong>: Thư mục nơi hệ thống tệp sẽ được mount.  </li>
 <li><strong>xfs</strong>: Loại hệ thống tệp.  </li>
@@ -8405,37 +8406,39 @@
 </ul>
 <h3 id="quy-trinh-kiem-tra-etcfstab"><strong>Quy trình kiểm tra /etc/fstab</strong>:</h3>
 <ul>
-<li>Unmount ổ đĩa:<br />
-<code>bash
-  sudo umount /data</code></li>
-<li>Mount lại tất cả theo /etc/fstab:<br />
-<code>bash
-  sudo mount -a</code></li>
+<li>Unmount ổ đĩa:  </li>
 </ul>
+<pre><code class="language-bash">  sudo umount /data
+</code></pre>
+<ul>
+<li>Mount lại tất cả theo /etc/fstab:  </li>
+</ul>
+<pre><code class="language-bash">  sudo mount -a
+</code></pre>
 <hr />
 <h2 id="7-mo-rong-phan-vung-va-he-thong-tep"><strong>7. Mở rộng phân vùng và hệ thống tệp</strong></h2>
 <p>Khi bạn tăng dung lượng ổ đĩa EBS, các bước sau cần thực hiện:  </p>
 <ol>
-<li>
-<p><strong>Kiểm tra phân vùng và dung lượng</strong>:<br />
-<code>bash
-   lsblk</code></p>
-</li>
-<li>
-<p><strong>Mở rộng phân vùng với growpart</strong>:<br />
-<code>bash
-   sudo growpart /dev/xvdf 1</code></p>
-</li>
-<li>
-<p><strong>Mở rộng hệ thống tệp</strong>:  </p>
-</li>
-<li>Nếu hệ thống tệp là <code>xfs</code>:<br />
-<code>bash
-     sudo xfs_growfs /data</code></li>
-<li>Nếu là <code>ext4</code>:<br />
-<code>bash
-     sudo resize2fs /dev/xvdf1</code></li>
+<li><strong>Kiểm tra phân vùng và dung lượng</strong>:  </li>
 </ol>
+<pre><code class="language-bash">   lsblk
+</code></pre>
+<ol>
+<li><strong>Mở rộng phân vùng với growpart</strong>:  </li>
+</ol>
+<pre><code class="language-bash">   sudo growpart /dev/xvdf 1
+</code></pre>
+<ol>
+<li><strong>Mở rộng hệ thống tệp</strong>:  </li>
+<li>Nếu hệ thống tệp là <code>xfs</code>:  </li>
+</ol>
+<pre><code class="language-bash">     sudo xfs_growfs /data
+</code></pre>
+<ul>
+<li>Nếu là <code>ext4</code>:  </li>
+</ul>
+<pre><code class="language-bash">     sudo resize2fs /dev/xvdf1
+</code></pre>
 <hr />
 <h2 id="8-tom-tat-quy-trinh-tong-the"><strong>8. Tóm tắt quy trình tổng thể</strong></h2>
 <ol>

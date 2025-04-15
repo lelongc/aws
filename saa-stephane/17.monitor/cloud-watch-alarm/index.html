@@ -8484,9 +8484,11 @@
 <h3 id="7-kiem-thu-alarms"><strong>7. Kiểm Thử Alarms</strong></h3>
 <ul>
 <li>Bạn có thể sử dụng CLI command <code>set-alarm-state</code> để kiểm thử alarms mà không cần chờ metric vượt ngưỡng.</li>
-<li>Ví dụ:
-  <code>bash
-  aws cloudwatch set-alarm-state --alarm-name "MyAlarm" --state-value ALARM --state-reason "Testing alarm"</code></li>
+<li>Ví dụ:</li>
+</ul>
+<pre><code class="language-bash">  aws cloudwatch set-alarm-state --alarm-name &quot;MyAlarm&quot; --state-value ALARM --state-reason &quot;Testing alarm&quot;
+</code></pre>
+<ul>
 <li>Điều này giúp bạn đảm bảo rằng các hành động được kích hoạt đúng cách khi alarm chuyển sang trạng thái <strong>ALARM</strong>.</li>
 </ul>
 <hr />

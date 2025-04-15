@@ -8213,14 +8213,13 @@
 <li><strong>DACL (Discretionary ACL):</strong></li>
 <li>Quy định ai được phép hoặc không được phép truy cập vào tài nguyên.</li>
 <li>Phổ biến trên hệ điều hành Windows với NTFS.</li>
-<li>
-<p>Ví dụ:
-     <code>User1: Read
-     Group1: Write</code></p>
-</li>
-<li>
-<p><strong>SACL (System ACL):</strong></p>
-</li>
+<li>Ví dụ:</li>
+</ol>
+<pre><code>     User1: Read
+     Group1: Write
+</code></pre>
+<ol>
+<li><strong>SACL (System ACL):</strong></li>
 <li>Quy định các hành động cần được ghi lại (auditing).</li>
 <li>
 <p>Ví dụ: Ghi nhật ký khi một người dùng cố gắng truy cập tài nguyên mà không được phép.</p>
@@ -8253,10 +8252,11 @@
 <li>Lệnh cơ bản:</li>
 <li><strong>setfacl:</strong> Đặt ACL cho một tệp/thư mục.</li>
 <li><strong>getfacl:</strong> Xem ACL hiện tại.</li>
-<li>Ví dụ:
-  <code>setfacl -m u:user1:rw file.txt  # Gán quyền đọc/ghi cho user1 trên file.txt
-  getfacl file.txt               # Hiển thị ACL của file.txt</code></li>
+<li>Ví dụ:</li>
 </ul>
+<pre><code>  setfacl -m u:user1:rw file.txt  # Gán quyền đọc/ghi cho user1 trên file.txt
+  getfacl file.txt               # Hiển thị ACL của file.txt
+</code></pre>
 <h4 id="3-aws-network-acls"><strong>3. AWS Network ACLs:</strong></h4>
 <ul>
 <li>Dùng để quản lý lưu lượng mạng trong các Virtual Private Cloud (VPC).</li>
