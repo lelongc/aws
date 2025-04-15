@@ -8062,109 +8062,129 @@ nvme2n1
 <hr />
 <h3 id="1-liet-ke-tat-ca-cac-phan-vung-va-iem-mount">1. <strong>Liệt kê tất cả các phân vùng và điểm mount</strong></h3>
 <ul>
-<li>Sử dụng lệnh sau để hiển thị cấu trúc phân vùng và điểm mount:
-  <code>bash
-  lsblk</code></li>
+<li>Sử dụng lệnh sau để hiển thị cấu trúc phân vùng và điểm mount:</li>
+</ul>
+<pre><code class="language-bash">  lsblk
+</code></pre>
+<ul>
 <li><strong>Ý nghĩa</strong>: Hiển thị các thiết bị lưu trữ (block devices), phân vùng, và điểm mount.</li>
 </ul>
 <hr />
 <h3 id="2-hien-thi-thong-tin-dung-luong-va-khong-gian-trong-cua-tat-ca-cac-volume">2. <strong>Hiển thị thông tin dung lượng và không gian trống của tất cả các volume</strong></h3>
 <ul>
-<li>Dùng lệnh:
-  <code>bash
-  df -h</code></li>
+<li>Dùng lệnh:</li>
+</ul>
+<pre><code class="language-bash">  df -h
+</code></pre>
+<ul>
 <li><strong>Ý nghĩa</strong>: Hiển thị thông tin về dung lượng đã sử dụng, dung lượng còn trống của các volume theo định dạng dễ đọc (đơn vị GB/MB).</li>
 </ul>
 <hr />
 <h3 id="3-tao-phan-vung-moi-bang-fdisk">3. <strong>Tạo phân vùng mới bằng <code>fdisk</code></strong></h3>
 <ul>
-<li>Thực hiện các bước sau để tạo phân vùng mới:
-  <code>bash
-  sudo fdisk /dev/xvdf</code>
-  <strong>Trong giao diện <code>fdisk</code>:</strong></li>
-<li>Gõ <code>n</code> để tạo một phân vùng mới.</li>
-<li>Chọn <code>p</code> cho phân vùng chính (primary partition).</li>
-<li>Chọn số phân vùng (thường là <code>1</code> nếu đây là phân vùng đầu tiên).</li>
-<li>Chấp nhận kích thước mặc định (hoặc nhập kích thước tùy chỉnh).</li>
-<li>Gõ <code>w</code> để ghi các thay đổi và thoát.</li>
+<li>Thực hiện các bước sau để tạo phân vùng mới:</li>
 </ul>
+<pre><code class="language-bash">  sudo fdisk /dev/xvdf
+</code></pre>
+<p><strong>Trong giao diện <code>fdisk</code>:</strong>
+  - Gõ <code>n</code> để tạo một phân vùng mới.
+  - Chọn <code>p</code> cho phân vùng chính (primary partition).
+  - Chọn số phân vùng (thường là <code>1</code> nếu đây là phân vùng đầu tiên).
+  - Chấp nhận kích thước mặc định (hoặc nhập kích thước tùy chỉnh).
+  - Gõ <code>w</code> để ghi các thay đổi và thoát.</p>
 <hr />
 <h3 id="4-inh-dang-phan-vung">4. <strong>Định dạng phân vùng</strong></h3>
 <ul>
-<li>Sau khi tạo phân vùng, định dạng nó bằng hệ thống tệp XFS:
-  <code>bash
-  sudo mkfs -t xfs /dev/xvdf1</code></li>
+<li>Sau khi tạo phân vùng, định dạng nó bằng hệ thống tệp XFS:</li>
+</ul>
+<pre><code class="language-bash">  sudo mkfs -t xfs /dev/xvdf1
+</code></pre>
+<ul>
 <li><strong>Ý nghĩa</strong>: Định dạng phân vùng <code>/dev/xvdf1</code> với hệ thống tệp XFS.</li>
 </ul>
 <hr />
 <h3 id="5-mount-phan-vung">5. <strong>Mount phân vùng</strong></h3>
 <ul>
-<li>Tạo thư mục mount nếu chưa tồn tại:
-  <code>bash
-  sudo mkdir -p /data</code></li>
-<li>Mount phân vùng vào thư mục <code>/data</code>:
-  <code>bash
-  sudo mount /dev/xvdf1 /data</code></li>
+<li>Tạo thư mục mount nếu chưa tồn tại:</li>
+</ul>
+<pre><code class="language-bash">  sudo mkdir -p /data
+</code></pre>
+<ul>
+<li>Mount phân vùng vào thư mục <code>/data</code>:</li>
+</ul>
+<pre><code class="language-bash">  sudo mount /dev/xvdf1 /data
+</code></pre>
+<ul>
 <li><strong>Kiểm tra</strong>: Dùng lệnh <code>df -h</code> để xác nhận phân vùng đã được mount.</li>
 </ul>
 <hr />
 <h3 id="6-cau-hinh-tu-ong-mount-sau-khi-khoi-ong-lai">6. <strong>Cấu hình tự động mount sau khi khởi động lại</strong></h3>
 <ul>
-<li>
-<p>Lấy UUID của phân vùng:
-  <code>bash
-  sudo blkid</code>
-  Hoặc:
-  <code>bash
-  sudo lsblk -o +UUID</code>
-  <strong>Kết quả</strong>: UUID sẽ trông như sau:
-  <code>UUID="1234abcd-56ef-78gh-90ij-klmnopqrstuv"</code></p>
-</li>
-<li>
-<p>Chỉnh sửa file <code>/etc/fstab</code> để thêm cấu hình mount:
-  <code>bash
-  sudo vi /etc/fstab</code>
-  Thêm dòng sau vào cuối file (thay thế <code>UUID="..."</code> bằng UUID của bạn):
-  <code>UUID="1234abcd-56ef-78gh-90ij-klmnopqrstuv" /data xfs defaults,nofail 0 0</code></p>
-</li>
-<li>
-<p><strong>Kiểm tra cấu hình</strong>:</p>
-</li>
-<li>Tháo mount thư mục:
-    <code>bash
-    sudo umount /data</code></li>
-<li>Thực thi lại lệnh mount từ file <code>fstab</code>:
-    <code>bash
-    sudo mount -a</code></li>
+<li>Lấy UUID của phân vùng:</li>
+</ul>
+<pre><code class="language-bash">  sudo blkid
+</code></pre>
+<p>Hoặc:</p>
+<pre><code class="language-bash">  sudo lsblk -o +UUID
+</code></pre>
+<p><strong>Kết quả</strong>: UUID sẽ trông như sau:</p>
+<pre><code>  UUID=&quot;1234abcd-56ef-78gh-90ij-klmnopqrstuv&quot;
+</code></pre>
+<ul>
+<li>Chỉnh sửa file <code>/etc/fstab</code> để thêm cấu hình mount:</li>
+</ul>
+<pre><code class="language-bash">  sudo vi /etc/fstab
+</code></pre>
+<p>Thêm dòng sau vào cuối file (thay thế <code>UUID="..."</code> bằng UUID của bạn):</p>
+<pre><code>  UUID=&quot;1234abcd-56ef-78gh-90ij-klmnopqrstuv&quot; /data xfs defaults,nofail 0 0
+</code></pre>
+<ul>
+<li><strong>Kiểm tra cấu hình</strong>:</li>
+<li>Tháo mount thư mục:</li>
+</ul>
+<pre><code class="language-bash">    sudo umount /data
+</code></pre>
+<ul>
+<li>Thực thi lại lệnh mount từ file <code>fstab</code>:</li>
+</ul>
+<pre><code class="language-bash">    sudo mount -a
+</code></pre>
+<ul>
 <li><strong>Kiểm tra lại</strong>: Dùng <code>df -h</code> để đảm bảo <code>/data</code> đã được mount.</li>
 </ul>
 <hr />
 <h3 id="7-mo-rong-phan-vung-sau-khi-tang-kich-thuoc-ebs-tren-aws-console">7. <strong>Mở rộng phân vùng sau khi tăng kích thước EBS trên AWS Console</strong></h3>
 <ul>
-<li>Dùng lệnh sau để mở rộng phân vùng mà không mất dữ liệu:
-  <code>bash
-  sudo growpart /dev/xvdf 1</code></li>
+<li>Dùng lệnh sau để mở rộng phân vùng mà không mất dữ liệu:</li>
+</ul>
+<pre><code class="language-bash">  sudo growpart /dev/xvdf 1
+</code></pre>
+<ul>
 <li><strong>Ý nghĩa</strong>: Mở rộng phân vùng <code>1</code> trên thiết bị <code>/dev/xvdf</code>.</li>
 </ul>
 <hr />
 <h3 id="8-cap-nhat-lai-kich-thuoc-he-thong-tep">8. <strong>Cập nhật lại kích thước hệ thống tệp</strong></h3>
 <ul>
-<li>Sau khi mở rộng phân vùng, cập nhật lại kích thước hệ thống tệp:
-  <code>bash
-  sudo xfs_growfs /data</code></li>
+<li>Sau khi mở rộng phân vùng, cập nhật lại kích thước hệ thống tệp:</li>
+</ul>
+<pre><code class="language-bash">  sudo xfs_growfs /data
+</code></pre>
+<ul>
 <li><strong>Ý nghĩa</strong>: Mở rộng hệ thống tệp XFS để sử dụng toàn bộ không gian phân vùng.</li>
 </ul>
 <hr />
 <h3 id="9-xac-minh">9. <strong>Xác minh</strong></h3>
 <ul>
 <li>Dùng các lệnh sau để kiểm tra:</li>
-<li>Kiểm tra dung lượng mới:
-    <code>bash
-    df -h</code></li>
-<li>Kiểm tra cấu trúc phân vùng:
-    <code>bash
-    lsblk</code></li>
+<li>Kiểm tra dung lượng mới:</li>
 </ul>
+<pre><code class="language-bash">    df -h
+</code></pre>
+<ul>
+<li>Kiểm tra cấu trúc phân vùng:</li>
+</ul>
+<pre><code class="language-bash">    lsblk
+</code></pre>
 <p>Với các bước trên, bạn sẽ hoàn thành việc tạo, mount, và mở rộng phân vùng trên máy chủ Linux.</p>
 
 

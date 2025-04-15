@@ -8236,27 +8236,27 @@
 <li>Trong CloudFront, chọn "Create OAC" và gán quyền cho bucket.</li>
 </ul>
 </li>
-<li><strong>Bucket Policy</strong> (sử dụng OAC):
-     <code>json
-     {
-         "Version": "2012-10-17",
-         "Statement": [
+<li><strong>Bucket Policy</strong> (sử dụng OAC):</li>
+</ol>
+<pre><code class="language-json">     {
+         &quot;Version&quot;: &quot;2012-10-17&quot;,
+         &quot;Statement&quot;: [
              {
-                 "Effect": "Allow",
-                 "Principal": {
-                     "Service": "cloudfront.amazonaws.com"
+                 &quot;Effect&quot;: &quot;Allow&quot;,
+                 &quot;Principal&quot;: {
+                     &quot;Service&quot;: &quot;cloudfront.amazonaws.com&quot;
                  },
-                 "Action": "s3:GetObject",
-                 "Resource": "arn:aws:s3:::frontend.mywebsite.com/*",
-                 "Condition": {
-                     "StringEquals": {
-                         "AWS:SourceArn": "arn:aws:cloudfront::YOUR_ACCOUNT_ID:distribution/YOUR_DISTRIBUTION_ID"
+                 &quot;Action&quot;: &quot;s3:GetObject&quot;,
+                 &quot;Resource&quot;: &quot;arn:aws:s3:::frontend.mywebsite.com/*&quot;,
+                 &quot;Condition&quot;: {
+                     &quot;StringEquals&quot;: {
+                         &quot;AWS:SourceArn&quot;: &quot;arn:aws:cloudfront::YOUR_ACCOUNT_ID:distribution/YOUR_DISTRIBUTION_ID&quot;
                      }
                  }
              }
          ]
-     }</code></li>
-</ol>
+     }
+</code></pre>
 <hr />
 <h3 id="2-tao-cloudfront-distribution"><strong>2. Tạo CloudFront Distribution</strong></h3>
 <ol>
