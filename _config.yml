@@ -1,26 +1,18 @@
 title: My Docs
-description: Tài liệu hệ thống
+description: Tài liệu hệ thống cho AWS SAA và các dịch vụ AWS
+url: "https://lelongc.github.io/aws"  # Thay YOUR-USERNAME và YOUR-REPO
 
 remote_theme: just-the-docs/just-the-docs
 
-# Enable URL
-url: https://lelongc.github.io/aws
-
-# Auto layout
 defaults:
   - scope:
-      path: ""
-      type: "pages"
+      path: ""         # Áp dụng cho tất cả file ở repo
+      type: "pages"    # Dành cho các file Markdown (pages)
     values:
       layout: default
       nav_exclude: false
 
-# Just the Docs settings
 just_the_docs:
   nav_sort: case_sensitive
   search:
     enabled: true
-
-# Optional: extra link
-aux_links:
-  Source Repo: https://github.com/lelongc/aws
