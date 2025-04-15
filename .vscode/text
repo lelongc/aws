@@ -6,6 +6,3 @@ pip install mkdocs-material
 theme:
   name: material
 
-pip install mkdocs-slate
-theme:
-  name: slate
