@@ -1,8 +1,10 @@
-name: Deploy Just the Docs
+name: Build and Deploy Just the Docs
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
+    paths:
+      - "./**"
   workflow_dispatch:
 
 permissions:
@@ -13,9 +15,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Ruby
@@ -24,16 +25,42 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
 
-      - name: Install dependencies
+      - name: Create Gemfile (if not exists)
         run: |
-          echo -e "source 'https://rubygems.org'\ngem 'github-pages', group: :jekyll_plugins" > Gemfile
-          echo "gem 'just-the-docs'" >> Gemfile
-          bundle install
+          if [ ! -f Gemfile ]; then
+            echo "source 'https://rubygems.org'" > Gemfile
+            echo 'gem "github-pages", group: :jekyll_plugins' >> Gemfile
+            echo 'gem "just-the-docs"' >> Gemfile
+          fi
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Auto-add front matter to Markdown files
+        run: |
+          echo "Processing Markdown files..."
+          find . -type f -name "*.md" ! -path "./_site/*" ! -path "./.github/*" | while read file; do
+            if ! head -n 1 "$file" | grep -q "^---"; then
+              filename=$(basename "$file" .md)
+              # Thay đổi dấu '-' thành khoảng trắng và viết hoa chữ cái đầu
+              title=$(echo "$filename" | sed 's/-/ /g' | sed 's/.*/\u&/')
+              echo "Adding front matter to $file with title: $title"
+              tmp=$(mktemp)
+              {
+                echo "---"
+                echo "title: \"$title\""
+                echo "---"
+                echo
+                cat "$file"
+              } > "$tmp"
+              mv "$tmp" "$file"
+            fi
+          done
 
       - name: Build site with Jekyll
         run: bundle exec jekyll build
 
-      - name: Upload artifact
+      - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site/
@@ -41,15 +68,8 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
