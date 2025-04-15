@@ -17,7 +17,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
    - **Mục đích**: Giới hạn địa chỉ IP nguồn thực hiện API calls.
    - **Ví dụ Policy**:
 
-     ```json
+```json
      {
        "Version": "2012-10-17",
        "Statement": [
@@ -33,7 +33,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
          }
        ]
      }
-     ```
+```
 
      → **Ý nghĩa**: Từ chối mọi hành động nếu API call không đến từ các dải IP `192.0.2.0/24` hoặc `203.0.113.0/24`.
      → **Ứng dụng**: Chỉ cho phép truy cập AWS từ mạng công ty, đảm bảo an toàn.
@@ -42,7 +42,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
    - **Mục đích**: Giới hạn region mà API call được thực hiện.
    - **Ví dụ Policy**:
 
-     ```json
+```json
      {
        "Version": "2012-10-17",
        "Statement": [
@@ -58,7 +58,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
          }
        ]
      }
-     ```
+```
 
      → **Ý nghĩa**: Từ chối mọi hành động trên EC2, RDS, DynamoDB tại các region **eu-central-1** và **eu-west-1**.
      → **Ứng dụng**: Áp dụng trong SCP của tổ chức để chỉ cho phép truy cập dịch vụ ở region cụ thể.
@@ -72,7 +72,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
    - **`aws:PrincipalTag`**: Kiểm tra tag trên người dùng (user).
    - **Ví dụ Policy**:
 
-     ```json
+```json
      {
        "Version": "2012-10-17",
        "Statement": [
@@ -89,7 +89,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
          }
        ]
      }
-     ```
+```
 
      → **Ý nghĩa**:- Chỉ cho phép **start/stop instances** nếu:
 
@@ -100,7 +100,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
    - **Mục đích**: Yêu cầu xác thực đa yếu tố (MFA).
    - **Ví dụ Policy**:
 
-     ```json
+```json
      {
        "Version": "2012-10-17",
        "Statement": [
@@ -121,7 +121,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
          }
        ]
      }
-     ```
+```
 
      → **Ý nghĩa**:- Cho phép mọi hành động trên EC2.
 
@@ -135,7 +135,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
 
 - **Phân biệt quyền cấp bucket và object**:
 
-  ```json
+```json
   {
     "Version": "2012-10-17",
     "Statement": [
@@ -151,7 +151,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
       }
     ]
   }
-  ```
+```
 
   → **Lưu ý**:- `s3:ListBucket` yêu cầu ARN bucket (`arn:aws:s3:::test`).
 
@@ -166,7 +166,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
 - **Mục đích**: Giới hạn truy cập chỉ cho các account trong tổ chức AWS.
 - **Ví dụ Policy S3**:
 
-  ```json
+```json
   {
     "Version": "2012-10-17",
     "Statement": [
@@ -182,7 +182,7 @@ Giờ hãy cùng thảo luận về **Điều Kiện IAM** và cách chúng ản
       }
     ]
   }
-  ```
+```
 
   → **Ý nghĩa**: Chỉ các account thuộc tổ chức **o-1234567890** mới được phép **PutObject/GetObject** trên bucket này.
 

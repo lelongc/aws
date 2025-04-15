@@ -67,10 +67,10 @@ Dưới đây là kiến thức chi tiết liên quan đến **S3 Access Logs** 
 Sử dụng AWS CLI hoặc Console:
 
 1. **Sử dụng AWS CLI**:
-   ```bash
+```bash
    aws s3api put-bucket-logging --bucket <Monitored-Bucket-Name> \
    --bucket-logging-status '{"LoggingEnabled":{"TargetBucket":"<Logging-Bucket-Name>","TargetPrefix":"logs/"}}'
-   ```
+```
 
 2. **Sử dụng AWS Console**:
    - Vào bucket cần bật logging.

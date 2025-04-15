@@ -50,16 +50,16 @@ Lý do: Các hành động này không gây ra rủi ro cao hoặc không phá h
 ### **5. Cách kích hoạt MFA Delete**
 1. **Bật Versioning cho bucket**:
    - Lệnh AWS CLI:
-     ```bash
+```bash
      aws s3api put-bucket-versioning --bucket <Bucket-Name> --versioning-configuration Status=Enabled
-     ```
+```
 2. **Kích hoạt MFA Delete**:
    - Lệnh AWS CLI:
-     ```bash
+```bash
      aws s3api put-bucket-versioning --bucket <Bucket-Name> \
      --versioning-configuration Status=Enabled,MFADelete=Enabled \
      --mfa "arn-of-mfa-device mfa-code"
-     ```
+```
    - **arn-of-mfa-device**: ARN của thiết bị MFA.
    - **mfa-code**: Mã MFA hiện tại từ ứng dụng hoặc thiết bị.
 

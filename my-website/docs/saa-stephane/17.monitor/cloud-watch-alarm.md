@@ -104,9 +104,9 @@ Một CloudWatch Alarm có ba trạng thái chính:
 
 - Bạn có thể sử dụng CLI command `set-alarm-state` để kiểm thử alarms mà không cần chờ metric vượt ngưỡng.
 - Ví dụ:
-  ```bash
+```bash
   aws cloudwatch set-alarm-state --alarm-name "MyAlarm" --state-value ALARM --state-reason "Testing alarm"
-  ```
+```
 - Điều này giúp bạn đảm bảo rằng các hành động được kích hoạt đúng cách khi alarm chuyển sang trạng thái **ALARM**.
 
 ---

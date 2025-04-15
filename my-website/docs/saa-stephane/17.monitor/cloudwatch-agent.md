@@ -111,7 +111,7 @@ CloudWatch Unified Agent có thể thu thập các metrics hệ thống với đ
 2. **Cấu hình Agent**:
    - Tạo một tệp cấu hình JSON hoặc sử dụng SSM Parameter Store.
    - Ví dụ cấu hình thu thập CPU và RAM metrics:
-     ```json
+```json
      {
        "metrics": {
          "metrics_collected": {
@@ -124,7 +124,7 @@ CloudWatch Unified Agent có thể thu thập các metrics hệ thống với đ
          }
        }
      }
-     ```
+```
 3. **Khởi động Agent**:
    - Trên Linux: `sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:/path/to/config.json`.
    - Trên Windows: Sử dụng PowerShell để khởi động agent.

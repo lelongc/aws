@@ -48,9 +48,9 @@
 
 ### 6. **Công cụ kiểm tra**  
 - Sử dụng trình duyệt web hoặc lệnh `dig`:  
-  ```bash
+```bash
   dig weighted.example.com
-  ```  
+```  
   Kết quả trả về sẽ thay đổi dựa trên trọng số đã cấu hình.  
 
 ---

@@ -23,10 +23,10 @@
    - Quy định ai được phép hoặc không được phép truy cập vào tài nguyên.
    - Phổ biến trên hệ điều hành Windows với NTFS.
    - Ví dụ:
-     ```
+```
      User1: Read
      Group1: Write
-     ```
+```
 
 2. **SACL (System ACL):**
    - Quy định các hành động cần được ghi lại (auditing).
@@ -56,10 +56,10 @@
   - **setfacl:** Đặt ACL cho một tệp/thư mục.
   - **getfacl:** Xem ACL hiện tại.
 - Ví dụ:
-  ```
+```
   setfacl -m u:user1:rw file.txt  # Gán quyền đọc/ghi cho user1 trên file.txt
   getfacl file.txt               # Hiển thị ACL của file.txt
-  ```
+```
 
 #### **3. AWS Network ACLs:**
 - Dùng để quản lý lưu lượng mạng trong các Virtual Private Cloud (VPC).

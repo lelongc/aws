@@ -94,14 +94,14 @@ Giả sử bạn có một tài liệu PDF chứa thông tin về giấy phép l
 3. **Trích xuất thông tin:**
 
    - Textract trích xuất các thông tin này và trả về kết quả dưới dạng JSON. Ví dụ:
-     ``` json
+``` json
      {
        "Name": "John Doe",
        "Date of Birth": "1990-01-01",
        "License Number": "ABC123456",
        "Address": "123 Main St, Anytown, USA"
      }
-     ```
+```
 
 4. **Sử dụng kết quả:**
    - Bạn có thể sử dụng thông tin trích xuất để tự động điền vào cơ sở dữ liệu hoặc tích hợp vào các ứng dụng khác.

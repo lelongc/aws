@@ -19,12 +19,12 @@ Khi **Network Load Balancer (NLB)** có **một IP tĩnh cho mỗi Availability 
 
 #### **2. DNS động trả về danh sách các IP tĩnh:**
 - Khi client thực hiện truy vấn đến DNS của NLB, câu trả lời sẽ là:
-  ```
+```
   my-nlb-123456.elb.amazonaws.com:
   - 192.0.2.10
   - 192.0.2.20
   - 192.0.2.30
-  ```
+```
 
 ---
 

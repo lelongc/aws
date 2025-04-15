@@ -1,5 +1,4 @@
 
----
 
 ## **1. EBS Volume**  
 EBS (Elastic Block Store) là một dịch vụ lưu trữ do AWS cung cấp, thường được gắn vào EC2 Instances như các ổ đĩa.  
@@ -56,9 +55,9 @@ Hệ thống tệp là cấu trúc giúp hệ điều hành quản lý dữ li�
 Mount là quá trình "gắn kết" hệ thống tệp của ổ đĩa vào một thư mục trong hệ thống Linux.  
 - Ví dụ:  
   - Mount ổ đĩa `/dev/xvdf1` vào thư mục `/data`:  
-    ```bash
+```bash
     sudo mount /dev/xvdf1 /data
-    ```
+```
 
 ### **Tại sao cần Mount?**  
 - Để hệ điều hành có thể truy cập dữ liệu trên ổ đĩa.  
@@ -71,9 +70,9 @@ Mount là quá trình "gắn kết" hệ thống tệp của ổ đĩa vào mộ
 Là file cấu hình được dùng để tự động mount các ổ đĩa mỗi khi hệ thống khởi động lại.  
 
 - **Ví dụ dòng trong /etc/fstab**:  
-  ```bash
+```bash
   UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /data  xfs  defaults,nofail  0  2
-  ```
+```
   - **UUID**: Định danh duy nhất của ổ đĩa (thay đổi theo thiết bị).  
   - **/data**: Thư mục nơi hệ thống tệp sẽ được mount.  
   - **xfs**: Loại hệ thống tệp.  
@@ -81,13 +80,13 @@ Là file cấu hình được dùng để tự động mount các ổ đĩa mỗ
 
 ### **Quy trình kiểm tra /etc/fstab**:  
 - Unmount ổ đĩa:  
-  ```bash
+```bash
   sudo umount /data
-  ```
+```
 - Mount lại tất cả theo /etc/fstab:  
-  ```bash
+```bash
   sudo mount -a
-  ```
+```
 
 ---
 
@@ -95,24 +94,24 @@ Là file cấu hình được dùng để tự động mount các ổ đĩa mỗ
 Khi bạn tăng dung lượng ổ đĩa EBS, các bước sau cần thực hiện:  
 
 1. **Kiểm tra phân vùng và dung lượng**:  
-   ```bash
+```bash
    lsblk
-   ```
+```
 
 2. **Mở rộng phân vùng với growpart**:  
-   ```bash
+```bash
    sudo growpart /dev/xvdf 1
-   ```
+```
 
 3. **Mở rộng hệ thống tệp**:  
    - Nếu hệ thống tệp là `xfs`:  
-     ```bash
+```bash
      sudo xfs_growfs /data
-     ```
+```
    - Nếu là `ext4`:  
-     ```bash
+```bash
      sudo resize2fs /dev/xvdf1
-     ```
+```
 
 ---
 

@@ -68,7 +68,7 @@ Giờ hãy cùng thảo luận về **AWS Organizations**.
 
 - **Scenario 1**: Chặn dịch vụ cụ thể
 
-  ```json
+```json
   {
     "Version": "2012-10-17",
     "Statement": [
@@ -76,17 +76,17 @@ Giờ hãy cùng thảo luận về **AWS Organizations**.
       { "Effect": "Deny", "Action": "dynamodb:*", "Resource": "*" }  // Chặn DynamoDB
     ]
   }
-  ```
+```
 - **Scenario 2**: Chỉ cho phép EC2 và CloudWatch
 
-  ```json
+```json
   {
     "Version": "2012-10-17",
     "Statement": [
       { "Effect": "Allow", "Action": ["ec2:*", "cloudwatch:*"], "Resource": "*" }  // Whitelist
     ]
   }
-  ```
+```
 
 ---
 

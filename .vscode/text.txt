@@ -1,0 +1,15 @@
+pip install --upgrade pip
+pip install mkdocs mkdocs-material
+# Show the version of pip
+pip --version
+# Show the version of mkdocs
+mkdocs --version
+# Serve the documentation locally
+mkdocs serve
+# Build the documentation site
+mkdocs build
+
+# Optional: Install additional plugins or themes if needed
+# Example: pip install mkdocs-awesome-pages-plugin
+# theme:
+#   name: material

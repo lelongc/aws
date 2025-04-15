@@ -98,9 +98,9 @@ Amazon Redshift cung cấp nhiều cách để đưa dữ liệu vào cụm (clu
 #### **b. Ví dụ**
 
 - **Truy vấn dữ liệu từ S3**:
-  ```sql
+```sql
   SELECT * FROM s3://your-bucket/path/to/data;
-  ```
+```
   - Redshift Spectrum sẽ tự động xử lý truy vấn này bằng cách sử dụng hàng nghìn nodes để đọc dữ liệu từ S3.
 - **Kết quả**: Dữ liệu được xử lý và trả về Redshift cluster, sau đó hiển thị cho người dùng.
 
