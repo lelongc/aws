@@ -27,6 +27,4 @@ plugins:
 
 repo_url: https://github.com/lelongc/aws
 edit_uri: edit/main/my-website/docs/ # Hãy chắc chắn đường dẫn này đúng với cấu trúc thư mục của bạn
-nav:
-  - Home: index.md
-  # ... các mục khác
+
