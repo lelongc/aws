@@ -150,27 +150,27 @@ format và tạo  phân vùng rồi tăng volume ebs rồi format lại
 
 ### 1. **Liệt kê tất cả các phân vùng và điểm mount**
 - Sử dụng lệnh sau để hiển thị cấu trúc phân vùng và điểm mount:
-  ```bash
+```bash
   lsblk
-  ```
+```
   - **Ý nghĩa**: Hiển thị các thiết bị lưu trữ (block devices), phân vùng, và điểm mount.
 
 ---
 
 ### 2. **Hiển thị thông tin dung lượng và không gian trống của tất cả các volume**
 - Dùng lệnh:
-  ```bash
+```bash
   df -h
-  ```
+```
   - **Ý nghĩa**: Hiển thị thông tin về dung lượng đã sử dụng, dung lượng còn trống của các volume theo định dạng dễ đọc (đơn vị GB/MB).
 
 ---
 
 ### 3. **Tạo phân vùng mới bằng `fdisk`**
 - Thực hiện các bước sau để tạo phân vùng mới:
-  ```bash
+```bash
   sudo fdisk /dev/xvdf
-  ```
+```
   **Trong giao diện `fdisk`:**
   - Gõ `n` để tạo một phân vùng mới.
   - Chọn `p` cho phân vùng chính (primary partition).
@@ -182,76 +182,76 @@ format và tạo  phân vùng rồi tăng volume ebs rồi format lại
 
 ### 4. **Định dạng phân vùng**
 - Sau khi tạo phân vùng, định dạng nó bằng hệ thống tệp XFS:
-  ```bash
+```bash
   sudo mkfs -t xfs /dev/xvdf1
-  ```
+```
   - **Ý nghĩa**: Định dạng phân vùng `/dev/xvdf1` với hệ thống tệp XFS.
 
 ---
 
 ### 5. **Mount phân vùng**
 - Tạo thư mục mount nếu chưa tồn tại:
-  ```bash
+```bash
   sudo mkdir -p /data
-  ```
+```
 - Mount phân vùng vào thư mục `/data`:
-  ```bash
+```bash
   sudo mount /dev/xvdf1 /data
-  ```
+```
   - **Kiểm tra**: Dùng lệnh `df -h` để xác nhận phân vùng đã được mount.
 
 ---
 
 ### 6. **Cấu hình tự động mount sau khi khởi động lại**
 - Lấy UUID của phân vùng:
-  ```bash
+```bash
   sudo blkid
-  ```
+```
   Hoặc:
-  ```bash
+```bash
   sudo lsblk -o +UUID
-  ```
+```
   **Kết quả**: UUID sẽ trông như sau:
-  ```
+```
   UUID="1234abcd-56ef-78gh-90ij-klmnopqrstuv"
-  ```
+```
 
 - Chỉnh sửa file `/etc/fstab` để thêm cấu hình mount:
-  ```bash
+```bash
   sudo vi /etc/fstab
-  ```
+```
   Thêm dòng sau vào cuối file (thay thế `UUID="..."` bằng UUID của bạn):
-  ```
+```
   UUID="1234abcd-56ef-78gh-90ij-klmnopqrstuv" /data xfs defaults,nofail 0 0
-  ```
+```
 
 - **Kiểm tra cấu hình**:
   - Tháo mount thư mục:
-    ```bash
+```bash
     sudo umount /data
-    ```
+```
   - Thực thi lại lệnh mount từ file `fstab`:
-    ```bash
+```bash
     sudo mount -a
-    ```
+```
   - **Kiểm tra lại**: Dùng `df -h` để đảm bảo `/data` đã được mount.
 
 ---
 
 ### 7. **Mở rộng phân vùng sau khi tăng kích thước EBS trên AWS Console**
 - Dùng lệnh sau để mở rộng phân vùng mà không mất dữ liệu:
-  ```bash
+```bash
   sudo growpart /dev/xvdf 1
-  ```
+```
   - **Ý nghĩa**: Mở rộng phân vùng `1` trên thiết bị `/dev/xvdf`.
 
 ---
 
 ### 8. **Cập nhật lại kích thước hệ thống tệp**
 - Sau khi mở rộng phân vùng, cập nhật lại kích thước hệ thống tệp:
-  ```bash
+```bash
   sudo xfs_growfs /data
-  ```
+```
   - **Ý nghĩa**: Mở rộng hệ thống tệp XFS để sử dụng toàn bộ không gian phân vùng.
 
 ---
@@ -259,12 +259,12 @@ format và tạo  phân vùng rồi tăng volume ebs rồi format lại
 ### 9. **Xác minh**
 - Dùng các lệnh sau để kiểm tra:
   - Kiểm tra dung lượng mới:
-    ```bash
+```bash
     df -h
-    ```
+```
   - Kiểm tra cấu trúc phân vùng:
-    ```bash
+```bash
     lsblk
-    ```
+```
 
 Với các bước trên, bạn sẽ hoàn thành việc tạo, mount, và mở rộng phân vùng trên máy chủ Linux.

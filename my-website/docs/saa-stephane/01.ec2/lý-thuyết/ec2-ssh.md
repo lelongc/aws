@@ -30,11 +30,11 @@ Khi sử dụng SSH để kết nối đến các instance EC2, bạn có thể 
 
 - Kiểm tra xem bạn có sử dụng đúng key bảo mật đã gán cho instance không.
 - Đảm bảo bạn sử dụng đúng user khi kết nối. Với Amazon Linux 2, user mặc định là `ec2-user`. Lệnh SSH mẫu:
-  ```
+```
   ssh -i <key.pem> ec2-user@<public-ip>
-  ```
+```
 
-### 6) Không gì hoạt động - "aaaahhhhhh"
+### 6) Không gì hoạt động 
 **Giải pháp:**
 
 - Đừng hoảng loạn. Sử dụng **EC2 Instance Connect** để truy cập instance.

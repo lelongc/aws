@@ -18,7 +18,7 @@ LƯU Ý PHÍA DƯỚI LÀ CHATGPT NÊN LÊN YOUTUBE GÕ CICD HOST STATIC WEBSITE
    - Tạo OAC qua AWS Console:
      - Trong CloudFront, chọn "Create OAC" và gán quyền cho bucket.
    - **Bucket Policy** (sử dụng OAC):
-     ```json
+```json
      {
          "Version": "2012-10-17",
          "Statement": [
@@ -37,7 +37,7 @@ LƯU Ý PHÍA DƯỚI LÀ CHATGPT NÊN LÊN YOUTUBE GÕ CICD HOST STATIC WEBSITE
              }
          ]
      }
-     ```
+```
 
 ---
 
