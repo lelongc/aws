@@ -28,12 +28,13 @@ theme:
     # - content.tabs.link     # Cho phép liên kết trực tiếp đến các tab trong nội dung
     - header.autohide      # Tự động ẩn header khi cuộn xuống
     - footer.navigation    # Thêm nút điều hướng trang trước/trang sau ở footer
+    - content.code.toggle  # Cho phép bật/tắt hiển thị từng dòng trong code block
+    - content.action.source # Thêm nút "View Source" để xem mã nguồn của trang
 
 plugins:
   - awesome-pages:
       collapse_single_pages: true # Tùy chọn
   - search
-
   - glightbox:         # Cải thiện trải nghiệm xem ảnh lightbox
       zoomable: true
   # - meta:             # Cho phép bạn định nghĩa metadata cho từng trang (ví dụ: description, keywords)
