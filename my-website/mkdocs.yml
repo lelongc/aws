@@ -1,12 +1,5 @@
 site_name: DraDoc  # Thay "Tên trang web của bạn" bằng tên bạn muốn
 theme:
-  name: material      # Đây là một theme đơn giản, bạn có thể thử theme khác như 'material'
-plugins:
-  - awesome-pages:
-      collapse_single_pages: true # Tùy chọn
-  - search
-
-theme:
   name: material
   palette:
     - scheme: default
@@ -22,15 +15,15 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Chuyển sang chế độ sáng
-
-repo_url: https://github.com/lelongc/aws
-edit_uri: edit/main/my-website/docs/ # Hãy chắc chắn đường dẫn này đúng với cấu trúc thư mục của bạn
-
-theme:
-  name: material
-  # ... các cấu hình khác của theme
   features:
     - content.code.copy
     - content.action.edit  # Kích hoạt nút "Edit this page"
     # ... các features khác bạn muốn sử dụng
 
+plugins:
+  - awesome-pages:
+      collapse_single_pages: true # Tùy chọn
+  - search
+
+repo_url: https://github.com/lelongc/aws
+edit_uri: edit/main/my-website/docs/ # Hãy chắc chắn đường dẫn này đúng với cấu trúc thư mục của bạn
