@@ -19,18 +19,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd my-website # Thêm dòng này để di chuyển vào thư mục my-website
+          cd my-website
           python -m pip install --upgrade pip
-          pip install -r requirements.txt # Nếu bạn có file requirements.txt
-          pip install mkdocs mkdocs-material # Thay thế bằng theme và các plugin bạn đang dùng
+          pip install -r requirements.txt
 
       - name: Build the MkDocs site
         run: |
-          cd my-website # Thêm dòng này để di chuyển vào thư mục my-website
+          cd my-website
           mkdocs build --verbose
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./my-website/site # Điều chỉnh đường dẫn đến thư mục site
+          publish_dir: ./my-website/site
