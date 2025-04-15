@@ -3,8 +3,10 @@ description: Tài liệu hệ thống
 
 remote_theme: just-the-docs/just-the-docs
 
+# Enable URL
 url: https://lelongc.github.io/aws
 
+# Auto layout
 defaults:
   - scope:
       path: ""
@@ -13,6 +15,12 @@ defaults:
       layout: default
       nav_exclude: false
 
+# Just the Docs settings
 just_the_docs:
   nav_sort: case_sensitive
-  nav_fold: true
+  search:
+    enabled: true
+
+# Optional: extra link
+aux_links:
+  Source Repo: https://github.com/lelongc/aws
