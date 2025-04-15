@@ -1,8 +1,9 @@
-name: Build and Deploy with Auto Front Matter
+name: Deploy Just the Docs to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -10,54 +11,41 @@ permissions:
   id-token: write
 
 jobs:
-  build_and_deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: '3.3'
           bundler-cache: true
 
       - name: Install dependencies
         run: |
-          gem install bundler
+          echo 'source "https://rubygems.org"' > Gemfile
+          echo 'gem "github-pages", group: :jekyll_plugins' >> Gemfile
+          echo 'gem "just-the-docs"' >> Gemfile
           bundle install
 
-      - name: Auto-add front matter to Markdown files
-        shell: bash
-        run: |
-          echo "Processing Markdown files..."
-          # Duyệt tất cả file .md (ngoại trừ trong _site và .github)
-          find . -type f -name "*.md" ! -path "./_site/*" ! -path "./.github/*" | while read file; do
-            # Nếu dòng đầu tiên không bắt đầu bằng ---
-            if ! head -n 1 "$file" | grep -q "^---"; then
-              echo "Adding front matter to $file"
-              # Lấy tên file không có phần mở rộng
-              filename=$(basename "$file" .md)
-              tmp=$(mktemp)
-              {
-                echo "---"
-                echo "title: \"$filename\""
-                echo "---"
-                echo
-                cat "$file"
-              } > "$tmp"
-              mv "$tmp" "$file"
-            fi
-          done
-
-      - name: Build Jekyll site
+      - name: Build site with Jekyll
         run: bundle exec jekyll build
 
-      - name: Upload Pages Artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: _site/
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
