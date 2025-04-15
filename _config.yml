@@ -1,19 +1,18 @@
 title: My Docs
 description: Tài liệu hệ thống
 
-remote_theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 
-# Sử dụng defaults để gán layout mặc định cho các file markdown
+url: https://lelongc.github.io/aws
+
 defaults:
   - scope:
-      path: ""         # áp dụng cho tất cả file trong repo
-      type: "pages"    # áp dụng cho các file trang
+      path: ""
+      type: "pages"
     values:
       layout: default
       nav_exclude: false
 
-# Cấu hình Just the Docs
 just_the_docs:
   nav_sort: case_sensitive
-  search:
-    enabled: true
+  nav_fold: true
