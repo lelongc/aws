@@ -18,12 +18,30 @@ theme:
   features:
     - content.code.copy
     - content.action.edit  # Kích hoạt nút "Edit this page"
-    # ... các features khác bạn muốn sử dụng
+    - navigation.tabs      # Hiển thị các section cấp cao nhất dưới dạng tab
+    - navigation.sections  # Hiển thị các trang con dưới dạng section có thể mở rộng
+    - navigation.expand    # Tự động mở rộng section hiện tại trong navigation
+    - toc.integrate        # Tích hợp mục lục vào thanh navigation bên trái
+    - toc.follow           # Tự động đánh dấu mục lục khi bạn cuộn trang
+    - content.code.annotate # Cho phép thêm chú thích vào code blocks
+    - content.code.select   # Cho phép chọn code bằng một cú nhấp chuột
+    # - content.tabs.link     # Cho phép liên kết trực tiếp đến các tab trong nội dung
+    - header.autohide      # Tự động ẩn header khi cuộn xuống
+    - footer.navigation    # Thêm nút điều hướng trang trước/trang sau ở footer
 
 plugins:
   - awesome-pages:
       collapse_single_pages: true # Tùy chọn
   - search
+
+  - glightbox:         # Cải thiện trải nghiệm xem ảnh lightbox
+      zoomable: true
+  # - meta:             # Cho phép bạn định nghĩa metadata cho từng trang (ví dụ: description, keywords)
+  # - rss:              # Tạo RSS feed cho trang web (nếu bạn có blog)
+  # - sitemap:          # Tạo sitemap.xml để cải thiện SEO
+  # - tags:             # Cho phép bạn thêm tags vào các trang (nếu bạn muốn)
+    
+  
 
 repo_url: https://github.com/lelongc/aws
 edit_uri: edit/main/my-website/docs/ # Hãy chắc chắn đường dẫn này đúng với cấu trúc thư mục của bạn

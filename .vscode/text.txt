@@ -1,5 +1,7 @@
 pip install --upgrade pip
 pip install mkdocs mkdocs-material
+pip install mkdocs-glightbox
+
 # Show the version of pip
 pip --version
 # Show the version of mkdocs
