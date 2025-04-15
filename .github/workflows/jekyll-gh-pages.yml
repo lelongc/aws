@@ -1,29 +1,23 @@
-name: Build and Deploy Just the Docs
+name: Deploy Just the Docs to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
     paths:
       - "./**"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout source code
         uses: actions/checkout@v4
-
-      - name: Add default front matter to .md files
-        run: |
-          find docs -name "*.md" | while read file; do
-            if ! grep -q '^---' "$file"; then
-              filename=$(basename "$file" .md)
-              title=$(echo "$filename" | sed 's/-/ /g' | sed 's/.*/\u&/')
-              echo -e "---\ntitle: $title\n---\n$(cat "$file")" > "$file"
-            fi
-          done
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -33,15 +27,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd docs
           echo -e "source 'https://rubygems.org'\ngem 'github-pages', group: :jekyll_plugins" > Gemfile
           echo "gem 'just-the-docs'" >> Gemfile
           bundle install
 
       - name: Build site
-        run: |
-          cd docs
-          bundle exec jekyll build
+        run: bundle exec jekyll build
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
@@ -51,10 +42,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
