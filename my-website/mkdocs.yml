@@ -48,3 +48,7 @@ plugins:
 markdown_extensions:
   - toc:
       permalink: true
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
