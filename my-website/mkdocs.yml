@@ -24,11 +24,23 @@ theme:
         name: Chuyển sang chế độ sáng
 
   features:
-    - navigation.top
-    - navigation.sections
-    - navigation.search
-    - content.code.copy
-    - content.action.edit  # Added edit functionality
+  - navigation.top
+  - navigation.sections
+  - navigation.search
+  - navigation.tabs
+  - navigation.tabs.sticky
+  - navigation.footer
+  - navigation.paths
+  - navigation.indexes
+  - navigation.indexes.sticky
+
+  - content.code.copy
+  - content.action.edit
+  - content.images.lazy
+
+  - toc.integrate
+  - toc.follow
+  - toc.expand
 
 plugins:
   - search
