@@ -8,6 +8,8 @@ edit_uri: edit/main/my-website/docs/ # <<< BỎ COMMENT VÀ ĐÃ CẤU HÌNH
 theme:
   name: material
   language: vi
+  custom_dir: overrides
+
 
   palette:
     - scheme: default
@@ -44,6 +46,7 @@ theme:
   - header.autohide
 
 plugins:
+  - meta 
   - search
   - glightbox
   - git-revision-date-localized
