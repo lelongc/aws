@@ -10,7 +10,6 @@ theme:
   language: vi
 
   palette:
-    # ... (giữ nguyên cấu hình palette) ...
     - scheme: default
       primary: indigo
       accent: indigo
@@ -25,55 +24,15 @@ theme:
         name: Chuyển sang chế độ sáng
 
   features:
-    # Navigation Features
     - navigation.top
     - navigation.sections
-    - navigation.tabs.sticky
-    - navigation.footer
-    - navigation.instant
-    - navigation.instant.preview
-    - navigation.indexes
-    - navigation.indexes.sticky
     - navigation.search
-    - navigation.search.highlight
-    - navigation.instant.prefetch
-    - navigation.instant.progress
-    - navigation.tabs
-    - navigation.paths
-    - navigation.tracking
-
-    # Search Features
-    - search.suggest
-    - search.highlight
-    - search.share
-
-    # Content Features
     - content.code.copy
-    - content.code.annotate
-    - content.code.select
-    - content.action.view
-    - content.action.edit
-    - content.footnote.tooltips
-    - content.tabs.link
-    - content.tooltips
-    - content.images.lazy
-    - content.images.zoom
-    - content.math
+    - content.action.edit  # Added edit functionality
 
-    # Table of Contents Features
-    - toc.integrate
-    - toc.follow
-    - toc.expand
-        # ... (giữ nguyên plugins và markdown_extensions) ...
 plugins:
   - search
-  - awesome-pages
 
 markdown_extensions:
-  - admonition
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.superfences
   - toc:
       permalink: true
-  - attr_list
