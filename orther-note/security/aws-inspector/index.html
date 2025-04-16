@@ -1,12 +1,14 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="vi" class="no-js">
   <head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+      
+        <link rel="canonical" href="https://lelongc.github.io/aws/orther-note/security/aws-inspector/">
       
       
         <link rel="prev" href="../../readme/">
@@ -73,7 +75,7 @@
       
         
         <a href="#giai-thich-chi-tiet-ve-amazon-inspector-va-quan-ly-lo-hong-bao-mat-trong-aws-organizations" class="md-skip">
-          Skip to content
+          Bỏ qua
         </a>
       
     </div>
@@ -86,8 +88,8 @@
 
   
 
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
     <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
@@ -124,7 +126,7 @@
     <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ tối"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
       </label>
     
   
@@ -134,7 +136,7 @@
     <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ sáng"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
     
   
@@ -156,20 +158,27 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="Tìm kiếm">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Chia sẻ" aria-label="Chia sẻ" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -188,7 +197,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/lelongc/aws" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
@@ -201,13 +210,150 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  List of Ports to be familiar with
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cer/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Orther note
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa cantrill and lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../saa-stephane/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa stephane
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -221,8 +367,12 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
@@ -234,7 +384,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/lelongc/aws" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
@@ -299,7 +449,22 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -360,7 +525,22 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -370,8 +550,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -380,8 +561,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
@@ -391,27 +578,6 @@
           <ul class="md-nav__list" data-md-scrollfix>
             
               
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cer/an/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -421,7 +587,36 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -431,8 +626,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/saa/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -441,8 +637,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_2">
@@ -451,27 +653,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cer/an/saa/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -574,7 +755,20 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -584,8 +778,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_3_2_2_6" id="__nav_3_2_2_6_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/saa/DB/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -594,8 +789,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2_6" id="__nav_3_2_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_2_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_2_6">
@@ -604,27 +805,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cer/an/saa/DB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -666,7 +846,20 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -676,8 +869,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2_7" >
         
           
-          <label class="md-nav__link" for="__nav_3_2_2_7" id="__nav_3_2_2_7_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/saa/network/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -686,8 +880,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2_7" id="__nav_3_2_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_2_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_2_7">
@@ -696,27 +896,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cer/an/saa/network/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -758,7 +937,20 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -768,8 +960,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2_8" >
         
           
-          <label class="md-nav__link" for="__nav_3_2_2_8" id="__nav_3_2_2_8_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/saa/noti/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -778,8 +971,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2_8" id="__nav_3_2_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_2_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_2_8">
@@ -788,27 +987,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cer/an/saa/noti/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -850,7 +1028,20 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -860,8 +1051,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2_9" >
         
           
-          <label class="md-nav__link" for="__nav_3_2_2_9" id="__nav_3_2_2_9_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/saa/security/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -870,8 +1062,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2_9" id="__nav_3_2_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_2_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_2_9">
@@ -880,27 +1078,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cer/an/saa/security/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -942,7 +1119,24 @@
   
     
     
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -952,8 +1146,9 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2_10" >
         
           
-          <label class="md-nav__link" for="__nav_3_2_2_10" id="__nav_3_2_2_10_label" tabindex="0">
-            
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/saa/storage/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -962,8 +1157,14 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_2_10" id="__nav_3_2_2_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_2_10_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_2_10">
@@ -972,27 +1173,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cer/an/saa/storage/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Index
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -1086,13 +1266,129 @@
   
   
   
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../cer/an/sop/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Sop
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Sop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Saa bonso
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Saa bonso
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../../cer/an/sop/" class="md-nav__link">
+      <a href="../../../cer/saa-bonso/_category_/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Index
+    đề Jon Bonso
     
   </span>
   
@@ -1117,22 +1413,46 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../cer/saa-bonso/_category_/" class="md-nav__link">
+    
+    
+      
         
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
-    đề Jon Bonso
+    Saa stephane maarek
     
   </span>
   
 
-      </a>
-    </li>
-  
-
-              
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Saa stephane maarek
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -1163,6 +1483,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -1174,17 +1502,31 @@
   
     
     
+      
+        
+      
+        
+      
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -1235,6 +1577,58 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -1268,14 +1662,14 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      Mục lục
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
@@ -1414,6 +1808,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -1423,7 +1825,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -1482,6 +1895,53 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    1.account
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            1.account
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../saa-cantrill-and-lab/1.account/1.basic/" class="md-nav__link">
         
@@ -1505,6 +1965,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -1514,7 +1982,54 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -1575,7 +2090,20 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -1636,7 +2164,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -1728,7 +2267,20 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -1851,7 +2403,20 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -1912,7 +2477,32 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -2165,7 +2755,22 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -2311,7 +2916,20 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -2349,7 +2967,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -2441,7 +3070,34 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -2717,7 +3373,28 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -2932,7 +3609,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -2970,7 +3658,38 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -3292,7 +4011,22 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -3438,7 +4172,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -3476,7 +4221,32 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -3729,7 +4499,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -3829,7 +4610,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -3890,7 +4682,44 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -4289,7 +5118,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -4350,7 +5190,26 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -4542,7 +5401,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -4580,7 +5450,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -4672,7 +5553,40 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -4986,7 +5900,30 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -5232,7 +6169,28 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -5439,7 +6397,28 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -5615,7 +6594,30 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -5853,7 +6855,38 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -6175,7 +7208,30 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -6405,7 +7461,42 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -6740,6 +7831,53 @@
   
   
   
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_14_14" id="__nav_6_14_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết bên lề
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_14_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_14_14">
+            <span class="md-nav__icon md-icon"></span>
+            Lý thuyết bên lề
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../saa-stephane/12.serverless/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/case-cloudfrontFunc-lamdaEdge/" class="md-nav__link">
         
@@ -6765,6 +7903,14 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
@@ -6773,7 +7919,22 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -6911,7 +8072,18 @@
   
     
     
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -7003,7 +8175,34 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -7279,7 +8478,36 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -7578,7 +8806,34 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -7854,7 +9109,28 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
+    
+    
+      
+      
+        
+      
     
     
     <li class="md-nav__item md-nav__item--nested">
@@ -8067,150 +9343,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#giai-thich-chi-tiet-ve-amazon-inspector-va-quan-ly-lo-hong-bao-mat-trong-aws-organizations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Giải thích chi tiết về Amazon Inspector và Quản lý lỗ hổng bảo mật trong AWS Organizations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Giải thích chi tiết về Amazon Inspector và Quản lý lỗ hổng bảo mật trong AWS Organizations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-amazon-inspector-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Amazon Inspector là gì?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-quan-ly-lo-hong-bao-mat-trong-aws-organizations" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Quản lý lỗ hổng bảo mật trong AWS Organizations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-cac-thuc-tien-tot-nhat-best-practices-e-quan-ly-lo-hong" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Các thực tiễn tốt nhất (Best Practices) để quản lý lỗ hổng
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Các thực tiễn tốt nhất (Best Practices) để quản lý lỗ hổng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-1-thiet-lap-tai-khoan-quan-tri-tap-trung" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✔️ Best Practice #1: Thiết lập tài khoản quản trị tập trung
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-2-su-dung-suppression-rules-e-giam-tai-findings" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✔️ Best Practice #2: Sử dụng suppression rules để giảm tải findings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-3-dung-amazon-inspector-score-e-uu-tien-xu-ly" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✔️ Best Practice #3: Dùng Amazon Inspector Score để ưu tiên xử lý
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-4-dung-tag-e-uu-tien-xu-ly-lo-hong-theo-rui-ro" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✔️ Best Practice #4: Dùng Tag để ưu tiên xử lý lỗ hổng theo rủi ro
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-5-suppression-rules-dua-tren-tag-tai-nguyen" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✔️ Best Practice #5: Suppression rules dựa trên tag tài nguyên
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-6-tich-hop-amazon-inspector-voi-aws-security-hub" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✔️ Best Practice #6: Tích hợp Amazon Inspector với AWS Security Hub
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-7-xem-xet-va-cap-nhat-suppression-rules-inh-ky" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✔️ Best Practice #7: Xem xét và cập nhật suppression rules định kỳ
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ket-luan" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Kết luận
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -8220,18 +9352,26 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/orther-note/security/aws-inspector.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/orther-note/security/aws-inspector.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
   
   
+    
+      
+    
+    <a href="https://github.com/lelongc/aws/raw/main/my-website/docs/orther-note/security/aws-inspector.md" title="Xem mã nguồn của trang" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
 
 
   <h1>Aws inspector</h1>
 
-<h3 id="giai-thich-chi-tiet-ve-amazon-inspector-va-quan-ly-lo-hong-bao-mat-trong-aws-organizations"><strong>Giải thích chi tiết về Amazon Inspector và Quản lý lỗ hổng bảo mật trong AWS Organizations</strong></h3>
-<h4 id="1-amazon-inspector-la-gi"><strong>1. Amazon Inspector là gì?</strong></h4>
+<h3 id="giai-thich-chi-tiet-ve-amazon-inspector-va-quan-ly-lo-hong-bao-mat-trong-aws-organizations"><strong>Giải thích chi tiết về Amazon Inspector và Quản lý lỗ hổng bảo mật trong AWS Organizations</strong><a class="headerlink" href="#giai-thich-chi-tiet-ve-amazon-inspector-va-quan-ly-lo-hong-bao-mat-trong-aws-organizations" title="Permanent link">&para;</a></h3>
+<h4 id="1-amazon-inspector-la-gi"><strong>1. Amazon Inspector là gì?</strong><a class="headerlink" href="#1-amazon-inspector-la-gi" title="Permanent link">&para;</a></h4>
 <p>Amazon Inspector là một <strong>dịch vụ quét lỗ hổng bảo mật</strong> tự động trong hệ thống AWS. Nó giúp phát hiện các rủi ro bảo mật trong:</p>
 <ul>
 <li><strong>Amazon EC2 instances</strong> (máy chủ ảo)</li>
@@ -8245,18 +9385,18 @@
 <li><strong>Mức độ nghiêm trọng</strong> (Critical, High, Medium, Low, Informational)</li>
 <li><strong>Hướng dẫn khắc phục</strong></li>
 </ul>
-<h4 id="2-quan-ly-lo-hong-bao-mat-trong-aws-organizations"><strong>2. Quản lý lỗ hổng bảo mật trong AWS Organizations</strong></h4>
+<h4 id="2-quan-ly-lo-hong-bao-mat-trong-aws-organizations"><strong>2. Quản lý lỗ hổng bảo mật trong AWS Organizations</strong><a class="headerlink" href="#2-quan-ly-lo-hong-bao-mat-trong-aws-organizations" title="Permanent link">&para;</a></h4>
 <p>AWS Organizations giúp quản lý nhiều tài khoản AWS trong cùng một tổ chức. Khi kết hợp với Amazon Inspector, bạn có thể:</p>
 <p>✅ <strong>Quét lỗ hổng trên nhiều tài khoản AWS cùng lúc</strong></p>
 <p>✅ <strong>Tập trung quản lý các findings</strong> tại một tài khoản quản trị duy nhất</p>
 <p>✅ <strong>Dùng suppression rules để lọc bớt findings ít quan trọng</strong></p>
-<h4 id="3-cac-thuc-tien-tot-nhat-best-practices-e-quan-ly-lo-hong"><strong>3. Các thực tiễn tốt nhất (Best Practices) để quản lý lỗ hổng</strong></h4>
-<h5 id="best-practice-1-thiet-lap-tai-khoan-quan-tri-tap-trung"><strong>✔️ Best Practice #1: Thiết lập tài khoản quản trị tập trung</strong></h5>
+<h4 id="3-cac-thuc-tien-tot-nhat-best-practices-e-quan-ly-lo-hong"><strong>3. Các thực tiễn tốt nhất (Best Practices) để quản lý lỗ hổng</strong><a class="headerlink" href="#3-cac-thuc-tien-tot-nhat-best-practices-e-quan-ly-lo-hong" title="Permanent link">&para;</a></h4>
+<h5 id="best-practice-1-thiet-lap-tai-khoan-quan-tri-tap-trung"><strong>✔️ Best Practice #1: Thiết lập tài khoản quản trị tập trung</strong><a class="headerlink" href="#best-practice-1-thiet-lap-tai-khoan-quan-tri-tap-trung" title="Permanent link">&para;</a></h5>
 <ul>
 <li>Trong AWS Organizations, bạn nên chọn <strong>một tài khoản làm quản trị viên</strong> để kiểm soát toàn bộ hệ thống.</li>
 <li>Giúp tập trung theo dõi findings, bật/tắt quét tự động, và đặt quy tắc suppression.</li>
 </ul>
-<h5 id="best-practice-2-su-dung-suppression-rules-e-giam-tai-findings"><strong>✔️ Best Practice #2: Sử dụng suppression rules để giảm tải findings</strong></h5>
+<h5 id="best-practice-2-su-dung-suppression-rules-e-giam-tai-findings"><strong>✔️ Best Practice #2: Sử dụng suppression rules để giảm tải findings</strong><a class="headerlink" href="#best-practice-2-su-dung-suppression-rules-e-giam-tai-findings" title="Permanent link">&para;</a></h5>
 <ul>
 <li>Có thể có hàng nghìn findings không quan trọng, cần <strong>lọc bỏ</strong> để tập trung vào lỗ hổng nghiêm trọng.</li>
 <li>Suppression rules dựa trên các tiêu chí như:</li>
@@ -8266,19 +9406,19 @@
 <li><strong>ID lỗ hổng</strong> (Vulnerability ID - CVE)</li>
 <li><strong>Điểm số Amazon Inspector</strong></li>
 </ul>
-<h5 id="best-practice-3-dung-amazon-inspector-score-e-uu-tien-xu-ly"><strong>✔️ Best Practice #3: Dùng Amazon Inspector Score để ưu tiên xử lý</strong></h5>
+<h5 id="best-practice-3-dung-amazon-inspector-score-e-uu-tien-xu-ly"><strong>✔️ Best Practice #3: Dùng Amazon Inspector Score để ưu tiên xử lý</strong><a class="headerlink" href="#best-practice-3-dung-amazon-inspector-score-e-uu-tien-xu-ly" title="Permanent link">&para;</a></h5>
 <ul>
 <li><strong>Amazon Inspector Score</strong> dựa trên <strong>CVSS (Common Vulnerability Scoring System)</strong> , tính toán mức độ nghiêm trọng từ <strong>1 - 10</strong> .</li>
 <li>Không nên <strong>suppress quá nhiều</strong> vì có thể bỏ sót các lỗ hổng quan trọng.</li>
 </ul>
-<h5 id="best-practice-4-dung-tag-e-uu-tien-xu-ly-lo-hong-theo-rui-ro"><strong>✔️ Best Practice #4: Dùng Tag để ưu tiên xử lý lỗ hổng theo rủi ro</strong></h5>
+<h5 id="best-practice-4-dung-tag-e-uu-tien-xu-ly-lo-hong-theo-rui-ro"><strong>✔️ Best Practice #4: Dùng Tag để ưu tiên xử lý lỗ hổng theo rủi ro</strong><a class="headerlink" href="#best-practice-4-dung-tag-e-uu-tien-xu-ly-lo-hong-theo-rui-ro" title="Permanent link">&para;</a></h5>
 <ul>
 <li><strong>Gán nhãn (tag) tài nguyên</strong> để phân loại mức độ rủi ro:</li>
 <li><strong>Prod (Production)</strong> : hệ thống quan trọng, cần ưu tiên</li>
 <li><strong>Dev (Development)</strong> : môi trường phát triển, ít rủi ro hơn</li>
 <li><strong>Sandbox</strong> : thử nghiệm, có thể suppress nhiều findings hơn</li>
 </ul>
-<h5 id="best-practice-5-suppression-rules-dua-tren-tag-tai-nguyen"><strong>✔️ Best Practice #5: Suppression rules dựa trên tag tài nguyên</strong></h5>
+<h5 id="best-practice-5-suppression-rules-dua-tren-tag-tai-nguyen"><strong>✔️ Best Practice #5: Suppression rules dựa trên tag tài nguyên</strong><a class="headerlink" href="#best-practice-5-suppression-rules-dua-tren-tag-tai-nguyen" title="Permanent link">&para;</a></h5>
 <ul>
 <li>Dùng tag <strong>EnvironmentName</strong> và <strong>RiskExposureScore</strong> để tạo suppression rules linh hoạt hơn.</li>
 <li>
@@ -8314,16 +9454,16 @@
 </table>
 </li>
 </ul>
-<h5 id="best-practice-6-tich-hop-amazon-inspector-voi-aws-security-hub"><strong>✔️ Best Practice #6: Tích hợp Amazon Inspector với AWS Security Hub</strong></h5>
+<h5 id="best-practice-6-tich-hop-amazon-inspector-voi-aws-security-hub"><strong>✔️ Best Practice #6: Tích hợp Amazon Inspector với AWS Security Hub</strong><a class="headerlink" href="#best-practice-6-tich-hop-amazon-inspector-voi-aws-security-hub" title="Permanent link">&para;</a></h5>
 <ul>
 <li>Giúp tập trung findings từ nhiều dịch vụ bảo mật khác nhau để đánh giá tổng thể.</li>
 </ul>
-<h5 id="best-practice-7-xem-xet-va-cap-nhat-suppression-rules-inh-ky"><strong>✔️ Best Practice #7: Xem xét và cập nhật suppression rules định kỳ</strong></h5>
+<h5 id="best-practice-7-xem-xet-va-cap-nhat-suppression-rules-inh-ky"><strong>✔️ Best Practice #7: Xem xét và cập nhật suppression rules định kỳ</strong><a class="headerlink" href="#best-practice-7-xem-xet-va-cap-nhat-suppression-rules-inh-ky" title="Permanent link">&para;</a></h5>
 <ul>
 <li>Rủi ro bảo mật <strong>luôn thay đổi</strong> , cần kiểm tra suppression rules thường xuyên để đảm bảo không bỏ sót lỗ hổng quan trọng.</li>
 </ul>
 <hr />
-<h3 id="ket-luan"><strong>🎯 Kết luận</strong></h3>
+<h3 id="ket-luan"><strong>🎯 Kết luận</strong><a class="headerlink" href="#ket-luan" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Amazon Inspector</strong> giúp quét và phát hiện lỗ hổng bảo mật trên AWS.</li>
 <li><strong>AWS Organizations</strong> giúp quản lý nhiều tài khoản AWS hiệu quả.</li>
@@ -8349,12 +9489,60 @@
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
         
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
+        
+          
+          <a href="../../readme/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Readme">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Readme
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../saa-cantrill-and-lab/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Readme
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -8377,10 +9565,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.tabs.sticky", "navigation.footer", "navigation.instant", "navigation.instant.preview", "navigation.indexes", "navigation.indexes.sticky", "navigation.search", "navigation.search.highlight", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tabs", "navigation.paths", "navigation.tracking", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.code.select", "content.action.view", "content.action.edit", "content.footnote.tooltips", "content.tabs.link", "content.tooltips", "content.images.lazy", "content.images.zoom", "content.math", "toc.integrate", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
