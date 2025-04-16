@@ -1911,11 +1911,6 @@
         const passPercentElement = document.getElementById("pass-percent");
         passPercentElement.innerHTML = passPercent + "%";
         totalNumberOfQuestions = questionData.length;
-        // shuffle the questionData to randomize the order of the questions
-        // for (let i = questionData.length - 1; i > 0; i--) {
-        //   const j = Math.floor(Math.random() * (i + 1));
-        //   [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
-        // }
 
         let formattedQuestions = questionData.map(formatSingleQuestionData);
         updateScore();
@@ -1925,17 +1920,6 @@
         });
       }
 
-      /**
-       * Formats the question data from the given QuizData object.
-       *
-       * @param {Object} singleQuizData - The singleQuizData object containing prompt and correct_response.
-       * @return {Object} The formatted question object with the following properties:
-       *   - id: The ID of the question.
-       *   - question: The text of the question.
-       *   - answers: The array of answer options.
-       *   - correctAnswer: The text of the correct answer.
-       *   - explanation: The explanation of the correct answer.
-       */
       function formatSingleQuestionData(singleQuizData = null) {
         const { prompt, correct_response, id } = singleQuizData;
         const questionText = prompt.question;
@@ -1953,60 +1937,44 @@
         return questionObj;
       }
 
-      /**
-       * Renders a single question with its options and submit button.
-       *
-       * @param {Object} singleQuestionData - The data of the question to render.
-       * @param {number} rootIndex - The index of the question in the quiz.
-       * @return {void} return nothing.
-       */
-
       const renderSingleQuestion = (singleQuestionData = {}, rootIndex = 1) => {
         const { id, explanation, answers, correctAnswer, question } =
           singleQuestionData;
-        // shuffle the answers to randomize the order of the answers
-        // for (let i = answers.length - 1; i > 0; i--) {
-        //   const j = Math.floor(Math.random() * (i + 1));
-        //   [answers[i], answers[j]] = [answers[j], answers[i]];
-        // }
+
         const optionsHTML = answers
           .map((option, index) => {
             const optionId = `${id}_${index}`;
-
             return `
-        <div class="question-lable">
-          <input type="radio" id="${optionId}" name="${"answer"}" value="${option}" />
-          <label for="${optionId}">${option}</label>
-        </div>
-      `;
+          <div class="question-lable">
+            <input type="radio" id="${optionId}" name="${"answer"}" value="${option}" />
+            <label for="${optionId}">${option}</label>
+          </div>
+        `;
           })
-
           .join("");
 
         const container = document.createElement("div");
         container.innerHTML = `
-        <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
-          <div style="display: flex;justify-content: space-between;">
-            <p style="font-weight: 600">Question ${rootIndex}:</p>
-            <button type="button" onclick="renderExplanation(event)" id="${`explanation-${id}`}" data-explanation="${explanation}" class="explanation-btn">View Explanation</button>
-          </div>
-          <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
-          <div class="options-container">
-            ${optionsHTML}
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <button type="submit" id="submit-button" class="button">Submit</button>
-          </div>
-        </form>
-      `;
+      <form data-correct-answer="${correctAnswer}" data-question-id="${id}" class="single-question-container" onsubmit="submitButtonListener(event)">
+        <div style="display: flex;justify-content: space-between;">
+          <p style="font-weight: 600">Question ${rootIndex}:</p>
+          <button type="button" onclick="renderExplanation(event)" data-explanation-id="explanation-${id}" class="explanation-btn">View Explanation</button>
+        </div>
+        <p style="margin-bottom: 8px;line-height: 1.5">${question}</p>
+        <div class="options-container">
+          ${optionsHTML}
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button type="submit" id="submit-button" class="button">Submit</button>
+        </div>
+        <template id="explanation-${id}" style="display:none;">
+          ${explanation}
+        </template>
+      </form>
+    `;
         quizContainerElement.appendChild(container);
       };
 
-      /**
-       * Updates the score on the page based on the number of correct and incorrect answers.
-       *
-       * @return {void} This function does not return a value.
-       */
       function updateScore() {
         const currentParcentageElement =
           document.getElementById("current-score");
@@ -2020,12 +1988,6 @@
         currentParcentageElement.innerHTML = score;
       }
 
-      /**
-       * Handles the event when the submit button is clicked.
-       *
-       * @param {Event} e - The event object.
-       * @return {void} This function does not return anything.
-       */
       const submitButtonListener = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -2061,8 +2023,10 @@
       };
 
       function renderExplanation(ev) {
+        const explanationId = ev.target.dataset.explanationId;
+        const template = document.getElementById(explanationId);
         modalTextElement.innerHTML =
-          ev.target.dataset?.explanation || "no explanation found";
+          template?.innerHTML || "No explanation found.";
         dialog.showModal();
         dialog.addEventListener("click", (event) => {
           if (event.target === dialog) {
