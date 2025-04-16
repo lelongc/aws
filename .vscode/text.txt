@@ -8,7 +8,7 @@ pip --version
 # Show the version of mkdocs
 mkdocs --version
 # Serve the documentation locally
-mkdocs serve
+cd my-website && mkdocs serve
 # Build the documentation site
 mkdocs build
 

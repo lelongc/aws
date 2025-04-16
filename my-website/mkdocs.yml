@@ -41,6 +41,7 @@ theme:
   - toc.integrate
   - toc.follow
   - toc.expand
+  - header.autohide
 
 plugins:
   - search
@@ -53,3 +54,12 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight:
       anchor_linenums: true
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/lelongc
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/long-lê-190l/
+copyright: 'Copyright &copy; Lê Long C. 2025'
