@@ -24,7 +24,7 @@ jobs:
         run: |
           cd my-website
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocs-material mkdocs-awesome-pages-plugin
+          pip install mkdocs mkdocs-material mkdocs-awesome-pages-plugin pymdown-extensions
 
       - name: Build the MkDocs site
         run: |

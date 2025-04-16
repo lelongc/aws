@@ -1,49 +1,79 @@
-site_name: DraDoc  # Thay "Tên trang web của bạn" bằng tên bạn muốn
+# Thông tin cơ bản
+site_name: DraDoc
+repo_url: https://github.com/lelongc/aws # Link đến repo của bạn
+site_url: https://lelongc.github.io/aws/ # Thêm URL khi bạn triển khai
+edit_uri: edit/main/my-website/docs/ # <<< BỎ COMMENT VÀ ĐÃ CẤU HÌNH
+
+# Theme Material for MkDocs
 theme:
   name: material
+  language: vi
+
   palette:
+    # ... (giữ nguyên cấu hình palette) ...
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-sunny
         name: Chuyển sang chế độ tối
-
     - scheme: slate
       primary: black
       accent: indigo
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-night
         name: Chuyển sang chế độ sáng
+
   features:
+    # Navigation Features
+    - navigation.top
+    - navigation.sections
+    - navigation.tabs.sticky
+    - navigation.footer
+    - navigation.instant
+    - navigation.instant.preview
+    - navigation.indexes
+    - navigation.indexes.sticky
+    - navigation.search
+    - navigation.search.highlight
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tabs
+    - navigation.paths
+    - navigation.tracking
+
+    # Search Features
+    - search.suggest
+    - search.highlight
+    - search.share
+
+    # Content Features
     - content.code.copy
-    - content.action.edit  # Kích hoạt nút "Edit this page"
-    - navigation.tabs      # Hiển thị các section cấp cao nhất dưới dạng tab
-    - navigation.sections  # Hiển thị các trang con dưới dạng section có thể mở rộng
-    - navigation.expand    # Tự động mở rộng section hiện tại trong navigation
-    - toc.integrate        # Tích hợp mục lục vào thanh navigation bên trái
-    - toc.follow           # Tự động đánh dấu mục lục khi bạn cuộn trang
-    - content.code.annotate # Cho phép thêm chú thích vào code blocks
-    - content.code.select   # Cho phép chọn code bằng một cú nhấp chuột
-    # - content.tabs.link     # Cho phép liên kết trực tiếp đến các tab trong nội dung
-    - header.autohide      # Tự động ẩn header khi cuộn xuống
-    - footer.navigation    # Thêm nút điều hướng trang trước/trang sau ở footer
-    - content.code.toggle  # Cho phép bật/tắt hiển thị từng dòng trong code block
-    - content.action.source # Thêm nút "View Source" để xem mã nguồn của trang
+    - content.code.annotate
+    - content.code.select
+    - content.action.view
+    - content.action.edit
+    - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+    - content.images.lazy
+    - content.images.zoom
+    - content.math
 
+    # Table of Contents Features
+    - toc.integrate
+    - toc.follow
+    - toc.expand
+        # ... (giữ nguyên plugins và markdown_extensions) ...
 plugins:
-  - awesome-pages:
-      collapse_single_pages: true # Tùy chọn
   - search
-  - glightbox:         # Cải thiện trải nghiệm xem ảnh lightbox
-      zoomable: true
-  # - meta:             # Cho phép bạn định nghĩa metadata cho từng trang (ví dụ: description, keywords)
-  # - rss:              # Tạo RSS feed cho trang web (nếu bạn có blog)
-  # - sitemap:          # Tạo sitemap.xml để cải thiện SEO
-  # - tags:             # Cho phép bạn thêm tags vào các trang (nếu bạn muốn)
-    
-  
+  - awesome-pages
 
-repo_url: https://github.com/lelongc/aws
-edit_uri: edit/main/my-website/docs/ # Hãy chắc chắn đường dẫn này đúng với cấu trúc thư mục của bạn
-
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+  - attr_list
