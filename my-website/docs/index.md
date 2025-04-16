@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Welcome to DraDoc
 
 này được tạo ra để giúp bạn ôn tập cho kỳ thi AWS Certified Solutions Architect
@@ -13,7 +17,3 @@ này được tạo ra để giúp bạn ôn tập cho kỳ thi AWS Certified So
 # Trang chủ
 
 Chào mừng đến với trang tài liệu của tôi.
-
-## Mục lục
-
-!!! children
