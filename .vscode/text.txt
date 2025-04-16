@@ -1,11 +1,8 @@
 pip install --upgrade pip
 pip install mkdocs-material # Đã có theme
-pip install mkdocs-awesome-pages-plugin mkdocs-glightbox # Đã có từ file gốc
 pip install pymdown-extensions # RẤT QUAN TRỌNG cho markdown_extensions
-pip install mkdocstrings[python] # Cần thiết nếu dùng plugin mkdocstrings (cho code Python)
-pip install mkdocs-include-markdown-plugin # Cần thiết cho plugin include-markdown
-# Có thể cần cài đặt thêm các thư viện cho biểu đồ nếu dùng, ví dụ: pip install mkdocs-mermaid2-plugin
-
+pip install mkdocs-glightbox
+pip install mkdocs-git-revision-date-localized-plugin
 # Show the version of pip
 pip --version
 # Show the version of mkdocs
