@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9955,8 +9964,8 @@
 
   <h1>Summary</h1>
 
-<p><img alt="alt text" src="../image/rds.png" />
-<img alt="alt text" src="../image/aurora.png" /></p>
+<p><a class="glightbox" href="../image/rds.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/rds.png" /></a>
+<a class="glightbox" href="../image/aurora.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/aurora.png" /></a></p>
 <h3 id="tong-hop-ve-amazon-aurora"><strong>Tổng hợp về Amazon Aurora</strong><a class="headerlink" href="#tong-hop-ve-amazon-aurora" title="Permanent link">&para;</a></h3>
 <p>Amazon Aurora là một dịch vụ cơ sở dữ liệu quan hệ (RDBMS) được quản lý hoàn toàn bởi AWS, tương thích với hai engine cơ sở dữ liệu phổ biến là <strong>PostgreSQL</strong> và <strong>MySQL</strong>. Aurora được thiết kế để cung cấp hiệu suất cao, khả năng mở rộng và tính sẵn sàng cao hơn so với các cơ sở dữ liệu truyền thống.</p>
 <hr />
@@ -10034,7 +10043,7 @@
 <h3 id="7-ket-luan"><strong>7. Kết luận</strong><a class="headerlink" href="#7-ket-luan" title="Permanent link">&para;</a></h3>
 <h2 id="amazon-aurora-la-mot-lua-chon-tuyet-voi-cho-cac-ung-dung-can-hieu-suat-cao-tinh-san-sang-cao-va-kha-nang-mo-rong-linh-hoat-voi-cac-tinh-nang-nhu-aurora-serverless-global-database-va-machine-learning-aurora-mang-lai-nhieu-loi-ich-vuot-troi-so-voi-cac-co-so-du-lieu-truyen-thong">Amazon Aurora là một lựa chọn tuyệt vời cho các ứng dụng cần hiệu suất cao, tính sẵn sàng cao và khả năng mở rộng linh hoạt. Với các tính năng như Aurora Serverless, Global Database và Machine Learning, Aurora mang lại nhiều lợi ích vượt trội so với các cơ sở dữ liệu truyền thống.<a class="headerlink" href="#amazon-aurora-la-mot-lua-chon-tuyet-voi-cho-cac-ung-dung-can-hieu-suat-cao-tinh-san-sang-cao-va-kha-nang-mo-rong-linh-hoat-voi-cac-tinh-nang-nhu-aurora-serverless-global-database-va-machine-learning-aurora-mang-lai-nhieu-loi-ich-vuot-troi-so-voi-cac-co-so-du-lieu-truyen-thong" title="Permanent link">&para;</a></h2>
 <hr />
-<p><img alt="alt text" src="../image/elasticache.png" /></p>
+<p><a class="glightbox" href="../image/elasticache.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/elasticache.png" /></a></p>
 <h3 id="tong-hop-ve-amazon-elasticache"><strong>Tổng hợp về Amazon ElastiCache</strong><a class="headerlink" href="#tong-hop-ve-amazon-elasticache" title="Permanent link">&para;</a></h3>
 <p>Amazon ElastiCache là một dịch vụ quản lý bộ nhớ đệm (cache) được cung cấp bởi AWS, hỗ trợ hai công nghệ phổ biến là <strong>Redis</strong> và <strong>Memcached</strong>. ElastiCache giúp cải thiện hiệu suất ứng dụng bằng cách lưu trữ dữ liệu trong bộ nhớ (in-memory), mang lại độ trễ cực thấp (dưới mili giây) cho các tác vụ đọc dữ liệu.</p>
 <h3 id="1-tong-quan-ve-elasticache"><strong>1. Tổng quan về ElastiCache</strong><a class="headerlink" href="#1-tong-quan-ve-elasticache" title="Permanent link">&para;</a></h3>
@@ -10129,7 +10138,7 @@
 <p>Amazon ElastiCache là một dịch vụ mạnh mẽ để cải thiện hiệu suất ứng dụng thông qua việc lưu trữ dữ liệu trong bộ nhớ. Tuy nhiên, việc sử dụng ElastiCache yêu cầu thay đổi mã ứng dụng, vì vậy hãy cân nhắc kỹ khi lựa chọn giải pháp caching phù hợp. Các use case phổ biến bao gồm caching database queries, lưu trữ session data và giảm độ trễ truy cập dữ liệu.</p>
 <p>Hy vọng phần tổng hợp này sẽ giúp bạn nắm vững kiến thức về Amazon ElastiCache! 🚀</p>
 <hr />
-<p><img alt="alt text" src="../image/dynamodb.png" /></p>
+<p><a class="glightbox" href="../image/dynamodb.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/dynamodb.png" /></a></p>
 <h3 id="tong-hop-ve-amazon-dynamodb"><strong>Tổng hợp về Amazon DynamoDB</strong><a class="headerlink" href="#tong-hop-ve-amazon-dynamodb" title="Permanent link">&para;</a></h3>
 <p>Amazon DynamoDB là một dịch vụ cơ sở dữ liệu NoSQL được quản lý hoàn toàn bởi AWS, cung cấp hiệu suất cao với độ trễ ở mức mili giây. DynamoDB là một lựa chọn phổ biến cho các ứng dụng cần khả năng mở rộng linh hoạt, tính sẵn sàng cao và không cần quản lý cơ sở hạ tầng.</p>
 <hr />
@@ -10253,7 +10262,7 @@
 <h3 id="9-ket-luan"><strong>9. Kết luận</strong><a class="headerlink" href="#9-ket-luan" title="Permanent link">&para;</a></h3>
 <p>Amazon DynamoDB là một dịch vụ cơ sở dữ liệu NoSQL mạnh mẽ, phù hợp cho các ứng dụng cần hiệu suất cao, khả năng mở rộng linh hoạt và tích hợp với hệ sinh thái AWS. Với các tính năng như DAX, Global Tables, và DynamoDB Streams, DynamoDB là lựa chọn hàng đầu cho nhiều use case khác nhau.</p>
 <h2 id="hy-vong-phan-tong-hop-nay-se-giup-ban-nam-vung-kien-thuc-ve-amazon-dynamodb">Hy vọng phần tổng hợp này sẽ giúp bạn nắm vững kiến thức về Amazon DynamoDB! 🚀<a class="headerlink" href="#hy-vong-phan-tong-hop-nay-se-giup-ban-nam-vung-kien-thuc-ve-amazon-dynamodb" title="Permanent link">&para;</a></h2>
-<p><img alt="alt text" src="../image/s3.png" /></p>
+<p><a class="glightbox" href="../image/s3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/s3.png" /></a></p>
 <h3 id="tong-quan-ve-amazon-s3-tu-goc-o-co-so-du-lieu">Tổng quan về Amazon S3 từ góc độ cơ sở dữ liệu<a class="headerlink" href="#tong-quan-ve-amazon-s3-tu-goc-o-co-so-du-lieu" title="Permanent link">&para;</a></h3>
 <p>Amazon S3 (Simple Storage Service) là một dịch vụ lưu trữ đối tượng (object storage) của AWS, được thiết kế để lưu trữ và truy xuất dữ liệu với khả năng mở rộng vô hạn. Dưới đây là các điểm chính về Amazon S3:</p>
 <h4 id="1-kien-truc-luu-tru">1. <strong>Kiến trúc lưu trữ</strong><a class="headerlink" href="#1-kien-truc-luu-tru" title="Permanent link">&para;</a></h4>
@@ -10313,7 +10322,7 @@
 <h3 id="ket-luan">Kết luận<a class="headerlink" href="#ket-luan" title="Permanent link">&para;</a></h3>
 <p>Amazon S3 là một dịch vụ linh hoạt và mạnh mẽ, cung cấp nhiều tính năng và tùy chọn để quản lý dữ liệu một cách hiệu quả. Hiểu rõ các tính năng và cách sử dụng S3 sẽ giúp bạn tối ưu hóa việc lưu trữ và quản lý dữ liệu trên AWS.</p>
 <hr />
-<p><img alt="alt text" src="../image/DocumentDB.png" /></p>
+<p><a class="glightbox" href="../image/DocumentDB.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/DocumentDB.png" /></a></p>
 <h3 id="tong-quan-ve-amazon-documentdb">Tổng quan về Amazon DocumentDB<a class="headerlink" href="#tong-quan-ve-amazon-documentdb" title="Permanent link">&para;</a></h3>
 <p>Amazon DocumentDB là một dịch vụ cơ sở dữ liệu NoSQL được quản lý hoàn toàn bởi AWS, được thiết kế để tương thích với MongoDB. Dưới đây là các điểm chính về Amazon DocumentDB:</p>
 <h4 id="1-gioi-thieu-ve-documentdb">1. <strong>Giới thiệu về DocumentDB</strong><a class="headerlink" href="#1-gioi-thieu-ve-documentdb" title="Permanent link">&para;</a></h4>
@@ -10347,8 +10356,8 @@
 <p>Amazon DocumentDB là một dịch vụ cơ sở dữ liệu NoSQL mạnh mẽ và linh hoạt, tương thích với MongoDB, giúp bạn dễ dàng lưu trữ và truy vấn dữ liệu dạng JSON. Hiểu rõ các tính năng và cách sử dụng DocumentDB sẽ giúp bạn tối ưu hóa việc quản lý dữ liệu NoSQL trên AWS.</p>
 <hr />
 <h3 id="tong-quan-ve-amazon-neptune">Tổng quan về Amazon Neptune<a class="headerlink" href="#tong-quan-ve-amazon-neptune" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/Neptune.png" />
-<img alt="alt text" src="../image/Neptune-stream.png" />
+<p><a class="glightbox" href="../image/Neptune.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Neptune.png" /></a>
+<a class="glightbox" href="../image/Neptune-stream.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Neptune-stream.png" /></a>
 Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị (graph database) được quản lý hoàn toàn bởi AWS, được thiết kế để xử lý các tập dữ liệu có tính kết nối cao. Dưới đây là các điểm chính về Amazon Neptune:</p>
 <h4 id="1-gioi-thieu-ve-neptune">1. <strong>Giới thiệu về Neptune</strong><a class="headerlink" href="#1-gioi-thieu-ve-neptune" title="Permanent link">&para;</a></h4>
 <ul>
@@ -10384,7 +10393,7 @@ Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị (graph dat
 <h3 id="ket-luan_2">Kết luận<a class="headerlink" href="#ket-luan_2" title="Permanent link">&para;</a></h3>
 <h2 id="amazon-neptune-la-mot-dich-vu-co-so-du-lieu-o-thi-manh-me-va-linh-hoat-ly-tuong-cho-cac-ung-dung-co-tinh-ket-noi-cao-hieu-ro-cac-tinh-nang-va-cach-su-dung-neptune-se-giup-ban-toi-uu-hoa-viec-quan-ly-va-truy-van-du-lieu-o-thi-tren-aws">Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị mạnh mẽ và linh hoạt, lý tưởng cho các ứng dụng có tính kết nối cao. Hiểu rõ các tính năng và cách sử dụng Neptune sẽ giúp bạn tối ưu hóa việc quản lý và truy vấn dữ liệu đồ thị trên AWS.<a class="headerlink" href="#amazon-neptune-la-mot-dich-vu-co-so-du-lieu-o-thi-manh-me-va-linh-hoat-ly-tuong-cho-cac-ung-dung-co-tinh-ket-noi-cao-hieu-ro-cac-tinh-nang-va-cach-su-dung-neptune-se-giup-ban-toi-uu-hoa-viec-quan-ly-va-truy-van-du-lieu-o-thi-tren-aws" title="Permanent link">&para;</a></h2>
 <hr />
-<p><img alt="alt text" src="../image/Keyspaces.png" /></p>
+<p><a class="glightbox" href="../image/Keyspaces.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Keyspaces.png" /></a></p>
 <h3 id="tong-quan-ve-amazon-keyspaces-apache-cassandra-tren-aws">Tổng quan về Amazon Keyspaces (Apache Cassandra trên AWS)<a class="headerlink" href="#tong-quan-ve-amazon-keyspaces-apache-cassandra-tren-aws" title="Permanent link">&para;</a></h3>
 <p>Amazon Keyspaces là một dịch vụ cơ sở dữ liệu NoSQL được quản lý hoàn toàn bởi AWS, tương thích với Apache Cassandra. Dưới đây là các điểm chính về Amazon Keyspaces:</p>
 <h4 id="1-gioi-thieu-ve-amazon-keyspaces">1. <strong>Giới thiệu về Amazon Keyspaces</strong><a class="headerlink" href="#1-gioi-thieu-ve-amazon-keyspaces" title="Permanent link">&para;</a></h4>
@@ -10425,8 +10434,8 @@ Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị (graph dat
 <hr />
 <h2 id="oldb-se-ngung-vao-thang-32025-nen-thoi-khoi-hoc">oldb sẽ ngừng vào tháng 3/2025 nên thôi khỏi học<a class="headerlink" href="#oldb-se-ngung-vao-thang-32025-nen-thoi-khoi-hoc" title="Permanent link">&para;</a></h2>
 <hr />
-<p><img alt="alt text" src="../image/Timestream.png" />
-<img alt="alt text" src="../image/Timestream-arc.png" /></p>
+<p><a class="glightbox" href="../image/Timestream.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Timestream.png" /></a>
+<a class="glightbox" href="../image/Timestream-arc.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Timestream-arc.png" /></a></p>
 <h3 id="tong-quan-ve-amazon-timestream">Tổng quan về Amazon Timestream<a class="headerlink" href="#tong-quan-ve-amazon-timestream" title="Permanent link">&para;</a></h3>
 <p>Amazon Timestream là một dịch vụ cơ sở dữ liệu chuỗi thời gian (time series database) được quản lý hoàn toàn bởi AWS, được thiết kế để lưu trữ và phân tích dữ liệu chuỗi thời gian một cách hiệu quả. Dưới đây là các điểm chính về Amazon Timestream:</p>
 <h4 id="1-gioi-thieu-ve-timestream">1. <strong>Giới thiệu về Timestream</strong><a class="headerlink" href="#1-gioi-thieu-ve-timestream" title="Permanent link">&para;</a></h4>
@@ -10467,6 +10476,27 @@ Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị (graph dat
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -10560,5 +10590,7 @@ Amazon Neptune là một dịch vụ cơ sở dữ liệu đồ thị (graph dat
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

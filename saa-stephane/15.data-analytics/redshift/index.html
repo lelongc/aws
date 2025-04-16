@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9501,7 +9510,7 @@
 <li><strong>Athena</strong>: Là dịch vụ serverless, không yêu cầu quản lý cơ sở hạ tầng, và dữ liệu được lưu trữ trực tiếp trong S3. Athena phù hợp cho các truy vấn ad hoc và phân tích dữ liệu không thường xuyên.</li>
 </ul>
 <h3 id="5-snapshots-va-disaster-recovery-dr">5. <strong>Snapshots và Disaster Recovery (DR)</strong><a class="headerlink" href="#5-snapshots-va-disaster-recovery-dr" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/redshift-Snapshots-DR.png" /></p>
+<p><a class="glightbox" href="../image/redshift-Snapshots-DR.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/redshift-Snapshots-DR.png" /></a></p>
 <ul>
 <li><strong>Snapshots</strong>: Là các bản sao lưu theo thời điểm (point-in-time backups) của một cụm Redshift. Snapshots được lưu trữ trong S3 và chỉ lưu các thay đổi (incremental), giúp tiết kiệm không gian lưu trữ.</li>
 <li><strong>Manual Snapshots</strong>: Bạn có thể tạo snapshot thủ công và giữ chúng cho đến khi bạn xóa.</li>
@@ -9523,7 +9532,7 @@
 <p>Amazon Redshift cung cấp nhiều cách để đưa dữ liệu vào cụm (cluster) của nó, cũng như các tính năng mạnh mẽ như <strong>Redshift Spectrum</strong> để phân tích dữ liệu trực tiếp từ Amazon S3 mà không cần tải dữ liệu vào Redshift. Dưới đây là chi tiết về các phương pháp nhập dữ liệu và tính năng Redshift Spectrum:</p>
 <hr />
 <h3 id="1-cac-phuong-phap-nhap-du-lieu-vao-redshift">1. <strong>Các phương pháp nhập dữ liệu vào Redshift</strong><a class="headerlink" href="#1-cac-phuong-phap-nhap-du-lieu-vao-redshift" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/Redshift-insert-data.png" /></p>
+<p><a class="glightbox" href="../image/Redshift-insert-data.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Redshift-insert-data.png" /></a></p>
 <h4 id="a-su-dung-amazon-kinesis-data-firehose"><strong>a. Sử dụng Amazon Kinesis Data Firehose</strong><a class="headerlink" href="#a-su-dung-amazon-kinesis-data-firehose" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Cách thức hoạt động</strong>:</li>
@@ -9555,7 +9564,7 @@
 </ul>
 <hr />
 <h3 id="2-redshift-spectrum-phan-tich-du-lieu-truc-tiep-tu-s3">2. <strong>Redshift Spectrum: Phân tích dữ liệu trực tiếp từ S3</strong><a class="headerlink" href="#2-redshift-spectrum-phan-tich-du-lieu-truc-tiep-tu-s3" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/Redshift-Spectrum.png" /></p>
+<p><a class="glightbox" href="../image/Redshift-Spectrum.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Redshift-Spectrum.png" /></a></p>
 <h4 id="a-tong-quan"><strong>a. Tổng quan</strong><a class="headerlink" href="#a-tong-quan" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Mục đích</strong>: Redshift Spectrum cho phép bạn phân tích dữ liệu trực tiếp từ <strong>Amazon S3</strong> mà không cần tải dữ liệu vào Redshift.</li>
@@ -9608,6 +9617,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9701,5 +9731,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

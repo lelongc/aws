@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9322,7 +9331,7 @@
 <p><strong>Thực thi concurrency:</strong> Khi chúng ta gọi hàm Lambda nhiều lần, chúng ta sẽ có nhiều lần thực thi concurrency của các hàm Lambda. Lambda có thể mở rộng rất nhanh chóng và dễ dàng. Nếu chúng ta gọi hàm Lambda ở quy mô thấp, có thể có hai lần thực thi concurrency. Nhưng nếu có nhiều sự kiện xảy ra, có thể có tới 1000 lần thực thi concurrency của các hàm Lambda.</p>
 </li>
 <li>
-<p><strong>Giới hạn concurrency:</strong> <img alt="alt text" src="../image/concurrency.png" />
+<p><strong>Giới hạn concurrency:</strong> <a class="glightbox" href="../image/concurrency.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/concurrency.png" /></a>
   Chúng ta có thể giới hạn số lượng thực thi concurrency của một hàm Lambda bằng cách đặt "reserved concurrency" ở mức hàm. Ví dụ, chúng ta có thể đặt giới hạn là 50 lần thực thi concurrency. Mỗi lần gọi vượt quá giới hạn concurrency sẽ kích hoạt một lỗi giới hạn tốc độ (throttle).</p>
 </li>
 <li>
@@ -9339,7 +9348,7 @@
 <ul>
 <li>
 <p><strong>Thực thi không đồng bộ:</strong>
-  <img alt="alt text" src="../image/concur-async.png" />
+  <a class="glightbox" href="../image/concur-async.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/concur-async.png" /></a>
   Ví dụ, khi tải lên các file vào S3, tạo ra sự kiện mới sẽ gọi hàm Lambda. Nếu có nhiều file được tải lên cùng lúc, sẽ có nhiều lần thực thi concurrency của Lambda. Nếu hàm không có đủ khả năng concurrency, các yêu cầu bổ sung sẽ bị giới hạn tốc độ.</p>
 </li>
 <li>
@@ -9347,7 +9356,7 @@
 </li>
 </ul>
 <h3 id="cold-starts-va-provisioned-concurrency">Cold starts và provisioned concurrency:<a class="headerlink" href="#cold-starts-va-provisioned-concurrency" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/ColdStarts-proVisioned-concurrency.png" /></p>
+<p><a class="glightbox" href="../image/ColdStarts-proVisioned-concurrency.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/ColdStarts-proVisioned-concurrency.png" /></a></p>
 <ul>
 <li>
 <p><strong>Cold start:</strong> Khi tạo một instance mới của hàm Lambda, mã phải được tải và khởi tạo. Nếu quá trình khởi tạo lớn, yêu cầu đầu tiên sẽ có độ trễ cao hơn và có thể ảnh hưởng đến người dùng.</p>
@@ -9366,6 +9375,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9459,5 +9489,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

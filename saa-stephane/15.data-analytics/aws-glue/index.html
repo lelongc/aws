@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9472,7 +9481,7 @@
 <p>AWS Glue là một dịch vụ <strong>Extract, Transform, Load (ETL)</strong> được quản lý hoàn toàn (fully managed) và không cần máy chủ (serverless), giúp bạn chuẩn bị và biến đổi dữ liệu cho các tác vụ phân tích. Dưới đây là các chi tiết quan trọng về AWS Glue:</p>
 <hr />
 <h3 id="1-tong-quan-ve-aws-glue">1. <strong>Tổng quan về AWS Glue</strong><a class="headerlink" href="#1-tong-quan-ve-aws-glue" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/Glue.png" /></p>
+<p><a class="glightbox" href="../image/Glue.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Glue.png" /></a></p>
 <ul>
 <li><strong>Mục đích</strong>: Glue được sử dụng để trích xuất (extract), biến đổi (transform) và tải (load) dữ liệu từ các nguồn khác nhau vào các kho dữ liệu hoặc dịch vụ phân tích.</li>
 <li><strong>Tính năng chính</strong>:</li>
@@ -9490,7 +9499,7 @@
 <hr />
 <h3 id="3-cac-thanh-phan-chinh-cua-aws-glue">3. <strong>Các thành phần chính của AWS Glue</strong><a class="headerlink" href="#3-cac-thanh-phan-chinh-cua-aws-glue" title="Permanent link">&para;</a></h3>
 <h4 id="a-glue-data-catalog"><strong>a. Glue-Data-Catalog</strong><a class="headerlink" href="#a-glue-data-catalog" title="Permanent link">&para;</a></h4>
-<p><img alt="alt text" src="../image/Glue-Data-Catalog.png" /></p>
+<p><a class="glightbox" href="../image/Glue-Data-Catalog.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Glue-Data-Catalog.png" /></a></p>
 <ul>
 <li><strong>Mục đích</strong>: Lưu trữ metadata của các bảng và cột dữ liệu.</li>
 <li><strong>Cách thức hoạt động</strong>:</li>
@@ -9499,7 +9508,7 @@
     <strong>Glue Data Catalog</strong>, giúp các dịch vụ như Athena, Redshift Spectrum, và EMR dễ dàng khám phá và truy vấn dữ liệu.</li>
 </ul>
 <h4 id="b-glue-etl-jobs"><strong>b. Glue ETL Jobs</strong><a class="headerlink" href="#b-glue-etl-jobs" title="Permanent link">&para;</a></h4>
-<p><img alt="alt text" src="../image/Glue-ETL-Job.png" /></p>
+<p><a class="glightbox" href="../image/Glue-ETL-Job.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Glue-ETL-Job.png" /></a></p>
 <ul>
 <li><strong>Mục đích</strong>: Thực hiện các tác vụ ETL (Extract, Transform, Load).</li>
 <li><strong>Cách thức hoạt động</strong>:</li>
@@ -9587,6 +9596,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9680,5 +9710,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

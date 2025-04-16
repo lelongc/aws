@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9411,7 +9420,7 @@
 </ul>
 <hr />
 <h3 id="i-amazon-s3-file-gateway"><strong>I. Amazon S3 File Gateway</strong><a class="headerlink" href="#i-amazon-s3-file-gateway" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/s3-file-gateway.png" />
+<p><a class="glightbox" href="../image/s3-file-gateway.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/s3-file-gateway.png" /></a>
 <strong>1. Mục đích của S3 File Gateway:</strong></p>
 <ul>
 <li><strong>Kết nối giữa ứng dụng tại chỗ và Amazon S3</strong>: S3 File Gateway cho phép bạn kết nối giữa <strong>Amazon S3</strong> (lưu trữ đối tượng) và các ứng dụng hoặc máy chủ tại chỗ thông qua các giao thức tệp chuẩn như <strong>NFS</strong> (Network File System) hoặc <strong>SMB</strong> (Server Message Block).</li>
@@ -9454,7 +9463,7 @@
 <hr />
 <h3 id="aws-storage-gateway-volume-gateway-tape-gateway"><strong>AWS Storage Gateway - Volume Gateway &amp; Tape Gateway</strong><a class="headerlink" href="#aws-storage-gateway-volume-gateway-tape-gateway" title="Permanent link">&para;</a></h3>
 <p><strong>1. Volume Gateway:</strong>
-<img alt="alt text" src="../image/volume-gateway.png" /></p>
+<a class="glightbox" href="../image/volume-gateway.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/volume-gateway.png" /></a></p>
 <ul>
 <li><strong>Loại lưu trữ</strong>: Là <strong>block storage</strong> sử dụng giao thức <strong>iSCSI</strong> và được hỗ trợ bởi <strong>Amazon S3</strong>.</li>
 <li><strong>Mục đích chính</strong>: Volume Gateway chủ yếu được sử dụng để <strong>sao lưu các volume từ các máy chủ tại chỗ</strong> lên đám mây và cung cấp khả năng khôi phục lại dữ liệu khi cần thiết.</li>
@@ -9481,7 +9490,7 @@
 </ul>
 <hr />
 <p><strong>2. Tape Gateway:</strong>
-<img alt="alt text" src="../image/tape-gateway.png" /></p>
+<a class="glightbox" href="../image/tape-gateway.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/tape-gateway.png" /></a></p>
 <ul>
 <li><strong>Ứng dụng cho doanh nghiệp sử dụng hệ thống sao lưu tape vật lý</strong>.</li>
 <li><strong>Mục đích chính</strong>: Tape Gateway cung cấp một <strong>thư viện tape ảo (VTL)</strong>, sao lưu dữ liệu tape truyền thống lên <strong>Amazon S3</strong> và <strong>Amazon Glacier</strong>.</li>
@@ -9490,7 +9499,7 @@
 </ul>
 <hr />
 <p><strong>3. Storage Gateway Hardware Appliance:</strong>
-<img alt="alt text" src="../image/hardware-appliance.png" /></p>
+<a class="glightbox" href="../image/hardware-appliance.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/hardware-appliance.png" /></a></p>
 <ul>
 <li><strong>Lựa chọn cho các cơ sở hạ tầng không có máy ảo (virtualization)</strong>:</li>
 <li>Nếu không có máy chủ ảo để chạy cổng lưu trữ (Storage Gateway), bạn có thể sử dụng <strong>Storage Gateway Hardware Appliance</strong> của AWS, một thiết bị phần cứng mini để kết nối với đám mây.</li>
@@ -9499,7 +9508,7 @@
 <li>Đây là giải pháp hữu ích cho các trung tâm dữ liệu nhỏ không có khả năng ảo hóa.</li>
 </ul>
 <hr />
-<p><img alt="alt text" src="../image/storage-gateway.png" /></p>
+<p><a class="glightbox" href="../image/storage-gateway.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/storage-gateway.png" /></a></p>
 <h3 id="tom-tat-cac-dich-vu-trong-storage-gateway"><strong>Tóm tắt các dịch vụ trong Storage Gateway:</strong><a class="headerlink" href="#tom-tat-cac-dich-vu-trong-storage-gateway" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -9543,6 +9552,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9636,5 +9666,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

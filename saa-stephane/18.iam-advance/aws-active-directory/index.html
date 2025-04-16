@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9391,7 +9400,7 @@
 <li><strong>Security groups:</strong> Nhóm bảo mật</li>
 </ul>
 <h3 id="cac-ac-iem-chinh-cua-microsoft-ad">Các đặc điểm chính của Microsoft AD:<a class="headerlink" href="#cac-ac-iem-chinh-cua-microsoft-ad" title="Permanent link">&para;</a></h3>
-<p><img alt="1744638432311" src="../image/aws-active-directory/1744638432311.png" /></p>
+<p><a class="glightbox" href="../image/aws-active-directory/1744638432311.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1744638432311" src="../image/aws-active-directory/1744638432311.png" /></a></p>
 <ul>
 <li><strong>Quản lý tập trung:</strong>Tất cả các tài khoản người dùng, máy tính và tài nguyên được quản lý từ một nơi thông qua một domain controller.Khi một người dùng đăng nhập trên bất kỳ máy tính nào trong mạng cùng được kết nối với domain controller, thông tin đăng nhập được tra cứu và xác thực từ AD.</li>
 <li><strong>Cấu trúc cây và rừng (Tree và Forest):</strong>Các đối tượng được tổ chức dưới dạng một cây (tree) và một tập hợp các cây tạo thành một rừng (forest). Đây là khái niệm về cách phân cấp và quản lý các đối tượng, giúp mở rộng quản lý trên một khu vực rộng lớn.</li>
@@ -9402,7 +9411,7 @@
 Giả sử có một domain controller trong mạng nội bộ. Khi tạo một tài khoản người dùng (ví dụ: username "John" với mật khẩu "Password"), tài khoản này được lưu trữ trên domain controller. Khi một máy tính khác trong mạng sử dụng thông tin đăng nhập của "John", máy đó sẽ gửi yêu cầu xác thực tới domain controller để kiểm tra thông tin và cho phép đăng nhập nếu thông tin hợp lệ. Nhờ đó, người dùng "John" có thể truy cập vào bất kỳ máy tính nào trong hệ thống.</p>
 <hr />
 <h2 id="2-aws-directory-services">2. AWS Directory Services<a class="headerlink" href="#2-aws-directory-services" title="Permanent link">&para;</a></h2>
-<p><img alt="1744638218616" src="../image/aws-active-directory/1744638218616.png" />
+<p><a class="glightbox" href="../image/aws-active-directory/1744638218616.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1744638218616" src="../image/aws-active-directory/1744638218616.png" /></a>
 <strong>AWS Directory Services</strong> cung cấp các giải pháp để triển khai Active Directory trên AWS. Điều này giúp tích hợp dịch vụ quản lý danh tính của Microsoft AD với các tài nguyên trên AWS, đặc biệt hữu ích khi triển khai các EC2 instance chạy Windows.</p>
 <p>AWS Directory Services có 3 “hương vị” chính, mỗi loại phục vụ các trường hợp sử dụng khác nhau:</p>
 <h3 id="a-aws-managed-microsoft-ad">A. AWS Managed Microsoft AD<a class="headerlink" href="#a-aws-managed-microsoft-ad" title="Permanent link">&para;</a></h3>
@@ -9464,7 +9473,7 @@ Giả sử có một domain controller trong mạng nội bộ. Khi tạo một 
 </ul>
 <hr />
 <h2 id="3-tich-hop-voi-iam-identity-center">3. Tích hợp với IAM Identity Center<a class="headerlink" href="#3-tich-hop-voi-iam-identity-center" title="Permanent link">&para;</a></h2>
-<p><img alt="1744638225365" src="../image/aws-active-directory/1744638225365.png" /></p>
+<p><a class="glightbox" href="../image/aws-active-directory/1744638225365.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1744638225365" src="../image/aws-active-directory/1744638225365.png" /></a></p>
 <p>AWS Directory Services có thể được tích hợp với <strong>IAM Identity Center</strong> (trước đây là AWS Single Sign-On) để quản lý truy cập người dùng cho các ứng dụng và dịch vụ trên AWS.</p>
 <ul>
 <li><strong>Với AWS Managed Microsoft AD:</strong>Việc tích hợp được thực hiện “out of the box” (tức là rất dễ thiết lập) bằng cách chỉ cần chỉ định directory đã được triển khai.</li>
@@ -9502,6 +9511,27 @@ Giả sử có một domain controller trong mạng nội bộ. Khi tạo một 
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9595,5 +9625,7 @@ Giả sử có một domain controller trong mạng nội bộ. Khi tạo một 
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

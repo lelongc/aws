@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9380,7 +9389,7 @@
   <h1>Athena</h1>
 
 <p>Amazon Athena là một dịch vụ truy vấn dữ liệu không cần máy chủ (serverless) của AWS, cho phép bạn phân tích dữ liệu trực tiếp từ Amazon S3 bằng cách sử dụng ngôn ngữ SQL tiêu chuẩn. Dưới đây là các chi tiết quan trọng về Amazon Athena:
-<img alt="alt text" src="../image/Athena.png" /></p>
+<a class="glightbox" href="../image/Athena.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Athena.png" /></a></p>
 <h3 id="1-cach-thuc-hoat-ong">1. <strong>Cách thức hoạt động</strong><a class="headerlink" href="#1-cach-thuc-hoat-ong" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Serverless</strong>: Athena không yêu cầu bạn phải quản lý hoặc cung cấp bất kỳ cơ sở hạ tầng nào. Bạn chỉ cần tải dữ liệu lên Amazon S3 và bắt đầu truy vấn.</li>
@@ -9414,7 +9423,7 @@
 <li><strong>AWS Glue</strong>: Glue có thể được sử dụng để chuyển đổi dữ liệu từ các định dạng như CSV sang Parquet hoặc ORC thông qua các công việc ETL (Extract, Transform, Load).</li>
 </ul>
 <h3 id="6-truy-van-lien-ket-federated-query">6. <strong>Truy vấn liên kết (Federated Query)</strong><a class="headerlink" href="#6-truy-van-lien-ket-federated-query" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/Federated-Query.png" /></p>
+<p><a class="glightbox" href="../image/Federated-Query.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Federated-Query.png" /></a></p>
 <ul>
 <li><strong>Truy vấn dữ liệu từ nhiều nguồn</strong>: Ngoài việc truy vấn dữ liệu từ S3, Athena còn có thể truy vấn dữ liệu từ các cơ sở dữ liệu quan hệ và phi quan hệ khác, cả trên AWS và on-premises.</li>
 <li><strong>Data Source Connector</strong>: Athena sử dụng các kết nối dữ liệu (Data Source Connector) dưới dạng Lambda function để thực hiện các truy vấn liên kết. Các kết nối này có thể kết nối với các dịch vụ như CloudWatch Logs, DynamoDB, RDS, và nhiều dịch vụ khác.</li>
@@ -9442,6 +9451,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9535,5 +9565,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9288,7 +9297,7 @@
 <li><strong>Environment:</strong> Tập hợp tài nguyên chạy một phiên bản ứng dụng. có thể multi env :  dev test prod </li>
 <li>
 <p><strong>Tiers:</strong> 
-   <img alt="alt text" src="../../image/web-worker.png" /></p>
+   <a class="glightbox" href="../../image/web-worker.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../image/web-worker.png" /></a></p>
 <ul>
 <li><strong>Web Server Tier:</strong> Kiến trúc truyền thống với load balancer và EC2 instances xử lý yêu cầu.</li>
 <li><strong>Worker Tier:</strong> Xử lý các tác vụ từ hàng đợi tin nhắn (SQS queue).</li>
@@ -9305,7 +9314,7 @@
 </li>
 <li>
 <p><strong>Chế độ triển khai:</strong>
-<img alt="alt text" src="../../image/single-HA.png" /></p>
+<a class="glightbox" href="../../image/single-HA.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../image/single-HA.png" /></a></p>
 </li>
 <li><strong>Single Instance Mode:</strong> <ul>
 <li>Chạy trên một EC2 instance duy nhất (phù hợp môi trường phát triển).</li>
@@ -9325,7 +9334,7 @@
 </li>
 <li>
 <p><strong>Mô hình Web và Worker:</strong>
-<img alt="alt text" src="../../image/web-worker.png" /></p>
+<a class="glightbox" href="../../image/web-worker.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../image/web-worker.png" /></a></p>
 </li>
 <li>Web Environment: Xử lý trực tiếp yêu cầu từ người dùng.</li>
 <li>Worker Environment: Xử lý tác vụ từ SQS queue, tự động scale dựa trên số lượng tin nhắn.</li>
@@ -9338,6 +9347,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9431,5 +9461,7 @@
       <script src="../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

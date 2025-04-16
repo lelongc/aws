@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9383,7 +9392,7 @@
 <h4 id="2-cach-hoat-ong">2. <strong>Cách hoạt động</strong><a class="headerlink" href="#2-cach-hoat-ong" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>EC2 instances trong ASG</strong>:
-  <img alt="alt text" src="../image/flow-asg-sqs.png" /></li>
+  <a class="glightbox" href="../image/flow-asg-sqs.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/flow-asg-sqs.png" /></a></li>
 <li>Liên tục truy vấn (poll) tin nhắn từ SQS queue.</li>
 <li>Kích thước ASG được tự động mở rộng hoặc thu hẹp dựa trên <strong>số lượng tin nhắn trong hàng đợi</strong>.</li>
 <li><strong>CloudWatch Metric</strong>:</li>
@@ -9395,17 +9404,17 @@
 <hr />
 <h4 id="3-ung-dung-trong-cac-mo-hinh-thuc-te">3. <strong>Ứng dụng trong các mô hình thực tế</strong><a class="headerlink" href="#3-ung-dung-trong-cac-mo-hinh-thuc-te" title="Permanent link">&para;</a></h4>
 <h5 id="a-tang-tai-lon-ot-bien">a. <strong>Tăng tải lớn, đột biến</strong><a class="headerlink" href="#a-tang-tai-lon-ot-bien" title="Permanent link">&para;</a></h5>
-<p><img alt="alt text" src="../image/sudden-spike.png" /></p>
+<p><a class="glightbox" href="../image/sudden-spike.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/sudden-spike.png" /></a></p>
 <ul>
 <li>Ví dụ: Trong một chiến dịch bán hàng lớn, lượng đơn hàng tăng đột biến có thể gây quá tải cơ sở dữ liệu (RDS, Aurora, DynamoDB).</li>
 <li><strong>Giải pháp</strong>:
-  <img alt="alt text" src="../image/sqs-buffer.png" /></li>
+  <a class="glightbox" href="../image/sqs-buffer.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/sqs-buffer.png" /></a></li>
 <li>Sử dụng SQS làm bộ đệm (buffer) để lưu trữ tạm thời các yêu cầu trước khi ghi vào cơ sở dữ liệu.</li>
 <li>Ứng dụng phía trước (frontend application) sẽ gửi yêu cầu vào SQS queue thay vì ghi trực tiếp vào cơ sở dữ liệu.</li>
 <li>Một ASG khác được triển khai để xử lý tin nhắn từ hàng đợi và ghi vào cơ sở dữ liệu. Tin nhắn chỉ bị xóa khỏi SQS khi đã ghi thành công.</li>
 </ul>
 <h5 id="b-tach-roi-decoupling-giua-cac-tang-cua-ung-dung">b. <strong>Tách rời (decoupling) giữa các tầng của ứng dụng</strong><a class="headerlink" href="#b-tach-roi-decoupling-giua-cac-tang-cua-ung-dung" title="Permanent link">&para;</a></h5>
-<p><img alt="alt text" src="../image/decoupling.png" /></p>
+<p><a class="glightbox" href="../image/decoupling.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/decoupling.png" /></a></p>
 <ul>
 <li>Thay vì thực hiện toàn bộ xử lý trong một ứng dụng duy nhất:</li>
 <li>Yêu cầu từ ứng dụng phía trước được gửi vào SQS queue.</li>
@@ -9431,6 +9440,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9524,5 +9554,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

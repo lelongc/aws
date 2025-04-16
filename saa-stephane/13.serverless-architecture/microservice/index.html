@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9413,7 +9422,7 @@
 <p>thảo luận về <strong>kiến trúc microservices</strong>, một cách tiếp cận phổ biến để xây dựng các hệ thống phân tán. Dưới đây là các điểm chính và chi tiết kỹ thuật:</p>
 <hr />
 <h3 id="1-tong-quan-ve-microservices"><strong>1. Tổng Quan Về Microservices</strong><a class="headerlink" href="#1-tong-quan-ve-microservices" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/microservice.png" /></p>
+<p><a class="glightbox" href="../image/microservice.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/microservice.png" /></a></p>
 <ul>
 <li><strong>Định nghĩa</strong>: Microservices là một kiến trúc phần mềm trong đó ứng dụng được chia thành các dịch vụ nhỏ, độc lập, mỗi dịch vụ thực hiện một chức năng cụ thể.</li>
 <li><strong>Giao tiếp giữa các dịch vụ</strong>: Các microservices thường giao tiếp với nhau thông qua <strong>REST API</strong> hoặc các cơ chế khác như message queues (SQS, SNS).</li>
@@ -9424,7 +9433,7 @@
 </ul>
 <hr />
 <h3 id="2-vi-du-ve-kien-truc-microservices"><strong>2. Ví Dụ Về Kiến Trúc Microservices</strong><a class="headerlink" href="#2-vi-du-ve-kien-truc-microservices" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/microservice-env.png" /></p>
+<p><a class="glightbox" href="../image/microservice-env.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/microservice-env.png" /></a></p>
 <h4 id="a-microservice-1-su-dung-ecs-va-dynamodb"><strong>a. Microservice 1: Sử dụng ECS và DynamoDB</strong><a class="headerlink" href="#a-microservice-1-su-dung-ecs-va-dynamodb" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Công nghệ</strong>:</li>
@@ -9499,6 +9508,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9592,5 +9622,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

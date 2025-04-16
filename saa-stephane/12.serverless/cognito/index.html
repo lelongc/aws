@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9327,7 +9336,7 @@
 
 <p>Amazon Cognito là một dịch vụ của AWS giúp quản lý danh tính người dùng cho các ứng dụng web và di động. Mục tiêu chính của Cognito là cung cấp danh tính cho người dùng bên ngoài tài khoản AWS của bạn, cho phép họ tương tác với ứng dụng của bạn một cách an toàn. Dưới đây là chi tiết về các khía cạnh chính của Amazon Cognito:</p>
 <h3 id="1-cognito-user-pools-cup">1. <strong>Cognito User Pools (CUP)</strong><a class="headerlink" href="#1-cognito-user-pools-cup" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/CUP.png" /></p>
+<p><a class="glightbox" href="../image/CUP.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/CUP.png" /></a></p>
 <ul>
 <li><strong>Định nghĩa</strong>: Cognito User Pools là một cơ sở dữ liệu người dùng dạng serverless dành cho các ứng dụng web và di động. Nó cung cấp chức năng đăng nhập (sign-in) cho người dùng.</li>
 <li><strong>Tính năng</strong>:</li>
@@ -9341,7 +9350,7 @@
 <li><strong>Application Load Balancer (ALB)</strong>: Tương tự, người dùng đăng nhập vào Cognito User Pool, sau đó chuyển token đến ALB. ALB xác thực token và chuyển tiếp yêu cầu đến backend kèm theo thông tin danh tính người dùng.</li>
 </ul>
 <h3 id="2-cognito-identity-pools-cip-federated-identities">2. <strong>Cognito Identity Pools (CIP) (Federated Identities)</strong><a class="headerlink" href="#2-cognito-identity-pools-cip-federated-identities" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/CIP.png" /></p>
+<p><a class="glightbox" href="../image/CIP.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/CIP.png" /></a></p>
 <ul>
 <li><strong>Định nghĩa</strong>: Cognito Identity Pools cung cấp danh tính cho người dùng, nhưng thay vì truy cập ứng dụng thông qua API Gateway hoặc ALB, người dùng sẽ truy cập trực tiếp vào các tài nguyên AWS bằng cách sử dụng các credential tạm thời của AWS.</li>
 <li><strong>Tính năng</strong>:</li>
@@ -9370,6 +9379,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9463,5 +9493,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

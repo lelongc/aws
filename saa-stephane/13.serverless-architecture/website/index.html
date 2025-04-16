@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9389,7 +9398,7 @@
 <p>cách xây dựng một <strong>website serverless</strong> có tên <strong>MyBlog.com</strong> với các yêu cầu cụ thể như khả năng scale toàn cầu, tối ưu hiệu suất, và tự động hóa các tác vụ như gửi email chào mừng và tạo thumbnail cho ảnh. Dưới đây là các điểm chính và chi tiết kỹ thuật:</p>
 <hr />
 <h3 id="1-yeu-cau-cua-website"><strong>1. Yêu Cầu Của Website</strong><a class="headerlink" href="#1-yeu-cau-cua-website" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/Website-require.png" /></p>
+<p><a class="glightbox" href="../image/Website-require.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Website-require.png" /></a></p>
 <ul>
 <li><strong>Scale toàn cầu</strong>: Website cần phục vụ hàng trăm nghìn người dùng trên toàn thế giới.</li>
 <li><strong>Tần suất đọc/ghi</strong>:</li>
@@ -9403,7 +9412,7 @@
 </ul>
 <hr />
 <h3 id="2-kien-truc-serverless-e-xuat"><strong>2. Kiến Trúc Serverless Đề Xuất</strong><a class="headerlink" href="#2-kien-truc-serverless-e-xuat" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/Serverless-web.png" /></p>
+<p><a class="glightbox" href="../image/Serverless-web.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Serverless-web.png" /></a></p>
 <h4 id="a-phan-phoi-noi-dung-tinh-static-content"><strong>a. Phân Phối Nội Dung Tĩnh (Static Content)</strong><a class="headerlink" href="#a-phan-phoi-noi-dung-tinh-static-content" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Amazon S3</strong>:</li>
@@ -9427,7 +9436,7 @@
 <li><strong>Scale toàn cầu</strong>: Sử dụng <strong>DynamoDB Global Tables</strong> để giảm độ trễ cho người dùng ở các khu vực khác nhau.</li>
 </ul>
 <h4 id="c-gui-email-chao-mung-welcome-email"><strong>c. Gửi Email Chào Mừng (Welcome Email)</strong><a class="headerlink" href="#c-gui-email-chao-mung-welcome-email" title="Permanent link">&para;</a></h4>
-<p><img alt="alt text" src="../image/web-Email.png" /></p>
+<p><a class="glightbox" href="../image/web-Email.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/web-Email.png" /></a></p>
 <ul>
 <li><strong>DynamoDB Streams</strong>:</li>
 <li><strong>Vai trò</strong>: Theo dõi các thay đổi trong bảng người dùng (ví dụ: khi có người đăng ký mới).</li>
@@ -9437,7 +9446,7 @@
 <li><strong>Lợi ích</strong>: Serverless, tự động scale, và dễ dàng tích hợp.</li>
 </ul>
 <h4 id="d-tao-thumbnail-tu-ong-thumbnail-generation"><strong>d. Tạo Thumbnail Tự Động (Thumbnail Generation)</strong><a class="headerlink" href="#d-tao-thumbnail-tu-ong-thumbnail-generation" title="Permanent link">&para;</a></h4>
-<p><img alt="alt text" src="../image/web-Thumbnail.png" /></p>
+<p><a class="glightbox" href="../image/web-Thumbnail.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/web-Thumbnail.png" /></a></p>
 <ul>
 <li><strong>Amazon S3</strong>:</li>
 <li><strong>Vai trò</strong>: Lưu trữ ảnh gốc được upload bởi người dùng.</li>
@@ -9461,13 +9470,13 @@
 <ul>
 <li><strong>Sử dụng CloudFront để phân phối nội dung tĩnh</strong>: Đảm bảo nội dung được phân phối nhanh chóng trên toàn cầu.</li>
 <li><strong>DynamoDB Global Tables</strong>: Giúp giảm độ trễ cho người dùng ở các khu vực khác nhau.
-  <img alt="alt text" src="../image/Global-table-web.png" /></li>
+  <a class="glightbox" href="../image/Global-table-web.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Global-table-web.png" /></a></li>
 <li><strong>S3 Transfer Acceleration</strong>: Tăng tốc độ upload file lên S3 nếu cần.</li>
 <li><strong>Không lưu trữ credentials trên client</strong>: Luôn sử dụng temporary credentials hoặc IAM roles để đảm bảo bảo mật.</li>
 </ul>
 <hr />
 <h3 id="5-tong-ket"><strong>5. Tổng Kết</strong><a class="headerlink" href="#5-tong-ket" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/summary-web.png" />
+<p><a class="glightbox" href="../image/summary-web.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/summary-web.png" /></a>
 Kiến trúc serverless cho <strong>MyBlog.com</strong> bao gồm:</p>
 <ul>
 <li><strong>S3 + CloudFront</strong>: Phân phối nội dung tĩnh toàn cầu.</li>
@@ -9483,6 +9492,27 @@ Kiến trúc serverless cho <strong>MyBlog.com</strong> bao gồm:</p>
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9576,5 +9606,7 @@ Kiến trúc serverless cho <strong>MyBlog.com</strong> bao gồm:</p>
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

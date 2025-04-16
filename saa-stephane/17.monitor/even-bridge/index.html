@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9492,7 +9501,7 @@
 <li>Ví dụ: Khi <strong>IAM root user</strong> đăng nhập vào AWS Console, EventBridge có thể gửi thông báo qua <strong>Amazon SNS</strong> để cảnh báo quản trị viên.</li>
 </ul>
 <h3 id="3-tich-hop-voi-nhieu-dich-vu-aws">3. <strong>Tích hợp với nhiều dịch vụ AWS</strong><a class="headerlink" href="#3-tich-hop-voi-nhieu-dich-vu-aws" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/even-bridge.png" /></p>
+<p><a class="glightbox" href="../image/even-bridge.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/even-bridge.png" /></a></p>
 <p>EventBridge có thể nhận sự kiện từ nhiều dịch vụ AWS như:</p>
 <ul>
 <li><strong>EC2</strong>: Khi instance khởi động, dừng hoặc bị hủy.</li>
@@ -9503,7 +9512,7 @@
 <p>Bên cạnh đó, EventBridge có thể kết hợp với <strong>AWS CloudTrail</strong> để theo dõi tất cả các API call trong tài khoản AWS.</p>
 <hr />
 <h2 id="luong-hoat-ong-cua-amazon-eventbridge"><strong>Luồng hoạt động của Amazon EventBridge</strong><a class="headerlink" href="#luong-hoat-ong-cua-amazon-eventbridge" title="Permanent link">&para;</a></h2>
-<p><img alt="alt text" src="../image/even-bridge-rule.png" /></p>
+<p><a class="glightbox" href="../image/even-bridge-rule.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/even-bridge-rule.png" /></a></p>
 <ol>
 <li>
 <p><strong>Nguồn sự kiện (Event Sources)</strong><br />
@@ -9531,7 +9540,7 @@
 </ol>
 <hr />
 <h2 id="cac-loai-event-bus-trong-eventbridge"><strong>Các loại Event Bus trong EventBridge</strong><a class="headerlink" href="#cac-loai-event-bus-trong-eventbridge" title="Permanent link">&para;</a></h2>
-<p><img alt="alt text" src="../image/even-bridge-custom.png" /></p>
+<p><a class="glightbox" href="../image/even-bridge-custom.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/even-bridge-custom.png" /></a></p>
 <p>Amazon EventBridge có 3 loại <strong>Event Bus</strong> chính:</p>
 <ol>
 <li>
@@ -9590,7 +9599,7 @@
 <hr />
 <h2 id="3-resource-based-policies-chinh-sach-quan-ly-quyen-han"><strong>3. Resource-Based Policies – Chính sách quản lý quyền hạn</strong><a class="headerlink" href="#3-resource-based-policies-chinh-sach-quan-ly-quyen-han" title="Permanent link">&para;</a></h2>
 <h3 id="resource-based-policies-la-gi"><strong>Resource-Based Policies là gì?</strong><a class="headerlink" href="#resource-based-policies-la-gi" title="Permanent link">&para;</a></h3>
-<p><img alt="alt text" src="../image/even-bridge-policy.png" /></p>
+<p><a class="glightbox" href="../image/even-bridge-policy.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/even-bridge-policy.png" /></a></p>
 <ul>
 <li>Cho phép <strong>quản lý quyền truy cập</strong> cho một Event Bus cụ thể.</li>
 <li>Có thể <strong>cho phép hoặc từ chối</strong> các sự kiện từ tài khoản AWS khác hoặc từ các vùng khác nhau.</li>
@@ -9623,6 +9632,27 @@
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9716,5 +9746,7 @@
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

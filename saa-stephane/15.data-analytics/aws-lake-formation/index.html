@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -9262,12 +9271,12 @@ Nhưng <strong>data lake</strong> là gì?<br />
 <p>Trong data lake này, bạn có thể kết hợp các nguồn dữ liệu có cấu trúc (structured) và không cấu trúc (unstructured). <strong>Lake Formation</strong> cung cấp sẵn các <strong>blueprints</strong> (khuôn mẫu), giúp bạn di chuyển dữ liệu từ một nơi đến data lake trung tâm này. Các blueprints này hỗ trợ các nguồn dữ liệu như <strong>Amazon S3</strong>, <strong>Amazon RDS</strong>, các cơ sở dữ liệu quan hệ (relational databases) bạn chạy trên máy chủ tại chỗ (on-premises), hoặc các cơ sở dữ liệu NoSQL, v.v.</p>
 <p>Tại sao bạn nên thiết lập <strong>Lake Formation</strong>?<br />
 Bạn có mọi thứ ở một nơi, nhưng quan trọng hơn, bạn có thể thiết lập <strong>Fine-grained access controls</strong> (kiểm soát truy cập chi tiết) cho các ứng dụng của mình ở cấp độ hàng (row) và cột (column). Điều này có nghĩa là bất kỳ ứng dụng nào kết nối với <strong>AWS Lake Formation</strong> sẽ có quyền truy cập chi tiết, và đây là một lợi thế lớn.
-<img alt="alt text" src="../image/Lake-Formation.png" />
+<a class="glightbox" href="../image/Lake-Formation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/Lake-Formation.png" /></a>
 <strong>Lake Formation</strong> hoạt động như thế nào?<br />
 Thực chất, nó là một lớp trên <strong>AWS Glue</strong>, nhưng bạn không cần tương tác trực tiếp với Glue. Như đã nói, <strong>Lake Formation</strong> cho phép bạn tạo một data lake được lưu trữ trong <strong>Amazon S3</strong>. Các nguồn dữ liệu có thể là <strong>Amazon S3</strong>, <strong>RDS</strong>, <strong>Aurora</strong>, cơ sở dữ liệu tại chỗ của bạn (on-premises database) như SQL hoặc NoSQL, v.v. Nhờ các blueprints có sẵn trong <strong>Lake Formation</strong>, bạn sẽ đưa dữ liệu vào data lake.</p>
 <p><strong>Lake Formation</strong> đi kèm với các công cụ như <strong>Source Crawlers</strong>, <strong>ETL</strong> (Extract, Transform, Load), công cụ chuẩn bị dữ liệu và công cụ phân loại dữ liệu. Tất cả những thứ này đến từ dịch vụ <strong>Glue</strong> bên dưới. Sau đó, bạn có các cài đặt bảo mật và kiểm soát truy cập để đảm bảo dữ liệu của bạn được bảo vệ trong data lake.</p>
 <p>Các dịch vụ có thể tận dụng <strong>Lake Formation</strong> bao gồm <strong>Athena</strong>, <strong>Redshift</strong>, <strong>EMR</strong>, hoặc các công cụ phân tích khác như <strong>Apache Spark framework</strong>. Người dùng sẽ kết nối với các dịch vụ này, và các dịch vụ này sẽ kết nối với <strong>Lake Formation</strong> và data lake của bạn.
-<img alt="alt text" src="../image/centralized-permissions.png" />
+<a class="glightbox" href="../image/centralized-permissions.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/centralized-permissions.png" /></a>
 Tại sao chúng ta muốn sử dụng <strong>Lake Formation</strong>?<br />
 Một khía cạnh quan trọng được nhắc đến trong các kỳ thi là <strong>centralized permissions</strong> (quyền tập trung). Ví dụ, công ty của bạn sử dụng <strong>Athena</strong> và <strong>QuickSight</strong> để phân tích dữ liệu, và người dùng chỉ được xem dữ liệu họ cần. Các nguồn dữ liệu của bạn bao gồm <strong>Amazon S3</strong>, <strong>RDS</strong>, <strong>Aurora</strong>, v.v. Bạn có thể thiết lập bảo mật trong <strong>Athena</strong>, <strong>QuickSight</strong>, ở cấp độ người dùng, hoặc thông qua các chính sách bucket của <strong>S3</strong>, người dùng trong <strong>RDS</strong> hoặc <strong>Aurora</strong>. Điều này dẫn đến việc quản lý bảo mật ở nhiều nơi và trở nên rối rắm.</p>
 <p><strong>Lake Formation</strong> giải quyết vấn đề này bằng cách cung cấp kiểm soát truy cập tập trung, với bảo mật ở cấp độ hàng và cột. Với <strong>Lake Formation</strong>, bạn đưa tất cả dữ liệu vào một bucket <strong>S3</strong> trung tâm, nhưng từ <strong>Lake Formation</strong>, bạn quản lý tất cả các quyền truy cập để đảm bảo rằng bất kỳ dịch vụ nào kết nối với <strong>Lake Formation</strong> chỉ có quyền xem những gì họ được phép. Cho dù bạn sử dụng <strong>Athena</strong>, <strong>QuickSight</strong>, hay bất kỳ công cụ nào khác, bạn chỉ cần quản lý bảo mật tại một nơi duy nhất – <strong>Lake Formation</strong>.</p>
@@ -9288,6 +9297,27 @@ Một khía cạnh quan trọng được nhắc đến trong các kỳ thi là <
 
 
 
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 4, 2025 14:40:38">16 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -9381,5 +9411,7 @@ Một khía cạnh quan trọng được nhắc đến trong các kỳ thi là <
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
