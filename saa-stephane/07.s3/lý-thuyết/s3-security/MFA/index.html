@@ -9450,22 +9450,18 @@
 <h3 id="5-cach-kich-hoat-mfa-delete"><strong>5. Cách kích hoạt MFA Delete</strong><a class="headerlink" href="#5-cach-kich-hoat-mfa-delete" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Bật Versioning cho bucket</strong>:</li>
-<li>Lệnh AWS CLI:</li>
-</ol>
-<pre><code class="language-bash">     aws s3api put-bucket-versioning --bucket &lt;Bucket-Name&gt; --versioning-configuration Status=Enabled
-</code></pre>
-<ol>
+<li>Lệnh AWS CLI:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">     </span>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span>&lt;Bucket-Name&gt;<span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled
+</code></pre></div></li>
 <li><strong>Kích hoạt MFA Delete</strong>:</li>
-<li>Lệnh AWS CLI:</li>
-</ol>
-<pre><code class="language-bash">     aws s3api put-bucket-versioning --bucket &lt;Bucket-Name&gt; \
-     --versioning-configuration Status=Enabled,MFADelete=Enabled \
-     --mfa &quot;arn-of-mfa-device mfa-code&quot;
-</code></pre>
-<ul>
+<li>Lệnh AWS CLI:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">     </span>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span>&lt;Bucket-Name&gt;<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">     </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled,MFADelete<span class="o">=</span>Enabled<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">     </span>--mfa<span class="w"> </span><span class="s2">&quot;arn-of-mfa-device mfa-code&quot;</span>
+</code></pre></div></li>
 <li><strong>arn-of-mfa-device</strong>: ARN của thiết bị MFA.</li>
 <li><strong>mfa-code</strong>: Mã MFA hiện tại từ ứng dụng hoặc thiết bị.</li>
-</ul>
+</ol>
 <hr />
 <h3 id="6-loi-ich-cua-mfa-delete"><strong>6. Lợi ích của MFA Delete</strong><a class="headerlink" href="#6-loi-ich-cua-mfa-delete" title="Permanent link">&para;</a></h3>
 <ul>

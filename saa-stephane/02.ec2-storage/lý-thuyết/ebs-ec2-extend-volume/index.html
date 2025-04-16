@@ -9510,9 +9510,9 @@
 <h3 id="mount-la-gi"><strong>Mount là gì?</strong><a class="headerlink" href="#mount-la-gi" title="Permanent link">&para;</a></h3>
 <p>Mount là quá trình "gắn kết" hệ thống tệp của ổ đĩa vào một thư mục trong hệ thống Linux.<br />
 - Ví dụ:<br />
-  - Mount ổ đĩa <code>/dev/xvdf1</code> vào thư mục <code>/data</code>:  </p>
-<pre><code class="language-bash">    sudo mount /dev/xvdf1 /data
-</code></pre>
+  - Mount ổ đĩa <code>/dev/xvdf1</code> vào thư mục <code>/data</code>:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdf1<span class="w"> </span>/data
+</code></pre></div></p>
 <h3 id="tai-sao-can-mount"><strong>Tại sao cần Mount?</strong><a class="headerlink" href="#tai-sao-can-mount" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Để hệ điều hành có thể truy cập dữ liệu trên ổ đĩa.  </li>
@@ -9523,11 +9523,9 @@
 <h3 id="etcfstab-la-gi"><strong>/etc/fstab là gì?</strong><a class="headerlink" href="#etcfstab-la-gi" title="Permanent link">&para;</a></h3>
 <p>Là file cấu hình được dùng để tự động mount các ổ đĩa mỗi khi hệ thống khởi động lại.  </p>
 <ul>
-<li><strong>Ví dụ dòng trong /etc/fstab</strong>:  </li>
-</ul>
-<pre><code class="language-bash">  UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /data  xfs  defaults,nofail  0  2
-</code></pre>
-<ul>
+<li><strong>Ví dụ dòng trong /etc/fstab</strong>:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">  </span><span class="nv">UUID</span><span class="o">=</span>aebf131c-6957-451e-8d34-ec978d9581ae<span class="w">  </span>/data<span class="w">  </span>xfs<span class="w">  </span>defaults,nofail<span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">2</span>
+</code></pre></div></li>
 <li><strong>UUID</strong>: Định danh duy nhất của ổ đĩa (thay đổi theo thiết bị).  </li>
 <li><strong>/data</strong>: Thư mục nơi hệ thống tệp sẽ được mount.  </li>
 <li><strong>xfs</strong>: Loại hệ thống tệp.  </li>
@@ -9535,39 +9533,37 @@
 </ul>
 <h3 id="quy-trinh-kiem-tra-etcfstab"><strong>Quy trình kiểm tra /etc/fstab</strong>:<a class="headerlink" href="#quy-trinh-kiem-tra-etcfstab" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Unmount ổ đĩa:  </li>
+<li>Unmount ổ đĩa:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">  </span>sudo<span class="w"> </span>umount<span class="w"> </span>/data
+</code></pre></div></li>
+<li>Mount lại tất cả theo /etc/fstab:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">  </span>sudo<span class="w"> </span>mount<span class="w"> </span>-a
+</code></pre></div></li>
 </ul>
-<pre><code class="language-bash">  sudo umount /data
-</code></pre>
-<ul>
-<li>Mount lại tất cả theo /etc/fstab:  </li>
-</ul>
-<pre><code class="language-bash">  sudo mount -a
-</code></pre>
 <hr />
 <h2 id="7-mo-rong-phan-vung-va-he-thong-tep"><strong>7. Mở rộng phân vùng và hệ thống tệp</strong><a class="headerlink" href="#7-mo-rong-phan-vung-va-he-thong-tep" title="Permanent link">&para;</a></h2>
 <p>Khi bạn tăng dung lượng ổ đĩa EBS, các bước sau cần thực hiện:  </p>
 <ol>
-<li><strong>Kiểm tra phân vùng và dung lượng</strong>:  </li>
+<li>
+<p><strong>Kiểm tra phân vùng và dung lượng</strong>:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">   </span>lsblk
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Mở rộng phân vùng với growpart</strong>:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">   </span>sudo<span class="w"> </span>growpart<span class="w"> </span>/dev/xvdf<span class="w"> </span><span class="m">1</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Mở rộng hệ thống tệp</strong>:  </p>
+</li>
+<li>Nếu hệ thống tệp là <code>xfs</code>:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">     </span>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>/data
+</code></pre></div></li>
+<li>Nếu là <code>ext4</code>:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">     </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span>/dev/xvdf1
+</code></pre></div></li>
 </ol>
-<pre><code class="language-bash">   lsblk
-</code></pre>
-<ol>
-<li><strong>Mở rộng phân vùng với growpart</strong>:  </li>
-</ol>
-<pre><code class="language-bash">   sudo growpart /dev/xvdf 1
-</code></pre>
-<ol>
-<li><strong>Mở rộng hệ thống tệp</strong>:  </li>
-<li>Nếu hệ thống tệp là <code>xfs</code>:  </li>
-</ol>
-<pre><code class="language-bash">     sudo xfs_growfs /data
-</code></pre>
-<ul>
-<li>Nếu là <code>ext4</code>:  </li>
-</ul>
-<pre><code class="language-bash">     sudo resize2fs /dev/xvdf1
-</code></pre>
 <hr />
 <h2 id="8-tom-tat-quy-trinh-tong-the"><strong>8. Tóm tắt quy trình tổng thể</strong><a class="headerlink" href="#8-tom-tat-quy-trinh-tong-the" title="Permanent link">&para;</a></h2>
 <ol>

@@ -9534,13 +9534,15 @@
 <h3 id="7-cach-bat-s3-access-logs"><strong>7. Cách bật S3 Access Logs</strong><a class="headerlink" href="#7-cach-bat-s3-access-logs" title="Permanent link">&para;</a></h3>
 <p>Sử dụng AWS CLI hoặc Console:</p>
 <ol>
-<li><strong>Sử dụng AWS CLI</strong>:</li>
-</ol>
-<pre><code class="language-bash">   aws s3api put-bucket-logging --bucket &lt;Monitored-Bucket-Name&gt; \
-   --bucket-logging-status '{&quot;LoggingEnabled&quot;:{&quot;TargetBucket&quot;:&quot;&lt;Logging-Bucket-Name&gt;&quot;,&quot;TargetPrefix&quot;:&quot;logs/&quot;}}'
-</code></pre>
-<ol>
-<li><strong>Sử dụng AWS Console</strong>:</li>
+<li>
+<p><strong>Sử dụng AWS CLI</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">   </span>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-logging<span class="w"> </span>--bucket<span class="w"> </span>&lt;Monitored-Bucket-Name&gt;<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">   </span>--bucket-logging-status<span class="w"> </span><span class="s1">&#39;{&quot;LoggingEnabled&quot;:{&quot;TargetBucket&quot;:&quot;&lt;Logging-Bucket-Name&gt;&quot;,&quot;TargetPrefix&quot;:&quot;logs/&quot;}}&#39;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Sử dụng AWS Console</strong>:</p>
+</li>
 <li>Vào bucket cần bật logging.</li>
 <li>Tìm mục "Server Access Logging" và bật lên.</li>
 <li>Chọn bucket mục tiêu để lưu log (logging bucket).</li>

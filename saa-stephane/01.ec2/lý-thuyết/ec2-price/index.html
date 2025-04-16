@@ -9694,14 +9694,14 @@ Spot Instances rất phù hợp cho các workload có khả năng bị gián đo
 <p>Tự động dừng khởi chạy khi đạt <strong>target capacity</strong> hoặc chi phí tối đa.<br />
                             3. Target Capacity là gì?
                 Target capacity là tổng số tài nguyên tính toán (compute capacity) mà bạn muốn đạt được thông qua Spot Fleet.</p>
-<pre><code>        Được đo lường bằng number of instances hoặc vCPUs (số lượng CPU ảo).
+<div class="highlight"><pre><span></span><code>        Được đo lường bằng number of instances hoặc vCPUs (số lượng CPU ảo).
         Ví dụ:
         Bạn có thể đặt target capacity là 10 instances, nghĩa là Spot Fleet sẽ cố gắng khởi chạy đủ 10 Spot Instances để đáp ứng yêu cầu của bạn.
         Hoặc đặt target capacity là 20 vCPUs, Spot Fleet sẽ phân bổ đủ số lượng instances với tổng tài nguyên CPU đạt mức 20 vCPUs.
         Tự động dừng khởi chạy:
 
         Khi Spot Fleet đã đạt được target capacity, nó sẽ ngừng khởi chạy thêm instances, giúp kiểm soát chi phí và tránh vượt mức tài nguyên cần thiết.
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Giúp bạn tiết kiệm tài nguyên và tránh chi phí phát sinh không mong muốn.  </li>
 </ul>
@@ -9716,9 +9716,9 @@ Spot Instances rất phù hợp cho các workload có khả năng bị gián đo
 <li>
 <p><strong>diversified:</strong> Phân bổ đều trên các nhóm khởi chạy.<br />
           Ý nghĩa trong chiến lược diversified:</p>
-<pre><code>  Khi sử dụng chiến lược diversified, Spot Fleet sẽ phân bổ các Spot Instances đồng đều trên tất cả các launch pools.
+<div class="highlight"><pre><span></span><code>  Khi sử dụng chiến lược diversified, Spot Fleet sẽ phân bổ các Spot Instances đồng đều trên tất cả các launch pools.
   Điều này đảm bảo rằng nếu một pool nào đó không khả dụng hoặc giá tăng, các instance ở pool khác vẫn có thể hoạt động, tăng tính sẵn sàng cho workload.
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Tăng tính sẵn sàng, phù hợp với workload dài hạn.  </li>
 </ul>
@@ -9727,13 +9727,13 @@ Spot Instances rất phù hợp cho các workload có khả năng bị gián đo
 <p><strong>capacityOptimized:</strong> Chọn từ nhóm có dung lượng tốt nhất.<br />
               . Capacity Optimized: Chọn từ nhóm có dung lượng tốt nhất
               Dung lượng (capacity) ở đây đề cập đến khả năng sẵn có của Spot Instances trong một launch pool.</p>
-<pre><code>      Khả năng sẵn có cao: Một launch pool có nhiều tài nguyên nhàn rỗi hơn, tức là AWS có thể cung cấp Spot Instances ổn định hơn từ pool đó.
+<div class="highlight"><pre><span></span><code>      Khả năng sẵn có cao: Một launch pool có nhiều tài nguyên nhàn rỗi hơn, tức là AWS có thể cung cấp Spot Instances ổn định hơn từ pool đó.
       Lợi ích của capacityOptimized:
       Giảm nguy cơ bị thu hồi Spot Instances do thiếu tài nguyên trong pool.
       Đảm bảo workload có thể chạy liên tục lâu hơn so với chiến lược chỉ dựa trên giá thấp nhất (lowestPrice).
       Ví dụ:
       Nếu một pool ở us-east-1a có nhiều Spot Instances khả dụng hơn pool ở us-east-1b, chiến lược capacityOptimized sẽ ưu tiên chọn us-east-1a.
-</code></pre>
+</code></pre></div>
 </li>
 <li>
 <p>Giảm nguy cơ gián đoạn, đảm bảo hiệu năng.  </p>

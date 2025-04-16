@@ -9580,11 +9580,9 @@
 <h3 id="7-kiem-thu-alarms"><strong>7. Kiểm Thử Alarms</strong><a class="headerlink" href="#7-kiem-thu-alarms" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Bạn có thể sử dụng CLI command <code>set-alarm-state</code> để kiểm thử alarms mà không cần chờ metric vượt ngưỡng.</li>
-<li>Ví dụ:</li>
-</ul>
-<pre><code class="language-bash">  aws cloudwatch set-alarm-state --alarm-name &quot;MyAlarm&quot; --state-value ALARM --state-reason &quot;Testing alarm&quot;
-</code></pre>
-<ul>
+<li>Ví dụ:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">  </span>aws<span class="w"> </span>cloudwatch<span class="w"> </span>set-alarm-state<span class="w"> </span>--alarm-name<span class="w"> </span><span class="s2">&quot;MyAlarm&quot;</span><span class="w"> </span>--state-value<span class="w"> </span>ALARM<span class="w"> </span>--state-reason<span class="w"> </span><span class="s2">&quot;Testing alarm&quot;</span>
+</code></pre></div></li>
 <li>Điều này giúp bạn đảm bảo rằng các hành động được kích hoạt đúng cách khi alarm chuyển sang trạng thái <strong>ALARM</strong>.</li>
 </ul>
 <hr />

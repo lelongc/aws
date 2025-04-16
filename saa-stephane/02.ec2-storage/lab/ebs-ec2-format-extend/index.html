@@ -9274,65 +9274,65 @@ phía dưới chỉ là dịch phần linux trong 2 link trên còn window thì 
 <p>Để bắt đầu, bạn cần kết nối vào instance của mình qua SSH. Tham khảo thêm thông tin chi tiết tại phần <strong>Kết nối vào instance Linux</strong>.</p>
 <p>Thiết bị có thể đã được đính kèm vào instance với một tên thiết bị khác so với tên bạn chỉ định trong bản đồ thiết bị khối. Bạn có thể tham khảo thêm về tên thiết bị trên các instance Linux tại mục <strong>device names</strong>. Dùng lệnh <code>lsblk</code> để xem các thiết bị đính kèm và các điểm gắn của chúng (nếu có), giúp bạn xác định đúng tên thiết bị. Kết quả của lệnh <code>lsblk</code> sẽ loại bỏ phần tiền tố <code>/dev/</code> từ đường dẫn thiết bị đầy đủ.</p>
 <p>Dưới đây là ví dụ đầu ra cho một instance sử dụng Nitro System, nơi các volume EBS được hiển thị dưới dạng thiết bị khối NVMe. Thiết bị gốc là <code>/dev/nvme0n1</code>, có hai phân vùng tên là <code>nvme0n1p1</code> và <code>nvme0n1p128</code>. Volume đính kèm là <code>/dev/nvme1n1</code>, chưa có phân vùng và chưa được gắn.</p>
-<pre><code class="language-bash">[ec2-user ~]$ lsblk
-NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-nvme1n1       259:0    0  10G  0 disk
-nvme0n1       259:1    0   8G  0 disk
--nvme0n1p1    259:2    0   8G  0 part /
--nvme0n1p128  259:3    0   1M  0 part
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>lsblk
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>NAME<span class="w">          </span>MAJ:MIN<span class="w"> </span>RM<span class="w"> </span>SIZE<span class="w"> </span>RO<span class="w"> </span>TYPE<span class="w"> </span>MOUNTPOINT
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>nvme1n1<span class="w">       </span><span class="m">259</span>:0<span class="w">    </span><span class="m">0</span><span class="w">  </span>10G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>nvme0n1<span class="w">       </span><span class="m">259</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span>8G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>-nvme0n1p1<span class="w">    </span><span class="m">259</span>:2<span class="w">    </span><span class="m">0</span><span class="w">   </span>8G<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span>/
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>-nvme0n1p128<span class="w">  </span><span class="m">259</span>:3<span class="w">    </span><span class="m">0</span><span class="w">   </span>1M<span class="w">  </span><span class="m">0</span><span class="w"> </span>part
+</code></pre></div>
 <p>Đây là ví dụ đầu ra cho instance T2. Thiết bị gốc là <code>/dev/xvda</code>, có một phân vùng tên là <code>xvda1</code>. Volume đính kèm là <code>/dev/xvdf</code>, chưa có phân vùng và chưa được gắn.</p>
-<pre><code class="language-bash">[ec2-user ~]$ lsblk
-NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0    8G  0 disk
--xvda1  202:1    0    8G  0 part /
-xvdf    202:80   0   10G  0 disk
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>lsblk
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>NAME<span class="w">    </span>MAJ:MIN<span class="w"> </span>RM<span class="w">  </span>SIZE<span class="w"> </span>RO<span class="w"> </span>TYPE<span class="w"> </span>MOUNTPOINT
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>xvda<span class="w">    </span><span class="m">202</span>:0<span class="w">    </span><span class="m">0</span><span class="w">    </span>8G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>-xvda1<span class="w">  </span><span class="m">202</span>:1<span class="w">    </span><span class="m">0</span><span class="w">    </span>8G<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span>/
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>xvdf<span class="w">    </span><span class="m">202</span>:80<span class="w">   </span><span class="m">0</span><span class="w">   </span>10G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk
+</code></pre></div>
 <h4 id="2-kiem-tra-xem-volume-co-he-thong-tap-tin-khong">2. Kiểm tra xem volume có hệ thống tập tin không<a class="headerlink" href="#2-kiem-tra-xem-volume-co-he-thong-tap-tin-khong" title="Permanent link">&para;</a></h4>
 <p>Volume mới tạo ra là thiết bị khối thô và bạn cần phải tạo hệ thống tập tin trên đó trước khi có thể gắn và sử dụng. Các volume được tạo từ snapshots có thể đã có hệ thống tập tin sẵn; nếu bạn tạo hệ thống tập tin mới, việc này sẽ ghi đè lên dữ liệu hiện tại.</p>
 <p>Dùng một hoặc cả hai lệnh sau để kiểm tra xem volume có hệ thống tập tin không:</p>
 <ul>
 <li>Dùng lệnh <code>file -s</code> để lấy thông tin về một thiết bị cụ thể, như kiểu hệ thống tập tin. Nếu kết quả hiển thị chỉ "data", nghĩa là thiết bị này chưa có hệ thống tập tin.</li>
 </ul>
-<pre><code class="language-bash">[ec2-user ~]$ sudo file -s /dev/xvdf
-/dev/xvdf: data
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>file<span class="w"> </span>-s<span class="w"> </span>/dev/xvdf
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/dev/xvdf:<span class="w"> </span>data
+</code></pre></div>
 <ul>
 <li>Nếu thiết bị đã có hệ thống tập tin, lệnh sẽ hiển thị thông tin về loại hệ thống tập tin. Ví dụ, kết quả dưới đây hiển thị thiết bị gốc với hệ thống tập tin XFS.</li>
 </ul>
-<pre><code class="language-bash">[ec2-user ~]$ sudo file -s /dev/xvda1
-/dev/xvda1: SGI XFS filesystem data (blksz 4096, inosz 512, v2 dirs)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>file<span class="w"> </span>-s<span class="w"> </span>/dev/xvda1
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>/dev/xvda1:<span class="w"> </span>SGI<span class="w"> </span>XFS<span class="w"> </span>filesystem<span class="w"> </span>data<span class="w"> </span><span class="o">(</span>blksz<span class="w"> </span><span class="m">4096</span>,<span class="w"> </span>inosz<span class="w"> </span><span class="m">512</span>,<span class="w"> </span>v2<span class="w"> </span><span class="nb">dirs</span><span class="o">)</span>
+</code></pre></div>
 <p>Dùng lệnh <code>lsblk -f</code> để lấy thông tin về tất cả các thiết bị đã được đính kèm vào instance.</p>
-<pre><code class="language-bash">[ec2-user ~]$ sudo lsblk -f
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>lsblk<span class="w"> </span>-f
+</code></pre></div>
 <p>Ví dụ đầu ra dưới đây cho thấy ba thiết bị đã được đính kèm vào instance: <code>nvme1n1</code>, <code>nvme0n1</code>, và <code>nvme2n1</code>. Cột FSTYPE hiển thị loại hệ thống tập tin cho mỗi thiết bị. Nếu cột này trống, có nghĩa là thiết bị không có hệ thống tập tin. Trong trường hợp này, thiết bị <code>nvme1n1</code> và phân vùng <code>nvme0n1p1</code> trên thiết bị <code>nvme0n1</code> đều được định dạng với hệ thống tập tin XFS, trong khi thiết bị <code>nvme2n1</code> và phân vùng <code>nvme0n1p128</code> trên thiết bị <code>nvme0n1</code> không có hệ thống tập tin.</p>
-<pre><code class="language-bash">NAME        FSTYPE  LABEL   UUID                        MOUNTPOINT
-nvme1n1         xfs     7f939f28-6dcc-4315-8c42-6806080b94dd
-nvme0n1
-├─nvme0n1p1 xfs     /   90e29211-2de8-4967-b0fb-16f51a6e464c            /
-└─nvme0n1p128
-nvme2n1
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>NAME<span class="w">        </span>FSTYPE<span class="w">  </span>LABEL<span class="w">   </span>UUID<span class="w">                        </span>MOUNTPOINT
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>nvme1n1<span class="w">         </span>xfs<span class="w">     </span>7f939f28-6dcc-4315-8c42-6806080b94dd
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>nvme0n1
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>├─nvme0n1p1<span class="w"> </span>xfs<span class="w">     </span>/<span class="w">   </span>90e29211-2de8-4967-b0fb-16f51a6e464c<span class="w">            </span>/
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>└─nvme0n1p128
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>nvme2n1
+</code></pre></div>
 <p>Nếu đầu ra cho thấy không có hệ thống tập tin trên thiết bị, bạn cần tạo hệ thống tập tin.</p>
 <h4 id="3-tao-he-thong-tap-tin">3. Tạo hệ thống tập tin<a class="headerlink" href="#3-tao-he-thong-tap-tin" title="Permanent link">&para;</a></h4>
 <p>Nếu volume là mới và chưa có hệ thống tập tin, bạn cần tạo một hệ thống tập tin. Lưu ý không sử dụng lệnh này nếu bạn đang gắn volume đã có dữ liệu (ví dụ, volume được tạo từ một snapshot), vì lệnh này sẽ định dạng lại volume và xóa dữ liệu.</p>
-<pre><code class="language-bash">[ec2-user ~]$ sudo mkfs -t xfs /dev/xvdf
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>mkfs<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>/dev/xvdf
+</code></pre></div>
 <p>Nếu bạn gặp lỗi "mkfs.xfs not found", cài đặt công cụ XFS trước khi thực hiện lại lệnh trên.</p>
-<pre><code class="language-bash">[ec2-user ~]$ sudo yum install xfsprogs
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>xfsprogs
+</code></pre></div>
 <h4 id="4-tao-thu-muc-e-gan-volume">4. Tạo thư mục để gắn volume<a class="headerlink" href="#4-tao-thu-muc-e-gan-volume" title="Permanent link">&para;</a></h4>
 <p>Dùng lệnh <code>mkdir</code> để tạo thư mục gắn volume. Ví dụ, tạo thư mục <code>/data</code>:</p>
-<pre><code class="language-bash">[ec2-user ~]$ sudo mkdir /data
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>/data
+</code></pre></div>
 <h4 id="5-gan-volume-vao-thu-muc">5. Gắn volume vào thư mục<a class="headerlink" href="#5-gan-volume-vao-thu-muc" title="Permanent link">&para;</a></h4>
 <p>Gắn volume hoặc phân vùng vào thư mục đã tạo ở bước trước. Nếu volume không có phân vùng, bạn có thể gắn trực tiếp toàn bộ volume.</p>
-<pre><code class="language-bash">[ec2-user ~]$ sudo mount /dev/xvdf /data
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdf<span class="w"> </span>/data
+</code></pre></div>
 <p>Nếu volume có phân vùng, gắn phân vùng vào thư mục.</p>
-<pre><code class="language-bash">[ec2-user ~]$ sudo mount /dev/xvdf1 /data
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdf1<span class="w"> </span>/data
+</code></pre></div>
 <h4 id="6-kiem-tra-quyen-truy-cap">6. Kiểm tra quyền truy cập<a class="headerlink" href="#6-kiem-tra-quyen-truy-cap" title="Permanent link">&para;</a></h4>
 <p>Kiểm tra quyền truy cập của volume để đảm bảo rằng người dùng và ứng dụng có thể ghi vào volume.</p>
 <h4 id="7-tu-ong-gan-volume-sau-khi-khoi-ong-lai">7. Tự động gắn volume sau khi khởi động lại<a class="headerlink" href="#7-tu-ong-gan-volume-sau-khi-khoi-ong-lai" title="Permanent link">&para;</a></h4>
@@ -9341,153 +9341,135 @@ nvme2n1
 <ul>
 <li>(Tùy chọn) Sao lưu tệp <code>/etc/fstab</code> trước khi chỉnh sửa.</li>
 </ul>
-<pre><code class="language-bash">[ec2-user ~]$ sudo cp /etc/fstab /etc/fstab.orig
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>/etc/fstab<span class="w"> </span>/etc/fstab.orig
+</code></pre></div>
 <ul>
 <li>Dùng lệnh <code>blkid</code> để tìm UUID của thiết bị.</li>
 </ul>
-<pre><code class="language-bash">[ec2-user ~]$ sudo blkid
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>blkid
+</code></pre></div>
 <ul>
 <li>Mở tệp <code>/etc/fstab</code> và thêm dòng sau:</li>
 </ul>
-<pre><code class="language-bash">UUID=aebf131c-6957-451e-8d34-ec978d9581ae  /data  xfs  defaults,nofail  0  2
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">UUID</span><span class="o">=</span>aebf131c-6957-451e-8d34-ec978d9581ae<span class="w">  </span>/data<span class="w">  </span>xfs<span class="w">  </span>defaults,nofail<span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">2</span>
+</code></pre></div>
 <ul>
 <li>Để kiểm tra lại tệp <code>/etc/fstab</code>, bạn có thể unmount volume và sau đó mount lại tất cả các hệ thống tập tin trong <code>/etc/fstab</code>.</li>
 </ul>
-<pre><code class="language-bash">[ec2-user ~]$ sudo umount /data
-[ec2-user ~]$ sudo mount -a
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>umount<span class="w"> </span>/data
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>-a
+</code></pre></div>
 <p>Nếu không có lỗi, tệp <code>/etc/fstab</code> đã đúng và volume sẽ tự động gắn khi instance khởi động lại.</p>
 <hr />
 <p>format và tạo  phân vùng rồi tăng volume ebs rồi format lại </p>
 <hr />
 <h3 id="1-liet-ke-tat-ca-cac-phan-vung-va-iem-mount">1. <strong>Liệt kê tất cả các phân vùng và điểm mount</strong><a class="headerlink" href="#1-liet-ke-tat-ca-cac-phan-vung-va-iem-mount" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Sử dụng lệnh sau để hiển thị cấu trúc phân vùng và điểm mount:</li>
-</ul>
-<pre><code class="language-bash">  lsblk
-</code></pre>
-<ul>
+<li>Sử dụng lệnh sau để hiển thị cấu trúc phân vùng và điểm mount:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="w">  </span>lsblk
+</code></pre></div></li>
 <li><strong>Ý nghĩa</strong>: Hiển thị các thiết bị lưu trữ (block devices), phân vùng, và điểm mount.</li>
 </ul>
 <hr />
 <h3 id="2-hien-thi-thong-tin-dung-luong-va-khong-gian-trong-cua-tat-ca-cac-volume">2. <strong>Hiển thị thông tin dung lượng và không gian trống của tất cả các volume</strong><a class="headerlink" href="#2-hien-thi-thong-tin-dung-luong-va-khong-gian-trong-cua-tat-ca-cac-volume" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Dùng lệnh:</li>
-</ul>
-<pre><code class="language-bash">  df -h
-</code></pre>
-<ul>
+<li>Dùng lệnh:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="w">  </span>df<span class="w"> </span>-h
+</code></pre></div></li>
 <li><strong>Ý nghĩa</strong>: Hiển thị thông tin về dung lượng đã sử dụng, dung lượng còn trống của các volume theo định dạng dễ đọc (đơn vị GB/MB).</li>
 </ul>
 <hr />
 <h3 id="3-tao-phan-vung-moi-bang-fdisk">3. <strong>Tạo phân vùng mới bằng <code>fdisk</code></strong><a class="headerlink" href="#3-tao-phan-vung-moi-bang-fdisk" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Thực hiện các bước sau để tạo phân vùng mới:</li>
+<li>Thực hiện các bước sau để tạo phân vùng mới:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="w">  </span>sudo<span class="w"> </span>fdisk<span class="w"> </span>/dev/xvdf
+</code></pre></div>
+  <strong>Trong giao diện <code>fdisk</code>:</strong></li>
+<li>Gõ <code>n</code> để tạo một phân vùng mới.</li>
+<li>Chọn <code>p</code> cho phân vùng chính (primary partition).</li>
+<li>Chọn số phân vùng (thường là <code>1</code> nếu đây là phân vùng đầu tiên).</li>
+<li>Chấp nhận kích thước mặc định (hoặc nhập kích thước tùy chỉnh).</li>
+<li>Gõ <code>w</code> để ghi các thay đổi và thoát.</li>
 </ul>
-<pre><code class="language-bash">  sudo fdisk /dev/xvdf
-</code></pre>
-<p><strong>Trong giao diện <code>fdisk</code>:</strong>
-  - Gõ <code>n</code> để tạo một phân vùng mới.
-  - Chọn <code>p</code> cho phân vùng chính (primary partition).
-  - Chọn số phân vùng (thường là <code>1</code> nếu đây là phân vùng đầu tiên).
-  - Chấp nhận kích thước mặc định (hoặc nhập kích thước tùy chỉnh).
-  - Gõ <code>w</code> để ghi các thay đổi và thoát.</p>
 <hr />
 <h3 id="4-inh-dang-phan-vung">4. <strong>Định dạng phân vùng</strong><a class="headerlink" href="#4-inh-dang-phan-vung" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Sau khi tạo phân vùng, định dạng nó bằng hệ thống tệp XFS:</li>
-</ul>
-<pre><code class="language-bash">  sudo mkfs -t xfs /dev/xvdf1
-</code></pre>
-<ul>
+<li>Sau khi tạo phân vùng, định dạng nó bằng hệ thống tệp XFS:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="w">  </span>sudo<span class="w"> </span>mkfs<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>/dev/xvdf1
+</code></pre></div></li>
 <li><strong>Ý nghĩa</strong>: Định dạng phân vùng <code>/dev/xvdf1</code> với hệ thống tệp XFS.</li>
 </ul>
 <hr />
 <h3 id="5-mount-phan-vung">5. <strong>Mount phân vùng</strong><a class="headerlink" href="#5-mount-phan-vung" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Tạo thư mục mount nếu chưa tồn tại:</li>
-</ul>
-<pre><code class="language-bash">  sudo mkdir -p /data
-</code></pre>
-<ul>
-<li>Mount phân vùng vào thư mục <code>/data</code>:</li>
-</ul>
-<pre><code class="language-bash">  sudo mount /dev/xvdf1 /data
-</code></pre>
-<ul>
+<li>Tạo thư mục mount nếu chưa tồn tại:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="w">  </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data
+</code></pre></div></li>
+<li>Mount phân vùng vào thư mục <code>/data</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="w">  </span>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdf1<span class="w"> </span>/data
+</code></pre></div></li>
 <li><strong>Kiểm tra</strong>: Dùng lệnh <code>df -h</code> để xác nhận phân vùng đã được mount.</li>
 </ul>
 <hr />
 <h3 id="6-cau-hinh-tu-ong-mount-sau-khi-khoi-ong-lai">6. <strong>Cấu hình tự động mount sau khi khởi động lại</strong><a class="headerlink" href="#6-cau-hinh-tu-ong-mount-sau-khi-khoi-ong-lai" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Lấy UUID của phân vùng:</li>
-</ul>
-<pre><code class="language-bash">  sudo blkid
-</code></pre>
-<p>Hoặc:</p>
-<pre><code class="language-bash">  sudo lsblk -o +UUID
-</code></pre>
-<p><strong>Kết quả</strong>: UUID sẽ trông như sau:</p>
-<pre><code>  UUID=&quot;1234abcd-56ef-78gh-90ij-klmnopqrstuv&quot;
-</code></pre>
-<ul>
-<li>Chỉnh sửa file <code>/etc/fstab</code> để thêm cấu hình mount:</li>
-</ul>
-<pre><code class="language-bash">  sudo vi /etc/fstab
-</code></pre>
-<p>Thêm dòng sau vào cuối file (thay thế <code>UUID="..."</code> bằng UUID của bạn):</p>
-<pre><code>  UUID=&quot;1234abcd-56ef-78gh-90ij-klmnopqrstuv&quot; /data xfs defaults,nofail 0 0
-</code></pre>
-<ul>
-<li><strong>Kiểm tra cấu hình</strong>:</li>
-<li>Tháo mount thư mục:</li>
-</ul>
-<pre><code class="language-bash">    sudo umount /data
-</code></pre>
-<ul>
-<li>Thực thi lại lệnh mount từ file <code>fstab</code>:</li>
-</ul>
-<pre><code class="language-bash">    sudo mount -a
-</code></pre>
-<ul>
+<li>
+<p>Lấy UUID của phân vùng:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="w">  </span>sudo<span class="w"> </span>blkid
+</code></pre></div>
+  Hoặc:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="w">  </span>sudo<span class="w"> </span>lsblk<span class="w"> </span>-o<span class="w"> </span>+UUID
+</code></pre></div>
+  <strong>Kết quả</strong>: UUID sẽ trông như sau:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>  UUID=&quot;1234abcd-56ef-78gh-90ij-klmnopqrstuv&quot;
+</code></pre></div></p>
+</li>
+<li>
+<p>Chỉnh sửa file <code>/etc/fstab</code> để thêm cấu hình mount:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="w">  </span>sudo<span class="w"> </span>vi<span class="w"> </span>/etc/fstab
+</code></pre></div>
+  Thêm dòng sau vào cuối file (thay thế <code>UUID="..."</code> bằng UUID của bạn):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>  UUID=&quot;1234abcd-56ef-78gh-90ij-klmnopqrstuv&quot; /data xfs defaults,nofail 0 0
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Kiểm tra cấu hình</strong>:</p>
+</li>
+<li>Tháo mount thư mục:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="w">    </span>sudo<span class="w"> </span>umount<span class="w"> </span>/data
+</code></pre></div></li>
+<li>Thực thi lại lệnh mount từ file <code>fstab</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="w">    </span>sudo<span class="w"> </span>mount<span class="w"> </span>-a
+</code></pre></div></li>
 <li><strong>Kiểm tra lại</strong>: Dùng <code>df -h</code> để đảm bảo <code>/data</code> đã được mount.</li>
 </ul>
 <hr />
 <h3 id="7-mo-rong-phan-vung-sau-khi-tang-kich-thuoc-ebs-tren-aws-console">7. <strong>Mở rộng phân vùng sau khi tăng kích thước EBS trên AWS Console</strong><a class="headerlink" href="#7-mo-rong-phan-vung-sau-khi-tang-kich-thuoc-ebs-tren-aws-console" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Dùng lệnh sau để mở rộng phân vùng mà không mất dữ liệu:</li>
-</ul>
-<pre><code class="language-bash">  sudo growpart /dev/xvdf 1
-</code></pre>
-<ul>
+<li>Dùng lệnh sau để mở rộng phân vùng mà không mất dữ liệu:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="w">  </span>sudo<span class="w"> </span>growpart<span class="w"> </span>/dev/xvdf<span class="w"> </span><span class="m">1</span>
+</code></pre></div></li>
 <li><strong>Ý nghĩa</strong>: Mở rộng phân vùng <code>1</code> trên thiết bị <code>/dev/xvdf</code>.</li>
 </ul>
 <hr />
 <h3 id="8-cap-nhat-lai-kich-thuoc-he-thong-tep">8. <strong>Cập nhật lại kích thước hệ thống tệp</strong><a class="headerlink" href="#8-cap-nhat-lai-kich-thuoc-he-thong-tep" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Sau khi mở rộng phân vùng, cập nhật lại kích thước hệ thống tệp:</li>
-</ul>
-<pre><code class="language-bash">  sudo xfs_growfs /data
-</code></pre>
-<ul>
+<li>Sau khi mở rộng phân vùng, cập nhật lại kích thước hệ thống tệp:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="w">  </span>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>/data
+</code></pre></div></li>
 <li><strong>Ý nghĩa</strong>: Mở rộng hệ thống tệp XFS để sử dụng toàn bộ không gian phân vùng.</li>
 </ul>
 <hr />
 <h3 id="9-xac-minh">9. <strong>Xác minh</strong><a class="headerlink" href="#9-xac-minh" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Dùng các lệnh sau để kiểm tra:</li>
-<li>Kiểm tra dung lượng mới:</li>
+<li>Kiểm tra dung lượng mới:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="w">    </span>df<span class="w"> </span>-h
+</code></pre></div></li>
+<li>Kiểm tra cấu trúc phân vùng:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="w">    </span>lsblk
+</code></pre></div></li>
 </ul>
-<pre><code class="language-bash">    df -h
-</code></pre>
-<ul>
-<li>Kiểm tra cấu trúc phân vùng:</li>
-</ul>
-<pre><code class="language-bash">    lsblk
-</code></pre>
 <p>Với các bước trên, bạn sẽ hoàn thành việc tạo, mount, và mở rộng phân vùng trên máy chủ Linux.</p>
 
 

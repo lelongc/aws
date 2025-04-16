@@ -9567,11 +9567,9 @@
 </ul>
 <h4 id="b-vi-du"><strong>b. Ví dụ</strong><a class="headerlink" href="#b-vi-du" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>Truy vấn dữ liệu từ S3</strong>:</li>
-</ul>
-<pre><code class="language-sql">  SELECT * FROM s3://your-bucket/path/to/data;
-</code></pre>
-<ul>
+<li><strong>Truy vấn dữ liệu từ S3</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">s3</span><span class="p">:</span><span class="o">//</span><span class="n">your</span><span class="o">-</span><span class="n">bucket</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="k">to</span><span class="o">/</span><span class="k">data</span><span class="p">;</span>
+</code></pre></div></li>
 <li>Redshift Spectrum sẽ tự động xử lý truy vấn này bằng cách sử dụng hàng nghìn nodes để đọc dữ liệu từ S3.</li>
 <li><strong>Kết quả</strong>: Dữ liệu được xử lý và trả về Redshift cluster, sau đó hiển thị cho người dùng.</li>
 </ul>
