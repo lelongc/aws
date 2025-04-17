@@ -9,6 +9,8 @@ theme:
   name: material
   language: vi
   custom_dir: overrides
+  icon:
+    logo: material/aws
 
 
   palette:
@@ -26,6 +28,8 @@ theme:
         name: Chuyển sang chế độ sáng
 
   features:
+  - navigation.instant
+  - navigation.instant.progress
   - navigation.top
   - navigation.sections
   - navigation.search
@@ -35,6 +39,7 @@ theme:
   - navigation.paths
   - navigation.indexes
   - navigation.indexes.sticky
+  - navigation.prune
 
   - content.code.copy
   - content.action.edit
