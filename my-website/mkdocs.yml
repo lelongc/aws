@@ -46,7 +46,8 @@ theme:
   - header.autohide
 
 plugins:
-  - meta 
+  - meta:
+      meta_file: meta.yml
   - search
   - glightbox
   - git-revision-date-localized
