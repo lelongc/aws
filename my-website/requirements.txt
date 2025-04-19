@@ -4,3 +4,4 @@ mkdocs-git-revision-date-localized-plugin
 mkdocs-glightbox
 pymdown-extensions
 mkdocs-meta-descriptions-plugin
+mkdocs-minify-html-plugin
