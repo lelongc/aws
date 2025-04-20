@@ -45,7 +45,7 @@ theme:
   - content.action.edit
   - content.images.lazy
 
-  - toc.integrate
+  # - toc.integrate
   - toc.follow
   - toc.expand
   # - header.autohide
