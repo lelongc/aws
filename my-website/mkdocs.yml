@@ -28,8 +28,8 @@ theme:
         name: Chuyển sang chế độ sáng
 
   features:
-  - navigation.instant
-  - navigation.instant.progress
+  # - navigation.instant
+  # - navigation.instant.progress
   - navigation.top
   - navigation.sections
   - navigation.search
@@ -48,7 +48,7 @@ theme:
   - toc.integrate
   - toc.follow
   - toc.expand
-  - header.autohide
+  # - header.autohide
 
 plugins:
   - meta:
