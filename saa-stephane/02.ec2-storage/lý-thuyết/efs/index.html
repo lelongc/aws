@@ -372,9 +372,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Thanh điều hướng" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
@@ -5913,6 +5911,273 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tom-tat-thong-tin-ve-amazon-efs" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Tóm tắt thông tin về Amazon EFS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Tóm tắt thông tin về Amazon EFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gioi-thieu-ve-efs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Giới thiệu về EFS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-muc-ich-su-dung-cua-efs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Mục đích sử dụng của EFS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-tinh-bao-mat-voi-kms-va-linux-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tính bảo mật với KMS và Linux compatibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tinh-nang-va-hieu-suat" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tính năng và hiệu suất
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Tính năng và hiệu suất">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tinh-nang-mo-rong" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Tính năng mở rộng
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-efs-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon EFS là gì?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-che-o-hieu-suat-performance-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Chế độ hiệu suất (Performance Mode)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Chế độ hiệu suất (Performance Mode)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-purpose-muc-ich-chung" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Purpose (Mục đích chung):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max-io-hieu-suat-toi-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Max I/O (Hiệu suất tối đa):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-che-o-thong-luong-throughput-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Chế độ thông lượng (Throughput Mode)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Chế độ thông lượng (Throughput Mode)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bursting-throughput-hieu-suat-tang-tu-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bursting Throughput (Hiệu suất tăng tự động):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-enhancedelastic-che-o-thong-luong-linh-hoat" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Enhanced/Elastic (Chế độ thông lượng linh hoạt)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Enhanced/Elastic (Chế độ thông lượng linh hoạt)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elastic-thong-luong-an-hoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elastic (Thông lượng đàn hồi):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provisioned-throughput-thong-luong-co-inh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provisioned Throughput (Thông lượng cố định):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-storage-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Storage Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-tinh-nang-lifecycle-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Tính năng Lifecycle Policies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-availability-durability" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Availability &amp; Durability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Availability &amp; Durability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-az-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Multi-AZ Availability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#single-availability-zone-one-zone-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏠 Single Availability Zone (One Zone-IA)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-tiet-kiem-chi-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 💰 Tiết kiệm chi phí
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Lab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-chon-subnet-moi-chon-efs-cho-ec2-tao-sg-demo-gan-vo-ec2-khi-tao-ec2-co-cho-chinh-e-tu-tao-sg-sg-tu-tao-o-se-co-rule-e-sg-demo-tro-en-efs-qua-giao-thuc-nnfs-port-2049-tat-ca-cac-sg-o-tren-tu-gan-vo-efs" class="md-nav__link">
+    <span class="md-ellipsis">
+      - chọn subnet mới chọn efs cho ec2, tạo sg demo gắn vô ec2 , khi tạo ec2 có chỗ chỉnh để tự tạo sg , sg tự tạo đó sẽ có rule để sg demo trỏ đến efs qua giao thức nnfs port 2049 , tất cả các sg ở trên tự gắn vô efs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -6088,7 +6353,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 4, 2025 07:31:10">20 tháng 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 4, 2025 07:35:58">20 tháng 4, 2025</span>
   </span>
 
     
@@ -6259,7 +6524,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.integrate", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.c8b220af.min.js"></script>

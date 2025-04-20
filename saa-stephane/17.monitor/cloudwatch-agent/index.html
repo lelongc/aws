@@ -372,9 +372,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Thanh điều hướng" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
@@ -5617,6 +5615,213 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#su-dung-cloudwatch-agents-e-thu-thap-logs-va-metrics-tu-ec2-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sử Dụng CloudWatch Agents để Thu Thập Logs và Metrics từ EC2 Instances
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-tai-sao-can-cloudwatch-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tại Sao Cần CloudWatch Agents?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cach-cloudwatch-agents-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Cách CloudWatch Agents Hoạt Động
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cloudwatch-agents-tren-on-premises-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. CloudWatch Agents Trên On-Premises Servers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-hai-loai-cloudwatch-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Hai Loại CloudWatch Agents
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Hai Loại CloudWatch Agents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-cloudwatch-logs-agent-phien-ban-cu" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. CloudWatch Logs Agent (Phiên Bản Cũ)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-cloudwatch-unified-agent-phien-ban-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. CloudWatch Unified Agent (Phiên Bản Mới)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-cac-metrics-thu-thap-boi-cloudwatch-unified-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Các Metrics Thu Thập Bởi CloudWatch Unified Agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Các Metrics Thu Thập Bởi CloudWatch Unified Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-cpu-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. CPU Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-disk-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Disk Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-ram-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. RAM Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-network-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      d. Network Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-process-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      e. Process Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-swap-space-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      f. Swap Space Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-so-sanh-cloudwatch-unified-agent-voi-monitoring-mac-inh-cua-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. So Sánh CloudWatch Unified Agent Với Monitoring Mặc Định của EC2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-cau-hinh-cloudwatch-unified-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Cấu Hình CloudWatch Unified Agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-vi-du-ve-cau-hinh-cloudwatch-unified-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Ví Dụ Về Cấu Hình CloudWatch Unified Agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-loi-ich-cua-cloudwatch-unified-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Lợi Ích Của CloudWatch Unified Agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Kết Luận
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -5784,7 +5989,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 4, 2025 07:31:10">20 tháng 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 4, 2025 07:35:58">20 tháng 4, 2025</span>
   </span>
 
     
@@ -5955,7 +6160,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.integrate", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>

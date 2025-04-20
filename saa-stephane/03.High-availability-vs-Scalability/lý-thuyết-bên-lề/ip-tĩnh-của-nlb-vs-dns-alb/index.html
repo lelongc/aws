@@ -372,9 +372,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Thanh điều hướng" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
@@ -5616,6 +5614,114 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cach-dns-tro-en-nlb-voi-nhieu-ip-tinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách DNS trỏ đến NLB với nhiều IP tĩnh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-du-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ví dụ thực tế:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ví dụ thực tế:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-nlb-uoc-trien-khai-trong-3-az" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. NLB được triển khai trong 3 AZ:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dns-ong-tra-ve-danh-sach-cac-ip-tinh" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. DNS động trả về danh sách các IP tĩnh:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#so-sanh-voi-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      So sánh với ALB:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-dns-ong-cua-alb-nghia-la-ten-mien-vi-du-my-load-balancer-123456elbamazonawscom-khong-tro-en-mot-ia-chi-ip-co-inh-thay-vao-o-aws-co-the-cap-nhat-ia-chi-ip-ong-phia-sau-ten-mien-tuy-vao-tinh-trang-hoat-ong-cua-cac-az-hoac-backend-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      - DNS động của alb nghĩa là tên miền (ví dụ: my-load-balancer-123456.elb.amazonaws.com) không trỏ đến một địa chỉ IP cố định. Thay vào đó, AWS có thể cập nhật địa chỉ IP động phía sau tên miền tùy vào tình trạng hoạt động của các AZ hoặc backend instances.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="- DNS động của alb nghĩa là tên miền (ví dụ: my-load-balancer-123456.elb.amazonaws.com) không trỏ đến một địa chỉ IP cố định. Thay vào đó, AWS có thể cập nhật địa chỉ IP động phía sau tên miền tùy vào tình trạng hoạt động của các AZ hoặc backend instances.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#khi-nao-su-dung-nlb-voi-ip-tinh-va-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Khi nào sử dụng NLB với IP tĩnh và DNS?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luu-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lưu ý:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -5736,7 +5842,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 4, 2025 07:31:10">20 tháng 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 4, 2025 07:35:58">20 tháng 4, 2025</span>
   </span>
 
     
@@ -5907,7 +6013,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.integrate", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
