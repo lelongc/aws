@@ -1,4 +1,5769 @@
-<!doctype html><html class=no-js lang=vi><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><link href=https://lelongc.github.io/aws/saa-stephane/14.db-aws/db/ rel=canonical><link href=../../13.serverless-architecture/website/ rel=prev><link href=../summary/ rel=next><link href=../../../assets/images/favicon.png rel=icon><meta content="mkdocs-1.6.1, mkdocs-material-9.6.12" name=generator><title>Db - DraDoc</title><link href=../../../assets/stylesheets/main.2afb09e1.min.css rel=stylesheet><link href=../../../assets/stylesheets/palette.06af60db.min.css rel=stylesheet><link crossorigin href=https://fonts.gstatic.com rel=preconnect><link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback" rel=stylesheet><style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style><script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script><link href=../../../assets/stylesheets/glightbox.min.css rel=stylesheet><style>html.glightbox-open{overflow:initial;height:100%}.gslide-title{user-select:text;margin-top:0}.gslide-desc{color:#666;user-select:text}.gslide-image img{background:#fff}.gscrollbar-fixer{padding-right:15px}.gdesc-inner{font-size:.75rem}body[data-md-color-scheme=slate] .gdesc-inner{background:var(--md-default-bg-color)}body[data-md-color-scheme=slate] .gslide-title,body[data-md-color-scheme=slate] .gslide-desc{color:var(--md-default-fg-color)}</style><script src=../../../assets/javascripts/glightbox.min.js></script><body data-md-color-accent=indigo data-md-color-primary=indigo data-md-color-scheme=default dir=ltr><input autocomplete=off class=md-toggle data-md-toggle=drawer id=__drawer type=checkbox><input autocomplete=off class=md-toggle data-md-toggle=search id=__search type=checkbox><label class=md-overlay for=__drawer></label><div data-md-component=skip><a class=md-skip href=#chi-tiet-kien-thuc-ve-co-so-du-lieu-databases> Bỏ qua </a></div><div data-md-component=announce></div><header class="md-header md-header--shadow md-header--lifted" data-md-component=header><nav aria-label="Đầu trang" class="md-header__inner md-grid"><a class="md-header__button md-logo" aria-label=DraDoc data-md-component=logo href=../../.. title=DraDoc> <svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg> </a><label class="md-header__button md-icon" for=__drawer><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg></label><div class=md-header__title data-md-component=header-title><div class=md-header__ellipsis><div class=md-header__topic><span class=md-ellipsis> DraDoc </span></div><div class=md-header__topic data-md-component=header-topic><span class=md-ellipsis> Db </span></div></div></div><form class=md-header__option data-md-component=palette><input aria-label="Chuyển sang chế độ tối" class=md-option data-md-color-accent=indigo data-md-color-media data-md-color-primary=indigo data-md-color-scheme=default id=__palette_0 name=__palette type=radio><label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for=__palette_1 hidden><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg></label><input aria-label="Chuyển sang chế độ sáng" class=md-option data-md-color-accent=indigo data-md-color-media data-md-color-primary=black data-md-color-scheme=slate id=__palette_1 name=__palette type=radio><label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for=__palette_0 hidden><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg></label></form><script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script><label class="md-header__button md-icon" for=__search><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg></label><div class=md-search data-md-component=search role=dialog><label class=md-search__overlay for=__search></label><div class=md-search__inner role=search><form class=md-search__form name=search><input aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize=off autocomplete=off autocorrect=off class=md-search__input data-md-component=search-query name=query required spellcheck=false type=text><label class="md-search__icon md-icon" for=__search><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg> <svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></label><nav aria-label="Tìm kiếm" class=md-search__options><button class="md-search__icon md-icon" aria-label=Xoá tabindex=-1 title=Xoá type=reset><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></nav></form><div class=md-search__output><div class=md-search__scrollwrap data-md-scrollfix tabindex=0><div class=md-search-result data-md-component=search-result><div class=md-search-result__meta>Initializing search</div><ol class=md-search-result__list role=presentation></ol></div></div></div></div></div><div class=md-header__source><a title="Xem mã nguồn" class=md-source data-md-component=source href=https://github.com/lelongc/aws> <div class="md-source__icon md-icon"><svg viewbox="0 0 448 512" xmlns=http://www.w3.org/2000/svg><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg></div> <div class=md-source__repository>GitHub</div> </a></div></nav><nav aria-label=Tabs class=md-tabs data-md-component=tabs><div class=md-grid><ul class=md-tabs__list><li class=md-tabs__item><a class=md-tabs__link href=../../..> Welcome to DraDoc </a><li class=md-tabs__item><a class=md-tabs__link href=../../../List%20of%20Ports%20to%20be%20familiar%20with/> List of Ports to be familiar with </a><li class=md-tabs__item><a class=md-tabs__link href=../../../cer/readme/> Cer </a><li class=md-tabs__item><a class=md-tabs__link href=../../../orther-note/readme/> Orther note </a><li class=md-tabs__item><a class=md-tabs__link href=../../../saa-cantrill-and-lab/readme/> Saa cantrill and lab </a><li class="md-tabs__item md-tabs__item--active"><a class=md-tabs__link href=../../readme/> Saa stephane </a></ul></div></nav></header><div class=md-container data-md-component=container><main class=md-main data-md-component=main><div class="md-main__inner md-grid"><div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation><div class=md-sidebar__scrollwrap><div class=md-sidebar__inner><nav aria-label="Thanh điều hướng" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level=0><label class=md-nav__title for=__drawer><a class="md-nav__button md-logo" aria-label=DraDoc data-md-component=logo href=../../.. title=DraDoc> <svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg> </a> DraDoc</label><div class=md-nav__source><a title="Xem mã nguồn" class=md-source data-md-component=source href=https://github.com/lelongc/aws> <div class="md-source__icon md-icon"><svg viewbox="0 0 448 512" xmlns=http://www.w3.org/2000/svg><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg></div> <div class=md-source__repository>GitHub</div> </a></div><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../..> <span class=md-ellipsis> Welcome to DraDoc </span> </a><li class=md-nav__item><a class=md-nav__link href=../../../List%20of%20Ports%20to%20be%20familiar%20with/> <span class=md-ellipsis> List of Ports to be familiar with </span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../../cer/readme/> <span class=md-ellipsis> Cer </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../../orther-note/readme/> <span class=md-ellipsis> Orther note </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../../saa-cantrill-and-lab/readme/> <span class=md-ellipsis> Saa cantrill and lab </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" checked id=__nav_6 type=checkbox> <label class=md-nav__link for=__nav_6 id=__nav_6_label><span class=md-ellipsis> Saa stephane </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=true aria-labelledby=__nav_6_label class=md-nav data-md-level=1><label class=md-nav__title for=__nav_6><span class="md-nav__icon md-icon"></span> Saa stephane</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../readme/> <span class=md-ellipsis> Readme </span> </a><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_2 type=checkbox> <label class=md-nav__link for=__nav_6_2 id=__nav_6_2_label><span class=md-ellipsis> 00.prerequisite </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_2_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_2><span class="md-nav__icon md-icon"></span> 00.prerequisite</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../00.prerequisite/db/> <span class=md-ellipsis> Db </span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../00.prerequisite/0.1.IAM/0.1/> <span class=md-ellipsis> 0.1.IAM </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../00.prerequisite/0.2.network-fundamentals/2.Ip-Mac-Arp/> <span class=md-ellipsis> 0.2.network fundamentals </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_3 type=checkbox> <label class=md-nav__link for=__nav_6_3 id=__nav_6_3_label><span class=md-ellipsis> 01.ec2 </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_3_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_3><span class="md-nav__icon md-icon"></span> 01.ec2</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../01.ec2/lab-ec2/> <span class=md-ellipsis> Lab ec2 </span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../01.ec2/l%C3%BD-thuy%E1%BA%BFt/ec2-elastic-network-interface/> <span class=md-ellipsis> Lý thuyết </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../01.ec2/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACID/> <span class=md-ellipsis> Lý thuyết bên lề </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_4 type=checkbox> <label class=md-nav__link for=__nav_6_4 id=__nav_6_4_label><span class=md-ellipsis> 02.ec2 storage </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_4_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_4><span class="md-nav__icon md-icon"></span> 02.ec2 storage</label><ul class=md-nav__list data-md-scrollfix><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../02.ec2-storage/lab/ebs-ec2-format-extend/> <span class=md-ellipsis> Lab </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt/ebs-ec2-extend-volume/> <span class=md-ellipsis> Lý thuyết </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/IOPS/> <span class=md-ellipsis> Lý thuyết bên lề </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_5 type=checkbox> <label class=md-nav__link for=__nav_6_5 id=__nav_6_5_label><span class=md-ellipsis> 03.High availability vs Scalability </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_5_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_5><span class="md-nav__icon md-icon"></span> 03.High availability vs Scalability</label><ul class=md-nav__list data-md-scrollfix><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ALB/> <span class=md-ellipsis> Lý thuyết </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/Distributed-Cache/> <span class=md-ellipsis> Lý thuyết bên lề </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_6 type=checkbox> <label class=md-nav__link for=__nav_6_6 id=__nav_6_6_label><span class=md-ellipsis> 04.RDB Aurora elasticCache </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_6_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_6><span class="md-nav__icon md-icon"></span> 04.RDB Aurora elasticCache</label><ul class=md-nav__list data-md-scrollfix><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/> <span class=md-ellipsis> Lý thuyết </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/in-memory-statless%27full/> <span class=md-ellipsis> Lý thuyết bên lề </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_7 type=checkbox> <label class=md-nav__link for=__nav_6_7 id=__nav_6_7_label><span class=md-ellipsis> 05.route53 dns </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_7_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_7><span class="md-nav__icon md-icon"></span> 05.route53 dns</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../05.route53-dns/5/> <span class=md-ellipsis> 5 </span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../05.route53-dns/l%C3%BD-thuy%E1%BA%BFt/3rd-party-dns-service/> <span class=md-ellipsis> Lý thuyết </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_8 type=checkbox> <label class=md-nav__link for=__nav_6_8 id=__nav_6_8_label><span class=md-ellipsis> 06.classic sa </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_8_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_8><span class="md-nav__icon md-icon"></span> 06.classic sa</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../06.classic-sa/6/> <span class=md-ellipsis> 6 </span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../06.classic-sa/l%C3%BD-thuy%E1%BA%BFt/STATEFULL-shoppingcard/> <span class=md-ellipsis> Lý thuyết </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_9 type=checkbox> <label class=md-nav__link for=__nav_6_9 id=__nav_6_9_label><span class=md-ellipsis> 07.s3 </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_9_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_9><span class="md-nav__icon md-icon"></span> 07.s3</label><ul class=md-nav__list data-md-scrollfix><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../07.s3/lab/s3-static-web/> <span class=md-ellipsis> Lab </span> <span class="md-nav__icon md-icon"></span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../07.s3/l%C3%BD-thuy%E1%BA%BFt/batch-operation/> <span class=md-ellipsis> Lý thuyết </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_10 type=checkbox> <label class=md-nav__link for=__nav_6_10 id=__nav_6_10_label><span class=md-ellipsis> 08.Cloudfront </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_10_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_10><span class="md-nav__icon md-icon"></span> 08.Cloudfront</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../08.Cloudfront/CloudFront-Geo-Restriction/> <span class=md-ellipsis> CloudFront Geo Restriction </span> </a><li class=md-nav__item><a class=md-nav__link href=../../08.Cloudfront/cache/> <span class=md-ellipsis> Cache </span> </a><li class=md-nav__item><a class=md-nav__link href=../../08.Cloudfront/cloudfront-alb-ec2/> <span class=md-ellipsis> Cloudfront alb ec2 </span> </a><li class=md-nav__item><a class=md-nav__link href=../../08.Cloudfront/cloudfront-price/> <span class=md-ellipsis> Cloudfront price </span> </a><li class=md-nav__item><a class=md-nav__link href=../../08.Cloudfront/cloudfront/> <span class=md-ellipsis> Cloudfront </span> </a><li class=md-nav__item><a class=md-nav__link href=../../08.Cloudfront/global-accelerator/> <span class=md-ellipsis> Global accelerator </span> </a><li class=md-nav__item><a class=md-nav__link href=../../08.Cloudfront/so-s%C3%A1nh-global-acce-vs-route53/> <span class=md-ellipsis> So sánh global acce vs route53 </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_11 type=checkbox> <label class=md-nav__link for=__nav_6_11 id=__nav_6_11_label><span class=md-ellipsis> 09.AWS Storage Extras </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_11_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_11><span class="md-nav__icon md-icon"></span> 09.AWS Storage Extras</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../09.AWS-Storage-Extras/Fsx/> <span class=md-ellipsis> Fsx </span> </a><li class=md-nav__item><a class=md-nav__link href=../../09.AWS-Storage-Extras/aws-data-sync/> <span class=md-ellipsis> Aws data sync </span> </a><li class=md-nav__item><a class=md-nav__link href=../../09.AWS-Storage-Extras/aws-transfer-family/> <span class=md-ellipsis> Aws transfer family </span> </a><li class=md-nav__item><a class=md-nav__link href=../../09.AWS-Storage-Extras/snow-family/> <span class=md-ellipsis> Snow family </span> </a><li class=md-nav__item><a class=md-nav__link href=../../09.AWS-Storage-Extras/storage-gateway/> <span class=md-ellipsis> Storage gateway </span> </a><li class=md-nav__item><a class=md-nav__link href=../../09.AWS-Storage-Extras/t%C3%B3m-g%E1%BB%8Dn/> <span class=md-ellipsis> Tóm gọn </span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../09.AWS-Storage-Extras/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACLs/> <span class=md-ellipsis> Lý thuyết bên lề </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_12 type=checkbox> <label class=md-nav__link for=__nav_6_12 id=__nav_6_12_label><span class=md-ellipsis> 10.sqs sns activeMQ kinesis </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_12_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_12><span class="md-nav__icon md-icon"></span> 10.sqs sns activeMQ kinesis</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/> <span class=md-ellipsis> Amazon Data Firehose giờ đổi tên thành delivery stream'ata firehose </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/amazon-MQ/> <span class=md-ellipsis> amazon MQ </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/fifo/> <span class=md-ellipsis> Fifo </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/kinesis/> <span class=md-ellipsis> Kinesis </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/long-poll/> <span class=md-ellipsis> Long poll </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/messaging/> <span class=md-ellipsis> Messaging </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/sns/> <span class=md-ellipsis> Sns </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/sqs-asg/> <span class=md-ellipsis> Sqs asg </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/sqs-sns-fanout/> <span class=md-ellipsis> Sqs sns fanout </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/sqs-visi-timeout/> <span class=md-ellipsis> Sqs visi timeout </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/sqs/> <span class=md-ellipsis> Sqs </span> </a><li class=md-nav__item><a class=md-nav__link href=../../10.sqs-sns-activeMQ-kinesis/sumary/> <span class=md-ellipsis> Sumary </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_13 type=checkbox> <label class=md-nav__link for=__nav_6_13 id=__nav_6_13_label><span class=md-ellipsis> 11.ecs </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_13_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_13><span class="md-nav__icon md-icon"></span> 11.ecs</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/a2c/> <span class=md-ellipsis> A2c </span> </a><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/app-runner/> <span class=md-ellipsis> App runner </span> </a><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/ecr/> <span class=md-ellipsis> Ecr </span> </a><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/ecs/> <span class=md-ellipsis> Ecs </span> </a><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/eks/> <span class=md-ellipsis> Eks </span> </a><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/overview/> <span class=md-ellipsis> Overview </span> </a><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/saa-ecs/> <span class=md-ellipsis> Saa ecs </span> </a><li class=md-nav__item><a class=md-nav__link href=../../11.ecs/scale-ecs/> <span class=md-ellipsis> Scale ecs </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_14 type=checkbox> <label class=md-nav__link for=__nav_6_14 id=__nav_6_14_label><span class=md-ellipsis> 12.serverless </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_14_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_14><span class="md-nav__icon md-icon"></span> 12.serverless</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/api-gateway/> <span class=md-ellipsis> Api gateway </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/cognito/> <span class=md-ellipsis> Cognito </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/dynamodb-advance/> <span class=md-ellipsis> Dynamodb advance </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/dynamodb/> <span class=md-ellipsis> Dynamodb </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/invoke-lamda/> <span class=md-ellipsis> Invoke lamda </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/lamda-concurrency/> <span class=md-ellipsis> Lamda concurrency </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/lamda-limits/> <span class=md-ellipsis> Lamda limits </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/lamda-scope/> <span class=md-ellipsis> Lamda scope </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/lamda-snapstart/> <span class=md-ellipsis> Lamda snapstart </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/lamda/> <span class=md-ellipsis> Lamda </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/lamdaEdge-CloudFrontFunc/> <span class=md-ellipsis> lamdaEdge CloudFrontFunc </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/overview/> <span class=md-ellipsis> Overview </span> </a><li class=md-nav__item><a class=md-nav__link href=../../12.serverless/step-func/> <span class=md-ellipsis> Step func </span> </a><li class="md-nav__item md-nav__item--pruned md-nav__item--nested"><a class=md-nav__link href=../../12.serverless/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/case-cloudfrontFunc-lamdaEdge/> <span class=md-ellipsis> Lý thuyết bên lề </span> <span class="md-nav__icon md-icon"></span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_15 type=checkbox> <label class=md-nav__link for=__nav_6_15 id=__nav_6_15_label><span class=md-ellipsis> 13.serverless architecture </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_15_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_15><span class="md-nav__icon md-icon"></span> 13.serverless architecture</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../13.serverless-architecture/microservice/> <span class=md-ellipsis> Microservice </span> </a><li class=md-nav__item><a class=md-nav__link href=../../13.serverless-architecture/mobile-app/> <span class=md-ellipsis> Mobile app </span> </a><li class=md-nav__item><a class=md-nav__link href=../../13.serverless-architecture/uodate-offloading/> <span class=md-ellipsis> Uodate offloading </span> </a><li class=md-nav__item><a class=md-nav__link href=../../13.serverless-architecture/website/> <span class=md-ellipsis> Website </span> </a></ul></nav><li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" checked id=__nav_6_16 type=checkbox> <label class=md-nav__link for=__nav_6_16 id=__nav_6_16_label><span class=md-ellipsis> 14.db aws </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=true aria-labelledby=__nav_6_16_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_16><span class="md-nav__icon md-icon"></span> 14.db aws</label><ul class=md-nav__list data-md-scrollfix><li class="md-nav__item md-nav__item--active"><input class="md-nav__toggle md-toggle" id=__toc type=checkbox> <label class="md-nav__link md-nav__link--active" for=__toc><span class=md-ellipsis> Db </span> <span class="md-nav__icon md-icon"></span></label> <a class="md-nav__link md-nav__link--active" href=./> <span class=md-ellipsis> Db </span> </a> <nav aria-label="Mục lục" class="md-nav md-nav--secondary"><label class=md-nav__title for=__toc><span class="md-nav__icon md-icon"></span> Mục lục</label><ul class=md-nav__list data-md-component=toc data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=#chi-tiet-kien-thuc-ve-co-so-du-lieu-databases> <span class=md-ellipsis> Chi tiết kiến thức về Cơ sở dữ liệu (Databases) </span> </a><li class=md-nav__item><a class=md-nav__link href=#1-cac-yeu-to-can-xem-xet-khi-chon-co-so-du-lieu> <span class=md-ellipsis> 1. Các yếu tố cần xem xét khi chọn cơ sở dữ liệu </span> </a><li class=md-nav__item><a class=md-nav__link href=#2-cac-loai-co-so-du-lieu-tren-aws> <span class=md-ellipsis> 2. Các loại cơ sở dữ liệu trên AWS </span> </a> <nav aria-label="2. Các loại cơ sở dữ liệu trên AWS" class=md-nav><ul class=md-nav__list><li class=md-nav__item><a class=md-nav__link href=#21-co-so-du-lieu-quan-he-rdbms-relational-database-management-system> <span class=md-ellipsis> 2.1. Cơ sở dữ liệu quan hệ (RDBMS - Relational Database Management System) </span> </a><li class=md-nav__item><a class=md-nav__link href=#22-co-so-du-lieu-nosql> <span class=md-ellipsis> 2.2. Cơ sở dữ liệu NoSQL </span> </a><li class=md-nav__item><a class=md-nav__link href=#23-luu-tru-oi-tuong-object-store> <span class=md-ellipsis> 2.3. Lưu trữ đối tượng (Object Store) </span> </a><li class=md-nav__item><a class=md-nav__link href=#24-kho-du-lieu-data-warehousing> <span class=md-ellipsis> 2.4. Kho dữ liệu (Data Warehousing) </span> </a><li class=md-nav__item><a class=md-nav__link href=#25-co-so-du-lieu-tim-kiem-search-databases> <span class=md-ellipsis> 2.5. Cơ sở dữ liệu tìm kiếm (Search Databases) </span> </a><li class=md-nav__item><a class=md-nav__link href=#26-co-so-du-lieu-o-thi-graph-databases> <span class=md-ellipsis> 2.6. Cơ sở dữ liệu đồ thị (Graph Databases) </span> </a><li class=md-nav__item><a class=md-nav__link href=#27-co-so-du-lieu-so-cai-ledger-databases> <span class=md-ellipsis> 2.7. Cơ sở dữ liệu sổ cái (Ledger Databases) </span> </a><li class=md-nav__item><a class=md-nav__link href=#28-co-so-du-lieu-chuoi-thoi-gian-time-series-databases> <span class=md-ellipsis> 2.8. Cơ sở dữ liệu chuỗi thời gian (Time Series Databases) </span> </a></ul></nav><li class=md-nav__item><a class=md-nav__link href=#3-tong-ket> <span class=md-ellipsis> 3. Tổng kết </span> </a><li class=md-nav__item><a class=md-nav__link href=#4-luu-y> <span class=md-ellipsis> 4. Lưu ý </span> </a></ul></nav><li class=md-nav__item><a class=md-nav__link href=../summary/> <span class=md-ellipsis> Summary </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_17 type=checkbox> <label class=md-nav__link for=__nav_6_17 id=__nav_6_17_label><span class=md-ellipsis> 15.data analytics </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_17_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_17><span class="md-nav__icon md-icon"></span> 15.data analytics</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/amazon-EMR/> <span class=md-ellipsis> amazon EMR </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/amazon-quicksight/> <span class=md-ellipsis> Amazon quicksight </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/apache-flink-managed-svc/> <span class=md-ellipsis> Apache flink managed svc </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/athena/> <span class=md-ellipsis> Athena </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/aws-glue/> <span class=md-ellipsis> Aws glue </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/aws-lake-formation/> <span class=md-ellipsis> Aws lake formation </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/big-data-ingestion-pipeline/> <span class=md-ellipsis> Big data ingestion pipeline </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/msk/> <span class=md-ellipsis> Msk </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/open-search/> <span class=md-ellipsis> Open search </span> </a><li class=md-nav__item><a class=md-nav__link href=../../15.data-analytics/redshift/> <span class=md-ellipsis> Redshift </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_18 type=checkbox> <label class=md-nav__link for=__nav_6_18 id=__nav_6_18_label><span class=md-ellipsis> 16.machine learning </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_18_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_18><span class="md-nav__icon md-icon"></span> 16.machine learning</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/a-comprehend-medical/> <span class=md-ellipsis> A comprehend medical </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/a-comprehend/> <span class=md-ellipsis> A comprehend </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/a-personalize/> <span class=md-ellipsis> A personalize </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/a-polly-translate/> <span class=md-ellipsis> A polly translate </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/a-sage-maker/> <span class=md-ellipsis> A sage maker </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/amazon-rekognition/> <span class=md-ellipsis> Amazon rekognition </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/kendra/> <span class=md-ellipsis> Kendra </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/lex-connect/> <span class=md-ellipsis> Lex connect </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/sumary/> <span class=md-ellipsis> Sumary </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/textract/> <span class=md-ellipsis> Textract </span> </a><li class=md-nav__item><a class=md-nav__link href=../../16.machine-learning/transcribe/> <span class=md-ellipsis> Transcribe </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_19 type=checkbox> <label class=md-nav__link for=__nav_6_19 id=__nav_6_19_label><span class=md-ellipsis> 17.monitor </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_19_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_19><span class="md-nav__icon md-icon"></span> 17.monitor</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/CloudWatch-Insights/> <span class=md-ellipsis> CloudWatch Insights </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/aws-config/> <span class=md-ellipsis> Aws config </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/cloud-trail-evenbridge/> <span class=md-ellipsis> Cloud trail evenbridge </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/cloud-trail/> <span class=md-ellipsis> Cloud trail </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/cloud-watch-alarm/> <span class=md-ellipsis> Cloud watch alarm </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/cloud-watch-logs/> <span class=md-ellipsis> Cloud watch logs </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/cloudWatch-cloudTrail-awsConfig/> <span class=md-ellipsis> cloudWatch cloudTrail awsConfig </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/cloudwatch-agent/> <span class=md-ellipsis> Cloudwatch agent </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/cloudwatch-metric/> <span class=md-ellipsis> Cloudwatch metric </span> </a><li class=md-nav__item><a class=md-nav__link href=../../17.monitor/even-bridge/> <span class=md-ellipsis> Even bridge </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_20 type=checkbox> <label class=md-nav__link for=__nav_6_20 id=__nav_6_20_label><span class=md-ellipsis> 18.iam advance </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_20_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_20><span class="md-nav__icon md-icon"></span> 18.iam advance</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../18.iam-advance/AWS%20IAM%20Identity%20Center/> <span class=md-ellipsis> AWS IAM Identity Center </span> </a><li class=md-nav__item><a class=md-nav__link href=../../18.iam-advance/aws-active-directory/> <span class=md-ellipsis> Aws active directory </span> </a><li class=md-nav__item><a class=md-nav__link href=../../18.iam-advance/aws-control-tower/> <span class=md-ellipsis> Aws control tower </span> </a><li class=md-nav__item><a class=md-nav__link href=../../18.iam-advance/aws-organization/> <span class=md-ellipsis> Aws organization </span> </a><li class=md-nav__item><a class=md-nav__link href=../../18.iam-advance/aws-policy/> <span class=md-ellipsis> Aws policy </span> </a><li class=md-nav__item><a class=md-nav__link href=../../18.iam-advance/iam-evaluate-logic/> <span class=md-ellipsis> Iam evaluate logic </span> </a><li class=md-nav__item><a class=md-nav__link href=../../18.iam-advance/resourceBased-iamRole/> <span class=md-ellipsis> resourceBased iamRole </span> </a></ul></nav><li class="md-nav__item md-nav__item--section md-nav__item--nested"><input class="md-nav__toggle md-toggle" id=__nav_6_21 type=checkbox> <label class=md-nav__link for=__nav_6_21 id=__nav_6_21_label><span class=md-ellipsis> 19.security </span> <span class="md-nav__icon md-icon"></span></label> <nav aria-expanded=false aria-labelledby=__nav_6_21_label class=md-nav data-md-level=2><label class=md-nav__title for=__nav_6_21><span class="md-nav__icon md-icon"></span> 19.security</label><ul class=md-nav__list data-md-scrollfix><li class=md-nav__item><a class=md-nav__link href=../../19.security/encryption101/> <span class=md-ellipsis> Encryption101 </span> </a></ul></nav></ul></nav></ul></nav></div></div></div><div class=md-content data-md-component=content><article class="md-content__inner md-typeset"><a class="md-content__button md-icon" title="Chỉnh sửa" href=https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/14.db-aws/db.md> <svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg> </a><h1>Db</h1><h3 id=chi-tiet-kien-thuc-ve-co-so-du-lieu-databases><strong>Chi tiết kiến thức về Cơ sở dữ liệu (Databases)</strong><a title="Permanent link" class=headerlink href=#chi-tiet-kien-thuc-ve-co-so-du-lieu-databases>¶</a></h3><p>Trong phần này, chúng ta sẽ tìm hiểu về các loại cơ sở dữ liệu khác nhau trên AWS và cách lựa chọn cơ sở dữ liệu phù hợp cho từng workload cụ thể. Dưới đây là các khía cạnh quan trọng cần xem xét khi chọn cơ sở dữ liệu:<hr><h3 id=1-cac-yeu-to-can-xem-xet-khi-chon-co-so-du-lieu><strong>1. Các yếu tố cần xem xét khi chọn cơ sở dữ liệu</strong><a title="Permanent link" class=headerlink href=#1-cac-yeu-to-can-xem-xet-khi-chon-co-so-du-lieu>¶</a></h3><p><a class=glightbox data-desc-position=bottom data-height=auto data-type=image data-width=auto href=../image/choose-db.png><img alt="alt text" src=../image/choose-db.png></a><ul><li><strong>Workload (Khối lượng công việc):</strong><li><strong>Write-heavy (Ghi nhiều):</strong> Cần cơ sở dữ liệu tối ưu cho việc ghi dữ liệu.<li><strong>Read-heavy (Đọc nhiều):</strong> Cần cơ sở dữ liệu tối ưu cho việc đọc dữ liệu.<li><strong>Balanced workload (Cân bằng):</strong> Cần cơ sở dữ liệu xử lý cả đọc và ghi một cách cân bằng.<li><p><strong>Dữ liệu:</strong></p><li><p><strong>Kích thước dữ liệu:</strong> Dữ liệu lớn hay nhỏ? Dữ liệu có tăng trưởng theo thời gian không?</p><li><strong>Độ bền dữ liệu (Data Durability):</strong> Dữ liệu có cần được lưu trữ an toàn và không bị mất mát không?<li><p><strong>Nguồn dữ liệu (Source of Truth):</strong> Dữ liệu được lấy từ đâu và có cần đồng bộ hóa không?</p><li><p><strong>Hiệu suất:</strong></p><li><p><strong>Độ trễ (Latency):</strong> Có yêu cầu về độ trễ thấp không?</p><li><p><strong>Người dùng đồng thời (Concurrent Users):</strong> Có bao nhiêu người dùng truy cập đồng thời?</p><li><p><strong>Mô hình dữ liệu:</strong></p><li><p><strong>Cấu trúc dữ liệu (Structured, Semi-structured, Unstructured):</strong> Dữ liệu có cấu trúc chặt chẽ hay linh hoạt?</p><li><p><strong>Cách truy vấn (Query):</strong> Có cần thực hiện các phép JOIN, truy vấn phức tạp không?</p><li><p><strong>Tính năng bổ sung:</strong></p><li><strong>Báo cáo (Reporting):</strong> Có cần tích hợp báo cáo trên cơ sở dữ liệu không?<li><strong>Tìm kiếm (Search):</strong> Có cần tìm kiếm văn bản tự do (full-text search) không?<li><strong>Chi phí (Cost):</strong> Có yêu cầu về chi phí thấp hoặc không có phí bản quyền không?</ul><hr><h3 id=2-cac-loai-co-so-du-lieu-tren-aws><strong>2. Các loại cơ sở dữ liệu trên AWS</strong><a title="Permanent link" class=headerlink href=#2-cac-loai-co-so-du-lieu-tren-aws>¶</a></h3><p><a class=glightbox data-desc-position=bottom data-height=auto data-type=image data-width=auto href=../image/db-type.png><img alt="alt text" src=../image/db-type.png></a><h4 id=21-co-so-du-lieu-quan-he-rdbms-relational-database-management-system><strong>2.1. Cơ sở dữ liệu quan hệ (RDBMS - Relational Database Management System)</strong><a title="Permanent link" class=headerlink href=#21-co-so-du-lieu-quan-he-rdbms-relational-database-management-system>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Sử dụng SQL (Structured Query Language).<li>Phù hợp cho các ứng dụng OLTP (Online Transaction Processing).<li>Hỗ trợ JOIN và các truy vấn phức tạp.<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon RDS (Relational Database Service):</strong> Hỗ trợ nhiều engine như MySQL, PostgreSQL, Oracle, SQL Server, MariaDB.<li><strong>Amazon Aurora:</strong> Cơ sở dữ liệu tương thích MySQL và PostgreSQL, hiệu suất cao, tự động mở rộng.</ul><h4 id=22-co-so-du-lieu-nosql><strong>2.2. Cơ sở dữ liệu NoSQL</strong><a title="Permanent link" class=headerlink href=#22-co-so-du-lieu-nosql>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Linh hoạt hơn so với RDBMS.<li>Không hỗ trợ JOIN hoặc SQL (trừ một số ngoại lệ).<li>Phù hợp cho dữ liệu phi cấu trúc hoặc bán cấu trúc.<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon DynamoDB:</strong> Cơ sở dữ liệu NoSQL key-value, hiệu suất cao, tự động mở rộng.<li><strong>Amazon ElastiCache:</strong> Dịch vụ bộ nhớ đệm (cache) dựa trên Redis hoặc Memcached.<li><strong>Amazon Neptune:</strong> Cơ sở dữ liệu đồ thị (Graph Database) để quản lý các mối quan hệ phức tạp.<li><strong>Amazon DocumentDB:</strong> Cơ sở dữ liệu tương thích MongoDB, lưu trữ dữ liệu dạng JSON.<li><strong>Amazon Keyspaces:</strong> Cơ sở dữ liệu tương thích Apache Cassandra, phù hợp cho dữ liệu phân tán.</ul><h4 id=23-luu-tru-oi-tuong-object-store><strong>2.3. Lưu trữ đối tượng (Object Store)</strong><a title="Permanent link" class=headerlink href=#23-luu-tru-oi-tuong-object-store>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Phù hợp cho lưu trữ các đối tượng lớn như hình ảnh, video, file backup.<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon S3 (Simple Storage Service):</strong> Lưu trữ đối tượng với độ bền cao.<li><strong>Amazon Glacier:</strong> Lưu trữ dữ liệu lưu trữ (archival) với chi phí thấp.</ul><h4 id=24-kho-du-lieu-data-warehousing><strong>2.4. Kho dữ liệu (Data Warehousing)</strong><a title="Permanent link" class=headerlink href=#24-kho-du-lieu-data-warehousing>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Phù hợp cho phân tích dữ liệu (OLAP - Online Analytical Processing) và BI (Business Intelligence).<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon Redshift:</strong> Kho dữ liệu quan hệ, hỗ trợ truy vấn SQL phức tạp.<li><strong>Amazon Athena:</strong> Dịch vụ truy vấn dữ liệu trực tiếp trên S3 bằng SQL.<li><strong>Amazon EMR (Elastic MapReduce):</strong> Dịch vụ xử lý dữ liệu lớn (Big Data) sử dụng Hadoop, Spark.</ul><h4 id=25-co-so-du-lieu-tim-kiem-search-databases><strong>2.5. Cơ sở dữ liệu tìm kiếm (Search Databases)</strong><a title="Permanent link" class=headerlink href=#25-co-so-du-lieu-tim-kiem-search-databases>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Hỗ trợ tìm kiếm văn bản tự do (full-text search) và tìm kiếm phi cấu trúc.<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon OpenSearch Service (trước đây là Elasticsearch):</strong> Hỗ trợ tìm kiếm và phân tích dữ liệu.</ul><h4 id=26-co-so-du-lieu-o-thi-graph-databases><strong>2.6. Cơ sở dữ liệu đồ thị (Graph Databases)</strong><a title="Permanent link" class=headerlink href=#26-co-so-du-lieu-o-thi-graph-databases>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Phù hợp cho các ứng dụng cần quản lý mối quan hệ phức tạp giữa các dữ liệu.<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon Neptune:</strong> Cơ sở dữ liệu đồ thị hỗ trợ cả RDF và Property Graph.</ul><h4 id=27-co-so-du-lieu-so-cai-ledger-databases><strong>2.7. Cơ sở dữ liệu sổ cái (Ledger Databases)</strong><a title="Permanent link" class=headerlink href=#27-co-so-du-lieu-so-cai-ledger-databases>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Phù hợp cho các ứng dụng cần lưu trữ lịch sử giao dịch một cách minh bạch và không thể thay đổi.<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon QLDB (Quantum Ledger Database):</strong> Cơ sở dữ liệu sổ cái phi tập trung.</ul><h4 id=28-co-so-du-lieu-chuoi-thoi-gian-time-series-databases><strong>2.8. Cơ sở dữ liệu chuỗi thời gian (Time Series Databases)</strong><a title="Permanent link" class=headerlink href=#28-co-so-du-lieu-chuoi-thoi-gian-time-series-databases>¶</a></h4><ul><li><strong>Đặc điểm:</strong><li>Phù hợp cho các ứng dụng cần lưu trữ và phân tích dữ liệu theo thời gian.<li><strong>Dịch vụ AWS:</strong><li><strong>Amazon Timestream:</strong> Cơ sở dữ liệu chuỗi thời gian hiệu suất cao.</ul><hr><h3 id=3-tong-ket><strong>3. Tổng kết</strong><a title="Permanent link" class=headerlink href=#3-tong-ket>¶</a></h3><ul><li><strong>RDBMS (SQL):</strong> Phù hợp cho các ứng dụng cần truy vấn phức tạp và JOIN (RDS, Aurora).<li><strong>NoSQL:</strong> Linh hoạt, phù hợp cho dữ liệu phi cấu trúc (DynamoDB, DocumentDB).<li><strong>Object Store:</strong> Lưu trữ đối tượng lớn (S3, Glacier).<li><strong>Data Warehousing:</strong> Phân tích dữ liệu và BI (Redshift, Athena).<li><strong>Search Databases:</strong> Tìm kiếm văn bản tự do (OpenSearch).<li><strong>Graph Databases:</strong> Quản lý mối quan hệ phức tạp (Neptune).<li><strong>Ledger Databases:</strong> Lưu trữ lịch sử giao dịch (QLDB).<li><strong>Time Series Databases:</strong> Phân tích dữ liệu theo thời gian (Timestream).</ul><hr><h3 id=4-luu-y><strong>4. Lưu ý</strong><a title="Permanent link" class=headerlink href=#4-luu-y>¶</a></h3><ul><li>Các câu hỏi trong bài kiểm tra sẽ yêu cầu bạn chọn cơ sở dữ liệu phù hợp dựa trên các yêu cầu cụ thể của workload.<li>Không cần nhớ tất cả các chi tiết ngay lập tức, nhưng cần hiểu rõ các đặc điểm và trường hợp sử dụng của từng loại cơ sở dữ liệu.</ul><aside class=md-source-file><span class=md-source-file__fact> <span title="Cập nhật lần cuối" class=md-icon> <svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg> </span> <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 tháng 4, 2025 16:51:20">19 tháng 4, 2025</span> </span></aside><h2 id=__comments>Bình luận</h2><script async crossorigin data-category=Q&A data-category-id=DIC_kwDONYXH9c4CpKTT data-emit-metadata=0 data-input-position=bottom data-lang=en data-mapping=pathname data-reactions-enabled=1 data-repo=lelongc/aws data-repo-id=R_kgDONYXH9Q data-strict=0 data-theme=dark src=https://giscus.app/client.js></script><script>var giscus = document.querySelector("script[src*=giscus]");
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/14.db-aws/db/">
+      
+      
+        <link rel="prev" href="../../13.serverless-architecture/website/">
+      
+      
+        <link rel="next" href="../summary/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Db - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chi-tiet-kien-thuc-ve-co-so-du-lieu-databases" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Db
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ tối"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ sáng"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  List of Ports to be familiar with
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cer/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../orther-note/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Orther note
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa cantrill and lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa stephane
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to DraDoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Ports to be familiar with
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cer/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Cer
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../orther-note/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Orther note
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../saa-cantrill-and-lab/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa cantrill and lab
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Saa stephane
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Saa stephane
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readme
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    00.prerequisite
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            00.prerequisite
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00.prerequisite/db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Db
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../00.prerequisite/0.1.IAM/0.1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    0.1.IAM
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../00.prerequisite/0.2.network-fundamentals/2.Ip-Mac-Arp/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    0.2.network fundamentals
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    01.ec2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            01.ec2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.ec2/lab-ec2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab ec2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../01.ec2/l%C3%BD-thuy%E1%BA%BFt/ec2-elastic-network-interface/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../01.ec2/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACID/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết bên lề
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    02.ec2 storage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            02.ec2 storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../02.ec2-storage/lab/ebs-ec2-format-extend/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lab
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt/ebs-ec2-extend-volume/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/IOPS/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết bên lề
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    03.High availability vs Scalability
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            03.High availability vs Scalability
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ALB/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/Distributed-Cache/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết bên lề
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    04.RDB Aurora elasticCache
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            04.RDB Aurora elasticCache
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/in-memory-statless%27full/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết bên lề
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    05.route53 dns
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            05.route53 dns
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05.route53-dns/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../05.route53-dns/l%C3%BD-thuy%E1%BA%BFt/3rd-party-dns-service/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_8" id="__nav_6_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    06.classic sa
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_8">
+            <span class="md-nav__icon md-icon"></span>
+            06.classic sa
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06.classic-sa/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../06.classic-sa/l%C3%BD-thuy%E1%BA%BFt/STATEFULL-shoppingcard/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_9" id="__nav_6_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    07.s3
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9">
+            <span class="md-nav__icon md-icon"></span>
+            07.s3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../07.s3/lab/s3-static-web/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lab
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../07.s3/l%C3%BD-thuy%E1%BA%BFt/batch-operation/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_10" id="__nav_6_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    08.Cloudfront
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_10">
+            <span class="md-nav__icon md-icon"></span>
+            08.Cloudfront
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08.Cloudfront/CloudFront-Geo-Restriction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CloudFront Geo Restriction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08.Cloudfront/cache/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cache
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08.Cloudfront/cloudfront-alb-ec2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudfront alb ec2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08.Cloudfront/cloudfront-price/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudfront price
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08.Cloudfront/cloudfront/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudfront
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08.Cloudfront/global-accelerator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Global accelerator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../08.Cloudfront/so-s%C3%A1nh-global-acce-vs-route53/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    So sánh global acce vs route53
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_11" id="__nav_6_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    09.AWS Storage Extras
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_11">
+            <span class="md-nav__icon md-icon"></span>
+            09.AWS Storage Extras
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09.AWS-Storage-Extras/Fsx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fsx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09.AWS-Storage-Extras/aws-data-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws data sync
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09.AWS-Storage-Extras/aws-transfer-family/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws transfer family
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09.AWS-Storage-Extras/snow-family/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Snow family
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09.AWS-Storage-Extras/storage-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Storage gateway
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09.AWS-Storage-Extras/t%C3%B3m-g%E1%BB%8Dn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tóm gọn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../09.AWS-Storage-Extras/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACLs/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết bên lề
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    10.sqs sns activeMQ kinesis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_12">
+            <span class="md-nav__icon md-icon"></span>
+            10.sqs sns activeMQ kinesis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Amazon Data Firehose giờ đổi tên thành delivery stream'ata firehose
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/amazon-MQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    amazon MQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/fifo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/kinesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kinesis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/long-poll/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Long poll
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/messaging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Messaging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-asg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sqs asg
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-sns-fanout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sqs sns fanout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-visi-timeout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sqs visi timeout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sqs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sumary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sumary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_13" id="__nav_6_13_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    11.ecs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_13">
+            <span class="md-nav__icon md-icon"></span>
+            11.ecs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/a2c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A2c
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/app-runner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    App runner
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/ecr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ecr
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/ecs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ecs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/eks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/saa-ecs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Saa ecs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11.ecs/scale-ecs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scale ecs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    12.serverless
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_14">
+            <span class="md-nav__icon md-icon"></span>
+            12.serverless
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/api-gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Api gateway
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/cognito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cognito
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/dynamodb-advance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dynamodb advance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/dynamodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dynamodb
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/invoke-lamda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Invoke lamda
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/lamda-concurrency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lamda concurrency
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/lamda-limits/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lamda limits
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/lamda-scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lamda scope
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/lamda-snapstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lamda snapstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/lamda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lamda
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/lamdaEdge-CloudFrontFunc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    lamdaEdge CloudFrontFunc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../12.serverless/step-func/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Step func
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../12.serverless/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/case-cloudfrontFunc-lamdaEdge/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Lý thuyết bên lề
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_15" id="__nav_6_15_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    13.serverless architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_15">
+            <span class="md-nav__icon md-icon"></span>
+            13.serverless architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13.serverless-architecture/microservice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microservice
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13.serverless-architecture/mobile-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mobile app
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13.serverless-architecture/uodate-offloading/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Uodate offloading
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../13.serverless-architecture/website/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Website
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_16" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_16" id="__nav_6_16_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    14.db aws
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_16">
+            <span class="md-nav__icon md-icon"></span>
+            14.db aws
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Db
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Db
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chi-tiet-kien-thuc-ve-co-so-du-lieu-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chi tiết kiến thức về Cơ sở dữ liệu (Databases)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-cac-yeu-to-can-xem-xet-khi-chon-co-so-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Các yếu tố cần xem xét khi chọn cơ sở dữ liệu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cac-loai-co-so-du-lieu-tren-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Các loại cơ sở dữ liệu trên AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Các loại cơ sở dữ liệu trên AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-co-so-du-lieu-quan-he-rdbms-relational-database-management-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Cơ sở dữ liệu quan hệ (RDBMS - Relational Database Management System)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-co-so-du-lieu-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Cơ sở dữ liệu NoSQL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-luu-tru-oi-tuong-object-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Lưu trữ đối tượng (Object Store)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-kho-du-lieu-data-warehousing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4. Kho dữ liệu (Data Warehousing)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-co-so-du-lieu-tim-kiem-search-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5. Cơ sở dữ liệu tìm kiếm (Search Databases)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-co-so-du-lieu-o-thi-graph-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6. Cơ sở dữ liệu đồ thị (Graph Databases)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-co-so-du-lieu-so-cai-ledger-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7. Cơ sở dữ liệu sổ cái (Ledger Databases)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-co-so-du-lieu-chuoi-thoi-gian-time-series-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8. Cơ sở dữ liệu chuỗi thời gian (Time Series Databases)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tong-ket" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Tổng kết
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-luu-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Lưu ý
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Summary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_17" id="__nav_6_17_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    15.data analytics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_17">
+            <span class="md-nav__icon md-icon"></span>
+            15.data analytics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/amazon-EMR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    amazon EMR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/amazon-quicksight/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Amazon quicksight
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/apache-flink-managed-svc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Apache flink managed svc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/athena/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Athena
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/aws-glue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws glue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/aws-lake-formation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws lake formation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/big-data-ingestion-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big data ingestion pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/msk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Msk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/open-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Open search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../15.data-analytics/redshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Redshift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_18" id="__nav_6_18_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    16.machine learning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_18">
+            <span class="md-nav__icon md-icon"></span>
+            16.machine learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/a-comprehend-medical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A comprehend medical
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/a-comprehend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A comprehend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/a-personalize/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A personalize
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/a-polly-translate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A polly translate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/a-sage-maker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A sage maker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/amazon-rekognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Amazon rekognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/kendra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kendra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/lex-connect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lex connect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/sumary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sumary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/textract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Textract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../16.machine-learning/transcribe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transcribe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_19" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_19" id="__nav_6_19_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    17.monitor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_19">
+            <span class="md-nav__icon md-icon"></span>
+            17.monitor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/CloudWatch-Insights/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CloudWatch Insights
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/aws-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/cloud-trail-evenbridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud trail evenbridge
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/cloud-trail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud trail
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/cloud-watch-alarm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud watch alarm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/cloud-watch-logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud watch logs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/cloudWatch-cloudTrail-awsConfig/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cloudWatch cloudTrail awsConfig
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/cloudwatch-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudwatch agent
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/cloudwatch-metric/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudwatch metric
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../17.monitor/even-bridge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Even bridge
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_20" id="__nav_6_20_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    18.iam advance
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_20">
+            <span class="md-nav__icon md-icon"></span>
+            18.iam advance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18.iam-advance/AWS%20IAM%20Identity%20Center/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AWS IAM Identity Center
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18.iam-advance/aws-active-directory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws active directory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18.iam-advance/aws-control-tower/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws control tower
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18.iam-advance/aws-organization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws organization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18.iam-advance/aws-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18.iam-advance/iam-evaluate-logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Iam evaluate logic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../18.iam-advance/resourceBased-iamRole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    resourceBased iamRole
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_21" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_21" id="__nav_6_21_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    19.security
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_21">
+            <span class="md-nav__icon md-icon"></span>
+            19.security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../19.security/encryption101/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Encryption101
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/14.db-aws/db.md" title="Chỉnh sửa" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>Db</h1>
+
+<h3 id="chi-tiet-kien-thuc-ve-co-so-du-lieu-databases"><strong>Chi tiết kiến thức về Cơ sở dữ liệu (Databases)</strong><a class="headerlink" href="#chi-tiet-kien-thuc-ve-co-so-du-lieu-databases" title="Permanent link">&para;</a></h3>
+<p>Trong phần này, chúng ta sẽ tìm hiểu về các loại cơ sở dữ liệu khác nhau trên AWS và cách lựa chọn cơ sở dữ liệu phù hợp cho từng workload cụ thể. Dưới đây là các khía cạnh quan trọng cần xem xét khi chọn cơ sở dữ liệu:</p>
+<hr />
+<h3 id="1-cac-yeu-to-can-xem-xet-khi-chon-co-so-du-lieu"><strong>1. Các yếu tố cần xem xét khi chọn cơ sở dữ liệu</strong><a class="headerlink" href="#1-cac-yeu-to-can-xem-xet-khi-chon-co-so-du-lieu" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/choose-db.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/choose-db.png" /></a></p>
+<ul>
+<li><strong>Workload (Khối lượng công việc):</strong></li>
+<li><strong>Write-heavy (Ghi nhiều):</strong> Cần cơ sở dữ liệu tối ưu cho việc ghi dữ liệu.</li>
+<li><strong>Read-heavy (Đọc nhiều):</strong> Cần cơ sở dữ liệu tối ưu cho việc đọc dữ liệu.</li>
+<li><strong>Balanced workload (Cân bằng):</strong> Cần cơ sở dữ liệu xử lý cả đọc và ghi một cách cân bằng.</li>
+<li>
+<p><strong>Dữ liệu:</strong></p>
+</li>
+<li>
+<p><strong>Kích thước dữ liệu:</strong> Dữ liệu lớn hay nhỏ? Dữ liệu có tăng trưởng theo thời gian không?</p>
+</li>
+<li><strong>Độ bền dữ liệu (Data Durability):</strong> Dữ liệu có cần được lưu trữ an toàn và không bị mất mát không?</li>
+<li>
+<p><strong>Nguồn dữ liệu (Source of Truth):</strong> Dữ liệu được lấy từ đâu và có cần đồng bộ hóa không?</p>
+</li>
+<li>
+<p><strong>Hiệu suất:</strong></p>
+</li>
+<li>
+<p><strong>Độ trễ (Latency):</strong> Có yêu cầu về độ trễ thấp không?</p>
+</li>
+<li>
+<p><strong>Người dùng đồng thời (Concurrent Users):</strong> Có bao nhiêu người dùng truy cập đồng thời?</p>
+</li>
+<li>
+<p><strong>Mô hình dữ liệu:</strong></p>
+</li>
+<li>
+<p><strong>Cấu trúc dữ liệu (Structured, Semi-structured, Unstructured):</strong> Dữ liệu có cấu trúc chặt chẽ hay linh hoạt?</p>
+</li>
+<li>
+<p><strong>Cách truy vấn (Query):</strong> Có cần thực hiện các phép JOIN, truy vấn phức tạp không?</p>
+</li>
+<li>
+<p><strong>Tính năng bổ sung:</strong></p>
+</li>
+<li><strong>Báo cáo (Reporting):</strong> Có cần tích hợp báo cáo trên cơ sở dữ liệu không?</li>
+<li><strong>Tìm kiếm (Search):</strong> Có cần tìm kiếm văn bản tự do (full-text search) không?</li>
+<li><strong>Chi phí (Cost):</strong> Có yêu cầu về chi phí thấp hoặc không có phí bản quyền không?</li>
+</ul>
+<hr />
+<h3 id="2-cac-loai-co-so-du-lieu-tren-aws"><strong>2. Các loại cơ sở dữ liệu trên AWS</strong><a class="headerlink" href="#2-cac-loai-co-so-du-lieu-tren-aws" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../image/db-type.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../image/db-type.png" /></a></p>
+<h4 id="21-co-so-du-lieu-quan-he-rdbms-relational-database-management-system"><strong>2.1. Cơ sở dữ liệu quan hệ (RDBMS - Relational Database Management System)</strong><a class="headerlink" href="#21-co-so-du-lieu-quan-he-rdbms-relational-database-management-system" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Sử dụng SQL (Structured Query Language).</li>
+<li>Phù hợp cho các ứng dụng OLTP (Online Transaction Processing).</li>
+<li>Hỗ trợ JOIN và các truy vấn phức tạp.</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon RDS (Relational Database Service):</strong> Hỗ trợ nhiều engine như MySQL, PostgreSQL, Oracle, SQL Server, MariaDB.</li>
+<li><strong>Amazon Aurora:</strong> Cơ sở dữ liệu tương thích MySQL và PostgreSQL, hiệu suất cao, tự động mở rộng.</li>
+</ul>
+<h4 id="22-co-so-du-lieu-nosql"><strong>2.2. Cơ sở dữ liệu NoSQL</strong><a class="headerlink" href="#22-co-so-du-lieu-nosql" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Linh hoạt hơn so với RDBMS.</li>
+<li>Không hỗ trợ JOIN hoặc SQL (trừ một số ngoại lệ).</li>
+<li>Phù hợp cho dữ liệu phi cấu trúc hoặc bán cấu trúc.</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon DynamoDB:</strong> Cơ sở dữ liệu NoSQL key-value, hiệu suất cao, tự động mở rộng.</li>
+<li><strong>Amazon ElastiCache:</strong> Dịch vụ bộ nhớ đệm (cache) dựa trên Redis hoặc Memcached.</li>
+<li><strong>Amazon Neptune:</strong> Cơ sở dữ liệu đồ thị (Graph Database) để quản lý các mối quan hệ phức tạp.</li>
+<li><strong>Amazon DocumentDB:</strong> Cơ sở dữ liệu tương thích MongoDB, lưu trữ dữ liệu dạng JSON.</li>
+<li><strong>Amazon Keyspaces:</strong> Cơ sở dữ liệu tương thích Apache Cassandra, phù hợp cho dữ liệu phân tán.</li>
+</ul>
+<h4 id="23-luu-tru-oi-tuong-object-store"><strong>2.3. Lưu trữ đối tượng (Object Store)</strong><a class="headerlink" href="#23-luu-tru-oi-tuong-object-store" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Phù hợp cho lưu trữ các đối tượng lớn như hình ảnh, video, file backup.</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon S3 (Simple Storage Service):</strong> Lưu trữ đối tượng với độ bền cao.</li>
+<li><strong>Amazon Glacier:</strong> Lưu trữ dữ liệu lưu trữ (archival) với chi phí thấp.</li>
+</ul>
+<h4 id="24-kho-du-lieu-data-warehousing"><strong>2.4. Kho dữ liệu (Data Warehousing)</strong><a class="headerlink" href="#24-kho-du-lieu-data-warehousing" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Phù hợp cho phân tích dữ liệu (OLAP - Online Analytical Processing) và BI (Business Intelligence).</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon Redshift:</strong> Kho dữ liệu quan hệ, hỗ trợ truy vấn SQL phức tạp.</li>
+<li><strong>Amazon Athena:</strong> Dịch vụ truy vấn dữ liệu trực tiếp trên S3 bằng SQL.</li>
+<li><strong>Amazon EMR (Elastic MapReduce):</strong> Dịch vụ xử lý dữ liệu lớn (Big Data) sử dụng Hadoop, Spark.</li>
+</ul>
+<h4 id="25-co-so-du-lieu-tim-kiem-search-databases"><strong>2.5. Cơ sở dữ liệu tìm kiếm (Search Databases)</strong><a class="headerlink" href="#25-co-so-du-lieu-tim-kiem-search-databases" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Hỗ trợ tìm kiếm văn bản tự do (full-text search) và tìm kiếm phi cấu trúc.</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon OpenSearch Service (trước đây là Elasticsearch):</strong> Hỗ trợ tìm kiếm và phân tích dữ liệu.</li>
+</ul>
+<h4 id="26-co-so-du-lieu-o-thi-graph-databases"><strong>2.6. Cơ sở dữ liệu đồ thị (Graph Databases)</strong><a class="headerlink" href="#26-co-so-du-lieu-o-thi-graph-databases" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Phù hợp cho các ứng dụng cần quản lý mối quan hệ phức tạp giữa các dữ liệu.</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon Neptune:</strong> Cơ sở dữ liệu đồ thị hỗ trợ cả RDF và Property Graph.</li>
+</ul>
+<h4 id="27-co-so-du-lieu-so-cai-ledger-databases"><strong>2.7. Cơ sở dữ liệu sổ cái (Ledger Databases)</strong><a class="headerlink" href="#27-co-so-du-lieu-so-cai-ledger-databases" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Phù hợp cho các ứng dụng cần lưu trữ lịch sử giao dịch một cách minh bạch và không thể thay đổi.</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon QLDB (Quantum Ledger Database):</strong> Cơ sở dữ liệu sổ cái phi tập trung.</li>
+</ul>
+<h4 id="28-co-so-du-lieu-chuoi-thoi-gian-time-series-databases"><strong>2.8. Cơ sở dữ liệu chuỗi thời gian (Time Series Databases)</strong><a class="headerlink" href="#28-co-so-du-lieu-chuoi-thoi-gian-time-series-databases" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Đặc điểm:</strong></li>
+<li>Phù hợp cho các ứng dụng cần lưu trữ và phân tích dữ liệu theo thời gian.</li>
+<li><strong>Dịch vụ AWS:</strong></li>
+<li><strong>Amazon Timestream:</strong> Cơ sở dữ liệu chuỗi thời gian hiệu suất cao.</li>
+</ul>
+<hr />
+<h3 id="3-tong-ket"><strong>3. Tổng kết</strong><a class="headerlink" href="#3-tong-ket" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>RDBMS (SQL):</strong> Phù hợp cho các ứng dụng cần truy vấn phức tạp và JOIN (RDS, Aurora).</li>
+<li><strong>NoSQL:</strong> Linh hoạt, phù hợp cho dữ liệu phi cấu trúc (DynamoDB, DocumentDB).</li>
+<li><strong>Object Store:</strong> Lưu trữ đối tượng lớn (S3, Glacier).</li>
+<li><strong>Data Warehousing:</strong> Phân tích dữ liệu và BI (Redshift, Athena).</li>
+<li><strong>Search Databases:</strong> Tìm kiếm văn bản tự do (OpenSearch).</li>
+<li><strong>Graph Databases:</strong> Quản lý mối quan hệ phức tạp (Neptune).</li>
+<li><strong>Ledger Databases:</strong> Lưu trữ lịch sử giao dịch (QLDB).</li>
+<li><strong>Time Series Databases:</strong> Phân tích dữ liệu theo thời gian (Timestream).</li>
+</ul>
+<hr />
+<h3 id="4-luu-y"><strong>4. Lưu ý</strong><a class="headerlink" href="#4-luu-y" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Các câu hỏi trong bài kiểm tra sẽ yêu cầu bạn chọn cơ sở dữ liệu phù hợp dựa trên các yêu cầu cụ thể của workload.</li>
+<li>Không cần nhớ tất cả các chi tiết ngay lập tức, nhưng cần hiểu rõ các đặc điểm và trường hợp sử dụng của từng loại cơ sở dữ liệu.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 4, 2025 07:20:45">20 tháng 4, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script
+  src="https://giscus.app/client.js"
+  data-repo="lelongc/aws"
+  data-repo-id="R_kgDONYXH9Q"
+  data-category="Q&A"
+  data-category-id="DIC_kwDONYXH9c4CpKTT"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark"
+  data-lang="en"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
 
   // Set palette on initial load
   var palette = __md_get("__palette");
@@ -26,5 +5791,125 @@
         );
       }
     });
-  });</script></article></div><script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script></div><button class="md-top md-icon" data-md-component=top hidden type=button><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg> Trở lại mục lục</button></main><footer class=md-footer><nav aria-label="Chân trang" class="md-footer__inner md-grid"><a aria-label="Trước: Website" class="md-footer__link md-footer__link--prev" href=../../13.serverless-architecture/website/> <div class="md-footer__button md-icon"><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg></div> <div class=md-footer__title><span class=md-footer__direction> Trước </span><div class=md-ellipsis>Website</div></div> </a><a aria-label="Sau: Summary" class="md-footer__link md-footer__link--next" href=../summary/> <div class=md-footer__title><span class=md-footer__direction> Sau </span><div class=md-ellipsis>Summary</div></div> <div class="md-footer__button md-icon"><svg viewbox="0 0 24 24" xmlns=http://www.w3.org/2000/svg><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg></div> </a></nav><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class=md-copyright><div class=md-copyright__highlight>Copyright © Lê Long C. 2025</div></div><div class=md-social><a class=md-social__link href=https://github.com/lelongc rel=noopener target=_blank title=github.com> <svg viewbox="0 0 496 512" xmlns=http://www.w3.org/2000/svg><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg> </a><a class=md-social__link href=https://www.linkedin.com/in/long-lê-190l/ rel=noopener target=_blank title=www.linkedin.com> <svg viewbox="0 0 448 512" xmlns=http://www.w3.org/2000/svg><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg> </a></div></div></div></footer></div><div class=md-dialog data-md-component=dialog><div class="md-dialog__inner md-typeset"></div></div><div class=md-progress data-md-component=progress role=progressbar></div><script id=__config type=application/json>{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.integrate", "toc.follow", "toc.expand", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script><script src=../../../assets/javascripts/bundle.c8b220af.min.js></script><script id=init-glightbox>const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(() => { lightbox.reload() });</script>
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
+        
+          
+          <a href="../../13.serverless-architecture/website/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Website">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Website
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../summary/" class="md-footer__link md-footer__link--next" aria-label="Sau: Summary">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Summary
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.instant.progress", "navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.integrate", "toc.follow", "toc.expand", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
