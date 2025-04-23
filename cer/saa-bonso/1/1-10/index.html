@@ -1379,6 +1379,108 @@
 <li><strong>Sử dụng Suspend and resume scaling là không đúng:</strong> Bởi vì loại này được sử dụng để <strong>tạm thời tạm dừng</strong> các hoạt động điều chỉnh quy mô được kích hoạt bởi các chính sách (scaling policies) hoặc các hành động theo lịch trình (scheduled actions) của bạn, chứ không phải là một chính sách để tự động điều chỉnh quy mô theo tải.</li>
 </ul>
 <p>Tóm lại, mặc dù Simple và Step scaling đều dựa trên báo động, Simple scaling có nhược điểm là phải đợi cooldown. Target Tracking là lựa chọn tốt hơn để tự động điều chỉnh quy mô một cách linh hoạt, giữ chỉ số mục tiêu và tối ưu chi phí cho tải lượng thay đổi, không thể đoán trước, khác với Scheduled scaling chỉ dùng cho tải lượng có thể dự đoán. "Suspend and resume" không phải là một chính sách điều chỉnh quy mô theo tải. Do đó, trong ngữ cảnh cần tối ưu chi phí và hiệu suất theo tải thay đổi, Target Tracking scaling được đề xuất là giải pháp đúng.</p>
+<h1 id="2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key">2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):<a class="headerlink" href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key" title="Permanent link">&para;</a></h1>
+<p><strong>Mã hóa phía Client (Client-side Encryption) là gì?</strong></p>
+<ul>
+<li>Mã hóa phía client là hành động <strong>mã hóa dữ liệu trước khi gửi nó đến Amazon S3</strong> .</li>
+<li>Điều này có nghĩa là dữ liệu của bạn được mã hóa trên máy tính/máy chủ của bạn (phía client) trước khi nó rời đi để tải lên S3.</li>
+</ul>
+<p><strong>Các Tùy chọn để Bật Mã hóa phía Client:</strong></p>
+<p>Đoạn văn đề cập đến hai tùy chọn chính để thực hiện mã hóa phía client:</p>
+<ol>
+<li><strong>Sử dụng Khóa AWS KMS (Use an AWS KMS key):</strong></li>
+<li>Khi sử dụng tùy chọn này, bạn cung cấp một <strong>định danh khóa AWS KMS (KeyId)</strong> cho AWS.</li>
+<li>Quá trình mã hóa dữ liệu thực tế vẫn diễn ra trên phía client (sử dụng AWS SDK), nhưng KMS key của bạn (được quản lý bởi AWS KMS) được sử dụng để mã hóa khóa dữ liệu (data key - sẽ giải thích bên dưới). AWS KMS thực hiện các hoạt động mã hóa/giải mã cho khóa dữ liệu.</li>
+<li><strong>Sử dụng Khóa Chính phía Client (Use a client-side master key):</strong></li>
+<li>Khi sử dụng tùy chọn này, bạn tự quản lý khóa chính của mình (master key) trên phía client.</li>
+<li>Điểm cực kỳ quan trọng ở đây là: <strong>Khóa chính phía client của bạn VÀ dữ liệu chưa được mã hóa của bạn KHÔNG BAO GIỜ được gửi đến AWS.</strong></li>
+<li>Bạn phải tự quản lý khóa chính này một cách an toàn. Nếu bạn làm mất khóa, bạn sẽ không thể giải mã dữ liệu của mình.</li>
+</ol>
+<p><strong>Cách Hoạt động của Mã hóa phía Client sử dụng Khóa Chính phía Client:</strong></p>
+<p>Quá trình này bao gồm hai giai đoạn:</p>
+<ul>
+<li><strong>Khi tải lên một đối tượng (Uploading an object):</strong></li>
+<li>Bạn cung cấp khóa chính phía client cho thư viện mã hóa S3 (Amazon S3 encryption client) trên phía client của bạn.</li>
+<li>Client (trên máy bạn) <strong>tự tạo ra một khóa đối xứng dùng một lần (one-time-use symmetric key)</strong> , còn gọi là khóa dữ liệu (data encryption key hoặc data key) <strong>ngay tại máy cục bộ</strong> .</li>
+<li>Client sử dụng khóa dữ liệu này để mã hóa dữ liệu <strong>của chỉ một đối tượng S3 duy nhất</strong> . Client tạo một khóa dữ liệu riêng biệt cho mỗi đối tượng bạn tải lên.</li>
+<li>Sau khi mã hóa dữ liệu đối tượng bằng khóa dữ liệu, client sử dụng <strong>khóa chính phía client (master key bạn cung cấp)</strong> để mã hóa <strong>khóa dữ liệu</strong> (chứ không phải dữ liệu đối tượng).</li>
+<li>Client tải lên S3:<ul>
+<li>Dữ liệu đối tượng đã được mã hóa (bằng khóa dữ liệu).</li>
+<li>Khóa dữ liệu đã được mã hóa (bằng khóa chính phía client), được lưu dưới dạng metadata của đối tượng (ví dụ: <code>x-amz-meta-x-amz-key</code>).</li>
+<li>Thông tin mô tả vật liệu mã hóa (material description) cũng là một phần của metadata, giúp client sau này biết dùng khóa chính nào để giải mã.</li>
+</ul>
+</li>
+<li><strong>Khi tải xuống một đối tượng (Downloading an object):</strong></li>
+<li>Client tải xuống đối tượng đã được mã hóa từ S3.</li>
+<li>Sử dụng thông tin mô tả vật liệu mã hóa từ metadata của đối tượng, client xác định <strong>khóa chính phía client (master key) nào cần dùng</strong> để giải mã khóa dữ liệu.</li>
+<li>Client sử dụng khóa chính đó để giải mã khóa dữ liệu đã được mã hóa từ metadata.</li>
+<li>Cuối cùng, client sử dụng khóa dữ liệu đã được giải mã để giải mã dữ liệu đối tượng thực tế.</li>
+</ul>
+<p><strong>Tại sao "Sử dụng S3 client-side encryption với client-side master key" là đáp án đúng?</strong></p>
+<p>Đoạn văn chỉ ra rằng trong kịch bản đang xét, <strong>khóa chính (master keys) VÀ dữ liệu chưa được mã hóa (unencrypted data) KHÔNG BAO GIỜ được gửi đến AWS.</strong></p>
+<ul>
+<li>Chính sách "Sử dụng S3 client-side encryption với client-side master key" hoàn toàn đáp ứng yêu cầu này:</li>
+<li>Dữ liệu chưa được mã hóa được mã hóa trên phía client trước khi gửi đi.</li>
+<li>Khóa chính (client-side master key) được quản lý hoàn toàn bởi bạn trên phía client và không bao giờ rời khỏi môi trường của bạn để đến AWS.</li>
+</ul>
+<p><strong>Giải thích tại sao các tùy chọn khác không đúng (dựa trên kịch bản và đoạn văn):</strong></p>
+<ol>
+<li>
+<p><strong>"Sử dụng S3 client-side encryption với AWS KMS key" là không đúng:</strong></p>
+</li>
+<li>
+<p>Mặc dù dữ liệu chưa mã hóa được mã hóa trên client trước khi gửi, nhưng bạn lại <strong>cung cấp định danh khóa AWS KMS (KeyId) cho AWS</strong> .</p>
+</li>
+<li>
+<p>Quan trọng hơn, các hoạt động mã hóa/giải mã cho <strong>khóa dữ liệu</strong> được thực hiện bởi <strong>dịch vụ AWS KMS</strong> do AWS quản lý. Điều này đi ngược lại yêu cầu "khóa chính KHÔNG BAO GIỜ được gửi đến AWS" vì khóa KMS (đóng vai trò là khóa chính để bảo vệ khóa dữ liệu) được quản lý bởi AWS.</p>
+</li>
+<li>
+<p><strong>"Sử dụng S3 server-side encryption với AWS KMS key" là không đúng:</strong></p>
+</li>
+<li>
+<p>Đây là mã hóa phía máy chủ (server-side), nghĩa là <strong>dữ liệu chưa được mã hóa được gửi đến S3 trước</strong> và việc mã hóa xảy ra trên phía S3 khi dữ liệu được ghi vào ổ đĩa. Điều này vi phạm yêu cầu "dữ liệu chưa được mã hóa KHÔNG BAO GIỜ được gửi đến AWS".</p>
+</li>
+<li>
+<p>Hơn nữa, khóa chính được sử dụng (KMS key) được quản lý bởi dịch vụ AWS KMS do AWS vận hành, vi phạm yêu cầu "khóa chính KHÔNG BAO GIỜ được gửi đến AWS".</p>
+</li>
+<li>
+<p><strong>"Sử dụng S3 server-side encryption với customer provided key (SSE-C)" là không đúng:</strong></p>
+</li>
+<li>
+<p>Đây cũng là mã hóa phía máy chủ (server-side), nên <strong>dữ liệu chưa được mã hóa được gửi đến S3 trước</strong> , vi phạm yêu cầu đầu tiên.</p>
+</li>
+<li>Mặc dù bạn "cung cấp" khóa, nhưng bạn <strong>gửi khóa mã hóa đó như một phần của yêu cầu tải lên đối tượng đến S3</strong> . S3 sau đó sử dụng khóa đó để mã hóa/giải mã. Điều này vi phạm yêu cầu "khóa chính KHÔNG BAO GIỜ được gửi đến AWS" vì bạn đã gửi khóa đó đến dịch vụ S3 của AWS.</li>
+</ol>
+<p>giải thích dễ hình dung hơn</p>
+<p>Đây là tóm tắt đầy đủ và logic lại các điểm chính từ đầu đến giờ:</p>
+<p>Chúng ta có các cách chính để mã hóa dữ liệu trên S3:</p>
+<ol>
+<li><strong>Mã hóa phía Máy chủ (Server-Side Encryption - SSE):</strong><ul>
+<li>Dữ liệu chưa được mã hóa <strong>được gửi đến S3 trước</strong> .</li>
+<li>AWS (dịch vụ S3) thực hiện việc mã hóa dữ liệu khi ghi vào đĩa.</li>
+<li>Các loại SSE khác nhau ở cách quản lý khóa: S3 quản lý (SSE-S3), dùng KMS (SSE-KMS), hoặc bạn cung cấp khóa cho S3 (SSE-C).</li>
+<li><strong>Điểm mấu chốt:</strong> Phương pháp này <strong>không đáp ứng yêu cầu dữ liệu chưa mã hóa không được gửi đến AWS</strong> , vì dữ liệu đi đến S3 trước khi được mã hóa.</li>
+</ul>
+</li>
+<li><strong>Mã hóa phía Client (Client-Side Encryption - CSE):</strong><ul>
+<li>Dữ liệu <strong>được mã hóa trên máy tính/máy chủ của bạn (phía client) trước khi gửi lên S3</strong> .</li>
+<li>Có hai cách để thực hiện CSE, khác nhau ở việc quản lý "khóa chính" (master key) dùng để bảo vệ "khóa dữ liệu" (Data Key) được dùng mã hóa dữ liệu thực tế:<ul>
+<li><strong>CSE với Khóa Chính phía Client (CSE with Client-Side Master Key):</strong></li>
+<li>Dữ liệu được mã hóa bằng <strong>Data Key</strong> ngay tại client.</li>
+<li><strong>Data Key</strong> này được mã hóa bằng <strong>Khóa Chính (Master Key) do bạn TỰ quản lý hoàn toàn trên phía client</strong> .</li>
+<li><strong>Điểm mấu chốt:</strong> Cả <strong>dữ liệu chưa mã hóa</strong> và <strong>Khóa Chính</strong> đều <strong>KHÔNG BAO GIỜ được gửi đến AWS</strong> . Đây là phương pháp duy nhất đáp ứng yêu cầu nghiêm ngặt nhất.</li>
+<li><strong>CSE với Khóa AWS KMS (CSE with AWS KMS Key):</strong></li>
+<li>Dữ liệu được mã hóa bằng <strong>Data Key</strong> ngay tại client.</li>
+<li><strong>Data Key</strong> này được mã hóa bằng <strong>Khóa KMS (KMS Key)</strong> mà bạn chỉ định.</li>
+<li><strong>Điểm mấu chốt:</strong> Khóa KMS này <strong>được AWS quản lý và lưu trữ trong dịch vụ AWS KMS</strong> ("nằm ở AWS"). Bạn tương tác với dịch vụ KMS (bên phía AWS) thông qua API để mã hóa/giải mã Data Key. Phương pháp này <strong>không đáp ứng yêu cầu Khóa Chính không được gửi đến AWS</strong> (vì Khóa KMS chính là Khóa Chính và nó do AWS quản lý/sử dụng).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Kết luận (cho kịch bản nghiêm ngặt):</strong></p>
+<p>Khi có yêu cầu <strong>nghiêm ngặt</strong> rằng cả <strong>dữ liệu chưa được mã hóa</strong> và <strong>khóa chính (master key)</strong> đều <strong>KHÔNG BAO GIỜ được gửi đến AWS</strong> , thì lựa chọn <strong>duy nhất</strong> phù hợp là <strong>Mã hóa phía Client với Khóa Chính phía Client (CSE with Client-Side Master Key)</strong> .</p>
+<p>Các phương pháp khác đều vi phạm ít nhất một trong hai yêu cầu đó (SSE gửi dữ liệu chưa mã hóa; CSE/KMS sử dụng Khóa Chính nằm ở AWS).</p>
 
 
 
@@ -1399,7 +1501,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 tháng 4, 2025 16:43:54">23 tháng 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 tháng 4, 2025 17:12:47">23 tháng 4, 2025</span>
   </span>
 
     
