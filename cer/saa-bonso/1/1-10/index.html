@@ -22,7 +22,7 @@
     
     
       
-        <title>1 10 - DraDoc</title>
+        <title>1-10 - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1tong-quan-ve-auto-scaling-group-nhom-tu-ong-ieu-chinh-quy-mo" class="md-skip">
+        <a href="#1-10" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1 10
+              1-10
             
           </span>
         </div>
@@ -910,13 +910,15 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   
   <span class="md-ellipsis">
-    1 10
+    1-10
     
   </span>
   
@@ -929,7 +931,7 @@
   
   
   <span class="md-ellipsis">
-    1 10
+    1-10
     
   </span>
   
@@ -941,6 +943,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Mục lục">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -960,6 +964,15 @@
       
         <li class="md-nav__item">
   <a href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key_1" class="md-nav__link">
     <span class="md-ellipsis">
       2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):
     </span>
@@ -1352,6 +1365,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1370,6 +1385,15 @@
       
         <li class="md-nav__item">
   <a href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key_1" class="md-nav__link">
     <span class="md-ellipsis">
       2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):
     </span>
@@ -1401,8 +1425,7 @@
   
 
 
-  <h1>1 10</h1>
-
+<h1 id="1-10">1-10<a class="headerlink" href="#1-10" title="Permanent link">&para;</a></h1>
 <h3 id="1tong-quan-ve-auto-scaling-group-nhom-tu-ong-ieu-chinh-quy-mo"><strong>1.Tổng quan về Auto Scaling Group (Nhóm Tự động điều chỉnh quy mô):</strong><a class="headerlink" href="#1tong-quan-ve-auto-scaling-group-nhom-tu-ong-ieu-chinh-quy-mo" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Một Auto Scaling Group chứa một tập hợp các phiên bản Amazon EC2.</li>
@@ -1451,7 +1474,25 @@
 <li><strong>Sử dụng Suspend and resume scaling là không đúng:</strong> Bởi vì loại này được sử dụng để <strong>tạm thời tạm dừng</strong> các hoạt động điều chỉnh quy mô được kích hoạt bởi các chính sách (scaling policies) hoặc các hành động theo lịch trình (scheduled actions) của bạn, chứ không phải là một chính sách để tự động điều chỉnh quy mô theo tải.</li>
 </ul>
 <p>Tóm lại, mặc dù Simple và Step scaling đều dựa trên báo động, Simple scaling có nhược điểm là phải đợi cooldown. Target Tracking là lựa chọn tốt hơn để tự động điều chỉnh quy mô một cách linh hoạt, giữ chỉ số mục tiêu và tối ưu chi phí cho tải lượng thay đổi, không thể đoán trước, khác với Scheduled scaling chỉ dùng cho tải lượng có thể dự đoán. "Suspend and resume" không phải là một chính sách điều chỉnh quy mô theo tải. Do đó, trong ngữ cảnh cần tối ưu chi phí và hiệu suất theo tải thay đổi, Target Tracking scaling được đề xuất là giải pháp đúng.</p>
-<h3 id="2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key"><strong>2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):</strong><a class="headerlink" href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key" title="Permanent link">&para;</a></h3>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<h3 id="2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key">2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):<a class="headerlink" href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key" title="Permanent link">&para;</a></h3>
+<p>=======</p>
+<h3 id="2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key_1"><strong>2.mã hóa phía client (client-side encryption) trong Amazon S3 và lý do chọn giải pháp sử dụng khóa chính phía client (client-side master key):</strong><a class="headerlink" href="#2ma-hoa-phia-client-client-side-encryption-trong-amazon-s3-va-ly-do-chon-giai-phap-su-dung-khoa-chinh-phia-client-client-side-master-key_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>eea7791e7236a629b20e76ebc9e73895dbe2d1e0</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p><strong>Mã hóa phía Client (Client-side Encryption) là gì?</strong></p>
 <ul>
 <li>Mã hóa phía client là hành động <strong>mã hóa dữ liệu trước khi gửi nó đến Amazon S3</strong> .</li>
@@ -1573,7 +1614,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 tháng 4, 2025 02:17:05">24 tháng 4, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="24 tháng 4, 2025 12:58:09">24 tháng 4, 2025</span>
   </span>
 
     
