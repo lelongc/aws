@@ -1,0 +1,528 @@
+/* Main Styles for Eyewear Shop */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 56px; /* Adjust body padding for fixed navbar */
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+/* Carousel Styles */
+#heroCarousel .carousel-item {
+    height: 60vh; /* Adjust height as needed */
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#heroCarousel .carousel-item img {
+    object-fit: cover;
+    height: 100%;
+}
+
+#heroCarousel .carousel-caption {
+    bottom: 3rem;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+#heroCarousel .carousel-caption h5 {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+#heroCarousel .carousel-caption p {
+    font-size: 1.1rem;
+}
+
+/* Featured Categories */
+.category-link {
+    transition: transform 0.3s ease;
+    display: block; /* Make the whole area clickable */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.category-link:hover {
+    transform: translateY(-5px);
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.category-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background-color: #e7f1ff; /* Light blue background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0d6efd; /* Primary blue color */
+    transition: background-color 0.3s ease;
+}
+
+.category-link:hover .category-icon-wrapper {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* Product Cards */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    overflow: hidden; /* Ensure overlay stays within card */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-card .product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card img {
+    height: 200px; /* Consistent height */
+    object-fit: cover;
+    transition: transform 0.3s ease; /* Add zoom effect on image */
+}
+
+.product-card:hover img {
+    transform: scale(1.05); /* Zoom in image on hover */
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.product-card .card-body {
+    display: flex;
+    flex-direction: column; /* Ensure footer buttons stick to bottom */
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+/* Ensure wishlist button in grid aligns */
+.add-to-wishlist-grid {
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Product Details Page */
+.product-image-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+/* Product Image Gallery */
+.thumbnail {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.7;
+}
+
+.thumbnail:hover {
+    opacity: 1;
+}
+
+.thumbnail.active-thumbnail {
+    border-color: #0d6efd;
+    opacity: 1;
+}
+
+/* Color and Size Options */
+.color-option, .size-option {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.color-option:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #212529;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.color-option.active {
+    border: 2px solid #000;
+    transform: scale(1.1);
+}
+
+.color-sample {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.size-option {
+    border: 1px solid #ddd;
+    padding: 5px 12px;
+    border-radius: 4px;
+    min-width: 40px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.size-option:hover {
+    background-color: #f8f9fa;
+}
+
+.size-option.active {
+    background-color: #212529;
+    color: white;
+    border-color: #212529;
+    transform: scale(1.05);
+}
+
+.selected-color, .selected-size {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Stock Status */
+.stock-status {
+    font-size: 0.9rem; /* Adjusted size */
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block; /* Make it behave like a badge */
+}
+.stock-status.text-success {
+    background-color: rgba(25, 135, 84, 0.1); /* Light green background */
+}
+.stock-status.text-danger {
+     background-color: rgba(220, 53, 69, 0.1); /* Light red background */
+}
+
+/* Virtual Try On */
+.virtual-try-on-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.glasses-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    pointer-events: none;
+}
+
+.try-on-colors {
+    display: flex;
+    gap: 8px;
+}
+
+/* Product Info Cards */
+.product-info-cards .card {
+    border-left: 4px solid #0d6efd;
+    transition: transform 0.3s ease;
+}
+
+.product-info-cards .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add button animations */
+.add-to-cart, #add-to-wishlist-btn {
+    transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#add-to-wishlist-btn:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#add-to-wishlist-btn.active {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+#add-to-wishlist-btn.active i {
+    font-weight: 900;
+}
+
+/* Image zoom effect */
+.zoom-gallery-btn {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.zoom-gallery-btn:hover {
+    opacity: 1;
+}
+
+/* Quantity selector improvements */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-selector button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.quantity-selector button:hover {
+    background-color: #dee2e6;
+}
+
+.quantity-selector input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.max-quantity-info {
+    font-size: 12px;
+}
+
+/* Share buttons */
+.share-btn {
+    transition: all 0.2s ease;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Tabs styling enhancement */
+.nav-tabs .nav-link {
+    font-weight: 500;
+    color: #6c757d;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #0d6efd;
+    border-color: transparent;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.nav-tabs .nav-link.active {
+    color: #0d6efd;
+    border-color: #dee2e6 #dee2e6 #fff;
+    border-top: 2px solid #0d6efd;
+}
+
+/* Related Products Section */
+.related-products-section h2 {
+    /* Style for the "You May Also Like" header */
+    color: #333;
+}
+/* Use existing .product-card styles for related items */
+
+/* Cart Styles */
+.cart-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+}
+
+.cart-item img {
+    max-width: 100px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-selector button {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.quantity-selector input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+/* Checkout Styles */
+.checkout-summary {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+/* Product Listing Page Styles */
+.filters-sidebar {
+    /* border-right: 1px solid #e0e0e0; */ /* Optional: remove border if preferred */
+    padding-right: 20px;
+}
+
+@media (max-width: 991px) {
+    .filters-sidebar {
+        border-right: none;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+}
+
+.filters-sidebar h6 {
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem; /* Slightly smaller filter titles */
+}
+
+.filters-sidebar .form-check {
+    margin-bottom: 0.5rem;
+}
+
+.filters-sidebar .form-range {
+    cursor: pointer;
+}
+
+.product-grid.filtering, .product-grid.sorting {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.compare-check {
+    font-size: 0.8rem;
+}
+
+/* Product Comparison Bar */
+/* ...existing code... */
+
+/* Wishlist Styles */
+/* ...existing code... */
+
+/* Account Page Styles */
+/* ...existing code... */
+
+/* Footer Styles */
+footer {
+    background-color: #212529; /* Dark background */
+}
+
+.footer-link {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0.8;
+}
+
+.footer-link:hover {
+    opacity: 1;
+    color: #fff; /* Ensure hover color is white */
+}
+
+footer .list-unstyled a {
+    text-decoration: none;
+}
+
+footer .social-icons a {
+    font-size: 1.1rem; /* Slightly larger icons */
+}
+
+/* Optional: Search result highlighting */
+/*
+.product-item .card-title mark,
+.product-item .card-text mark {
+    background-color: #ffc107;
+    padding: 0.1em;
+}
+*/
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 56px; /* Ensure padding matches navbar height */
+    }
+
+    #heroCarousel .carousel-item {
+        height: 40vh; /* Adjust height for smaller screens */
+        min-height: 250px;
+    }
+
+    #heroCarousel .carousel-caption {
+        bottom: 1rem;
+        padding: 0.5rem;
+    }
+
+     #heroCarousel .carousel-caption h5 {
+        font-size: 1.25rem;
+    }
+
+    #heroCarousel .carousel-caption p {
+        font-size: 0.9rem;
+    }
+
+    .category-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+
+    .category-icon-wrapper i {
+        font-size: 1.5rem; /* Adjust icon size */
+    }
+
+    .category-link h5 {
+        font-size: 0.9rem;
+    }
+
+    /* ...existing responsive code... */
+}

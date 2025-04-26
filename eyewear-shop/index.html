@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optic Vision - Premium Eyewear</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Optic Vision</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Shop</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownCategories"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Categories
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownCategories"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="products.html?category=prescription"
+                    >Prescription Glasses</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="products.html?category=sunglasses"
+                    >Sunglasses</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?category=reading"
+                    >Reading Glasses</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="products.html?category=contacts"
+                    >Contact Lenses</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <!-- Search Form -->
+          <form class="d-flex me-3" id="search-form" role="search">
+            <input
+              class="form-control form-control-sm me-2"
+              type="search"
+              placeholder="Search products..."
+              aria-label="Search"
+              id="search-input"
+            />
+            <button class="btn btn-outline-secondary btn-sm" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <div class="d-flex align-items-center">
+            <a
+              href="account.html"
+              class="btn btn-outline-dark me-2"
+              title="My Account"
+            >
+              <i class="fas fa-user"></i>
+            </a>
+            <a
+              href="wishlist.html"
+              class="btn btn-outline-dark me-2 position-relative"
+              title="Wishlist"
+            >
+              <i class="fas fa-heart"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger wishlist-count"
+                style="font-size: 0.6em"
+                >0</span
+              >
+              <!-- Wishlist Count -->
+            </a>
+            <a
+              href="cart.html"
+              class="btn btn-outline-dark position-relative"
+              title="Shopping Cart"
+            >
+              <i class="fas fa-shopping-cart"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count"
+                style="font-size: 0.6em"
+                >0</span
+              >
+              <!-- Cart Count -->
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section - Replaced with Carousel -->
+    <div id="heroCarousel" class="carousel slide pt-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://via.placeholder.com/1400x500?text=Summer+Sale+Banner"
+            class="d-block w-100"
+            alt="Banner 1"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Summer Collection Sale</h5>
+            <p>Up to 30% off on selected sunglasses.</p>
+            <a href="products.html?category=sunglasses" class="btn btn-primary"
+              >Shop Sunglasses</a
+            >
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://via.placeholder.com/1400x500?text=New+Arrivals+Banner"
+            class="d-block w-100"
+            alt="Banner 2"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>New Arrivals</h5>
+            <p>Check out the latest trends in eyewear.</p>
+            <a href="products.html?sort=newest" class="btn btn-primary"
+              >Discover Now</a
+            >
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://via.placeholder.com/1400x500?text=Blue+Light+Glasses+Banner"
+            class="d-block w-100"
+            alt="Banner 3"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Protect Your Eyes</h5>
+            <p>Shop our blue light blocking glasses.</p>
+            <a href="products.html?feature=blue-light" class="btn btn-primary"
+              >Shop Blue Light</a
+            >
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#heroCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Featured Categories -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Shop by Category</h2>
+        <div class="row text-center">
+          <div class="col-md-3 col-6 mb-4">
+            <a
+              href="products.html?category=prescription"
+              class="text-decoration-none text-dark category-link"
+            >
+              <div class="category-icon-wrapper mb-2">
+                <i class="fas fa-glasses fa-3x"></i>
+              </div>
+              <h5>Prescription</h5>
+            </a>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <a
+              href="products.html?category=sunglasses"
+              class="text-decoration-none text-dark category-link"
+            >
+              <div class="category-icon-wrapper mb-2">
+                <i class="fas fa-sun fa-3x"></i>
+              </div>
+              <h5>Sunglasses</h5>
+            </a>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <a
+              href="products.html?category=reading"
+              class="text-decoration-none text-dark category-link"
+            >
+              <div class="category-icon-wrapper mb-2">
+                <i class="fas fa-book-open fa-3x"></i>
+              </div>
+              <h5>Reading</h5>
+            </a>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <a
+              href="products.html?category=contacts"
+              class="text-decoration-none text-dark category-link"
+            >
+              <div class="category-icon-wrapper mb-2">
+                <i class="fas fa-eye fa-3x"></i>
+              </div>
+              <h5>Contact Lenses</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products / Newest / Best Selling -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center mb-4">Our Latest Products</h2>
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-md-3 mb-4">
+            <div class="card product-card h-100">
+              <div class="product-image-wrapper">
+                <img
+                  src="https://via.placeholder.com/300x200?text=Glasses+1"
+                  class="card-img-top"
+                  alt="Product Image"
+                />
+                <div class="product-overlay">
+                  <a
+                    href="product-detail.html?id=1"
+                    class="btn btn-outline-light btn-sm"
+                    >View Details</a
+                  >
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Classic Round</h5>
+                <p class="card-text text-muted">Vintage-inspired design</p>
+                <p class="card-text fw-bold">$95.00</p>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart w-100"
+                  data-id="1"
+                  data-name="Classic Round"
+                  data-price="95"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="col-md-3 mb-4">
+            <div class="card product-card h-100">
+              <div class="product-image-wrapper">
+                <img
+                  src="https://via.placeholder.com/300x200?text=Glasses+2"
+                  class="card-img-top"
+                  alt="Product Image"
+                />
+                <div class="product-overlay">
+                  <a
+                    href="product-detail.html?id=2"
+                    class="btn btn-outline-light btn-sm"
+                    >View Details</a
+                  >
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Square Frame</h5>
+                <p class="card-text text-muted">Bold modern look</p>
+                <p class="card-text fw-bold">$120.00</p>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart w-100"
+                  data-id="2"
+                  data-name="Square Frame"
+                  data-price="120"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="col-md-3 mb-4">
+            <div class="card product-card h-100">
+              <div class="product-image-wrapper">
+                <img
+                  src="https://via.placeholder.com/300x200?text=Glasses+3"
+                  class="card-img-top"
+                  alt="Product Image"
+                />
+                <div class="product-overlay">
+                  <a
+                    href="product-detail.html?id=3"
+                    class="btn btn-outline-light btn-sm"
+                    >View Details</a
+                  >
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Cat Eye</h5>
+                <p class="card-text text-muted">Elegant retro style</p>
+                <p class="card-text fw-bold">$105.00</p>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart w-100"
+                  data-id="3"
+                  data-name="Cat Eye"
+                  data-price="105"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Product 4 -->
+          <div class="col-md-3 mb-4">
+            <div class="card product-card h-100">
+              <div class="product-image-wrapper">
+                <img
+                  src="https://via.placeholder.com/300x200?text=Glasses+4"
+                  class="card-img-top"
+                  alt="Product Image"
+                />
+                <div class="product-overlay">
+                  <a
+                    href="product-detail.html?id=4"
+                    class="btn btn-outline-light btn-sm"
+                    >View Details</a
+                  >
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Aviator</h5>
+                <p class="card-text text-muted">Classic timeless design</p>
+                <p class="card-text fw-bold">$135.00</p>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart w-100"
+                  data-id="4"
+                  data-name="Aviator"
+                  data-price="135"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+      <!-- Added mt-auto -->
+      <div class="container">
+        <div class="row gy-4">
+          <!-- Added gy-4 for vertical spacing on small screens -->
+          <div class="col-lg-3 col-md-6">
+            <h5 class="mb-3">
+              <a class="navbar-brand text-white" href="index.html"
+                >Optic Vision</a
+              >
+            </h5>
+            <p class="text-muted small">
+              Your destination for stylish and high-quality eyewear. See the
+              world better.
+            </p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5 class="mb-3">Quick Links</h5>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a
+                  href="index.html"
+                  class="text-white text-decoration-none footer-link"
+                  >Home</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="products.html"
+                  class="text-white text-decoration-none footer-link"
+                  >Shop All</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="about.html"
+                  class="text-white text-decoration-none footer-link"
+                  >About Us</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="contact.html"
+                  class="text-white text-decoration-none footer-link"
+                  >Contact</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="account.html"
+                  class="text-white text-decoration-none footer-link"
+                  >My Account</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5 class="mb-3">Customer Service</h5>
+            <ul class="list-unstyled small">
+              <li class="mb-2">
+                <a href="#" class="text-white text-decoration-none footer-link"
+                  >FAQ</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white text-decoration-none footer-link"
+                  >Shipping & Returns</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white text-decoration-none footer-link"
+                  >Warranty</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white text-decoration-none footer-link"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#" class="text-white text-decoration-none footer-link"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5 class="mb-3">Connect With Us</h5>
+            <address class="small text-muted">
+              123 Vision Street<br />
+              Eyewear City, EC 12345<br />
+              <i class="fas fa-phone me-2 mt-2"></i> (123) 456-7890<br />
+              <i class="fas fa-envelope me-2"></i> info@opticvision.com
+            </address>
+            <div class="social-icons mt-3">
+              <a href="#" class="text-white me-3 footer-link" title="Facebook"
+                ><i class="fab fa-facebook-f fa-lg"></i
+              ></a>
+              <a href="#" class="text-white me-3 footer-link" title="Instagram"
+                ><i class="fab fa-instagram fa-lg"></i
+              ></a>
+              <a href="#" class="text-white me-3 footer-link" title="Twitter"
+                ><i class="fab fa-twitter fa-lg"></i
+              ></a>
+              <a href="#" class="text-white footer-link" title="Pinterest"
+                ><i class="fab fa-pinterest fa-lg"></i
+              ></a>
+              <!-- Add TikTok if needed -->
+              <!-- <a href="#" class="text-white me-3 footer-link" title="TikTok"><i class="fab fa-tiktok fa-lg"></i></a> -->
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="text-center text-muted small">
+          <p>
+            &copy; <span id="current-year"></span> Optic Vision. All Rights
+            Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
