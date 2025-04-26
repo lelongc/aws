@@ -1,0 +1,352 @@
+pipeline {
+    agent none
+    
+    environment {
+        DOCKER_REGISTRY = 'registry.enterprise.com'
+        DOCKER_IMAGE = "${DOCKER_REGISTRY}/enterprise-app"
+        VERSION = "${BUILD_NUMBER}"
+        GIT_COMMIT_SHORT = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+        ARTIFACT_VERSION = "${VERSION}-${GIT_COMMIT_SHORT}"
+        AWS_REGION = 'us-west-2'
+        ECR_REPOSITORY = '123456789012.dkr.ecr.us-west-2.amazonaws.com/enterprise-app'
+    }
+    
+    options {
+        timeout(time: 2, unit: 'HOURS')
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timestamps()
+    }
+
+    stages {
+        stage('Parallel Checkout') {
+            parallel {
+                stage('Checkout Application') {
+                    agent {
+                        label 'jenkins-agent'
+                    }
+                    steps {
+                        checkout scm
+                        stash name: 'app-source', includes: '**'
+                    }
+                }
+                stage('Checkout Infrastructure') {
+                    agent {
+                        label 'jenkins-agent'
+                    }
+                    steps {
+                        checkout([
+                            $class: 'GitSCM',
+                            branches: [[name: 'main']],
+                            userRemoteConfigs: [[
+                                url: 'git@github.com:enterprise/infrastructure.git',
+                                credentialsId: 'github-ssh-key'
+                            ]]
+                        ])
+                        stash name: 'infra-source', includes: '**'
+                    }
+                }
+            }
+        }
+        
+        stage('Static Analysis & Build') {
+            parallel {
+                stage('Lint Check') {
+                    agent {
+                        docker {
+                            image 'enterprise/eslint:latest'
+                            args '-v $HOME/.npm:/root/.npm'
+                        }
+                    }
+                    steps {
+                        unstash 'app-source'
+                        sh 'npm ci'
+                        sh 'npm run lint'
+                    }
+                }
+                
+                stage('SonarQube Analysis') {
+                    agent {
+                        docker {
+                            image 'sonarsource/sonar-scanner-cli:latest'
+                        }
+                    }
+                    steps {
+                        unstash 'app-source'
+                        withSonarQubeEnv('Enterprise SonarQube') {
+                            sh 'sonar-scanner -Dsonar.projectKey=enterprise-app -Dsonar.sources=.'
+                        }
+                        timeout(time: 10, unit: 'MINUTES') {
+                            waitForQualityGate abortPipeline: true
+                        }
+                    }
+                }
+                
+                stage('Dependency Check') {
+                    agent {
+                        docker {
+                            image 'owasp/dependency-check:latest'
+                            args '--volume /var/lib/jenkins/OWASP-DC:/usr/share/dependency-check/data'
+                        }
+                    }
+                    steps {
+                        unstash 'app-source'
+                        sh '/usr/share/dependency-check/bin/dependency-check.sh --scan . --format "ALL" --project "Enterprise App" --out owasp-report'
+                        archiveArtifacts artifacts: 'owasp-report/**/*', allowEmptyArchive: true
+                        dependencyCheckPublisher pattern: 'owasp-report/dependency-check-report.xml'
+                    }
+                }
+                
+                stage('Build Application') {
+                    agent {
+                        docker {
+                            image 'gradle:jdk17'
+                        }
+                    }
+                    steps {
+                        unstash 'app-source'
+                        sh 'gradle clean build -x test'
+                        stash name: 'app-build', includes: 'build/libs/*.jar'
+                    }
+                }
+            }
+        }
+        
+        stage('Unit Tests') {
+            agent {
+                docker {
+                    image 'gradle:jdk17'
+                }
+            }
+            steps {
+                unstash 'app-source'
+                sh 'gradle test'
+            }
+            post {
+                always {
+                    junit '**/build/test-results/test/*.xml'
+                    publishHTML([
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'build/reports/tests/test',
+                        reportFiles: 'index.html',
+                        reportName: 'Unit Test Report'
+                    ])
+                }
+            }
+        }
+        
+        stage('Build & Scan Container') {
+            agent {
+                label 'docker'
+            }
+            steps {
+                unstash 'app-source'
+                unstash 'app-build'
+                
+                // Build Docker image
+                sh "docker build -t ${DOCKER_IMAGE}:${ARTIFACT_VERSION} ."
+                
+                // Scan image for vulnerabilities
+                sh "trivy image --exit-code 1 --severity CRITICAL ${DOCKER_IMAGE}:${ARTIFACT_VERSION}"
+                
+                // Sign image
+                sh "cosign sign --key cosign.key ${DOCKER_IMAGE}:${ARTIFACT_VERSION}"
+                
+                // Push to registry
+                withCredentials([
+                    usernamePassword(credentialsId: 'docker-registry-creds', usernameVariable: 'REGISTRY_USER', passwordVariable: 'REGISTRY_PASS')
+                ]) {
+                    sh "echo ${REGISTRY_PASS} | docker login ${DOCKER_REGISTRY} -u ${REGISTRY_USER} --password-stdin"
+                    sh "docker push ${DOCKER_IMAGE}:${ARTIFACT_VERSION}"
+                }
+                
+                // Push to AWS ECR
+                withAWS(region: "${AWS_REGION}", credentials: 'aws-ecr-credentials') {
+                    sh "aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPOSITORY}"
+                    sh "docker tag ${DOCKER_IMAGE}:${ARTIFACT_VERSION} ${ECR_REPOSITORY}:${ARTIFACT_VERSION}"
+                    sh "docker push ${ECR_REPOSITORY}:${ARTIFACT_VERSION}"
+                }
+            }
+        }
+        
+        stage('Integration Tests') {
+            agent {
+                kubernetes {
+                    yaml """
+                    apiVersion: v1
+                    kind: Pod
+                    spec:
+                      containers:
+                      - name: testrunner
+                        image: enterprise/test-runner:latest
+                        command:
+                        - cat
+                        tty: true
+                        env:
+                        - name: APP_URL
+                          value: "http://test-deployment:8080"
+                    """
+                }
+            }
+            steps {
+                container('testrunner') {
+                    unstash 'app-source'
+                    
+                    // Deploy to ephemeral test environment
+                    sh "kubectl apply -f k8s/test/namespace.yaml"
+                    sh "kubectl -n enterprise-test set image deployment/test-deployment app=${DOCKER_IMAGE}:${ARTIFACT_VERSION}"
+                    sh "kubectl -n enterprise-test rollout status deployment/test-deployment --timeout=300s"
+                    
+                    // Run integration tests
+                    sh 'gradle integrationTest'
+                }
+            }
+            post {
+                always {
+                    junit '**/build/test-results/integrationTest/*.xml'
+                    sh "kubectl delete namespace enterprise-test"
+                }
+            }
+        }
+        
+        stage('Performance Tests') {
+            agent {
+                label 'performance'
+            }
+            steps {
+                unstash 'app-source'
+                
+                // Run JMeter tests
+                sh 'jmeter -n -t performance-tests/load-test.jmx -l results.jtl'
+                
+                // Run K6 tests
+                sh 'k6 run performance-tests/stress-test.js'
+                
+                // Process and archive results
+                perfReport sourceDataFiles: 'results.jtl'
+            }
+        }
+        
+        stage('Approval Gates') {
+            parallel {
+                stage('Security Approval') {
+                    steps {
+                        timeout(time: 24, unit: 'HOURS') {
+                            input message: 'Security team approval required', submitter: 'security-team'
+                        }
+                    }
+                }
+                
+                stage('Product Owner Approval') {
+                    steps {
+                        timeout(time: 24, unit: 'HOURS') {
+                            input message: 'Product owner approval required', submitter: 'product-owners'
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Blue/Green Deployment') {
+            agent {
+                label 'deployment'
+            }
+            steps {
+                unstash 'infra-source'
+                
+                // Provision new (green) environment using Terraform
+                withCredentials([sshUserPrivateKey(credentialsId: 'terraform-ssh-key', keyFileVariable: 'TERRAFORM_SSH_KEY')]) {
+                    sh "terraform init"
+                    sh "terraform apply -auto-approve -var 'image_tag=${ARTIFACT_VERSION}' -var 'environment=green'"
+                }
+                
+                // Run smoke tests against green environment
+                sh "curl -f https://green.enterprise.com/health || exit 1"
+                
+                // Switch traffic from blue to green
+                sh "terraform apply -auto-approve -var 'active_environment=green'"
+                
+                // Monitor for issues
+                sh "sleep 300" // 5 minutes to monitor
+                
+                // Decommission old (blue) environment after successful deployment
+                sh "terraform apply -auto-approve -var 'destroy_blue=true'"
+            }
+        }
+        
+        stage('Post Deployment') {
+            parallel {
+                stage('Tag Release') {
+                    agent {
+                        label 'jenkins-agent'
+                    }
+                    steps {
+                        // Tag successful release in Git
+                        sh "git tag -a release-${ARTIFACT_VERSION} -m 'Release ${ARTIFACT_VERSION}'"
+                        sh "git push origin release-${ARTIFACT_VERSION}"
+                        
+                        // Update release notes
+                        sh "generate-release-notes.sh ${ARTIFACT_VERSION} > release-notes-${ARTIFACT_VERSION}.md"
+                        archiveArtifacts artifacts: "release-notes-${ARTIFACT_VERSION}.md"
+                    }
+                }
+                
+                stage('Notify Stakeholders') {
+                    agent {
+                        label 'jenkins-agent'
+                    }
+                    steps {
+                        // Send notifications
+                        slackSend channel: '#releases', color: 'good', message: "Release ${ARTIFACT_VERSION} deployed successfully to production."
+                        
+                        emailext (
+                            subject: "Enterprise App ${ARTIFACT_VERSION} deployed to production",
+                            body: "${env.BUILD_URL} has been deployed successfully. See release notes for details.",
+                            recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                            attachmentsPattern: "release-notes-${ARTIFACT_VERSION}.md"
+                        )
+                    }
+                }
+                
+                stage('Update Monitoring') {
+                    agent {
+                        label 'monitoring'
+                    }
+                    steps {
+                        // Create version marker in monitoring systems
+                        sh "curl -X POST 'https://datadog.enterprise.com/api/v1/events' -H 'Content-Type: application/json' -d '{\"title\":\"Deployment ${ARTIFACT_VERSION}\",\"text\":\"Version ${ARTIFACT_VERSION} deployed to production\",\"tags\":[\"deployment\",\"production\"]}'"
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Clean workspace
+            cleanWs()
+        }
+        success {
+            // Archive important artifacts
+            archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
+            // Update JIRA tickets
+            jiraSendBuildInfo site: 'enterprise-jira'
+        }
+        failure {
+            // Send detailed failure notifications
+            slackSend channel: '#alerts', color: 'danger', message: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+            // Create incident in PagerDuty if production deployment failed
+            script {
+                if (BRANCH_NAME == 'master' || BRANCH_NAME == 'main') {
+                    pagerduty(resolve: false, serviceKey: 'PRODUCTION_SERVICE_KEY', incDescription: "Production deployment failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}")
+                }
+            }
+        }
+        unstable {
+            // Send notifications for unstable builds
+            slackSend channel: '#alerts', color: 'warning', message: "Build Unstable: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+    }
+}

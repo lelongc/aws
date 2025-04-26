@@ -1,0 +1,67 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: app-network-policy
+  namespace: production
+spec:
+  podSelector:
+    matchLabels:
+      app: app-name
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  # Allow inbound traffic from frontend pods
+  - from:
+    - podSelector:
+        matchLabels:
+          tier: frontend
+    ports:
+    - protocol: TCP
+      port: 8080
+  # Allow inbound traffic from specific namespaces
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          purpose: monitoring
+    ports:
+    - protocol: TCP
+      port: 9090
+  # Allow inbound traffic from specific IP blocks (e.g., office IPs)
+  - from:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+        except:
+        - 10.0.0.5/32
+    ports:
+    - protocol: TCP
+      port: 443
+  egress:
+  # Allow outbound traffic to database
+  - to:
+    - podSelector:
+        matchLabels:
+          tier: database
+    ports:
+    - protocol: TCP
+      port: 5432
+  # Allow DNS resolution
+  - to:
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  # Allow outbound traffic to specific external endpoints
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+        except:
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+    ports:
+    - protocol: TCP
+      port: 443
+    - protocol: TCP
+      port: 80

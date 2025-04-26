@@ -1,52 +1,45 @@
-# AWS Terraform Templates for Multiple Industries and Patterns
+# AWS Terraform Templates
 
-This repository contains Terraform configurations for different infrastructure patterns and business types, specifically designed for AWS Virginia region (us-east-1).
+Đây là bộ sưu tập các template Terraform để triển khai hạ tầng AWS. Các template này được thiết kế để dễ dàng tùy chỉnh và sử dụng lại cho nhiều dự án.
 
-## Structure
+## Cấu trúc thư mục
 
-- `modules/`: Reusable infrastructure components
-  - `networking/`: VPC, subnets, route tables, etc.
-- `patterns/`: Architecture patterns
-  - `web-application/`: Traditional web app with EC2, ALB, ASG
-  - `serverless/`: Serverless architecture with Lambda and API Gateway
-- `industries/`: Industry-specific configurations
-  - `ecommerce/`: E-commerce infrastructure with product database and CDN
-  - `finance/`: Financial services with enhanced security and compliance features
+```
+terraform-aws-templates/
+│
+├── base-infrastructure/      # Hạ tầng cơ sở
+│   ├── vpc/                  # VPC, subnet, routing
+│   ├── security/             # Security groups, NACLs
+│   └── iam/                  # IAM roles, policies
+│
+├── compute/                  # Dịch vụ compute
+│   ├── ec2/                  # EC2 instances, ASG
+│   ├── ecs/                  # ECS clusters
+│   └── lambda/               # Lambda functions
+│
+├── storage/                  # Dịch vụ lưu trữ
+│   ├── s3/                   # S3 buckets
+│   ├── rds/                  # RDS databases
+│   └── dynamodb/             # DynamoDB tables
+│
+├── networking/               # Network nâng cao
+│   ├── loadbalancer/         # ALB, NLB
+│   ├── cloudfront/           # CloudFront distributions
+│   └── route53/              # Route53 zones, records
+└── ...
+```
 
-## Usage
+## Cách sử dụng
 
-1. Clone this repository
-2. Navigate to the pattern or industry folder that matches your needs
-3. Initialize Terraform:
+Mỗi thư mục chứa các Terraform module riêng biệt. Bạn có thể sử dụng chúng như sau:
+
+1. Copy thư mục module cần thiết vào dự án của bạn
+2. Tùy chỉnh các biến trong `terraform.tfvars`
+3. Chạy lệnh Terraform:
    ```
    terraform init
-   ```
-4. Create a `terraform.tfvars` file with your specific variables
-5. Apply the configuration:
-   ```
+   terraform plan
    terraform apply
    ```
 
-## Variables
-
-Common variables across all templates:
-
-- `environment`: Deployment environment (dev, staging, prod)
-- `project_name`: Name of your project
-- `vpc_cidr`: CIDR block for the VPC
-- `azs`: Availability zones to use
-
-## Customization
-
-Each template can be customized to meet specific business requirements by modifying the corresponding `.tf` files or overriding variables.
-
-## Security Considerations
-
-The templates include various security features such as:
-
-- Private subnets for sensitive resources
-- Security groups with least privilege access
-- Encryption for sensitive data
-- WAF for web traffic filtering (Finance pattern)
-
-Always review and adjust security settings based on your specific requirements.
+Xem tài liệu chi tiết trong thư mục tương ứng để biết thêm thông tin.

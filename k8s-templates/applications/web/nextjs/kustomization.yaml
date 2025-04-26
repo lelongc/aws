@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Common labels to add to all resources
+commonLabels:
+  app: nextjs-app
+  environment: production
+
+# Namespace to deploy all resources to
+namespace: web-apps
+
+# Resource files to include
+resources:
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+- configmap.yaml
+- secret.yaml
+- hpa.yaml
+
+# ConfigMap generation
+configMapGenerator:
+- name: nextjs-app-config
+  literals:
+  - api_url=https://api.example.com
+  - feature_flags={"darkMode":true,"analytics":true}
+
+# Secret generation
+secretGenerator:
+- name: nextjs-app-secrets
+  type: Opaque
+  literals:
+  - database_url=postgresql://user:password@postgresql:5432/db
+  - api_key=K8sT3mpl4t3s!
+
+# Patches to apply on resources
+patches:
+- path: patches/increase-replicas.yaml
+  target:
+    kind: Deployment
+    name: nextjs-app
+- path: patches/resource-limits.yaml
+  target:
+    kind: Deployment
+    name: nextjs-app
+
+# Images to use
+images:
+- name: your-registry/nextjs-app
+  newName: your-registry/nextjs-app
+  newTag: 1.0.0
+
+# Replicas count override
+replicas:
+- name: nextjs-app
+  count: 5

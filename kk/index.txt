@@ -1,0 +1,331 @@
+# Chi tiết chức năng website bán kính E-commerce
+
+Dưới đây là mô tả chi tiết các chức năng của một website bán kính thương mại điện tử sử dụng jQuery, Bootstrap, và HTML tĩnh:
+
+## 1. Giao diện người dùng
+
+### Trang chủ
+- **Slider banner** hiển thị các chương trình khuyến mãi, sản phẩm mới (sử dụng jQuery Slick)
+- **Danh mục sản phẩm nổi bật** (gọng kính, kính râm, kính áp tròng...)
+- **Sản phẩm bán chạy** với hiệu ứng hover zoom sản phẩm
+- **Bộ lọc sản phẩm nhanh** theo giá, thương hiệu, kiểu dáng
+- **Newsletter signup** để đăng ký nhận thông tin khuyến mãi
+- **Testimonials** từ khách hàng với hiệu ứng carousel
+- **Blog** với các bài viết về chăm sóc mắt, xu hướng thời trang kính
+
+### Menu điều hướng
+- Menu đa cấp với các danh mục chính: Nam, Nữ, Trẻ em, Thương hiệu, Phụ kiện, Khuyến mãi
+- Thanh tìm kiếm với gợi ý tự động (sử dụng jQuery UI Autocomplete)
+- Biểu tượng giỏ hàng với số lượng sản phẩm hiện tại (cập nhật realtime với jQuery)
+- Nút đăng nhập/đăng ký
+- Menu responsive thu gọn trên thiết bị di động
+
+## 2. Trang danh sách sản phẩm
+
+- **Bộ lọc nâng cao**:
+  - Theo khoảng giá (sử dụng jQuery UI Range Slider)
+  - Theo hình dạng khung (tròn, vuông, oval, cat-eye...)
+  - Theo màu sắc (sử dụng jQuery Color Picker)
+  - Theo chất liệu (nhựa, kim loại, titan, acetate...)
+  - Theo thương hiệu
+  - Theo kích thước (nhỏ, trung bình, lớn)
+  
+- **Hiển thị sản phẩm**:
+  - Chế độ xem lưới/danh sách
+  - Sắp xếp theo giá thấp-cao, cao-thấp, mới nhất, bán chạy
+  - Phân trang Ajax (sử dụng jQuery để tải thêm sản phẩm mà không load lại trang)
+  - Hiển thị số lượng sản phẩm còn lại
+  - Nhãn đánh dấu sản phẩm mới, bán chạy, giảm giá
+
+## 3. Trang chi tiết sản phẩm
+
+- **Thư viện hình ảnh**:
+  - Hình ảnh sản phẩm từ nhiều góc độ
+  - Zoom khi hover (sử dụng jQuery Zoom)
+  - Lightbox để xem ảnh kích thước lớn
+  
+- **Thông tin sản phẩm**:
+  - Tên, giá, giá khuyến mãi
+  - Mô tả chi tiết sản phẩm
+  - Thông số kỹ thuật (kích thước gọng, chiều dài càng kính, khoảng cách chóp mũi)
+  - Bảng chọn màu sắc với hình ảnh thay đổi tương ứng
+  - Số lượng tồn kho theo màu sắc
+
+- **Tính năng tương tác**:
+  - Thử kính ảo (Virtual Try-On) sử dụng jQuery và WebRTC để truy cập camera
+  - Công cụ đo khoảng cách PD (Pupillary Distance) trực tuyến
+  - Hướng dẫn đo kích thước khuôn mặt
+  - Nhập đơn kính (độ cận, viễn, loạn, đa tròng)
+  - Tính năng "So sánh với sản phẩm khác"
+
+- **Đánh giá và bình luận**:
+  - Hiển thị đánh giá sao (1-5)
+  - Lọc đánh giá theo số sao
+  - Form gửi đánh giá với tải lên hình ảnh
+  - Bình luận và phản hồi (sử dụng localStorage để lưu tạm)
+
+## 4. Giỏ hàng và Thanh toán
+
+### Giỏ hàng
+- Thêm/xóa/cập nhật số lượng sản phẩm (sử dụng jQuery AJAX)
+- Tính toán tự động tổng tiền, thuế, phí vận chuyển
+- Áp dụng mã giảm giá (kiểm tra bằng JavaScript)
+- Lưu giỏ hàng vào localStorage để không mất khi refresh trang
+- Quick view giỏ hàng khi hover vào biểu tượng giỏ hàng
+
+### Quy trình thanh toán
+- Form thông tin giao hàng với kiểm tra hợp lệ (jQuery Validation)
+- Tự động điền địa chỉ dựa trên mã bưu điện
+- Tính phí vận chuyển theo khu vực
+- Lựa chọn phương thức thanh toán:
+  - Chuyển khoản ngân hàng
+  - Thanh toán khi nhận hàng (COD)
+  - Thẻ tín dụng/ghi nợ (mô phỏng với jQuery)
+  - Ví điện tử (mô phỏng)
+- Xác nhận đơn hàng và gửi email xác nhận (mô phỏng)
+
+## 5. Tài khoản người dùng
+
+- **Đăng ký/Đăng nhập**:
+  - Đăng ký với email hoặc tài khoản mạng xã hội (mô phỏng)
+  - Đăng nhập với tính năng "Ghi nhớ đăng nhập"
+  - Quên mật khẩu (mô phỏng quy trình reset)
+  - Xác thực 2 lớp (mô phỏng)
+
+- **Trang tài khoản**:
+  - Quản lý thông tin cá nhân
+  - Lịch sử đơn hàng và trạng thái
+  - Danh sách yêu thích
+  - Đơn kính đã lưu
+  - Địa chỉ giao hàng đã lưu
+  - Đánh giá đã viết
+  - Điểm thưởng và cấp độ thành viên
+
+## 6. Tính năng đặc biệt cho cửa hàng kính
+
+- **Tư vấn trực tuyến**:
+  - Chatbot hỗ trợ tự động (sử dụng jQuery và JSON để mô phỏng)
+  - Live chat với nhân viên (mô phỏng)
+  - Đặt lịch khám mắt tại cửa hàng
+
+- **Công cụ tìm kiếm kính phù hợp**:
+  - Bảng câu hỏi về phong cách, hình dạng khuôn mặt
+  - Gợi ý kiểu dáng kính phù hợp dựa trên khuôn mặt
+  - Tư vấn chọn màu gọng theo tông da
+
+- **Blog và nội dung hữu ích**:
+  - Bài viết về chăm sóc mắt
+  - Hướng dẫn chọn kính phù hợp
+  - Xu hướng thời trang kính
+  - Video hướng dẫn vệ sinh, bảo quản kính
+
+## 7. Tính năng kỹ thuật
+
+### Frontend
+- **Responsive Design**:
+  - Tương thích với mọi thiết bị (Bootstrap grid system)
+  - Menu thu gọn trên mobile
+  - Hình ảnh thích ứng với kích thước màn hình
+  - Tối ưu UX cho cảm ứng
+
+- **Hiệu ứng và Animations**:
+  - Loading animations (sử dụng jQuery animate)
+  - Smooth scrolling
+  - Parallax sections
+  - Sticky header khi cuộn
+  - Back-to-top button
+
+- **SEO và Performance**:
+  - Lazy loading hình ảnh
+  - Structured data markup (JSON-LD)
+  - URL thân thiện với SEO
+  - Tối ưu hóa thẻ meta
+  - Breadcrumbs navigation
+
+### Mô phỏng Backend (với localStorage và jQuery)
+- Lưu trữ dữ liệu người dùng trong localStorage
+- Mô phỏng API calls với jQuery $.ajax() và JSON tĩnh
+- Xử lý form submissions với jQuery và lưu dữ liệu tạm thời
+- Kiểm tra tính hợp lệ của form phía client
+- Mô phỏng đăng nhập/đăng ký với phiên cục bộ
+
+## 8. Trang quản trị (Admin Dashboard)
+
+- **Quản lý sản phẩm**:
+  - Danh sách sản phẩm với bộ lọc và tìm kiếm
+  - Thêm/sửa/xóa sản phẩm (mô phỏng)
+  - Quản lý tồn kho
+
+- **Quản lý đơn hàng**:
+  - Xem danh sách đơn hàng
+  - Cập nhật trạng thái đơn hàng
+  - In hóa đơn và phiếu giao hàng
+
+- **Quản lý người dùng**:
+  - Danh sách khách hàng
+  - Xem lịch sử mua hàng
+  - Phân loại khách hàng theo mức chi tiêu
+
+- **Báo cáo và thống kê**:
+  - Doanh số theo thời gian (biểu đồ với Chart.js)
+  - Sản phẩm bán chạy
+  - Phân tích hành vi người dùng
+
+---
+
+Website này hoàn toàn có thể xây dựng với HTML tĩnh, CSS, Bootstrap và jQuery, sử dụng localStorage để lưu trữ và mô phỏng dữ liệu tạm thời. Với cấu trúc phía client hợp lý, người dùng có thể có trải nghiệm gần như một website thương mại điện tử thực thụ, dù không có backend thực sự.
+
+
+# Backend cần thiết để hoàn thiện website bán kính E-commerce
+
+Để biến website tĩnh thành một hệ thống e-commerce đầy đủ chức năng, bạn cần xây dựng các thành phần backend sau:
+
+## 1. Công nghệ và Framework Backend
+
+- **Ngôn ngữ lập trình**: PHP (Laravel, CodeIgniter), Python (Django, Flask), Node.js (Express), hoặc Java (Spring Boot)
+- **API Architecture**: RESTful API hoặc GraphQL để kết nối frontend với backend
+- **Web server**: Nginx hoặc Apache
+
+## 2. Hệ thống cơ sở dữ liệu
+
+- **CSDL quan hệ**: MySQL, PostgreSQL để lưu trữ:
+  - Thông tin sản phẩm (kính, gọng, phụ kiện)
+  - Thông tin người dùng và địa chỉ
+  - Đơn hàng và lịch sử giao dịch
+  - Đánh giá và bình luận
+  - Tồn kho và theo dõi hàng
+  
+- **CSDL NoSQL**: MongoDB hoặc Redis cho:
+  - Cache dữ liệu để tăng hiệu suất
+  - Phiên người dùng
+  - Dữ liệu real-time (như trạng thái giỏ hàng)
+
+- **Schema DB** phù hợp với đặc thù sản phẩm kính:
+  - Sản phẩm với thuộc tính đặc biệt (độ cận, kích thước gọng, PD)
+  - Bảng quan hệ giữa kính và gọng kính
+  - Bảng lưu thông số kỹ thuật cho từng loại kính
+
+## 3. Hệ thống API và Endpoints
+
+- **API quản lý sản phẩm**:
+  - GET /api/products - Lấy danh sách sản phẩm
+  - GET /api/products/{id} - Chi tiết sản phẩm
+  - GET /api/products/categories - Danh mục sản phẩm
+  - GET /api/products/filters - Bộ lọc sản phẩm
+
+- **API người dùng**:
+  - POST /api/auth/register - Đăng ký
+  - POST /api/auth/login - Đăng nhập
+  - GET /api/user/profile - Thông tin người dùng
+  - PUT /api/user/profile - Cập nhật thông tin
+  - GET /api/user/orders - Lịch sử đơn hàng
+
+- **API giỏ hàng và đặt hàng**:
+  - GET/POST /api/cart - Quản lý giỏ hàng
+  - POST /api/orders - Tạo đơn hàng
+  - GET /api/orders/{id} - Chi tiết đơn hàng
+
+- **API đặc thù cho bán kính**:
+  - POST /api/prescription - Lưu đơn kính
+  - GET /api/fitting-guide - Hướng dẫn chọn kính
+  - POST /api/virtual-try-on - Xử lý dữ liệu thử kính ảo
+
+## 4. Hệ thống xác thực và bảo mật
+
+- **JWT hoặc OAuth** cho xác thực người dùng
+- **Role-Based Access Control** (RBAC) cho phân quyền
+- **HTTPS** với SSL certificate
+- **Bảo vệ API** khỏi tấn công:
+  - Rate limiting
+  - CSRF protection
+  - XSS prevention
+  - SQL injection protection
+- **Mã hóa dữ liệu nhạy cảm** (thông tin thanh toán, mật khẩu)
+
+## 5. Xử lý thanh toán
+
+- **Tích hợp cổng thanh toán**:
+  - VNPay, Momo, ZaloPay cho thị trường Việt Nam
+  - PayPal, Stripe cho thanh toán quốc tế
+  - Hỗ trợ thanh toán qua thẻ tín dụng/ghi nợ
+  
+- **Xử lý giao dịch**:
+  - Tạo giao dịch
+  - Kiểm tra trạng thái thanh toán
+  - Xử lý hoàn tiền
+  - Tạo hóa đơn điện tử
+
+- **Bảo mật thanh toán**:
+  - Tuân thủ PCI DSS
+  - Mã hóa thông tin thẻ
+  - Xử lý tokenization
+
+## 6. Quản lý đơn hàng và kho hàng
+
+- **Hệ thống quản lý đơn hàng (OMS)**:
+  - Tự động cập nhật trạng thái đơn hàng
+  - Gửi email thông báo
+  - Xuất phiếu giao hàng và hóa đơn
+  
+- **Quản lý kho (Inventory Management)**:
+  - Theo dõi tồn kho thời gian thực
+  - Tự động cảnh báo hết hàng
+  - Quản lý SKU cho nhiều biến thể sản phẩm
+  - Dự báo nhu cầu
+
+## 7. Tính năng đặc thù ngành kính
+
+- **Hệ thống lưu trữ đơn kính**:
+  - Lưu trữ an toàn thông tin y tế mắt
+  - API kết nối với thiết bị đo thông số mắt
+  
+- **Xử lý hình ảnh cho virtual try-on**:
+  - Server xử lý hình ảnh
+  - API nhận diện khuôn mặt
+  - Render kính lên hình ảnh người dùng
+
+- **Tư vấn AI**:
+  - Backend xử lý thuật toán đề xuất kính phù hợp
+  - Chatbot tích hợp NLP để tư vấn khách hàng
+  - Học máy để dự đoán sản phẩm phù hợp
+
+## 8. Tích hợp hệ thống khác
+
+- **Email service** (SendGrid, Mailchimp) cho:
+  - Xác nhận đơn hàng
+  - Email marketing
+  - Thông báo khuyến mãi
+  
+- **SMS Gateway** cho thông báo giao hàng
+- **Hệ thống CRM** quản lý khách hàng
+- **Analytics** để theo dõi chuyển đổi và hành vi người dùng
+- **Tích hợp đối tác vận chuyển** (GHN, GHTK, Viettel Post)
+
+## 9. Quản trị hệ thống
+
+- **Admin Dashboard API**:
+  - Quản lý sản phẩm
+  - Quản lý đơn hàng
+  - Quản lý người dùng
+  - Báo cáo doanh thu
+
+- **Hệ thống Logging và Monitoring**:
+  - Ghi nhận lỗi và hoạt động
+  - Cảnh báo sự cố
+  - Phân tích hiệu suất
+
+- **Backup & Recovery**:
+  - Sao lưu dữ liệu tự động
+  - Phương án phục hồi dữ liệu
+
+## 10. Yêu cầu hiệu suất và khả năng mở rộng
+
+- **Caching layer** (Redis, Memcached)
+- **Content Delivery Network (CDN)** cho hình ảnh sản phẩm
+- **Load balancing** để phân phối tải
+- **Auto-scaling** cho thời điểm cao điểm (Black Friday, khuyến mãi lớn)
+- **Database sharding** và **replication** cho hệ thống lớn
+
+---
+
+Với các thành phần backend này, website bán kính e-commerce của bạn sẽ hoạt động đầy đủ và chuyên nghiệp, đáp ứng được các yêu cầu về hiệu suất, bảo mật và trải nghiệm người dùng trong môi trường thực tế.

@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'mvn clean compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                sh 'mvn deploy'
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Build successful!'
+            emailext (
+                subject: "Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "The build was successful. Check it out at: ${env.BUILD_URL}",
+                to: 'team@example.com'
+            )
+        }
+        failure {
+            echo 'Build failed!'
+            emailext (
+                subject: "Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "The build has failed. Check it out at: ${env.BUILD_URL}",
+                to: 'team@example.com'
+            )
+        }
+    }
+}

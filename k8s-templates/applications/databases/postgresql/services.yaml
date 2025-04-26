@@ -1,0 +1,56 @@
+---
+# Headless service for StatefulSet
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-headless
+  labels:
+    app: postgresql
+    tier: database
+spec:
+  clusterIP: None
+  ports:
+  - port: 5432
+    targetPort: postgresql
+    protocol: TCP
+    name: postgresql
+  selector:
+    app: postgresql
+---
+# Service for read/write to primary
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-primary
+  labels:
+    app: postgresql
+    tier: database
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5432
+    targetPort: postgresql
+    protocol: TCP
+    name: postgresql
+  selector:
+    app: postgresql
+    role: primary
+---
+# Service for read-only to replicas
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql-read
+  labels:
+    app: postgresql
+    tier: database
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5432
+    targetPort: postgresql
+    protocol: TCP
+    name: postgresql
+  selector:
+    app: postgresql
+    role: replica

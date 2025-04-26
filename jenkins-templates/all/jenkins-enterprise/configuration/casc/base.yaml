@@ -1,0 +1,240 @@
+jenkins:
+  systemMessage: "Enterprise Jenkins CI/CD Platform"
+  numExecutors: 0
+  mode: NORMAL
+  scmCheckoutRetryCount: 3
+  labelAtoms:
+  - name: "built-in"
+    properties:
+    - atomProperty:
+        propertyClass: "jenkins.model.BuildDiscarderProperty"
+
+  securityRealm:
+    ldap:
+      configurations:
+      - server: "ldap.example.com"
+        rootDN: "dc=example,dc=com"
+        managerDN: "cn=admin,dc=example,dc=com"
+        managerPasswordSecret: "${LDAP_PASSWORD}"
+        userSearchBase: "ou=People"
+        userSearch: "uid={0}"
+        groupSearchBase: "ou=Groups"
+        groupSearchFilter: "(& (cn={0}) (objectclass=groupOfNames))"
+        displayNameAttributeName: "displayName"
+        mailAddressAttributeName: "mail"
+
+  authorizationStrategy:
+    projectMatrix:
+      permissions:
+      - "Overall/Administer:authenticated"
+      - "Overall/Read:anonymous"
+      - "Job/Read:anonymous"
+
+  globalNodeProperties:
+  - envVars:
+      env:
+      - key: "COMPANY_NEXUS"
+        value: "https://nexus.example.com"
+      - key: "JAVA_HOME"
+        value: "/opt/java/openjdk"
+
+  clouds:
+  - kubernetes:
+      name: "kubernetes"
+      serverUrl: "https://kubernetes.default.svc.cluster.local"
+      namespace: "jenkins"
+      directConnection: false
+      jenkinsUrl: "http://jenkins.jenkins.svc.cluster.local:8080"
+      jenkinsTunnel: "jenkins-agent.jenkins.svc.cluster.local:50000"
+      containerCapStr: "50"
+      maxRequestsPerHostStr: "64"
+      retentionTimeout: 5
+      connectTimeout: 10
+      readTimeout: 20
+      templates:
+      - name: "java-agent"
+        namespace: "jenkins"
+        label: "java"
+        nodeUsageMode: EXCLUSIVE
+        containers:
+        - name: "java"
+          image: "jenkins/jnlp-agent-java:latest"
+          alwaysPullImage: true
+          workingDir: "/home/jenkins/agent"
+          ttyEnabled: true
+          command: ""
+          args: "^${computer.jnlpmac} ^${computer.name}"
+          resourceRequestCpu: "500m"
+          resourceRequestMemory: "2Gi"
+          resourceLimitCpu: "1"
+          resourceLimitMemory: "4Gi"
+      - name: "node-agent"
+        namespace: "jenkins"
+        label: "nodejs"
+        nodeUsageMode: EXCLUSIVE
+        containers:
+        - name: "node"
+          image: "jenkins/jnlp-agent-nodejs:latest"
+          alwaysPullImage: true
+          workingDir: "/home/jenkins/agent"
+          ttyEnabled: true
+          command: ""
+          args: "^${computer.jnlpmac} ^${computer.name}"
+          resourceRequestCpu: "500m"
+          resourceRequestMemory: "1Gi"
+          resourceLimitCpu: "1"
+          resourceLimitMemory: "2Gi"
+      - name: "python-agent"
+        namespace: "jenkins"
+        label: "python"
+        nodeUsageMode: EXCLUSIVE
+        containers:
+        - name: "python"
+          image: "jenkins/jnlp-agent-python:latest"
+          alwaysPullImage: true
+          workingDir: "/home/jenkins/agent"
+          ttyEnabled: true
+          command: ""
+          args: "^${computer.jnlpmac} ^${computer.name}"
+          resourceRequestCpu: "500m"
+          resourceRequestMemory: "1Gi"
+          resourceLimitCpu: "1"
+          resourceLimitMemory: "2Gi"
+
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
+
+  remotingSecurity:
+    enabled: true
+
+security:
+  queueItemAuthenticator:
+    authenticators:
+    - global:
+        strategy: triggeringUsersAuthorizationStrategy
+
+unclassified:
+  location:
+    url: "https://jenkins.example.com/"
+    adminAddress: "jenkins-admin@example.com"
+
+  slackNotifier:
+    teamDomain: "example"
+    tokenCredentialId: "slack-token"
+    room: "#jenkins-notifications"
+
+  globalLibraries:
+    libraries:
+    - name: "global-libs"
+      retriever:
+        modernSCM:
+          scm:
+            git:
+              remote: "https://github.com/company/jenkins-global-libs.git"
+              credentialsId: "github-credentials"
+    - name: "team-a"
+      retriever:
+        modernSCM:
+          scm:
+            git:
+              remote: "https://github.com/company/jenkins-team-a-libs.git"
+              credentialsId: "github-credentials"
+    - name: "team-b"
+      retriever:
+        modernSCM:
+          scm:
+            git:
+              remote: "https://github.com/company/jenkins-team-b-libs.git"
+              credentialsId: "github-credentials"
+
+  globalSettings:
+    configName: "Maven Global Settings"
+    configId: "maven-global-settings"
+
+  mailer:
+    authentication:
+      username: "jenkins@example.com"
+      password: "${MAILER_PASSWORD}"
+    charset: "UTF-8"
+    smtpHost: "smtp.example.com"
+    smtpPort: "587"
+    useTls: true
+
+  sonarGlobalConfiguration:
+    buildWrapperEnabled: true
+    installations:
+    - name: "SonarQube"
+      serverUrl: "https://sonar.example.com"
+      credentialsId: "sonarqube-token"
+
+  artifactoryBuilder:
+    useCredentialsPlugin: true
+    artifactoryServers:
+    - name: "Artifactory"
+      url: "https://artifactory.example.com/artifactory"
+      credentialsId: "artifactory-credentials"
+
+jobs:
+- script: >
+    folder('TeamA') {
+      description('Team A Projects')
+      properties {
+        authorizationMatrix {
+          inheritanceStrategy {
+            nonInheriting()
+          }
+          permissions('hudson.model.Item.Build', 'team-a')
+          permissions('hudson.model.Item.Read', 'team-a')
+          permissions('hudson.model.Item.Workspace', 'team-a')
+        }
+      }
+    }
+
+    folder('TeamB') {
+      description('Team B Projects')
+      properties {
+        authorizationMatrix {
+          inheritanceStrategy {
+            nonInheriting()
+          }
+          permissions('hudson.model.Item.Build', 'team-b')
+          permissions('hudson.model.Item.Read', 'team-b')
+          permissions('hudson.model.Item.Workspace', 'team-b')
+        }
+      }
+    }
+
+    pipelineJob('TeamA/seed-job') {
+      definition {
+        cpsScm {
+          scm {
+            git {
+              remote {
+                url('https://github.com/company/jenkins-jobs.git')
+                credentials('github-credentials')
+              }
+              branch('*/main')
+            }
+          }
+          scriptPath('jobs/teams/team-a/jobs.groovy')
+        }
+      }
+    }
+
+    pipelineJob('TeamB/seed-job') {
+      definition {
+        cpsScm {
+          scm {
+            git {
+              remote {
+                url('https://github.com/company/jenkins-jobs.git')
+                credentials('github-credentials')
+              }
+              branch('*/main')
+            }
+          }
+          scriptPath('jobs/teams/team-b/jobs.groovy')
+        }
+      }
+    }

@@ -1,0 +1,74 @@
+---
+# Role for developers (namespace-scoped)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: development
+  name: developer-role
+rules:
+- apiGroups: [ "" ]
+  resources: [ "pods", "pods/log", "services", "configmaps", "secrets" ]
+  verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+- apiGroups: [ "apps" ]
+  resources: [ "deployments", "statefulsets", "replicasets" ]
+  verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+- apiGroups: [ "batch" ]
+  resources: [ "jobs", "cronjobs" ]
+  verbs: [ "get", "list", "watch", "create", "update", "patch", "delete" ]
+- apiGroups: [ "networking.k8s.io" ]
+  resources: [ "ingresses" ]
+  verbs: [ "get", "list", "watch" ]
+- apiGroups: [ "" ]
+  resources: [ "pods/exec" ]
+  verbs: [ "create" ]
+---
+# RoleBinding for developers
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-rolebinding
+  namespace: development
+subjects:
+- kind: User
+  name: developer@example.com
+  apiGroup: rbac.authorization.k8s.io
+- kind: Group
+  name: developers
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer-role
+  apiGroup: rbac.authorization.k8s.io
+---
+# ClusterRole for read-only access across all namespaces
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: readonly-clusterrole
+rules:
+- apiGroups: [ "" ]
+  resources: [ "pods", "services", "configmaps", "endpoints", "namespaces", "nodes" ]
+  verbs: [ "get", "list", "watch" ]
+- apiGroups: [ "apps" ]
+  resources: [ "deployments", "statefulsets", "replicasets", "daemonsets" ]
+  verbs: [ "get", "list", "watch" ]
+- apiGroups: [ "batch" ]
+  resources: [ "jobs", "cronjobs" ]
+  verbs: [ "get", "list", "watch" ]
+---
+# ClusterRoleBinding for readonly users
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: readonly-clusterrolebinding
+subjects:
+- kind: Group
+  name: viewers
+  apiGroup: rbac.authorization.k8s.io
+- kind: ServiceAccount
+  name: monitoring-sa
+  namespace: monitoring
+roleRef:
+  kind: ClusterRole
+  name: readonly-clusterrole
+  apiGroup: rbac.authorization.k8s.io

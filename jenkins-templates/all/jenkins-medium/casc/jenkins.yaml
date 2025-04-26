@@ -1,0 +1,88 @@
+jenkins:
+  systemMessage: "Jenkins configured automatically with Configuration as Code"
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+      - id: admin
+        password: ${ADMIN_PASSWORD}
+      - id: developer
+        password: ${DEVELOPER_PASSWORD}
+
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+        - name: "admin"
+          description: "Jenkins administrators"
+          permissions:
+          - "Overall/Administer"
+          assignments:
+          - "admin"
+        - name: "developer"
+          description: "Developer role"
+          permissions:
+          - "Overall/Read"
+          - "Job/Build"
+          - "Job/Read"
+          - "Job/Workspace"
+          assignments:
+          - "developer"
+
+  globalLibraries:
+    libraries:
+    - name: "shared-libs"
+      retriever:
+        modernSCM:
+          scm:
+            git:
+              remote: "https://github.com/company/jenkins-shared-libraries.git"
+              credentialsId: "github-creds"
+
+  clouds:
+  - kubernetes:
+      name: "kubernetes"
+      serverUrl: "https://kubernetes.default.svc.cluster.local"
+      namespace: "jenkins"
+      directConnection: false
+      jenkinsUrl: "http://jenkins.jenkins.svc.cluster.local:8080"
+      jenkinsTunnel: "jenkins-agent.jenkins.svc.cluster.local:50000"
+      containerCapStr: "10"
+      maxRequestsPerHostStr: "32"
+      retentionTimeout: 5
+      connectTimeout: 0
+      readTimeout: 0
+
+tool:
+  maven:
+    installations:
+    - name: "Maven 3"
+      properties:
+      - installSource:
+          installers:
+          - maven:
+              id: "3.8.4"
+
+  jdk:
+    installations:
+    - name: "JDK 11"
+      properties:
+      - installSource:
+          installers:
+          - adoptOpenJdkInstaller:
+              id: "jdk-11.0.11+9"
+
+jobs:
+- script: >
+    folder('CI') {
+      description('Continuous Integration Jobs')
+    } folder('CD') {
+      description('Continuous Deployment Jobs')
+    } pipelineJob('CI/seed-job') {
+      definition {
+        cps {
+          script(readFileFromWorkspace('jobs/seed-jobs.groovy'))
+          sandbox()
+        }
+      }
+    }

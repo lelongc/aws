@@ -1,0 +1,14 @@
+git:latest
+pipeline-stage-view:latest
+blueocean:latest
+docker-workflow:latest
+credentials:latest
+ssh-credentials:latest
+junit:latest
+mailer:latest
+email-ext:latest
+maven-plugin:latest
+workflow-aggregator:latest
+job-dsl:latest
+cloudbees-folder:latest
+antisamy-markup-formatter:latest
