@@ -1,0 +1,67 @@
+# AWSTemplateFormatVersion: '2010-09-09'
+# Transform: AWS::Serverless-2016-10-31
+# Description: >
+#   AWS SAM Template for a serverless application
+
+# Parameters:
+#   Environment:
+#     Type: String
+#     Default: dev
+#     AllowedValues:
+#     - dev
+#     - test
+#     - prod
+#     Description: Environment name
+
+# Globals:
+#   Function:
+#     Timeout: 10
+#     MemorySize: 128
+#     Runtime: nodejs14.x
+#     Environment:
+#       Variables:
+#         ENV: !Ref Environment
+#         LOG_LEVEL: info
+
+# Resources:
+#   # Lambda function
+#   ApiFunction:
+#     Type: AWS::Serverless::Function
+#     Properties:
+#       CodeUri: src/
+#       Handler: app.handler
+#       Architectures:
+#       - x86_64
+#       Policies:
+#       - DynamoDBCrudPolicy:
+#           TableName: !Ref DynamoTable
+#       Events:
+#         ApiEvent:
+#           Type: Api
+#           Properties:
+#             Path: /items
+#             Method: get
+
+#   # DynamoDB Table
+#   DynamoTable:
+#     Type: AWS::DynamoDB::Table
+#     Properties:
+#       TableName: !Sub ${Environment}-items-table
+#       BillingMode: PAY_PER_REQUEST
+#       AttributeDefinitions:
+#       - AttributeName: id
+#         AttributeType: S
+#       KeySchema:
+#       - AttributeName: id
+#         KeyType: HASH
+
+# Outputs:
+#   ApiFunction:
+#     Description: "Lambda Function ARN"
+#     Value: !GetAtt ApiFunction.Arn
+#   ApiEndpoint:
+#     Description: "API Gateway endpoint URL"
+#     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/items/"
+#   DynamoTable:
+#     Description: "DynamoDB Table name"
+#     Value: !Ref DynamoTable

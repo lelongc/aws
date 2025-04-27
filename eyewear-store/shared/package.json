@@ -1,0 +1,15 @@
+{
+  "name": "@eyewear-store/shared",
+  "version": "1.0.0",
+  "description": "Shared types and utilities for Eyewear Store",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.3",
+    "typescript": "^5.1.6"
+  }
+}

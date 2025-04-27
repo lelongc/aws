@@ -1,0 +1,42 @@
+{
+  "api": {
+    "endpoint": "https://api.example.com",
+    "timeout": 30000,
+    "retries": 3
+  },
+  "features": {
+    "newUserInterface": true,
+    "advancedAnalytics": false,
+    "betaFeatures": false
+  },
+  "database": {
+    "maxConnections": 25,
+    "connectionTimeout": 10000,
+    "idleTimeout": 60000
+  },
+  "cache": {
+    "ttl": 300,
+    "enabled": true
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "destination": "cloudwatch"
+  },
+  "throttling": {
+    "enabled": true,
+    "requestsPerSecond": 100,
+    "burstSize": 50
+  },
+  "security": {
+    "corsEnabled": true,
+    "allowedOrigins": [
+      "https://example.com",
+      "https://www.example.com"
+    ],
+    "rateLimit": {
+      "windowMs": 60000,
+      "maxRequests": 100
+    }
+  }
+}
