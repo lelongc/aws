@@ -156,18 +156,11 @@ resource "aws_api_gateway_method_response" "responses" {
   status_code = each.value.status_code
   
   # CORS headers
-  dynamic "response_parameters" {
-    for_each = var.enable_cors ? {
-      "method.response.header.Access-Control-Allow-Headers" = true
-      "method.response.header.Access-Control-Allow-Methods" = true
-      "method.response.header.Access-Control-Allow-Origin"  = true
-    } : {}
-    
-    content {
-      name = response_parameters.key
-      is_required = false
-    }
-  }
+  response_parameters = var.enable_cors ? {
+    "method.response.header.Access-Control-Allow-Headers" = true
+    "method.response.header.Access-Control-Allow-Methods" = true
+    "method.response.header.Access-Control-Allow-Origin"  = true
+  } : {}
 }
 
 # API Gateway Deployment

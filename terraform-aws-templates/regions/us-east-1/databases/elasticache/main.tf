@@ -85,31 +85,29 @@ resource "aws_elasticache_cluster" "this" {
 
 # ElastiCache Redis Replication Group (for Redis cluster mode)
 resource "aws_elasticache_replication_group" "this" {
-  count                         = var.create_cluster && var.engine == "redis" && var.cluster_mode_enabled ? 1 : 0
-  replication_group_id          = "${var.project}-${var.environment}-redis"
-  replication_group_description = "Redis replication group for ${var.project}-${var.environment}"
-  node_type                     = var.node_type
-  port                          = var.port
-  parameter_group_name          = aws_elasticache_parameter_group.this.name
-  engine_version                = var.engine_version
+  count                      = var.create_cluster && var.engine == "redis" && var.cluster_mode_enabled ? 1 : 0
+  replication_group_id       = "${var.project}-${var.environment}-redis"
+  description                = "Redis replication group for ${var.project}-${var.environment}"
+  node_type                  = var.node_type
+  port                       = var.port
+  parameter_group_name       = aws_elasticache_parameter_group.this.name
+  engine_version             = var.engine_version
   
-  subnet_group_name             = var.subnet_group_name != "" ? var.subnet_group_name : aws_elasticache_subnet_group.this[0].name
-  security_group_ids            = var.create_security_group ? [aws_security_group.elasticache[0].id] : var.security_group_ids
+  subnet_group_name          = var.subnet_group_name != "" ? var.subnet_group_name : aws_elasticache_subnet_group.this[0].name
+  security_group_ids         = var.create_security_group ? [aws_security_group.elasticache[0].id] : var.security_group_ids
   
-  automatic_failover_enabled    = var.automatic_failover_enabled
-  multi_az_enabled              = var.multi_az_enabled
+  automatic_failover_enabled = var.automatic_failover_enabled
+  multi_az_enabled           = var.multi_az_enabled
   
-  cluster_mode {
-    replicas_per_node_group     = var.replicas_per_node_group
-    num_node_groups             = var.num_node_groups
-  }
+  num_node_groups            = var.num_node_groups
+  replicas_per_node_group    = var.replicas_per_node_group
   
-  maintenance_window            = var.maintenance_window
-  snapshot_window               = var.snapshot_window
-  snapshot_retention_limit      = var.snapshot_retention_limit
+  maintenance_window         = var.maintenance_window
+  snapshot_window            = var.snapshot_window
+  snapshot_retention_limit   = var.snapshot_retention_limit
   
-  apply_immediately             = var.apply_immediately
-  auto_minor_version_upgrade    = var.auto_minor_version_upgrade
+  apply_immediately          = var.apply_immediately
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
   
   tags = {
     Name        = "${var.project}-${var.environment}-redis"

@@ -56,6 +56,10 @@ module "us_east_1" {
   vpc_cidr_block = "10.3.0.0/16"
   enable_nat_gateway = true
   
+  db_name      = "${var.project}-development"
+  key_name     = "development-key"
+  log_bucket   = module.s3.log_bucket_id
+  
   # Import other variables as needed
 }
 

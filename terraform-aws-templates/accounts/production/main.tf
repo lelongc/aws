@@ -56,6 +56,11 @@ module "us_east_1" {
   vpc_cidr_block = "10.1.0.0/16"
   enable_nat_gateway = true
   
+  # Required attributes
+  db_name     = "${var.project}-db-production"
+  key_name    = "${var.project}-production-key"
+  log_bucket  = module.s3.log_bucket_name
+  
   # Import other variables as needed
 }
 

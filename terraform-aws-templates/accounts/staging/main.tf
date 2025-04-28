@@ -55,6 +55,9 @@ module "us_east_1" {
   
   vpc_cidr_block = "10.2.0.0/16"
   enable_nat_gateway = true
+  key_name = "staging-key"
+  db_name = "staging_db"
+  log_bucket = "${var.project}-staging-logs"
   
   # Import other variables as needed
 }
