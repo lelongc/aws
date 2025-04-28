@@ -30,7 +30,7 @@ resource "aws_cloudwatch_event_rule" "rules" {
   schedule_expression = lookup(each.value, "schedule_expression", null)
   
   role_arn     = lookup(each.value, "role_arn", null)
-  is_enabled   = lookup(each.value, "enabled", true)
+  state        = lookup(each.value, "enabled", true) ? "ENABLED" : "DISABLED"
   
   tags = merge(
     {

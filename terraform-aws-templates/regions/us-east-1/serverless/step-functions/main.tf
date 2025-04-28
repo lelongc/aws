@@ -120,7 +120,7 @@ resource "aws_cloudwatch_event_rule" "step_function" {
   
   schedule_expression = var.event_schedule_expression
   event_pattern       = var.event_pattern
-  is_enabled          = true
+  state               = "ENABLED"
   
   tags = {
     Environment = var.environment
