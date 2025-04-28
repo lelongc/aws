@@ -1,0 +1,33 @@
+[
+  {
+    "name": "worker",
+    "image": "${container_image}",
+    "essential": true,
+    "cpu": "256",
+    "memory": "512",
+    "environment": [
+      {
+        "name": "EXAMPLE_VAR",
+        "value": "example_value"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/worker",
+        "awslogs-region": "us-east-1",
+        "awslogs-stream-prefix": "myproject-dev-worker"
+      }
+    },
+    "healthCheck": {
+      "command": [
+        "CMD-SHELL",
+        "ps aux | grep -v grep | grep -q worker || exit 1"
+      ],
+      "interval": 30,
+      "timeout": 5,
+      "retries": 3,
+      "startPeriod": 60
+    }
+  }
+]

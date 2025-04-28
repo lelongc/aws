@@ -1,0 +1,112 @@
+pipeline {
+    agent any
+    
+    parameters {
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'staging', 'prod'], description: 'Select environment')
+        choice(name: 'REGION', choices: ['us-east-1', 'eu-west-1', 'ap-southeast-1'], description: 'Select AWS region')
+        choice(name: 'ACTION', choices: ['plan', 'apply', 'destroy'], description: 'Select Terraform action')
+        string(name: 'WORKSPACE', defaultValue: 'default', description: 'Terraform workspace name (default for most cases)')
+    }
+    
+    environment {
+        TF_CLI_ARGS = "-no-color"
+        TF_IN_AUTOMATION = "true"
+        AWS_CREDENTIALS = credentials('aws-credentials')
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Setup') {
+            steps {
+                sh '''
+                    export AWS_ACCESS_KEY_ID=${AWS_CREDENTIALS_USR}
+                    export AWS_SECRET_ACCESS_KEY=${AWS_CREDENTIALS_PSW}
+                    cd regions/${REGION}
+                    terraform --version
+                '''
+            }
+        }
+        
+        stage('Init') {
+            steps {
+                sh '''
+                    cd regions/${REGION}
+                    terraform init -backend-config=../../config/${ENVIRONMENT}/${REGION}-backend.hcl
+                    terraform workspace select ${WORKSPACE} || terraform workspace new ${WORKSPACE}
+                '''
+            }
+        }
+        
+        stage('Validate') {
+            steps {
+                sh '''
+                    cd regions/${REGION}
+                    terraform validate
+                    terraform fmt -check -recursive
+                '''
+            }
+        }
+        
+        stage('Plan') {
+            steps {
+                sh '''
+                    cd regions/${REGION}
+                    terraform plan -var-file=../../config/${ENVIRONMENT}/${REGION}.tfvars -out=tfplan
+                '''
+            }
+        }
+        
+        stage('Apply') {
+            when {
+                expression { params.ACTION == 'apply' }
+            }
+            steps {
+                script {
+                    if (params.ENVIRONMENT == 'prod') {
+                        timeout(time: 10, unit: 'MINUTES') {
+                            input message: 'Apply to PRODUCTION?', ok: 'Yes, Apply'
+                        }
+                    }
+                }
+                sh '''
+                    cd regions/${REGION}
+                    terraform apply tfplan
+                '''
+            }
+        }
+        
+        stage('Destroy') {
+            when {
+                expression { params.ACTION == 'destroy' }
+            }
+            steps {
+                script {
+                    if (params.ENVIRONMENT == 'prod') {
+                        timeout(time: 10, unit: 'MINUTES') {
+                            input message: 'DESTROY PRODUCTION?', ok: 'Yes, Destroy'
+                        }
+                    } else {
+                        timeout(time: 5, unit: 'MINUTES') {
+                            input message: "Destroy ${params.ENVIRONMENT}?", ok: 'Yes, Destroy'
+                        }
+                    }
+                }
+                sh '''
+                    cd regions/${REGION}
+                    terraform destroy -var-file=../../config/${ENVIRONMENT}/${REGION}.tfvars -auto-approve
+                '''
+            }
+        }
+    }
+    
+    post {
+        always {
+            archiveArtifacts artifacts: "regions/${REGION}/tfplan, regions/${REGION}/*.log", allowEmptyArchive: true
+        }
+    }
+}
