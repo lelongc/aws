@@ -15,8 +15,6 @@ Mã hóa đối xứng sử dụng **cùng một khóa** cho cả hai quá trìn
 3. **Truyền tải**: Cả dữ liệu đã mã hóa và khóa cần được truyền đi (qua các kênh khác nhau để đảm bảo an toàn)
 4. **Giải mã**: Người nhận sử dụng cùng khóa để giải mã dữ liệu về trạng thái ban đầu
 
-![Mã hóa đối xứng](https://example.com/symmetric-encryption.png)
-
 ### Thuật Toán Phổ Biến
 
 - **AES (Advanced Encryption Standard)**: Sử dụng khóa 128, 192 hoặc 256 bit
@@ -47,8 +45,6 @@ Mã hóa bất đối xứng sử dụng **cặp khóa** - một khóa công kha
 2. **Chia sẻ khóa công khai**: Khóa công khai được chia sẻ rộng rãi với bất kỳ ai muốn gửi dữ liệu mã hóa
 3. **Mã hóa**: Người gửi sử dụng khóa công khai để mã hóa thông điệp
 4. **Giải mã**: Chỉ người sở hữu khóa riêng tư mới có thể giải mã thông điệp
-
-![Mã hóa bất đối xứng](https://example.com/asymmetric-encryption.png)
 
 ### Thuật Toán Phổ Biến
 

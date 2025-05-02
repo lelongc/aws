@@ -96,3 +96,5 @@ Trong các loại KMS Key (đối xứng/bất đối xứng), có các loại d
   3. Chia sẻ snapshot đã mã hóa với tài khoản đích.
   4. Trong tài khoản đích, tạo bản sao của snapshot đã chia sẻ và **mã hóa lại** nó bằng một **Customer managed key khác** trong tài khoản đích đó.
   5. Từ bản sao snapshot đã được mã hóa lại, bạn có thể tạo Volume trong tài khoản đích.
+
+[ symmetric và asymmetric.](./lý-thuyết-ngoài-lề/symmetric-asymmetric.md)
