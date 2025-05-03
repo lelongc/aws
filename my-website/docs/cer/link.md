@@ -28,6 +28,8 @@ Check out this Amazon S3 Cheat Sheet:
 
 [https://docs.aws.amazon.com/AmazonS3/latest/dev/ManageCorsUsing.html](https://docs.aws.amazon.com/AmazonS3/latest/dev/ManageCorsUsing.html)
 
+[https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html)
+
 **Check out this Amazon S3 Cheat Sheet:**
 
 [https://tutorialsdojo.com/amazon-s3/](https://tutorialsdojo.com/amazon-s3/?src=udemy)
@@ -63,3 +65,11 @@ Check out this Amazon S3 Cheat Sheet:
 **Check out this Amazon Macie Cheat Sheet:**
 
 [https://tutorialsdojo.com/amazon-macie/](https://tutorialsdojo.com/amazon-macie/?src=udemy)
+
+# 6.EC2
+
+Reference:
+
+[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+
+[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
