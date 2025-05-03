@@ -73,3 +73,23 @@ Reference:
 [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 
 [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+
+# 7.Price
+
+Storage References:
+
+[https://aws.amazon.com/ebs/pricing/](https://aws.amazon.com/ebs/pricing/)
+
+[https://aws.amazon.com/s3/pricing/](https://aws.amazon.com/s3/pricing/)
+
+[https://aws.amazon.com/efs/pricing/](https://aws.amazon.com/efs/pricing/)
+
+# 8.CloudFront
+
+References:
+
+[https://aws.amazon.com/cloudfront/](https://aws.amazon.com/cloudfront/)
+
+[https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+
+[https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
