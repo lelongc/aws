@@ -1852,6 +1852,26 @@
 </tr>
 </tbody>
 </table>
+<h1 id="3cost-of-test-file-storage-on">3.<strong>Cost of test file storage on</strong><a class="headerlink" href="#3cost-of-test-file-storage-on" title="Permanent link">&para;</a></h1>
+<p>Amazon S3 Standard &lt; Cost of test file storage on Amazon EFS &lt; Cost of test file storage on Amazon EBS**</p>
+<p>With Amazon EBS Elastic Volumes, you pay only for the resources that you use. The Amazon EFS Standard Storage pricing is $0.30 per GB per month. Therefore the cost for storing the test file on EFS is $0.30 for the month.</p>
+<p>For Amazon EBS General Purpose SSD (gp2) volumes, the charges are $0.10 per GB-month of provisioned storage. Therefore, for a provisioned storage of 100GB for this use-case, the monthly cost on EBS is $0.10*100 = $10. This cost is irrespective of how much storage is actually consumed by the test file.</p>
+<p>For S3 Standard storage, the pricing is $0.023 per GB per month. Therefore, the monthly storage cost on S3 for the test file is $0.023.</p>
+<h1 id="4kich-ban-cong-ty-ban-le-co-trang-web-ong-chay-tren-may-chu-tai-trung-tam-du-lieu-o-my-sap-ra-mat-o-chau-a-can-giam-o-tre-cho-nguoi-dung-tai-ay-ngay-lap-tuc-trong-khi-backend-may-chu-xu-ly-logic-van-phai-o-my">4.<strong>Kịch bản:</strong> Công ty bán lẻ có trang web động chạy trên máy chủ tại trung tâm dữ liệu ở Mỹ. Sắp ra mắt ở Châu Á, cần <strong>giảm độ trễ</strong> cho người dùng tại đây <strong>ngay lập tức</strong> , trong khi <strong>backend (máy chủ xử lý logic) VẪN PHẢI ở Mỹ</strong> .<a class="headerlink" href="#4kich-ban-cong-ty-ban-le-co-trang-web-ong-chay-tren-may-chu-tai-trung-tam-du-lieu-o-my-sap-ra-mat-o-chau-a-can-giam-o-tre-cho-nguoi-dung-tai-ay-ngay-lap-tuc-trong-khi-backend-may-chu-xu-ly-logic-van-phai-o-my" title="Permanent link">&para;</a></h1>
+<p><strong>Giải pháp phù hợp nhất:</strong> <strong>Sử dụng Amazon CloudFront với Custom Origin trỏ đến máy chủ On-Premises của bạn.</strong></p>
+<ul>
+<li><strong>Giải thích:</strong></li>
+<li><strong>Amazon CloudFront</strong> là dịch vụ Mạng phân phối nội dung (CDN) toàn cầu của AWS. Nó có mạng lưới các điểm biên (edge locations) và bộ nhớ đệm khu vực (regional edge caches) đặt rải rác khắp thế giới (gần người dùng cuối).</li>
+<li><strong>Custom Origin:</strong> CloudFront có thể lấy nội dung gốc từ nhiều nguồn (origin). Ngoài S3 hoặc EC2, nó có thể lấy nội dung từ bất kỳ máy chủ HTTP nào có thể truy cập được qua Internet, bao gồm cả máy chủ On-Premises của bạn. Máy chủ On-Premises trong trường hợp này chính là "Custom Origin" của CloudFront.</li>
+<li><strong>Tại sao giải quyết vấn đề:</strong> Khi người dùng ở Châu Á truy cập trang web, yêu cầu của họ sẽ được chuyển đến điểm biên CloudFront gần nhất. CloudFront sẽ lưu bản sao nội dung (đặc biệt là nội dung tĩnh hoặc nội dung động có thể cache được) tại điểm biên này. Lần truy cập tiếp theo hoặc bởi người dùng khác trong cùng khu vực, CloudFront sẽ phục vụ nội dung trực tiếp từ điểm biên gần đó. Điều này giảm đáng kể quãng đường vật lý mà dữ liệu phải di chuyển, từ đó <strong>giảm độ trễ và tối ưu thời gian tải trang</strong> cho người dùng ở Châu Á, <strong>mà không cần di chuyển backend</strong> (máy chủ xử lý chính ở Mỹ).</li>
+</ul>
+<p><strong>Tại sao các lựa chọn khác không phù hợp:</strong></p>
+<ul>
+<li><strong>CloudFront Custom Origin trỏ đến Route 53 DNS record:</strong> <strong>Sai cấu hình</strong> . CloudFront Origin cần trỏ đến một endpoint chứa nội dung (như máy chủ HTTP hoặc S3 bucket), không phải bản ghi DNS trong Route 53 (Route 53 chỉ giải quyết tên miền thành địa chỉ IP).</li>
+<li><strong>Di chuyển website sang S3 + S3 CRR:</strong> <strong>Sai</strong> . Trang web là <strong>động</strong> . S3 chỉ phù hợp cho <strong>website tĩnh</strong> . S3 không chạy code xử lý phía máy chủ (server-side scripting). S3 CRR (sao chép dữ liệu giữa các bucket S3) không liên quan đến việc chạy website động hoặc giảm độ trễ cho xử lý backend.</li>
+<li><strong>Route 53 Geo-proximity routing trỏ đến máy chủ On-Premises:</strong> <strong>Sai</strong> . Geo-proximity routing của Route 53 chỉ giúp định tuyến người dùng đến endpoint <em>gần nhất</em> bạn đã định nghĩa. Tuy nhiên, vì máy chủ On-Premises duy nhất vẫn ở Mỹ, người dùng ở Châu Á vẫn sẽ được định tuyến trực tiếp đến máy chủ <em>xa</em> đó. Nó không giảm quãng đường thực tế và không giải quyết được độ trễ do khoảng cách địa lý đối với các tương tác với backend ở Mỹ.</li>
+</ul>
+<p><strong>CloudFront</strong> mang nội dung (cache) lại <strong>gần người dùng</strong> ở Châu Á -&gt; giảm quãng đường -&gt; <strong>giảm độ trễ</strong> -&gt; tải nhanh hơn, <strong>backend vẫn ở chỗ cũ</strong> .</p>
 
 
 
@@ -1872,7 +1892,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 5, 2025 13:18:31">3 tháng 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 5, 2025 16:28:39">3 tháng 5, 2025</span>
   </span>
 
     
