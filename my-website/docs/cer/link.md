@@ -8,6 +8,14 @@
 
 [https://tutorialsdojo.com/aws-auto-scaling/](https://tutorialsdojo.com/aws-auto-scaling/?src=udemy)
 
+References:
+
+[https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+
+[Suspend and resume Amazon EC2 Auto Scaling processes - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
+
+[https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html)
+
 ### 2.KMS
 
 References:
@@ -68,7 +76,7 @@ Check out this Amazon S3 Cheat Sheet:
 
 # 6.EC2
 
-Reference:
+group Reference:
 
 [https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 
@@ -93,3 +101,9 @@ References:
 [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 
 [https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html)
+
+# 9.SECURITY
+
+Reference:
+
+[https://aws.amazon.com/blogs/security/delegate-permission-management-to-developers-using-iam-permissions-boundaries/](https://aws.amazon.com/blogs/security/delegate-permission-management-to-developers-using-iam-permissions-boundaries/)
