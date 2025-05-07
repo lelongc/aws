@@ -1872,6 +1872,92 @@
 <li><strong>Route 53 Geo-proximity routing trỏ đến máy chủ On-Premises:</strong> <strong>Sai</strong> . Geo-proximity routing của Route 53 chỉ giúp định tuyến người dùng đến endpoint <em>gần nhất</em> bạn đã định nghĩa. Tuy nhiên, vì máy chủ On-Premises duy nhất vẫn ở Mỹ, người dùng ở Châu Á vẫn sẽ được định tuyến trực tiếp đến máy chủ <em>xa</em> đó. Nó không giảm quãng đường thực tế và không giải quyết được độ trễ do khoảng cách địa lý đối với các tương tác với backend ở Mỹ.</li>
 </ul>
 <p><strong>CloudFront</strong> mang nội dung (cache) lại <strong>gần người dùng</strong> ở Châu Á -&gt; giảm quãng đường -&gt; <strong>giảm độ trễ</strong> -&gt; tải nhanh hơn, <strong>backend vẫn ở chỗ cũ</strong> .</p>
+<h1 id="35oi-devops-cua-mot-cong-ty-thuong-mai-ien-tu-can-thuc-hien-cong-viec-bao-tri-cu-the-la-trien-khai-ban-va-maintenance-patch-tren-mot-phien-ban-ec2-cu-the-thuoc-ve-mot-auto-scaling-group-ang-su-dung-chinh-sach-ieu-chinh-quy-mo-theo-buoc-step-scaling-policy1-van-e-ho-gap-phai-la-khi-ap-dung-ban-va-trang-thai-kiem-tra-suc-khoe-health-check-status-cua-phien-ban-o-hien-thi-la-khong-hoat-ong-out-of-service-trong-vai-phut-ieu-nay-khien-auto-scaling-group-kich-hoat-tinh-nang-tu-ong-va-ngay-lap-tuc-khoi-tao-mot-phien-ban-thay-the">35.<strong>Đội DevOps của một công ty thương mại điện tử cần thực hiện công việc bảo trì (cụ thể là triển khai bản vá - maintenance patch) trên một phiên bản EC2 cụ thể thuộc về một Auto Scaling Group đang sử dụng chính sách điều chỉnh quy mô theo bước (step scaling policy).</strong>^1^ Vấn đề họ gặp phải là khi áp dụng bản vá, trạng thái kiểm tra sức khỏe (health check status) của phiên bản đó hiển thị là "không hoạt động" (out of service) trong vài phút. Điều này khiến Auto Scaling Group kích hoạt tính năng tự động và ngay lập tức khởi tạo một phiên bản thay thế.<a class="headerlink" href="#35oi-devops-cua-mot-cong-ty-thuong-mai-ien-tu-can-thuc-hien-cong-viec-bao-tri-cu-the-la-trien-khai-ban-va-maintenance-patch-tren-mot-phien-ban-ec2-cu-the-thuoc-ve-mot-auto-scaling-group-ang-su-dung-chinh-sach-ieu-chinh-quy-mo-theo-buoc-step-scaling-policy1-van-e-ho-gap-phai-la-khi-ap-dung-ban-va-trang-thai-kiem-tra-suc-khoe-health-check-status-cua-phien-ban-o-hien-thi-la-khong-hoat-ong-out-of-service-trong-vai-phut-ieu-nay-khien-auto-scaling-group-kich-hoat-tinh-nang-tu-ong-va-ngay-lap-tuc-khoi-tao-mot-phien-ban-thay-the" title="Permanent link">&para;</a></h1>
+<p><strong>Vấn đề cần giải quyết:</strong> Làm thế nào để thực hiện bảo trì mà không bị Auto Scaling Group tự động thay thế phiên bản bị đánh dấu là không khỏe tạm thời? Cần các bước hiệu quả nhất về thời gian và tài nguyên.</p>
+<p><strong>Hai Bước Hiệu quả nhất được đề xuất (và lý do):</strong></p>
+<ol>
+<li><strong>Đưa phiên bản vào trạng thái Standby và sau đó cập nhật phiên bản bằng cách áp dụng bản vá bảo trì. Sau khi phiên bản sẵn sàng, bạn có thể thoát khỏi trạng thái Standby và đưa phiên bản trở lại hoạt động.</strong></li>
+<li><strong>Giải thích:</strong> Trạng thái <strong>Standby</strong> cho phép một phiên bản EC2 vẫn là một phần của Auto Scaling Group nhưng <strong>không chủ động xử lý lưu lượng truy cập ứng dụng</strong> và <strong>không được tính vào số lượng phiên bản "InService"</strong> của nhóm.</li>
+<li><strong>Tại sao hiệu quả:</strong> Khi phiên bản ở trạng thái Standby, Auto Scaling Group sẽ <strong>không thực hiện hành động thay thế</strong> nó ngay cả khi trạng thái kiểm tra sức khỏe của nó thay đổi tạm thời (ví dụ: hiển thị là không khỏe trong lúc bảo trì).</li>
+<li><strong>Các bước thực hiện:</strong><ul>
+<li>Đưa phiên bản cần bảo trì vào trạng thái Standby.</li>
+<li>Áp dụng bản vá bảo trì lên phiên bản đó.</li>
+<li>Sau khi bảo trì xong và phiên bản hoạt động bình thường trở lại, thoát trạng thái Standby.</li>
+<li>Phiên bản sẽ được đưa trở lại trạng thái "InService" và tiếp tục xử lý lưu lượng.</li>
+</ul>
+</li>
+<li><strong>Lợi ích:</strong> Quá trình này diễn ra trực tiếp trên phiên bản ban đầu, giữ nó là một phần của ASG và tránh việc khởi tạo không cần thiết một phiên bản mới.</li>
+<li><strong>Tạm dừng (Suspend) tiến trình ReplaceUnhealthy cho Auto Scaling Group và áp dụng bản vá bảo trì cho phiên bản. Khi phiên bản sẵn sàng, bạn có thể bật lại tiến trình ReplaceUnhealthy.</strong></li>
+<li><strong>Giải thích:</strong> <strong>Tiến trình **</strong>ReplaceUnhealthy<strong> là một trong các "process type" của Auto Scaling Group.^2^ Chức năng của nó là </strong>chấm dứt (terminate) các phiên bản bị đánh dấu là không khỏe<strong> và </strong>khởi tạo phiên bản mới để thay thế** .</li>
+<li><strong>Tại sao hiệu quả:</strong> Khi bạn <strong>tạm dừng</strong> tiến trình <code>ReplaceUnhealthy</code>, bạn ra lệnh cho Auto Scaling Group <strong>dừng ngay việc thay thế các phiên bản bị đánh dấu là không khỏe</strong> . Các phiên bản vẫn có thể bị đánh dấu là không khỏe (do kiểm tra sức khỏe EC2 hoặc ELB thất bại) trong thời gian này, nhưng ASG sẽ không hành động.</li>
+<li><strong>Các bước thực hiện:</strong><ul>
+<li>Tạm dừng tiến trình <code>ReplaceUnhealthy</code> cho ASG.</li>
+<li>Áp dụng bản vá bảo trì lên phiên bản (phiên bản có thể bị đánh dấu là không khỏe).</li>
+<li>Sau khi bảo trì xong và phiên bản hoạt động bình thường.</li>
+<li>Bật lại (Resume) tiến trình <code>ReplaceUnhealthy</code>. (Lưu ý: Nếu phiên bản vẫn còn bị đánh dấu là không khỏe khi bạn Resume, ASG có thể sẽ thay thế nó ngay lúc đó. Đôi khi bạn có thể cần cấu hình hoặc chờ phiên bản tự chuyển sang trạng thái khỏe mạnh trước khi Resume nếu nó không tự động).</li>
+</ul>
+</li>
+<li><strong>Lợi ích:</strong> Ngăn chặn ASG tự động thay thế phiên bản chỉ vì nó tạm thời không khỏe trong quá trình bảo trì.</li>
+</ol>
+<p><strong>Tại sao các lựa chọn khác không phù hợp (dựa trên giải thích):</strong></p>
+<ul>
+<li><strong>Chụp Snapshot, tạo AMI mới, khởi chạy phiên bản mới dùng AMI đó, áp dụng bản vá cho phiên bản mới, thêm lại vào ASG, chấm dứt phiên bản cũ:</strong> <strong>Không hiệu quả về thời gian và tài nguyên</strong> . Quá trình này bao gồm nhiều bước phức tạp và tốn thời gian (chụp snapshot, tạo AMI là các thao tác tốn thời gian), chỉ để áp dụng bản vá cho một phiên bản duy nhất. Có những cách đơn giản hơn nhiều (Standby hoặc Suspend).</li>
+<li><strong>Xóa Auto Scaling Group, sửa lỗi trên phiên bản, tạo ASG mới, thêm lại các phiên bản:</strong> <strong>Không được khuyến nghị và rất không hiệu quả/gây gián đoạn</strong> . Việc xóa và tạo lại toàn bộ Auto Scaling Group là một hoạt động lớn, gây gián đoạn hoạt động và không cần thiết chỉ để bảo trì một phiên bản.</li>
+<li><strong>Tạm dừng tiến trình ScheduledActions:</strong> <strong>Không liên quan</strong> đến vấn đề thay thế phiên bản không khỏe. <code>ScheduledActions</code> (các hành động theo lịch trình) được dùng để điều chỉnh quy mô ASG vào các thời điểm cụ thể theo lịch (ví dụ: tăng số lượng phiên bản vào giờ cao điểm), chứ không phải để phản ứng với trạng thái sức khỏe của phiên bản.</li>
+</ul>
+<p>Tóm lại, hai phương pháp Standby và Suspend ReplaceUnhealthy đều cho phép bạn "tách" phiên bản ra khỏi sự giám sát tự động thay thế của ASG trong quá trình bảo trì, nhưng giữ nó vẫn là một phần của nhóm (Standby) hoặc tạm dừng quy trình thay thế của nhóm (Suspend ReplaceUnhealthy), giúp bảo trì hiệu quả và ít gây gián đoạn nhất.</p>
+<p>As soon as you resume the <code>ReplaceUnhealthy</code> process, Amazon EC2 Auto Scaling replaces instances that were marked unhealthy while this process was suspended</p>
+<p>Ví dụ:</p>
+<ul>
+<li>Bạn tạm dừng <code>ReplaceUnhealthy</code>.</li>
+<li>Phiên bản A bị lỗi và bị đánh dấu là không khỏe (nhưng ASG không làm gì cả vì bạn đã tạm dừng).</li>
+<li>Bạn bảo trì Phiên bản B, nó cũng bị đánh dấu là không khỏe trong 5 phút (ASG vẫn không làm gì). Sau 5 phút, Phiên bản B khỏe lại.</li>
+<li>Bạn bật lại <code>ReplaceUnhealthy</code>.</li>
+<li>Ngay lập tức, ASG sẽ nhìn vào trạng thái hiện tại. Nếu Phiên bản A vẫn đang không khỏe, nó sẽ bị thay thế. Nếu Phiên bản B đã khỏe lại, nó sẽ không bị thay thế.</li>
+</ul>
+<p>Điều này nhấn mạnh rằng bạn cần đảm bảo phiên bản của mình <strong>thực sự khỏe mạnh trở lại</strong> trước khi bật lại tiến trình <code>ReplaceUnhealthy</code>, nếu không nó có thể bị thay thế ngay sau khi bạn Resume.</p>
+<p>Trong Auto Scaling Group, <strong>Desired Capacity</strong> là số lượng phiên bản mà bạn muốn nhóm duy trì ở trạng thái "InService" (đang hoạt động và xử lý lưu lượng).</p>
+<p>Khi bạn đưa một phiên bản từ trạng thái "InService" sang trạng thái <strong>Standby</strong> , có hai cách xử lý giá trị Desired Capacity:</p>
+<ol>
+<li><strong>Hành vi Mặc định:</strong></li>
+<li>Theo mặc định, giá trị <strong>Desired Capacity sẽ bị GIẢM đi 1 đơn vị</strong> (hoặc bằng số phiên bản bạn đưa vào Standby).</li>
+<li><strong>Lý do:</strong> Điều này nhằm <strong>ngăn chặn</strong> Auto Scaling Group tự động khởi chạy thêm một phiên bản khác ngay lập tức để bù đắp cho phiên bản vừa chuyển sang Standby. ASG hiểu rằng bạn tạm thời chỉ cần số lượng phiên bản "InService" ít hơn 1 (bằng Desired Capacity mới) trong khi phiên bản kia đang ở trạng thái Standby.</li>
+<li><strong>Hành vi Tùy chọn (Không giảm Desired Capacity):</strong></li>
+<li>Thay vì để giá trị Desired Capacity bị giảm theo mặc định, bạn có thể <strong>chỉ định rõ ràng rằng Desired Capacity KHÔNG BỊ GIẢM</strong> khi bạn đưa phiên bản vào trạng thái Standby.</li>
+<li><strong>Kết quả:</strong> Nếu bạn chọn tùy chọn này, Auto Scaling Group sẽ <strong>khởi chạy thêm một phiên bản mới</strong> ngay lập tức để thay thế cho phiên bản vừa được đưa vào trạng thái Standby.</li>
+<li><strong>Mục đích của tùy chọn này:</strong> Nhằm giúp bạn <strong>duy trì đủ số lượng phiên bản "InService"</strong> bằng với giá trị Desired Capacity ban đầu, <strong>ngay cả khi</strong> một hoặc nhiều phiên bản đang tạm thời ở trạng thái Standby (ví dụ: để bảo trì). ASG đảm bảo năng lực ứng dụng của bạn không bị giảm sút do có phiên bản đang ở Standby.</li>
+</ol>
+<p><strong>Tóm lại:</strong></p>
+<ul>
+<li><strong>Mặc định:</strong> Đưa 1 instance vào Standby -&gt; Desired Capacity giảm 1 -&gt; ASG không launch thêm.</li>
+<li><strong>Tùy chọn:</strong> Đưa 1 instance vào Standby + <strong>chỉ định KHÔNG giảm Desired Capacity</strong> -&gt; Desired Capacity giữ nguyên -&gt; ASG launch thêm 1 instance để bù vào -&gt; Duy trì tổng số instance InService bằng Desired Capacity ban đầu.</li>
+</ul>
+<h1 id="1mot-cong-ty-it-gap-su-co-bao-mat-mot-nha-phat-trien-moi-uoc-cap-quyen-truy-cap-ay-u-vao-amazon-dynamodb-trong-moi-truong-production-trong-khi-lam-viec-tren-mot-tinh-nang-moi-nha-phat-trien-nay-a-vo-tinh-xoa-mat-mot-vai-bang-quan-trong-trong-moi-truong-production-cong-ty-muon-tim-cach-hieu-qua-nhat-e-ngan-chan-su-co-tuong-tu-tai-dien">1.Một công ty IT gặp sự cố bảo mật: một nhà phát triển mới được cấp <strong>quyền truy cập đầy đủ vào Amazon DynamoDB</strong> trong môi trường production. Trong khi làm việc trên một tính năng mới, nhà phát triển này đã vô tình <strong>xóa mất một vài bảng quan trọng</strong> trong môi trường production. Công ty muốn tìm cách <strong>hiệu quả nhất</strong> để ngăn chặn sự cố tương tự tái diễn.<a class="headerlink" href="#1mot-cong-ty-it-gap-su-co-bao-mat-mot-nha-phat-trien-moi-uoc-cap-quyen-truy-cap-ay-u-vao-amazon-dynamodb-trong-moi-truong-production-trong-khi-lam-viec-tren-mot-tinh-nang-moi-nha-phat-trien-nay-a-vo-tinh-xoa-mat-mot-vai-bang-quan-trong-trong-moi-truong-production-cong-ty-muon-tim-cach-hieu-qua-nhat-e-ngan-chan-su-co-tuong-tu-tai-dien" title="Permanent link">&para;</a></h1>
+<p><strong>Vấn đề cần giải quyết:</strong> Làm thế nào để kiểm soát chặt chẽ quyền hạn được cấp cho các nhân viên mới (và nói chung là các nhân viên khác) để họ không thể vô tình (hoặc cố ý) gây ra thiệt hại nghiêm trọng như xóa dữ liệu production, ngay cả khi người quản lý cấp quyền cho họ vô tình cấp quá tay?</p>
+<p><strong>Giải pháp Hiệu quả nhất được đề xuất (và lý do):</strong></p>
+<p>Giải pháp hiệu quả nhất để giải quyết vấn đề này là: <strong>Sử dụng Permissions Boundary (Ranh giới quyền) để kiểm soát quyền tối đa mà nhân viên có thể cấp cho các thực thể IAM (người dùng và vai trò).</strong></p>
+<ul>
+<li><strong>Permissions Boundary làm gì trong trường hợp này?</strong></li>
+<li>Người quản trị IAM của công ty (hoặc người có quyền phù hợp) sẽ tạo ra một <strong>chính sách ranh giới quyền (permissions boundary policy)</strong> . Chính sách này sẽ định nghĩa các quyền <strong>tối đa</strong> mà bất kỳ người dùng hoặc vai trò IAM nào được tạo và quản lý bởi các nhà phát triển (hoặc một nhóm nhân viên cụ thể) <strong>có thể có</strong> .</li>
+<li>Quan trọng là, chính sách ranh giới quyền này sẽ được thiết kế để <strong>KHÔNG BAO GỒM</strong> các quyền nguy hiểm như <code>dynamodb:DeleteTable</code> hoặc các quyền truy cập đầy đủ (<code>dynamodb:*</code>) vào các bảng production.</li>
+<li>Khi một nhà phát triển tạo một người dùng hoặc vai trò IAM mới, họ sẽ được yêu cầu (hoặc cấu hình bắt buộc) phải đính kèm chính sách ranh giới quyền này vào thực thể mới đó.</li>
+<li>Sau đó, nhà phát triển có thể đính kèm các chính sách quyền thông thường (identity-based policies) cho phép thực thể mới truy cập các tài nguyên cần thiết cho công việc (ví dụ: quyền <code>dynamodb:PutItem</code>, <code>dynamodb:GetItem</code> trên các bảng dev/test, hoặc thậm chí trên bảng production nếu cần đọc).</li>
+<li><strong>Quyền Hạn Thực Tế ngăn chặn sự cố:</strong></li>
+<li>Như đã giải thích trước đó, quyền hạn thực tế của người dùng/vai trò IAM sẽ là <strong>giao điểm</strong> của chính sách quyền thông thường VÀ chính sách ranh giới quyền.</li>
+<li>Trong trường hợp này, dù nhà phát triển có vô tình đính kèm một chính sách quyền rộng rãi (ví dụ: cho phép <code>dynamodb:*</code>), thì chính sách <strong>ranh giới quyền (không cho phép <code>dynamodb:DeleteTable</code>)</strong> sẽ ghi đè và giới hạn lại.</li>
+<li>Kết quả là, người dùng IAM mới được tạo sẽ <strong>không có quyền thực tế</strong> để xóa các bảng DynamoDB production, ngay cả khi ý định cấp quyền ban đầu của người tạo là rộng rãi hơn.</li>
+<li><strong>Tại sao đây là cách hiệu quả nhất để ngăn sự cố tái diễn:</strong></li>
+<li>Nó thiết lập một <strong>hàng rào bảo vệ ở cấp độ chính sách</strong> , được kiểm soát bởi người quản trị an ninh.</li>
+<li>Nó cho phép ủy quyền việc tạo tài khoản/vai trò cho các nhóm khác (như đội phát triển) mà vẫn đảm bảo an toàn, không cần người quản trị trung tâm phải duyệt từng yêu cầu quyền chi tiết.</li>
+<li>Nó ngăn chặn các sự cố do vô tình cấp quá nhiều quyền ngay từ đầu bởi những người không chuyên về quản lý quyền IAM sâu.</li>
+</ul>
+<p><strong>Tại sao các lựa chọn khác không phù hợp (theo giải thích):</strong></p>
+<ul>
+<li><strong>CTO xem xét quyền hạn của từng người dùng IAM mới:</strong> <strong>Không hiệu quả và không mở rộng được</strong> . Ở quy mô công ty lớn với nhiều nhà phát triển mới thường xuyên, việc CTO phải duyệt thủ công từng bộ quyền hạn là không khả thi, tốn thời gian và dễ xảy ra sai sót.</li>
+<li><strong>Loại bỏ quyền truy cập đầy đủ CSDL cho tất cả người dùng trong tổ chức:</strong> <strong>Không thực tế</strong> . Sẽ có những người dùng hợp lệ (ví dụ: quản trị viên cơ sở dữ liệu, hệ thống backup tự động) cần có quyền truy cập đầy đủ hoặc các quyền quản trị mạnh mẽ đối với cơ sở dữ liệu để làm công việc của họ.</li>
+<li><strong>Chỉ người dùng Root có quyền truy cập đầy đủ CSDL:</strong> <strong>Thực hành không tốt (bad practice)</strong> . Tài khoản Root có quyền hạn cao nhất và không bị giới hạn bởi chính sách IAM. Sử dụng tài khoản Root cho các tác vụ hàng ngày làm tăng rủi ro bị lộ thông tin xác thực Root và gây ra thiệt hại không thể phục hồi. Các tác vụ quản trị nên được thực hiện bởi các người dùng/vai trò IAM với quyền hạn được giới hạn ở mức cần thiết (least privilege).</li>
+</ul>
+<p><strong>Tóm lại:</strong> Permissions Boundary là giải pháp có hệ thống và hiệu quả nhất để giải quyết vấn đề này bằng cách giới hạn quyền tối đa có thể được cấp, ngăn chặn việc cấp nhầm quyền nguy hiểm cho các thực thể IAM và từ đó phòng ngừa các sự cố như xóa bảng production một cách vô tình.</p>
 
 
 
@@ -1892,7 +1978,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 5, 2025 16:28:39">3 tháng 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 5, 2025 16:08:06">7 tháng 5, 2025</span>
   </span>
 
     
