@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ASG-policy/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/20.network/defaultvpc/">
       
       
-        <link rel="prev" href="../ALB/">
+        <link rel="prev" href="../all/">
       
       
-        <link rel="next" href="../ASG/">
+        <link rel="next" href="../ly-thuyet-khac/netadd-broadcast/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>ASG policy - DraDoc</title>
+        <title>Defaultvpc - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#1-dynamic-scaling-mo-rong-ong" class="md-skip">
-          Bỏ qua
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +94,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -119,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ASG policy
+              Defaultvpc
             
           </span>
         </div>
@@ -224,7 +219,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -243,7 +238,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
         
   
   
@@ -264,7 +259,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../cer/link/" class="md-tabs__link">
+        <a href="../../../cer/link/" class="md-tabs__link">
           
   
   
@@ -286,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../orther-note/readme/" class="md-tabs__link">
+        <a href="../../../orther-note/readme/" class="md-tabs__link">
           
   
   
@@ -308,7 +303,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
+        <a href="../../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
           
   
   
@@ -332,7 +327,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../readme/" class="md-tabs__link">
+        <a href="../../readme/" class="md-tabs__link">
           
   
   
@@ -374,7 +369,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -404,7 +399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -426,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
         
   
   
@@ -480,7 +475,7 @@
   
   
   
-    <a href="../../../../cer/link/" class="md-nav__link">
+    <a href="../../../cer/link/" class="md-nav__link">
       
   
   
@@ -534,7 +529,7 @@
   
   
   
-    <a href="../../../../orther-note/readme/" class="md-nav__link">
+    <a href="../../../orther-note/readme/" class="md-nav__link">
       
   
   
@@ -588,7 +583,7 @@
   
   
   
-    <a href="../../../../saa-cantrill-and-lab/readme/" class="md-nav__link">
+    <a href="../../../saa-cantrill-and-lab/readme/" class="md-nav__link">
       
   
   
@@ -712,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../readme/" class="md-nav__link">
+      <a href="../../readme/" class="md-nav__link">
         
   
   
@@ -789,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../00.prerequisite/db/" class="md-nav__link">
+      <a href="../../00.prerequisite/db/" class="md-nav__link">
         
   
   
@@ -838,7 +833,7 @@
   
   
   
-    <a href="../../../00.prerequisite/0.1.IAM/0.1/" class="md-nav__link">
+    <a href="../../00.prerequisite/0.1.IAM/0.1/" class="md-nav__link">
       
   
   
@@ -931,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../01.ec2/lab-ec2/" class="md-nav__link">
+      <a href="../../01.ec2/lab-ec2/" class="md-nav__link">
         
   
   
@@ -994,7 +989,7 @@
   
   
   
-    <a href="../../../01.ec2/l%C3%BD-thuy%E1%BA%BFt/ec2-elastic-network-interface/" class="md-nav__link">
+    <a href="../../01.ec2/l%C3%BD-thuy%E1%BA%BFt/ec2-elastic-network-interface/" class="md-nav__link">
       
   
   
@@ -1053,7 +1048,7 @@
   
   
   
-    <a href="../../../01.ec2/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACID/" class="md-nav__link">
+    <a href="../../01.ec2/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACID/" class="md-nav__link">
       
   
   
@@ -1172,7 +1167,7 @@
   
   
   
-    <a href="../../../02.ec2-storage/lab/ebs-ec2-format-extend/" class="md-nav__link">
+    <a href="../../02.ec2-storage/lab/ebs-ec2-format-extend/" class="md-nav__link">
       
   
   
@@ -1243,7 +1238,7 @@
   
   
   
-    <a href="../../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt/ebs-ec2-extend-volume/" class="md-nav__link">
+    <a href="../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt/ebs-ec2-extend-volume/" class="md-nav__link">
       
   
   
@@ -1308,7 +1303,7 @@
   
   
   
-    <a href="../../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/IOPS/" class="md-nav__link">
+    <a href="../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/IOPS/" class="md-nav__link">
       
   
   
@@ -1342,8 +1337,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1367,11 +1360,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
         
           
           <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
@@ -1387,7 +1380,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             03.High availability vs Scalability
@@ -1398,57 +1391,57 @@
                 
   
   
+  
+  
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
   
   
   
-    
-    
+    <a href="../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ALB/" class="md-nav__link">
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_5_1" id="__nav_6_5_1_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -1457,461 +1450,12 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_5_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_5_1">
-            <span class="md-nav__icon md-icon"></span>
-            Lý thuyết
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ALB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ALB
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    ASG policy
-    
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    ASG policy
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-dynamic-scaling-mo-rong-ong" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Dynamic Scaling (Mở rộng động)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Dynamic Scaling (Mở rộng động)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-target-tracking-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. Target Tracking Scaling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-simplestep-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. Simple/Step Scaling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-scheduled-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      c. Scheduled Scaling
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-predictive-scaling-mo-rong-du-oan" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Predictive Scaling (Mở rộng dự đoán)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-chi-so-tot-e-mo-rong" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Chỉ số tốt để mở rộng
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Chỉ số tốt để mở rộng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-cpu-utilization" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. CPU Utilization
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-requestcountpertarget" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. RequestCountPerTarget
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-network-inout" class="md-nav__link">
-    <span class="md-ellipsis">
-      c. Network In/Out
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-custom-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      d. Custom Metrics
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-scaling-cooldown-thoi-gian-ha-nhiet" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Scaling Cooldown (Thời gian hạ nhiệt)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chien-luoc-toi-uu-hoa" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Chiến lược tối ưu hóa
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-loi-khuyen-tong-quat" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Lời khuyên tổng quát
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ASG/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    ASG
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Deregistration-Delay/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    nói chung là thời gian chờ để kết thúc 1 con máy1 để truyền dần nhiệm vụ cho con máy khác , thời gian này để không dừng máy1 đột ngột làm mất dữ liệu của user đang thao tác trên máy1
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../GWLB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    GWLB
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../HA-S/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    HA S
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../LB-type/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    LB type
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../NLB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    NLB
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SSL%27TLS-SNI/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSL'TLS SNI
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Sticky-session/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Sticky session
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cross-zone-LB/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    cross zone LB
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../elastic-load-balancer/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Elastic load balancer
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1955,7 +1499,7 @@
   
   
   
-    <a href="../../l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/Distributed-Cache/" class="md-nav__link">
+    <a href="../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/Distributed-Cache/" class="md-nav__link">
       
   
   
@@ -2086,7 +1630,7 @@
   
   
   
-    <a href="../../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/" class="md-nav__link">
+    <a href="../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/" class="md-nav__link">
       
   
   
@@ -2141,7 +1685,7 @@
   
   
   
-    <a href="../../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/in-memory-statless%27full/" class="md-nav__link">
+    <a href="../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/in-memory-statless%27full/" class="md-nav__link">
       
   
   
@@ -2232,7 +1776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../05.route53-dns/5/" class="md-nav__link">
+      <a href="../../05.route53-dns/5/" class="md-nav__link">
         
   
   
@@ -2307,7 +1851,7 @@
   
   
   
-    <a href="../../../05.route53-dns/l%C3%BD-thuy%E1%BA%BFt/3rd-party-dns-service/" class="md-nav__link">
+    <a href="../../05.route53-dns/l%C3%BD-thuy%E1%BA%BFt/3rd-party-dns-service/" class="md-nav__link">
       
   
   
@@ -2398,7 +1942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../06.classic-sa/6/" class="md-nav__link">
+      <a href="../../06.classic-sa/6/" class="md-nav__link">
         
   
   
@@ -2455,7 +1999,7 @@
   
   
   
-    <a href="../../../06.classic-sa/l%C3%BD-thuy%E1%BA%BFt/STATEFULL-shoppingcard/" class="md-nav__link">
+    <a href="../../06.classic-sa/l%C3%BD-thuy%E1%BA%BFt/STATEFULL-shoppingcard/" class="md-nav__link">
       
   
   
@@ -2572,7 +2116,7 @@
   
   
   
-    <a href="../../../07.s3/lab/s3-static-web/" class="md-nav__link">
+    <a href="../../07.s3/lab/s3-static-web/" class="md-nav__link">
       
   
   
@@ -2649,7 +2193,7 @@
   
   
   
-    <a href="../../../07.s3/l%C3%BD-thuy%E1%BA%BFt/batch-operation/" class="md-nav__link">
+    <a href="../../07.s3/l%C3%BD-thuy%E1%BA%BFt/batch-operation/" class="md-nav__link">
       
   
   
@@ -2750,7 +2294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/CloudFront-Geo-Restriction/" class="md-nav__link">
+      <a href="../../08.Cloudfront/CloudFront-Geo-Restriction/" class="md-nav__link">
         
   
   
@@ -2773,7 +2317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cache/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cache/" class="md-nav__link">
         
   
   
@@ -2796,7 +2340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cloudfront-alb-ec2/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cloudfront-alb-ec2/" class="md-nav__link">
         
   
   
@@ -2819,7 +2363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cloudfront-price/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cloudfront-price/" class="md-nav__link">
         
   
   
@@ -2842,7 +2386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cloudfront/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cloudfront/" class="md-nav__link">
         
   
   
@@ -2865,7 +2409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/global-accelerator/" class="md-nav__link">
+      <a href="../../08.Cloudfront/global-accelerator/" class="md-nav__link">
         
   
   
@@ -2888,7 +2432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/so-s%C3%A1nh-global-acce-vs-route53/" class="md-nav__link">
+      <a href="../../08.Cloudfront/so-s%C3%A1nh-global-acce-vs-route53/" class="md-nav__link">
         
   
   
@@ -2983,7 +2527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/Fsx/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/Fsx/" class="md-nav__link">
         
   
   
@@ -3006,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/aws-data-sync/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/aws-data-sync/" class="md-nav__link">
         
   
   
@@ -3029,7 +2573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/aws-transfer-family/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/aws-transfer-family/" class="md-nav__link">
         
   
   
@@ -3052,7 +2596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/snow-family/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/snow-family/" class="md-nav__link">
         
   
   
@@ -3075,7 +2619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/storage-gateway/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/storage-gateway/" class="md-nav__link">
         
   
   
@@ -3098,7 +2642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/t%C3%B3m-g%E1%BB%8Dn/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/t%C3%B3m-g%E1%BB%8Dn/" class="md-nav__link">
         
   
   
@@ -3159,7 +2703,7 @@
   
   
   
-    <a href="../../../09.AWS-Storage-Extras/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACLs/" class="md-nav__link">
+    <a href="../../09.AWS-Storage-Extras/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACLs/" class="md-nav__link">
       
   
   
@@ -3270,7 +2814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/" class="md-nav__link">
         
   
   
@@ -3293,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/amazon-MQ/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/amazon-MQ/" class="md-nav__link">
         
   
   
@@ -3316,7 +2860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/fifo/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/fifo/" class="md-nav__link">
         
   
   
@@ -3339,7 +2883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/kinesis/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/kinesis/" class="md-nav__link">
         
   
   
@@ -3362,7 +2906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/long-poll/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/long-poll/" class="md-nav__link">
         
   
   
@@ -3385,7 +2929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/messaging/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/messaging/" class="md-nav__link">
         
   
   
@@ -3408,7 +2952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sns/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sns/" class="md-nav__link">
         
   
   
@@ -3431,7 +2975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs-asg/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-asg/" class="md-nav__link">
         
   
   
@@ -3454,7 +2998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs-sns-fanout/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-sns-fanout/" class="md-nav__link">
         
   
   
@@ -3477,7 +3021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs-visi-timeout/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-visi-timeout/" class="md-nav__link">
         
   
   
@@ -3500,7 +3044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs/" class="md-nav__link">
         
   
   
@@ -3523,7 +3067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sumary/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sumary/" class="md-nav__link">
         
   
   
@@ -3620,7 +3164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/a2c/" class="md-nav__link">
+      <a href="../../11.ecs/a2c/" class="md-nav__link">
         
   
   
@@ -3643,7 +3187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/app-runner/" class="md-nav__link">
+      <a href="../../11.ecs/app-runner/" class="md-nav__link">
         
   
   
@@ -3666,7 +3210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/ecr/" class="md-nav__link">
+      <a href="../../11.ecs/ecr/" class="md-nav__link">
         
   
   
@@ -3689,7 +3233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/ecs/" class="md-nav__link">
+      <a href="../../11.ecs/ecs/" class="md-nav__link">
         
   
   
@@ -3712,7 +3256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/eks/" class="md-nav__link">
+      <a href="../../11.ecs/eks/" class="md-nav__link">
         
   
   
@@ -3735,7 +3279,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/overview/" class="md-nav__link">
+      <a href="../../11.ecs/overview/" class="md-nav__link">
         
   
   
@@ -3758,7 +3302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/saa-ecs/" class="md-nav__link">
+      <a href="../../11.ecs/saa-ecs/" class="md-nav__link">
         
   
   
@@ -3781,7 +3325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/scale-ecs/" class="md-nav__link">
+      <a href="../../11.ecs/scale-ecs/" class="md-nav__link">
         
   
   
@@ -3890,7 +3434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/api-gateway/" class="md-nav__link">
+      <a href="../../12.serverless/api-gateway/" class="md-nav__link">
         
   
   
@@ -3913,7 +3457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/cognito/" class="md-nav__link">
+      <a href="../../12.serverless/cognito/" class="md-nav__link">
         
   
   
@@ -3936,7 +3480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/dynamodb-advance/" class="md-nav__link">
+      <a href="../../12.serverless/dynamodb-advance/" class="md-nav__link">
         
   
   
@@ -3959,7 +3503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/dynamodb/" class="md-nav__link">
+      <a href="../../12.serverless/dynamodb/" class="md-nav__link">
         
   
   
@@ -3982,7 +3526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/invoke-lamda/" class="md-nav__link">
+      <a href="../../12.serverless/invoke-lamda/" class="md-nav__link">
         
   
   
@@ -4005,7 +3549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-concurrency/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-concurrency/" class="md-nav__link">
         
   
   
@@ -4028,7 +3572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-limits/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-limits/" class="md-nav__link">
         
   
   
@@ -4051,7 +3595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-scope/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-scope/" class="md-nav__link">
         
   
   
@@ -4074,7 +3618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-snapstart/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-snapstart/" class="md-nav__link">
         
   
   
@@ -4097,7 +3641,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda/" class="md-nav__link">
+      <a href="../../12.serverless/lamda/" class="md-nav__link">
         
   
   
@@ -4120,7 +3664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamdaEdge-CloudFrontFunc/" class="md-nav__link">
+      <a href="../../12.serverless/lamdaEdge-CloudFrontFunc/" class="md-nav__link">
         
   
   
@@ -4143,7 +3687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/overview/" class="md-nav__link">
+      <a href="../../12.serverless/overview/" class="md-nav__link">
         
   
   
@@ -4166,7 +3710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/step-func/" class="md-nav__link">
+      <a href="../../12.serverless/step-func/" class="md-nav__link">
         
   
   
@@ -4213,7 +3757,7 @@
   
   
   
-    <a href="../../../12.serverless/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/case-cloudfrontFunc-lamdaEdge/" class="md-nav__link">
+    <a href="../../12.serverless/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/case-cloudfrontFunc-lamdaEdge/" class="md-nav__link">
       
   
   
@@ -4308,7 +3852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/microservice/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/microservice/" class="md-nav__link">
         
   
   
@@ -4331,7 +3875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/mobile-app/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/mobile-app/" class="md-nav__link">
         
   
   
@@ -4354,7 +3898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/uodate-offloading/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/uodate-offloading/" class="md-nav__link">
         
   
   
@@ -4377,7 +3921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/website/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/website/" class="md-nav__link">
         
   
   
@@ -4462,7 +4006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../14.db-aws/db/" class="md-nav__link">
+      <a href="../../14.db-aws/db/" class="md-nav__link">
         
   
   
@@ -4485,7 +4029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../14.db-aws/summary/" class="md-nav__link">
+      <a href="../../14.db-aws/summary/" class="md-nav__link">
         
   
   
@@ -4586,7 +4130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/amazon-EMR/" class="md-nav__link">
+      <a href="../../15.data-analytics/amazon-EMR/" class="md-nav__link">
         
   
   
@@ -4609,7 +4153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/amazon-quicksight/" class="md-nav__link">
+      <a href="../../15.data-analytics/amazon-quicksight/" class="md-nav__link">
         
   
   
@@ -4632,7 +4176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/apache-flink-managed-svc/" class="md-nav__link">
+      <a href="../../15.data-analytics/apache-flink-managed-svc/" class="md-nav__link">
         
   
   
@@ -4655,7 +4199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/athena/" class="md-nav__link">
+      <a href="../../15.data-analytics/athena/" class="md-nav__link">
         
   
   
@@ -4678,7 +4222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/aws-glue/" class="md-nav__link">
+      <a href="../../15.data-analytics/aws-glue/" class="md-nav__link">
         
   
   
@@ -4701,7 +4245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/aws-lake-formation/" class="md-nav__link">
+      <a href="../../15.data-analytics/aws-lake-formation/" class="md-nav__link">
         
   
   
@@ -4724,7 +4268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/big-data-ingestion-pipeline/" class="md-nav__link">
+      <a href="../../15.data-analytics/big-data-ingestion-pipeline/" class="md-nav__link">
         
   
   
@@ -4747,7 +4291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/msk/" class="md-nav__link">
+      <a href="../../15.data-analytics/msk/" class="md-nav__link">
         
   
   
@@ -4770,7 +4314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/open-search/" class="md-nav__link">
+      <a href="../../15.data-analytics/open-search/" class="md-nav__link">
         
   
   
@@ -4793,7 +4337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/redshift/" class="md-nav__link">
+      <a href="../../15.data-analytics/redshift/" class="md-nav__link">
         
   
   
@@ -4896,7 +4440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-comprehend-medical/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-comprehend-medical/" class="md-nav__link">
         
   
   
@@ -4919,7 +4463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-comprehend/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-comprehend/" class="md-nav__link">
         
   
   
@@ -4942,7 +4486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-personalize/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-personalize/" class="md-nav__link">
         
   
   
@@ -4965,7 +4509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-polly-translate/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-polly-translate/" class="md-nav__link">
         
   
   
@@ -4988,7 +4532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-sage-maker/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-sage-maker/" class="md-nav__link">
         
   
   
@@ -5011,7 +4555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/amazon-rekognition/" class="md-nav__link">
+      <a href="../../16.machine-learning/amazon-rekognition/" class="md-nav__link">
         
   
   
@@ -5034,7 +4578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/kendra/" class="md-nav__link">
+      <a href="../../16.machine-learning/kendra/" class="md-nav__link">
         
   
   
@@ -5057,7 +4601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/lex-connect/" class="md-nav__link">
+      <a href="../../16.machine-learning/lex-connect/" class="md-nav__link">
         
   
   
@@ -5080,7 +4624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/sumary/" class="md-nav__link">
+      <a href="../../16.machine-learning/sumary/" class="md-nav__link">
         
   
   
@@ -5103,7 +4647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/textract/" class="md-nav__link">
+      <a href="../../16.machine-learning/textract/" class="md-nav__link">
         
   
   
@@ -5126,7 +4670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/transcribe/" class="md-nav__link">
+      <a href="../../16.machine-learning/transcribe/" class="md-nav__link">
         
   
   
@@ -5227,7 +4771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/CloudWatch-Insights/" class="md-nav__link">
+      <a href="../../17.monitor/CloudWatch-Insights/" class="md-nav__link">
         
   
   
@@ -5250,7 +4794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/aws-config/" class="md-nav__link">
+      <a href="../../17.monitor/aws-config/" class="md-nav__link">
         
   
   
@@ -5273,7 +4817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-trail-evenbridge/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-trail-evenbridge/" class="md-nav__link">
         
   
   
@@ -5296,7 +4840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-trail/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-trail/" class="md-nav__link">
         
   
   
@@ -5319,7 +4863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-watch-alarm/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-watch-alarm/" class="md-nav__link">
         
   
   
@@ -5342,7 +4886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-watch-logs/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-watch-logs/" class="md-nav__link">
         
   
   
@@ -5365,7 +4909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloudWatch-cloudTrail-awsConfig/" class="md-nav__link">
+      <a href="../../17.monitor/cloudWatch-cloudTrail-awsConfig/" class="md-nav__link">
         
   
   
@@ -5388,7 +4932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloudwatch-agent/" class="md-nav__link">
+      <a href="../../17.monitor/cloudwatch-agent/" class="md-nav__link">
         
   
   
@@ -5411,7 +4955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloudwatch-metric/" class="md-nav__link">
+      <a href="../../17.monitor/cloudwatch-metric/" class="md-nav__link">
         
   
   
@@ -5434,7 +4978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/even-bridge/" class="md-nav__link">
+      <a href="../../17.monitor/even-bridge/" class="md-nav__link">
         
   
   
@@ -5529,7 +5073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/AWS%20IAM%20Identity%20Center/" class="md-nav__link">
+      <a href="../../18.iam-advance/AWS%20IAM%20Identity%20Center/" class="md-nav__link">
         
   
   
@@ -5552,7 +5096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-active-directory/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-active-directory/" class="md-nav__link">
         
   
   
@@ -5575,7 +5119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-control-tower/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-control-tower/" class="md-nav__link">
         
   
   
@@ -5598,7 +5142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-organization/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-organization/" class="md-nav__link">
         
   
   
@@ -5621,7 +5165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-policy/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-policy/" class="md-nav__link">
         
   
   
@@ -5644,7 +5188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/iam-evaluate-logic/" class="md-nav__link">
+      <a href="../../18.iam-advance/iam-evaluate-logic/" class="md-nav__link">
         
   
   
@@ -5667,7 +5211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/resourceBased-iamRole/" class="md-nav__link">
+      <a href="../../18.iam-advance/resourceBased-iamRole/" class="md-nav__link">
         
   
   
@@ -5782,7 +5326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/ACM-amaz-cert-manager/" class="md-nav__link">
+      <a href="../../19.security/ACM-amaz-cert-manager/" class="md-nav__link">
         
   
   
@@ -5805,7 +5349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/AWS-firewall-manager/" class="md-nav__link">
+      <a href="../../19.security/AWS-firewall-manager/" class="md-nav__link">
         
   
   
@@ -5828,7 +5372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/AWS-shield/" class="md-nav__link">
+      <a href="../../19.security/AWS-shield/" class="md-nav__link">
         
   
   
@@ -5851,7 +5395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/AmazonGuardDuty/" class="md-nav__link">
+      <a href="../../19.security/AmazonGuardDuty/" class="md-nav__link">
         
   
   
@@ -5874,7 +5418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/DDoS-best-practice/" class="md-nav__link">
+      <a href="../../19.security/DDoS-best-practice/" class="md-nav__link">
         
   
   
@@ -5897,7 +5441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/Encrypted%20AMI%20Sharing%20Process/" class="md-nav__link">
+      <a href="../../19.security/Encrypted%20AMI%20Sharing%20Process/" class="md-nav__link">
         
   
   
@@ -5920,7 +5464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/KMS-Multi-RegionKeys/" class="md-nav__link">
+      <a href="../../19.security/KMS-Multi-RegionKeys/" class="md-nav__link">
         
   
   
@@ -5943,7 +5487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/KMS/" class="md-nav__link">
+      <a href="../../19.security/KMS/" class="md-nav__link">
         
   
   
@@ -5966,7 +5510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/SSM-paramater-store/" class="md-nav__link">
+      <a href="../../19.security/SSM-paramater-store/" class="md-nav__link">
         
   
   
@@ -5989,7 +5533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/SecretsManager/" class="md-nav__link">
+      <a href="../../19.security/SecretsManager/" class="md-nav__link">
         
   
   
@@ -6012,7 +5556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/WAF/" class="md-nav__link">
+      <a href="../../19.security/WAF/" class="md-nav__link">
         
   
   
@@ -6035,7 +5579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/aws-inspector/" class="md-nav__link">
+      <a href="../../19.security/aws-inspector/" class="md-nav__link">
         
   
   
@@ -6058,7 +5602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/aws-macie/" class="md-nav__link">
+      <a href="../../19.security/aws-macie/" class="md-nav__link">
         
   
   
@@ -6081,7 +5625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/encryption101/" class="md-nav__link">
+      <a href="../../19.security/encryption101/" class="md-nav__link">
         
   
   
@@ -6104,7 +5648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/s3-replicate-encryption/" class="md-nav__link">
+      <a href="../../19.security/s3-replicate-encryption/" class="md-nav__link">
         
   
   
@@ -6153,7 +5697,7 @@
   
   
   
-    <a href="../../../19.security/l%C3%BD-thuy%E1%BA%BFt-ngo%C3%A0i-l%E1%BB%81/audit-kms-cloudtrail/" class="md-nav__link">
+    <a href="../../19.security/l%C3%BD-thuy%E1%BA%BFt-ngo%C3%A0i-l%E1%BB%81/audit-kms-cloudtrail/" class="md-nav__link">
       
   
   
@@ -6216,7 +5760,7 @@
   
   
   
-    <a href="../../../19.security/security-concepts/cryptocurrency-attacks/" class="md-nav__link">
+    <a href="../../19.security/security-concepts/cryptocurrency-attacks/" class="md-nav__link">
       
   
   
@@ -6250,6 +5794,8 @@
                 
   
   
+    
+  
   
   
     
@@ -6277,11 +5823,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_22" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_22" checked>
         
           
           <label class="md-nav__link" for="__nav_6_22" id="__nav_6_22_label" tabindex="">
@@ -6297,7 +5843,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_22_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_22_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_22">
             <span class="md-nav__icon md-icon"></span>
             20.network
@@ -6311,7 +5857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/CIDR-public-private-ip/" class="md-nav__link">
+      <a href="../CIDR-public-private-ip/" class="md-nav__link">
         
   
   
@@ -6334,7 +5880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/all/" class="md-nav__link">
+      <a href="../all/" class="md-nav__link">
         
   
   
@@ -6354,10 +5900,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../20.network/defaultvpc/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -6368,6 +5921,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -6404,7 +5958,7 @@
   
   
   
-    <a href="../../../20.network/ly-thuyet-khac/netadd-broadcast/" class="md-nav__link">
+    <a href="../ly-thuyet-khac/netadd-broadcast/" class="md-nav__link">
       
   
   
@@ -6459,143 +6013,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-dynamic-scaling-mo-rong-ong" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Dynamic Scaling (Mở rộng động)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Dynamic Scaling (Mở rộng động)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-target-tracking-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. Target Tracking Scaling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-simplestep-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. Simple/Step Scaling
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-scheduled-scaling" class="md-nav__link">
-    <span class="md-ellipsis">
-      c. Scheduled Scaling
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-predictive-scaling-mo-rong-du-oan" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Predictive Scaling (Mở rộng dự đoán)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-chi-so-tot-e-mo-rong" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Chỉ số tốt để mở rộng
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Chỉ số tốt để mở rộng">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-cpu-utilization" class="md-nav__link">
-    <span class="md-ellipsis">
-      a. CPU Utilization
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-requestcountpertarget" class="md-nav__link">
-    <span class="md-ellipsis">
-      b. RequestCountPerTarget
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-network-inout" class="md-nav__link">
-    <span class="md-ellipsis">
-      c. Network In/Out
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-custom-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      d. Custom Metrics
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-scaling-cooldown-thoi-gian-ha-nhiet" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Scaling Cooldown (Thời gian hạ nhiệt)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-chien-luoc-toi-uu-hoa" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Chiến lược tối ưu hóa
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-loi-khuyen-tong-quat" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Lời khuyên tổng quát
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -6610,7 +6027,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/03.High-availability-vs-Scalability/lý-thuyết/ASG-policy.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/20.network/defaultvpc.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -6618,134 +6035,94 @@
   
 
 
-  <h1>ASG policy</h1>
+  <h1>Defaultvpc</h1>
 
-<hr />
-<h3 id="1-dynamic-scaling-mo-rong-ong"><strong>1. Dynamic Scaling (Mở rộng động)</strong><a class="headerlink" href="#1-dynamic-scaling-mo-rong-ong" title="Permanent link">&para;</a></h3>
-<p>Đây là cách mở rộng linh hoạt dựa trên các chỉ số giám sát. Có ba loại chính:</p>
-<h4 id="a-target-tracking-scaling">a. <strong>Target Tracking Scaling</strong><a class="headerlink" href="#a-target-tracking-scaling" title="Permanent link">&para;</a></h4>
+<p>Đích (Destination): Khối CIDR của chính VPC đó (ví dụ: 172.31.0.0/16).
+Đích đến (Target): local
+Ý nghĩa: Quy tắc này nói rằng "bất kỳ lưu lượng mạng nào có địa chỉ đích nằm trong dải IP của VPC này thì hãy giữ nó ở nội bộ (local) VPC".Đích (Destination): Khối CIDR của chính VPC đó (ví dụ: 172.31.0.0/16).
+Đích đến (Target): local
+Ý nghĩa: Quy tắc này nói rằng "bất kỳ lưu lượng mạng nào có địa chỉ đích nằm trong dải IP của VPC này thì hãy giữ nó ở nội bộ (local) VPC".</p>
+<p>Okay, đây là giải thích chi tiết về VPC mặc định (Default VPC) được tạo cùng tài khoản AWS của bạn, dựa trên nội dung bạn cung cấp:</p>
+<p><strong>Default VPC là gì?</strong></p>
 <ul>
-<li><strong>Cách hoạt động</strong>: </li>
-<li>Bạn chọn một chỉ số (<strong>metric</strong>) như <strong>CPU Utilization</strong>.</li>
-<li>Đặt một giá trị mục tiêu, ví dụ: CPU luôn ở mức <strong>40%</strong>.</li>
-<li>ASG sẽ tự động <strong>thêm</strong> hoặc <strong>giảm</strong> số lượng EC2 instances để duy trì chỉ số gần mục tiêu.</li>
-<li><strong>Ưu điểm</strong>:</li>
-<li>Rất dễ cài đặt.</li>
-<li>Tự động điều chỉnh mà không cần nhiều cấu hình phức tạp.</li>
-<li><strong>Ví dụ</strong>: </li>
-<li>Một website thương mại điện tử có lưu lượng thay đổi liên tục. Nếu CPU của các instance vượt 40%, hệ thống sẽ tự thêm instance mới.</li>
+<li>Default VPC là một mạng riêng ảo (Virtual Private Cloud) mà AWS tự động tạo ra cho tài khoản AWS mới của bạn ở <strong>mỗi Vùng (Region)</strong>.</li>
+<li>Mục đích của việc này là giúp những người mới bắt đầu có thể <strong>sử dụng AWS ngay lập tức</strong> mà không cần phải cấu hình mạng phức tạp ban đầu.</li>
 </ul>
-<h4 id="b-simplestep-scaling">b. <strong>Simple/Step Scaling</strong><a class="headerlink" href="#b-simplestep-scaling" title="Permanent link">&para;</a></h4>
+<p><strong>Hành vi mặc định khi sử dụng Default VPC:</strong></p>
 <ul>
-<li><strong>Cách hoạt động</strong>:</li>
-<li>Dựa trên <strong>CloudWatch Alarms</strong>:<ul>
-<li>Khi một ngưỡng được đạt tới, như CPU &gt; 70%, một cảnh báo sẽ kích hoạt việc thêm instance.</li>
-<li>Khi CPU &lt; 30%, cảnh báo khác sẽ kích hoạt việc giảm instance.</li>
+<li>Khi bạn khởi chạy các phiên bản Amazon EC2 mà <strong>không chỉ định cụ thể subnet nào</strong>, chúng sẽ được tự động khởi chạy vào <strong>Default VPC</strong> và một trong các subnet mặc định của nó.</li>
+<li>Theo mặc định, Default VPC đã được cấu hình sẵn để có <strong>kết nối Internet</strong>.</li>
+<li>Mỗi phiên bản EC2 được khởi chạy trong các subnet mặc định sẽ tự động nhận được một <strong>địa chỉ IPv4 công khai (Public IPv4 address)</strong>. Đây là lý do bạn có thể kết nối trực tiếp (ví dụ: dùng SSH) đến các phiên bản EC2 ngay sau khi tạo mà không cần cấu hình thêm.</li>
+<li>Các phiên bản EC2 cũng sẽ nhận được tên <strong>DNS công khai và riêng tư (Public and Private IPv4 DNS name)</strong>.</li>
 </ul>
+<p><strong>Thực hành tốt nhất (Best Practice):</strong></p>
+<ul>
+<li>Mặc dù Default VPC tiện lợi cho việc bắt đầu nhanh hoặc thử nghiệm, nhưng <strong>thực hành tốt nhất</strong> là bạn nên <strong>tạo VPC tùy chỉnh của riêng mình</strong> (Custom VPCs) cho môi trường sản phẩm (production accounts).</li>
+<li>Việc tạo VPC tùy chỉnh giúp bạn kiểm soát hoàn toàn dải địa chỉ IP, cấu trúc mạng con, định tuyến và các thiết lập bảo mật, phù hợp hơn với yêu cầu cụ thể của ứng dụng và tuân thủ các tiêu chuẩn bảo mật của doanh nghiệp.</li>
+</ul>
+<p><strong>Các Thành phần và Cấu hình của Default VPC:</strong></p>
+<p>Khi khám phá Default VPC trong AWS Console, bạn sẽ thấy các thành phần sau được tạo sẵn:</p>
+<ol>
+<li>
+<p><strong>VPC:</strong></p>
 </li>
-<li><strong>Step Scaling</strong>: Cho phép cấu hình nhiều bước dựa trên độ lớn của chỉ số. Ví dụ:<ul>
-<li>Nếu CPU &gt; 70%, thêm 1 instance.</li>
-<li>Nếu CPU &gt; 90%, thêm 2 instances.</li>
-</ul>
+<li>
+<p>Có một <strong>khối CIDR IPv4 (IPv4 CIDR block)</strong> được định nghĩa sẵn (ví dụ phổ biến là <code>172.31.0.0/16</code>).</p>
 </li>
-<li><strong>Ưu điểm</strong>:</li>
-<li>Linh hoạt, có thể cấu hình chi tiết hơn so với Target Tracking Scaling.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Một ứng dụng xử lý dữ liệu tăng thêm 2 instance nếu CPU vượt 90%, nhưng chỉ thêm 1 instance nếu CPU trong khoảng 70%-90%.</li>
-</ul>
-<h4 id="c-scheduled-scaling">c. <strong>Scheduled Scaling</strong><a class="headerlink" href="#c-scheduled-scaling" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Cách hoạt động</strong>:</li>
-<li>Dựa trên lịch trình cố định, bạn có thể cấu hình ASG để thay đổi số lượng instance.</li>
-<li><strong>Ưu điểm</strong>:</li>
-<li>Phù hợp khi bạn biết trước thời gian cao điểm hoặc thấp điểm.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Một hệ thống thường có nhiều người dùng đăng nhập lúc 5 giờ chiều thứ Sáu. Bạn có thể tăng số lượng tối thiểu instance lên <strong>10</strong> vào thời điểm đó.</li>
-</ul>
-<hr />
-<h3 id="2-predictive-scaling-mo-rong-du-oan"><strong>2. Predictive Scaling (Mở rộng dự đoán)</strong><a class="headerlink" href="#2-predictive-scaling-mo-rong-du-oan" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Cách hoạt động</strong>:</li>
-<li>ASG sử dụng lịch sử hoạt động để dự đoán tải trong tương lai.</li>
-<li>Tự động lên lịch mở rộng dựa trên các dự báo này.</li>
-<li><strong>Ưu điểm</strong>:</li>
-<li>Hoạt động tốt với các ứng dụng có tải lặp lại (chu kỳ), ví dụ: giờ cao điểm mỗi ngày.</li>
-<li>Giúp bạn chuẩn bị tài nguyên trước khi tải tăng.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Một ứng dụng streaming nhận thấy rằng lúc 8 giờ tối mỗi ngày luôn có tăng đột biến người dùng. Predictive Scaling sẽ dự báo và thêm instance lúc 7:50 tối.</li>
-</ul>
-<hr />
-<h3 id="3-chi-so-tot-e-mo-rong"><strong>3. Chỉ số tốt để mở rộng</strong><a class="headerlink" href="#3-chi-so-tot-e-mo-rong" title="Permanent link">&para;</a></h3>
-<p>Bạn cần chọn các chỉ số phù hợp với cách hoạt động của ứng dụng:</p>
-<h4 id="a-cpu-utilization">a. <strong>CPU Utilization</strong><a class="headerlink" href="#a-cpu-utilization" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Ý nghĩa</strong>: CPU của EC2 instance tăng khi ứng dụng nhận nhiều yêu cầu.</li>
-<li><strong>Cách dùng</strong>:</li>
-<li>Theo dõi mức trung bình của CPU trên tất cả các instance.</li>
-<li>Khi CPU vượt một ngưỡng, thêm instance; khi thấp hơn, giảm instance.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Nếu CPU trung bình vượt <strong>60%</strong>, thêm 1 instance.</li>
-</ul>
-<h4 id="b-requestcountpertarget">b. <strong>RequestCountPerTarget</strong><a class="headerlink" href="#b-requestcountpertarget" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Ý nghĩa</strong>: Số yêu cầu mà mỗi instance nhận được từ <strong>Application Load Balancer (ALB)</strong>.</li>
-<li><strong>Cách dùng</strong>:</li>
-<li>Tính toán số yêu cầu tối ưu mà một instance có thể xử lý.</li>
-<li>Nếu vượt quá con số này, thêm instance để duy trì hiệu suất.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Mỗi EC2 instance có thể xử lý <strong>1000 yêu cầu/giây</strong>. Khi vượt mức này, thêm 1 instance.</li>
-</ul>
-<h4 id="c-network-inout">c. <strong>Network In/Out</strong><a class="headerlink" href="#c-network-inout" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Ý nghĩa</strong>: Thích hợp cho ứng dụng tải nhiều dữ liệu (uploads/downloads).</li>
-<li><strong>Cách dùng</strong>:</li>
-<li>Theo dõi lưu lượng mạng (Network In/Out).</li>
-<li>Nếu lưu lượng vượt ngưỡng, thêm instance.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Nếu <strong>Network In</strong> vượt 1 GB/s, thêm instance để đảm bảo không bị tắc nghẽn.</li>
-</ul>
-<h4 id="d-custom-metrics">d. <strong>Custom Metrics</strong><a class="headerlink" href="#d-custom-metrics" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Ý nghĩa</strong>: Bạn tự định nghĩa các chỉ số đặc thù cho ứng dụng và đẩy lên CloudWatch.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Một ứng dụng ghi log liên tục có thể đo số lượng log được xử lý. Khi vượt ngưỡng, thêm instance.</li>
-</ul>
-<hr />
-<h3 id="4-scaling-cooldown-thoi-gian-ha-nhiet"><strong>4. Scaling Cooldown (Thời gian hạ nhiệt)</strong><a class="headerlink" href="#4-scaling-cooldown-thoi-gian-ha-nhiet" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Ý nghĩa</strong>:</li>
-<li>Sau mỗi lần thêm hoặc giảm instance, hệ thống sẽ vào trạng thái hạ nhiệt (mặc định 5 phút).</li>
-<li>Trong thời gian này, ASG không thực hiện hành động nào khác.</li>
-<li><strong>Mục đích</strong>:</li>
-<li>Giúp các chỉ số ổn định trước khi thực hiện bước tiếp theo.</li>
-<li><strong>Lời khuyên</strong>:</li>
-<li>Sử dụng <strong>Ready-to-use AMI</strong> để EC2 instance có thể khởi động nhanh hơn, giảm thời gian hạ nhiệt.</li>
-<li><strong>Ví dụ</strong>:</li>
-<li>Nếu một instance mới cần <strong>1 phút</strong> để sẵn sàng, bạn có thể giảm cooldown xuống còn <strong>2 phút</strong>.</li>
-</ul>
-<hr />
-<h3 id="5-chien-luoc-toi-uu-hoa"><strong>5. Chiến lược tối ưu hóa</strong><a class="headerlink" href="#5-chien-luoc-toi-uu-hoa" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Sử dụng AMI sẵn sàng</strong>:</li>
-<li>Tạo sẵn AMI với cấu hình đầy đủ để giảm thời gian chuẩn bị khi mở rộng.</li>
-<li><strong>Bật Detailed Monitoring</strong>:</li>
-<li>Giúp cập nhật chỉ số mỗi phút, tăng tốc độ phản hồi của ASG.</li>
-<li><strong>Cấu hình chỉ số phù hợp</strong>:</li>
-<li>Dựa trên cách ứng dụng hoạt động để chọn các chỉ số chính xác.</li>
-</ul>
-<hr />
-<h3 id="6-loi-khuyen-tong-quat"><strong>6. Lời khuyên tổng quát</strong><a class="headerlink" href="#6-loi-khuyen-tong-quat" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Dynamic Scaling</strong>:</li>
-<li>Sử dụng khi lưu lượng thay đổi thường xuyên.</li>
-<li><strong>Predictive Scaling</strong>:</li>
-<li>Phù hợp khi có chu kỳ sử dụng lặp lại.</li>
-<li><strong>Scheduled Scaling</strong>:</li>
-<li>Dùng cho các tình huống có lịch trình cố định.</li>
-<li><strong>Custom Metrics</strong>:</li>
-<li>Thích hợp cho ứng dụng đặc thù.</li>
-</ul>
-<hr />
+<li>Với CIDR <code>/16</code>, dải địa chỉ này chứa tổng cộng $2^{16} = 65.536$ địa chỉ IP khả dụng.</li>
+<li>Theo mặc định, không có khối CIDR IPv6 nào được liên kết.</li>
+<li>Flow Logs (Nhật ký luồng) thường không được bật mặc định cho VPC.</li>
+<li>
+<p>Không có thẻ (tags) được gán mặc định.</p>
+</li>
+<li>
+<p><strong>Subnets (Mạng con):</strong></p>
+</li>
+<li>
+<p>Ba (hoặc nhiều hơn tùy Vùng) subnet được tạo sẵn, mỗi subnet nằm trong một <strong>Availability Zone (AZ) khác nhau</strong> trong Vùng đó. Điều này nhằm cung cấp sẵn một cấu trúc mạng cơ bản cho kiến trúc có tính sẵn sàng cao (highly available).</p>
+</li>
+<li>Mỗi subnet có khối CIDR IPv4 riêng của nó (ví dụ: <code>/20</code>), là một phần của khối CIDR lớn hơn của VPC.</li>
+<li>Với CIDR <code>/20</code>, mỗi subnet chứa $2^{12} = 4096$ địa chỉ IP. Tuy nhiên, số lượng địa chỉ IP thực tế khả dụng thường ít hơn (ví dụ: 4091) vì AWS <strong>dành riêng 5 địa chỉ IP đầu tiên</strong> trong mỗi subnet cho các mục đích mạng nội bộ của AWS (địa chỉ mạng, địa chỉ Broadcast, gateway, và 2 địa chỉ DNS).</li>
+<li>Các subnet mặc định có thiết lập <strong>"Auto-assign public IPv4" được BẬT (enabled)</strong>. Điều này giải thích tại sao các phiên bản EC2 khởi chạy vào đây tự động nhận được địa chỉ IP công khai.</li>
+<li>Không có Flow Logs được bật mặc định cho subnet.</li>
+<li>
+<p>Không có CIDR Reservations hoặc chia sẻ subnet mặc định.</p>
+</li>
+<li>
+<p><strong>Route Table (Bảng định tuyến):</strong></p>
+</li>
+<li>
+<p>Một bảng định tuyến mặc định (default route table), còn gọi là bảng định tuyến chính (main route table), được tạo.</p>
+</li>
+<li>Bảng định tuyến này chứa các <strong>quy tắc (routes)</strong> để xác định lưu lượng mạng từ VPC đi đâu.</li>
+<li>
+<p>Một quy tắc quan trọng là quy tắc định tuyến cho toàn bộ lưu lượng <strong>bên ngoài</strong> khối CIDR của VPC (đường dẫn <code>0.0.0.0/0</code> cho IPv4) sẽ được gửi đến <strong>Internet Gateway</strong>.
+     còn có một quy tắc mặc định luôn tồn tại được gọi là quy tắc định tuyến cục bộ (local route).Đích (Destination): Khối CIDR của chính VPC đó (ví dụ: 172.31.0.0/16).
+     Đích đến (Target): local
+     Ý nghĩa: Quy tắc này nói rằng "bất kỳ lưu lượng mạng nào có địa chỉ đích nằm trong dải IP của VPC này thì hãy giữ nó ở nội bộ (local) VPC".</p>
+</li>
+<li>
+<p>Bảng định tuyến mặc định này được <strong>liên kết ngầm (implicitly associated)</strong> với tất cả các subnet trong VPC mà không được liên kết rõ ràng (explicitly associated) với một bảng định tuyến cụ thể nào khác.</p>
+</li>
+<li>
+<p><strong>Internet Gateway (IGW):</strong></p>
+</li>
+<li>
+<p>Một Internet Gateway được tạo và <strong>đính kèm vào Default VPC</strong>.</p>
+</li>
+<li>
+<p>Chức năng của IGW là cho phép các phiên bản trong VPC có thể <strong>truy cập Internet</strong> và cho phép lưu lượng từ Internet truy cập vào các phiên bản có địa chỉ IP công khai trong VPC (nếu các cấu hình bảo mật như Security Groups và Network ACL cho phép).</p>
+</li>
+<li>
+<p><strong>Network ACLs (NACLs - Danh sách kiểm soát truy cập mạng):</strong></p>
+</li>
+<li>
+<p>Mỗi subnet được liên kết với một Network ACL.</p>
+</li>
+<li>Network ACL mặc định có cấu hình <strong>rất thoáng</strong>: cho phép <strong>TẤT CẢ</strong> lưu lượng truy cập (trên TẤT CẢ các giao thức, từ BẤT KỲ nguồn nào) cho cả <strong>chiều vào (inbound)</strong> và <strong>chiều ra (outbound)</strong>. Điều này đảm bảo kết nối mạng cơ bản hoạt động ngay lập tức, nhưng thường cần được tùy chỉnh cho môi trường production để tăng cường bảo mật.</li>
+</ol>
+<p><strong>Tổng kết:</strong></p>
+<p>Default VPC được thiết lập sẵn với các thành phần mạng cơ bản (VPC, subnets, route table, Internet Gateway, NACL) và cấu hình mặc định cho phép kết nối Internet và tự động gán IP công khai cho các phiên bản EC2, giúp bạn nhanh chóng bắt đầu sử dụng AWS. Việc hiểu các thành phần này là bước đầu tiên quan trọng trước khi tự xây dựng VPC tùy chỉnh theo nhu cầu cụ thể của ứng dụng.</p>
 
 
 
@@ -6853,7 +6230,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../ALB/" class="md-footer__link md-footer__link--prev" aria-label="Trước: ALB">
+          <a href="../all/" class="md-footer__link md-footer__link--prev" aria-label="Trước: All">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -6863,20 +6240,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                ALB
+                All
               </div>
             </div>
           </a>
         
         
           
-          <a href="../ASG/" class="md-footer__link md-footer__link--next" aria-label="Sau: ASG">
+          <a href="../ly-thuyet-khac/netadd-broadcast/" class="md-footer__link md-footer__link--next" aria-label="Sau: Netadd broadcast">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                ASG
+                Netadd broadcast
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6937,10 +6314,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
