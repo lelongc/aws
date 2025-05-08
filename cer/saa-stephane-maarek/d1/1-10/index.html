@@ -1960,6 +1960,33 @@
 <li><strong>Chỉ người dùng Root có quyền truy cập đầy đủ CSDL:</strong> <strong>Thực hành không tốt (bad practice)</strong> . Tài khoản Root có quyền hạn cao nhất và không bị giới hạn bởi chính sách IAM. Sử dụng tài khoản Root cho các tác vụ hàng ngày làm tăng rủi ro bị lộ thông tin xác thực Root và gây ra thiệt hại không thể phục hồi. Các tác vụ quản trị nên được thực hiện bởi các người dùng/vai trò IAM với quyền hạn được giới hạn ở mức cần thiết (least privilege).</li>
 </ul>
 <p><strong>Tóm lại:</strong> Permissions Boundary là giải pháp có hệ thống và hiệu quả nhất để giải quyết vấn đề này bằng cách giới hạn quyền tối đa có thể được cấp, ngăn chặn việc cấp nhầm quyền nguy hiểm cho các thực thể IAM và từ đó phòng ngừa các sự cố như xóa bảng production một cách vô tình.</p>
+<h1 id="2kich-ban-nha-khoa-hoc-tai-anh-3gb-len-amazon-s3-dung-s3-transfer-acceleration-s3ta-nhung-qua-trinh-khong-uoc-tang-toc">2.<strong>Kịch bản:</strong> Nhà khoa học tải ảnh 3GB lên Amazon S3 dùng S3 Transfer Acceleration (S3TA), nhưng quá trình <strong>không được tăng tốc</strong> .<a class="headerlink" href="#2kich-ban-nha-khoa-hoc-tai-anh-3gb-len-amazon-s3-dung-s3-transfer-acceleration-s3ta-nhung-qua-trinh-khong-uoc-tang-toc" title="Permanent link">&para;</a></h1>
+<p><strong>Câu trả lời đúng:</strong> <strong>Nhà khoa học không phải trả bất kỳ khoản phí truyền dữ liệu nào cho việc tải ảnh lên.</strong></p>
+<p><strong>Giải thích (gọn gàng):</strong></p>
+<p>Có hai quy tắc tính phí áp dụng ở đây:</p>
+<ol>
+<li><strong>Tải dữ liệu vào S3 từ Internet:</strong> Amazon S3 <strong>không tính phí truyền dữ liệu</strong> khi dữ liệu được tải <strong>vào</strong> từ Internet.</li>
+<li><strong>S3 Transfer Acceleration (S3TA):</strong> Bạn <strong>chỉ trả phí</strong> cho S3TA khi quá trình truyền dữ liệu <strong>thực sự được tăng tốc</strong> .</li>
+</ol>
+<p>Trong kịch bản này, dữ liệu được tải <strong>vào</strong> S3 từ Internet (nghĩa là không mất phí S3 truyền dữ liệu) VÀ quá trình S3TA <strong>không mang lại hiệu quả tăng tốc</strong> (nghĩa là không mất phí S3TA). Do đó, tổng cộng <strong>không có khoản phí truyền dữ liệu nào</strong> phải trả.</p>
+<p>Các lựa chọn khác sai vì:</p>
+<ul>
+<li>Trả phí S3TA: Sai, vì quá trình không được tăng tốc.</li>
+<li>Trả phí S3 truyền dữ liệu: Sai, vì tải dữ liệu vào S3 từ Internet là miễn phí.</li>
+<li>
+<p>Trả cả hai: Sai, vì cả hai đều không phát sinh phí trong trường hợp này.</p>
+</li>
+<li>
+<p>Việc tải dữ liệu <strong>vào (IN)</strong> S3 từ Internet thông thường <strong>không mất phí truyền dữ liệu</strong> (Data Transfer IN).</p>
+</li>
+<li>Việc tải dữ liệu <strong>ra (OUT)</strong> khỏi S3 để đi ra Internet thông thường <strong>có mất phí truyền dữ liệu</strong> (Data Transfer OUT).</li>
+</ul>
+<p><strong>Còn S3 Transfer Acceleration (S3TA) thì sao?</strong> S3TA có biểu phí riêng, áp dụng <strong>THÊM VÀO</strong> phí truyền dữ liệu cơ bản (nếu có) <strong>nếu quá trình truyền thực sự được tăng tốc</strong> .</p>
+<ul>
+<li><strong>Tải LÊN S3 (IN) dùng S3TA:</strong> Phí truyền dữ liệu cơ bản là 0 đồng. Nếu S3TA tăng tốc, bạn trả <strong>chỉ phí S3TA</strong> . Nếu S3TA không tăng tốc, bạn trả <strong>0 đồng</strong> (không S3 phí, không S3TA phí).</li>
+<li><strong>Tải XUỐNG từ S3 (OUT) dùng S3TA:</strong> Phí truyền dữ liệu cơ bản (ra Internet) <strong>có thể có</strong> . Nếu S3TA tăng tốc, bạn trả <strong>phí truyền dữ liệu cơ bản (nếu có) + phí S3TA</strong> . Nếu S3TA không tăng tốc, bạn chỉ trả <strong>phí truyền dữ liệu cơ bản (nếu có)</strong> .</li>
+</ul>
+<p>Vậy, việc "ra" (tải xuống thứ từ s3) khỏi S3 thường mất phí, bất kể có dùng S3TA hay không (trừ các trường hợp ngoại lệ như tải xuống nội dung tĩnh từ CloudFront origin). S3TA là một khoản phí bổ sung nếu nó hiệu quả.</p>
 
 
 
@@ -1980,7 +2007,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 5, 2025 16:10:53">7 tháng 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 tháng 5, 2025 15:12:04">8 tháng 5, 2025</span>
   </span>
 
     
