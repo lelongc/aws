@@ -38,6 +38,10 @@ Check out this Amazon S3 Cheat Sheet:
 
 [https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html](https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html)
 
+[https://aws.amazon.com/s3/transfer-acceleration/](https://aws.amazon.com/s3/transfer-acceleration/)
+
+[https://aws.amazon.com/s3/pricing/](https://aws.amazon.com/s3/pricing/)
+
 **Check out this Amazon S3 Cheat Sheet:**
 
 [https://tutorialsdojo.com/amazon-s3/](https://tutorialsdojo.com/amazon-s3/?src=udemy)
