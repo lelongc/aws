@@ -23,6 +23,8 @@
 
 **Nhược điểm chính (Tại sao lỗi thời):**
 
+![1746872479911](image/nat-instance/1746872479911.png)
+
 - **Không có sẵn tính sẵn sàng cao (HA):** NAT Instance là một điểm lỗi duy nhất. Để có HA, bạn phải tự thiết lập phức tạp (ví dụ: chạy nhiều NAT Instance ở các AZ khác nhau, sử dụng Auto Scaling Group và Script tùy chỉnh).
 - **Hiệu suất giới hạn:** Năng lực xử lý và băng thông phụ thuộc vào kích thước (instance type) của phiên bản EC2 bạn chọn làm NAT Instance.
 - **Cần quản lý thủ công:** Bạn phải tự quản lý phiên bản EC2 này (cập nhật hệ điều hành, vá lỗi, cấu hình Security Group cho NAT Instance).
