@@ -100,3 +100,29 @@
 | **Áp dụng**       | Áp dụng cho các phiên bản EC2 được chỉ định.                           | Áp dụng cho TẤT CẢ các phiên bản EC2 trong Subnet liên kết.                                          |
 
 Hiểu rõ sự khác biệt giữa Stateful/Stateless và cách NACL xử lý luật (thứ tự, Deny) là rất quan trọng cho bài thi.
+
+---
+
+bài lab :
+
+1.  **Thiết lập:** Cài đặt một web server đơn giản (HTTPD) trên Bastion Host (nằm trong Public Subnet dùng bastion sẵn có của các bài lab trước thôi ). Mở cổng 80 trong Security Group của Bastion Host để truy cập HTTP từ ngoài. (Kiểm tra thấy truy cập web thành công).
+
+2.  **Demo NACL - Thứ tự luật (Rule Order):**
+
+    - Sửa **Default NACL** (liên kết với subnet của Bastion Host). Thêm luật **DENY** HTTP (cổng 80) với **số thứ tự nhỏ hơn** luật mặc định **ALLOW All** (ví dụ: DENY @80, ALLOW @100). -> Truy cập web **THẤT BẠI**. (Luật số nhỏ thắng).
+    - Sửa lại luật DENY thành **số thứ tự lớn hơn** luật mặc định ALLOW All (ví dụ: DENY @140, ALLOW @100). -> Truy cập web **THÀNH CÔNG**. (Luật số nhỏ thắng - ALLOW @100).
+    - **Kết luận:** **Thứ tự (số thứ tự luật) quan trọng trong NACL**.
+
+3.  **Demo NACL - Statelessness:**
+
+    - Sửa **Default NACL**. Đảm bảo luật **Inbound** cho phép HTTP (ví dụ: ALLOW All @100). Sửa luật **Outbound** thành **DENY All**.
+    - Truy cập web: Yêu cầu vào được (Inbound OK), nhưng phản hồi (chiều ra) bị chặn bởi luật Outbound DENY. -> Truy cập web **THẤT BẠI** (chờ mãi không tải xong).
+    - **Kết luận:** **NACL là Stateless**, cần luật cho phép cả hai chiều (vào VÀ ra) cho một kết nối hoạt động đầy đủ.
+
+4.  **Demo Security Group - Statefulness:**
+    - Đảm bảo **NACL** cho phép cả hai chiều (trở về mặc định ALLOW All).
+    - Sửa **Security Group** của Bastion Host. Xóa luật **Outbound ALLOW All**.
+    - Truy cập web: Yêu cầu vào được (Inbound OK). Dù không có luật Outbound, phản hồi (chiều ra) vẫn đi được vì SG là Stateful. -> Truy cập web **THÀNH CÔNG**.
+    - **Kết luận:** **Security Group là Stateful**, nếu một chiều được cho phép, chiều ngược lại của cùng kết nối được phép tự động.
+
+Bài lab thực hành cho thấy rõ sự khác biệt cốt lõi giữa NACL (Stateless, thứ tự luật quan trọng) và Security Group (Stateful, luật cho phép một chiều đủ cho chiều ngược lại), cũng như cách Default NACL mặc định mở mọi thứ.
