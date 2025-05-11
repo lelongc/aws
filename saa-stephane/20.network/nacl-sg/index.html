@@ -5828,6 +5828,8 @@
       
         
       
+        
+      
     
     
     
@@ -6152,8 +6154,33 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../vpcPeering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    vpcPeering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
+      
+        
       
         
       
@@ -6399,6 +6426,39 @@
 </tbody>
 </table>
 <p>Hiểu rõ sự khác biệt giữa Stateful/Stateless và cách NACL xử lý luật (thứ tự, Deny) là rất quan trọng cho bài thi.</p>
+<hr />
+<p>bài lab :</p>
+<ol>
+<li>
+<p><strong>Thiết lập:</strong> Cài đặt một web server đơn giản (HTTPD) trên Bastion Host (nằm trong Public Subnet dùng bastion sẵn có của các bài lab trước thôi ). Mở cổng 80 trong Security Group của Bastion Host để truy cập HTTP từ ngoài. (Kiểm tra thấy truy cập web thành công).</p>
+</li>
+<li>
+<p><strong>Demo NACL - Thứ tự luật (Rule Order):</strong></p>
+<ul>
+<li>Sửa <strong>Default NACL</strong> (liên kết với subnet của Bastion Host). Thêm luật <strong>DENY</strong> HTTP (cổng 80) với <strong>số thứ tự nhỏ hơn</strong> luật mặc định <strong>ALLOW All</strong> (ví dụ: DENY @80, ALLOW @100). -&gt; Truy cập web <strong>THẤT BẠI</strong>. (Luật số nhỏ thắng).</li>
+<li>Sửa lại luật DENY thành <strong>số thứ tự lớn hơn</strong> luật mặc định ALLOW All (ví dụ: DENY @140, ALLOW @100). -&gt; Truy cập web <strong>THÀNH CÔNG</strong>. (Luật số nhỏ thắng - ALLOW @100).</li>
+<li><strong>Kết luận:</strong> <strong>Thứ tự (số thứ tự luật) quan trọng trong NACL</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Demo NACL - Statelessness:</strong></p>
+<ul>
+<li>Sửa <strong>Default NACL</strong>. Đảm bảo luật <strong>Inbound</strong> cho phép HTTP (ví dụ: ALLOW All @100). Sửa luật <strong>Outbound</strong> thành <strong>DENY All</strong>.</li>
+<li>Truy cập web: Yêu cầu vào được (Inbound OK), nhưng phản hồi (chiều ra) bị chặn bởi luật Outbound DENY. -&gt; Truy cập web <strong>THẤT BẠI</strong> (chờ mãi không tải xong).</li>
+<li><strong>Kết luận:</strong> <strong>NACL là Stateless</strong>, cần luật cho phép cả hai chiều (vào VÀ ra) cho một kết nối hoạt động đầy đủ.</li>
+</ul>
+</li>
+<li>
+<p><strong>Demo Security Group - Statefulness:</strong></p>
+<ul>
+<li>Đảm bảo <strong>NACL</strong> cho phép cả hai chiều (trở về mặc định ALLOW All).</li>
+<li>Sửa <strong>Security Group</strong> của Bastion Host. Xóa luật <strong>Outbound ALLOW All</strong>.</li>
+<li>Truy cập web: Yêu cầu vào được (Inbound OK). Dù không có luật Outbound, phản hồi (chiều ra) vẫn đi được vì SG là Stateful. -&gt; Truy cập web <strong>THÀNH CÔNG</strong>.</li>
+<li><strong>Kết luận:</strong> <strong>Security Group là Stateful</strong>, nếu một chiều được cho phép, chiều ngược lại của cùng kết nối được phép tự động.</li>
+</ul>
+</li>
+</ol>
+<p>Bài lab thực hành cho thấy rõ sự khác biệt cốt lõi giữa NACL (Stateless, thứ tự luật quan trọng) và Security Group (Stateful, luật cho phép một chiều đủ cho chiều ngược lại), cũng như cách Default NACL mặc định mở mọi thứ.</p>
 
 
 
@@ -6419,7 +6479,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="10 tháng 5, 2025 15:38:38">10 tháng 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="11 tháng 5, 2025 08:26:23">11 tháng 5, 2025</span>
   </span>
 
     
