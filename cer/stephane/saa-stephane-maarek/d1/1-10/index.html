@@ -1,0 +1,2249 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/aws/cer/stephane/saa-stephane-maarek/d1/1-10/">
+      
+      
+        <link rel="prev" href="../../_category_/">
+      
+      
+        <link rel="next" href="../../../../../orther-note/readme/">
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13">
+    
+    
+      
+        <title>1.Amazon S3 Lifecycle – cách mà bạn tự động xóa hoặc lưu trữ dữ liệu cũ trong S3 bucket. Mình sẽ giải thích từng phần một cách dễ hiểu nhất: - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1amazon-s3-lifecycle-cach-ma-ban-tu-ong-xoa-hoac-luu-tru-du-lieu-cu-trong-s3-bucket-minh-se-giai-thich-tung-phan-mot-cach-de-hieu-nhat" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.Amazon S3 Lifecycle – cách mà bạn tự động xóa hoặc lưu trữ dữ liệu cũ trong S3 bucket. Mình sẽ giải thích từng phần một cách dễ hiểu nhất:
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ tối"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ sáng"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  List of Ports to be familiar with
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../link/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../orther-note/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Orther note
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa cantrill and lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../saa-stephane/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa stephane
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to DraDoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Ports to be familiar with
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Link
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Luyện Đề AWS Certification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../an/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    An
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            An
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../an/saa/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../an/sop/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Sop
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Saa bonso
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Saa bonso
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../saa-bonso/_category_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    đề Jon Bonso
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../saa-bonso/1/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    1
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Stephane
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Stephane
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1" id="__nav_3_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Saa stephane maarek
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Saa stephane maarek
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../_category_/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    đề stephane
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5_1_2" id="__nav_3_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    D1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_5_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            D1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    1.Amazon S3 Lifecycle – cách mà bạn tự động xóa hoặc lưu trữ dữ liệu cũ trong S3 bucket. Mình sẽ giải thích từng phần một cách dễ hiểu nhất:
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.Amazon S3 Lifecycle – cách mà bạn tự động xóa hoặc lưu trữ dữ liệu cũ trong S3 bucket. Mình sẽ giải thích từng phần một cách dễ hiểu nhất:
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ban-goc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bản gốc:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Bản gốc:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nghia" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Nghĩa:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-goc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bản gốc:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Bản gốc:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nghia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Nghĩa:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-goc_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bản gốc:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Bản gốc:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nghia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Nghĩa:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tom-tat-de-hieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Tóm tắt dễ hiểu:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-du" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔁 Ví dụ:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../orther-note/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Orther note
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../saa-cantrill-and-lab/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa cantrill and lab
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../saa-stephane/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa stephane
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ban-goc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bản gốc:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Bản gốc:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nghia" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Nghĩa:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-goc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bản gốc:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Bản gốc:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nghia_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Nghĩa:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ban-goc_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bản gốc:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Bản gốc:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nghia_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Nghĩa:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tom-tat-de-hieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Tóm tắt dễ hiểu:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-du" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔁 Ví dụ:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/cer/stephane/saa-stephane-maarek/d1/1-10.md" title="Chỉnh sửa" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="1amazon-s3-lifecycle-cach-ma-ban-tu-ong-xoa-hoac-luu-tru-du-lieu-cu-trong-s3-bucket-minh-se-giai-thich-tung-phan-mot-cach-de-hieu-nhat">1.<strong>Amazon S3 Lifecycle</strong> – cách mà bạn tự động <strong>xóa hoặc lưu trữ dữ liệu cũ</strong> trong S3 bucket. Mình sẽ <strong>giải thích từng phần</strong> một cách dễ hiểu nhất:<a class="headerlink" href="#1amazon-s3-lifecycle-cach-ma-ban-tu-ong-xoa-hoac-luu-tru-du-lieu-cu-trong-s3-bucket-minh-se-giai-thich-tung-phan-mot-cach-de-hieu-nhat" title="Permanent link">&para;</a></h1>
+<hr />
+<h3 id="ban-goc">🔸 Bản gốc:<a class="headerlink" href="#ban-goc" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>If you have an object expiration lifecycle configuration in your unversioned bucket</strong></p>
+<p>and <strong>you want to maintain the same permanent delete behavior</strong> when you enable versioning,</p>
+<p>you must add a <strong>noncurrent expiration configuration</strong> .</p>
+</blockquote>
+<h4 id="nghia">✅ Nghĩa:<a class="headerlink" href="#nghia" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Nếu bạn đang dùng cấu hình <strong>tự động xóa đối tượng (object expiration)</strong> trong một bucket <strong>không bật versioning</strong> ,</p>
+<p>và bạn muốn giữ nguyên hành vi "xóa vĩnh viễn" đó khi bạn <strong>bật versioning lên</strong> ,</p>
+<p>thì bạn <strong>phải thêm một cấu hình <code>noncurrent expiration</code></strong> .</p>
+</blockquote>
+<hr />
+<h3 id="ban-goc_1">🔸 Bản gốc:<a class="headerlink" href="#ban-goc_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>The <strong>noncurrent expiration lifecycle configuration</strong> manages the <strong>deletes of the noncurrent object versions</strong></p>
+<p>in the versioning-enabled bucket.</p>
+</blockquote>
+<h4 id="nghia_1">✅ Nghĩa:<a class="headerlink" href="#nghia_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Cấu hình <code>noncurrent expiration</code> dùng để <strong>tự động xóa các phiên bản cũ (noncurrent versions)</strong></p>
+<p>trong bucket đã bật versioning.</p>
+</blockquote>
+<hr />
+<h3 id="ban-goc_2">🔸 Bản gốc:<a class="headerlink" href="#ban-goc_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>(A versioning-enabled bucket maintains one current, and zero or more noncurrent, object versions.)</p>
+</blockquote>
+<h4 id="nghia_2">✅ Nghĩa:<a class="headerlink" href="#nghia_2" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Một bucket bật versioning sẽ lưu:</p>
+<ul>
+<li>1 phiên bản hiện tại ( <strong>current</strong> )</li>
+<li>và 0 hoặc nhiều phiên bản cũ ( <strong>noncurrent</strong> )</li>
+</ul>
+</blockquote>
+<hr />
+<h3 id="tom-tat-de-hieu">📌 Tóm tắt dễ hiểu:<a class="headerlink" href="#tom-tat-de-hieu" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Trước khi bật versioning</th>
+<th>Sau khi bật versioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bạn dùng <code>expiration</code>để xóa object vĩnh viễn</td>
+<td>S3 không còn xóa vĩnh viễn khi object bị ghi đè hoặc xóa</td>
+</tr>
+<tr>
+<td>→ Object biến mất hoàn toàn</td>
+<td>→ Object cũ trở thành<strong>noncurrent version</strong></td>
+</tr>
+<tr>
+<td>Không cần thêm gì</td>
+<td><strong>Phải thêm <code>noncurrent expiration</code></strong>để dọn rác</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="vi-du">🔁 Ví dụ:<a class="headerlink" href="#vi-du" title="Permanent link">&para;</a></h3>
+<p>Bạn có file <code>report.pdf</code> trong bucket:</p>
+<ul>
+<li>✅ Khi bucket <strong>chưa bật versioning</strong> :</li>
+<li>Bạn cấu hình: "xóa sau 30 ngày"</li>
+<li>→ 30 ngày sau, file <code>report.pdf</code> bị xóa vĩnh viễn.</li>
+<li>❌ Sau khi <strong>bật versioning</strong> :</li>
+<li>Khi bạn cập nhật <code>report.pdf</code>, thì:<ul>
+<li>bản cũ trở thành <strong>noncurrent version</strong></li>
+<li>bản mới là <strong>current version</strong></li>
+</ul>
+</li>
+<li>Nếu bạn chỉ có <code>expiration</code>, thì <strong>chỉ bản hiện tại mới bị xóa</strong> , còn bản cũ vẫn còn.</li>
+<li>👉 Bạn cần <strong>thêm <code>noncurrent expiration</code></strong> để xóa cả bản cũ sau x ngày.</li>
+</ul>
+<h1 id="2mot-truong-ai-hoc-ivy-league-ang-ho-tro-nasa-xac-inh-cac-ia-iem-ha-canh-tiem-nang-cho-tau-tham-do-khong-nguoi-lai-ho-su-dung-kien-truc-ung-dung-dua-tren-hpc-hoi-ung-dung-nay-nen-trien-khai-ec2-theo-kieu-topology-nao">2.Một trường đại học Ivy League đang hỗ trợ NASA xác định các địa điểm hạ cánh tiềm năng cho tàu thăm dò không người lái. Họ sử dụng kiến trúc ứng dụng dựa trên <strong>HPC</strong> . Hỏi ứng dụng này nên triển khai EC2 theo kiểu topology nào?<a class="headerlink" href="#2mot-truong-ai-hoc-ivy-league-ang-ho-tro-nasa-xac-inh-cac-ia-iem-ha-canh-tiem-nang-cho-tau-tham-do-khong-nguoi-lai-ho-su-dung-kien-truc-ung-dung-dua-tren-hpc-hoi-ung-dung-nay-nen-trien-khai-ec2-theo-kieu-topology-nao" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="ap-an-ung">✅ Đáp án đúng:<a class="headerlink" href="#ap-an-ung" title="Permanent link">&para;</a></h2>
+<p><strong>The Amazon EC2 instances should be deployed in a <em>cluster placement group</em> so that the underlying workload can benefit from low network latency and high network throughput.</strong></p>
+<hr />
+<h2 id="giai-thich-chi-tiet">🔍 Giải thích chi tiết:<a class="headerlink" href="#giai-thich-chi-tiet" title="Permanent link">&para;</a></h2>
+<h3 id="1-hieu-yeu-cau-cua-bai-toan-hpc">1. 🔬 <strong>Hiểu yêu cầu của bài toán HPC:</strong><a class="headerlink" href="#1-hieu-yeu-cau-cua-bai-toan-hpc" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>High Performance Computing (HPC)</strong> là các ứng dụng tính toán hiệu năng cao, thường xử lý khối lượng lớn dữ liệu và yêu cầu:</li>
+<li><strong>Truyền dữ liệu nhanh giữa các node</strong></li>
+<li><strong>Độ trễ thấp</strong></li>
+<li><strong>Băng thông mạng cao</strong></li>
+<li><strong>Giao tiếp node-to-node thường xuyên</strong></li>
+<li>Ví dụ trong câu hỏi là một bài toán <strong>khoa học không gian</strong> , sử dụng tính toán mạnh để phân tích dữ liệu và mô phỏng, rất điển hình cho workload HPC.</li>
+</ul>
+<hr />
+<h3 id="2-cluster-placement-group-phu-hop-nhat-cho-hpc-vi">2. 🧠 <strong>Cluster Placement Group phù hợp nhất cho HPC vì:</strong><a class="headerlink" href="#2-cluster-placement-group-phu-hop-nhat-cho-hpc-vi" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Cluster Placement Group</strong> đặt tất cả các instance trong một nhóm <strong>gần nhau về vật lý</strong> bên trong <strong>một Availability Zone (AZ)</strong> .</li>
+<li>Điều này cho phép:</li>
+<li><strong>Độ trễ mạng thấp</strong></li>
+<li><strong>Tốc độ truyền dữ liệu giữa các EC2 cao</strong></li>
+<li>Phù hợp với ứng dụng <strong>tightly-coupled</strong> , nơi các máy phải thường xuyên trao đổi dữ liệu.</li>
+</ul>
+<blockquote>
+<p>📌 <strong>HPC workloads luôn được khuyến nghị triển khai trong Cluster Placement Group</strong> theo tài liệu chính thức của AWS.</p>
+</blockquote>
+<hr />
+<h2 id="giai-thich-cac-lua-chon-sai">❌ Giải thích các lựa chọn sai:<a class="headerlink" href="#giai-thich-cac-lua-chon-sai" title="Permanent link">&para;</a></h2>
+<h3 id="3-partition-placement-group">3. 🚫 <strong>Partition Placement Group</strong> :<a class="headerlink" href="#3-partition-placement-group" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Dùng để tách nhóm EC2 theo <strong>partition logic riêng biệt</strong> , mỗi partition không dùng chung phần cứng.
+  partition có thể ở các az khác nhau,<strong>Tối đa</strong> : 7 partition mỗi AZ.</li>
+<li>Tốt cho hệ thống phân tán lớn như <strong>Hadoop, Cassandra, Kafka</strong> .</li>
+<li><strong>Không tập trung các máy gần nhau</strong> → <strong>không đảm bảo độ trễ thấp</strong> → <strong>Không phù hợp cho HPC</strong> .</li>
+</ul>
+<hr />
+<h3 id="4-spread-placement-group">4. 🚫 <strong>Spread Placement Group</strong> :<a class="headerlink" href="#4-spread-placement-group" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Mỗi EC2 được đặt trên <strong>racks khác nhau</strong> , <strong>cách ly vật lý</strong> → giảm nguy cơ <strong>các lỗi đồng thời</strong> (correlated failures).
+  , SPG có thể ở các az khác nhau,You can have a maximum of seven running instances per Availability Zone per group. (nghĩa là 7 instance trong 1 group ở 1 az )</li>
+<li>Phù hợp cho workload <strong>yêu cầu độ sẵn sàng cao (HA)</strong> , nhưng không yêu cầu truyền dữ liệu nhanh giữa máy.</li>
+<li><strong>Không tối ưu mạng giữa các máy</strong> → <strong>Không phù hợp HPC</strong></li>
+</ul>
+<hr />
+<h3 id="5-auto-scaling-group">5. 🚫 <strong>Auto Scaling Group</strong> :<a class="headerlink" href="#5-auto-scaling-group" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Dùng để tự động <strong>tăng/giảm số lượng EC2</strong> theo tải.</li>
+<li>Tốt cho các ứng dụng <strong>web / backend / microservices</strong> , nơi cần <strong>mở rộng linh hoạt</strong> .</li>
+<li>Nhưng HPC thường <strong>cố định số lượng node</strong> , và yêu cầu <strong>hiệu năng mạng cao</strong> chứ không phải chỉ co giãn → <strong>Không phù hợp HPC</strong></li>
+</ul>
+<h2 id="1-partition-placement-group-ppg">🧩 <strong>1. Partition Placement Group (PPG)</strong><a class="headerlink" href="#1-partition-placement-group-ppg" title="Permanent link">&para;</a></h2>
+<h3 id="su-that">✅ Sự thật:<a class="headerlink" href="#su-that" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Tối đa 7 partition / AZ</strong> .</li>
+<li><strong>Mỗi partition</strong> có thể chứa <strong>nhiều EC2 instance</strong> (không giới hạn cụ thể).</li>
+<li>Các EC2 trong <strong>cùng một partition</strong> có thể <strong>dùng chung phần cứng</strong> .</li>
+<li><strong>Các partition khác nhau</strong> thì <strong>không dùng chung phần cứng</strong> → tách biệt để tránh "correlated failure".</li>
+</ul>
+<h3 id="tom-lai">📌 Tóm lại:<a class="headerlink" href="#tom-lai" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Thông số</th>
+<th>Giá trị</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số partition / AZ</td>
+<td>Tối đa 7</td>
+</tr>
+<tr>
+<td>Số EC2 / partition</td>
+<td>Gần như<strong>không giới hạn</strong></td>
+</tr>
+<tr>
+<td>Số EC2 / AZ</td>
+<td>Tùy số EC2 bạn đặt trong từng partition</td>
+</tr>
+<tr>
+<td>AZ khác nhau?</td>
+<td>✅ Có thể triển khai trên nhiều AZ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-spread-placement-group-spg">🧩 <strong>2. Spread Placement Group (SPG)</strong><a class="headerlink" href="#2-spread-placement-group-spg" title="Permanent link">&para;</a></h2>
+<h3 id="su-that_1">✅ Sự thật:<a class="headerlink" href="#su-that_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Mỗi EC2 instance</strong> được đặt trên <strong>1 rack riêng biệt</strong> .</li>
+<li><strong>Tối đa 7 EC2 / AZ / mỗi Spread Placement Group</strong> (trừ khi xin tăng quota).</li>
+<li><strong>Một SPG có thể trải rộng nhiều AZ</strong> , và mỗi AZ được <strong>tối đa 7 EC2</strong> .</li>
+<li><strong>Tổng cộng mỗi SPG có thể có: số AZ × 7 EC2 instance</strong> (mặc định).</li>
+</ul>
+<h3 id="tom-lai_1">📌 Tóm lại:<a class="headerlink" href="#tom-lai_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Thông số</th>
+<th>Giá trị</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Số EC2 / AZ / SPG</td>
+<td><strong>Tối đa 7</strong>(mỗi cái trên rack riêng)</td>
+</tr>
+<tr>
+<td>Tổng EC2 / SPG</td>
+<td>AZ × 7</td>
+</tr>
+<tr>
+<td>EC2 dùng chung rack?</td>
+<td>❌ Không</td>
+</tr>
+<tr>
+<td>Triển khai đa AZ?</td>
+<td>✅ Có thể</td>
+</tr>
+<tr>
+<td>Bạn có thể tạo bao nhiêu SPG tùy ý.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="so-sanh-cluster-vs-partition-vs-spread-placement-group">🧠 <strong>So sánh : Cluster vs Partition vs Spread Placement Group</strong><a class="headerlink" href="#so-sanh-cluster-vs-partition-vs-spread-placement-group" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Tiêu chí</strong></th>
+<th><strong>Cluster Placement Group</strong></th>
+<th><strong>Partition Placement Group</strong></th>
+<th><strong>Spread Placement Group</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>💡<strong>Khái niệm cốt lõi</strong></td>
+<td>Nhóm các EC2 gần nhau về vật lý để đạt<strong>hiệu suất mạng tối đa</strong></td>
+<td>Nhóm EC2 thành<strong>các partition độc lập phần cứng </strong>nhằm<strong>giảm rủi ro lan truyền lỗi phần cứng</strong></td>
+<td>Mỗi EC2 nằm<strong>trên một rack riêng biệt</strong> , tối đa hóa khả năng <strong>cách ly lỗi phần cứng</strong></td>
+</tr>
+<tr>
+<td>📌<strong>Mô hình triển khai phần cứng</strong></td>
+<td>Các EC2 nằm<strong>rất gần nhau</strong>(có thể cùng rack hoặc lân cận trong AZ)</td>
+<td>Mỗi partition dùng phần cứng riêng; các partition<strong>không chia sẻ thiết bị</strong></td>
+<td>Mỗi EC2 nằm trên<strong>một rack khác nhau</strong>→ mỗi rack có nguồn điện, mạng riêng biệt</td>
+</tr>
+<tr>
+<td>⚙️<strong>Kiến trúc phù hợp</strong></td>
+<td><strong>Tightly-coupled systems</strong>– hệ thống cần truyền thông liên tục, tốc độ cao (HPC, AI, ML, MPI, CFD)</td>
+<td><strong>Distributed systems</strong>– hệ thống phân tán, cần song song hóa, ví dụ Hadoop, Cassandra, Kafka</td>
+<td><strong>Critical systems</strong>– hệ thống lõi không được phép cùng hỏng, như DB, quorum-based clusters, control planes</td>
+</tr>
+<tr>
+<td>🔌<strong>Hiệu suất mạng</strong></td>
+<td>✅<strong>Cao nhất</strong>– bandwidth lớn, latency thấp</td>
+<td>❌ Không đảm bảo cao vì có thể trải qua nhiều AZ</td>
+<td>❌ Không đảm bảo cao, vì các EC2 phân tán vật lý</td>
+</tr>
+<tr>
+<td>🔒<strong>Tách biệt lỗi phần cứng (fault isolation)</strong></td>
+<td>❌ Không (các EC2 có thể cùng rack)</td>
+<td>✅ Theo nhóm (partition cách ly nhau, nhưng cùng partition vẫn có thể bị lỗi chung)</td>
+<td>✅ Tối đa – mỗi EC2 nằm rack khác, gần như lỗi phần cứng không bao giờ ảnh hưởng đồng thời 2 instance</td>
+</tr>
+<tr>
+<td>🧱<strong>Khả năng chịu lỗi (resilience)</strong></td>
+<td>Thấp – nếu rack lỗi có thể ảnh hưởng cả nhóm</td>
+<td>Trung bình – lỗi chỉ ảnh hưởng 1 partition</td>
+<td>Cao – lỗi chỉ ảnh hưởng 1 EC2, các EC2 còn lại vẫn hoạt động</td>
+</tr>
+<tr>
+<td>📚<strong>Khả năng mở rộng (scalability)</strong></td>
+<td>Hạn chế – càng nhiều EC2 càng khó giữ gần nhau</td>
+<td>Rất tốt – có thể mở rộng dễ dàng bằng thêm partition hoặc AZ khác</td>
+<td>Kém – bị giới hạn 7 EC2 / AZ / SPG mặc định</td>
+</tr>
+<tr>
+<td>🔁<strong>Auto Scaling phù hợp không?</strong></td>
+<td>Không phù hợp lắm vì phụ thuộc vào khả năng gói cụm</td>
+<td>✅ Phù hợp với workload phân tán mở rộng tự nhiên</td>
+<td>❌ Không khuyến khích – dễ vượt giới hạn instance</td>
+</tr>
+<tr>
+<td>🌐<strong>Multi-AZ hỗ trợ?</strong></td>
+<td>❌ Không – chỉ được trong<strong>1 AZ duy nhất</strong></td>
+<td>✅ Có thể trải rộng<strong>nhiều AZ</strong></td>
+<td>✅ Có thể trải rộng<strong>nhiều AZ</strong></td>
+</tr>
+<tr>
+<td>🧮<strong>Số lượng phần tử / giới hạn mặc định</strong></td>
+<td>Không giới hạn cụ thể, nhưng khó đạt hiệu quả khi nhiều EC2</td>
+<td>Tối đa 7 partition / AZ, mỗi partition chứa<strong>nhiều EC2</strong></td>
+<td>Tối đa 7 EC2 / AZ / SPG (mặc định)</td>
+</tr>
+<tr>
+<td>🧭<strong>Cách điều phối phần cứng của AWS</strong></td>
+<td>Gán EC2 vào vùng phần cứng cực gần (low-latency fabric)</td>
+<td>Mỗi partition được đặt trên cụm phần cứng riêng, không dùng chung network/power với partition khác</td>
+<td>Mỗi EC2 ép buộc vào rack vật lý riêng – mỗi rack có power/network riêng</td>
+</tr>
+</tbody>
+</table>
+<p>Giới hạn mặc định trên mỗi Region 100 cho cả 3 loại</p>
+<h3 id="khi-nao-dung-loai-nao">🧪 <strong>Khi nào dùng loại nào?</strong><a class="headerlink" href="#khi-nao-dung-loai-nao" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tình huống</th>
+<th>Loại nên dùng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cần tính toán hiệu năng cao (AI/ML/HPC) – giao tiếp nhanh giữa EC2</td>
+<td>Cluster Placement</td>
+</tr>
+<tr>
+<td>Xử lý Big Data phân tán, nhiều node, tính song song cao (Kafka, Hadoop, Cassandra)</td>
+<td>Partition Placement</td>
+</tr>
+<tr>
+<td>Hệ thống quan trọng, không được lỗi cùng lúc (DB, master node, quorum, etcd...)</td>
+<td>Spread Placement</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3cost-of-test-file-storage-on">3.<strong>Cost of test file storage on</strong><a class="headerlink" href="#3cost-of-test-file-storage-on" title="Permanent link">&para;</a></h1>
+<p>Amazon S3 Standard &lt; Cost of test file storage on Amazon EFS &lt; Cost of test file storage on Amazon EBS**</p>
+<p>With Amazon EBS Elastic Volumes, you pay only for the resources that you use. The Amazon EFS Standard Storage pricing is $0.30 per GB per month. Therefore the cost for storing the test file on EFS is $0.30 for the month.</p>
+<p>For Amazon EBS General Purpose SSD (gp2) volumes, the charges are $0.10 per GB-month of provisioned storage. Therefore, for a provisioned storage of 100GB for this use-case, the monthly cost on EBS is $0.10*100 = $10. This cost is irrespective of how much storage is actually consumed by the test file.</p>
+<p>For S3 Standard storage, the pricing is $0.023 per GB per month. Therefore, the monthly storage cost on S3 for the test file is $0.023.</p>
+<h1 id="4kich-ban-cong-ty-ban-le-co-trang-web-ong-chay-tren-may-chu-tai-trung-tam-du-lieu-o-my-sap-ra-mat-o-chau-a-can-giam-o-tre-cho-nguoi-dung-tai-ay-ngay-lap-tuc-trong-khi-backend-may-chu-xu-ly-logic-van-phai-o-my">4.<strong>Kịch bản:</strong> Công ty bán lẻ có trang web động chạy trên máy chủ tại trung tâm dữ liệu ở Mỹ. Sắp ra mắt ở Châu Á, cần <strong>giảm độ trễ</strong> cho người dùng tại đây <strong>ngay lập tức</strong> , trong khi <strong>backend (máy chủ xử lý logic) VẪN PHẢI ở Mỹ</strong> .<a class="headerlink" href="#4kich-ban-cong-ty-ban-le-co-trang-web-ong-chay-tren-may-chu-tai-trung-tam-du-lieu-o-my-sap-ra-mat-o-chau-a-can-giam-o-tre-cho-nguoi-dung-tai-ay-ngay-lap-tuc-trong-khi-backend-may-chu-xu-ly-logic-van-phai-o-my" title="Permanent link">&para;</a></h1>
+<p><strong>Giải pháp phù hợp nhất:</strong> <strong>Sử dụng Amazon CloudFront với Custom Origin trỏ đến máy chủ On-Premises của bạn.</strong></p>
+<ul>
+<li><strong>Giải thích:</strong></li>
+<li><strong>Amazon CloudFront</strong> là dịch vụ Mạng phân phối nội dung (CDN) toàn cầu của AWS. Nó có mạng lưới các điểm biên (edge locations) và bộ nhớ đệm khu vực (regional edge caches) đặt rải rác khắp thế giới (gần người dùng cuối).</li>
+<li><strong>Custom Origin:</strong> CloudFront có thể lấy nội dung gốc từ nhiều nguồn (origin). Ngoài S3 hoặc EC2, nó có thể lấy nội dung từ bất kỳ máy chủ HTTP nào có thể truy cập được qua Internet, bao gồm cả máy chủ On-Premises của bạn. Máy chủ On-Premises trong trường hợp này chính là "Custom Origin" của CloudFront.</li>
+<li><strong>Tại sao giải quyết vấn đề:</strong> Khi người dùng ở Châu Á truy cập trang web, yêu cầu của họ sẽ được chuyển đến điểm biên CloudFront gần nhất. CloudFront sẽ lưu bản sao nội dung (đặc biệt là nội dung tĩnh hoặc nội dung động có thể cache được) tại điểm biên này. Lần truy cập tiếp theo hoặc bởi người dùng khác trong cùng khu vực, CloudFront sẽ phục vụ nội dung trực tiếp từ điểm biên gần đó. Điều này giảm đáng kể quãng đường vật lý mà dữ liệu phải di chuyển, từ đó <strong>giảm độ trễ và tối ưu thời gian tải trang</strong> cho người dùng ở Châu Á, <strong>mà không cần di chuyển backend</strong> (máy chủ xử lý chính ở Mỹ).</li>
+</ul>
+<p><strong>Tại sao các lựa chọn khác không phù hợp:</strong></p>
+<ul>
+<li><strong>CloudFront Custom Origin trỏ đến Route 53 DNS record:</strong> <strong>Sai cấu hình</strong> . CloudFront Origin cần trỏ đến một endpoint chứa nội dung (như máy chủ HTTP hoặc S3 bucket), không phải bản ghi DNS trong Route 53 (Route 53 chỉ giải quyết tên miền thành địa chỉ IP).</li>
+<li><strong>Di chuyển website sang S3 + S3 CRR:</strong> <strong>Sai</strong> . Trang web là <strong>động</strong> . S3 chỉ phù hợp cho <strong>website tĩnh</strong> . S3 không chạy code xử lý phía máy chủ (server-side scripting). S3 CRR (sao chép dữ liệu giữa các bucket S3) không liên quan đến việc chạy website động hoặc giảm độ trễ cho xử lý backend.</li>
+<li><strong>Route 53 Geo-proximity routing trỏ đến máy chủ On-Premises:</strong> <strong>Sai</strong> . Geo-proximity routing của Route 53 chỉ giúp định tuyến người dùng đến endpoint <em>gần nhất</em> bạn đã định nghĩa. Tuy nhiên, vì máy chủ On-Premises duy nhất vẫn ở Mỹ, người dùng ở Châu Á vẫn sẽ được định tuyến trực tiếp đến máy chủ <em>xa</em> đó. Nó không giảm quãng đường thực tế và không giải quyết được độ trễ do khoảng cách địa lý đối với các tương tác với backend ở Mỹ.</li>
+</ul>
+<p><strong>CloudFront</strong> mang nội dung (cache) lại <strong>gần người dùng</strong> ở Châu Á -&gt; giảm quãng đường -&gt; <strong>giảm độ trễ</strong> -&gt; tải nhanh hơn, <strong>backend vẫn ở chỗ cũ</strong> .</p>
+<h1 id="35oi-devops-cua-mot-cong-ty-thuong-mai-ien-tu-can-thuc-hien-cong-viec-bao-tri-cu-the-la-trien-khai-ban-va-maintenance-patch-tren-mot-phien-ban-ec2-cu-the-thuoc-ve-mot-auto-scaling-group-ang-su-dung-chinh-sach-ieu-chinh-quy-mo-theo-buoc-step-scaling-policy1-van-e-ho-gap-phai-la-khi-ap-dung-ban-va-trang-thai-kiem-tra-suc-khoe-health-check-status-cua-phien-ban-o-hien-thi-la-khong-hoat-ong-out-of-service-trong-vai-phut-ieu-nay-khien-auto-scaling-group-kich-hoat-tinh-nang-tu-ong-va-ngay-lap-tuc-khoi-tao-mot-phien-ban-thay-the">35.<strong>Đội DevOps của một công ty thương mại điện tử cần thực hiện công việc bảo trì (cụ thể là triển khai bản vá - maintenance patch) trên một phiên bản EC2 cụ thể thuộc về một Auto Scaling Group đang sử dụng chính sách điều chỉnh quy mô theo bước (step scaling policy).</strong>^1^ Vấn đề họ gặp phải là khi áp dụng bản vá, trạng thái kiểm tra sức khỏe (health check status) của phiên bản đó hiển thị là "không hoạt động" (out of service) trong vài phút. Điều này khiến Auto Scaling Group kích hoạt tính năng tự động và ngay lập tức khởi tạo một phiên bản thay thế.<a class="headerlink" href="#35oi-devops-cua-mot-cong-ty-thuong-mai-ien-tu-can-thuc-hien-cong-viec-bao-tri-cu-the-la-trien-khai-ban-va-maintenance-patch-tren-mot-phien-ban-ec2-cu-the-thuoc-ve-mot-auto-scaling-group-ang-su-dung-chinh-sach-ieu-chinh-quy-mo-theo-buoc-step-scaling-policy1-van-e-ho-gap-phai-la-khi-ap-dung-ban-va-trang-thai-kiem-tra-suc-khoe-health-check-status-cua-phien-ban-o-hien-thi-la-khong-hoat-ong-out-of-service-trong-vai-phut-ieu-nay-khien-auto-scaling-group-kich-hoat-tinh-nang-tu-ong-va-ngay-lap-tuc-khoi-tao-mot-phien-ban-thay-the" title="Permanent link">&para;</a></h1>
+<p><strong>Vấn đề cần giải quyết:</strong> Làm thế nào để thực hiện bảo trì mà không bị Auto Scaling Group tự động thay thế phiên bản bị đánh dấu là không khỏe tạm thời? Cần các bước hiệu quả nhất về thời gian và tài nguyên.</p>
+<p><strong>Hai Bước Hiệu quả nhất được đề xuất (và lý do):</strong></p>
+<ol>
+<li><strong>Đưa phiên bản vào trạng thái Standby và sau đó cập nhật phiên bản bằng cách áp dụng bản vá bảo trì. Sau khi phiên bản sẵn sàng, bạn có thể thoát khỏi trạng thái Standby và đưa phiên bản trở lại hoạt động.</strong></li>
+<li><strong>Giải thích:</strong> Trạng thái <strong>Standby</strong> cho phép một phiên bản EC2 vẫn là một phần của Auto Scaling Group nhưng <strong>không chủ động xử lý lưu lượng truy cập ứng dụng</strong> và <strong>không được tính vào số lượng phiên bản "InService"</strong> của nhóm.</li>
+<li><strong>Tại sao hiệu quả:</strong> Khi phiên bản ở trạng thái Standby, Auto Scaling Group sẽ <strong>không thực hiện hành động thay thế</strong> nó ngay cả khi trạng thái kiểm tra sức khỏe của nó thay đổi tạm thời (ví dụ: hiển thị là không khỏe trong lúc bảo trì).</li>
+<li><strong>Các bước thực hiện:</strong><ul>
+<li>Đưa phiên bản cần bảo trì vào trạng thái Standby.</li>
+<li>Áp dụng bản vá bảo trì lên phiên bản đó.</li>
+<li>Sau khi bảo trì xong và phiên bản hoạt động bình thường trở lại, thoát trạng thái Standby.</li>
+<li>Phiên bản sẽ được đưa trở lại trạng thái "InService" và tiếp tục xử lý lưu lượng.</li>
+</ul>
+</li>
+<li><strong>Lợi ích:</strong> Quá trình này diễn ra trực tiếp trên phiên bản ban đầu, giữ nó là một phần của ASG và tránh việc khởi tạo không cần thiết một phiên bản mới.</li>
+<li><strong>Tạm dừng (Suspend) tiến trình ReplaceUnhealthy cho Auto Scaling Group và áp dụng bản vá bảo trì cho phiên bản. Khi phiên bản sẵn sàng, bạn có thể bật lại tiến trình ReplaceUnhealthy.</strong></li>
+<li><strong>Giải thích:</strong> <strong>Tiến trình **</strong>ReplaceUnhealthy<strong> là một trong các "process type" của Auto Scaling Group.^2^ Chức năng của nó là </strong>chấm dứt (terminate) các phiên bản bị đánh dấu là không khỏe<strong> và </strong>khởi tạo phiên bản mới để thay thế** .</li>
+<li><strong>Tại sao hiệu quả:</strong> Khi bạn <strong>tạm dừng</strong> tiến trình <code>ReplaceUnhealthy</code>, bạn ra lệnh cho Auto Scaling Group <strong>dừng ngay việc thay thế các phiên bản bị đánh dấu là không khỏe</strong> . Các phiên bản vẫn có thể bị đánh dấu là không khỏe (do kiểm tra sức khỏe EC2 hoặc ELB thất bại) trong thời gian này, nhưng ASG sẽ không hành động.</li>
+<li><strong>Các bước thực hiện:</strong><ul>
+<li>Tạm dừng tiến trình <code>ReplaceUnhealthy</code> cho ASG.</li>
+<li>Áp dụng bản vá bảo trì lên phiên bản (phiên bản có thể bị đánh dấu là không khỏe).</li>
+<li>Sau khi bảo trì xong và phiên bản hoạt động bình thường.</li>
+<li>Bật lại (Resume) tiến trình <code>ReplaceUnhealthy</code>. (Lưu ý: Nếu phiên bản vẫn còn bị đánh dấu là không khỏe khi bạn Resume, ASG có thể sẽ thay thế nó ngay lúc đó. Đôi khi bạn có thể cần cấu hình hoặc chờ phiên bản tự chuyển sang trạng thái khỏe mạnh trước khi Resume nếu nó không tự động).</li>
+</ul>
+</li>
+<li><strong>Lợi ích:</strong> Ngăn chặn ASG tự động thay thế phiên bản chỉ vì nó tạm thời không khỏe trong quá trình bảo trì.</li>
+</ol>
+<p><strong>Tại sao các lựa chọn khác không phù hợp (dựa trên giải thích):</strong></p>
+<ul>
+<li><strong>Chụp Snapshot, tạo AMI mới, khởi chạy phiên bản mới dùng AMI đó, áp dụng bản vá cho phiên bản mới, thêm lại vào ASG, chấm dứt phiên bản cũ:</strong> <strong>Không hiệu quả về thời gian và tài nguyên</strong> . Quá trình này bao gồm nhiều bước phức tạp và tốn thời gian (chụp snapshot, tạo AMI là các thao tác tốn thời gian), chỉ để áp dụng bản vá cho một phiên bản duy nhất. Có những cách đơn giản hơn nhiều (Standby hoặc Suspend).</li>
+<li><strong>Xóa Auto Scaling Group, sửa lỗi trên phiên bản, tạo ASG mới, thêm lại các phiên bản:</strong> <strong>Không được khuyến nghị và rất không hiệu quả/gây gián đoạn</strong> . Việc xóa và tạo lại toàn bộ Auto Scaling Group là một hoạt động lớn, gây gián đoạn hoạt động và không cần thiết chỉ để bảo trì một phiên bản.</li>
+<li><strong>Tạm dừng tiến trình ScheduledActions:</strong> <strong>Không liên quan</strong> đến vấn đề thay thế phiên bản không khỏe. <code>ScheduledActions</code> (các hành động theo lịch trình) được dùng để điều chỉnh quy mô ASG vào các thời điểm cụ thể theo lịch (ví dụ: tăng số lượng phiên bản vào giờ cao điểm), chứ không phải để phản ứng với trạng thái sức khỏe của phiên bản.</li>
+</ul>
+<p>Tóm lại, hai phương pháp Standby và Suspend ReplaceUnhealthy đều cho phép bạn "tách" phiên bản ra khỏi sự giám sát tự động thay thế của ASG trong quá trình bảo trì, nhưng giữ nó vẫn là một phần của nhóm (Standby) hoặc tạm dừng quy trình thay thế của nhóm (Suspend ReplaceUnhealthy), giúp bảo trì hiệu quả và ít gây gián đoạn nhất.</p>
+<p>As soon as you resume the <code>ReplaceUnhealthy</code> process, Amazon EC2 Auto Scaling replaces instances that were marked unhealthy while this process was suspended</p>
+<p>Ví dụ:</p>
+<ul>
+<li>Bạn tạm dừng <code>ReplaceUnhealthy</code>.</li>
+<li>Phiên bản A bị lỗi và bị đánh dấu là không khỏe (nhưng ASG không làm gì cả vì bạn đã tạm dừng).</li>
+<li>Bạn bảo trì Phiên bản B, nó cũng bị đánh dấu là không khỏe trong 5 phút (ASG vẫn không làm gì). Sau 5 phút, Phiên bản B khỏe lại.</li>
+<li>Bạn bật lại <code>ReplaceUnhealthy</code>.</li>
+<li>Ngay lập tức, ASG sẽ nhìn vào trạng thái hiện tại. Nếu Phiên bản A vẫn đang không khỏe, nó sẽ bị thay thế. Nếu Phiên bản B đã khỏe lại, nó sẽ không bị thay thế.</li>
+</ul>
+<p>Điều này nhấn mạnh rằng bạn cần đảm bảo phiên bản của mình <strong>thực sự khỏe mạnh trở lại</strong> trước khi bật lại tiến trình <code>ReplaceUnhealthy</code>, nếu không nó có thể bị thay thế ngay sau khi bạn Resume.</p>
+<p>Trong Auto Scaling Group, <strong>Desired Capacity</strong> là số lượng phiên bản mà bạn muốn nhóm duy trì ở trạng thái "InService" (đang hoạt động và xử lý lưu lượng).</p>
+<p>Khi bạn đưa một phiên bản từ trạng thái "InService" sang trạng thái <strong>Standby</strong> , có hai cách xử lý giá trị Desired Capacity:</p>
+<ol>
+<li><strong>Hành vi Mặc định:</strong></li>
+<li>Theo mặc định, giá trị <strong>Desired Capacity sẽ bị GIẢM đi 1 đơn vị</strong> (hoặc bằng số phiên bản bạn đưa vào Standby).</li>
+<li><strong>Lý do:</strong> Điều này nhằm <strong>ngăn chặn</strong> Auto Scaling Group tự động khởi chạy thêm một phiên bản khác ngay lập tức để bù đắp cho phiên bản vừa chuyển sang Standby. ASG hiểu rằng bạn tạm thời chỉ cần số lượng phiên bản "InService" ít hơn 1 (bằng Desired Capacity mới) trong khi phiên bản kia đang ở trạng thái Standby.</li>
+<li><strong>Hành vi Tùy chọn (Không giảm Desired Capacity):</strong></li>
+<li>Thay vì để giá trị Desired Capacity bị giảm theo mặc định, bạn có thể <strong>chỉ định rõ ràng rằng Desired Capacity KHÔNG BỊ GIẢM</strong> khi bạn đưa phiên bản vào trạng thái Standby.</li>
+<li><strong>Kết quả:</strong> Nếu bạn chọn tùy chọn này, Auto Scaling Group sẽ <strong>khởi chạy thêm một phiên bản mới</strong> ngay lập tức để thay thế cho phiên bản vừa được đưa vào trạng thái Standby.</li>
+<li><strong>Mục đích của tùy chọn này:</strong> Nhằm giúp bạn <strong>duy trì đủ số lượng phiên bản "InService"</strong> bằng với giá trị Desired Capacity ban đầu, <strong>ngay cả khi</strong> một hoặc nhiều phiên bản đang tạm thời ở trạng thái Standby (ví dụ: để bảo trì). ASG đảm bảo năng lực ứng dụng của bạn không bị giảm sút do có phiên bản đang ở Standby.</li>
+</ol>
+<p><strong>Tóm lại:</strong></p>
+<ul>
+<li><strong>Mặc định:</strong> Đưa 1 instance vào Standby -&gt; Desired Capacity giảm 1 -&gt; ASG không launch thêm.</li>
+<li><strong>Tùy chọn:</strong> Đưa 1 instance vào Standby + <strong>chỉ định KHÔNG giảm Desired Capacity</strong> -&gt; Desired Capacity giữ nguyên -&gt; ASG launch thêm 1 instance để bù vào -&gt; Duy trì tổng số instance InService bằng Desired Capacity ban đầu.</li>
+</ul>
+<h1 id="1mot-cong-ty-it-gap-su-co-bao-mat-mot-nha-phat-trien-moi-uoc-cap-quyen-truy-cap-ay-u-vao-amazon-dynamodb-trong-moi-truong-production-trong-khi-lam-viec-tren-mot-tinh-nang-moi-nha-phat-trien-nay-a-vo-tinh-xoa-mat-mot-vai-bang-quan-trong-trong-moi-truong-production-cong-ty-muon-tim-cach-hieu-qua-nhat-e-ngan-chan-su-co-tuong-tu-tai-dien">1.Một công ty IT gặp sự cố bảo mật: một nhà phát triển mới được cấp <strong>quyền truy cập đầy đủ vào Amazon DynamoDB</strong> trong môi trường production. Trong khi làm việc trên một tính năng mới, nhà phát triển này đã vô tình <strong>xóa mất một vài bảng quan trọng</strong> trong môi trường production. Công ty muốn tìm cách <strong>hiệu quả nhất</strong> để ngăn chặn sự cố tương tự tái diễn.<a class="headerlink" href="#1mot-cong-ty-it-gap-su-co-bao-mat-mot-nha-phat-trien-moi-uoc-cap-quyen-truy-cap-ay-u-vao-amazon-dynamodb-trong-moi-truong-production-trong-khi-lam-viec-tren-mot-tinh-nang-moi-nha-phat-trien-nay-a-vo-tinh-xoa-mat-mot-vai-bang-quan-trong-trong-moi-truong-production-cong-ty-muon-tim-cach-hieu-qua-nhat-e-ngan-chan-su-co-tuong-tu-tai-dien" title="Permanent link">&para;</a></h1>
+<p><strong>Vấn đề cần giải quyết:</strong> Làm thế nào để kiểm soát chặt chẽ quyền hạn được cấp cho các nhân viên mới (và nói chung là các nhân viên khác) để họ không thể vô tình (hoặc cố ý) gây ra thiệt hại nghiêm trọng như xóa dữ liệu production, ngay cả khi người quản lý cấp quyền cho họ vô tình cấp quá tay?</p>
+<p><strong>Giải pháp Hiệu quả nhất được đề xuất (và lý do):</strong></p>
+<p>Giải pháp hiệu quả nhất để giải quyết vấn đề này là: <strong>Sử dụng Permissions Boundary (Ranh giới quyền) để kiểm soát quyền tối đa mà nhân viên có thể cấp cho các thực thể IAM (người dùng và vai trò).</strong></p>
+<ul>
+<li><strong>Permissions Boundary làm gì trong trường hợp này?</strong></li>
+<li>Người quản trị IAM của công ty (hoặc người có quyền phù hợp) sẽ tạo ra một <strong>chính sách ranh giới quyền (permissions boundary policy)</strong> . Chính sách này sẽ định nghĩa các quyền <strong>tối đa</strong> mà bất kỳ người dùng hoặc vai trò IAM nào được tạo và quản lý bởi các nhà phát triển (hoặc một nhóm nhân viên cụ thể) <strong>có thể có</strong> .</li>
+<li>Quan trọng là, chính sách ranh giới quyền này sẽ được thiết kế để <strong>KHÔNG BAO GỒM</strong> các quyền nguy hiểm như <code>dynamodb:DeleteTable</code> hoặc các quyền truy cập đầy đủ (<code>dynamodb:*</code>) vào các bảng production.</li>
+<li>Khi một nhà phát triển tạo một người dùng hoặc vai trò IAM mới, họ sẽ được yêu cầu (hoặc cấu hình bắt buộc) phải đính kèm chính sách ranh giới quyền này vào thực thể mới đó.</li>
+<li>Sau đó, nhà phát triển có thể đính kèm các chính sách quyền thông thường (identity-based policies) cho phép thực thể mới truy cập các tài nguyên cần thiết cho công việc (ví dụ: quyền <code>dynamodb:PutItem</code>, <code>dynamodb:GetItem</code> trên các bảng dev/test, hoặc thậm chí trên bảng production nếu cần đọc).</li>
+<li><strong>Quyền Hạn Thực Tế ngăn chặn sự cố:</strong></li>
+<li>Như đã giải thích trước đó, quyền hạn thực tế của người dùng/vai trò IAM sẽ là <strong>giao điểm</strong> của chính sách quyền thông thường VÀ chính sách ranh giới quyền.</li>
+<li>Trong trường hợp này, dù nhà phát triển có vô tình đính kèm một chính sách quyền rộng rãi (ví dụ: cho phép <code>dynamodb:*</code>), thì chính sách <strong>ranh giới quyền (không cho phép <code>dynamodb:DeleteTable</code>)</strong> sẽ ghi đè và giới hạn lại.</li>
+<li>Kết quả là, người dùng IAM mới được tạo sẽ <strong>không có quyền thực tế</strong> để xóa các bảng DynamoDB production, ngay cả khi ý định cấp quyền ban đầu của người tạo là rộng rãi hơn.</li>
+<li><strong>Tại sao đây là cách hiệu quả nhất để ngăn sự cố tái diễn:</strong></li>
+<li>Nó thiết lập một <strong>hàng rào bảo vệ ở cấp độ chính sách</strong> , được kiểm soát bởi người quản trị an ninh.</li>
+<li>Nó cho phép ủy quyền việc tạo tài khoản/vai trò cho các nhóm khác (như đội phát triển) mà vẫn đảm bảo an toàn, không cần người quản trị trung tâm phải duyệt từng yêu cầu quyền chi tiết.</li>
+<li>Nó ngăn chặn các sự cố do vô tình cấp quá nhiều quyền ngay từ đầu bởi những người không chuyên về quản lý quyền IAM sâu.</li>
+</ul>
+<p><strong>Tại sao các lựa chọn khác không phù hợp (theo giải thích):</strong></p>
+<ul>
+<li><strong>CTO xem xét quyền hạn của từng người dùng IAM mới:</strong> <strong>Không hiệu quả và không mở rộng được</strong> . Ở quy mô công ty lớn với nhiều nhà phát triển mới thường xuyên, việc CTO phải duyệt thủ công từng bộ quyền hạn là không khả thi, tốn thời gian và dễ xảy ra sai sót.</li>
+<li><strong>Loại bỏ quyền truy cập đầy đủ CSDL cho tất cả người dùng trong tổ chức:</strong> <strong>Không thực tế</strong> . Sẽ có những người dùng hợp lệ (ví dụ: quản trị viên cơ sở dữ liệu, hệ thống backup tự động) cần có quyền truy cập đầy đủ hoặc các quyền quản trị mạnh mẽ đối với cơ sở dữ liệu để làm công việc của họ.</li>
+<li><strong>Chỉ người dùng Root có quyền truy cập đầy đủ CSDL:</strong> <strong>Thực hành không tốt (bad practice)</strong> . Tài khoản Root có quyền hạn cao nhất và không bị giới hạn bởi chính sách IAM. Sử dụng tài khoản Root cho các tác vụ hàng ngày làm tăng rủi ro bị lộ thông tin xác thực Root và gây ra thiệt hại không thể phục hồi. Các tác vụ quản trị nên được thực hiện bởi các người dùng/vai trò IAM với quyền hạn được giới hạn ở mức cần thiết (least privilege).</li>
+</ul>
+<p><strong>Tóm lại:</strong> Permissions Boundary là giải pháp có hệ thống và hiệu quả nhất để giải quyết vấn đề này bằng cách giới hạn quyền tối đa có thể được cấp, ngăn chặn việc cấp nhầm quyền nguy hiểm cho các thực thể IAM và từ đó phòng ngừa các sự cố như xóa bảng production một cách vô tình.</p>
+<h1 id="2kich-ban-nha-khoa-hoc-tai-anh-3gb-len-amazon-s3-dung-s3-transfer-acceleration-s3ta-nhung-qua-trinh-khong-uoc-tang-toc">2.<strong>Kịch bản:</strong> Nhà khoa học tải ảnh 3GB lên Amazon S3 dùng S3 Transfer Acceleration (S3TA), nhưng quá trình <strong>không được tăng tốc</strong> .<a class="headerlink" href="#2kich-ban-nha-khoa-hoc-tai-anh-3gb-len-amazon-s3-dung-s3-transfer-acceleration-s3ta-nhung-qua-trinh-khong-uoc-tang-toc" title="Permanent link">&para;</a></h1>
+<p><strong>Câu trả lời đúng:</strong> <strong>Nhà khoa học không phải trả bất kỳ khoản phí truyền dữ liệu nào cho việc tải ảnh lên.</strong></p>
+<p><strong>Giải thích (gọn gàng):</strong></p>
+<p>Có hai quy tắc tính phí áp dụng ở đây:</p>
+<ol>
+<li><strong>Tải dữ liệu vào S3 từ Internet:</strong> Amazon S3 <strong>không tính phí truyền dữ liệu</strong> khi dữ liệu được tải <strong>vào</strong> từ Internet.</li>
+<li><strong>S3 Transfer Acceleration (S3TA):</strong> Bạn <strong>chỉ trả phí</strong> cho S3TA khi quá trình truyền dữ liệu <strong>thực sự được tăng tốc</strong> .</li>
+</ol>
+<p>Trong kịch bản này, dữ liệu được tải <strong>vào</strong> S3 từ Internet (nghĩa là không mất phí S3 truyền dữ liệu) VÀ quá trình S3TA <strong>không mang lại hiệu quả tăng tốc</strong> (nghĩa là không mất phí S3TA). Do đó, tổng cộng <strong>không có khoản phí truyền dữ liệu nào</strong> phải trả.</p>
+<p>Các lựa chọn khác sai vì:</p>
+<ul>
+<li>Trả phí S3TA: Sai, vì quá trình không được tăng tốc.</li>
+<li>Trả phí S3 truyền dữ liệu: Sai, vì tải dữ liệu vào S3 từ Internet là miễn phí.</li>
+<li>
+<p>Trả cả hai: Sai, vì cả hai đều không phát sinh phí trong trường hợp này.</p>
+</li>
+<li>
+<p>Việc tải dữ liệu <strong>vào (IN)</strong> S3 từ Internet thông thường <strong>không mất phí truyền dữ liệu</strong> (Data Transfer IN).</p>
+</li>
+<li>Việc tải dữ liệu <strong>ra (OUT)</strong> khỏi S3 để đi ra Internet thông thường <strong>có mất phí truyền dữ liệu</strong> (Data Transfer OUT).</li>
+</ul>
+<p><strong>Còn S3 Transfer Acceleration (S3TA) thì sao?</strong> S3TA có biểu phí riêng, áp dụng <strong>THÊM VÀO</strong> phí truyền dữ liệu cơ bản (nếu có) <strong>nếu quá trình truyền thực sự được tăng tốc</strong> .</p>
+<ul>
+<li><strong>Tải LÊN S3 (IN) dùng S3TA:</strong> Phí truyền dữ liệu cơ bản là 0 đồng. Nếu S3TA tăng tốc, bạn trả <strong>chỉ phí S3TA</strong> . Nếu S3TA không tăng tốc, bạn trả <strong>0 đồng</strong> (không S3 phí, không S3TA phí).</li>
+<li><strong>Tải XUỐNG từ S3 (OUT) dùng S3TA:</strong> Phí truyền dữ liệu cơ bản (ra Internet) <strong>có thể có</strong> . Nếu S3TA tăng tốc, bạn trả <strong>phí truyền dữ liệu cơ bản (nếu có) + phí S3TA</strong> . Nếu S3TA không tăng tốc, bạn chỉ trả <strong>phí truyền dữ liệu cơ bản (nếu có)</strong> .</li>
+</ul>
+<p>Vậy, việc "ra" (tải xuống thứ từ s3) khỏi S3 thường mất phí, bất kể có dùng S3TA hay không (trừ các trường hợp ngoại lệ như tải xuống nội dung tĩnh từ CloudFront origin). S3TA là một khoản phí bổ sung nếu nó hiệu quả.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 tháng 5, 2025 10:02:46">12 tháng 5, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script
+  src="https://giscus.app/client.js"
+  data-repo="lelongc/aws"
+  data-repo-id="R_kgDONYXH9Q"
+  data-category="Q&A"
+  data-category-id="DIC_kwDONYXH9c4CpKTT"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark"
+  data-lang="en"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
+        
+          
+          <a href="../../_category_/" class="md-footer__link md-footer__link--prev" aria-label="Trước: đề stephane">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                đề stephane
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../../../orther-note/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Readme
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
