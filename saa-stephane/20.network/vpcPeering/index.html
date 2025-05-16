@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -6285,13 +6285,93 @@
 <li><strong>Giữa các Tài khoản AWS khác nhau:</strong> Kết nối VPC thuộc Tài khoản A với VPC thuộc Tài khoản B.</li>
 <li><strong>Giữa các Vùng AWS khác nhau:</strong> Kết nối VPC ở Vùng này với VPC ở Vùng khác.</li>
 </ul>
-<p><strong>Tính năng Nâng cao (<a href="">Security Groups qua Peering</a> ):</strong></p>
+<p><strong>Tính năng Nâng cao (<a href="../ly-thuyet-khac/sg-peering/">Security Groups qua Peering</a> ):</strong></p>
 <ul>
 <li>Khi kết nối peering được thiết lập giữa các VPC <strong>trong CÙNG một Vùng</strong> (có thể trong cùng tài khoản hoặc khác tài khoản), bạn có thể <strong>tham chiếu (reference)</strong> một <strong>Security Group ID</strong> từ VPC được peering trong luật của Security Group trong VPC của bạn.</li>
 <li>Điều này rất mạnh mẽ vì bạn có thể cho phép lưu lượng dựa trên "phiên bản này là thành viên của Security Group X" thay vì phải dựa trên dải địa chỉ IP (CIDR) của toàn bộ Subnet hoặc VPC.</li>
 </ul>
 <p><strong>Tóm lại:</strong></p>
 <p>VPC Peering là cách kết nối trực tiếp hai VPC qua mạng AWS. Yêu cầu CIDR không trùng lặp. Quan trọng nhất là nó <strong>không có tính bắc cầu</strong> (mỗi cặp cần peering riêng) và bạn <strong>phải cập nhật Bảng định tuyến</strong> ở cả hai phía để lưu lượng đi qua. Nó hỗ trợ kết nối trong/khác tài khoản và trong/khác vùng, với tính năng tham chiếu Security Group cho các kết nối cùng vùng.</p>
+<hr />
+<p><strong>Mục tiêu của Lab:</strong></p>
+<p>Thiết lập kết nối VPC Peering giữa VPC tùy chỉnh bạn đã tạo (<code>DemoVPC</code>) và VPC mặc định (Default VPC) được tạo sẵn trong tài khoản của bạn, sau đó cho phép các phiên bản EC2 trong hai VPC này giao tiếp với nhau bằng địa chỉ IP riêng tư (Private IP).</p>
+<p><strong>Bước 1: Chứng minh hai VPC ban đầu không kết nối được</strong></p>
+<ol>
+<li><strong>Khởi chạy phiên bản EC2:</strong><ul>
+<li>Khởi chạy một phiên bản EC2 mới (ví dụ: Amazon Linux 2, t2.micro, không cần Key Pair cho mục đích này) vào <strong>Default VPC</strong> của bạn.</li>
+<li>Đảm bảo phiên bản này nằm trong Subnet mặc định của Default VPC (thường tự động gán IP công khai và có Internet access).</li>
+<li>Tạo một Security Group mới (hoặc sử dụng Default SG của Default VPC) cho phép SSH (Port 22) từ địa chỉ IP công cộng của bạn hoặc từ bất kỳ đâu (<code>0.0.0.0/0</code> cho demo).</li>
+</ul>
+</li>
+<li><strong>Xác định IP riêng tư:</strong> Ghi lại địa chỉ IP riêng tư (Private IP) của phiên bản mới trong Default VPC và phiên bản Bastion Host (hoặc bất kỳ phiên bản nào trong <code>DemoVPC</code>) mà bạn sẽ sử dụng để kiểm tra kết nối. Lưu ý dải IP riêng tư của chúng (ví dụ: <code>DemoVPC</code> có thể dùng <code>10.0.0.0/16</code>, Default VPC thường dùng <code>172.31.0.0/16</code>). Sự khác biệt rõ rệt về dải IP riêng tư xác nhận chúng nằm ở các mạng (VPC) khác nhau.</li>
+<li><strong>Kiểm tra kết nối ban đầu:</strong><ul>
+<li>SSH vào phiên bản EC2 nằm trong <code>DemoVPC</code> của bạn (ví dụ: Bastion Host).</li>
+<li>Từ phiên bản đó, sử dụng lệnh <code>curl</code> hoặc <code>ping</code> để cố gắng kết nối đến địa chỉ IP riêng tư của phiên bản EC2 nằm trong <strong>Default VPC</strong> (ví dụ: <code>curl &lt;Private-IP-cua-instance-o-DefaultVPC&gt;:80</code> nếu bạn có web server ở đó, hoặc <code>ping &lt;Private-IP-cua-instance-o-DefaultVPC&gt;</code>).</li>
+<li><strong>Kết quả:</strong> Kết nối sẽ <strong>THẤT BẠI</strong> (ví dụ: timeout). Điều này chứng minh rằng theo mặc định, các VPC hoàn toàn cô lập với nhau về mặt mạng.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Bước 2: Tạo kết nối VPC Peering</strong></p>
+<ol>
+<li>Truy cập <strong>AWS VPC console</strong> -&gt; <strong>Peering Connections</strong>.</li>
+<li>Nhấp vào <strong>Create peering connection</strong>.</li>
+<li><strong>Cấu hình kết nối:</strong><ul>
+<li><strong>Peering connection name:</strong> Đặt tên cho dễ nhớ (ví dụ: <code>demo-peering-connection</code>).</li>
+<li><strong>Select a local VPC to peer with (Requester):</strong> Chọn <strong>VPC yêu cầu</strong> kết nối. Chọn <code>DemoVPC</code> của bạn.</li>
+<li><strong>Select a VPC to peer with (Accepter):</strong> Chọn <strong>VPC chấp nhận</strong> kết nối.</li>
+<li><strong>Account:</strong> Chọn "My account" (vì cả hai VPC đều trong cùng tài khoản).</li>
+<li><strong>Region:</strong> Chọn "This Region" (vì cả hai VPC đều trong cùng Vùng).</li>
+<li><strong>VPC ID:</strong> Chọn Default VPC từ danh sách thả xuống.</li>
+<li>AWS sẽ hiển thị CIDR của cả hai VPC. Hệ thống sẽ <strong>tự động kiểm tra xem có trùng lặp CIDR không</strong>. Nếu không trùng lặp, kết nối peering có thể được tạo.</li>
+<li>Nhấp vào <strong>Create peering connection</strong>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Bước 3: Chấp nhận kết nối Peering</strong></p>
+<ol>
+<li>Trạng thái của kết nối Peering mới tạo sẽ là <code>Pending Acceptance</code> (đang chờ chấp nhận).</li>
+<li>Trong cùng màn hình Peering Connections, chọn kết nối <code>demo-peering-connection</code>.</li>
+<li>Nhấp vào <strong>Actions</strong> -&gt; <strong>Accept Request</strong>.</li>
+<li>Nhấp <strong>Accept</strong>. Trạng thái sẽ chuyển sang <code>Active</code>.</li>
+<li><strong>Lưu ý:</strong> Nếu peering giữa các tài khoản khác nhau, chủ sở hữu của VPC chấp nhận ở tài khoản kia mới có thể thực hiện bước chấp nhận này.</li>
+</ol>
+<p><strong>Bước 4: Cập nhật Bảng Định tuyến (Route Table) ở CẢ HAI VPC</strong></p>
+<ul>
+<li><strong>Quan trọng:</strong> Dù kết nối Peering đang ở trạng thái <code>Active</code>, lưu lượng mạng vẫn <strong>chưa thể đi qua</strong> cho đến khi bạn cập nhật Bảng định tuyến.</li>
+<li><strong>Cập nhật Bảng Định tuyến của VPC Yêu cầu (<code>DemoVPC</code>):</strong></li>
+<li>Truy cập <strong>VPC console</strong> -&gt; <strong>Route Tables</strong>.</li>
+<li>Chọn Bảng định tuyến mà bạn sử dụng cho các Subnet nơi các phiên bản cần giao tiếp với VPC bên kia đang chạy (ví dụ: <code>PublicRouteTable</code> nếu bạn kiểm tra từ Bastion Host ở Public Subnet).</li>
+<li>Chuyển đến tab <strong>Routes</strong> -&gt; <strong>Edit routes</strong>.</li>
+<li><strong>Thêm một quy tắc định tuyến mới:</strong><ul>
+<li><strong>Destination (Đích):</strong> Nhập <strong>khối CIDR của VPC chấp nhận</strong> (Default VPC). Bạn cần tìm CIDR của Default VPC trong phần "Your VPCs". Ví dụ: <code>172.31.0.0/16</code>.</li>
+<li><strong>Target (Đích đến):</strong> Chọn <strong>Peering Connection</strong> và chọn <code>demo-peering-connection</code> từ danh sách.</li>
+</ul>
+</li>
+<li>Nhấp <strong>Save changes</strong>.</li>
+<li><strong>Cập nhật Bảng Định tuyến của VPC Chấp nhận (Default VPC):</strong></li>
+<li>Tìm Bảng định tuyến của Default VPC. Thường là "main" route table hoặc bảng được gán rõ ràng cho Subnet của phiên bản bạn dùng để kiểm tra.</li>
+<li>Chuyển đến tab <strong>Routes</strong> -&gt; <strong>Edit routes</strong>.</li>
+<li><strong>Thêm một quy tắc định tuyến mới:</strong><ul>
+<li><strong>Destination (Đích):</strong> Nhập <strong>khối CIDR của VPC yêu cầu</strong> (<code>DemoVPC</code>). Ví dụ: <code>10.0.0.0/16</code>.</li>
+<li><strong>Target (Đích đến):</strong> Chọn <strong>Peering Connection</strong> và chọn <code>demo-peering-connection</code> (cùng ID peering).</li>
+</ul>
+</li>
+<li>Nhấp <strong>Save changes</strong>.</li>
+</ul>
+<p><strong>Bước 5: Xác minh kết nối lại</strong></p>
+<ul>
+<li>Quay lại phiên bản EC2 trong <code>DemoVPC</code> (Bastion Host).</li>
+<li>Lặp lại lệnh kiểm tra kết nối đến địa chỉ IP riêng tư của phiên bản trong Default VPC (ví dụ: <code>curl &lt;Private-IP-cua-instance-o-DefaultVPC&gt;:80</code> hoặc <code>ping &lt;Private-IP-cua-instance-o-DefaultVPC&gt;</code>).</li>
+<li><strong>Kết quả:</strong> Kết nối sẽ <strong>THÀNH CÔNG</strong>. Điều này chứng tỏ VPC Peering đã hoạt động và các phiên bản ở hai VPC khác nhau giờ đây có thể giao tiếp với nhau bằng địa chỉ IP riêng tư thông qua kết nối peering an toàn của AWS.</li>
+</ul>
+<p><strong>Tóm lại các điểm chính của Lab:</strong></p>
+<ul>
+<li>VPC mặc định cô lập về mạng.</li>
+<li>Tạo peering connection yêu cầu CIDR không trùng lặp.</li>
+<li>Kết nối peering phải được chấp nhận.</li>
+<li><strong>BẮT BUỘC phải cập nhật Bảng định tuyến ở CẢ HAI VPC</strong> để lưu lượng đi qua kết nối peering.</li>
+<li>Sau khi cấu hình đúng, các phiên bản có thể giao tiếp bằng Private IP qua peering.</li>
+</ul>
 
 
 
@@ -6312,7 +6392,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="12 tháng 5, 2025 10:13:32">12 tháng 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="16 tháng 5, 2025 09:17:32">16 tháng 5, 2025</span>
   </span>
 
     
