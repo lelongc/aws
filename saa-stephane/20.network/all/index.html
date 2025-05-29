@@ -14,7 +14,7 @@
         <link rel="prev" href="../VPC%20Flow%20Logs/">
       
       
-        <link rel="next" href="../bastionHost/">
+        <link rel="next" href="../aws-privatelink/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -81,6 +81,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#1-cidr-classless-inter-domain-routing" class="md-skip">
+          Bỏ qua
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -5841,6 +5846,8 @@
       
         
       
+        
+      
     
     
     
@@ -5965,6 +5972,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    All
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -5977,6 +5997,241 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-cidr-classless-inter-domain-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. CIDR (Classless Inter-Domain Routing) 📏
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vpc-virtual-private-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. VPC (Virtual Private Cloud) ☁️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-subnets-mang-con-subdivide" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Subnets (Mạng con) subdivide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-internet-gateway-igw" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Internet Gateway (IGW) 🌐
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-route-tables-bang-inh-tuyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Route Tables (Bảng định tuyến) 🗺️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bastion-host-jump-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Bastion Host (Jump Box) 🏰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-nat-instances-network-address-translation-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. NAT Instances (Network Address Translation Instances) 📜
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-nat-gateway-network-address-translation-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. NAT Gateway (Network Address Translation Gateway) ✨
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-nacl-network-access-control-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. NACL (Network Access Control Lists) 🛡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-security-groups-sg" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Security Groups (SG) 🧱
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-vpc-peering-ket-noi-ngang-hang-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. VPC Peering (Kết nối ngang hàng VPC) 🤝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-vpc-endpoints-iem-cuoi-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. VPC Endpoints (Điểm cuối VPC) 🚪
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-vpc-flow-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. VPC Flow Logs 📊
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ket-noi-on-premises-ve-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Kết nối On-Premises về AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Kết nối On-Premises về AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-site-to-site-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Site-to-Site VPN 🔗
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-aws-direct-connect-dx" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. AWS Direct Connect (DX) 🛣️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-aws-privatelink-vpc-endpoint-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. AWS PrivateLink (VPC Endpoint Services) 💼
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-classiclink-ket-noi-ec2-classic" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. ClassicLink (Kết nối EC2-Classic) ⏳
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-aws-transit-gateway-tgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. AWS Transit Gateway (TGW) 🌟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-vpc-traffic-mirroring" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. VPC Traffic Mirroring 🔍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-ipv6-trong-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. IPv6 trong VPC 🔢
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-privatelink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aws privatelink
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -6421,6 +6676,209 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-cidr-classless-inter-domain-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. CIDR (Classless Inter-Domain Routing) 📏
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vpc-virtual-private-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. VPC (Virtual Private Cloud) ☁️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-subnets-mang-con-subdivide" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Subnets (Mạng con) subdivide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-internet-gateway-igw" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Internet Gateway (IGW) 🌐
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-route-tables-bang-inh-tuyen" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Route Tables (Bảng định tuyến) 🗺️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-bastion-host-jump-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Bastion Host (Jump Box) 🏰
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-nat-instances-network-address-translation-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. NAT Instances (Network Address Translation Instances) 📜
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-nat-gateway-network-address-translation-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. NAT Gateway (Network Address Translation Gateway) ✨
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-nacl-network-access-control-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. NACL (Network Access Control Lists) 🛡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-security-groups-sg" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Security Groups (SG) 🧱
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-vpc-peering-ket-noi-ngang-hang-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. VPC Peering (Kết nối ngang hàng VPC) 🤝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-vpc-endpoints-iem-cuoi-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. VPC Endpoints (Điểm cuối VPC) 🚪
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-vpc-flow-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. VPC Flow Logs 📊
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-ket-noi-on-premises-ve-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Kết nối On-Premises về AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. Kết nối On-Premises về AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-site-to-site-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Site-to-Site VPN 🔗
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-aws-direct-connect-dx" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. AWS Direct Connect (DX) 🛣️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-aws-privatelink-vpc-endpoint-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. AWS PrivateLink (VPC Endpoint Services) 💼
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-classiclink-ket-noi-ec2-classic" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. ClassicLink (Kết nối EC2-Classic) ⏳
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-aws-transit-gateway-tgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. AWS Transit Gateway (TGW) 🌟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-vpc-traffic-mirroring" class="md-nav__link">
+    <span class="md-ellipsis">
+      18. VPC Traffic Mirroring 🔍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-ipv6-trong-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      19. IPv6 trong VPC 🔢
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -6445,7 +6903,153 @@
 
   <h1>All</h1>
 
-<p><a class="glightbox" href="../image/all/1746634147604.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1746634147604" src="../image/all/1746634147604.png" /></a></p>
+<p><a class="glightbox" href="../image/all/1746634147604.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1746634147604" src="../image/all/1746634147604.png" /></a>
+Tuyệt vời! Đây là bản tổng hợp chi tiết các kiến thức cốt lõi về VPC và mạng trên AWS từ nội dung bạn cung cấp. Thông tin này đã được cấu trúc lại để bạn dễ dàng ôn tập, ghi nhớ và tự tin hơn khi đi phỏng vấn cho vị trí DevOps/AWS.</p>
+<hr />
+<h2 id="1-cidr-classless-inter-domain-routing">1. CIDR (Classless Inter-Domain Routing) 📏<a class="headerlink" href="#1-cidr-classless-inter-domain-routing" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một cách để biểu diễn một dải địa chỉ IP. Ví dụ: <code>10.0.0.0/16</code>.</li>
+<li><strong>Trong AWS:</strong> Dùng để xác định dải IP cho VPC và các Subnet.</li>
+</ul>
+<hr />
+<h2 id="2-vpc-virtual-private-cloud">2. VPC (Virtual Private Cloud) ☁️<a class="headerlink" href="#2-vpc-virtual-private-cloud" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một mạng riêng ảo, cô lập logic trên đám mây AWS.</li>
+<li><strong>Hỗ trợ:</strong> Cả IPv4 và IPv6 (ở chế độ dual-stack).</li>
+</ul>
+<hr />
+<h2 id="3-subnets-mang-con-subdivide">3. Subnets (Mạng con) subdivide<a class="headerlink" href="#3-subnets-mang-con-subdivide" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một phân đoạn của dải IP trong VPC, được gắn với một <strong>Availability Zone (AZ)</strong> cụ thể.</li>
+<li><strong>Phân loại:</strong></li>
+<li><strong>Public Subnet:</strong> Có route trực tiếp ra Internet thông qua Internet Gateway.</li>
+<li><strong>Private Subnet:</strong> Không có route trực tiếp ra Internet.</li>
+</ul>
+<hr />
+<h2 id="4-internet-gateway-igw">4. Internet Gateway (IGW) 🌐<a class="headerlink" href="#4-internet-gateway-igw" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một thành phần cho phép giao tiếp giữa VPC và Internet.</li>
+<li><strong>Cách hoạt động:</strong> Gắn IGW vào VPC và tạo một route trong Route Table của public subnet trỏ đến IGW (<code>0.0.0.0/0</code> cho IPv4, <code>::/0</code> cho IPv6).</li>
+<li><strong>Hỗ trợ:</strong> Cung cấp truy cập Internet cho cả IPv4 và IPv6 (nếu IPv6 được kích hoạt).</li>
+</ul>
+<hr />
+<h2 id="5-route-tables-bang-inh-tuyen">5. Route Tables (Bảng định tuyến) 🗺️<a class="headerlink" href="#5-route-tables-bang-inh-tuyen" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Chứa các quy tắc (routes) để xác định nơi traffic mạng được chuyển hướng đến.</li>
+<li><strong>Ứng dụng:</strong> Định tuyến traffic đến Internet Gateway, VPC Peering connections, VPC Endpoints, NAT Gateway, v.v. Đây là thành phần <strong>then chốt</strong> để kiểm soát luồng traffic trong VPC.</li>
+</ul>
+<hr />
+<h2 id="6-bastion-host-jump-box">6. Bastion Host (Jump Box) 🏰<a class="headerlink" href="#6-bastion-host-jump-box" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một EC2 instance được đặt trong <strong>public subnet</strong>.</li>
+<li><strong>Mục đích:</strong> Dùng làm "trạm trung chuyển" an toàn để bạn SSH vào, từ đó SSH tiếp vào các EC2 instance khác nằm trong <strong>private subnet</strong> (không có IP public).</li>
+</ul>
+<hr />
+<h2 id="7-nat-instances-network-address-translation-instances">7. NAT Instances (Network Address Translation Instances) 📜<a class="headerlink" href="#7-nat-instances-network-address-translation-instances" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một EC2 instance được triển khai trong public subnet để cung cấp truy cập Internet cho các EC2 instance trong private subnet (chỉ cho chiều đi ra).</li>
+<li><strong>Trạng thái:</strong> <strong>Cũ, đang dần bị loại bỏ (deprecated)</strong>.</li>
+<li><strong>Lưu ý khi dùng:</strong> Cần vô hiệu hóa cờ <code>Source/Destination Check</code> và cấu hình Security Group phù hợp.</li>
+<li><strong>Thay thế:</strong> Nên sử dụng NAT Gateway.</li>
+</ul>
+<hr />
+<h2 id="8-nat-gateway-network-address-translation-gateway">8. NAT Gateway (Network Address Translation Gateway) ✨<a class="headerlink" href="#8-nat-gateway-network-address-translation-gateway" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Dịch vụ do AWS quản lý, cung cấp khả năng truy cập Internet có thể mở rộng (scalable) cho các EC2 instance trong private subnet.</li>
+<li><strong>Phạm vi:</strong> Chỉ dành cho traffic <strong>IPv4</strong> đi ra Internet.</li>
+<li><strong>Ưu điểm:</strong> Tốt hơn nhiều so với NAT Instance (quản lý, khả năng mở rộng, tính sẵn sàng cao).</li>
+</ul>
+<hr />
+<h2 id="9-nacl-network-access-control-lists">9. NACL (Network Access Control Lists) 🛡️<a class="headerlink" href="#9-nacl-network-access-control-lists" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một lớp firewall hoạt động ở cấp độ <strong>Subnet</strong>.</li>
+<li><strong>Đặc điểm:</strong></li>
+<li><strong>Stateless (Không trạng thái):</strong> Các luật inbound và outbound được đánh giá riêng biệt. Nếu bạn cho phép traffic vào, bạn cũng phải cho phép traffic trả về ra ngoài.</li>
+<li>Xác định quyền truy cập inbound và outbound cho subnet.</li>
+<li><strong>Ephemeral Ports:</strong> Cần chú ý cấu hình cho các cổng tạm thời khi định nghĩa luật outbound để cho phép traffic trả về.</li>
+</ul>
+<hr />
+<h2 id="10-security-groups-sg">10. Security Groups (SG) 🧱<a class="headerlink" href="#10-security-groups-sg" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Là một lớp firewall hoạt động ở cấp độ <strong>EC2 Instance</strong> (chính xác hơn là ở cấp độ ENI).</li>
+<li><strong>Đặc điểm:</strong></li>
+<li><strong>Stateful (Có trạng thái):</strong> Nếu traffic inbound được cho phép, traffic outbound tương ứng sẽ tự động được cho phép (và ngược lại). Bạn không cần định nghĩa luật outbound cho traffic trả về.</li>
+</ul>
+<hr />
+<h2 id="11-vpc-peering-ket-noi-ngang-hang-vpc">11. VPC Peering (Kết nối ngang hàng VPC) 🤝<a class="headerlink" href="#11-vpc-peering-ket-noi-ngang-hang-vpc" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Cho phép kết nối hai VPC với nhau để chúng có thể giao tiếp như thể đang ở trong cùng một mạng.</li>
+<li><strong>Điều kiện:</strong> Các VPC phải có dải CIDR <strong>không trùng lặp (non-overlapping)</strong>.</li>
+<li><strong>Tính chất:</strong> <strong>Non-transitive (Không bắc cầu).</strong> Nếu VPC A kết nối với VPC B, và VPC B kết nối với VPC C, thì VPC A không thể tự động kết nối với VPC C. Bạn cần tạo một kết nối peering riêng giữa A và C.</li>
+</ul>
+<hr />
+<h2 id="12-vpc-endpoints-iem-cuoi-vpc">12. VPC Endpoints (Điểm cuối VPC) 🚪<a class="headerlink" href="#12-vpc-endpoints-iem-cuoi-vpc" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Cho phép bạn kết nối <strong>riêng tư</strong> từ VPC của mình đến các dịch vụ AWS được hỗ trợ (như S3, DynamoDB, CloudFormation, SSM) mà không cần đi qua Internet, NAT Gateway, VPN hay Direct Connect.</li>
+<li><strong>Phân loại:</strong></li>
+<li><strong>Gateway Endpoints:</strong> Dành riêng cho Amazon S3 và DynamoDB.</li>
+<li><strong>Interface Endpoints:</strong> Dành cho hầu hết các dịch vụ khác. Chúng sử dụng một ENI trong subnet của bạn.</li>
+</ul>
+<hr />
+<h2 id="13-vpc-flow-logs">13. VPC Flow Logs 📊<a class="headerlink" href="#13-vpc-flow-logs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Ghi lại metadata về traffic IP đi vào và đi ra khỏi các network interface trong VPC.</li>
+<li><strong>Thông tin:</strong> Bao gồm trạng thái <code>ACCEPT</code> (chấp nhận) hoặc <code>REJECT</code> (từ chối) của traffic.</li>
+<li><strong>Cấp độ:</strong> Có thể tạo ở cấp độ VPC, Subnet, hoặc ENI.</li>
+<li><strong>Phân tích:</strong></li>
+<li>Gửi đến <strong>Amazon S3</strong> và phân tích bằng <strong>Amazon Athena</strong>.</li>
+<li>Gửi đến <strong>CloudWatch Logs</strong> và phân tích bằng <strong>CloudWatch Logs Insights</strong>.</li>
+</ul>
+<hr />
+<h2 id="14-ket-noi-on-premises-ve-aws">14. Kết nối On-Premises về AWS<a class="headerlink" href="#14-ket-noi-on-premises-ve-aws" title="Permanent link">&para;</a></h2>
+<p>Có hai giải pháp chính:</p>
+<h4 id="a-site-to-site-vpn">a. Site-to-Site VPN 🔗<a class="headerlink" href="#a-site-to-site-vpn" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Khái niệm:</strong> Tạo một kết nối VPN được mã hóa qua <strong>Internet công cộng</strong>.</li>
+<li><strong>Thành phần:</strong></li>
+<li><strong>Virtual Private Gateway (VGW):</strong> Phía AWS, gắn vào VPC.</li>
+<li><strong>Customer Gateway (CGW):</strong> Phía trung tâm dữ liệu của bạn.</li>
+<li>có 2 tunnel , 1 đi 1 về , nhưng nếu đi với TGW thì cả 2 đều đi và về</li>
+<li><strong>VPN CloudHub:</strong> Nếu bạn thiết lập nhiều kết nối VPN đến cùng một VGW, bạn có thể sử dụng kiến trúc này để tạo mô hình hub-and-spoke, cho phép các site on-premises kết nối với nhau thông qua VGW.</li>
+</ul>
+<h4 id="b-aws-direct-connect-dx">b. AWS Direct Connect (DX) 🛣️<a class="headerlink" href="#b-aws-direct-connect-dx" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Khái niệm:</strong> Tạo một kết nối mạng <strong>vật lý, chuyên dụng và hoàn toàn riêng tư</strong> (không qua Internet) từ trung tâm dữ liệu của bạn đến một Direct Connect Location.</li>
+<li><strong>Đặc điểm:</strong></li>
+<li><strong>Thời gian thiết lập lâu</strong> (có thể hơn 1 tháng).</li>
+<li>Bảo mật và ổn định hơn VPN.</li>
+<li><strong>Direct Connect Gateway:</strong> Cho phép sử dụng một kết nối Direct Connect để kết nối đến nhiều VPC trong các AWS Region khác nhau.</li>
+</ul>
+<hr />
+<h2 id="15-aws-privatelink-vpc-endpoint-services">15. AWS PrivateLink (VPC Endpoint Services) 💼<a class="headerlink" href="#15-aws-privatelink-vpc-endpoint-services" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Cho phép bạn cung cấp các dịch vụ (ứng dụng) đang chạy trong VPC của mình cho các VPC khác (của khách hàng hoặc các VPC khác trong tổ chức) một cách <strong>riêng tư</strong>.</li>
+<li><strong>Hoạt động:</strong> Sử dụng Network Load Balancer (NLB) và ENI. Khách hàng sẽ tạo một Interface Endpoint trong VPC của họ để kết nối đến dịch vụ của bạn.</li>
+<li><strong>Ưu điểm:</strong> Không cần VPC Peering, Internet công cộng, NAT Gateway. Rất an toàn và có khả năng mở rộng để kết nối tới hàng ngàn VPC khách hàng mà không để lộ mạng của bạn.</li>
+</ul>
+<hr />
+<h2 id="16-classiclink-ket-noi-ec2-classic">16. ClassicLink (Kết nối EC2-Classic) ⏳<a class="headerlink" href="#16-classiclink-ket-noi-ec2-classic" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Cho phép các instance EC2-Classic (nền tảng cũ của EC2) kết nối riêng tư với VPC.</li>
+<li><strong>Trạng thái:</strong> <strong>Sắp bị loại bỏ hoàn toàn (deprecated).</strong></li>
+</ul>
+<hr />
+<h2 id="17-aws-transit-gateway-tgw">17. AWS Transit Gateway (TGW) 🌟<a class="headerlink" href="#17-aws-transit-gateway-tgw" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Hoạt động như một "trung tâm mạng" (network hub), đơn giản hóa việc kết nối giữa nhiều VPC, VPN và Direct Connect.</li>
+<li><strong>Tính chất:</strong> Hỗ trợ <strong>transitive peering</strong> (kết nối bắc cầu). Nếu A kết nối TGW, B kết nối TGW thì A và B có thể nói chuyện với nhau qua TGW. Đây là ưu điểm vượt trội so với VPC Peering.</li>
+</ul>
+<hr />
+<h2 id="18-vpc-traffic-mirroring">18. VPC Traffic Mirroring 🔍<a class="headerlink" href="#18-vpc-traffic-mirroring" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Khái niệm:</strong> Sao chép (copy) traffic mạng từ các ENI và gửi bản sao đến một đích khác (ví dụ: một EC2 instance cài công cụ phân tích hoặc một Network Load Balancer) để phân tích, giám sát mà không ảnh hưởng đến luồng traffic chính.</li>
+</ul>
+<hr />
+<h2 id="19-ipv6-trong-vpc">19. IPv6 trong VPC 🔢<a class="headerlink" href="#19-ipv6-trong-vpc" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Kích hoạt:</strong> Bạn có thể bật hỗ trợ IPv6 cho VPC để hoạt động ở chế độ dual-stack (cả IPv4 và IPv6).</li>
+<li><strong>Egress-Only Internet Gateway:</strong> Tương tự như NAT Gateway nhưng dành riêng cho traffic <strong>IPv6 đi ra</strong> Internet từ các private subnet. Nó cho phép instance đi ra nhưng chặn kết nối từ Internet đi vào.</li>
+</ul>
 
 
 
@@ -6466,7 +7070,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="29 tháng 5, 2025 10:07:07 UTC">29 tháng 5, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="29 tháng 5, 2025 15:00:33 UTC">29 tháng 5, 2025</span>
   </span>
 
     
@@ -6570,13 +7174,13 @@
         
         
           
-          <a href="../bastionHost/" class="md-footer__link md-footer__link--next" aria-label="Sau: bastionHost">
+          <a href="../aws-privatelink/" class="md-footer__link md-footer__link--next" aria-label="Sau: Aws privatelink">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                bastionHost
+                Aws privatelink
               </div>
             </div>
             <div class="md-footer__button md-icon">
