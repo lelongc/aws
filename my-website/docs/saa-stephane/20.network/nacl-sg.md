@@ -40,7 +40,7 @@
 
 **Tóm lại về Stateful vs Stateless:**
 
-- **Security Group (Stateful):** Chỉ cần cho phép một chiều (vào hoặc ra), chiều ngược lại của cùng kết nối đó sẽ tự động được cho phép.
+- **Security Group (Stateful):** Chỉ cần cho phép một chiều (vào hoặc ra), chiều ngược lại của cùng kết nối đó sẽ tự động được cho phép. Security Group là stateful. Nếu instance chủ động gửi request ra ngoài (outbound traffic), thì traffic trả về (inbound traffic) liên quan đến request đó sẽ tự động được cho phép, bất kể inbound rule của Security Group có được cấu hình hay không. Inbound rule của Security Group chỉ ảnh hưởng đến việc traffic từ bên ngoài khởi tạo kết nối vào instance .
 - **NACL (Stateless):** Mỗi chiều (vào và ra) được đánh giá độc lập. Phải có luật cho phép cả hai chiều (vào VÀ ra) cho một kết nối hoạt động đầy đủ.
 
 **Chi tiết về Network Access Control Lists (NACLs):**
