@@ -191,6 +191,8 @@ Vùng B (Phụ):
 
 ## So Sánh Chiến Lược Khôi Phục Thảm Họa
 
+![1748795212824](image/overview/1748795212824.png)
+
 | Chiến Lược       | RPO            | RTO        | Chi Phí | Độ Phức Tạp | Tốt Nhất Cho              |
 | ---------------- | -------------- | ---------- | ------- | ----------- | ------------------------- |
 | Backup & Restore | Giờ-Ngày       | Giờ-Ngày   | 1       | Thấp        | Hệ thống không quan trọng |
