@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/05.route53-dns/l%C3%BD-thuy%E1%BA%BFt/cname-alias/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.orther/SES/">
       
       
-        <link rel="prev" href="../TTL/">
+        <link rel="prev" href="../CF-serviceRole/">
       
       
-        <link rel="next" href="../dns/">
+        <link rel="next" href="../cloudformation/">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Cname alias - DraDoc</title>
+        <title>SES - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,14 +48,14 @@
       
     
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -64,7 +64,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#ban-ghi-cname" class="md-skip">
-          Bỏ qua
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +94,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -119,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cname alias
+              SES
             
           </span>
         </div>
@@ -224,7 +219,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -243,7 +238,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
         
   
   
@@ -264,7 +259,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../cer/link/" class="md-tabs__link">
+        <a href="../../../cer/link/" class="md-tabs__link">
           
   
   
@@ -286,7 +281,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../orther-note/readme/" class="md-tabs__link">
+        <a href="../../../orther-note/readme/" class="md-tabs__link">
           
   
   
@@ -308,7 +303,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
+        <a href="../../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
           
   
   
@@ -332,7 +327,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../readme/" class="md-tabs__link">
+        <a href="../../readme/" class="md-tabs__link">
           
   
   
@@ -374,7 +369,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
@@ -404,7 +399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -426,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
         
   
   
@@ -480,7 +475,7 @@
   
   
   
-    <a href="../../../../cer/link/" class="md-nav__link">
+    <a href="../../../cer/link/" class="md-nav__link">
       
   
   
@@ -534,7 +529,7 @@
   
   
   
-    <a href="../../../../orther-note/readme/" class="md-nav__link">
+    <a href="../../../orther-note/readme/" class="md-nav__link">
       
   
   
@@ -588,7 +583,7 @@
   
   
   
-    <a href="../../../../saa-cantrill-and-lab/readme/" class="md-nav__link">
+    <a href="../../../saa-cantrill-and-lab/readme/" class="md-nav__link">
       
   
   
@@ -716,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../readme/" class="md-nav__link">
+      <a href="../../readme/" class="md-nav__link">
         
   
   
@@ -793,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../00.prerequisite/db/" class="md-nav__link">
+      <a href="../../00.prerequisite/db/" class="md-nav__link">
         
   
   
@@ -842,7 +837,7 @@
   
   
   
-    <a href="../../../00.prerequisite/0.1.IAM/0.1/" class="md-nav__link">
+    <a href="../../00.prerequisite/0.1.IAM/0.1/" class="md-nav__link">
       
   
   
@@ -935,7 +930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../01.ec2/lab-ec2/" class="md-nav__link">
+      <a href="../../01.ec2/lab-ec2/" class="md-nav__link">
         
   
   
@@ -998,7 +993,7 @@
   
   
   
-    <a href="../../../01.ec2/l%C3%BD-thuy%E1%BA%BFt/ec2-elastic-network-interface/" class="md-nav__link">
+    <a href="../../01.ec2/l%C3%BD-thuy%E1%BA%BFt/ec2-elastic-network-interface/" class="md-nav__link">
       
   
   
@@ -1057,7 +1052,7 @@
   
   
   
-    <a href="../../../01.ec2/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACID/" class="md-nav__link">
+    <a href="../../01.ec2/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACID/" class="md-nav__link">
       
   
   
@@ -1176,7 +1171,7 @@
   
   
   
-    <a href="../../../02.ec2-storage/lab/ebs-ec2-format-extend/" class="md-nav__link">
+    <a href="../../02.ec2-storage/lab/ebs-ec2-format-extend/" class="md-nav__link">
       
   
   
@@ -1247,7 +1242,7 @@
   
   
   
-    <a href="../../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt/ebs-ec2-extend-volume/" class="md-nav__link">
+    <a href="../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt/ebs-ec2-extend-volume/" class="md-nav__link">
       
   
   
@@ -1312,7 +1307,7 @@
   
   
   
-    <a href="../../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/IOPS/" class="md-nav__link">
+    <a href="../../02.ec2-storage/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/IOPS/" class="md-nav__link">
       
   
   
@@ -1449,7 +1444,7 @@
   
   
   
-    <a href="../../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ALB/" class="md-nav__link">
+    <a href="../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ALB/" class="md-nav__link">
       
   
   
@@ -1508,7 +1503,7 @@
   
   
   
-    <a href="../../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/Distributed-Cache/" class="md-nav__link">
+    <a href="../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/Distributed-Cache/" class="md-nav__link">
       
   
   
@@ -1639,7 +1634,7 @@
   
   
   
-    <a href="../../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/" class="md-nav__link">
+    <a href="../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/" class="md-nav__link">
       
   
   
@@ -1694,7 +1689,7 @@
   
   
   
-    <a href="../../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/in-memory-statless%27full/" class="md-nav__link">
+    <a href="../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/in-memory-statless%27full/" class="md-nav__link">
       
   
   
@@ -1728,8 +1723,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1753,11 +1746,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="">
@@ -1773,7 +1766,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             05.route53 dns
@@ -1787,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../5/" class="md-nav__link">
+      <a href="../../05.route53-dns/5/" class="md-nav__link">
         
   
   
@@ -1807,63 +1800,63 @@
                 
   
   
+  
+  
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
   
   
   
-    
-    
+    <a href="../../05.route53-dns/l%C3%BD-thuy%E1%BA%BFt/3rd-party-dns-service/" class="md-nav__link">
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_7_2" id="__nav_6_7_2_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -1872,437 +1865,12 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_7_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            Lý thuyết
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3rd-party-dns-service/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    3rd party dns service
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TTL/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    TTL
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Cname alias
-    
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Cname alias
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ban-ghi-cname" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bản ghi CNAME
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ban-ghi-alias" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bản ghi Alias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#so-sanh-chi-tiet" class="md-nav__link">
-    <span class="md-ellipsis">
-      So sánh chi tiết
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#thuc-hanh-hands-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thực hành (Hands-on)
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dns/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Dns
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../health-check/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Health check
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../policy-failover/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Policy failover
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../route53/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Route53
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../routing-policy-geo%27location/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Routing policy geo'location
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../routing-policy-geo%27proximity/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Routing policy geo'proximity
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../routing-policy-ip%27based/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Routing policy ip'based
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../routing-policy-latency/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Routing policy latency
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../routing-policy-multi-values/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Routing policy multi values
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../routing-policy-route53%27simple/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Routing policy route53'simple
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../routing-policy-weight/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Routing policy weight
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../t%E1%BB%95ng-h%E1%BB%A3p-l%C6%B0u-%C3%BD/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Tổng hợp lưu ý
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -2378,7 +1946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../06.classic-sa/6/" class="md-nav__link">
+      <a href="../../06.classic-sa/6/" class="md-nav__link">
         
   
   
@@ -2435,7 +2003,7 @@
   
   
   
-    <a href="../../../06.classic-sa/l%C3%BD-thuy%E1%BA%BFt/STATEFULL-shoppingcard/" class="md-nav__link">
+    <a href="../../06.classic-sa/l%C3%BD-thuy%E1%BA%BFt/STATEFULL-shoppingcard/" class="md-nav__link">
       
   
   
@@ -2552,7 +2120,7 @@
   
   
   
-    <a href="../../../07.s3/lab/s3-static-web/" class="md-nav__link">
+    <a href="../../07.s3/lab/s3-static-web/" class="md-nav__link">
       
   
   
@@ -2629,7 +2197,7 @@
   
   
   
-    <a href="../../../07.s3/l%C3%BD-thuy%E1%BA%BFt/batch-operation/" class="md-nav__link">
+    <a href="../../07.s3/l%C3%BD-thuy%E1%BA%BFt/batch-operation/" class="md-nav__link">
       
   
   
@@ -2730,7 +2298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/CloudFront-Geo-Restriction/" class="md-nav__link">
+      <a href="../../08.Cloudfront/CloudFront-Geo-Restriction/" class="md-nav__link">
         
   
   
@@ -2753,7 +2321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cache/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cache/" class="md-nav__link">
         
   
   
@@ -2776,7 +2344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cloudfront-alb-ec2/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cloudfront-alb-ec2/" class="md-nav__link">
         
   
   
@@ -2799,7 +2367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cloudfront-price/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cloudfront-price/" class="md-nav__link">
         
   
   
@@ -2822,7 +2390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/cloudfront/" class="md-nav__link">
+      <a href="../../08.Cloudfront/cloudfront/" class="md-nav__link">
         
   
   
@@ -2845,7 +2413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/global-accelerator/" class="md-nav__link">
+      <a href="../../08.Cloudfront/global-accelerator/" class="md-nav__link">
         
   
   
@@ -2868,7 +2436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../08.Cloudfront/so-s%C3%A1nh-global-acce-vs-route53/" class="md-nav__link">
+      <a href="../../08.Cloudfront/so-s%C3%A1nh-global-acce-vs-route53/" class="md-nav__link">
         
   
   
@@ -2963,7 +2531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/Fsx/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/Fsx/" class="md-nav__link">
         
   
   
@@ -2986,7 +2554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/aws-data-sync/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/aws-data-sync/" class="md-nav__link">
         
   
   
@@ -3009,7 +2577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/aws-transfer-family/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/aws-transfer-family/" class="md-nav__link">
         
   
   
@@ -3032,7 +2600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/snow-family/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/snow-family/" class="md-nav__link">
         
   
   
@@ -3055,7 +2623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/storage-gateway/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/storage-gateway/" class="md-nav__link">
         
   
   
@@ -3078,7 +2646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../09.AWS-Storage-Extras/t%C3%B3m-g%E1%BB%8Dn/" class="md-nav__link">
+      <a href="../../09.AWS-Storage-Extras/t%C3%B3m-g%E1%BB%8Dn/" class="md-nav__link">
         
   
   
@@ -3139,7 +2707,7 @@
   
   
   
-    <a href="../../../09.AWS-Storage-Extras/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACLs/" class="md-nav__link">
+    <a href="../../09.AWS-Storage-Extras/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACLs/" class="md-nav__link">
       
   
   
@@ -3250,7 +2818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/" class="md-nav__link">
         
   
   
@@ -3273,7 +2841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/amazon-MQ/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/amazon-MQ/" class="md-nav__link">
         
   
   
@@ -3296,7 +2864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/fifo/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/fifo/" class="md-nav__link">
         
   
   
@@ -3319,7 +2887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/kinesis/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/kinesis/" class="md-nav__link">
         
   
   
@@ -3342,7 +2910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/long-poll/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/long-poll/" class="md-nav__link">
         
   
   
@@ -3365,7 +2933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/messaging/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/messaging/" class="md-nav__link">
         
   
   
@@ -3388,7 +2956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sns/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sns/" class="md-nav__link">
         
   
   
@@ -3411,7 +2979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs-asg/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-asg/" class="md-nav__link">
         
   
   
@@ -3434,7 +3002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs-sns-fanout/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-sns-fanout/" class="md-nav__link">
         
   
   
@@ -3457,7 +3025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs-visi-timeout/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs-visi-timeout/" class="md-nav__link">
         
   
   
@@ -3480,7 +3048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sqs/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sqs/" class="md-nav__link">
         
   
   
@@ -3503,7 +3071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../10.sqs-sns-activeMQ-kinesis/sumary/" class="md-nav__link">
+      <a href="../../10.sqs-sns-activeMQ-kinesis/sumary/" class="md-nav__link">
         
   
   
@@ -3600,7 +3168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/a2c/" class="md-nav__link">
+      <a href="../../11.ecs/a2c/" class="md-nav__link">
         
   
   
@@ -3623,7 +3191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/app-runner/" class="md-nav__link">
+      <a href="../../11.ecs/app-runner/" class="md-nav__link">
         
   
   
@@ -3646,7 +3214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/ecr/" class="md-nav__link">
+      <a href="../../11.ecs/ecr/" class="md-nav__link">
         
   
   
@@ -3669,7 +3237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/ecs/" class="md-nav__link">
+      <a href="../../11.ecs/ecs/" class="md-nav__link">
         
   
   
@@ -3692,7 +3260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/eks/" class="md-nav__link">
+      <a href="../../11.ecs/eks/" class="md-nav__link">
         
   
   
@@ -3715,7 +3283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/overview/" class="md-nav__link">
+      <a href="../../11.ecs/overview/" class="md-nav__link">
         
   
   
@@ -3738,7 +3306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/saa-ecs/" class="md-nav__link">
+      <a href="../../11.ecs/saa-ecs/" class="md-nav__link">
         
   
   
@@ -3761,7 +3329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../11.ecs/scale-ecs/" class="md-nav__link">
+      <a href="../../11.ecs/scale-ecs/" class="md-nav__link">
         
   
   
@@ -3870,7 +3438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/api-gateway/" class="md-nav__link">
+      <a href="../../12.serverless/api-gateway/" class="md-nav__link">
         
   
   
@@ -3893,7 +3461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/cognito/" class="md-nav__link">
+      <a href="../../12.serverless/cognito/" class="md-nav__link">
         
   
   
@@ -3916,7 +3484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/dynamodb-advance/" class="md-nav__link">
+      <a href="../../12.serverless/dynamodb-advance/" class="md-nav__link">
         
   
   
@@ -3939,7 +3507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/dynamodb/" class="md-nav__link">
+      <a href="../../12.serverless/dynamodb/" class="md-nav__link">
         
   
   
@@ -3962,7 +3530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/invoke-lamda/" class="md-nav__link">
+      <a href="../../12.serverless/invoke-lamda/" class="md-nav__link">
         
   
   
@@ -3985,7 +3553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-concurrency/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-concurrency/" class="md-nav__link">
         
   
   
@@ -4008,7 +3576,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-limits/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-limits/" class="md-nav__link">
         
   
   
@@ -4031,7 +3599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-scope/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-scope/" class="md-nav__link">
         
   
   
@@ -4054,7 +3622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda-snapstart/" class="md-nav__link">
+      <a href="../../12.serverless/lamda-snapstart/" class="md-nav__link">
         
   
   
@@ -4077,7 +3645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamda/" class="md-nav__link">
+      <a href="../../12.serverless/lamda/" class="md-nav__link">
         
   
   
@@ -4100,7 +3668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/lamdaEdge-CloudFrontFunc/" class="md-nav__link">
+      <a href="../../12.serverless/lamdaEdge-CloudFrontFunc/" class="md-nav__link">
         
   
   
@@ -4123,7 +3691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/overview/" class="md-nav__link">
+      <a href="../../12.serverless/overview/" class="md-nav__link">
         
   
   
@@ -4146,7 +3714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../12.serverless/step-func/" class="md-nav__link">
+      <a href="../../12.serverless/step-func/" class="md-nav__link">
         
   
   
@@ -4193,7 +3761,7 @@
   
   
   
-    <a href="../../../12.serverless/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/case-cloudfrontFunc-lamdaEdge/" class="md-nav__link">
+    <a href="../../12.serverless/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/case-cloudfrontFunc-lamdaEdge/" class="md-nav__link">
       
   
   
@@ -4288,7 +3856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/microservice/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/microservice/" class="md-nav__link">
         
   
   
@@ -4311,7 +3879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/mobile-app/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/mobile-app/" class="md-nav__link">
         
   
   
@@ -4334,7 +3902,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/uodate-offloading/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/uodate-offloading/" class="md-nav__link">
         
   
   
@@ -4357,7 +3925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../13.serverless-architecture/website/" class="md-nav__link">
+      <a href="../../13.serverless-architecture/website/" class="md-nav__link">
         
   
   
@@ -4442,7 +4010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../14.db-aws/db/" class="md-nav__link">
+      <a href="../../14.db-aws/db/" class="md-nav__link">
         
   
   
@@ -4465,7 +4033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../14.db-aws/summary/" class="md-nav__link">
+      <a href="../../14.db-aws/summary/" class="md-nav__link">
         
   
   
@@ -4566,7 +4134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/amazon-EMR/" class="md-nav__link">
+      <a href="../../15.data-analytics/amazon-EMR/" class="md-nav__link">
         
   
   
@@ -4589,7 +4157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/amazon-quicksight/" class="md-nav__link">
+      <a href="../../15.data-analytics/amazon-quicksight/" class="md-nav__link">
         
   
   
@@ -4612,7 +4180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/apache-flink-managed-svc/" class="md-nav__link">
+      <a href="../../15.data-analytics/apache-flink-managed-svc/" class="md-nav__link">
         
   
   
@@ -4635,7 +4203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/athena/" class="md-nav__link">
+      <a href="../../15.data-analytics/athena/" class="md-nav__link">
         
   
   
@@ -4658,7 +4226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/aws-glue/" class="md-nav__link">
+      <a href="../../15.data-analytics/aws-glue/" class="md-nav__link">
         
   
   
@@ -4681,7 +4249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/aws-lake-formation/" class="md-nav__link">
+      <a href="../../15.data-analytics/aws-lake-formation/" class="md-nav__link">
         
   
   
@@ -4704,7 +4272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/big-data-ingestion-pipeline/" class="md-nav__link">
+      <a href="../../15.data-analytics/big-data-ingestion-pipeline/" class="md-nav__link">
         
   
   
@@ -4727,7 +4295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/msk/" class="md-nav__link">
+      <a href="../../15.data-analytics/msk/" class="md-nav__link">
         
   
   
@@ -4750,7 +4318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/open-search/" class="md-nav__link">
+      <a href="../../15.data-analytics/open-search/" class="md-nav__link">
         
   
   
@@ -4773,7 +4341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../15.data-analytics/redshift/" class="md-nav__link">
+      <a href="../../15.data-analytics/redshift/" class="md-nav__link">
         
   
   
@@ -4876,7 +4444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-comprehend-medical/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-comprehend-medical/" class="md-nav__link">
         
   
   
@@ -4899,7 +4467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-comprehend/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-comprehend/" class="md-nav__link">
         
   
   
@@ -4922,7 +4490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-personalize/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-personalize/" class="md-nav__link">
         
   
   
@@ -4945,7 +4513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-polly-translate/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-polly-translate/" class="md-nav__link">
         
   
   
@@ -4968,7 +4536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/a-sage-maker/" class="md-nav__link">
+      <a href="../../16.machine-learning/a-sage-maker/" class="md-nav__link">
         
   
   
@@ -4991,7 +4559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/amazon-rekognition/" class="md-nav__link">
+      <a href="../../16.machine-learning/amazon-rekognition/" class="md-nav__link">
         
   
   
@@ -5014,7 +4582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/kendra/" class="md-nav__link">
+      <a href="../../16.machine-learning/kendra/" class="md-nav__link">
         
   
   
@@ -5037,7 +4605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/lex-connect/" class="md-nav__link">
+      <a href="../../16.machine-learning/lex-connect/" class="md-nav__link">
         
   
   
@@ -5060,7 +4628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/sumary/" class="md-nav__link">
+      <a href="../../16.machine-learning/sumary/" class="md-nav__link">
         
   
   
@@ -5083,7 +4651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/textract/" class="md-nav__link">
+      <a href="../../16.machine-learning/textract/" class="md-nav__link">
         
   
   
@@ -5106,7 +4674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../16.machine-learning/transcribe/" class="md-nav__link">
+      <a href="../../16.machine-learning/transcribe/" class="md-nav__link">
         
   
   
@@ -5207,7 +4775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/CloudWatch-Insights/" class="md-nav__link">
+      <a href="../../17.monitor/CloudWatch-Insights/" class="md-nav__link">
         
   
   
@@ -5230,7 +4798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/aws-config/" class="md-nav__link">
+      <a href="../../17.monitor/aws-config/" class="md-nav__link">
         
   
   
@@ -5253,7 +4821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-trail-evenbridge/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-trail-evenbridge/" class="md-nav__link">
         
   
   
@@ -5276,7 +4844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-trail/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-trail/" class="md-nav__link">
         
   
   
@@ -5299,7 +4867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-watch-alarm/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-watch-alarm/" class="md-nav__link">
         
   
   
@@ -5322,7 +4890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloud-watch-logs/" class="md-nav__link">
+      <a href="../../17.monitor/cloud-watch-logs/" class="md-nav__link">
         
   
   
@@ -5345,7 +4913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloudWatch-cloudTrail-awsConfig/" class="md-nav__link">
+      <a href="../../17.monitor/cloudWatch-cloudTrail-awsConfig/" class="md-nav__link">
         
   
   
@@ -5368,7 +4936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloudwatch-agent/" class="md-nav__link">
+      <a href="../../17.monitor/cloudwatch-agent/" class="md-nav__link">
         
   
   
@@ -5391,7 +4959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/cloudwatch-metric/" class="md-nav__link">
+      <a href="../../17.monitor/cloudwatch-metric/" class="md-nav__link">
         
   
   
@@ -5414,7 +4982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../17.monitor/even-bridge/" class="md-nav__link">
+      <a href="../../17.monitor/even-bridge/" class="md-nav__link">
         
   
   
@@ -5509,7 +5077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/AWS%20IAM%20Identity%20Center/" class="md-nav__link">
+      <a href="../../18.iam-advance/AWS%20IAM%20Identity%20Center/" class="md-nav__link">
         
   
   
@@ -5532,7 +5100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-active-directory/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-active-directory/" class="md-nav__link">
         
   
   
@@ -5555,7 +5123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-control-tower/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-control-tower/" class="md-nav__link">
         
   
   
@@ -5578,7 +5146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-organization/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-organization/" class="md-nav__link">
         
   
   
@@ -5601,7 +5169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/aws-policy/" class="md-nav__link">
+      <a href="../../18.iam-advance/aws-policy/" class="md-nav__link">
         
   
   
@@ -5624,7 +5192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/iam-evaluate-logic/" class="md-nav__link">
+      <a href="../../18.iam-advance/iam-evaluate-logic/" class="md-nav__link">
         
   
   
@@ -5647,7 +5215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../18.iam-advance/resourceBased-iamRole/" class="md-nav__link">
+      <a href="../../18.iam-advance/resourceBased-iamRole/" class="md-nav__link">
         
   
   
@@ -5762,7 +5330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/ACM-amaz-cert-manager/" class="md-nav__link">
+      <a href="../../19.security/ACM-amaz-cert-manager/" class="md-nav__link">
         
   
   
@@ -5785,7 +5353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/AWS-firewall-manager/" class="md-nav__link">
+      <a href="../../19.security/AWS-firewall-manager/" class="md-nav__link">
         
   
   
@@ -5808,7 +5376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/AWS-shield/" class="md-nav__link">
+      <a href="../../19.security/AWS-shield/" class="md-nav__link">
         
   
   
@@ -5831,7 +5399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/AmazonGuardDuty/" class="md-nav__link">
+      <a href="../../19.security/AmazonGuardDuty/" class="md-nav__link">
         
   
   
@@ -5854,7 +5422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/DDoS-best-practice/" class="md-nav__link">
+      <a href="../../19.security/DDoS-best-practice/" class="md-nav__link">
         
   
   
@@ -5877,7 +5445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/Encrypted%20AMI%20Sharing%20Process/" class="md-nav__link">
+      <a href="../../19.security/Encrypted%20AMI%20Sharing%20Process/" class="md-nav__link">
         
   
   
@@ -5900,7 +5468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/KMS-Multi-RegionKeys/" class="md-nav__link">
+      <a href="../../19.security/KMS-Multi-RegionKeys/" class="md-nav__link">
         
   
   
@@ -5923,7 +5491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/KMS/" class="md-nav__link">
+      <a href="../../19.security/KMS/" class="md-nav__link">
         
   
   
@@ -5946,7 +5514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/SSM-paramater-store/" class="md-nav__link">
+      <a href="../../19.security/SSM-paramater-store/" class="md-nav__link">
         
   
   
@@ -5969,7 +5537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/SecretsManager/" class="md-nav__link">
+      <a href="../../19.security/SecretsManager/" class="md-nav__link">
         
   
   
@@ -5992,7 +5560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/WAF/" class="md-nav__link">
+      <a href="../../19.security/WAF/" class="md-nav__link">
         
   
   
@@ -6015,7 +5583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/aws-inspector/" class="md-nav__link">
+      <a href="../../19.security/aws-inspector/" class="md-nav__link">
         
   
   
@@ -6038,7 +5606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/aws-macie/" class="md-nav__link">
+      <a href="../../19.security/aws-macie/" class="md-nav__link">
         
   
   
@@ -6061,7 +5629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/encryption101/" class="md-nav__link">
+      <a href="../../19.security/encryption101/" class="md-nav__link">
         
   
   
@@ -6084,7 +5652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../19.security/s3-replicate-encryption/" class="md-nav__link">
+      <a href="../../19.security/s3-replicate-encryption/" class="md-nav__link">
         
   
   
@@ -6133,7 +5701,7 @@
   
   
   
-    <a href="../../../19.security/l%C3%BD-thuy%E1%BA%BFt-ngo%C3%A0i-l%E1%BB%81/audit-kms-cloudtrail/" class="md-nav__link">
+    <a href="../../19.security/l%C3%BD-thuy%E1%BA%BFt-ngo%C3%A0i-l%E1%BB%81/audit-kms-cloudtrail/" class="md-nav__link">
       
   
   
@@ -6196,7 +5764,7 @@
   
   
   
-    <a href="../../../19.security/security-concepts/cryptocurrency-attacks/" class="md-nav__link">
+    <a href="../../19.security/security-concepts/cryptocurrency-attacks/" class="md-nav__link">
       
   
   
@@ -6329,7 +5897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/CIDR-public-private-ip/" class="md-nav__link">
+      <a href="../../20.network/CIDR-public-private-ip/" class="md-nav__link">
         
   
   
@@ -6352,7 +5920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/IGW-routeTable/" class="md-nav__link">
+      <a href="../../20.network/IGW-routeTable/" class="md-nav__link">
         
   
   
@@ -6375,7 +5943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/VPC%20Flow%20Logs/" class="md-nav__link">
+      <a href="../../20.network/VPC%20Flow%20Logs/" class="md-nav__link">
         
   
   
@@ -6398,7 +5966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/all/" class="md-nav__link">
+      <a href="../../20.network/all/" class="md-nav__link">
         
   
   
@@ -6421,7 +5989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/aws-network-firewall/" class="md-nav__link">
+      <a href="../../20.network/aws-network-firewall/" class="md-nav__link">
         
   
   
@@ -6444,7 +6012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/aws-privatelink/" class="md-nav__link">
+      <a href="../../20.network/aws-privatelink/" class="md-nav__link">
         
   
   
@@ -6467,7 +6035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/bastionHost/" class="md-nav__link">
+      <a href="../../20.network/bastionHost/" class="md-nav__link">
         
   
   
@@ -6490,7 +6058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/defaultvpc/" class="md-nav__link">
+      <a href="../../20.network/defaultvpc/" class="md-nav__link">
         
   
   
@@ -6513,7 +6081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/direct-connect-DCgateway/" class="md-nav__link">
+      <a href="../../20.network/direct-connect-DCgateway/" class="md-nav__link">
         
   
   
@@ -6536,7 +6104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/egress-only-igw/" class="md-nav__link">
+      <a href="../../20.network/egress-only-igw/" class="md-nav__link">
         
   
   
@@ -6559,7 +6127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/ipv6/" class="md-nav__link">
+      <a href="../../20.network/ipv6/" class="md-nav__link">
         
   
   
@@ -6582,7 +6150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/nacl-sg/" class="md-nav__link">
+      <a href="../../20.network/nacl-sg/" class="md-nav__link">
         
   
   
@@ -6605,7 +6173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/nat-instance/" class="md-nav__link">
+      <a href="../../20.network/nat-instance/" class="md-nav__link">
         
   
   
@@ -6628,7 +6196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/natGateway/" class="md-nav__link">
+      <a href="../../20.network/natGateway/" class="md-nav__link">
         
   
   
@@ -6651,7 +6219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/price/" class="md-nav__link">
+      <a href="../../20.network/price/" class="md-nav__link">
         
   
   
@@ -6674,7 +6242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/subnetOverviewHandson/" class="md-nav__link">
+      <a href="../../20.network/subnetOverviewHandson/" class="md-nav__link">
         
   
   
@@ -6697,7 +6265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/transit-GW/" class="md-nav__link">
+      <a href="../../20.network/transit-GW/" class="md-nav__link">
         
   
   
@@ -6720,7 +6288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/vpc-endpoint/" class="md-nav__link">
+      <a href="../../20.network/vpc-endpoint/" class="md-nav__link">
         
   
   
@@ -6743,7 +6311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/vpc-traffic-mirroring/" class="md-nav__link">
+      <a href="../../20.network/vpc-traffic-mirroring/" class="md-nav__link">
         
   
   
@@ -6766,7 +6334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/vpcOverviewHandson/" class="md-nav__link">
+      <a href="../../20.network/vpcOverviewHandson/" class="md-nav__link">
         
   
   
@@ -6789,7 +6357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/vpcPeering/" class="md-nav__link">
+      <a href="../../20.network/vpcPeering/" class="md-nav__link">
         
   
   
@@ -6812,7 +6380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.network/vpn-s2s/" class="md-nav__link">
+      <a href="../../20.network/vpn-s2s/" class="md-nav__link">
         
   
   
@@ -6869,7 +6437,7 @@
   
   
   
-    <a href="../../../20.network/ly-thuyet-khac/IP-Multicast/" class="md-nav__link">
+    <a href="../../20.network/ly-thuyet-khac/IP-Multicast/" class="md-nav__link">
       
   
   
@@ -6976,7 +6544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/DMS-lab/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/DMS-lab/" class="md-nav__link">
         
   
   
@@ -6999,7 +6567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/DMS/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/DMS/" class="md-nav__link">
         
   
   
@@ -7022,7 +6590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/RDS-mysqlPOSTGRESQL-migration-to-Aurora/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/RDS-mysqlPOSTGRESQL-migration-to-Aurora/" class="md-nav__link">
         
   
   
@@ -7045,7 +6613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/TransferringLargeDatasetsAWS/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/TransferringLargeDatasetsAWS/" class="md-nav__link">
         
   
   
@@ -7068,7 +6636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/VMware-aws/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/VMware-aws/" class="md-nav__link">
         
   
   
@@ -7091,7 +6659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/aws-aplication-discovery-service-MGN/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/aws-aplication-discovery-service-MGN/" class="md-nav__link">
         
   
   
@@ -7114,7 +6682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/aws-backup/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/aws-backup/" class="md-nav__link">
         
   
   
@@ -7137,7 +6705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/on-premise-strategies/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/on-premise-strategies/" class="md-nav__link">
         
   
   
@@ -7160,7 +6728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../21.disaster-recovery/overview/" class="md-nav__link">
+      <a href="../../21.disaster-recovery/overview/" class="md-nav__link">
         
   
   
@@ -7207,7 +6775,7 @@
   
   
   
-    <a href="../../../21.disaster-recovery/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/resilient-selfHealing/" class="md-nav__link">
+    <a href="../../21.disaster-recovery/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/resilient-selfHealing/" class="md-nav__link">
       
   
   
@@ -7241,6 +6809,8 @@
                 
   
   
+    
+  
   
   
     
@@ -7266,11 +6836,11 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_24" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_24" checked>
         
           
           <label class="md-nav__link" for="__nav_6_24" id="__nav_6_24_label" tabindex="">
@@ -7286,7 +6856,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_24_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_24_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_24">
             <span class="md-nav__icon md-icon"></span>
             22.orther
@@ -7300,7 +6870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../22.orther/CF-serviceRole/" class="md-nav__link">
+      <a href="../CF-serviceRole/" class="md-nav__link">
         
   
   
@@ -7320,10 +6890,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../22.orther/SES/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -7334,6 +6911,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -7346,7 +6924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../22.orther/cloudformation/" class="md-nav__link">
+      <a href="../cloudformation/" class="md-nav__link">
         
   
   
@@ -7395,50 +6973,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ban-ghi-cname" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bản ghi CNAME
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ban-ghi-alias" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bản ghi Alias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#so-sanh-chi-tiet" class="md-nav__link">
-    <span class="md-ellipsis">
-      So sánh chi tiết
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#thuc-hanh-hands-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thực hành (Hands-on)
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -7453,7 +6987,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/05.route53-dns/lý-thuyết/cname-alias.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.orther/SES.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -7461,128 +6995,41 @@
   
 
 
-  <h1>Cname alias</h1>
+  <h1>SES</h1>
 
-<p><a class="glightbox" href="../../image/alias.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../image/alias.png" /></a>
-<a class="glightbox" href="../../image/alias-cname.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../image/alias-cname.png" /></a></p>
-<hr />
-<h3 id="ban-ghi-cname"><strong>Bản ghi CNAME</strong><a class="headerlink" href="#ban-ghi-cname" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Định nghĩa</strong>:  </li>
-<li>
-<p>Bản ghi CNAME dùng để ánh xạ một tên miền (hostname) tới một tên miền khác.</p>
-</li>
-<li>
-<p><strong>Trường hợp sử dụng</strong>:  </p>
-</li>
-<li>
-<p>Thích hợp cho các tên miền con, ví dụ: <code>app.mydomain.com</code>, nơi bạn muốn chuyển hướng đến một hostname khác.</p>
-</li>
-<li>
-<p><strong>Hạn chế</strong>:  </p>
-</li>
-<li>Không hoạt động với tên miền gốc (root domain), như <code>mydomain.com</code>.  </li>
-<li>
-<p>Dành cho các bản ghi không phải là Apex Zone (tên miền đỉnh của DNS).</p>
-</li>
-<li>
-<p><strong>Cách thức hoạt động</strong>:  </p>
-</li>
-<li>Ví dụ: Bạn có thể ánh xạ <code>app.mydomain.com</code> đến <code>blabla.anything.com</code>.  </li>
-</ol>
-<hr />
-<h3 id="ban-ghi-alias"><strong>Bản ghi Alias</strong><a class="headerlink" href="#ban-ghi-alias" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>Định nghĩa</strong>:  </li>
-<li>
-<p>Alias là loại bản ghi đặc biệt trong AWS Route 53, cho phép ánh xạ một hostname đến một tài nguyên AWS cụ thể (như Load Balancer, CloudFront, S3 Websites).  </p>
-</li>
-<li>
-<p><strong>Trường hợp sử dụng</strong>:  </p>
-</li>
-<li>Thích hợp cho cả tên miền gốc (<code>mydomain.com</code>) và tên miền con (<code>app.mydomain.com</code>).  </li>
-<li>
-<p>Hỗ trợ các Apex Zone, điều mà CNAME không làm được.  </p>
-</li>
-<li>
-<p><strong>Ưu điểm</strong>:  </p>
-</li>
-<li>Miễn phí truy vấn DNS (không mất phí).  </li>
-<li>Tích hợp sẵn chức năng kiểm tra sức khỏe (health check).  </li>
-<li>
-<p>Tự động cập nhật IP nếu tài nguyên AWS (ví dụ: Load Balancer) thay đổi.  </p>
-</li>
-<li>
-<p><strong>Hạn chế</strong>:  </p>
-</li>
-<li>
-<p>Chỉ hoạt động với các tài nguyên AWS. Không thể ánh xạ Alias đến DNS của EC2 instance.  </p>
-</li>
-<li>
-<p><strong>Các loại tài nguyên AWS hỗ trợ</strong>:  </p>
-</li>
-<li>Elastic Load Balancer (ALB/NLB/CLB).  </li>
-<li>CloudFront Distributions.  </li>
-<li>API Gateway.  </li>
-<li>Elastic Beanstalk Environments.  </li>
-<li>S3 Websites (không phải S3 Bucket).  </li>
-<li>VPC Interface Endpoints.  </li>
-<li>Global Accelerator.  </li>
-<li>Các bản ghi Route 53 khác trong cùng Hosted Zone.  </li>
-</ol>
-<hr />
-<h3 id="so-sanh-chi-tiet"><strong>So sánh chi tiết</strong><a class="headerlink" href="#so-sanh-chi-tiet" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Đặc điểm</th>
-<th>CNAME</th>
-<th>Alias</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Hỗ trợ Apex Zone</strong></td>
-<td>Không</td>
-<td>Có</td>
-</tr>
-<tr>
-<td><strong>Miễn phí truy vấn</strong></td>
-<td>Không</td>
-<td>Có</td>
-</tr>
-<tr>
-<td><strong>Chỉ dùng trong AWS</strong></td>
-<td>Không</td>
-<td>Có</td>
-</tr>
-<tr>
-<td><strong>Tự động cập nhật IP</strong></td>
-<td>Không</td>
-<td>Có</td>
-</tr>
-<tr>
-<td><strong>Hỗ trợ kiểm tra sức khỏe</strong></td>
-<td>Không</td>
-<td>Có</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="thuc-hanh-hands-on"><strong>Thực hành (Hands-on)</strong><a class="headerlink" href="#thuc-hanh-hands-on" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Tạo CNAME</strong>:  </li>
-<li>Tạo bản ghi <code>myapp.mydomain.com</code> ánh xạ tới DNS của Load Balancer.  </li>
-<li>
-<p>Khi truy cập <code>myapp.mydomain.com</code>, bạn sẽ được chuyển hướng đến Load Balancer.</p>
-</li>
-<li>
-<p><strong>Tạo Alias</strong>:  </p>
-</li>
-<li>Tạo bản ghi <code>myalias.mydomain.com</code> (kiểu A hoặc AAAA) ánh xạ tới Load Balancer trong cùng vùng (region).  </li>
-<li>Alias hỗ trợ tự động kiểm tra sức khỏe và miễn phí truy vấn DNS.  </li>
-</ul>
-<hr />
+<p>📧
+Amazon SES là gì?
+Amazon SES là một dịch vụ được quản lý hoàn toàn (fully managed), cho phép bạn gửi email một cách an toàn, trên toàn cầu và ở quy mô lớn.
+Nói nôm na, khi ứng dụng của bạn cần gửi email (dù ít hay nhiều), SES sẽ là "bưu điện" chuyên nghiệp giúp bạn làm việc đó.
+Cách SES hoạt động (Tổng quan) 📬
+ * Ứng dụng của bạn (ví dụ: web app, mobile app) sẽ sử dụng API của SES hoặc kết nối qua máy chủ SMTP của SES.
+ * Amazon SES sau đó sẽ thay mặt bạn gửi các email (kể cả email hàng loạt - bulk emails) đến người dùng.
+Những tính năng "Sáng giá" của SES ✨
+ * Gửi và Nhận Email (Outbound &amp; Inbound): Không chỉ gửi đi, SES còn có thể giúp bạn nhận email phản hồi.
+ * Bảng điều khiển Uy tín (Reputation Dashboard): Cực kỳ quan trọng!
+   * Theo dõi xem email của bạn có được mở hay không.
+   * Cung cấp thông tin chi tiết về hiệu suất gửi mail.
+   * Phản hồi về chống thư rác (anti-spam feedback): biết được người dùng có đánh dấu email của bạn là spam hay không.
+ * Thống kê Email:
+   * Số lượng email được gửi thành công (deliveries).
+   * Số lượng email bị trả lại (bounces).
+   * Kết quả từ vòng lặp phản hồi (feedback loop results).
+   * Tỷ lệ email được mở.
+ * Chuẩn Bảo mật Email: Hỗ trợ các tiêu chuẩn bảo mật email phổ biến hiện nay như DKIM (DomainKeys Identified Mail) và SPF (Sender Policy Framework) để tăng độ tin cậy cho email của bạn.
+ * Triển khai IP Linh hoạt:
+   * Shared IP (IP dùng chung): Tiết kiệm chi phí.
+   * Dedicated IP (IP riêng): Kiểm soát uy tín IP tốt hơn.
+   * Customer-owned IP (IP của riêng bạn): Mang IP của bạn lên SES.
+ * Cách thức Truy cập: Bạn có thể tương tác với SES qua AWS Management Console, AWS APIs, hoặc giao thức SMTP.
+Dùng Amazon SES cho việc gì? 🎯
+ * Email Giao dịch (Transactional Emails): Email tự động như xác nhận đơn hàng, đặt lại mật khẩu, thông báo tài khoản.
+ * Email Tiếp thị (Marketing Emails): Gửi các chiến dịch quảng cáo, bản tin.
+ * Truyền thông Email Hàng loạt (Bulk Email Communications): Gửi thông báo cho một lượng lớn người dùng.
+"Mẹo" cho Kỳ thi 📝
+Khi nhắc đến Amazon SES, hãy nhớ:
+ * Đây là dịch vụ chuyên để gửi và nhận email ở quy mô lớn.
+ * Các tính năng cốt lõi: quản lý uy tín người gửi, thống kê chi tiết, bảo mật với DKIM/SPF, tùy chọn IP linh hoạt.
+ * Các trường hợp sử dụng phổ biến: email giao dịch, email marketing, và gửi email hàng loạt.</p>
 
 
 
@@ -7690,7 +7137,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../TTL/" class="md-footer__link md-footer__link--prev" aria-label="Trước: TTL">
+          <a href="../CF-serviceRole/" class="md-footer__link md-footer__link--prev" aria-label="Trước: CF serviceRole">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7700,20 +7147,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                TTL
+                CF serviceRole
               </div>
             </div>
           </a>
         
         
           
-          <a href="../dns/" class="md-footer__link md-footer__link--next" aria-label="Sau: Dns">
+          <a href="../cloudformation/" class="md-footer__link md-footer__link--next" aria-label="Sau: Cloudformation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Dns
+                Cloudformation
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -7774,10 +7221,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
