@@ -29,6 +29,7 @@ Khi bạn gửi tin nhắn qua Pinpoint, các sự kiện liên quan sẽ đư�
    * Amazon Kinesis Data Firehose: Để đưa dữ liệu sự kiện vào các kho lưu trữ như S3, Redshift cho việc phân tích.
    * Amazon CloudWatch Logs: Để lưu trữ và theo dõi logs.
  * Lợi ích: Khả năng này cho phép bạn xây dựng các quy trình tự động hóa phức tạp dựa trên kết quả tương tác của Pinpoint với khách hàng.
+
 Pinpoint vs. SNS vs. SES: Ai "Pro" hơn trong việc gì? 🤔
 Đây là câu hỏi rất hay và quan trọng để bạn hiểu rõ vị trí của Pinpoint!
  * Với Amazon SNS (Simple Notification Service) hoặc Amazon SES (Simple Email Service):
