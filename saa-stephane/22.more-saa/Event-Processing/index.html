@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.orther/SES/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.more-saa/Event-Processing/">
       
       
-        <link rel="prev" href="../CF-serviceRole/">
+        <link rel="prev" href="../Caching%20Strategies/">
       
       
-        <link rel="next" href="../cloudformation/">
+        <link rel="next" href="../HPC/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>SES - DraDoc</title>
+        <title>Event Processing - DraDoc</title>
       
     
     
@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#1-xu-ly-su-kien-voi-sqs-va-lambda" class="md-skip">
+          Bỏ qua
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SES
+              Event Processing
             
           </span>
         </div>
@@ -614,6 +619,8 @@
   
     
     
+      
+        
       
         
       
@@ -6824,6 +6831,8 @@
       
         
       
+        
+      
     
     
     
@@ -6850,7 +6859,7 @@
   
   
   <span class="md-ellipsis">
-    22.orther
+    22.more saa
     
   </span>
   
@@ -6861,7 +6870,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_24_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_24">
             <span class="md-nav__icon md-icon"></span>
-            22.orther
+            22.more saa
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -6872,12 +6881,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF-serviceRole/" class="md-nav__link">
+      <a href="../Caching%20Strategies/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    CF serviceRole
+    Caching Strategies
     
   </span>
   
@@ -6902,17 +6911,119 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Event Processing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    SES
+    Event Processing
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-xu-ly-su-kien-voi-sqs-va-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Xử lý sự kiện với SQS và Lambda 📨 + ⚙️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-xu-ly-su-kien-voi-sns-va-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Xử lý sự kiện với SNS và Lambda 📢 + ⚙️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mo-hinh-fan-out-gui-mot-tin-nhan-en-nhieu-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mô hình Fan-Out: Gửi một tin nhắn đến nhiều nơi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-s3-event-notifications-phan-ung-voi-su-kien-tren-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. S3 Event Notifications: Phản ứng với sự kiện trên S3 📦➡️🔔
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-s3-events-voi-amazon-eventbridge-nang-tam-xu-ly-su-kien-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. S3 Events với Amazon EventBridge: Nâng tầm xử lý sự kiện S3 📦➡️🌉
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-eventbridge-nghe-len-api-call-qua-cloudtrail" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. EventBridge: "Nghe lén" API call qua CloudTrail 🕵️‍♂️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-on-nhan-su-kien-tu-ben-ngoai-aws-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Đón nhận sự kiện từ bên ngoài AWS 🌍➡️ AWS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại cho kỳ thi 🎯
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -6926,7 +7037,188 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudformation/" class="md-nav__link">
+      <a href="../HPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../block-ip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Block ip
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ec2-HA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ec2 HA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_25" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_25" id="__nav_6_25_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    23.orther
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_25_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_25">
+            <span class="md-nav__icon md-icon"></span>
+            23.orther
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/CF-serviceRole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CF serviceRole
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/SES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SES
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/cloudformation/" class="md-nav__link">
         
   
   
@@ -6949,7 +7241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pinpoint/" class="md-nav__link">
+      <a href="../../23.orther/pinpoint/" class="md-nav__link">
         
   
   
@@ -6998,6 +7290,86 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-xu-ly-su-kien-voi-sqs-va-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Xử lý sự kiện với SQS và Lambda 📨 + ⚙️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-xu-ly-su-kien-voi-sns-va-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Xử lý sự kiện với SNS và Lambda 📢 + ⚙️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mo-hinh-fan-out-gui-mot-tin-nhan-en-nhieu-noi" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Mô hình Fan-Out: Gửi một tin nhắn đến nhiều nơi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-s3-event-notifications-phan-ung-voi-su-kien-tren-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. S3 Event Notifications: Phản ứng với sự kiện trên S3 📦➡️🔔
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-s3-events-voi-amazon-eventbridge-nang-tam-xu-ly-su-kien-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. S3 Events với Amazon EventBridge: Nâng tầm xử lý sự kiện S3 📦➡️🌉
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-eventbridge-nghe-len-api-call-qua-cloudtrail" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. EventBridge: "Nghe lén" API call qua CloudTrail 🕵️‍♂️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-on-nhan-su-kien-tu-ben-ngoai-aws-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Đón nhận sự kiện từ bên ngoài AWS 🌍➡️ AWS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại cho kỳ thi 🎯
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -7012,7 +7384,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.orther/SES.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.more-saa/Event-Processing.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -7020,41 +7392,138 @@
   
 
 
-  <h1>SES</h1>
+  <h1>Event Processing</h1>
 
-<p>📧
-Amazon SES là gì?
-Amazon SES là một dịch vụ được quản lý hoàn toàn (fully managed), cho phép bạn gửi email một cách an toàn, trên toàn cầu và ở quy mô lớn.
-Nói nôm na, khi ứng dụng của bạn cần gửi email (dù ít hay nhiều), SES sẽ là "bưu điện" chuyên nghiệp giúp bạn làm việc đó.
-Cách SES hoạt động (Tổng quan) 📬
- * Ứng dụng của bạn (ví dụ: web app, mobile app) sẽ sử dụng API của SES hoặc kết nối qua máy chủ SMTP của SES.
- * Amazon SES sau đó sẽ thay mặt bạn gửi các email (kể cả email hàng loạt - bulk emails) đến người dùng.
-Những tính năng "Sáng giá" của SES ✨
- * Gửi và Nhận Email (Outbound &amp; Inbound): Không chỉ gửi đi, SES còn có thể giúp bạn nhận email phản hồi.
- * Bảng điều khiển Uy tín (Reputation Dashboard): Cực kỳ quan trọng!
-   * Theo dõi xem email của bạn có được mở hay không.
-   * Cung cấp thông tin chi tiết về hiệu suất gửi mail.
-   * Phản hồi về chống thư rác (anti-spam feedback): biết được người dùng có đánh dấu email của bạn là spam hay không.
- * Thống kê Email:
-   * Số lượng email được gửi thành công (deliveries).
-   * Số lượng email bị trả lại (bounces).
-   * Kết quả từ vòng lặp phản hồi (feedback loop results).
-   * Tỷ lệ email được mở.
- * Chuẩn Bảo mật Email: Hỗ trợ các tiêu chuẩn bảo mật email phổ biến hiện nay như DKIM (DomainKeys Identified Mail) và SPF (Sender Policy Framework) để tăng độ tin cậy cho email của bạn.
- * Triển khai IP Linh hoạt:
-   * Shared IP (IP dùng chung): Tiết kiệm chi phí.
-   * Dedicated IP (IP riêng): Kiểm soát uy tín IP tốt hơn.
-   * Customer-owned IP (IP của riêng bạn): Mang IP của bạn lên SES.
- * Cách thức Truy cập: Bạn có thể tương tác với SES qua AWS Management Console, AWS APIs, hoặc giao thức SMTP.
-Dùng Amazon SES cho việc gì? 🎯
- * Email Giao dịch (Transactional Emails): Email tự động như xác nhận đơn hàng, đặt lại mật khẩu, thông báo tài khoản.
- * Email Tiếp thị (Marketing Emails): Gửi các chiến dịch quảng cáo, bản tin.
- * Truyền thông Email Hàng loạt (Bulk Email Communications): Gửi thông báo cho một lượng lớn người dùng.
-"Mẹo" cho Kỳ thi 📝
-Khi nhắc đến Amazon SES, hãy nhớ:
- * Đây là dịch vụ chuyên để gửi và nhận email ở quy mô lớn.
- * Các tính năng cốt lõi: quản lý uy tín người gửi, thống kê chi tiết, bảo mật với DKIM/SPF, tùy chọn IP linh hoạt.
- * Các trường hợp sử dụng phổ biến: email giao dịch, email marketing, và gửi email hàng loạt.</p>
+<h2 id="1-xu-ly-su-kien-voi-sqs-va-lambda">1. Xử lý sự kiện với SQS và Lambda 📨 + ⚙️<a class="headerlink" href="#1-xu-ly-su-kien-voi-sqs-va-lambda" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../image/Event-Processing/1748875382911.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748875382911" src="../image/Event-Processing/1748875382911.png" /></a></p>
+<p>Đây là một cặp đôi kinh điển!</p>
+<ul>
+<li>
+<p><strong>SQS Standard + Lambda:</strong></p>
+</li>
+<li>
+<p><strong>Cách hoạt động:</strong> Các sự kiện (messages) được đẩy vào một hàng đợi SQS (Standard Queue). Dịch vụ Lambda sẽ liên tục "thăm dò" (poll) SQS queue này. Nếu có message, Lambda function sẽ được kích hoạt để xử lý.</p>
+</li>
+<li><strong>Xử lý lỗi:</strong> Nếu Lambda xử lý lỗi, message sẽ được trả lại SQS queue và Lambda sẽ thử xử lý lại. Điều này có thể dẫn đến vòng lặp vô hạn nếu một message nào đó "cứng đầu" không thể xử lý được.</li>
+<li>
+<p><strong>Giải pháp "cứu cánh": Dead Letter Queue (DLQ).</strong> Bạn có thể cấu hình SQS để sau một số lần thử lại thất bại (ví dụ, 5 lần), message đó sẽ được chuyển sang một DLQ riêng. Điều này giúp "giải thoát" cho queue chính.</p>
+<ul>
+<li><em>Lưu ý:</em> DLQ được cấu hình ở phía SQS.</li>
+</ul>
+</li>
+<li>
+<p><strong>SQS FIFO + Lambda:</strong></p>
+</li>
+<li>
+<p><strong>FIFO (First-In, First-Out):</strong> Đảm bảo các message được xử lý <strong>theo đúng thứ tự</strong> chúng được đưa vào queue.</p>
+</li>
+<li><strong>Thách thức:</strong> Nếu một message gặp lỗi và không xử lý được, nó sẽ <strong>chặn toàn bộ queue</strong> vì phải đảm bảo thứ tự.</li>
+<li><strong>Giải pháp:</strong> Tương tự, sử dụng DLQ ở phía SQS để chuyển message lỗi đi, giúp queue tiếp tục xử lý các message tiếp theo (dù điều này có thể phá vỡ tính thứ tự nghiêm ngặt nếu không cẩn thận trong thiết kế).</li>
+</ul>
+<hr />
+<h2 id="2-xu-ly-su-kien-voi-sns-va-lambda">2. Xử lý sự kiện với SNS và Lambda 📢 + ⚙️<a class="headerlink" href="#2-xu-ly-su-kien-voi-sns-va-lambda" title="Permanent link">&para;</a></h2>
+<p>Một cặp bài trùng khác!</p>
+<ul>
+<li><strong>Cách hoạt động:</strong> Một message được gửi đến một SNS topic. SNS sau đó sẽ gửi message này một cách <strong>bất đồng bộ (asynchronously)</strong> đến các Lambda function đã đăng ký (subscribe) với topic đó.</li>
+<li><strong>Xử lý lỗi của Lambda:</strong></li>
+<li>Nếu Lambda function xử lý message thất bại, nó sẽ tự động <strong>thử lại (retry) nội bộ</strong> (mặc định là 3 lần, bao gồm cả lần chạy đầu tiên).</li>
+<li>Nếu sau các lần thử lại mà vẫn thất bại, message sẽ bị <strong>hủy bỏ (discarded)</strong>.</li>
+<li><strong>Giải pháp DLQ cho Lambda:</strong> Bạn có thể cấu hình một DLQ (ví dụ, một SQS queue) <strong>ở phía dịch vụ Lambda</strong>. Nếu message không thể xử lý thành công sau các lần retry, Lambda sẽ gửi nó vào DLQ này.</li>
+<li><strong>Điểm khác biệt quan trọng:</strong> Với SQS, DLQ cấu hình trên SQS. Với SNS + Lambda, DLQ cho các message không xử lý được bởi Lambda sẽ được cấu hình trên chính Lambda.</li>
+</ul>
+<hr />
+<h2 id="3-mo-hinh-fan-out-gui-mot-tin-nhan-en-nhieu-noi">3. Mô hình Fan-Out: Gửi một tin nhắn đến nhiều nơi<a class="headerlink" href="#3-mo-hinh-fan-out-gui-mot-tin-nhan-en-nhieu-noi" title="Permanent link">&para;</a></h2>
+<p>Làm thế nào để gửi cùng một thông điệp đến nhiều SQS queue khác nhau?</p>
+<p><a class="glightbox" href="../image/Event-Processing/1748875582596.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748875582596" src="../image/Event-Processing/1748875582596.png" /></a></p>
+<ul>
+<li>
+<p><strong>Cách 1: Từ ứng dụng gửi trực tiếp (Không khuyến khích)</strong></p>
+</li>
+<li>
+<p>Ứng dụng của bạn (cài AWS SDK) sẽ gửi message lần lượt đến SQS Queue 1, rồi SQS Queue 2, rồi SQS Queue 3.</p>
+</li>
+<li>
+<p><strong>Rủi ro:</strong> Nếu ứng dụng bị lỗi (crash) sau khi gửi đến Queue 2, thì Queue 3 sẽ không bao giờ nhận được message. Tính nhất quán và độ tin cậy không cao.</p>
+</li>
+<li>
+<p><strong>Cách 2: Sử dụng SNS làm trung gian (Khuyến khích - "Fan-Out Pattern")</strong> 👍</p>
+</li>
+<li>
+<p><strong>Thiết lập:</strong> Các SQS queue sẽ <strong>đăng ký (subscribe)</strong> vào một SNS topic trung tâm.</p>
+</li>
+<li><strong>Luồng hoạt động:</strong> Ứng dụng của bạn chỉ cần gửi <strong>một message duy nhất</strong> đến SNS topic.</li>
+<li>SNS topic sẽ tự động "fan-out" (phân phát) message đó đến <strong>tất cả</strong> các SQS queue đã đăng ký.</li>
+<li><strong>Ưu điểm:</strong> Đảm bảo cao hơn, ứng dụng đơn giản hơn (chỉ cần quan tâm đến việc gửi cho SNS). Đây là một design pattern rất phổ biến trên AWS.</li>
+</ul>
+<hr />
+<h2 id="4-s3-event-notifications-phan-ung-voi-su-kien-tren-s3">4. S3 Event Notifications: Phản ứng với sự kiện trên S3 📦➡️🔔<a class="headerlink" href="#4-s3-event-notifications-phan-ung-voi-su-kien-tren-s3" title="Permanent link">&para;</a></h2>
+<p>Bạn có thể tự động hóa hành động khi có sự kiện xảy ra trên S3 bucket.</p>
+<ul>
+<li><strong>Các loại sự kiện:</strong> Object được tạo mới (created), bị xóa (removed), được khôi phục (restored), sự kiện sao chép (replication), v.v. Bạn cũng có thể lọc theo tên object.</li>
+<li><strong>Ví dụ điển hình:</strong> Tự động tạo ảnh thumbnail khi một ảnh mới được tải lên S3.</li>
+</ul>
+<p><a class="glightbox" href="../image/Event-Processing/1748875673406.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748875673406" src="../image/Event-Processing/1748875673406.png" /></a></p>
+<ul>
+<li>
+<p><strong>Đích đến của sự kiện:</strong></p>
+</li>
+<li>
+<p>SNS topic</p>
+</li>
+<li>SQS queue</li>
+<li>
+<p>Lambda function</p>
+</li>
+<li>
+<p><strong>Tốc độ:</strong> Thông báo thường được gửi trong vài giây, nhưng đôi khi có thể mất một phút hoặc lâu hơn.</p>
+</li>
+</ul>
+<hr />
+<h2 id="5-s3-events-voi-amazon-eventbridge-nang-tam-xu-ly-su-kien-s3">5. S3 Events với Amazon EventBridge: Nâng tầm xử lý sự kiện S3 📦➡️🌉<a class="headerlink" href="#5-s3-events-voi-amazon-eventbridge-nang-tam-xu-ly-su-kien-s3" title="Permanent link">&para;</a></h2>
+<p>Thay vì gửi trực tiếp từ S3 đến SNS/SQS/Lambda, bạn có thể cho sự kiện S3 đi qua <strong>Amazon EventBridge</strong>.</p>
+<p><a class="glightbox" href="../image/Event-Processing/1748875707409.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748875707409" src="../image/Event-Processing/1748875707409.png" /></a></p>
+<ul>
+<li><strong>Cách hoạt động:</strong> Tất cả sự kiện từ S3 bucket được gửi đến EventBridge. Sau đó, bạn dùng các <strong>Rule (quy tắc)</strong> trong EventBridge để định tuyến chúng đến hơn 18 dịch vụ AWS khác nhau.</li>
+<li><strong>Tại sao chọn EventBridge thay vì S3 Event Notifications thông thường?</strong></li>
+<li><strong>Lọc nâng cao (Advanced Filtering):</strong> Dùng JSON rules để lọc dựa trên metadata, kích thước object, tên, v.v.</li>
+<li><strong>Gửi đến nhiều đích cùng lúc:</strong> Một sự kiện có thể kích hoạt nhiều đích đến khác nhau (ví dụ: Step Functions, Kinesis Streams, Kinesis Data Firehose).</li>
+<li><strong>Tận dụng các tính năng của EventBridge:</strong> Lưu trữ sự kiện (archiving), phát lại sự kiện (replaying), đảm bảo việc gửi sự kiện đáng tin cậy hơn.</li>
+</ul>
+<hr />
+<h2 id="6-eventbridge-nghe-len-api-call-qua-cloudtrail">6. EventBridge: "Nghe lén" API call qua CloudTrail 🕵️‍♂️<a class="headerlink" href="#6-eventbridge-nghe-len-api-call-qua-cloudtrail" title="Permanent link">&para;</a></h2>
+<p>Một khả năng mạnh mẽ của EventBridge là tích hợp với <strong>CloudTrail</strong>.</p>
+<ul>
+<li><strong>Cách hoạt động:</strong> Mọi API call trong AWS đều được CloudTrail ghi lại. Những log này từ CloudTrail có thể kích hoạt các sự kiện trong EventBridge.</li>
+</ul>
+<p><a class="glightbox" href="../image/Event-Processing/1748875768292.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748875768292" src="../image/Event-Processing/1748875768292.png" /></a></p>
+<ul>
+<li>
+<p><strong>Ví dụ:</strong> Bạn muốn nhận cảnh báo khi có ai đó xóa một bảng trong DynamoDB (thông qua API call <code>DeleteTable</code>).</p>
+</li>
+<li>
+<p><code>DeleteTable</code> API call được CloudTrail ghi lại.</p>
+</li>
+<li>Sự kiện này trong CloudTrail kích hoạt một rule trong EventBridge.</li>
+<li>EventBridge rule gửi một thông báo đến SNS topic (để bạn nhận được alert).</li>
+</ul>
+<hr />
+<h2 id="7-on-nhan-su-kien-tu-ben-ngoai-aws-aws">7. Đón nhận sự kiện từ bên ngoài AWS 🌍➡️ AWS<a class="headerlink" href="#7-on-nhan-su-kien-tu-ben-ngoai-aws-aws" title="Permanent link">&para;</a></h2>
+<p>Bạn cũng có thể xây dựng luồng để nhận và xử lý sự kiện từ các client bên ngoài AWS.</p>
+<p><a class="glightbox" href="../image/Event-Processing/1748875823183.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748875823183" src="../image/Event-Processing/1748875823183.png" /></a></p>
+<ul>
+<li><strong>Ví dụ luồng:</strong>
+  Client (bên ngoài) ➡️ API Gateway ➡️ Kinesis Data Streams ➡️ Kinesis Data Firehose ➡️ Amazon S3 (hoặc các đích khác).</li>
+</ul>
+<hr />
+<h2 id="chot-lai-cho-ky-thi">Chốt lại cho kỳ thi 🎯<a class="headerlink" href="#chot-lai-cho-ky-thi" title="Permanent link">&para;</a></h2>
+<p>Bài này khá nhiều thông tin, nhưng những điểm chính bạn cần nắm là:</p>
+<ul>
+<li>Hiểu rõ cơ chế hoạt động, xử lý lỗi và DLQ của cặp <strong>SQS + Lambda</strong> (cả Standard và FIFO) và <strong>SNS + Lambda</strong>.</li>
+<li>Nhận biết và hiểu lợi ích của <strong>Fan-Out pattern</strong> sử dụng SNS.</li>
+<li>Biết các cách xử lý sự kiện từ <strong>S3</strong>: trực tiếp (SNS, SQS, Lambda) và qua <strong>EventBridge</strong> (với các lợi ích nâng cao).</li>
+<li>EventBridge có thể tích hợp với <strong>CloudTrail</strong> để phản ứng với các API call.</li>
+<li>Có thể thiết kế luồng nhận sự kiện từ <strong>bên ngoài</strong> vào AWS.</li>
+</ul>
 
 
 
@@ -7075,7 +7544,7 @@ Khi nhắc đến Amazon SES, hãy nhớ:
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 6, 2025 06:06:31 UTC">3 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 6, 2025 07:13:20 UTC">3 tháng 6, 2025</span>
   </span>
 
     
@@ -7162,7 +7631,7 @@ Khi nhắc đến Amazon SES, hãy nhớ:
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../CF-serviceRole/" class="md-footer__link md-footer__link--prev" aria-label="Trước: CF serviceRole">
+          <a href="../Caching%20Strategies/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Caching Strategies">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7172,20 +7641,20 @@ Khi nhắc đến Amazon SES, hãy nhớ:
                 Trước
               </span>
               <div class="md-ellipsis">
-                CF serviceRole
+                Caching Strategies
               </div>
             </div>
           </a>
         
         
           
-          <a href="../cloudformation/" class="md-footer__link md-footer__link--next" aria-label="Sau: Cloudformation">
+          <a href="../HPC/" class="md-footer__link md-footer__link--next" aria-label="Sau: HPC">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Cloudformation
+                HPC
               </div>
             </div>
             <div class="md-footer__button md-icon">

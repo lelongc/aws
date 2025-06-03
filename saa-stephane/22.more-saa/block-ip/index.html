@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.orther/CF-serviceRole/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.more-saa/block-ip/">
       
       
-        <link rel="prev" href="../../21.disaster-recovery/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/resilient-selfHealing/">
+        <link rel="prev" href="../HPC/">
       
       
-        <link rel="next" href="../SES/">
+        <link rel="next" href="../ec2-HA/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>CF serviceRole - DraDoc</title>
+        <title>Block ip - DraDoc</title>
       
     
     
@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#kich-ban-1-ec2-instance-tran-trui-trong-public-subnet" class="md-skip">
+          Bỏ qua
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CF serviceRole
+              Block ip
             
           </span>
         </div>
@@ -614,6 +619,8 @@
   
     
     
+      
+        
       
         
       
@@ -6824,6 +6831,8 @@
       
         
       
+        
+      
     
     
     
@@ -6850,7 +6859,7 @@
   
   
   <span class="md-ellipsis">
-    22.orther
+    22.more saa
     
   </span>
   
@@ -6861,9 +6870,78 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_24_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_24">
             <span class="md-nav__icon md-icon"></span>
-            22.orther
+            22.more saa
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Caching%20Strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caching Strategies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Event-Processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -6879,17 +6957,170 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Block ip
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    CF serviceRole
+    Block ip
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kich-ban-1-ec2-instance-tran-trui-trong-public-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kịch bản 1: EC2 Instance "Trần Trụi" trong Public Subnet ☀️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kich-ban-2-dung-load-balancer-albnlb-voi-ec2-an-minh-trong-private-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kịch bản 2: Dùng Load Balancer (ALB/NLB) với EC2 "Ẩn mình" trong Private Subnet 🛡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tang-cuong-giap-cho-application-load-balancer-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tăng cường "Giáp" cho Application Load Balancer (ALB) 💪
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kich-ban-3-su-dung-cloudfront-cdn-lam-la-chan-ngoai-cung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kịch bản 3: Sử dụng CloudFront (CDN) làm "Lá chắn" ngoài cùng 🌍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loi-khuyen-vang" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lời khuyên "Vàng" 💡
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-cho-tui-khon-i-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại cho "Túi khôn" đi thi 📝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hpc-la-gi-va-tai-sao-cloud-lai-la-san-choi-ly-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      HPC là gì và Tại sao Cloud lại là "Sân chơi" lý tưởng? 컴퓨팅 파워! 🚀
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bo-o-nghe-aws-cho-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Bộ đồ nghề" AWS cho HPC 🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="&#34;Bộ đồ nghề&#34; AWS cho HPC 🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-quan-ly-va-truyen-tai-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Quản lý và Truyền tải Dữ liệu 🗄️➡️☁️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-suc-manh-tinh-toan-va-mang-luoi-compute-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sức mạnh Tính toán và Mạng lưới (Compute &amp; Networking) 💻🔗
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-luu-tru-du-lieu-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Lưu trữ Dữ liệu (Storage) 💾
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tu-ong-hoa-va-ieu-phoi-automation-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tự động hóa và Điều phối (Automation &amp; Orchestration) 🤖⚙️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-bi-kip-hpc-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại "Bí kíp" HPC cho Kỳ thi 🎯
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -6903,7 +7134,119 @@
   
   
     <li class="md-nav__item">
-      <a href="../SES/" class="md-nav__link">
+      <a href="../ec2-HA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ec2 HA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_25" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_25" id="__nav_6_25_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    23.orther
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_25_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_25">
+            <span class="md-nav__icon md-icon"></span>
+            23.orther
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/CF-serviceRole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CF serviceRole
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/SES/" class="md-nav__link">
         
   
   
@@ -6926,7 +7269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudformation/" class="md-nav__link">
+      <a href="../../23.orther/cloudformation/" class="md-nav__link">
         
   
   
@@ -6949,7 +7292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pinpoint/" class="md-nav__link">
+      <a href="../../23.orther/pinpoint/" class="md-nav__link">
         
   
   
@@ -6998,6 +7341,137 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kich-ban-1-ec2-instance-tran-trui-trong-public-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kịch bản 1: EC2 Instance "Trần Trụi" trong Public Subnet ☀️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kich-ban-2-dung-load-balancer-albnlb-voi-ec2-an-minh-trong-private-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kịch bản 2: Dùng Load Balancer (ALB/NLB) với EC2 "Ẩn mình" trong Private Subnet 🛡️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tang-cuong-giap-cho-application-load-balancer-alb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tăng cường "Giáp" cho Application Load Balancer (ALB) 💪
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kich-ban-3-su-dung-cloudfront-cdn-lam-la-chan-ngoai-cung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kịch bản 3: Sử dụng CloudFront (CDN) làm "Lá chắn" ngoài cùng 🌍
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loi-khuyen-vang" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lời khuyên "Vàng" 💡
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-cho-tui-khon-i-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại cho "Túi khôn" đi thi 📝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hpc-la-gi-va-tai-sao-cloud-lai-la-san-choi-ly-tuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      HPC là gì và Tại sao Cloud lại là "Sân chơi" lý tưởng? 컴퓨팅 파워! 🚀
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bo-o-nghe-aws-cho-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Bộ đồ nghề" AWS cho HPC 🛠️
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="&#34;Bộ đồ nghề&#34; AWS cho HPC 🛠️">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-quan-ly-va-truyen-tai-du-lieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Quản lý và Truyền tải Dữ liệu 🗄️➡️☁️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-suc-manh-tinh-toan-va-mang-luoi-compute-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sức mạnh Tính toán và Mạng lưới (Compute &amp; Networking) 💻🔗
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-luu-tru-du-lieu-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Lưu trữ Dữ liệu (Storage) 💾
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-tu-ong-hoa-va-ieu-phoi-automation-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tự động hóa và Điều phối (Automation &amp; Orchestration) 🤖⚙️
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-bi-kip-hpc-cho-ky-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại "Bí kíp" HPC cho Kỳ thi 🎯
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -7012,7 +7486,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.orther/CF-serviceRole.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.more-saa/block-ip.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -7020,44 +7494,198 @@
   
 
 
-  <h1>CF serviceRole</h1>
+  <h1>Block ip</h1>
 
-<p>CloudFormation Service Role là gì? 🤔
-Bạn cứ hình dung Service Role giống như một "giấy ủy quyền" đặc biệt mà bạn tạo ra trong IAM (Identity and Access Management). Giấy ủy quyền này được dành riêng cho CloudFormation.
-Khi CloudFormation cần tạo, cập nhật, hay xóa các tài nguyên trong stack của bạn (ví dụ: tạo S3 bucket, EC2 instance), nó sẽ "đội chiếc mũ" của Service Role này và hành động với các quyền hạn được định nghĩa trong Service Role đó, chứ không phải dùng quyền trực tiếp của bạn.
-Tại sao lại cần Service Role? Lợi ích Bảo mật (Nguyên tắc Đặc quyền Tối thiểu) 🔐
-Đây chính là điểm "ăn tiền" của Service Role, giúp bạn tuân thủ nguyên tắc đặc quyền tối thiểu (least privilege principle):
- * Tình huống: Bạn muốn cho phép một người dùng (hoặc một nhóm người dùng) có thể tạo/cập nhật/xóa các stack CloudFormation, nhưng bạn không muốn cấp cho họ quyền trực tiếp để tạo/cập nhật/xóa từng tài nguyên riêng lẻ (như S3, EC2) bên trong stack đó.
- * Giải pháp với Service Role:
-   * Bạn tạo một Service Role với những quyền vừa đủ để CloudFormation có thể tạo các tài nguyên trong template (ví dụ: quyền tạo S3 bucket).
-   * Người dùng chỉ cần có quyền thực hiện các hành động trên CloudFormation (ví dụ: cloudformation:CreateStack) và một quyền đặc biệt là iam:PassRole.
-   * Khi người dùng tạo stack, họ sẽ "pass" (chuyển giao) Service Role này cho CloudFormation.
-   * CloudFormation sẽ sử dụng quyền của Service Role đó để làm việc.
- * Kết quả: Người dùng có thể quản lý hạ tầng thông qua CloudFormation một cách an toàn mà không cần có quá nhiều quyền trực tiếp trên các dịch vụ khác.
-Service Role hoạt động như thế nào? 🤝
- * Người dùng khởi tạo: Người dùng bắt đầu một hành động với CloudFormation stack (ví dụ: tạo mới, cập nhật).
- * "Chuyển giao vai trò" (Pass Role): Người dùng chỉ định một Service Role mà CloudFormation sẽ sử dụng.
- * CloudFormation hành động: CloudFormation "đội chiếc mũ" của Service Role đó và sử dụng các quyền hạn được cấp cho Service Role để tương tác với các dịch vụ AWS khác (S3, EC2,...) và tạo/cập nhật/xóa tài nguyên theo định nghĩa trong template.
-Quyền iam:PassRole - "Chìa khóa" quan trọng 🔑
-Đây là một quyền rất quan trọng mà người dùng cần có để có thể "giao" một Service Role cho CloudFormation (hoặc bất kỳ dịch vụ AWS nào khác).
- * Tại sao cần thiết? Nó ngăn chặn việc người dùng có thể leo thang đặc quyền (privilege escalation) bằng cách "pass" một role có nhiều quyền hơn những gì họ được phép sử dụng. Người dùng phải có quyền iam:PassRole đối với chính xác cái role mà họ muốn pass.
-Ví dụ minh họa (như trong bài giảng) 🎨
- * Tạo Service Role:
-   * Bạn vào IAM, tạo một Role mới.
-   * Chọn "AWS service" làm trusted entity, và chọn "CloudFormation" làm use case.
-   * Gắn policy cho Role này, ví dụ, chỉ cho phép "S3 full access" (DemoRole for CFN with S3 capabilities).
-   * =&gt; Role này giờ đây cho phép CloudFormation làm mọi thứ với S3.
- * Sử dụng Role khi tạo CloudFormation Stack:
-   * Khi bạn tạo một CloudFormation stack mới.
-   * Trong phần "Permissions", bạn có thể chọn IAM role. Nếu bạn không chọn, CloudFormation sẽ dùng quyền cá nhân của bạn.
-   * Nếu bạn chọn DemoRole for CFN with S3 capabilities đã tạo ở trên.
-   * Điều gì xảy ra? CloudFormation sẽ chỉ sử dụng các quyền của DemoRole này. Nếu template của bạn cố gắng tạo một EC2 instance (mà DemoRole không có quyền cho EC2), thì việc tạo stack sẽ thất bại ở bước tạo EC2. Điều này chứng tỏ CloudFormation bị giới hạn bởi quyền của Service Role được pass vào.
-"Mẹo" cho kỳ thi ✍️
- * CloudFormation Service Role là một công cụ mạnh mẽ để thực thi nguyên tắc đặc quyền tối thiểu.
- * Hiểu rõ luồng: Người dùng (có quyền CloudFormation + iam:PassRole) ➡️ Pass Role cho ➡️ CloudFormation ➡️ CloudFormation Assume (đảm nhận) Role đó ➡️ Hành động trên các Tài nguyên dựa trên quyền của Role.
- * Quyền iam:PassRole là bắt buộc để người dùng có thể chỉ định một Service Role cho CloudFormation.
- * Cơ chế này tách biệt quyền quản lý stack CloudFormation khỏi quyền quản lý trực tiếp từng tài nguyên riêng lẻ.
-Đây là một khía cạnh bảo mật quan trọng khi làm việc với CloudFormation, giúp bạn kiểm soát quyền hạn chặt chẽ hơn trong môi trường AWS của mình. </p>
+<h2 id="kich-ban-1-ec2-instance-tran-trui-trong-public-subnet">Kịch bản 1: EC2 Instance "Trần Trụi" trong Public Subnet ☀️<a class="headerlink" href="#kich-ban-1-ec2-instance-tran-trui-trong-public-subnet" title="Permanent link">&para;</a></h2>
+<p>Khi EC2 instance của bạn nằm trực tiếp trong public subnet và client truy cập thẳng vào nó:</p>
+<p><a class="glightbox" href="../image/block-ip/1748880765507.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748880765507" src="../image/block-ip/1748880765507.png" /></a></p>
+<ol>
+<li>
+<p><strong>Network ACL (NACL) - Chốt chặn ngoài cổng Subnet:</strong></p>
+</li>
+<li>
+<p>Đây là <strong>tuyến phòng thủ đầu tiên</strong> ở cấp độ subnet.</p>
+</li>
+<li>Bạn có thể tạo các rule <code>ALLOW</code> (cho phép) hoặc <code>DENY</code> (từ chối) một cách <strong>tường minh</strong> (explicit).</li>
+<li>Rất đơn giản và hiệu quả để chặn IP ngay từ vòng ngoài.</li>
+<li>
+<p><em>Ví dụ:</em> Nếu NACL mặc định cho phép mọi thứ, traffic sẽ đi qua.</p>
+</li>
+<li>
+<p><strong>Security Group (SG) - Vệ sĩ riêng của EC2:</strong></p>
+</li>
+<li>
+<p>Tuyến phòng thủ thứ hai, gắn trực tiếp vào EC2 instance.</p>
+</li>
+<li>Security Group <strong>chỉ có rule <code>ALLOW</code></strong>, không có rule <code>DENY</code>.</li>
+<li>
+<p>Nếu bạn biết trước IP của client, bạn có thể cấu hình SG chỉ cho phép duy nhất IP đó truy cập. Những IP khác không có trong rule <code>ALLOW</code> sẽ tự động bị chặn.</p>
+</li>
+<li>
+<p><strong>Firewall Software trên EC2 (Tùy chọn):</strong></p>
+</li>
+<li>
+<p>Nếu traffic "lọt" qua được NACL và SG, bạn vẫn có thể cài đặt một phần mềm firewall (ví dụ: <code>iptables</code> trên Linux, Windows Firewall) ngay trên OS của EC2 instance.</p>
+</li>
+<li><strong>Ưu điểm:</strong> Kiểm soát rất chi tiết, tùy biến cao, không phụ thuộc AWS.</li>
+<li><strong>Nhược điểm:</strong> Sẽ tiêu tốn tài nguyên CPU của instance, có thể làm chậm instance.</li>
+</ol>
+<hr />
+<h2 id="kich-ban-2-dung-load-balancer-albnlb-voi-ec2-an-minh-trong-private-subnet">Kịch bản 2: Dùng Load Balancer (ALB/NLB) với EC2 "Ẩn mình" trong Private Subnet 🛡️<a class="headerlink" href="#kich-ban-2-dung-load-balancer-albnlb-voi-ec2-an-minh-trong-private-subnet" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../image/block-ip/1748880878642.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748880878642" src="../image/block-ip/1748880878642.png" /></a></p>
+<p>Đây là kiến trúc phổ biến và an toàn hơn:</p>
+<ul>
+<li><strong>Kiến trúc:</strong> Client ➡️ Load Balancer (đặt trong public subnet) ➡️ EC2 instance (đặt trong private subnet).</li>
+<li><strong>Lợi ích:</strong> EC2 instance của bạn nằm trong private subnet, không tiếp xúc trực tiếp với Internet, an toàn hơn nhiều.</li>
+<li>
+<p><strong>Luồng hoạt động và Bảo mật:</strong></p>
+</li>
+<li>
+<p><strong>Security Group của EC2:</strong> Sẽ được cấu hình để <strong>chỉ cho phép traffic đến từ Load Balancer</strong>.</p>
+</li>
+<li>
+<p><strong>Load Balancer (ALB/NLB):</strong></p>
+<ul>
+<li>Thực hiện <strong>"chấm dứt kết nối" (Connection Termination):</strong> Client kết nối đến Load Balancer, sau đó Load Balancer sẽ thiết lập một kết nối mới đến EC2 instance.</li>
+<li>Bạn có thể quản lý bảo mật ở cấp độ Load Balancer bằng <strong>Security Group riêng của Load Balancer</strong> hoặc các tính năng bảo mật khác của nó.</li>
+<li><strong>Network ACL (NACL)</strong> ở public subnet chứa Load Balancer vẫn có thể được sử dụng để tạo rule <code>ALLOW</code> hoặc <code>DENY</code> cho traffic đến Load Balancer.</li>
+</ul>
+</li>
+<li>
+<p><em>Lưu ý:</em> Cơ chế bảo mật này áp dụng tương tự cho cả Application Load Balancer (ALB) và Network Load Balancer (NLB).</p>
+</li>
+</ul>
+<hr />
+<h2 id="tang-cuong-giap-cho-application-load-balancer-alb">Tăng cường "Giáp" cho Application Load Balancer (ALB) 💪<a class="headerlink" href="#tang-cuong-giap-cho-application-load-balancer-alb" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../image/block-ip/1748880927304.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748880927304" src="../image/block-ip/1748880927304.png" /></a></p>
+<ul>
+<li>Bạn có thể kết hợp ALB với <strong>AWS WAF (Web Application Firewall)</strong>.</li>
+<li><strong>WAF cho phép bạn:</strong></li>
+<li><strong>Lọc địa chỉ IP</strong> (IP address filtering) một cách linh hoạt.</li>
+<li>Sử dụng nhiều bộ quy tắc mạnh mẽ khác để chống lại các kiểu tấn công web phổ biến (SQL injection, XSS,...).</li>
+<li><strong>Lưu ý:</strong> Sử dụng WAF sẽ có chi phí, nhưng nó cung cấp khả năng kiểm soát và phòng thủ rất cao cấp cho ứng dụng của bạn nếu ALB là điểm tiếp xúc trực tiếp với Internet.</li>
+</ul>
+<hr />
+<h2 id="kich-ban-3-su-dung-cloudfront-cdn-lam-la-chan-ngoai-cung">Kịch bản 3: Sử dụng CloudFront (CDN) làm "Lá chắn" ngoài cùng 🌍<a class="headerlink" href="#kich-ban-3-su-dung-cloudfront-cdn-lam-la-chan-ngoai-cung" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../image/block-ip/1748880954014.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748880954014" src="../image/block-ip/1748880954014.png" /></a></p>
+<p>Khi bạn đặt CloudFront phía trước kiến trúc của mình:</p>
+<ul>
+<li><strong>Kiến trúc:</strong> Client ➡️ CloudFront ➡️ Application Load Balancer (public subnet).</li>
+<li><strong>Luồng traffic:</strong></li>
+<li>Client kết nối đến CloudFront.</li>
+<li>CloudFront sẽ chuyển tiếp traffic từ các <strong>Edge Location</strong> của nó (với các địa chỉ IP public của CloudFront) đến Application Load Balancer của bạn.</li>
+<li><strong>Điểm cần đặc biệt lưu ý về Network ACL (NACL):</strong></li>
+<li>NACL đặt ở public subnet của Application Load Balancer lúc này <strong>KHÔNG còn hữu ích để lọc địa chỉ IP của client gốc nữa</strong>.</li>
+<li>Tại sao? Vì nguồn traffic trực tiếp đến ALB bây giờ là <strong>CloudFront</strong>, chứ không phải client. Tất cả traffic đều đến từ các IP của CloudFront.</li>
+<li><strong>Vậy bảo vệ thế nào?</strong></li>
+<li><strong>Security Group của ALB:</strong> Phải được cấu hình để <strong>chỉ cho phép traffic từ các dải IP public của CloudFront</strong>.</li>
+<li><strong>Các lớp phòng thủ ở tầng CloudFront:</strong><ul>
+<li><strong>Geo Restriction:</strong> Tính năng của CloudFront cho phép bạn chặn truy cập từ các quốc gia cụ thể (ví dụ, nếu bạn đang bị tấn công từ một quốc gia nào đó).</li>
+<li><strong>AWS WAF trên CloudFront:</strong> Đây là nơi hiệu quả để triển khai WAF. Bạn có thể lọc IP của client gốc, áp dụng các rule bảo vệ web ngay tại biên, trước khi traffic vào sâu hơn hệ thống của bạn.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="loi-khuyen-vang">Lời khuyên "Vàng" 💡<a class="headerlink" href="#loi-khuyen-vang" title="Permanent link">&para;</a></h2>
+<p>Nếu bạn cảm thấy bối rối về việc áp dụng rule ở đâu, <strong>hãy vẽ sơ đồ mạng ra</strong>. Việc hình dung được luồng đi của traffic sẽ giúp bạn hiểu rõ tại sao việc áp dụng rule ở một tầng cụ thể lại có ý nghĩa (hoặc không có ý nghĩa).</p>
+<hr />
+<h2 id="chot-lai-cho-tui-khon-i-thi">Chốt lại cho "Túi khôn" đi thi 📝<a class="headerlink" href="#chot-lai-cho-tui-khon-i-thi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Nắm vững các lớp phòng thủ: <strong>NACL</strong> (subnet level, explicit deny/allow), <strong>Security Group</strong> (instance/LB level, allow only), <strong>Firewall Software</strong> (OS level), <strong>AWS WAF</strong> (ALB/CloudFront level), <strong>Geo Restriction</strong> (CloudFront level).</li>
+<li>Hiểu rõ chúng hoạt động ở đâu và có tác dụng như thế nào trong các kiến trúc khác nhau (EC2 trực tiếp, qua Load Balancer, qua CloudFront).</li>
+<li><strong>Điểm cực kỳ quan trọng:</strong> Khi có CloudFront, NACL ở tầng ALB sẽ không lọc được IP client gốc. Việc lọc IP client gốc lúc này nên được thực hiện ở CloudFront (ví dụ bằng WAF).</li>
+<li><strong>WAF</strong> là một công cụ rất mạnh mẽ, có thể áp dụng ở cả ALB và CloudFront để tăng cường bảo mật.</li>
+</ul>
+<p>Chào bạn! Chúng ta lại đến với một chủ đề ngày càng "hot" trên AWS và cũng thường xuyên xuất hiện trong các kỳ thi, đó là <strong>High Performance Computing (HPC)</strong> , hay còn gọi là <strong>Tính toán hiệu năng cao</strong> . Đừng lo lắng nếu nghe có vẻ "cao siêu", mình sẽ giúp bạn nắm bắt những ý chính một cách dễ hiểu nhất!</p>
+<hr />
+<h2 id="hpc-la-gi-va-tai-sao-cloud-lai-la-san-choi-ly-tuong">HPC là gì và Tại sao Cloud lại là "Sân chơi" lý tưởng? 컴퓨팅 파워! 🚀<a class="headerlink" href="#hpc-la-gi-va-tai-sao-cloud-lai-la-san-choi-ly-tuong" title="Permanent link">&para;</a></h2>
+<p><strong>High Performance Computing (HPC)</strong> là việc sử dụng sức mạnh tính toán cực lớn để giải quyết các bài toán phức tạp, đòi hỏi xử lý một lượng khổng lồ dữ liệu và tính toán.</p>
+<p><strong>Tại sao AWS lại tuyệt vời cho HPC?</strong></p>
+<ul>
+<li><strong>Khả năng mở rộng siêu tốc:</strong> Bạn có thể tạo ra một số lượng rất lớn tài nguyên (máy chủ, lưu trữ) trong nháy mắt.</li>
+<li><strong>Tăng tốc độ ra kết quả:</strong> Càng nhiều tài nguyên, bài toán càng được giải quyết nhanh hơn.</li>
+<li><strong>Chi trả theo những gì bạn dùng (Pay-as-you-go):</strong> Tính toán xong, bạn có thể xóa toàn bộ hạ tầng và không phải trả thêm một xu nào. Quá tiện lợi đúng không?</li>
+</ul>
+<p><strong>Ứng dụng của HPC ở đâu?</strong> Rất nhiều lĩnh vực: phân tích gen (genomics), hóa học tính toán, mô hình hóa rủi ro tài chính, dự báo thời tiết, Machine Learning, Deep Learning, xe tự hành, v.v.</p>
+<hr />
+<h2 id="bo-o-nghe-aws-cho-hpc">"Bộ đồ nghề" AWS cho HPC 🛠️<a class="headerlink" href="#bo-o-nghe-aws-cho-hpc" title="Permanent link">&para;</a></h2>
+<p>Để xây dựng một hệ thống HPC trên AWS, chúng ta cần kết hợp nhiều dịch vụ và tính năng khác nhau. Hãy xem xét từng khía cạnh nhé:</p>
+<h3 id="1-quan-ly-va-truyen-tai-du-lieu">1. Quản lý và Truyền tải Dữ liệu 🗄️➡️☁️<a class="headerlink" href="#1-quan-ly-va-truyen-tai-du-lieu" title="Permanent link">&para;</a></h3>
+<p>Lượng dữ liệu cho HPC thường rất lớn, nên việc đưa dữ liệu lên AWS hiệu quả là rất quan trọng.</p>
+<ul>
+<li><strong>AWS Direct Connect:</strong></li>
+<li>Kết nối mạng riêng, an toàn, tốc độ cao (Gbps) giữa trung tâm dữ liệu của bạn và AWS.</li>
+<li><strong>AWS Snowball / Snowmobile:</strong></li>
+<li>Khi bạn cần chuyển hàng Petabytes dữ liệu. Đây là giải pháp vật lý (gửi thiết bị đến chép dữ liệu rồi gửi lại AWS). Thường dùng cho các lần chuyển lớn, một lần.</li>
+<li><strong>AWS DataSync:</strong></li>
+<li>Cài đặt agent để di chuyển lượng lớn dữ liệu giữa hệ thống on-premise (NAS, SMB) và các dịch vụ lưu trữ AWS như S3, EFS, FSx for Windows.</li>
+</ul>
+<hr />
+<h3 id="2-suc-manh-tinh-toan-va-mang-luoi-compute-networking">2. Sức mạnh Tính toán và Mạng lưới (Compute &amp; Networking) 💻🔗<a class="headerlink" href="#2-suc-manh-tinh-toan-va-mang-luoi-compute-networking" title="Permanent link">&para;</a></h3>
+<p>Đây là trái tim của HPC!</p>
+<ul>
+<li><strong>EC2 Instances:</strong></li>
+<li>Chọn các loại instance tối ưu cho CPU (CPU optimized) hoặc GPU (GPU optimized) tùy thuộc vào loại tính toán.</li>
+<li>Sử dụng <strong>Spot Instances</strong> hoặc <strong>Spot Fleets</strong> để tiết kiệm chi phí đáng kể.</li>
+<li><strong>Auto Scaling</strong> để tự động điều chỉnh số lượng instance theo nhu cầu tính toán.</li>
+<li><strong>EC2 Placement Group (loại "Cluster"):</strong> Đặt các instance trong cùng một "cluster" để có hiệu năng mạng tốt nhất (độ trễ thấp, băng thông cao, ví dụ 10 Gbps). Tất cả instance trong cluster placement group sẽ nằm trên cùng một rack, trong cùng một Availability Zone (AZ).</li>
+<li><strong>EC2 Enhanced Networking (SR-IOV) - Mạng Nâng cao:</strong></li>
+<li>Cung cấp băng thông cao hơn, số gói tin mỗi giây (PPS - Packet Per Second) cao hơn, và độ trễ thấp hơn.</li>
+<li><strong>Cách để có Enhanced Networking:</strong><ol>
+<li><strong>ENA (Elastic Network Adapter):</strong> Phổ biến và mới hơn. Hỗ trợ tốc độ mạng lên đến <strong>100 Gbps</strong> . Đây là cái bạn cần nhớ kỹ!</li>
+<li><strong>Intel 82599VF:</strong> Công nghệ cũ hơn, hỗ trợ đến 10 Gbps. Ghi nhớ phòng khi gặp trong đề thi.</li>
+</ol>
+</li>
+<li><strong>EFA (Elastic Fabric Adapter) - "Vũ khí tối thượng" cho Mạng HPC:</strong></li>
+<li>Đây là một phiên bản <strong>cải tiến của ENA, được thiết kế ĐẶC BIỆT cho HPC</strong> .</li>
+<li><strong>Chỉ hoạt động trên Linux.</strong></li>
+<li>Tuyệt vời cho các tác vụ đòi hỏi <strong>giao tiếp giữa các node (inter-node communication)</strong> rất mạnh mẽ hoặc các <strong>workload liên kết chặt chẽ (tightly coupled workload)</strong> – nghĩ đến các bài toán tính toán phân tán.</li>
+<li><strong>Tại sao nó "xịn"?</strong> EFA sử dụng tiêu chuẩn <strong>MPI (Message Passing Interface)</strong> . Quan trọng hơn, nó <strong>bỏ qua (bypass) nhân (kernel) của hệ điều hành Linux</strong> để cung cấp độ trễ THẤP HƠN NỮA và truyền tải đáng tin cậy hơn.</li>
+<li><strong>Thi cử:</strong> Rất hay có câu hỏi phân biệt giữa ENA và EFA. Hãy đảm bảo bạn hiểu rõ sự khác biệt và khi nào dùng cái nào! EFA là cho HPC hiệu năng cao nhất, cần giao tiếp liên node mạnh.</li>
+</ul>
+<hr />
+<h3 id="3-luu-tru-du-lieu-storage">3. Lưu trữ Dữ liệu (Storage) 💾<a class="headerlink" href="#3-luu-tru-du-lieu-storage" title="Permanent link">&para;</a></h3>
+<p>Dữ liệu HPC cần được truy cập nhanh và hiệu quả.</p>
+<ul>
+<li><strong>Lưu trữ gắn liền với Instance (Instance-Attached Storage):</strong></li>
+<li><strong>EBS (Elastic Block Store):</strong> Có thể đạt tới 256,000 IOPS với <code>io2 Block Express</code>.</li>
+<li><strong>Instance Store:</strong> Hiệu năng cực cao (hàng triệu IOPS), độ trễ rất thấp vì nằm trên phần cứng của EC2 instance. Tuy nhiên, dữ liệu sẽ mất nếu instance bị dừng hoặc chấm dứt (ephemeral).</li>
+<li><strong>Lưu trữ Mạng (Network Storage):</strong></li>
+<li><strong>Amazon S3:</strong> Lưu trữ các đối tượng lớn (large objects). Đây không phải là file system truyền thống.</li>
+<li><strong>EFS (Elastic File System):</strong> IOPS có thể tự động mở rộng theo kích thước tổng của file system, hoặc bạn có thể dùng chế độ Provisioned IOPS để có IOPS cao hơn.</li>
+<li><strong>FSx for Lustre - "Ngôi sao" Lưu trữ cho HPC:</strong> 🌟<ul>
+<li>Đây là một hệ thống tệp được <strong>tối ưu hóa đặc biệt cho HPC</strong> . (Lustre = Linux + Cluster).</li>
+<li>Cung cấp hàng triệu IOPS.</li>
+<li>Dữ liệu ở backend được lưu trữ trên S3. Rất quan trọng phải nhớ dịch vụ này cho HPC!</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="4-tu-ong-hoa-va-ieu-phoi-automation-orchestration">4. Tự động hóa và Điều phối (Automation &amp; Orchestration) 🤖⚙️<a class="headerlink" href="#4-tu-ong-hoa-va-ieu-phoi-automation-orchestration" title="Permanent link">&para;</a></h3>
+<p>Quản lý một cụm HPC lớn cần công cụ hỗ trợ.</p>
+<ul>
+<li><strong>AWS Batch:</strong></li>
+<li>Dịch vụ hỗ trợ chạy các <strong>job song song trên nhiều node (multi-node parallel jobs)</strong> .</li>
+<li>Giúp bạn lên lịch và khởi chạy các EC2 instance cho các batch job một cách dễ dàng. AWS Batch sẽ quản lý các instance này. Rất phổ biến cho HPC.</li>
+<li><strong>AWS ParallelCluster:</strong></li>
+<li>Một công cụ quản lý cụm (cluster) mã nguồn mở, giúp bạn <strong>triển khai các cụm HPC trên AWS một cách dễ dàng</strong> .</li>
+<li>Bạn cấu hình cụm thông qua các tệp văn bản (text files).</li>
+<li>Nó tự động hóa việc tạo VPC, Subnet, các loại cluster và instance.</li>
+<li><strong>Lưu ý cho kỳ thi:</strong> Thường được đề cập là sử dụng <strong>ParallelCluster cùng với EFA</strong> . Trong file cấu hình của ParallelCluster có tham số để bật EFA, giúp cải thiện hiệu năng mạng và do đó, tăng hiệu năng của cụm HPC.</li>
+</ul>
+<hr />
+<h2 id="chot-lai-bi-kip-hpc-cho-ky-thi">Chốt lại "Bí kíp" HPC cho Kỳ thi 🎯<a class="headerlink" href="#chot-lai-bi-kip-hpc-cho-ky-thi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>HPC trên AWS <strong>không phải là một dịch vụ đơn lẻ</strong> , mà là sự <strong>kết hợp của nhiều dịch vụ và tùy chọn khác nhau</strong> .</li>
+<li>Hãy nắm vững các thành phần chính trong mỗi "trụ cột":</li>
+<li><strong>Truyền tải dữ liệu:</strong> Direct Connect, Snowball, DataSync.</li>
+<li><strong>Tính toán &amp; Mạng:</strong> EC2 (optimized, Spot), Placement Group (Cluster), <strong>ENA</strong> (chung chung, tốc độ cao), <strong>EFA</strong> (chuyên cho HPC, MPI, OS bypass, Linux).</li>
+<li><strong>Lưu trữ:</strong> EBS, Instance Store, S3, EFS, và đặc biệt là <strong>FSx for Lustre</strong> (HPC optimized).</li>
+<li><strong>Tự động hóa &amp; Điều phối:</strong> <strong>AWS Batch</strong> , <strong>AWS ParallelCluster</strong> (thường đi với EFA).</li>
+<li>Hiểu <em>tại sao</em> một dịch vụ/tính năng lại phù hợp với HPC (ví dụ: EFA cho mạng độ trễ cực thấp, FSx for Lustre cho lưu trữ chia sẻ hiệu năng cao).</li>
+</ul>
+<p>Hy vọng bài giảng này đã giúp bạn "giải mã" được HPC trên AWS một cách tường tận. Đây là một mảng kiến thức rộng nhưng rất thú vị và có tính ứng dụng cao. Nếu có bất kỳ câu hỏi nào, đừng ngần ngại hỏi mình nhé! Chúc bạn ôn tập thật tốt!</p>
+<p>Hy vọng phần tóm tắt này giúp bạn hệ thống hóa kiến thức một cách mạch lạc. Đây là những khái niệm cốt lõi trong việc thiết kế mạng an toàn trên AWS. Cần đào sâu thêm điểm nào, cứ nói mình nhé!</p>
 
 
 
@@ -7078,7 +7706,7 @@ Ví dụ minh họa (như trong bài giảng) 🎨
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 6, 2025 06:06:31 UTC">3 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 6, 2025 07:13:20 UTC">3 tháng 6, 2025</span>
   </span>
 
     
@@ -7165,7 +7793,7 @@ Ví dụ minh họa (như trong bài giảng) 🎨
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../../21.disaster-recovery/l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/resilient-selfHealing/" class="md-footer__link md-footer__link--prev" aria-label="Trước: resilient selfHealing">
+          <a href="../HPC/" class="md-footer__link md-footer__link--prev" aria-label="Trước: HPC">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7175,20 +7803,20 @@ Ví dụ minh họa (như trong bài giảng) 🎨
                 Trước
               </span>
               <div class="md-ellipsis">
-                resilient selfHealing
+                HPC
               </div>
             </div>
           </a>
         
         
           
-          <a href="../SES/" class="md-footer__link md-footer__link--next" aria-label="Sau: SES">
+          <a href="../ec2-HA/" class="md-footer__link md-footer__link--next" aria-label="Sau: ec2 HA">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                SES
+                ec2 HA
               </div>
             </div>
             <div class="md-footer__button md-icon">

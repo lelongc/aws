@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.orther/cloudformation/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.more-saa/ec2-HA/">
       
       
-        <link rel="prev" href="../SES/">
+        <link rel="prev" href="../block-ip/">
       
       
-        <link rel="next" href="../pinpoint/">
+        <link rel="next" href="../../23.orther/CF-serviceRole/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Cloudformation - DraDoc</title>
+        <title>ec2 HA - DraDoc</title>
       
     
     
@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#tai-sao-can-lam-cho-ec2-highly-available" class="md-skip">
+          Bỏ qua
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cloudformation
+              ec2 HA
             
           </span>
         </div>
@@ -614,6 +619,8 @@
   
     
     
+      
+        
       
         
       
@@ -6824,6 +6831,8 @@
       
         
       
+        
+      
     
     
     
@@ -6850,7 +6859,7 @@
   
   
   <span class="md-ellipsis">
-    22.orther
+    22.more saa
     
   </span>
   
@@ -6861,7 +6870,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_24_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_24">
             <span class="md-nav__icon md-icon"></span>
-            22.orther
+            22.more saa
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -6872,12 +6881,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF-serviceRole/" class="md-nav__link">
+      <a href="../Caching%20Strategies/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    CF serviceRole
+    Caching Strategies
     
   </span>
   
@@ -6895,12 +6904,58 @@
   
   
     <li class="md-nav__item">
-      <a href="../SES/" class="md-nav__link">
+      <a href="../Event-Processing/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    SES
+    Event Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../block-ip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Block ip
     
   </span>
   
@@ -6925,17 +6980,100 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ec2 HA
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Cloudformation
+    ec2 HA
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-can-lam-cho-ec2-highly-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tại sao cần làm cho EC2 Highly Available? 🤔
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách 1: Dùng Standby EC2, Elastic IP và "Phép thuật" Lambda ✨
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách 2: Dùng Auto Scaling Group (ASG) - Chế độ "Một mình một ngựa" 🏇
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách 3: ASG cho EC2 "Có trạng thái" (Stateful) với EBS Volume và Lifecycle Hooks 🔄💾
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-bai-hoc-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại "Bài học" quan trọng 💡
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -6948,8 +7086,135 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_25" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_25" id="__nav_6_25_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    23.orther
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_25_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_25">
+            <span class="md-nav__icon md-icon"></span>
+            23.orther
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../pinpoint/" class="md-nav__link">
+      <a href="../../23.orther/CF-serviceRole/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CF serviceRole
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/SES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SES
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/cloudformation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloudformation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23.orther/pinpoint/" class="md-nav__link">
         
   
   
@@ -6998,6 +7263,59 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-can-lam-cho-ec2-highly-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tại sao cần làm cho EC2 Highly Available? 🤔
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách 1: Dùng Standby EC2, Elastic IP và "Phép thuật" Lambda ✨
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách 2: Dùng Auto Scaling Group (ASG) - Chế độ "Một mình một ngựa" 🏇
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cách 3: ASG cho EC2 "Có trạng thái" (Stateful) với EBS Volume và Lifecycle Hooks 🔄💾
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chot-lai-bai-hoc-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chốt lại "Bài học" quan trọng 💡
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -7012,7 +7330,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.orther/cloudformation.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.more-saa/ec2-HA.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -7020,43 +7338,134 @@
   
 
 
-  <h1>Cloudformation</h1>
+  <h1>ec2 HA</h1>
 
-<p>AWS CloudFormation là gì mà "thần thánh" vậy? 🤔
-CloudFormation là một dịch vụ cho phép bạn định nghĩa và cung cấp hạ tầng AWS của mình một cách khai báo (declarative). Hầu hết mọi tài nguyên trên AWS đều được CloudFormation hỗ trợ.
- * Nói một cách dễ hiểu: Thay vì bạn phải click chuột thủ công trên Console để tạo từng thứ một, với CloudFormation, bạn sẽ viết một "bản thiết kế" (gọi là template) mô tả bạn muốn có những gì.
-   * Ví dụ: Trong template, bạn nói: "Tôi muốn một Security Group, hai EC2 instance sử dụng Security Group đó, một S3 bucket, và một Load Balancer đứng trước các EC2 instance này."
-   * Sau đó, CloudFormation sẽ tự động đọc bản thiết kế này và tạo ra tất cả các tài nguyên đó cho bạn, theo đúng thứ tự và với cấu hình chính xác mà bạn đã chỉ định. Quá tiện phải không?
-Lợi ích "không phải dạng vừa" của CloudFormation 🌟
-Sử dụng CloudFormation mang lại vô số lợi ích:
- * Infrastructure as Code (IaC) - Hạ tầng như Mã:
-   * Toàn bộ hạ tầng của bạn được định nghĩa bằng code (trong các file template).
-   * Kiểm soát tuyệt đối: Bạn sẽ không bao giờ (hoặc rất hiếm khi) tạo tài nguyên thủ công nữa. Điều này giúp tránh lỗi và đảm bảo tính nhất quán.
-   * Review dễ dàng: Mọi thay đổi đối với hạ tầng đều phải thông qua việc review code, một quy trình vận hành rất tốt trong môi trường cloud.
- * Quản lý Chi phí (Cost Management):
-   * Theo dõi chi phí: Các tài nguyên được tạo trong cùng một "stack" (một đơn vị triển khai của CloudFormation) sẽ được tự động gắn thẻ (tag) giống nhau, giúp bạn dễ dàng theo dõi chi phí.
-   * Ước tính chi phí: Bạn có thể ước tính chi phí của hạ tầng ngay từ file template.
-   * Chiến lược tiết kiệm chi phí:
-     * Ví dụ, bạn có thể tự động hóa việc xóa toàn bộ các template (và các tài nguyên liên quan) của môi trường dev/test vào 5 giờ chiều mỗi ngày và tạo lại chúng vào 8 giờ sáng hôm sau. Điều này giúp tiết kiệm chi phí đáng kể vì tài nguyên không chạy trong khoảng thời gian không sử dụng.
-     * CloudFormation làm cho việc tạo và xóa tài nguyên trở nên cực kỳ dễ dàng, đúng với một trong những nguyên tắc lớn nhất của cloud.
- * Năng suất (Productivity):
-   * Tạo và hủy hạ tầng nhanh chóng: Bạn có thể "xây đi xây lại" hạ tầng một cách linh hoạt.
-   * Trực quan hóa: CloudFormation có thể tạo ra sơ đồ trực quan cho các template của bạn (bài giảng có nhắc đến "Infrastructure Composer service" hoặc các công cụ tương tự như CloudFormation Designer trước đây), giúp bạn dễ hình dung kiến trúc.
-   * Lập trình khai báo (Declarative Programming): Bạn chỉ cần nói cái gì bạn muốn, CloudFormation sẽ tự "thông minh" tìm ra cách làm (thứ tự tạo tài nguyên, các phụ thuộc, v.v.). Bạn không cần phải lo lắng tạo DynamoDB trước hay EC2 trước.
- * Không cần "Phát minh lại Bánh xe":
-   * Tái sử dụng: Bạn có thể tận dụng các template có sẵn trên mạng, từ tài liệu của AWS, hoặc chia sẻ template trong nội bộ.
-   * Hỗ trợ rộng rãi: CloudFormation hỗ trợ hầu hết tất cả các tài nguyên AWS.
-   * Custom Resources: Trong trường hợp một tài nguyên nào đó chưa được hỗ trợ trực tiếp, bạn có thể sử dụng "Custom Resource" để mở rộng khả năng của CloudFormation.
-Tóm lại, CloudFormation là nền tảng của Infrastructure as Code trên AWS.
-Trực quan hóa Template CloudFormation 📊
-Như đã đề cập, bạn có thể sử dụng các công cụ để trực quan hóa template CloudFormation của mình. Điều này giúp bạn:
- * Thấy rõ tất cả các tài nguyên trong stack (ví dụ: ALB Listener, Database Security Group, SQL Database, Security Groups, Launch Configuration, Application Load Balancer, v.v.).
- * Quan trọng hơn, bạn thấy được mối quan hệ và cách các thành phần này liên kết với nhau. Rất hữu ích khi bạn cần hiểu rõ sơ đồ kiến trúc của mình.
-Khi nào dùng CloudFormation (Góc nhìn cho kỳ thi)? 📝
-Trong các câu hỏi thi, hãy nghĩ đến CloudFormation khi bạn thấy các tình huống sau:
- * Cần triển khai Infrastructure as Code.
- * Cần lặp lại một kiến trúc ở nhiều môi trường khác nhau (dev, test, prod), nhiều khu vực (region) khác nhau, hoặc thậm chí nhiều tài khoản AWS khác nhau.
-Đó là những điểm chính bạn cần nắm về AWS CloudFormation. Nó thực sự là một công cụ mạnh mẽ và là "xương sống" cho việc quản lý hạ tầng tự động và nhất quán trên AWS. </p>
+<p><a class="glightbox" href="../image/ec2-HA/1748883758899.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748883758899" src="../image/ec2-HA/1748883758899.png" /></a>
+<a class="glightbox" href="../image/ec2-HA/1748883764520.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748883764520" src="../image/ec2-HA/1748883764520.png" /></a>
+<a class="glightbox" href="../image/ec2-HA/1748883768673.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748883768673" src="../image/ec2-HA/1748883768673.png" /></a></p>
+<p>làm thế nào để một <strong>EC2 instance</strong> đơn lẻ trở nên có <strong>Tính sẵn sàng cao (Highly Available - HA)</strong>. Mặc định thì một EC2 instance chỉ chạy trong một Availability Zone (AZ) thôi, nên nếu AZ đó có vấn đề là "toang". Nhưng đừng lo, chúng ta có thể "chế biến" để nó "bất tử" hơn!</p>
+<hr />
+<h2 id="tai-sao-can-lam-cho-ec2-highly-available">Tại sao cần làm cho EC2 Highly Available? 🤔<a class="headerlink" href="#tai-sao-can-lam-cho-ec2-highly-available" title="Permanent link">&para;</a></h2>
+<p>Một EC2 instance đơn lẻ, nếu gặp sự cố (phần cứng hỏng, AZ gặp vấn đề), ứng dụng của bạn sẽ "sập". Mục tiêu của chúng ta là thiết kế sao cho dù có sự cố, vẫn có một instance khác đứng lên thay thế, đảm bảo ứng dụng tiếp tục phục vụ người dùng.</p>
+<hr />
+<h2 id="cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda">Cách 1: Dùng Standby EC2, Elastic IP và "Phép thuật" Lambda ✨<a class="headerlink" href="#cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda" title="Permanent link">&para;</a></h2>
+<p>Đây là một cách khá "thủ công" nhưng hiệu quả:</p>
+<ul>
+<li>
+<p><strong>Thiết lập ban đầu:</strong></p>
+</li>
+<li>
+<p>Bạn có một <strong>EC2 instance chính (Primary)</strong> đang chạy web server, được gắn một địa chỉ <strong>Elastic IP</strong> (IP tĩnh). Người dùng truy cập web server qua Elastic IP này.</p>
+</li>
+<li>
+<p>Bạn có một <strong>EC2 instance dự phòng (Standby)</strong>, có thể đang chạy hoặc đang tắt.</p>
+</li>
+<li>
+<p><strong>Phát hiện sự cố:</strong></p>
+</li>
+<li>
+<p>Dùng <strong>CloudWatch Alarm</strong> (ví dụ: theo dõi CPU lên 100%, instance không phản hồi) hoặc <strong>CloudWatch Event</strong> (ví dụ: sự kiện instance bị terminate).</p>
+</li>
+<li>
+<p><strong>Quá trình Chuyển đổi dự phòng (Failover):</strong></p>
+</li>
+<li>Khi CloudWatch Alarm/Event được kích hoạt, nó sẽ gọi một <strong>Lambda function</strong>.</li>
+<li>Lambda function này sẽ:<ul>
+<li>Khởi động instance Standby (nếu nó chưa chạy).</li>
+<li>Thực hiện API call để <strong>gỡ Elastic IP khỏi instance Primary</strong> và <strong>gắn Elastic IP đó vào instance Standby</strong>. (Một Elastic IP chỉ có thể gắn vào một instance tại một thời điểm).</li>
+</ul>
+</li>
+<li>Instance Primary sau đó có thể bị terminate hoặc biến mất.</li>
+<li><strong>Ưu điểm:</strong> Người dùng không cảm nhận được sự gián đoạn nhiều vì họ vẫn truy cập qua cùng một địa chỉ Elastic IP.</li>
+</ul>
+<hr />
+<h2 id="cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua">Cách 2: Dùng Auto Scaling Group (ASG) - Chế độ "Một mình một ngựa" 🏇<a class="headerlink" href="#cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua" title="Permanent link">&para;</a></h2>
+<p>Cách này thông minh hơn, tận dụng sức mạnh của Auto Scaling Group (ASG):</p>
+<ul>
+<li>
+<p><strong>Thiết lập ASG:</strong></p>
+</li>
+<li>
+<p>Cấu hình ASG với:</p>
+<ul>
+<li>Số lượng instance tối thiểu (Minimum): <strong>1</strong></li>
+<li>Số lượng instance tối đa (Maximum): <strong>1</strong></li>
+<li>Số lượng instance mong muốn (Desired): <strong>1</strong></li>
+</ul>
+</li>
+<li>Chỉ định ASG hoạt động trên <strong>nhiều Availability Zone</strong> (ví dụ: 2 AZ).</li>
+<li>
+<p>=&gt; Với cấu hình này, ASG sẽ luôn đảm bảo <strong>CHỈ CÓ MỘT</strong> EC2 instance chạy tại một thời điểm.</p>
+</li>
+<li>
+<p><strong>Gắn Elastic IP:</strong></p>
+</li>
+<li>
+<p>Người dùng vẫn truy cập qua một Elastic IP cố định.</p>
+</li>
+<li>
+<p>Trong <strong>EC2 User Data script</strong> (script chạy khi instance khởi động) của instance, bạn sẽ viết mã để instance đó <strong>tự động thực hiện API call để gắn Elastic IP</strong> vào chính nó (ví dụ, dựa trên Tags của Elastic IP).</p>
+</li>
+<li>
+<p><strong>Quá trình Chuyển đổi dự phòng (Failover):</strong></p>
+</li>
+<li>Nếu instance hiện tại (ví dụ, ở AZ1) bị terminate hoặc gặp sự cố.</li>
+<li>ASG sẽ tự động phát hiện điều này và <strong>khởi chạy một instance thay thế</strong> trong một AZ khác (ví dụ, AZ2) để duy trì số lượng mong muốn là 1.</li>
+<li>Instance mới này khi khởi động sẽ chạy User Data script và <strong>tự động gắn lại Elastic IP</strong> vào nó.</li>
+<li><strong>Ưu điểm:</strong></li>
+<li><strong>Tự động hoàn toàn</strong> bởi ASG, không cần CloudWatch Alarm hay Lambda function riêng để xử lý logic failover cơ bản này.</li>
+<li><strong>Yêu cầu:</strong> EC2 instance cần có một <strong>Instance Role</strong> (IAM Role) cho phép nó thực hiện API call để gắn Elastic IP.</li>
+</ul>
+<hr />
+<h2 id="cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks">Cách 3: ASG cho EC2 "Có trạng thái" (Stateful) với EBS Volume và Lifecycle Hooks 🔄💾<a class="headerlink" href="#cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks" title="Permanent link">&para;</a></h2>
+<p>Cách này phức tạp hơn, dành cho trường hợp EC2 instance của bạn cần lưu trữ dữ liệu lâu dài trên một EBS Volume (ví dụ: một database). Nhớ rằng EBS Volume bị khóa vào một AZ cụ thể.</p>
+<ul>
+<li>
+<p><strong>Thiết lập cơ bản:</strong> Tương tự Cách 2 (ASG min/max/desired=1, Elastic IP, Instance Role). Điểm khác biệt là instance này có một <strong>EBS Volume</strong> quan trọng gắn vào.</p>
+</li>
+<li>
+<p><strong>Quá trình Chuyển đổi dự phòng (Failover) - Kết hợp nhiều tuyệt kỹ:</strong></p>
+</li>
+<li>
+<p><strong>Khi instance chính (ở AZ1) bắt đầu bị terminate:</strong></p>
+<ul>
+<li>Một <strong>ASG Lifecycle Hook</strong> cho sự kiện "Terminating" được kích hoạt.</li>
+<li>Hook này có thể gọi một script (ví dụ: Lambda) để <strong>tạo một EBS Snapshot</strong> từ EBS Volume của instance đang bị terminate ở AZ1. (Khi instance đang trong quá trình terminate và được hook giữ lại, EBS volume có thể được snapshot). Snapshot này được gắn tag cẩn thận.</li>
+</ul>
+</li>
+<li><strong>ASG khởi chạy instance thay thế (ở AZ2):</strong><ul>
+<li>Một <strong>ASG Lifecycle Hook</strong> khác cho sự kiện "Launching" được kích hoạt khi instance mới ở AZ2 bắt đầu khởi chạy.</li>
+<li>Hook này gọi một script để:<ul>
+<li><strong>Tạo một EBS Volume mới từ EBS Snapshot</strong> đã tạo ở bước trên, đảm bảo volume mới này được tạo trong AZ2.</li>
+<li><strong>Gắn EBS Volume mới này vào instance thay thế</strong> đang khởi chạy.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>EC2 User Data trên instance mới:</strong></p>
+<ul>
+<li>Sau khi instance khởi chạy và EBS volume được gắn (nhờ lifecycle hook), User Data script sẽ chạy.</li>
+<li>Script này kiểm tra việc gắn EBS volume và sau đó <strong>gắn Elastic IP</strong> vào instance mới.</li>
+</ul>
+</li>
+<li>
+<p><strong>Kết quả:</strong> Bạn đã làm cho một EC2 instance "có trạng thái" (với dữ liệu trên EBS) trở nên highly available qua các AZ. Cách này kết hợp sức mạnh của EC2 User Data và ASG Lifecycle Hooks.</p>
+</li>
+</ul>
+<hr />
+<h2 id="chot-lai-bai-hoc-quan-trong">Chốt lại "Bài học" quan trọng 💡<a class="headerlink" href="#chot-lai-bai-hoc-quan-trong" title="Permanent link">&para;</a></h2>
+<ul>
+<li>AWS cung cấp nhiều cách để bạn "hô biến" một EC2 instance đơn lẻ thành một giải pháp có tính sẵn sàng cao.</li>
+<li>Lựa chọn phương pháp nào phụ thuộc vào <strong>yêu cầu cụ thể</strong> của bạn (stateless hay stateful, mức độ tự động hóa mong muốn, độ phức tạp chấp nhận được).</li>
+<li><strong>Elastic IP</strong> là chìa khóa để người dùng có một điểm truy cập cố định.</li>
+<li><strong>CloudWatch Alarms/Events + Lambda</strong> phù hợp cho các kịch bản failover tùy chỉnh.</li>
+<li><strong>Auto Scaling Group (ASG)</strong> với cấu hình min/max/desired=1 là một cách mạnh mẽ để tự động thay thế instance hỏng.</li>
+<li><strong>EC2 User Data</strong> giúp instance tự cấu hình khi khởi động (ví dụ: gắn Elastic IP).</li>
+<li><strong>ASG Lifecycle Hooks</strong> cho phép bạn thực hiện các hành động tùy chỉnh trong quá trình instance được khởi chạy hoặc chấm dứt (ví dụ: snapshot và restore EBS volume).</li>
+<li>Việc này đòi hỏi bạn phải thiết kế và tự động hóa nhiều hơn, nhưng kết quả mang lại là một hệ thống vững vàng hơn.</li>
+</ul>
+<p>Hiểu rõ các cơ chế này sẽ giúp bạn tự tin hơn rất nhiều khi thiết kế các giải pháp HA trên AWS.</p>
 
 
 
@@ -7077,7 +7486,7 @@ Trong các câu hỏi thi, hãy nghĩ đến CloudFormation khi bạn thấy cá
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 6, 2025 06:06:31 UTC">3 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 6, 2025 07:13:20 UTC">3 tháng 6, 2025</span>
   </span>
 
     
@@ -7164,7 +7573,7 @@ Trong các câu hỏi thi, hãy nghĩ đến CloudFormation khi bạn thấy cá
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../SES/" class="md-footer__link md-footer__link--prev" aria-label="Trước: SES">
+          <a href="../block-ip/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Block ip">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7174,20 +7583,20 @@ Trong các câu hỏi thi, hãy nghĩ đến CloudFormation khi bạn thấy cá
                 Trước
               </span>
               <div class="md-ellipsis">
-                SES
+                Block ip
               </div>
             </div>
           </a>
         
         
           
-          <a href="../pinpoint/" class="md-footer__link md-footer__link--next" aria-label="Sau: Pinpoint">
+          <a href="../../23.orther/CF-serviceRole/" class="md-footer__link md-footer__link--next" aria-label="Sau: CF serviceRole">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Pinpoint
+                CF serviceRole
               </div>
             </div>
             <div class="md-footer__button md-icon">
