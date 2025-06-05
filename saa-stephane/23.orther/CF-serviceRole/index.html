@@ -22,7 +22,7 @@
     
     
       
-        <title>CF serviceRole - DraDoc</title>
+        <title>CloudFormation Service Role là gì? 🤔 - DraDoc</title>
       
     
     
@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#cloudformation-service-role-la-gi" class="md-skip">
+          Bỏ qua
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CF serviceRole
+              CloudFormation Service Role là gì? 🤔
             
           </span>
         </div>
@@ -7073,18 +7078,121 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    CloudFormation Service Role là gì? 🤔
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    CF serviceRole
+    CloudFormation Service Role là gì? 🤔
     
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-can-service-role-loi-ich-bao-mat-nguyen-tac-ac-quyen-toi-thieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Tại sao cần Service Role? — Lợi ích bảo mật (Nguyên tắc Đặc quyền Tối thiểu)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-role-hoat-ong-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤝 Service Role hoạt động như thế nào?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quyen-iampassrole-chia-khoa-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Quyền iam:PassRole — "Chìa khóa" quan trọng
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-du-minh-hoa-theo-bai-giang" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎨 Ví dụ minh họa (theo bài giảng)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Ví dụ minh họa (theo bài giảng)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tao-service-role-cho-cloudformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tạo Service Role cho CloudFormation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dung-role-khi-tao-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Dùng role khi tạo Stack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meo-on-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✍️ "Mẹo" ôn thi
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -7307,6 +7415,85 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tai-sao-can-service-role-loi-ich-bao-mat-nguyen-tac-ac-quyen-toi-thieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Tại sao cần Service Role? — Lợi ích bảo mật (Nguyên tắc Đặc quyền Tối thiểu)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-role-hoat-ong-nhu-the-nao" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤝 Service Role hoạt động như thế nào?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quyen-iampassrole-chia-khoa-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Quyền iam:PassRole — "Chìa khóa" quan trọng
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-du-minh-hoa-theo-bai-giang" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎨 Ví dụ minh họa (theo bài giảng)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Ví dụ minh họa (theo bài giảng)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tao-service-role-cho-cloudformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tạo Service Role cho CloudFormation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dung-role-khi-tao-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Dùng role khi tạo Stack
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meo-on-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✍️ "Mẹo" ôn thi
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -7330,44 +7517,88 @@
   
 
 
-  <h1>CF serviceRole</h1>
-
-<p>CloudFormation Service Role là gì? 🤔
-Bạn cứ hình dung Service Role giống như một "giấy ủy quyền" đặc biệt mà bạn tạo ra trong IAM (Identity and Access Management). Giấy ủy quyền này được dành riêng cho CloudFormation.
-Khi CloudFormation cần tạo, cập nhật, hay xóa các tài nguyên trong stack của bạn (ví dụ: tạo S3 bucket, EC2 instance), nó sẽ "đội chiếc mũ" của Service Role này và hành động với các quyền hạn được định nghĩa trong Service Role đó, chứ không phải dùng quyền trực tiếp của bạn.
-Tại sao lại cần Service Role? Lợi ích Bảo mật (Nguyên tắc Đặc quyền Tối thiểu) 🔐
-Đây chính là điểm "ăn tiền" của Service Role, giúp bạn tuân thủ nguyên tắc đặc quyền tối thiểu (least privilege principle):
- * Tình huống: Bạn muốn cho phép một người dùng (hoặc một nhóm người dùng) có thể tạo/cập nhật/xóa các stack CloudFormation, nhưng bạn không muốn cấp cho họ quyền trực tiếp để tạo/cập nhật/xóa từng tài nguyên riêng lẻ (như S3, EC2) bên trong stack đó.
- * Giải pháp với Service Role:
-   * Bạn tạo một Service Role với những quyền vừa đủ để CloudFormation có thể tạo các tài nguyên trong template (ví dụ: quyền tạo S3 bucket).
-   * Người dùng chỉ cần có quyền thực hiện các hành động trên CloudFormation (ví dụ: cloudformation:CreateStack) và một quyền đặc biệt là iam:PassRole.
-   * Khi người dùng tạo stack, họ sẽ "pass" (chuyển giao) Service Role này cho CloudFormation.
-   * CloudFormation sẽ sử dụng quyền của Service Role đó để làm việc.
- * Kết quả: Người dùng có thể quản lý hạ tầng thông qua CloudFormation một cách an toàn mà không cần có quá nhiều quyền trực tiếp trên các dịch vụ khác.
-Service Role hoạt động như thế nào? 🤝
- * Người dùng khởi tạo: Người dùng bắt đầu một hành động với CloudFormation stack (ví dụ: tạo mới, cập nhật).
- * "Chuyển giao vai trò" (Pass Role): Người dùng chỉ định một Service Role mà CloudFormation sẽ sử dụng.
- * CloudFormation hành động: CloudFormation "đội chiếc mũ" của Service Role đó và sử dụng các quyền hạn được cấp cho Service Role để tương tác với các dịch vụ AWS khác (S3, EC2,...) và tạo/cập nhật/xóa tài nguyên theo định nghĩa trong template.
-Quyền iam:PassRole - "Chìa khóa" quan trọng 🔑
-Đây là một quyền rất quan trọng mà người dùng cần có để có thể "giao" một Service Role cho CloudFormation (hoặc bất kỳ dịch vụ AWS nào khác).
- * Tại sao cần thiết? Nó ngăn chặn việc người dùng có thể leo thang đặc quyền (privilege escalation) bằng cách "pass" một role có nhiều quyền hơn những gì họ được phép sử dụng. Người dùng phải có quyền iam:PassRole đối với chính xác cái role mà họ muốn pass.
-Ví dụ minh họa (như trong bài giảng) 🎨
- * Tạo Service Role:
-   * Bạn vào IAM, tạo một Role mới.
-   * Chọn "AWS service" làm trusted entity, và chọn "CloudFormation" làm use case.
-   * Gắn policy cho Role này, ví dụ, chỉ cho phép "S3 full access" (DemoRole for CFN with S3 capabilities).
-   * =&gt; Role này giờ đây cho phép CloudFormation làm mọi thứ với S3.
- * Sử dụng Role khi tạo CloudFormation Stack:
-   * Khi bạn tạo một CloudFormation stack mới.
-   * Trong phần "Permissions", bạn có thể chọn IAM role. Nếu bạn không chọn, CloudFormation sẽ dùng quyền cá nhân của bạn.
-   * Nếu bạn chọn DemoRole for CFN with S3 capabilities đã tạo ở trên.
-   * Điều gì xảy ra? CloudFormation sẽ chỉ sử dụng các quyền của DemoRole này. Nếu template của bạn cố gắng tạo một EC2 instance (mà DemoRole không có quyền cho EC2), thì việc tạo stack sẽ thất bại ở bước tạo EC2. Điều này chứng tỏ CloudFormation bị giới hạn bởi quyền của Service Role được pass vào.
-"Mẹo" cho kỳ thi ✍️
- * CloudFormation Service Role là một công cụ mạnh mẽ để thực thi nguyên tắc đặc quyền tối thiểu.
- * Hiểu rõ luồng: Người dùng (có quyền CloudFormation + iam:PassRole) ➡️ Pass Role cho ➡️ CloudFormation ➡️ CloudFormation Assume (đảm nhận) Role đó ➡️ Hành động trên các Tài nguyên dựa trên quyền của Role.
- * Quyền iam:PassRole là bắt buộc để người dùng có thể chỉ định một Service Role cho CloudFormation.
- * Cơ chế này tách biệt quyền quản lý stack CloudFormation khỏi quyền quản lý trực tiếp từng tài nguyên riêng lẻ.
-Đây là một khía cạnh bảo mật quan trọng khi làm việc với CloudFormation, giúp bạn kiểm soát quyền hạn chặt chẽ hơn trong môi trường AWS của mình. </p>
+<h1 id="cloudformation-service-role-la-gi">CloudFormation Service Role là gì? 🤔<a class="headerlink" href="#cloudformation-service-role-la-gi" title="Permanent link">&para;</a></h1>
+<p>Bạn cứ hình dung <strong>Service Role</strong> giống như một <strong>"giấy ủy quyền" đặc biệt</strong> mà bạn tạo ra trong <strong>IAM (Identity and Access Management)</strong>.<br />
+Giấy ủy quyền này được <strong>dành riêng cho CloudFormation</strong>.</p>
+<p>Khi CloudFormation cần tạo, cập nhật, hay xóa các tài nguyên trong stack của bạn (ví dụ: tạo S3 bucket, EC2 instance),<br />
+nó sẽ <strong>"đội chiếc mũ" của Service Role</strong> này và hành động với <strong>các quyền hạn được định nghĩa</strong> trong role đó — <strong>không dùng quyền trực tiếp của bạn</strong>.</p>
+<hr />
+<h2 id="tai-sao-can-service-role-loi-ich-bao-mat-nguyen-tac-ac-quyen-toi-thieu">🔐 Tại sao cần Service Role? — Lợi ích bảo mật (Nguyên tắc Đặc quyền Tối thiểu)<a class="headerlink" href="#tai-sao-can-service-role-loi-ich-bao-mat-nguyen-tac-ac-quyen-toi-thieu" title="Permanent link">&para;</a></h2>
+<p>Đây chính là điểm "ăn tiền" của Service Role, giúp bạn <strong>tuân thủ nguyên tắc least privilege</strong> (chỉ cấp quyền tối thiểu cần thiết):</p>
+<ul>
+<li>
+<p><strong>Tình huống</strong>:<br />
+  Bạn muốn cho phép một người dùng (hoặc nhóm) có thể tạo/cập nhật/xóa các stack CloudFormation,<br />
+<strong>nhưng không muốn cấp cho họ quyền trực tiếp</strong> với từng tài nguyên (S3, EC2, IAM, ...).</p>
+</li>
+<li>
+<p><strong>Giải pháp</strong> với Service Role:</p>
+</li>
+<li>Tạo một <strong>Service Role</strong> với <strong>quyền hạn vừa đủ</strong> (VD: chỉ cho phép tạo S3 bucket).</li>
+<li>Người dùng chỉ cần có quyền:<ul>
+<li><code>cloudformation:CreateStack</code></li>
+<li><code>iam:PassRole</code> (quyền quan trọng!)</li>
+</ul>
+</li>
+<li>Khi tạo stack, người dùng sẽ <strong>"pass" role này cho CloudFormation</strong>.</li>
+<li>
+<p>CloudFormation sẽ <strong>assume (đảm nhận)</strong> role và dùng quyền đó để hoạt động.</p>
+</li>
+<li>
+<p>✅ <strong>Kết quả</strong>:<br />
+  Người dùng có thể quản lý hạ tầng qua CloudFormation <strong>mà không cần có quyền trên từng dịch vụ</strong>, giúp <strong>bảo mật tốt hơn</strong>.</p>
+</li>
+</ul>
+<hr />
+<h2 id="service-role-hoat-ong-nhu-the-nao">🤝 Service Role hoạt động như thế nào?<a class="headerlink" href="#service-role-hoat-ong-nhu-the-nao" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Người dùng khởi tạo</strong>: Ví dụ, tạo hoặc update một CloudFormation stack.</li>
+<li><strong>Chuyển giao vai trò (Pass Role)</strong>: Người dùng chỉ định IAM Role để CloudFormation sử dụng.</li>
+<li><strong>CloudFormation hành động</strong>:</li>
+<li>Assume role đó.</li>
+<li>Dùng quyền bên trong role để tạo/cập nhật/xóa tài nguyên (S3, EC2, IAM, ...).</li>
+</ol>
+<hr />
+<h2 id="quyen-iampassrole-chia-khoa-quan-trong">🔑 Quyền <code>iam:PassRole</code> — "Chìa khóa" quan trọng<a class="headerlink" href="#quyen-iampassrole-chia-khoa-quan-trong" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Đây là <strong>quyền bắt buộc</strong> để người dùng có thể pass một Service Role cho CloudFormation.</li>
+<li>Vì sao? Để <strong>ngăn người dùng leo thang đặc quyền</strong> bằng cách pass một role có quyền cao hơn.</li>
+</ul>
+<p>💡 <em>Người dùng chỉ có thể pass các role mà họ có quyền <code>iam:PassRole</code> rõ ràng trên đó.</em></p>
+<hr />
+<h2 id="vi-du-minh-hoa-theo-bai-giang">🎨 Ví dụ minh họa (theo bài giảng)<a class="headerlink" href="#vi-du-minh-hoa-theo-bai-giang" title="Permanent link">&para;</a></h2>
+<h3 id="1-tao-service-role-cho-cloudformation">1. <strong>Tạo Service Role cho CloudFormation</strong><a class="headerlink" href="#1-tao-service-role-cho-cloudformation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Vào IAM → tạo một Role mới.</li>
+<li><strong>Trusted entity</strong>: AWS service</li>
+<li><strong>Use case</strong>: chọn <strong>CloudFormation</strong></li>
+<li>Gắn policy: VD <code>AmazonS3FullAccess</code></li>
+<li>➡️ Tạo role tên: <code>DemoRole-CFN-S3Access</code></li>
+</ul>
+<h3 id="2-dung-role-khi-tao-stack">2. <strong>Dùng role khi tạo Stack</strong><a class="headerlink" href="#2-dung-role-khi-tao-stack" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Khi tạo stack → trong phần <strong>Permissions</strong>, chọn role <code>DemoRole-CFN-S3Access</code>.</li>
+<li>Nếu template cố gắng tạo EC2 instance (mà role không có quyền EC2) → Stack sẽ <strong>fail</strong> ở bước đó.</li>
+<li>✅ Chứng minh CloudFormation <strong>chỉ hoạt động trong giới hạn quyền</strong> được cấp qua Service Role.</li>
+</ul>
+<hr />
+<h2 id="meo-on-thi">✍️ "Mẹo" ôn thi<a class="headerlink" href="#meo-on-thi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>CloudFormation Service Role = <strong>Giải pháp thực thi nguyên tắc least privilege</strong>.</li>
+<li>
+<p>Nắm rõ <strong>luồng quyền</strong>:
+Người dùng (CFN + PassRole) → Pass Role → CloudFormation → Assume Role → Hành động với quyền của role</p>
+</li>
+<li>
+<p>Luôn nhớ: <code>iam:PassRole</code> là <strong>quyền then chốt</strong>.</p>
+</li>
+<li>Cơ chế giúp <strong>tách biệt quyền quản lý stack</strong> khỏi quyền trên từng tài nguyên riêng lẻ.</li>
+</ul>
+<hr />
+<blockquote>
+<p>✅ <strong>Tóm lại</strong>:<br />
+Sử dụng Service Role là một <strong>chiến lược bảo mật quan trọng</strong> khi làm việc với CloudFormation, giúp bạn kiểm soát quyền tốt hơn và giảm thiểu rủi ro trong môi trường AWS.</p>
+</blockquote>
 
 
 
@@ -7388,7 +7619,7 @@ Ví dụ minh họa (như trong bài giảng) 🎨
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="5 tháng 6, 2025 05:17:27 UTC">5 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="5 tháng 6, 2025 05:19:08 UTC">5 tháng 6, 2025</span>
   </span>
 
     
