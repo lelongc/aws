@@ -1,4 +1,3 @@
-
 CloudFormation Service Role là gì? 🤔
 Bạn cứ hình dung Service Role giống như một "giấy ủy quyền" đặc biệt mà bạn tạo ra trong IAM (Identity and Access Management). Giấy ủy quyền này được dành riêng cho CloudFormation.
 Khi CloudFormation cần tạo, cập nhật, hay xóa các tài nguyên trong stack của bạn (ví dụ: tạo S3 bucket, EC2 instance), nó sẽ "đội chiếc mũ" của Service Role này và hành động với các quyền hạn được định nghĩa trong Service Role đó, chứ không phải dùng quyền trực tiếp của bạn.
