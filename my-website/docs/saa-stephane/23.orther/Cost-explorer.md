@@ -14,6 +14,7 @@ Ví dụ thực tế (Như trong bài giảng) 📈
  * Xem "Chi phí theo Giờ và theo Tài nguyên": Cung cấp cái nhìn chi tiết hơn về chi phí phát sinh.
  * Đề xuất Savings Plan: Cost Explorer sẽ hiển thị các gợi ý Savings Plan phù hợp.
  * Biểu đồ Dự báo Chi phí: Cho bạn thấy xu hướng chi tiêu tương lai.
+
 "Bỏ túi" cho kỳ thi 📝
  * AWS Cost Explorer là công cụ chính để hiểu và quản lý chi phí trên AWS.
  * Nhớ các chức năng chính: trực quan hóa chi phí, giúp xác định cơ hội tiết kiệm (đặc biệt với Savings Plans), và dự báo chi phí.
