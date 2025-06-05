@@ -36,5 +36,4 @@ Bạn có thể chạy rất nhiều dịch vụ quen thuộc trên Outposts, v�
  * Mục đích: Giải quyết thách thức của hybrid cloud bằng cách cung cấp một trải nghiệm AWS nhất quán cả ở on-premises và trên cloud.
  * Lợi ích chính: Độ trễ thấp cho hệ thống local, xử lý dữ liệu tại chỗ, đáp ứng data residency.
  * Lưu ý quan trọng: Bạn chịu trách nhiệm về an ninh vật lý cho tủ rack Outposts.
-
-AWS Outposts thực sự là một bước tiến mang tính cách mạng, giúp thu hẹp khoảng cách giữa on-premises và cloud. 
+AWS Outposts thực sự là một bước tiến mang tính cách mạng, giúp thu hẹp khoảng cách giữa on-premises và cloud. Nắm vững khái niệm này sẽ giúp bạn tự tin hơn khi gặp các câu hỏi liên quan đến giải pháp hybrid cloud trong kỳ thi. Chúc bạn một ngày học tập thật hiệu quả nhé!
