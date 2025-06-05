@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/22.more-saa/ec2-HA/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/23.orther/cost-anomaly-detection/">
       
       
-        <link rel="prev" href="../block-ip/">
+        <link rel="prev" href="../cloudformation/">
       
       
-        <link rel="next" href="../../23.orther/CF-serviceRole/">
+        <link rel="next" href="../pinpoint/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>ec2 HA - DraDoc</title>
+        <title>Cost anomaly detection - DraDoc</title>
       
     
     
@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#tai-sao-can-lam-cho-ec2-highly-available" class="md-skip">
-          Bỏ qua
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -119,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ec2 HA
+              Cost anomaly detection
             
           </span>
         </div>
@@ -6816,284 +6811,10 @@
                 
   
   
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_24" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_24" id="__nav_6_24_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    22.more saa
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_24_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_24">
-            <span class="md-nav__icon md-icon"></span>
-            22.more saa
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Caching%20Strategies/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Caching Strategies
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Event-Processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Event Processing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../HPC/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    HPC
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../block-ip/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Block ip
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    ec2 HA
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    ec2 HA
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tai-sao-can-lam-cho-ec2-highly-available" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tại sao cần làm cho EC2 Highly Available? 🤔
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cách 1: Dùng Standby EC2, Elastic IP và "Phép thuật" Lambda ✨
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cách 2: Dùng Auto Scaling Group (ASG) - Chế độ "Một mình một ngựa" 🏇
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cách 3: ASG cho EC2 "Có trạng thái" (Stateful) với EBS Volume và Lifecycle Hooks 🔄💾
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chot-lai-bai-hoc-quan-trong" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chốt lại "Bài học" quan trọng 💡
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
   
     
     
-      
-        
-      
-        
-      
-        
       
         
       
@@ -7123,7 +6844,198 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_25" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_24" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_24" id="__nav_6_24_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    22.more saa
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_24_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_24">
+            <span class="md-nav__icon md-icon"></span>
+            22.more saa
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22.more-saa/Caching%20Strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caching Strategies
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22.more-saa/Event-Processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22.more-saa/HPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22.more-saa/block-ip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Block ip
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../22.more-saa/ec2-HA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ec2 HA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_25" checked>
         
           
           <label class="md-nav__link" for="__nav_6_25" id="__nav_6_25_label" tabindex="">
@@ -7139,7 +7051,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_25_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_25_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_25">
             <span class="md-nav__icon md-icon"></span>
             23.orther
@@ -7153,7 +7065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23.orther/CF-serviceRole/" class="md-nav__link">
+      <a href="../CF-serviceRole/" class="md-nav__link">
         
   
   
@@ -7176,7 +7088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23.orther/Cost-explorer/" class="md-nav__link">
+      <a href="../Cost-explorer/" class="md-nav__link">
         
   
   
@@ -7199,7 +7111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23.orther/SES/" class="md-nav__link">
+      <a href="../SES/" class="md-nav__link">
         
   
   
@@ -7222,7 +7134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23.orther/SSM-more/" class="md-nav__link">
+      <a href="../SSM-more/" class="md-nav__link">
         
   
   
@@ -7245,7 +7157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23.orther/SSM/" class="md-nav__link">
+      <a href="../SSM/" class="md-nav__link">
         
   
   
@@ -7268,7 +7180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23.orther/cloudformation/" class="md-nav__link">
+      <a href="../cloudformation/" class="md-nav__link">
         
   
   
@@ -7288,10 +7200,17 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../23.orther/cost-anomaly-detection/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -7302,6 +7221,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -7314,7 +7234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23.orther/pinpoint/" class="md-nav__link">
+      <a href="../pinpoint/" class="md-nav__link">
         
   
   
@@ -7363,59 +7283,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tai-sao-can-lam-cho-ec2-highly-available" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tại sao cần làm cho EC2 Highly Available? 🤔
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cách 1: Dùng Standby EC2, Elastic IP và "Phép thuật" Lambda ✨
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cách 2: Dùng Auto Scaling Group (ASG) - Chế độ "Một mình một ngựa" 🏇
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cách 3: ASG cho EC2 "Có trạng thái" (Stateful) với EBS Volume và Lifecycle Hooks 🔄💾
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chot-lai-bai-hoc-quan-trong" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chốt lại "Bài học" quan trọng 💡
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -7430,7 +7297,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/22.more-saa/ec2-HA.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/23.orther/cost-anomaly-detection.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -7438,134 +7305,41 @@
   
 
 
-  <h1>ec2 HA</h1>
+  <h1>Cost anomaly detection</h1>
 
-<p><a class="glightbox" href="../image/ec2-HA/1748883758899.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748883758899" src="../image/ec2-HA/1748883758899.png" /></a>
-<a class="glightbox" href="../image/ec2-HA/1748883764520.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748883764520" src="../image/ec2-HA/1748883764520.png" /></a>
-<a class="glightbox" href="../image/ec2-HA/1748883768673.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748883768673" src="../image/ec2-HA/1748883768673.png" /></a></p>
-<p>làm thế nào để một <strong>EC2 instance</strong> đơn lẻ trở nên có <strong>Tính sẵn sàng cao (Highly Available - HA)</strong>. Mặc định thì một EC2 instance chỉ chạy trong một Availability Zone (AZ) thôi, nên nếu AZ đó có vấn đề là "toang". Nhưng đừng lo, chúng ta có thể "chế biến" để nó "bất tử" hơn!</p>
-<hr />
-<h2 id="tai-sao-can-lam-cho-ec2-highly-available">Tại sao cần làm cho EC2 Highly Available? 🤔<a class="headerlink" href="#tai-sao-can-lam-cho-ec2-highly-available" title="Permanent link">&para;</a></h2>
-<p>Một EC2 instance đơn lẻ, nếu gặp sự cố (phần cứng hỏng, AZ gặp vấn đề), ứng dụng của bạn sẽ "sập". Mục tiêu của chúng ta là thiết kế sao cho dù có sự cố, vẫn có một instance khác đứng lên thay thế, đảm bảo ứng dụng tiếp tục phục vụ người dùng.</p>
-<hr />
-<h2 id="cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda">Cách 1: Dùng Standby EC2, Elastic IP và "Phép thuật" Lambda ✨<a class="headerlink" href="#cach-1-dung-standby-ec2-elastic-ip-va-phep-thuat-lambda" title="Permanent link">&para;</a></h2>
-<p>Đây là một cách khá "thủ công" nhưng hiệu quả:</p>
-<ul>
-<li>
-<p><strong>Thiết lập ban đầu:</strong></p>
-</li>
-<li>
-<p>Bạn có một <strong>EC2 instance chính (Primary)</strong> đang chạy web server, được gắn một địa chỉ <strong>Elastic IP</strong> (IP tĩnh). Người dùng truy cập web server qua Elastic IP này.</p>
-</li>
-<li>
-<p>Bạn có một <strong>EC2 instance dự phòng (Standby)</strong>, có thể đang chạy hoặc đang tắt.</p>
-</li>
-<li>
-<p><strong>Phát hiện sự cố:</strong></p>
-</li>
-<li>
-<p>Dùng <strong>CloudWatch Alarm</strong> (ví dụ: theo dõi CPU lên 100%, instance không phản hồi) hoặc <strong>CloudWatch Event</strong> (ví dụ: sự kiện instance bị terminate).</p>
-</li>
-<li>
-<p><strong>Quá trình Chuyển đổi dự phòng (Failover):</strong></p>
-</li>
-<li>Khi CloudWatch Alarm/Event được kích hoạt, nó sẽ gọi một <strong>Lambda function</strong>.</li>
-<li>Lambda function này sẽ:<ul>
-<li>Khởi động instance Standby (nếu nó chưa chạy).</li>
-<li>Thực hiện API call để <strong>gỡ Elastic IP khỏi instance Primary</strong> và <strong>gắn Elastic IP đó vào instance Standby</strong>. (Một Elastic IP chỉ có thể gắn vào một instance tại một thời điểm).</li>
-</ul>
-</li>
-<li>Instance Primary sau đó có thể bị terminate hoặc biến mất.</li>
-<li><strong>Ưu điểm:</strong> Người dùng không cảm nhận được sự gián đoạn nhiều vì họ vẫn truy cập qua cùng một địa chỉ Elastic IP.</li>
-</ul>
-<hr />
-<h2 id="cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua">Cách 2: Dùng Auto Scaling Group (ASG) - Chế độ "Một mình một ngựa" 🏇<a class="headerlink" href="#cach-2-dung-auto-scaling-group-asg-che-o-mot-minh-mot-ngua" title="Permanent link">&para;</a></h2>
-<p>Cách này thông minh hơn, tận dụng sức mạnh của Auto Scaling Group (ASG):</p>
-<ul>
-<li>
-<p><strong>Thiết lập ASG:</strong></p>
-</li>
-<li>
-<p>Cấu hình ASG với:</p>
-<ul>
-<li>Số lượng instance tối thiểu (Minimum): <strong>1</strong></li>
-<li>Số lượng instance tối đa (Maximum): <strong>1</strong></li>
-<li>Số lượng instance mong muốn (Desired): <strong>1</strong></li>
-</ul>
-</li>
-<li>Chỉ định ASG hoạt động trên <strong>nhiều Availability Zone</strong> (ví dụ: 2 AZ).</li>
-<li>
-<p>=&gt; Với cấu hình này, ASG sẽ luôn đảm bảo <strong>CHỈ CÓ MỘT</strong> EC2 instance chạy tại một thời điểm.</p>
-</li>
-<li>
-<p><strong>Gắn Elastic IP:</strong></p>
-</li>
-<li>
-<p>Người dùng vẫn truy cập qua một Elastic IP cố định.</p>
-</li>
-<li>
-<p>Trong <strong>EC2 User Data script</strong> (script chạy khi instance khởi động) của instance, bạn sẽ viết mã để instance đó <strong>tự động thực hiện API call để gắn Elastic IP</strong> vào chính nó (ví dụ, dựa trên Tags của Elastic IP).</p>
-</li>
-<li>
-<p><strong>Quá trình Chuyển đổi dự phòng (Failover):</strong></p>
-</li>
-<li>Nếu instance hiện tại (ví dụ, ở AZ1) bị terminate hoặc gặp sự cố.</li>
-<li>ASG sẽ tự động phát hiện điều này và <strong>khởi chạy một instance thay thế</strong> trong một AZ khác (ví dụ, AZ2) để duy trì số lượng mong muốn là 1.</li>
-<li>Instance mới này khi khởi động sẽ chạy User Data script và <strong>tự động gắn lại Elastic IP</strong> vào nó.</li>
-<li><strong>Ưu điểm:</strong></li>
-<li><strong>Tự động hoàn toàn</strong> bởi ASG, không cần CloudWatch Alarm hay Lambda function riêng để xử lý logic failover cơ bản này.</li>
-<li><strong>Yêu cầu:</strong> EC2 instance cần có một <strong>Instance Role</strong> (IAM Role) cho phép nó thực hiện API call để gắn Elastic IP.</li>
-</ul>
-<hr />
-<h2 id="cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks">Cách 3: ASG cho EC2 "Có trạng thái" (Stateful) với EBS Volume và Lifecycle Hooks 🔄💾<a class="headerlink" href="#cach-3-asg-cho-ec2-co-trang-thai-stateful-voi-ebs-volume-va-lifecycle-hooks" title="Permanent link">&para;</a></h2>
-<p>Cách này phức tạp hơn, dành cho trường hợp EC2 instance của bạn cần lưu trữ dữ liệu lâu dài trên một EBS Volume (ví dụ: một database). Nhớ rằng EBS Volume bị khóa vào một AZ cụ thể.</p>
-<ul>
-<li>
-<p><strong>Thiết lập cơ bản:</strong> Tương tự Cách 2 (ASG min/max/desired=1, Elastic IP, Instance Role). Điểm khác biệt là instance này có một <strong>EBS Volume</strong> quan trọng gắn vào.</p>
-</li>
-<li>
-<p><strong>Quá trình Chuyển đổi dự phòng (Failover) - Kết hợp nhiều tuyệt kỹ:</strong></p>
-</li>
-<li>
-<p><strong>Khi instance chính (ở AZ1) bắt đầu bị terminate:</strong></p>
-<ul>
-<li>Một <strong>ASG Lifecycle Hook</strong> cho sự kiện "Terminating" được kích hoạt.</li>
-<li>Hook này có thể gọi một script (ví dụ: Lambda) để <strong>tạo một EBS Snapshot</strong> từ EBS Volume của instance đang bị terminate ở AZ1. (Khi instance đang trong quá trình terminate và được hook giữ lại, EBS volume có thể được snapshot). Snapshot này được gắn tag cẩn thận.</li>
-</ul>
-</li>
-<li><strong>ASG khởi chạy instance thay thế (ở AZ2):</strong><ul>
-<li>Một <strong>ASG Lifecycle Hook</strong> khác cho sự kiện "Launching" được kích hoạt khi instance mới ở AZ2 bắt đầu khởi chạy.</li>
-<li>Hook này gọi một script để:<ul>
-<li><strong>Tạo một EBS Volume mới từ EBS Snapshot</strong> đã tạo ở bước trên, đảm bảo volume mới này được tạo trong AZ2.</li>
-<li><strong>Gắn EBS Volume mới này vào instance thay thế</strong> đang khởi chạy.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>EC2 User Data trên instance mới:</strong></p>
-<ul>
-<li>Sau khi instance khởi chạy và EBS volume được gắn (nhờ lifecycle hook), User Data script sẽ chạy.</li>
-<li>Script này kiểm tra việc gắn EBS volume và sau đó <strong>gắn Elastic IP</strong> vào instance mới.</li>
-</ul>
-</li>
-<li>
-<p><strong>Kết quả:</strong> Bạn đã làm cho một EC2 instance "có trạng thái" (với dữ liệu trên EBS) trở nên highly available qua các AZ. Cách này kết hợp sức mạnh của EC2 User Data và ASG Lifecycle Hooks.</p>
-</li>
-</ul>
-<hr />
-<h2 id="chot-lai-bai-hoc-quan-trong">Chốt lại "Bài học" quan trọng 💡<a class="headerlink" href="#chot-lai-bai-hoc-quan-trong" title="Permanent link">&para;</a></h2>
-<ul>
-<li>AWS cung cấp nhiều cách để bạn "hô biến" một EC2 instance đơn lẻ thành một giải pháp có tính sẵn sàng cao.</li>
-<li>Lựa chọn phương pháp nào phụ thuộc vào <strong>yêu cầu cụ thể</strong> của bạn (stateless hay stateful, mức độ tự động hóa mong muốn, độ phức tạp chấp nhận được).</li>
-<li><strong>Elastic IP</strong> là chìa khóa để người dùng có một điểm truy cập cố định.</li>
-<li><strong>CloudWatch Alarms/Events + Lambda</strong> phù hợp cho các kịch bản failover tùy chỉnh.</li>
-<li><strong>Auto Scaling Group (ASG)</strong> với cấu hình min/max/desired=1 là một cách mạnh mẽ để tự động thay thế instance hỏng.</li>
-<li><strong>EC2 User Data</strong> giúp instance tự cấu hình khi khởi động (ví dụ: gắn Elastic IP).</li>
-<li><strong>ASG Lifecycle Hooks</strong> cho phép bạn thực hiện các hành động tùy chỉnh trong quá trình instance được khởi chạy hoặc chấm dứt (ví dụ: snapshot và restore EBS volume).</li>
-<li>Việc này đòi hỏi bạn phải thiết kế và tự động hóa nhiều hơn, nhưng kết quả mang lại là một hệ thống vững vàng hơn.</li>
-</ul>
-<p>Hiểu rõ các cơ chế này sẽ giúp bạn tự tin hơn rất nhiều khi thiết kế các giải pháp HA trên AWS.</p>
+<p>AWS Cost Anomaly Detection. Nghe tên là thấy "chuyên gia bắt gian lận chi phí" rồi đúng không? 😉
+AWS Cost Anomaly Detection là gì? 🕵️‍♂️💸
+AWS Cost Anomaly Detection là dịch vụ liên tục theo dõi dữ liệu chi phí và sử dụng của bạn. Điểm đặc biệt là nó sử dụng Machine Learning (Học máy) để phát hiện các khoản chi tiêu bất thường (unusual spends).
+"Thám tử" này làm việc ra sao? 🤖
+ * Tự học hỏi: Dịch vụ này sẽ "học" từ các kiểu chi tiêu lịch sử độc nhất của bạn.
+ * Phát hiện "biến": Sau khi đã "hiểu" bạn, nó có thể nhận ra:
+   * Các đợt tăng chi phí đột biến một lần (one-time cost spikes).
+   * Hoặc các trường hợp chi phí tăng liên tục (continuous cost increases) mà không bình thường.
+ * Không cần bạn "chỉ bài": Bạn không cần phải tự định nghĩa bất kỳ ngưỡng (thresholds) nào cả. Dịch vụ sẽ tự biết cái gì trông "hơi lạ". Quá xịn!
+"Thám tử" theo dõi những gì? 🔎
+Cost Anomaly Detection sẽ để mắt đến:
+ * Các dịch vụ AWS bạn đang dùng.
+ * Các tài khoản thành viên (member accounts) trong AWS Organization của bạn.
+ * Các thẻ phân bổ chi phí (cost allocation tags).
+ * Các danh mục chi phí (cost categories).
+Báo cáo và Cảnh báo 📢
+Khi phát hiện điều gì đó bất thường:
+ * Dịch vụ sẽ gửi cho bạn một báo cáo phát hiện bất thường (anomaly detection report).
+ * Báo cáo này bao gồm cả phân tích nguyên nhân gốc rễ (root cause analysis), giúp bạn hiểu tại sao chi phí lại tăng đột biến.
+ * Cách nhận thông báo:
+   * Cảnh báo riêng lẻ (individual alerts).
+   * Hoặc bản tóm tắt hàng ngày/hàng tuần (daily or weekly summary) thông qua Amazon SNS.
+Tóm lại "Sức mạnh" 💪
+Sử dụng Machine Learning, AWS Cost Anomaly Detection giúp bạn:
+ * Theo dõi chi phí tự động.
+ * Nhận cảnh báo khi có bất thường.
+ * Nhanh chóng phân tích nguyên nhân gốc rễ.
+"Bỏ túi" cho Kỳ thi 📝
+ * AWS Cost Anomaly Detection: Dùng Machine Learning để tự động tìm ra các kiểu chi tiêu "lạ", không bình thường.
+ * Điểm nhấn: Không cần cấu hình ngưỡng thủ công.
+ * Kết quả: Cung cấp phân tích nguyên nhân và gửi cảnh báo (thường qua SNS).
+ * Mục đích: Giúp bạn phát hiện sớm các vấn đề về chi phí không mong muốn.
+Một công cụ rất hữu ích để giữ cho "ví tiền" AWS của bạn luôn trong tầm kiểm soát. Chúc bạn một ngày học tập hiệu quả! 👍</p>
 
 
 
@@ -7673,7 +7447,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../block-ip/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Block ip">
+          <a href="../cloudformation/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Cloudformation">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7683,20 +7457,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Block ip
+                Cloudformation
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../23.orther/CF-serviceRole/" class="md-footer__link md-footer__link--next" aria-label="Sau: CF serviceRole">
+          <a href="../pinpoint/" class="md-footer__link md-footer__link--next" aria-label="Sau: Pinpoint">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                CF serviceRole
+                Pinpoint
               </div>
             </div>
             <div class="md-footer__button md-icon">
