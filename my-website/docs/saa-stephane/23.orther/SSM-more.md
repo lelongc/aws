@@ -55,4 +55,5 @@ Client/EventBridge ➡️ SSM Run Command ➡️ SSM Agent trên (EC2/On-prem) �
  * Patch Manager: Tự động vá lỗi (OS, application), báo cáo tuân thủ.
  * Maintenance Windows: Lên lịch cho các hoạt động bảo trì định kỳ (bao gồm cả việc chạy Patch Manager hoặc Run Command).
  * Automation: Tự động hóa các tác vụ bảo trì/triển khai rộng hơn, không chỉ cho EC2 mà cả các tài nguyên AWS khác, có khả năng tích hợp với AWS Config để tự khắc phục lỗi.
+
 Tất cả chúng đều tận dụng SSM Agent và có khả năng tích hợp sâu với các dịch vụ khác của AWS như IAM, CloudTrail, S3, CloudWatch Logs, SNS, và EventBridge.
