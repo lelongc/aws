@@ -1,6 +1,7 @@
- AWS Cost Anomaly Detection. Nghe tên là thấy "chuyên gia bắt gian lận chi phí" rồi đúng không? 😉
+AWS Cost Anomaly Detection. Nghe tên là thấy "chuyên gia bắt gian lận chi phí" rồi đúng không? 😉
 AWS Cost Anomaly Detection là gì? 🕵️‍♂️💸
 AWS Cost Anomaly Detection là dịch vụ liên tục theo dõi dữ liệu chi phí và sử dụng của bạn. Điểm đặc biệt là nó sử dụng Machine Learning (Học máy) để phát hiện các khoản chi tiêu bất thường (unusual spends).
+
 "Thám tử" này làm việc ra sao? 🤖
  * Tự học hỏi: Dịch vụ này sẽ "học" từ các kiểu chi tiêu lịch sử độc nhất của bạn.
  * Phát hiện "biến": Sau khi đã "hiểu" bạn, nó có thể nhận ra:
