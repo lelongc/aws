@@ -30,4 +30,5 @@ Sử dụng Machine Learning, AWS Cost Anomaly Detection giúp bạn:
  * Điểm nhấn: Không cần cấu hình ngưỡng thủ công.
  * Kết quả: Cung cấp phân tích nguyên nhân và gửi cảnh báo (thường qua SNS).
  * Mục đích: Giúp bạn phát hiện sớm các vấn đề về chi phí không mong muốn.
+
 Một công cụ rất hữu ích để giữ cho "ví tiền" AWS của bạn luôn trong tầm kiểm soát. Chúc bạn một ngày học tập hiệu quả! 👍
