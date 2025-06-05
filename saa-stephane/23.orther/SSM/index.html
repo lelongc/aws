@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/23.orther/SES/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-stephane/23.orther/SSM/">
       
       
-        <link rel="prev" href="../CF-serviceRole/">
+        <link rel="prev" href="../SES/">
       
       
-        <link rel="next" href="../SSM/">
+        <link rel="next" href="../cloudformation/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>SES - DraDoc</title>
+        <title>SSM - DraDoc</title>
       
     
     
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SES
+              SSM
             
           </span>
         </div>
@@ -7079,6 +7079,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../SES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SES
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -7094,36 +7117,13 @@
   
   
   <span class="md-ellipsis">
-    SES
-    
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SSM/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     SSM
     
   </span>
   
 
       </a>
+      
     </li>
   
 
@@ -7222,7 +7222,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/23.orther/SES.md" title="Chỉnh sửa" class="md-content__button md-icon">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-stephane/23.orther/SSM.md" title="Chỉnh sửa" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -7230,44 +7230,59 @@
   
 
 
-  <h1>SES</h1>
+  <h1>SSM</h1>
 
-<p>📧
-Amazon SES là gì?
-Amazon SES là một dịch vụ được quản lý hoàn toàn (fully managed), cho phép bạn gửi email một cách an toàn, trên toàn cầu và ở quy mô lớn.
-Nói nôm na, khi ứng dụng của bạn cần gửi email (dù ít hay nhiều), SES sẽ là "bưu điện" chuyên nghiệp giúp bạn làm việc đó.
-<a class="glightbox" href="../image/SES/1748934367480.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1748934367480" src="../image/SES/1748934367480.png" /></a>
-Cách SES hoạt động (Tổng quan) 📬</p>
-<ul>
-<li>Ứng dụng của bạn (ví dụ: web app, mobile app) sẽ sử dụng API của SES hoặc kết nối qua máy chủ SMTP của SES.</li>
-<li>Amazon SES sau đó sẽ thay mặt bạn gửi các email (kể cả email hàng loạt - bulk emails) đến người dùng.
-  Những tính năng "Sáng giá" của SES ✨</li>
-<li>Gửi và Nhận Email (Outbound &amp; Inbound): Không chỉ gửi đi, SES còn có thể giúp bạn nhận email phản hồi.</li>
-<li>Bảng điều khiển Uy tín (Reputation Dashboard): Cực kỳ quan trọng!</li>
-<li>Theo dõi xem email của bạn có được mở hay không.</li>
-<li>Cung cấp thông tin chi tiết về hiệu suất gửi mail.</li>
-<li>Phản hồi về chống thư rác (anti-spam feedback): biết được người dùng có đánh dấu email của bạn là spam hay không.</li>
-<li>Thống kê Email:</li>
-<li>Số lượng email được gửi thành công (deliveries).</li>
-<li>Số lượng email bị trả lại (bounces).</li>
-<li>Kết quả từ vòng lặp phản hồi (feedback loop results).</li>
-<li>Tỷ lệ email được mở.</li>
-<li>Chuẩn Bảo mật Email: Hỗ trợ các tiêu chuẩn bảo mật email phổ biến hiện nay như DKIM (DomainKeys Identified Mail) và SPF (Sender Policy Framework) để tăng độ tin cậy cho email của bạn.</li>
-<li>Triển khai IP Linh hoạt:</li>
-<li>Shared IP (IP dùng chung): Tiết kiệm chi phí.</li>
-<li>Dedicated IP (IP riêng): Kiểm soát uy tín IP tốt hơn.</li>
-<li>Customer-owned IP (IP của riêng bạn): Mang IP của bạn lên SES.</li>
-<li>Cách thức Truy cập: Bạn có thể tương tác với SES qua AWS Management Console, AWS APIs, hoặc giao thức SMTP.
-  Dùng Amazon SES cho việc gì? 🎯</li>
-<li>Email Giao dịch (Transactional Emails): Email tự động như xác nhận đơn hàng, đặt lại mật khẩu, thông báo tài khoản.</li>
-<li>Email Tiếp thị (Marketing Emails): Gửi các chiến dịch quảng cáo, bản tin.</li>
-<li>Truyền thông Email Hàng loạt (Bulk Email Communications): Gửi thông báo cho một lượng lớn người dùng.
-  "Mẹo" cho Kỳ thi 📝
-  Khi nhắc đến Amazon SES, hãy nhớ:</li>
-<li>Đây là dịch vụ chuyên để gửi và nhận email ở quy mô lớn.</li>
-<li>Các tính năng cốt lõi: quản lý uy tín người gửi, thống kê chi tiết, bảo mật với DKIM/SPF, tùy chọn IP linh hoạt.</li>
-<li>Các trường hợp sử dụng phổ biến: email giao dịch, email marketing, và gửi email hàng loạt.</li>
-</ul>
+<p>SSM Session Manager là gì mà "vi diệu" vậy? 🤔
+SSM Session Manager cho phép bạn khởi tạo một phiên làm việc dòng lệnh an toàn (secure shell) trên các EC2 instance của bạn (và cả máy chủ on-premises nữa) mà KHÔNG CẦN:
+ * Quyền truy cập SSH truyền thống.
+ * Bastion host (máy chủ trung gian để SSH).
+ * Bất kỳ SSH key nào.
+Điều này có nghĩa là port 22 trên EC2 instance của bạn có thể được đóng hoàn toàn, giúp tăng cường bảo mật lên một tầm cao mới!
+Cách thức hoạt động (Phép màu đằng sau) ✨
+ * Trên EC2 instance: Cần có một "điệp viên" là SSM Agent được cài đặt và đang chạy (các AMI Amazon Linux 2 thường có sẵn).
+ * Kết nối: SSM Agent này sẽ chủ động kết nối ra ngoài đến dịch vụ Session Manager của AWS.
+ * Người dùng truy cập: Bạn (người dùng) sẽ thông qua dịch vụ Session Manager để thiết lập phiên làm việc với EC2 instance. Mọi giao tiếp đều được mã hóa.
+Những điểm nổi bật khác 🌟
+ * Hỗ trợ đa nền tảng: Linux, macOS, và Windows.
+ * Ghi log phiên làm việc: Toàn bộ dữ liệu của phiên (lệnh đã gõ, output) có thể được ghi lại và lưu trữ trên Amazon S3 hoặc CloudWatch Logs để kiểm toán (audit) và theo dõi bảo mật.
+Điều kiện "Cần và Đủ" để Session Manager hoạt động với EC2 📋
+Đây là phần cực kỳ quan trọng bạn cần nhớ:
+ * SSM Agent: Phải được cài đặt và chạy trên EC2 instance.
+ * IAM Role cho EC2: Đây là mấu chốt! EC2 instance của bạn BẮT BUỘC phải được gắn một IAM instance profile (role). Role này phải có quyền cho phép instance giao tiếp với dịch vụ SSM.
+   * Một policy thường dùng là AmazonSSMManagedInstanceCore (policy quản lý bởi AWS).
+ * Security Group: Tuyệt vời nhất là Security Group của EC2 instance có thể KHÔNG CẦN MỞ BẤT KỲ INBOUND RULE NÀO (kể cả port 22). Session Manager không cần inbound port.
+Trải nghiệm thực tế (Qua lời kể trong bài giảng) 💻
+ * Khởi chạy EC2: Chọn AMI Amazon Linux 2, không cần Key Pair, Security Group không mở port nào.
+ * Gắn IAM Role: Tạo và gắn IAM Role có policy AmazonSSMManagedInstanceCore cho EC2.
+ * Kiểm tra trong Systems Manager:
+   * Vào Systems Manager &gt; Fleet Manager. Instance của bạn sẽ xuất hiện ở đây dưới dạng "managed node" khi SSM Agent kết nối thành công.
+ * Bắt đầu phiên làm việc:
+   * Đi đến Session Manager trong Systems Manager.
+   * Chọn instance và nhấn "Start session".
+   * Một cửa sổ dòng lệnh sẽ mở ra ngay trên trình duyệt của bạn! Bạn có thể gõ lệnh như ping google.com, hostname, v.v.
+   * Lệnh hostname sẽ cho thấy bạn đang ở trên private IP của instance đó.
+So sánh với các phương thức truy cập khác (Tại sao Session Manager "đỉnh"?) 🆚
+Bài giảng có so sánh 3 cách truy cập EC2:
+ * SSH truyền thống:
+   * Mở port 22.
+   * Cần quản lý SSH keys.
+   * Dùng terminal để gõ lệnh ssh.
+ * EC2 Instance Connect:
+   * Không cần bạn phải lưu trữ SSH key lâu dài (key được tạo tạm thời và đẩy lên instance).
+   * NHƯNG: Vẫn YÊU CẦU PORT 22 PHẢI ĐƯỢC MỞ trên Security Group của EC2.
+ * SSM Session Manager:
+   * KHÔNG CẦN SSH KEYS do người dùng quản lý.
+   * PORT 22 CÓ THỂ ĐÓNG HOÀN TOÀN.
+   * Dựa vào IAM role để xác thực và ủy quyền.
+   * Đây là phương pháp an toàn nhất trong ba cách được liệt kê để có quyền truy cập shell.
+Lợi ích phụ: Lịch sử phiên (Session History) 📖
+Các phiên làm việc qua Session Manager có thể được ghi lại lịch sử, giúp bạn dễ dàng xem lại ai đã làm gì, khi nào.
+"Bí kíp" mang vào phòng thi 🎯
+ * SSM Session Manager: Cung cấp quyền truy cập shell an toàn mà không cần mở port 22 và không cần quản lý SSH key cho người dùng.
+ * Yêu cầu cốt lõi: SSM Agent trên instance và IAM Role phù hợp được gắn vào instance.
+ * Ưu điểm vượt trội: Tăng cường đáng kể tình hình bảo mật (security posture).
+ * Hiểu rõ sự khác biệt của nó so với SSH truyền thống và EC2 Instance Connect, đặc biệt là về yêu cầu mở port 22.
+SSM Session Manager thực sự là một công cụ tuyệt vời để quản trị EC2 instance một cách an toàn và tiện lợi hơn rất nhiều. </p>
 
 
 
@@ -7375,7 +7390,7 @@ Cách SES hoạt động (Tổng quan) 📬</p>
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../CF-serviceRole/" class="md-footer__link md-footer__link--prev" aria-label="Trước: CF serviceRole">
+          <a href="../SES/" class="md-footer__link md-footer__link--prev" aria-label="Trước: SES">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -7385,20 +7400,20 @@ Cách SES hoạt động (Tổng quan) 📬</p>
                 Trước
               </span>
               <div class="md-ellipsis">
-                CF serviceRole
+                SES
               </div>
             </div>
           </a>
         
         
           
-          <a href="../SSM/" class="md-footer__link md-footer__link--next" aria-label="Sau: SSM">
+          <a href="../cloudformation/" class="md-footer__link md-footer__link--next" aria-label="Sau: Cloudformation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                SSM
+                Cloudformation
               </div>
             </div>
             <div class="md-footer__button md-icon">
