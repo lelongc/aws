@@ -49,4 +49,5 @@ Các phiên làm việc qua Session Manager có thể được ghi lại lịch 
  * Yêu cầu cốt lõi: SSM Agent trên instance và IAM Role phù hợp được gắn vào instance.
  * Ưu điểm vượt trội: Tăng cường đáng kể tình hình bảo mật (security posture).
  * Hiểu rõ sự khác biệt của nó so với SSH truyền thống và EC2 Instance Connect, đặc biệt là về yêu cầu mở port 22.
+
 SSM Session Manager thực sự là một công cụ tuyệt vời để quản trị EC2 instance một cách an toàn và tiện lợi hơn rất nhiều. 
