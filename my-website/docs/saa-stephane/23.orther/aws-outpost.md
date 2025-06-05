@@ -1,4 +1,4 @@
- AWS Outposts. Dịch vụ này mang cả "đám mây" AWS về tận "sân nhà" của bạn đó! ☁️➡️🏠
+AWS Outposts. Dịch vụ này mang cả "đám mây" AWS về tận "sân nhà" của bạn đó! ☁️➡️🏠
 Bối cảnh: "Đám mây lai" (Hybrid Cloud) và những trăn trở 🤔
  * Hybrid Cloud là gì? Đó là khi các doanh nghiệp duy trì cả hạ tầng tại chỗ (on-premises data center) song song với hạ tầng trên cloud (ví dụ: AWS).
  * Thách thức: Khi đó, họ phải làm việc với hai hệ thống CNTT khác nhau:
