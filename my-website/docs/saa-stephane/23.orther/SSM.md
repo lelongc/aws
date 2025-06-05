@@ -1,4 +1,3 @@
-
 SSM Session Manager là gì mà "vi diệu" vậy? 🤔
 SSM Session Manager cho phép bạn khởi tạo một phiên làm việc dòng lệnh an toàn (secure shell) trên các EC2 instance của bạn (và cả máy chủ on-premises nữa) mà KHÔNG CẦN:
  * Quyền truy cập SSH truyền thống.
