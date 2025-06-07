@@ -7489,50 +7489,55 @@
 
 <h1 id="aws-cost-anomaly-detection-chuyen-gia-bat-gian-lan-chi-phi">AWS Cost Anomaly Detection – “Chuyên gia bắt gian lận chi phí” 😉<a class="headerlink" href="#aws-cost-anomaly-detection-chuyen-gia-bat-gian-lan-chi-phi" title="Permanent link">&para;</a></h1>
 <h2 id="aws-cost-anomaly-detection-la-gi">AWS Cost Anomaly Detection là gì? 🕵️‍♂️💸<a class="headerlink" href="#aws-cost-anomaly-detection-la-gi" title="Permanent link">&para;</a></h2>
-<p>AWS Cost Anomaly Detection là dịch vụ liên tục theo dõi dữ liệu chi phí và sử dụng của bạn.<br />
-Điểm đặc biệt là nó sử dụng <strong>Machine Learning (Học máy)</strong> để phát hiện các khoản chi tiêu bất thường (<em>unusual spends</em>).</p>
+<p>AWS Cost Anomaly Detection là dịch vụ liên tục theo dõi dữ liệu chi phí và sử dụng của bạn.
+Điểm đặc biệt là nó sử dụng <strong>Machine Learning (Học máy)</strong> để phát hiện các khoản chi tiêu bất thường (<em>unusual spends</em>).
+<a class="glightbox" href="../image/cost-anomaly-detection/1749289906922.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1749289906922" src="../image/cost-anomaly-detection/1749289906922.png" /></a></p>
 <hr />
 <h2 id="tham-tu-nay-lam-viec-ra-sao">"Thám tử" này làm việc ra sao? 🤖<a class="headerlink" href="#tham-tu-nay-lam-viec-ra-sao" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Tự học hỏi</strong>: Dịch vụ này sẽ "học" từ các kiểu chi tiêu lịch sử độc nhất của bạn.  </li>
-<li><strong>Phát hiện "biến"</strong>: Sau khi đã "hiểu" bạn, nó có thể nhận ra:  </li>
-<li>Các đợt <strong>tăng chi phí đột biến một lần</strong> (<em>one-time cost spikes</em>).  </li>
-<li>Các trường hợp <strong>chi phí tăng liên tục</strong> (<em>continuous cost increases</em>) mà không bình thường.  </li>
-<li><strong>Không cần "chỉ bài"</strong>: Bạn <strong>không cần tự định nghĩa ngưỡng (thresholds)</strong> nào cả.<br />
+<li><strong>Tự học hỏi</strong>: Dịch vụ này sẽ "học" từ các kiểu chi tiêu lịch sử độc nhất của bạn.</li>
+<li><strong>Phát hiện "biến"</strong>: Sau khi đã "hiểu" bạn, nó có thể nhận ra:</li>
+<li>Các đợt <strong>tăng chi phí đột biến một lần</strong> (<em>one-time cost spikes</em>).</li>
+<li>Các trường hợp <strong>chi phí tăng liên tục</strong> (<em>continuous cost increases</em>) mà không bình thường.</li>
+<li><strong>Không cần "chỉ bài"</strong>: Bạn <strong>không cần tự định nghĩa ngưỡng (thresholds)</strong> nào cả.
   → Dịch vụ sẽ tự nhận biết điều gì "trông hơi lạ". Quá xịn!</li>
 </ul>
 <hr />
 <h2 id="tham-tu-theo-doi-nhung-gi">"Thám tử" theo dõi những gì? 🔎<a class="headerlink" href="#tham-tu-theo-doi-nhung-gi" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Các <strong>dịch vụ AWS</strong> bạn đang dùng.  </li>
-<li>Các <strong>tài khoản thành viên</strong> (<em>member accounts</em>) trong AWS Organization của bạn.  </li>
-<li>Các <strong>thẻ phân bổ chi phí</strong> (<em>cost allocation tags</em>).  </li>
+<li>Các <strong>dịch vụ AWS</strong> bạn đang dùng.</li>
+<li>Các <strong>tài khoản thành viên</strong> (<em>member accounts</em>) trong AWS Organization của bạn.</li>
+<li>Các <strong>thẻ phân bổ chi phí</strong> (<em>cost allocation tags</em>).</li>
 <li>Các <strong>danh mục chi phí</strong> (<em>cost categories</em>).</li>
 </ul>
 <hr />
 <h2 id="bao-cao-va-canh-bao">Báo cáo và Cảnh báo 📢<a class="headerlink" href="#bao-cao-va-canh-bao" title="Permanent link">&para;</a></h2>
-<p>Khi phát hiện điều gì đó bất thường:<br />
-- Dịch vụ sẽ gửi cho bạn <strong>báo cáo phát hiện bất thường</strong> (<em>anomaly detection report</em>).<br />
-- Báo cáo bao gồm <strong>phân tích nguyên nhân gốc rễ</strong> (<em>root cause analysis</em>).<br />
-- Cách nhận thông báo:<br />
-  - <strong>Cảnh báo riêng lẻ</strong> (<em>individual alerts</em>).<br />
-  - Hoặc <strong>tóm tắt hàng ngày/hàng tuần</strong> (<em>daily or weekly summary</em>) thông qua <strong>Amazon SNS</strong>.</p>
+<p>Khi phát hiện điều gì đó bất thường:</p>
+<ul>
+<li>Dịch vụ sẽ gửi cho bạn <strong>báo cáo phát hiện bất thường</strong> (<em>anomaly detection report</em>).</li>
+<li>Báo cáo bao gồm <strong>phân tích nguyên nhân gốc rễ</strong> (<em>root cause analysis</em>).</li>
+<li>Cách nhận thông báo:</li>
+<li><strong>Cảnh báo riêng lẻ</strong> (<em>individual alerts</em>).</li>
+<li>Hoặc <strong>tóm tắt hàng ngày/hàng tuần</strong> (<em>daily or weekly summary</em>) thông qua <strong>Amazon SNS</strong>.</li>
+</ul>
 <hr />
 <h2 id="tom-lai-suc-manh">Tóm lại "Sức mạnh" 💪<a class="headerlink" href="#tom-lai-suc-manh" title="Permanent link">&para;</a></h2>
-<p>Sử dụng Machine Learning, AWS Cost Anomaly Detection giúp bạn:<br />
-- <strong>Theo dõi chi phí tự động</strong>.<br />
-- <strong>Nhận cảnh báo khi có bất thường</strong>.<br />
-- <strong>Nhanh chóng phân tích nguyên nhân gốc rễ</strong>.</p>
+<p>Sử dụng Machine Learning, AWS Cost Anomaly Detection giúp bạn:</p>
+<ul>
+<li><strong>Theo dõi chi phí tự động</strong>.</li>
+<li><strong>Nhận cảnh báo khi có bất thường</strong>.</li>
+<li><strong>Nhanh chóng phân tích nguyên nhân gốc rễ</strong>.</li>
+</ul>
 <hr />
 <h2 id="bo-tui-cho-ky-thi">"Bỏ túi" cho Kỳ thi 📝<a class="headerlink" href="#bo-tui-cho-ky-thi" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>AWS Cost Anomaly Detection</strong>: Dùng Machine Learning để <strong>phát hiện chi tiêu bất thường</strong>.  </li>
-<li><strong>Không cần cấu hình ngưỡng thủ công</strong>.  </li>
-<li><strong>Cung cấp báo cáo và cảnh báo tự động</strong> (thường qua SNS).  </li>
+<li><strong>AWS Cost Anomaly Detection</strong>: Dùng Machine Learning để <strong>phát hiện chi tiêu bất thường</strong>.</li>
+<li><strong>Không cần cấu hình ngưỡng thủ công</strong>.</li>
+<li><strong>Cung cấp báo cáo và cảnh báo tự động</strong> (thường qua SNS).</li>
 <li><strong>Mục tiêu</strong>: Giúp phát hiện sớm các vấn đề về chi phí không mong muốn.</li>
 </ul>
 <hr />
-<p>Một công cụ rất hữu ích để giữ cho <strong>“ví tiền” AWS</strong> của bạn luôn trong tầm kiểm soát.<br />
+<p>Một công cụ rất hữu ích để giữ cho <strong>“ví tiền” AWS</strong> của bạn luôn trong tầm kiểm soát.
 <strong>Chúc bạn một ngày học tập hiệu quả!</strong> 👍</p>
 
 
@@ -7554,7 +7559,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 6, 2025 09:47:18 UTC">7 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 6, 2025 09:53:03 UTC">7 tháng 6, 2025</span>
   </span>
 
     

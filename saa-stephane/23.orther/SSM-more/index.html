@@ -7332,9 +7332,12 @@
 
   <h1>SSM more</h1>
 
-<p>Chúng ta sẽ tiếp tục khám phá "gia đình" AWS Systems Manager (SSM) với một vài "thành viên" khác cũng rất hữu ích. </p>
+<p>Chúng ta sẽ tiếp tục khám phá "gia đình" AWS Systems Manager (SSM) với một vài "thành viên" khác cũng rất hữu ích.</p>
 <ol>
 <li>SSM Run Command: Ra lệnh từ xa, không cần SSH 🗣️💻</li>
+</ol>
+<p><a class="glightbox" href="../image/SSM-more/1749289799315.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1749289799315" src="../image/SSM-more/1749289799315.png" /></a></p>
+<ul>
 <li>"Em là ai?": Run Command cho phép bạn thực thi một "tài liệu" (SSM Document - thực chất là một script) hoặc chỉ một lệnh đơn lẻ trên nhiều instance cùng lúc.</li>
 <li>Instance ở đây có thể là EC2 hoặc máy chủ on-premises đã đăng ký với Systems Manager (tức là có SSM Agent đang chạy).</li>
 <li>"Điều kỳ diệu": Không cần SSH! Nó sử dụng cơ chế tương tự như Session Manager, tức là thông qua SSM Agent.</li>
@@ -7345,11 +7348,19 @@
 <li>Tích hợp đầy đủ với IAM để kiểm soát quyền.</li>
 <li>CloudTrail ghi lại ai đã chạy lệnh gì.</li>
 <li>"Ai gọi em dậy?": Bạn (người dùng) có thể chạy trực tiếp, hoặc Amazon EventBridge có thể tự động kích hoạt Run Command theo một sự kiện nào đó.
-Sơ đồ tóm tắt Run Command:
-Client/EventBridge ➡️ SSM Run Command ➡️ SSM Agent trên (EC2/On-prem) ➡️ Thực thi lệnh
-↘️ Output (S3/CloudWatch Logs)
-↘️ Status (SNS)</li>
-<li>SSM Patch Manager: "Bác sĩ" vá lỗi tự động 🩹🩺</li>
+  Sơ đồ tóm tắt Run Command:
+  Client/EventBridge ➡️ SSM Run Command ➡️ SSM Agent trên (EC2/On-prem) ➡️ Thực thi lệnh
+  ↘️ Output (S3/CloudWatch Logs)
+  ↘️ Status (SNS)</li>
+<li>
+<p><a class="glightbox" href="../image/SSM-more/1749289799315.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1749289799315" src="../image/SSM-more/1749289799315.png" /></a></p>
+</li>
+<li>
+<p>SSM Patch Manager: "Bác sĩ" vá lỗi tự động 🩹🩺</p>
+</li>
+</ul>
+<p><a class="glightbox" href="../image/SSM-more/1749289861627.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1749289861627" src="../image/SSM-more/1749289861627.png" /></a></p>
+<ul>
 <li>"Nhiệm vụ cao cả": Tự động hóa quá trình vá lỗi (patching) cho các managed instance của bạn.</li>
 <li>Bao gồm cập nhật hệ điều hành, cập nhật ứng dụng, và các bản vá bảo mật.</li>
 <li>"Bệnh nhân": Hỗ trợ EC2 instance và máy chủ on-premises (Linux, macOS, Windows).</li>
@@ -7359,8 +7370,15 @@ Client/EventBridge ➡️ SSM Run Command ➡️ SSM Agent trên (EC2/On-prem) �
 <li>"Khám tổng quát":</li>
 <li>Có thể quét (scan) các instance để kiểm tra tình trạng vá lỗi.</li>
 <li>Tạo báo cáo tuân thủ vá lỗi (patch compliance report) để xem instance nào đã được vá đầy đủ, instance nào còn thiếu bản vá.</li>
-<li>"Đơn thuốc": Patch Manager thực chất sử dụng một SSM Run Command đặc biệt tên là AWS-RunPatchBaseline để thực hiện việc vá lỗi.</li>
-<li>SSM Maintenance Windows: Khung giờ "Bảo trì" định kỳ 🗓️🔧</li>
+<li>
+<p>"Đơn thuốc": Patch Manager thực chất sử dụng một SSM Run Command đặc biệt tên là AWS-RunPatchBaseline để thực hiện việc vá lỗi.</p>
+</li>
+<li>
+<p>SSM Maintenance Windows: Khung giờ "Bảo trì" định kỳ 🗓️🔧</p>
+</li>
+</ul>
+<p><a class="glightbox" href="../image/SSM-more/1749289872817.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1749289872817" src="../image/SSM-more/1749289872817.png" /></a></p>
+<ul>
 <li>"Em là gì?": Maintenance Windows cho phép bạn định nghĩa một khung thời gian cụ thể (lịch trình) để thực hiện các hành động bảo trì trên instance của mình một cách có tổ chức.</li>
 <li>Ví dụ: vá lỗi hệ điều hành, cập nhật driver, cài đặt phần mềm, v.v.</li>
 <li>"Đặt lịch thế nào?": Khi định nghĩa một Maintenance Window, bạn cần xác định:</li>
@@ -7368,8 +7386,15 @@ Client/EventBridge ➡️ SSM Run Command ➡️ SSM Agent trên (EC2/On-prem) �
 <li>Thời lượng (Duration): Nó sẽ chạy trong bao lâu (ví dụ: 4 tiếng).</li>
 <li>Mục tiêu (Targets): Áp dụng cho những instance nào.</li>
 <li>Tác vụ (Tasks): Những hành động/lệnh nào sẽ được thực thi trong khung giờ đó (ví dụ: chạy Patch Manager, chạy một Run Command cụ thể).</li>
-<li>Ví dụ: Cứ mỗi 24 giờ, Maintenance Window sẽ kích hoạt một Run Command để vá lỗi cho các EC2 instance.</li>
-<li>SSM Automation: "Pháp sư" tự động hóa đa năng 🧙‍♂️✨</li>
+<li>
+<p>Ví dụ: Cứ mỗi 24 giờ, Maintenance Window sẽ kích hoạt một Run Command để vá lỗi cho các EC2 instance.</p>
+</li>
+<li>
+<p>SSM Automation: "Pháp sư" tự động hóa đa năng 🧙‍♂️✨</p>
+</li>
+</ul>
+<p><a class="glightbox" href="../image/SSM-more/1749289882414.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="1749289882414" src="../image/SSM-more/1749289882414.png" /></a></p>
+<ul>
 <li>"Siêu năng lực": SSM Automation giúp bạn đơn giản hóa các tác vụ bảo trì và triển khai phổ biến không chỉ trên EC2 instance mà còn trên các tài nguyên AWS khác nữa.</li>
 <li>"Làm được gì nè?":</li>
 <li>Khởi động lại nhiều instance cùng lúc.</li>
@@ -7383,13 +7408,13 @@ Client/EventBridge ➡️ SSM Run Command ➡️ SSM Agent trên (EC2/On-prem) �
 <li>Amazon EventBridge.</li>
 <li>Maintenance Windows.</li>
 <li>AWS Config: Đây là một tích hợp hay! Nếu AWS Config phát hiện một tài nguyên nào đó không tuân thủ quy định (non-compliant), nó có thể tự động kích hoạt một SSM Automation runbook để thực hiện hành động khắc phục (remediation).
-"Nhét túi" mang vào phòng thi 🎯
-Đối với những dịch vụ này trong Systems Manager, bạn chỉ cần nhớ ý chính:</li>
+    "Nhét túi" mang vào phòng thi 🎯
+    Đối với những dịch vụ này trong Systems Manager, bạn chỉ cần nhớ ý chính:</li>
 <li>Run Command: Chạy script/lệnh trên nhiều instance không cần SSH. Ghi output, gửi thông báo.</li>
 <li>Patch Manager: Tự động vá lỗi (OS, application), báo cáo tuân thủ.</li>
 <li>Maintenance Windows: Lên lịch cho các hoạt động bảo trì định kỳ (bao gồm cả việc chạy Patch Manager hoặc Run Command).</li>
 <li>Automation: Tự động hóa các tác vụ bảo trì/triển khai rộng hơn, không chỉ cho EC2 mà cả các tài nguyên AWS khác, có khả năng tích hợp với AWS Config để tự khắc phục lỗi.</li>
-</ol>
+</ul>
 <p>Tất cả chúng đều tận dụng SSM Agent và có khả năng tích hợp sâu với các dịch vụ khác của AWS như IAM, CloudTrail, S3, CloudWatch Logs, SNS, và EventBridge.</p>
 
 
@@ -7411,7 +7436,7 @@ Client/EventBridge ➡️ SSM Run Command ➡️ SSM Agent trên (EC2/On-prem) �
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 6, 2025 09:47:18 UTC">7 tháng 6, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 6, 2025 09:53:03 UTC">7 tháng 6, 2025</span>
   </span>
 
     
