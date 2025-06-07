@@ -13,7 +13,7 @@ AWS nhận thấy điều này và đã tạo ra **Outposts** để giải quy�
 
 ---
 ## AWS Outposts là gì mà "ghê gớm" vậy? 🚀
-
+![1749289967159](image/aws-outpost/1749289967159.png)
 **AWS Outposts** là các **tủ rack máy chủ (server racks)** mà AWS cung cấp, mang đến **đúng hạ tầng, dịch vụ, API và công cụ của AWS** để bạn xây dựng ứng dụng của mình **ngay tại trung tâm dữ liệu on-premises**, y hệt như khi bạn làm trên cloud.
 
 - **Cách hoạt động:**
