@@ -1,0 +1,2359 @@
+
+<!doctype html>
+<html lang="vi" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/aws/cer/00.roadmap/">
+      
+      
+        <link rel="prev" href="../../List%20of%20Ports%20to%20be%20familiar%20with/">
+      
+      
+        <link rel="next" href="../link/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>00.roadmap - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction-scenario" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              00.roadmap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ tối"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Chuyển sang chế độ sáng"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  List of Ports to be familiar with
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../orther-note/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Orther note
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../saa-cantrill-and-lab/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa cantrill and lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../saa-stephane/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa stephane
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"/></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to DraDoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    List of Ports to be familiar with
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Cer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Cer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    00.roadmap
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    00.roadmap
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      INTRODUCTION &amp; SCENARIO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-fundamentals-and-aws-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Course Fundamentals and AWS Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-networking-and-technical-fundamentals-moved-to-free-dedicated-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud, Networking and Technical Fundamentals (moved to FREE dedicated course)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Fundamentals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iam-accounts-and-aws-organisations" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM, ACCOUNTS AND AWS ORGANISATIONS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-storage-service-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIMPLE STORAGE SERVICE (S3)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-private-cloud-vpc-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIRTUAL PRIVATE CLOUD (VPC) BASICS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elastic-compute-cloud-ec2-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      ELASTIC COMPUTE CLOUD (EC2) BASICS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#containers-ecs" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONTAINERS &amp; ECS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADVANCED EC2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-53-global-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route 53 - Global DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-database-service-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational Database Service (RDS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-storage-data-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      NETWORK STORAGE &amp; DATA LIFECYCLE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ha-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      HA &amp; SCALING
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serverless-and-application-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      SERVERLESS AND APPLICATION SERVICES
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-content-delivery-and-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      GLOBAL CONTENT DELIVERY AND OPTIMIZATION
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-vpc-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADVANCED VPC Networking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hybrid-environments-and-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      HYBRID ENVIRONMENTS AND MIGRATION
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-deployment-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      SECURITY, DEPLOYMENT &amp; OPERATIONS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-as-code-cloudformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure as Code (CloudFormation)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nosql-databases-dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOSQL Databases &amp; DynamoDB
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning-101" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning 101
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-services-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Services &amp; Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exam" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finishing-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finishing Up
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../link/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Link
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Luyện Đề AWS Certification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    An
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            An
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../an/saa/AWS-Organizations/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Saa bonso
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Saa bonso
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../saa-bonso/1/1-10/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    1
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Stephane
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Stephane
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../stephane/saa-stephane-maarek/d1/1-10/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa stephane maarek
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../orther-note/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Orther note
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../saa-cantrill-and-lab/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa cantrill and lab
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../saa-stephane/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Saa stephane
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      INTRODUCTION &amp; SCENARIO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-fundamentals-and-aws-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Course Fundamentals and AWS Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-networking-and-technical-fundamentals-moved-to-free-dedicated-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud, Networking and Technical Fundamentals (moved to FREE dedicated course)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-fundamentals" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Fundamentals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iam-accounts-and-aws-organisations" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM, ACCOUNTS AND AWS ORGANISATIONS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-storage-service-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIMPLE STORAGE SERVICE (S3)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-private-cloud-vpc-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIRTUAL PRIVATE CLOUD (VPC) BASICS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elastic-compute-cloud-ec2-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      ELASTIC COMPUTE CLOUD (EC2) BASICS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#containers-ecs" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONTAINERS &amp; ECS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADVANCED EC2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-53-global-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route 53 - Global DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relational-database-service-rds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relational Database Service (RDS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-storage-data-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      NETWORK STORAGE &amp; DATA LIFECYCLE
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ha-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      HA &amp; SCALING
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serverless-and-application-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      SERVERLESS AND APPLICATION SERVICES
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-content-delivery-and-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      GLOBAL CONTENT DELIVERY AND OPTIMIZATION
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-vpc-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADVANCED VPC Networking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hybrid-environments-and-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      HYBRID ENVIRONMENTS AND MIGRATION
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-deployment-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      SECURITY, DEPLOYMENT &amp; OPERATIONS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-as-code-cloudformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure as Code (CloudFormation)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nosql-databases-dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOSQL Databases &amp; DynamoDB
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-learning-101" class="md-nav__link">
+    <span class="md-ellipsis">
+      Machine Learning 101
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-services-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Services &amp; Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exam" class="md-nav__link">
+    <span class="md-ellipsis">
+      EXAM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finishing-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finishing Up
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/cer/00.roadmap.md" title="Chỉnh sửa" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+  <h1>00.roadmap</h1>
+
+<p>saa - cantrill timeline - gemini gen </p>
+<h3 id="introduction-scenario"><strong>INTRODUCTION &amp; SCENARIO</strong><a class="headerlink" href="#introduction-scenario" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Public Introduction (4:04)</li>
+<li>AWS Exams (17:32)</li>
+<li>Scenario - Animals4life (13:28)</li>
+<li>Connect with other students and your instructor (3:10)
+   COURSE UPGRADES - SAVE $ WHEN ADDING MORE COURSES
+   SHARED LESSONS [SHAREDALL] [ASSOCIATESHARED] etc...
+   🚨 READ ME 🚨 - ENABLE EMAIL UPDATES (IT'S WORTH IT)</li>
+</ol>
+<hr />
+<h3 id="course-fundamentals-and-aws-accounts"><strong>Course Fundamentals and AWS Accounts</strong><a class="headerlink" href="#course-fundamentals-and-aws-accounts" title="Permanent link">&para;</a></h3>
+<ol>
+<li>AWS Accounts - The basics (11:33)</li>
+<li>[DEMO] ACCOUNTS - STEP1 - Creating GENERAL AWS Account (14:44)</li>
+<li>Multi-factor Authentication (MFA) (8:25)</li>
+<li>[DEMO] ACCOUNTS - STEP2 - Securing GENERAL AWS Account (9:44)</li>
+<li>[DEMO] ACCOUNTS - STEP3 - Creating a Budget (6:46)</li>
+<li>[DOITYOURSELF] Creating the Production Account (4:59)</li>
+<li>Identity and Access Management (IAM) Basics (13:01)</li>
+<li>[DEMO] ACCOUNTS - STEP4 - Adding IAMADMIN to GENERAL Account (12:36)</li>
+<li>[DEMO] ACCOUNTS - STEP4 - Adding IAMADMIN to PRODUCTION Account (10:17)</li>
+<li>IAM Access Keys (7:10)</li>
+<li>[DEMO] Creating Access keys and setting up AWS CLI v2 tools (17:43)</li>
+</ol>
+<hr />
+<h3 id="cloud-networking-and-technical-fundamentals-moved-to-free-dedicated-course"><strong>Cloud, Networking and Technical Fundamentals (moved to FREE dedicated course)</strong><a class="headerlink" href="#cloud-networking-and-technical-fundamentals-moved-to-free-dedicated-course" title="Permanent link">&para;</a></h3>
+<p>TECH FUNDAMENTALS CONTENT (!!PLEASE READ ME!!)</p>
+<hr />
+<h3 id="aws-fundamentals"><strong>AWS Fundamentals</strong><a class="headerlink" href="#aws-fundamentals" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] AWS Public vs Private Services (7:04)</li>
+<li>[ASSOCIATESHARED] AWS Global Infrastructure (14:54)</li>
+<li>[ASSOCIATESHARED] AWS Default Virtual Private Cloud (VPC) (15:19)</li>
+<li>[ASSOCIATESHARED] Elastic Compute Cloud (EC2) Basics (14:46)</li>
+<li>[ASSOCIATESHARED] [DEMO] My First EC2 Instance - PART1 (10:58)</li>
+<li>[ASSOCIATESHARED] [DEMO] My First EC2 Instance - PART2 (9:40)</li>
+<li>[ASSOCIATESHARED] Simple Storage Service (S3) Basics (15:48)</li>
+<li>[ASSOCIATESHARED] [DEMO] My First S3 Bucket (18:34)</li>
+<li>[ASSOCIATESHARED] CloudFormation (CFN) Basics (12:28)</li>
+<li>[ASSOCIATESHARED] [DEMO] Simple Automation With CloudFormation (CFN) (15:52)</li>
+<li>[ASSOCIATESHARED] CloudWatch (CW) Basics (13:45)</li>
+<li>[ASSOCIATESHARED] [Demo] Simple Monitoring with Cloudwatch (15:31)</li>
+<li>[ASSOCIATESHARED] Shared Responsibility Model (6:20)</li>
+<li>[ASSOCIATESHARED] High-Availability vs Fault-Tolerance vs Disaster Recovery (17:21)</li>
+<li>[ASSOCIATESHARED] Route53 (R53) Fundamentals (6:29)</li>
+<li>[SHAREDALL] [DEMO] Registering a Domain with route53 (9:49)</li>
+<li>[ASSOCIATESHARED] DNS Record Types (13:25)
+    Fundamentals Section Quiz</li>
+</ol>
+<hr />
+<h3 id="iam-accounts-and-aws-organisations"><strong>IAM, ACCOUNTS AND AWS ORGANISATIONS</strong><a class="headerlink" href="#iam-accounts-and-aws-organisations" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] IAM Identity Policies (15:52)</li>
+<li>[ASSOCIATESHARED] IAM Users and ARNs (13:49)</li>
+<li>[ASSOCIATE SHARED] [DEMO] Simple Identity Permissions in AWS (16:06)</li>
+<li>[ASSOCIATESHARED] IAM Groups (7:48)</li>
+<li>[ASSOCIATESHARED] [DEMO] Permissions control using IAM Groups (9:24)</li>
+<li>[ASSOCIATESHARED] IAM Roles - The Tech (8:13)</li>
+<li>[ASSOCIATESHARED] When to use IAM Roles (15:27)</li>
+<li>Service-linked Roles &amp; PassRole (5:16)</li>
+<li>[ASSOCIATESHARED] AWS Organizations (12:56)</li>
+<li>[SHAREDALL] [DEMO] AWS Organizations (19:48)</li>
+<li>[ASSOCIATESHARED] Service Control Policies (SCPs) (12:44)</li>
+<li>[SHAREDALL] [DEMO] Using Service Control Policies (16:45)</li>
+<li>[ASSOCIATESHARED] CloudWatch Logs (7:16)</li>
+<li>[ASSOCIATESHARED] CloudTrail (11:40)</li>
+<li>[SHAREDALL] [DEMO] Implementing an Organizational Trail (18:23)</li>
+<li>AWS Control Tower 101 (15:42)
+    IAM &amp; Orgs Section Quiz</li>
+</ol>
+<hr />
+<h3 id="simple-storage-service-s3"><strong>SIMPLE STORAGE SERVICE (S3)</strong><a class="headerlink" href="#simple-storage-service-s3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] S3 Security (Resource Policies &amp; ACLs) (18:19)</li>
+<li>[ASSOCIATESHARED] S3 Static Hosting (10:36)</li>
+<li>[SHAREDALL] [Demo] Creating a static website with S3 (17:55)</li>
+<li>[ASSOCIATESHARED] Object Versioning &amp; MFA Delete (7:41)</li>
+<li>[SHAREDALL] [DEMO] - S3 Versioning (15:45)</li>
+<li>[ASSOCIATESHARED] S3 Performance Optimization (11:42)</li>
+<li>[ASSOCIATESHARED] [DEMO] - S3 Performance (5:06)</li>
+<li>[ASSOCIATESHARED] Key Management Service (KMS) (18:38)</li>
+<li>[SHAREDALL] [DEMO] KMS - Encrypting the battleplans with KMS (12:43)</li>
+<li>[SHAREDALL] S3 Object Encryption CSE/SSE (23:31)</li>
+<li>[SHAREDALL] [DEMO] Object Encryption and Role Separation (14:50)</li>
+<li>S3 Bucket Keys (5:59)</li>
+<li>[ASSOCIATESHARED] S3 Object Storage Classes - PART1 (9:23)</li>
+<li>[ASSOCIATESHARED] S3 Object Storage Classes - PART2 (11:41)</li>
+<li>[ASSOCIATESHARED] S3 Lifecycle Configuration (8:13)</li>
+<li>[SHAREDALL] S3 Replication (13:59)</li>
+<li>[SHAREDALL] [DEMO] Cross-Region Replication of an S3 Static Website (19:52)</li>
+<li>[ASSOCIATESHARED] S3 PreSigned URLs (11:11)</li>
+<li>[SHAREDALL] [DEMO] Creating and using PresignedURLs (18:23)</li>
+<li>[ASSOCIATESHARED] S3 Select and Glacier Select (5:33)</li>
+<li>[ASSOCIATESHARED] S3 Events (4:32)</li>
+<li>[ASSOCIATESHARED] S3 Access Logs (3:05)</li>
+<li>[ASSOCIATESHARED] S3 Object Lock (9:52)</li>
+<li>S3 Access Points (5:52)</li>
+<li>[DEMO] Multi-Region Access Points (MRAP) (20:25)
+    S3 Section Quiz</li>
+</ol>
+<hr />
+<h3 id="virtual-private-cloud-vpc-basics"><strong>VIRTUAL PRIVATE CLOUD (VPC) BASICS</strong><a class="headerlink" href="#virtual-private-cloud-vpc-basics" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] VPC Sizing and Structure - PART1 (11:48)</li>
+<li>[ASSOCIATESHARED] VPC Sizing and Structure - PART2 (11:16)</li>
+<li>[SHAREDALL] Custom VPCs - PART1 - THEORY (10:10)</li>
+<li>[SHAREDALL] [DEMO] Custom VPCs - PART2 - DEMO [UPDATED20231129] (5:40)</li>
+<li>[ASSOCIATESHARED] VPC Subnets (10:42)</li>
+<li>[SHAREDALL] [DEMO] Implement multi-tier VPC subnets [UPDATED20231129] (15:03)</li>
+<li>[ASSOCIATESHARED] VPC Routing, Internet Gateway &amp; Bastion Hosts (17:35)</li>
+<li>[ASSOCIATESHARED] [DEMO] Configuring A4L public subnets and Jumpbox - PART1 [UPDATED20231119] (13:45)</li>
+<li>[ASSOCIATESHARED] [DEMO] Configuring A4L public subnets and Jumpbox - PART2 [UPDATED20231119] (11:35)</li>
+<li>[ASSOCIATESHARED] Stateful vs Stateless Firewalls (14:04)</li>
+<li>[ASSOCIATESHARED] Network Access Control Lists (NACLs) (12:38)</li>
+<li>[ASSOCIATESHARED] Security Groups (SG) (11:48)</li>
+<li>[ASSOCIATESHARED] Network Address Translation (NAT) &amp; NAT Gateway - PART1 (13:43)</li>
+<li>[ASSOCIATESHARED] Network Address Translation (NAT) &amp; NAT Gateway - PART2 (11:08)</li>
+<li>[ASSOCIATESHARED] [DEMO] Implementing private internet access using NAT Gateways (19:25)
+    VPC Basics Section Quiz</li>
+</ol>
+<hr />
+<h3 id="elastic-compute-cloud-ec2-basics"><strong>ELASTIC COMPUTE CLOUD (EC2) BASICS</strong><a class="headerlink" href="#elastic-compute-cloud-ec2-basics" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] Virtualization 101 (12:27)</li>
+<li>[ASSOCIATESHARED] EC2 Architecture and Resilience (12:36)</li>
+<li>[ASSOCIATESHARED] EC2 Instance Types - PART1 (11:52)</li>
+<li>[ASSOCIATESHARED] EC2 Instance Types - PART2 (8:13)</li>
+<li>[ASSOCIATESHARED] [DEMO] EC2 SSH vs EC2 Instance Connect (17:06)</li>
+<li>[ASSOCIATESHARED] Storage Refresher (14:16)</li>
+<li>[ASSOCIATESHARED] Elastic Block Store (EBS) Service Architecture (8:43)</li>
+<li>[ASSOCIATESHARED] EBS Volume Types - General Purpose (9:23)</li>
+<li>[ASSOCIATESHARED] EBS Volume Types - Provisioned IOPS (6:16)</li>
+<li>[ASSOCIATESHARED] EBS Volume Types - HDD-Based (4:32)</li>
+<li>[ASSOCIATESHARED] Instance Store Volumes - Architecture (9:00)</li>
+<li>[ASSOCIATESHARED] Choosing between the EC2 Instance Store and EBS (8:49)</li>
+<li>[ASSOCIATESHARED] Snapshots, Restore &amp; Fast Snapshot Restore (FSR) (10:55)</li>
+<li>[ASSOCIATESHARED] [DEMO] EBS Volumes - PART1 (15:16)</li>
+<li>[ASSOCIATESHARED] [DEMO] EBS Volumes - PART2 (14:13)</li>
+<li>[ASSOCIATESHARED] [DEMO] EBS Volumes - PART3 (14:27)</li>
+<li>[ASSOCIATESHARED] EBS Encryption (8:22)</li>
+<li>[ASSOCIATESHARED] Network Interfaces, Instance IPs and DNS (15:58)</li>
+<li>[ASSOCIATESHARED] [DEMO] Manual Install of Wordpress on EC2 - PART1 (12:27)</li>
+<li>[ASSOCIATESHARED] [DEMO] Manual Install of Wordpress on EC2 - PART2 (12:36)</li>
+<li>[ASSOCIATESHARED] Amazon Machine Images (AMI) (13:58)</li>
+<li>[ASSOCIATESHARED] [DEMO] Creating an Animals4life AMI - PART1 (9:38)</li>
+<li>[ASSOCIATESHARED] [DEMO] Creating an Animals4life AMI - PART2 (10:57)</li>
+<li>[ASSOCIATESHARED] [DEMO] Copying &amp; Sharing an AMI (8:35)</li>
+<li>EC2 Purchase Options - PART1 (9:22)</li>
+<li>EC2 Purchase Options - PART2 (11:56)</li>
+<li>Reserved Instances - the rest (11:58)</li>
+<li>[ASSOCIATESHARED] Instance Status Checks &amp; Auto Recovery (7:42)</li>
+<li>[ASSOCIATESHARED] [DEMO] Shutdown, Terminate &amp; Termination Protection (5:40)</li>
+<li>[ASSOCIATESHARED] Horizontal &amp; Vertical Scaling (11:24)</li>
+<li>[ASSOCIATESHARED] Instance Metadata [THEORY &amp; DEMO] (15:46)
+     EC2 Basics Section Quiz</li>
+</ol>
+<hr />
+<h3 id="containers-ecs"><strong>CONTAINERS &amp; ECS</strong><a class="headerlink" href="#containers-ecs" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] Introduction to Containers (17:13)</li>
+<li>[SHAREDALL] [DEMO] Creating 'container of cats' Docker Image (18:15)</li>
+<li>[ASSOCIATESHARED] ECS - Concepts (10:26)</li>
+<li>[ASSOCIATESHARED] ECS - Cluster Mode (13:09)</li>
+<li>[SHAREDALL] [DEMO] - Deploying 'container of cats' using Fargate [UI UPDATES IN PROGRESS] (13:13)</li>
+<li>Elastic Container Registry (ECR) (4:14)</li>
+<li>[SHAREDALL] Kubernetes 101 (11:27)</li>
+<li>[SHAREDALL] Elastic Kubernetes Service (EKS) 101 (6:14)
+     Containers Section Quiz</li>
+</ol>
+<hr />
+<h3 id="advanced-ec2"><strong>ADVANCED EC2</strong><a class="headerlink" href="#advanced-ec2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] Bootstrapping EC2 using User Data (10:25)</li>
+<li>[ASSOCIATESHARED] [DEMO] Bootstrapping Wordpress Installation - PART1 (15:00)</li>
+<li>[ASSOCIATESHARED] [DEMO] Bootstrapping Wordpress Installation - PART2 (6:45)</li>
+<li>Enhanced Bootstrapping with CFN-INIT (11:52)</li>
+<li>[DEMO] CFN-INIT and CFN Creation Policies (12:29)</li>
+<li>[ASSOCIATESHARED] EC2 Instance Roles &amp; Profile (4:18)</li>
+<li>[ASSOCIATESHARED] [DEMO] Using EC2 Instance Roles (13:31)</li>
+<li>[ASSOCIATESHARED] SSM Parameter Store (6:16)</li>
+<li>[ASSOCIATESHARED] [DEMO] Parameter Store (16:11)</li>
+<li>[ASSOCIATESHARED] System and Application Logging on EC2 (6:15)</li>
+<li>[ASSOCIATESHARED] [DEMO] Logging and Metrics with CloudWatch Agent-PART1 (11:51)</li>
+<li>[ASSOCIATESHARED] [DEMO] Logging and Metrics with CloudWatch Agent-PART2 (8:08)</li>
+<li>[ASSOCIATESHARED] EC2 Placement Groups (14:29)</li>
+<li>Dedicated Hosts (8:56)</li>
+<li>[ASSOCIATESHARED] Enhanced Networking &amp; EBS Optimized (6:57)
+     Advanced EC2 Section Quiz</li>
+</ol>
+<hr />
+<h3 id="route-53-global-dns"><strong>Route 53 - Global DNS</strong><a class="headerlink" href="#route-53-global-dns" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] R53 Public Hosted Zones (6:28)</li>
+<li>[ASSOCIATESHARED] R53 Private Hosted Zones (5:10)</li>
+<li>[ASSOCIATESHARED] CNAME vs R53 Alias (5:19)</li>
+<li>[ASSOCIATESHARED] Simple Routing (2:17)</li>
+<li>[ASSOCIATESHARED] R53 Health Checks (12:41)</li>
+<li>[ASSOCIATESHARED] Failover Routing (1:53)</li>
+<li>[SHAREDALL] [DEMO] Using R53 and Failover Routing-PART1 (16:41)</li>
+<li>[SHAREDALL] [DEMO] Using R53 and Failover Routing-PART2 (6:28)</li>
+<li>[ASSOCIATESHARED] Multi Value Routing (2:32)</li>
+<li>[ASSOCIATESHARED] Weighted Routing (3:24)</li>
+<li>[ASSOCIATESHARED] Latency Routing (2:44)</li>
+<li>[ASSOCIATESHARED] Geolocation Routing (5:02)</li>
+<li>[ASSOCIATESHARED] Geoproximity (4:50)</li>
+<li>[ASSOCIATESHARED] R53 Interoperability (11:50)</li>
+<li>Implementing DNSSEC using Route53 (17:43)
+     Route53 Section Quiz</li>
+</ol>
+<hr />
+<h3 id="relational-database-service-rds"><strong>Relational Database Service (RDS)</strong><a class="headerlink" href="#relational-database-service-rds" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] Database Refresher &amp; MODELS - PART1 (8:51)</li>
+<li>[ASSOCIATESHARED] Database Refresher &amp; MODELS - PART2 (14:45)</li>
+<li>ACID vs BASE (11:02)</li>
+<li>[ASSOCIATESHARED] Databases on EC2 (13:08)</li>
+<li>[ASSOCIATESHARED][DEMO] Splitting Wordpress Monolith =&gt; APP &amp; DB (18:01)</li>
+<li>[ASSOCIATESHARED] Relational Database Service (RDS) Architecture (11:39)</li>
+<li>[ASSOCIATESHARED] [DEMO] Migrating EC2 DB into RDS - PART1 (18:20)</li>
+<li>[ASSOCIATESHARED] [DEMO] Migrating EC2 DB into RDS - PART2 (12:58)</li>
+<li>[ASSOCIATESHARED] Relational Database Service (RDS) MultiAZ - Instance and Cluster (11:54)</li>
+<li>[ASSOCIATESHARED] RDS Automatic Backup, RDS Snapshots and Restore (8:52)</li>
+<li>[ASSOCIATESHARED] RDS Read-Replicas (6:36)</li>
+<li>[ASSOCIATESHARED] [DEMO] MultiAZ &amp; Snapshot Restore with RDS - PART1 (14:05)</li>
+<li>[ASSOCIATESHARED] [DEMO] MultiAZ &amp; Snapshot Restore with RDS - PART2 (12:07)</li>
+<li>[ASSOCIATESHARED] RDS Data Security (7:03)</li>
+<li>RDS Custom (5:22)</li>
+<li>[ASSOCIATESHARED] Aurora Architecture (13:44)</li>
+<li>[ASSOCIATESHARED] Aurora Serverless (9:52)</li>
+<li>[DEMO] Migrating to Aurora Serverless [DONT DO THIS DEMO, IT WON'T WORK, UPDATING to SERVERLESSv2] (14:47)</li>
+<li>[ASSOCIATESHARED] Aurora Global Database (5:08)</li>
+<li>[ASSOCIATESHARED] Multi-master writes (7:51)</li>
+<li>[ASSOCIATESHARED] Relational Database Service (RDS) - RDS Proxy (9:47)</li>
+<li>[ASSOCIATESHARED] Database Migration Service (DMS) (11:03)
+     RDS Section Quiz</li>
+</ol>
+<hr />
+<h3 id="network-storage-data-lifecycle"><strong>NETWORK STORAGE &amp; DATA LIFECYCLE</strong><a class="headerlink" href="#network-storage-data-lifecycle" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] EFS Architecture (9:05)</li>
+<li>[ASSOCIATESHARED][DEMO] Implementing EFS - PART1 (8:51)</li>
+<li>[ASSOCIATESHARED][DEMO] Implementing EFS - PART2 (11:32)</li>
+<li>[ASSOCIATESHARED] [DEMO] Using EFS with Wordpress (16:00)</li>
+<li>AWS Backup (6:36)
+     Network Storage Section Quiz</li>
+</ol>
+<hr />
+<h3 id="ha-scaling"><strong>HA &amp; SCALING</strong><a class="headerlink" href="#ha-scaling" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] Regional and Global AWS Architecture (10:42)</li>
+<li>[ASSOCIATESHARED] Evolution of the Elastic Load Balancer (4:10)</li>
+<li>[SHAREDALL] Elastic Load Balancer Architecture - PART1 (10:18)</li>
+<li>[ASSOCIATESHARED] Elastic Load Balancer Architecture - PART2 (12:32)</li>
+<li>[SHAREDALL] Application Load balancing (ALB) vs Network Load Balancing (NLB) (16:20)</li>
+<li>[ASSOCIATESHARED] Launch Configuration and Templates (4:00)</li>
+<li>[ASSOCIATESHARED] Auto-Scaling Groups (16:01)</li>
+<li>[ASSOCIATESHARED] ASG Scaling Policies (10:23)</li>
+<li>[ASSOCIATESHARED] ASG Lifecycle Hooks (4:41)</li>
+<li>[ASSOCIATESHARED] ASG HealthCheck Comparison - EC2 vs ELB (3:38)</li>
+<li>SSL Offload &amp; Session Stickiness (12:11)</li>
+<li>[SHAREDALL] [DEMO] Seeing Session Stickiness in Action (12:57)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE1 - PART1 (14:24)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE1 - PART2 (10:43)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE2 (12:58)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE3 (19:30)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE4 (18:04)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE 5 - PART1 (11:31)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE 5 - PART2 (14:56)</li>
+<li>[AdvancedDemo] Architecture Evolution - STAGE6 (5:48)</li>
+<li>Gateway Load Balancer (13:40)
+     HA and Scaling Section Quiz</li>
+</ol>
+<hr />
+<h3 id="serverless-and-application-services"><strong>SERVERLESS AND APPLICATION SERVICES</strong><a class="headerlink" href="#serverless-and-application-services" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] Architecture Deep Dive - PART1 (8:52)</li>
+<li>[ASSOCIATESHARED] Architecture Deep Dive - PART2 (13:09)</li>
+<li>[SHAREDALL] AWS Lambda - PART1 (11:25)</li>
+<li>[SHAREDALL] AWS Lambda - PART2 (13:59)</li>
+<li>[SHAREDALL] AWS Lambda - PART3 (17:03)</li>
+<li>[ASSOCIATESHARED] CloudWatchEvents and EventBridge (6:54)</li>
+<li>[ASSOCIATESHARED] [DEMO] Automated EC2 Control using Lambda and Events - PART1 (13:44)</li>
+<li>[ASSOCIATESHARED] [DEMO] Automated EC2 Control using Lambda and Events - PART2 (18:49)</li>
+<li>Serverless Architecture (12:56)</li>
+<li>[ASSOCIATESHARED] Simple Notification Service (7:49)</li>
+<li>[ASSOCIATESHARED] Step Functions (16:09)</li>
+<li>[SHAREDALL] API Gateway 101 (16:27)</li>
+<li>[MINIPROJECT] Build A Serverless App - Pet-Cuddle-o-Tron - PART1 (5:01)</li>
+<li>[MINIPROJECT] Build A Serverless App - Pet-Cuddle-o-Tron - PART2 (8:24)</li>
+<li>[MINIPROJECT] Build A Serverless App - Pet-Cuddle-o-Tron - PART3 (12:26)</li>
+<li>[MINIPROJECT] Build A Serverless App - Pet-Cuddle-o-Tron - PART4 (12:45)</li>
+<li>[MINIPROJECT] Build A Serverless App - Pet-Cuddle-o-Tron - PART5 (13:31)</li>
+<li>[MINIPROJECT] Build A Serverless App - Pet-Cuddle-o-Tron - PART6 (2:38)</li>
+<li>[ASSOCIATESHARED] Simple Queue Service (15:30)</li>
+<li>SQS Standard vs FIFO Queues (3:29)</li>
+<li>SQS Delay Queues (4:38)</li>
+<li>SQS Dead-Letter Queues (4:17)</li>
+<li>[ASSOCIATESHARED] Kinesis Data Streams (7:52)</li>
+<li>[ASSOCIATESHARED] Kinesis Data Firehose (9:11)</li>
+<li>[ASSOCIATESHARED] Kinesis Data Analytics (8:51)</li>
+<li>Kinesis Video Streams (5:09)</li>
+<li>[ASSOCIATESHARED] Amazon Cognito - User and Identity Pools (14:44)</li>
+<li>AWS Glue 101 (6:23)</li>
+<li>Amazon MQ 101 (8:15)</li>
+<li>Amazon AppFlow (3:30)
+     Serverless and App Services Section Quiz</li>
+</ol>
+<hr />
+<h3 id="global-content-delivery-and-optimization"><strong>GLOBAL CONTENT DELIVERY AND OPTIMIZATION</strong><a class="headerlink" href="#global-content-delivery-and-optimization" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] Cloudfront Architecture (14:56)</li>
+<li>[SHAREDALL] CloudFront (CF) - Behaviours (9:21)</li>
+<li>[SHAREDALL] CloudFront - TTL and Invalidations (13:48)</li>
+<li>[ASSOCIATESHARED] ACM (11:21)</li>
+<li>[ASSOCIATESHARED] Cloudfront and SSL/TLS (14:59)</li>
+<li>[SHAREDALL] CloudFront (CF) - Origin Types &amp; Origin Architecture (10:20)</li>
+<li>[SHAREDALL] [DEMO] CloudFront (CF) - Adding a CDN to a static Website-PART1 (16:23)</li>
+<li>[SHAREDALL] [DEMO] CloudFront (CF) - Adding a CDN to a static Website-PART2 (12:24)</li>
+<li>[SHAREDALL] [DEMO] CloudFront (CF) - Adding an Alternate CNAME and SSL (11:12)</li>
+<li>[ASSOCIATESHARED] Securing CF and S3 using OAI (8:50)</li>
+<li>CloudFront - Private Distribution &amp; Behaviours (7:49)</li>
+<li>[SHAREDALL] [DEMO] CloudFront (CF) - Using Origin Access Control (OAC) (new version of OAI) (11:21)</li>
+<li>[ASSOCIATESHARED] Lambda@Edge (8:03)</li>
+<li>Global Accelerator (10:29)
+     CDN and Optimisation Section Quiz</li>
+</ol>
+<hr />
+<h3 id="advanced-vpc-networking"><strong>ADVANCED VPC Networking</strong><a class="headerlink" href="#advanced-vpc-networking" title="Permanent link">&para;</a></h3>
+<ol>
+<li>VPC Flow Logs (9:56)</li>
+<li>[ASSOCIATESHARED] Egress-Only Internet gateway (6:46)</li>
+<li>[ASSOCIATESHARED] VPC Endpoints (Gateway) (11:14)</li>
+<li>[ASSOCIATESHARED] VPC Endpoints (Interface) (11:26)</li>
+<li>[SHAREDALL] [DEMO] VPC Endpoints - Interface - PART1 (11:59)</li>
+<li>[SHAREDALL] [DEMO] VPC Endpoints - Gateway - PART2 (9:59)</li>
+<li>[SHAREDALL] [DEMO] Egress-Only Internet Gateway - PART3 (7:57)</li>
+<li>[ASSOCIATESHARED] VPC Peering (9:04)</li>
+<li>[SHAREDALL] [DEMO] VPC Peering (22:38)
+     Advanced VPC Section Quiz</li>
+</ol>
+<hr />
+<h3 id="hybrid-environments-and-migration"><strong>HYBRID ENVIRONMENTS AND MIGRATION</strong><a class="headerlink" href="#hybrid-environments-and-migration" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Border Gateway Protocol 101 (17:29)</li>
+<li>IPSec VPN Fundamentals (14:54)</li>
+<li>AWS Site-to-Site VPN (18:05)</li>
+<li>[DEMO] Simple Site2Site VPN - STAGE0 - SETUP (4:52)</li>
+<li>[DEMO] Simple Site2Site VPN - STAGE1 - AWS VPN (10:01)</li>
+<li>[DEMO] Simple Site2Site VPN - STAGE2 - onprep pfSense Config (17:09)</li>
+<li>[DEMO] Simple Site2Site VPN - STAGE3 - Routing &amp; Security (10:29)</li>
+<li>[DEMO] Simple Site2Site VPN - STAGE4 - Testing (5:42)</li>
+<li>[DEMO] Simple Site2Site VPN - STAGE5 - Cleanup (1:50)</li>
+<li>Direct Connect (DX) Concepts (9:37)</li>
+<li>Direct Connect (DX) Resilience (13:50)</li>
+<li>Direct Connect (DX) - Public VIF + VPN (Encryption) (6:43)</li>
+<li>Transit Gateway (10:26)</li>
+<li>Storage Gateway - Volume (14:15)</li>
+<li>Storage Gateway - Tape (VTL) (12:11)</li>
+<li>Storage Gateway - File (12:15)</li>
+<li>Snowball / Edge / Snowmobile [NEW VERSION COMING SOON] (10:47)</li>
+<li>Directory Service (15:50)</li>
+<li>DataSync (9:27)</li>
+<li>[ASSOCIATESHARED] FSx for Windows Servers (11:32)</li>
+<li>[ASSOCIATESHARED] FSx For Lustre (13:57)</li>
+<li>[ASSOCIATESHARED] AWS Transfer Family (10:24)
+     Hybrid and Migration Section Quiz</li>
+</ol>
+<hr />
+<h3 id="security-deployment-operations"><strong>SECURITY, DEPLOYMENT &amp; OPERATIONS</strong><a class="headerlink" href="#security-deployment-operations" title="Permanent link">&para;</a></h3>
+<ol>
+<li>AWS Secrets Manager (7:44)</li>
+<li>Application Layer (L7) Firewall (7:44)</li>
+<li>Web Application Firewall (WAF), WEBACLs, Rule Groups and Rules (19:18)</li>
+<li>AWS Shield (9:47)</li>
+<li>CloudHSM (14:36)</li>
+<li>AWS Config (6:14)</li>
+<li>Amazon Macie (12:04)</li>
+<li>[DEMO] Amazon Macie (15:35)</li>
+<li>Amazon Inspector (6:28)</li>
+<li>Amazon Guardduty (4:14)
+     Section Quiz</li>
+</ol>
+<hr />
+<h3 id="infrastructure-as-code-cloudformation"><strong>Infrastructure as Code (CloudFormation)</strong><a class="headerlink" href="#infrastructure-as-code-cloudformation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] CloudFormation Physical &amp; Logical Resources (7:30)</li>
+<li>[ASSOCIATESHARED] [DEMO] Simple Non Portable Template - PART1 (10:28)</li>
+<li>[ASSOCIATESHARED] [DEMO] Simple Non Portable Template - PART2 (11:28)</li>
+<li>[ASSOCIATESHARED] CloudFormation Template and Pseudo Parameters (6:53)</li>
+<li>[ASSOCIATESHARED] CloudFormation Intrinsic Functions (14:28)</li>
+<li>[ASSOCIATESHARED] CloudFormation Mappings (4:30)</li>
+<li>[ASSOCIATESHARED] CloudFormation Outputs (3:37)</li>
+<li>[ASSOCIATESHARED] [DEMO] Template v2 - Portable (13:34)</li>
+<li>[ASSOCIATESHARED] CloudFormation Conditions (7:24)</li>
+<li>[ASSOCIATESHARED] CloudFormation DependsOn (7:14)</li>
+<li>[ASSOCIATESHARED] CloudFormation Wait Conditions &amp; cfn-signal (11:52)</li>
+<li>[ASSOCIATESHARED] CloudFormation Nested Stacks (13:55)</li>
+<li>[ASSOCIATESHARED] CloudFormation Cross-Stack References (10:05)</li>
+<li>[ASSOCIATESHARED] CloudFormation Stack Sets (9:12)</li>
+<li>[ASSOCIATESHARED] CloudFormation Deletion Policy (5:24)</li>
+<li>[ASSOCIATESHARED] CloudFormation Stack Roles (6:47)</li>
+<li>[ASSOCIATESHARED] CloudFormation Init (CFN-INIT) (8:48)</li>
+<li>[ASSOCIATESHARED] CloudFormation cfn-hup (4:13)</li>
+<li>[ASSOCIATESHARED] [DEMO] wait conditions, cfnsignal, cfninit and cfnhup-PART1 (12:51)</li>
+<li>[ASSOCIATESHARED] [DEMO] wait conditions, cfnsignal, cfninit and cfnhup-PART2 (14:42)</li>
+<li>[ASSOCIATESHARED] CloudFormation ChangeSets [NEW VERSION COMING SOON] (11:03)</li>
+<li>[ASSOCIATESHARED] CloudFormation Custom Resources (11:03)</li>
+<li>[ASSOCIATESHARED] [DEMO] CloudFormation Custom Resources-PART1 (9:12)</li>
+<li>[ASSOCIATESHARED] [DEMO] CloudFormation Custom Resources-PART2 (13:27)</li>
+</ol>
+<hr />
+<h3 id="nosql-databases-dynamodb"><strong>NOSQL Databases &amp; DynamoDB</strong><a class="headerlink" href="#nosql-databases-dynamodb" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[ASSOCIATESHARED] DynamoDB - Architecture (10:49)</li>
+<li>[ASSOCIATESHARED] DynamoDB - Operations, Consistency and Performance-PART1 (13:06)</li>
+<li>[ASSOCIATESHARED] DynamoDB - Operations, Consistency and Performance-PART2 (11:24)</li>
+<li>[ASSOCIATESHARED] DynamoDB Local and Global Secondary Indexes (12:35)</li>
+<li>[ASSOCIATESHARED] DynamoDB - Streams &amp; Lambda Triggers (9:10)</li>
+<li>[ASSOCIATESHARED] DynamoDB - Global Tables (5:09)</li>
+<li>[ASSOCIATESHARED] DynamoDB - Accelerator (DAX) (10:58)</li>
+<li>[ASSOCIATESHARED] DynamoDB - TTL (4:49)</li>
+<li>Amazon Athena (8:19)</li>
+<li>[DEMO] Athena Demo - PART1 (13:31)</li>
+<li>[DEMO] Athena Demo - PART2 (11:37)</li>
+<li>Elasticache (12:51)</li>
+<li>Redshift Architecture (11:32)</li>
+<li>Redshift DR and Resilience (3:40)
+     NoSQL Section Quiz</li>
+</ol>
+<hr />
+<h3 id="machine-learning-101"><strong>Machine Learning 101</strong><a class="headerlink" href="#machine-learning-101" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Amazon Comprehend (7:28)</li>
+<li>Amazon Kendra (5:00)</li>
+<li>Amazon Lex (5:51)</li>
+<li>Amazon Polly (4:04)</li>
+<li>Amazon Rekognition (4:18)</li>
+<li>Amazon Textract (8:42)</li>
+<li>Amazon Transcribe (4:55)</li>
+<li>Amazon Translate (4:32)</li>
+<li>Amazon Forecast 101 (4:04)</li>
+<li>Amazon Fraud Detector (3:34)</li>
+<li>Amazon SageMaker (5:39)</li>
+</ol>
+<hr />
+<h3 id="other-services-features"><strong>Other Services &amp; Features</strong><a class="headerlink" href="#other-services-features" title="Permanent link">&para;</a></h3>
+<ol>
+<li>AWS Local Zones (8:52)</li>
+</ol>
+<hr />
+<h3 id="exam"><strong>EXAM</strong><a class="headerlink" href="#exam" title="Permanent link">&para;</a></h3>
+<ol>
+<li>[SHAREDALL] General AWS Exam Technique - 3 Phase Approach (8:56)</li>
+<li>[SHAREDALL] General AWS Question Technique - PART1 (14:12)</li>
+<li>[SHAREDALL] General AWS Question Technique - PART2 (9:01)</li>
+</ol>
+<p>Practice Exam #1
+Practice Exam #2</p>
+<hr />
+<h3 id="finishing-up"><strong>Finishing Up</strong><a class="headerlink" href="#finishing-up" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Thanks! and a favour (3:15)
+     COURSE UPGRADES - SAVE $ WHEN ADDING MORE COURSES</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="8 tháng 6, 2025 06:28:49 UTC">8 tháng 6, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+<h2 id="__comments">Bình luận</h2>
+<!-- Insert generated snippet here -->
+<script
+  src="https://giscus.app/client.js"
+  data-repo="lelongc/aws"
+  data-repo-id="R_kgDONYXH9Q"
+  data-category="Q&A"
+  data-category-id="DIC_kwDONYXH9c4CpKTT"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="bottom"
+  data-theme="dark"
+  data-lang="en"
+  crossorigin="anonymous"
+  async
+></script>
+<!-- Synchronize Giscus theme with palette -->
+<script>
+  var giscus = document.querySelector("script[src*=giscus]");
+
+  // Set palette on initial load
+  var palette = __md_get("__palette");
+  if (palette && typeof palette.color === "object") {
+    var theme = palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+    // Instruct Giscus to set theme
+    giscus.setAttribute("data-theme", theme);
+  }
+
+  // Register event handlers after documented loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    var ref = document.querySelector("[data-md-component=palette]");
+    ref.addEventListener("change", function () {
+      var palette = __md_get("__palette");
+      if (palette && typeof palette.color === "object") {
+        var theme =
+          palette.color.scheme === "slate" ? "transparent_dark" : "light";
+
+        // Instruct Giscus to change theme
+        var frame = document.querySelector(".giscus-frame");
+        frame.contentWindow.postMessage(
+          { giscus: { setConfig: { theme } } },
+          "https://giscus.app"
+        );
+      }
+    });
+  });
+</script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
+        
+          
+          <a href="../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-footer__link md-footer__link--prev" aria-label="Trước: List of Ports to be familiar with">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                List of Ports to be familiar with
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../link/" class="md-footer__link md-footer__link--next" aria-label="Sau: Link">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Link
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
