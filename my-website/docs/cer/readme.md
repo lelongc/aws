@@ -7,14 +7,10 @@ mình có lưu lại khóa học của cantrill trên youtube bạn nào muốn 
 
 nếu có vấn đề gì qua các đề bên dưới liên hệ mình qua zalo 0987214065 hoặc comment phía dưới
 
-ủng hộ mình nếu bạn muốn cho mình bữa sáng 
- momo: 0987214065
-
+ủng hộ mình nếu bạn muốn cho mình bữa sáng
+momo: 0987214065
 
 mình có thể tải mọi cert trên udemy business theo nhu cầu nếu bạn muốn
-
-hoặc học thẳng trên udemy business đăng nhập bằng cookie  30k 1 tháng (lâu lâu có thể sẽ lỗi vài ngày và mình sẽ gửi lại cookie )
-
 
 ## Neal Davis
 
