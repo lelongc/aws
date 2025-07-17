@@ -1264,4 +1264,12 @@
          <loc>https://lelongc.github.io/aws/stephane/02.dva/03.High-availability-vs-Scalability/01.InstanceRefresh/</loc>
          <lastmod>2025-07-17</lastmod>
     </url>
+    <url>
+         <loc>https://lelongc.github.io/aws/stephane/02.dva/04.RDB-Aurora-elasticCache/01.ElastiCacheStrategies/</loc>
+         <lastmod>2025-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://lelongc.github.io/aws/stephane/02.dva/04.RDB-Aurora-elasticCache/02.AmazonMemoryDBforRedis/</loc>
+         <lastmod>2025-07-17</lastmod>
+    </url>
 </urlset>
