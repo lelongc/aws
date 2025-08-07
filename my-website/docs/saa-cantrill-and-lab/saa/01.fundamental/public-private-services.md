@@ -1,4 +1,4 @@
----
+
 
 ## Dịch vụ Công cộng (Public Service)
 
@@ -88,6 +88,3 @@ Làm sao để tài nguyên riêng tư (như EC2) truy cập dịch vụ công c
 
 👉 Hiểu rõ sự khác biệt này giúp bạn thiết kế kiến trúc ứng dụng an toàn theo nguyên tắc "bảo mật theo lớp" (defense in depth) trên AWS.
 
----
-
-**Bạn muốn xuất nội dung này thành file PDF, Markdown (.md), hay định dạng khác không?**
