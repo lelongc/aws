@@ -1086,59 +1086,61 @@
 
   <h1>Public private services</h1>
 
-<ol>
-<li>Dịch vụ Công cộng (Public Service)
-Tưởng tượng: Đây là các dịch vụ công cộng của thành phố như Nhà máy nước (S3), Bưu điện (SQS, SNS), hoặc Nhà máy điện (Lambda).
-Đặc điểm:
-Có thể truy cập từ Internet: Bất kỳ ai, ở bất kỳ đâu trên thế giới (nếu được cấp quyền), đều có thể kết nối đến các dịch vụ này thông qua một điểm cuối công cộng (public endpoint). Ví dụ, bạn có thể truy cập một file trong S3 qua một đường link https://...s3.amazonaws.com/....
-Không nằm trong Mạng riêng của bạn: Chúng hoạt động trên hạ tầng khổng lồ, được chia sẻ của AWS, nằm bên ngoài mạng ảo riêng (VPC) của bạn.
-Quản lý bởi AWS: Toàn bộ việc vận hành, mở rộng, và bảo trì các dịch vụ này đều do AWS lo liệu.
-Ví dụ về các Dịch vụ Công cộng tiêu biểu:
-Amazon S3 (Simple Storage Service): Dịch vụ lưu trữ file.
-Amazon DynamoDB (NoSQL Database): Dịch vụ database NoSQL.
-Amazon SQS (Simple Queue Service): Dịch vụ hàng đợi tin nhắn.
-Amazon SNS (Simple Notification Service): Dịch vụ thông báo đẩy.
-AWS Lambda: Dịch vụ tính toán serverless (có thể vừa công cộng vừa riêng tư).
-AWS KMS (Key Management Service): Dịch vụ quản lý khóa mã hóa.</li>
-<li>Dịch vụ Riêng tư (Private Service)
-Tưởng tượng: Đây là các tài sản riêng của bạn được đặt trong một khu đô thị khép kín, có tường rào và bảo vệ, đó chính là VPC (Virtual Private Cloud) của bạn.
-Đặc điểm:
-Không thể truy cập trực tiếp từ Internet: Các tài nguyên này chỉ có một địa chỉ IP riêng tư (Private IP). Mặc định, chúng chỉ có thể "nói chuyện" với các tài nguyên khác trong cùng khu đô thị (VPC) đó.
-Nằm trong Mạng riêng của bạn: Bạn hoàn toàn kiểm soát mạng lưới bên trong VPC của mình: dải địa chỉ IP, các subnet (khu phố), các quy tắc tường lửa (Security Groups, NACLs).
-Bạn tự quản lý: Bạn phải tự cài đặt, cấu hình, và bảo trì các ứng dụng và dịch vụ chạy trên các tài nguyên này.
-Ví dụ về các Dịch vụ Riêng tư tiêu biểu:
-Amazon EC2 (Elastic Compute Cloud): Một máy chủ ảo (VPS) được đặt trong VPC của bạn. Đây là tài sản riêng tư phổ biến nhất.
-Amazon RDS (Relational Database Service): Một database SQL được đặt trong một subnet riêng tư của VPC để đảm bảo an toàn tối đa.
-Amazon ElastiCache (Redis, Memcached): Dịch vụ caching, thường được đặt trong VPC để các máy chủ EC2 có thể truy cập với độ trễ thấp nhất.
-Elastic Load Balancer (Internal): Một bộ cân bằng tải nội bộ, chỉ phân phối traffic cho các máy chủ EC2 trong VPC.
-Sự kết hợp và Cầu nối: VPC Endpoints
-Vậy làm thế nào để một "tài sản riêng" (như máy chủ EC2) có thể sử dụng "dịch vụ công cộng" (như S3) một cách an toàn mà không cần đi ra ngoài Internet?
-Đây là lúc VPC Endpoints xuất hiện.
-Tưởng tượng: VPC Endpoint giống như việc bạn xây một đường ống nước riêng, an toàn từ nhà máy nước S3 (dịch vụ công cộng) đi thẳng vào khu đô thị VPC của bạn (dịch vụ riêng tư), mà không cần phải đi vòng qua hệ thống ống nước chung của cả thành phố (Internet).
-Cách hoạt động:
-VPC Endpoint tạo ra một kết nối riêng tư giữa VPC của bạn và một dịch vụ AWS công cộng được hỗ trợ.
-Khi máy chủ EC2 của bạn (với IP riêng) muốn nói chuyện với S3, thay vì đi ra Internet Gateway, traffic sẽ đi qua VPC Endpoint này.
-Toàn bộ lưu lượng mạng sẽ được giữ hoàn toàn bên trong mạng lưới của AWS, giúp tăng cường bảo mật và giảm độ trễ.
-Bảng Tóm tắt
-Tiêu chí
-Dịch vụ Công cộng (Public)
-Dịch vụ Riêng tư (Private)
-Vị trí
-Bên ngoài VPC của bạn, trên hạ tầng chung của AWS.
-Bên trong VPC của bạn, trong một không gian mạng biệt lập.
-Cách truy cập
-Qua Internet (Public Endpoint).
-Chỉ trong VPC (Private IP).
-Ví dụ
-S3, DynamoDB, SQS, SNS.
-EC2, RDS, ElastiCache.
-Mục đích
-Cung cấp các dịch vụ được quản lý, có khả năng mở rộng cao.
-Cung cấp các tài nguyên tính toán và database riêng tư, an toàn.
-Cách kết nối an toàn
-Dùng VPC Endpoint để truy cập từ dịch vụ riêng tư.</li>
-</ol>
-<p>Hiểu rõ sự khác biệt này sẽ giúp bạn thiết kế các kiến trúc ứng dụng an toàn theo nguyên tắc "bảo mật theo lớp" (defense in depth) trên AWS.</p>
+<p>Dịch vụ Công cộng (Public Service)</p>
+<p>🧠 Tưởng tượng:</p>
+<p>Các dịch vụ công cộng của thành phố như Nhà máy nước (S3), Bưu điện (SQS, SNS), hoặc Nhà máy điện (Lambda).</p>
+<p>🔍 Đặc điểm:</p>
+<p>Có thể truy cập từ Internet:
+Bất kỳ ai, ở bất kỳ đâu trên thế giới (nếu được cấp quyền), đều có thể kết nối đến các dịch vụ này thông qua một public endpoint.
+Ví dụ: Truy cập file trong S3 qua đường link:
+https://...s3.amazonaws.com/...</p>
+<p>Không nằm trong Mạng riêng của bạn:
+Các dịch vụ này chạy trên hạ tầng chung khổng lồ của AWS, nằm ngoài VPC của bạn.</p>
+<p>Quản lý bởi AWS:
+AWS lo toàn bộ vận hành, mở rộng, và bảo trì các dịch vụ này.</p>
+<p>📦 Ví dụ về các Dịch vụ Công cộng:</p>
+<p>Amazon S3 (Simple Storage Service): Dịch vụ lưu trữ file.</p>
+<p>Amazon DynamoDB: Dịch vụ cơ sở dữ liệu NoSQL.</p>
+<p>Amazon SQS (Simple Queue Service): Hàng đợi tin nhắn.</p>
+<p>Amazon SNS (Simple Notification Service): Thông báo đẩy.</p>
+<p>AWS Lambda: Tính toán serverless (có thể vừa công cộng vừa riêng tư).</p>
+<p>AWS KMS (Key Management Service): Quản lý khóa mã hóa.</p>
+<hr />
+<p>Dịch vụ Riêng tư (Private Service)</p>
+<p>🧠 Tưởng tượng:</p>
+<p>Tài sản riêng của bạn được đặt trong khu đô thị khép kín có bảo vệ – chính là VPC của bạn.</p>
+<p>🔍 Đặc điểm:</p>
+<p>Không thể truy cập trực tiếp từ Internet:
+Các tài nguyên này dùng Private IP, chỉ có thể giao tiếp trong cùng VPC theo mặc định.</p>
+<p>Nằm trong Mạng riêng của bạn:
+Bạn kiểm soát hoàn toàn mạng lưới: dải IP, subnet, firewall rules (Security Groups, NACLs).</p>
+<p>Bạn tự quản lý:
+Bạn cần cài đặt, cấu hình, bảo trì ứng dụng/dịch vụ chạy trên các tài nguyên này.</p>
+<p>📦 Ví dụ về các Dịch vụ Riêng tư:</p>
+<p>Amazon EC2: Máy chủ ảo đặt trong VPC.</p>
+<p>Amazon RDS: Cơ sở dữ liệu SQL nằm trong subnet riêng tư.</p>
+<p>Amazon ElastiCache (Redis, Memcached): Dịch vụ cache nằm trong VPC.</p>
+<p>Elastic Load Balancer (Internal): Cân bằng tải nội bộ cho EC2 trong VPC.</p>
+<hr />
+<p>Sự kết hợp và Cầu nối: VPC Endpoints</p>
+<p>❓ Vấn đề:</p>
+<p>Làm sao để tài nguyên riêng tư (như EC2) truy cập dịch vụ công cộng (như S3) mà không cần qua Internet?</p>
+<p>💡 Giải pháp:</p>
+<p>VPC Endpoint – giống như xây đường ống nước riêng, an toàn từ dịch vụ công cộng (S3) vào nội bộ VPC của bạn.</p>
+<p>⚙️ Cách hoạt động:</p>
+<p>Tạo kết nối riêng tư từ VPC đến dịch vụ AWS công cộng.</p>
+<p>Khi EC2 trong VPC muốn truy cập S3, traffic sẽ đi qua VPC Endpoint thay vì Internet Gateway.</p>
+<p>Tăng cường bảo mật và giảm độ trễ vì toàn bộ lưu lượng nằm trong mạng AWS.</p>
+<hr />
+<p>🧾 Bảng Tóm tắt</p>
+<p>Tiêu chí    Dịch vụ Công cộng (Public)  Dịch vụ Riêng tư (Private)</p>
+<p>Vị trí  Bên ngoài VPC, trên hạ tầng chung của AWS   Bên trong VPC, không gian mạng biệt lập
+Cách truy cập   Qua Internet (Public Endpoint)  Chỉ trong VPC (Private IP)
+Ví dụ   S3, DynamoDB, SQS, SNS  EC2, RDS, ElastiCache
+Mục đích    Dịch vụ quản lý, có khả năng mở rộng cao    Tài nguyên riêng tư, an toàn
+Kết nối an toàn Dùng VPC Endpoint để truy cập từ dịch vụ riêng  —</p>
+<hr />
+<p>👉 Hiểu rõ sự khác biệt này giúp bạn thiết kế kiến trúc ứng dụng an toàn theo nguyên tắc "bảo mật theo lớp" (defense in depth) trên AWS.</p>
 
 
 
@@ -1159,7 +1161,7 @@ Dùng VPC Endpoint để truy cập từ dịch vụ riêng tư.</li>
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 8, 2025 04:39:52 UTC">7 tháng 8, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 8, 2025 04:43:28 UTC">7 tháng 8, 2025</span>
   </span>
 
     
