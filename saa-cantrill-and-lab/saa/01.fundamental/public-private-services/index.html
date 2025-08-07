@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#dich-vu-cong-cong-public-service" class="md-skip">
+          Bỏ qua
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -944,6 +949,19 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Public private services
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -955,6 +973,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dich-vu-cong-cong-public-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dịch vụ Công cộng (Public Service)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dich-vu-rieng-tu-private-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dịch vụ Riêng tư (Private Service)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-ket-hop-va-cau-noi-vpc-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sự kết hợp và Cầu nối: VPC Endpoints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bang-tom-tat" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Bảng Tóm tắt
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1062,6 +1133,50 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dich-vu-cong-cong-public-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dịch vụ Công cộng (Public Service)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dich-vu-rieng-tu-private-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dịch vụ Riêng tư (Private Service)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-ket-hop-va-cau-noi-vpc-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sự kết hợp và Cầu nối: VPC Endpoints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bang-tom-tat" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Bảng Tóm tắt
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1086,61 +1201,116 @@
 
   <h1>Public private services</h1>
 
-<p>Dịch vụ Công cộng (Public Service)</p>
-<p>🧠 Tưởng tượng:</p>
+<hr />
+<h2 id="dich-vu-cong-cong-public-service">Dịch vụ Công cộng (Public Service)<a class="headerlink" href="#dich-vu-cong-cong-public-service" title="Permanent link">&para;</a></h2>
+<p>🧠 <strong>Tưởng tượng:</strong></p>
 <p>Các dịch vụ công cộng của thành phố như Nhà máy nước (S3), Bưu điện (SQS, SNS), hoặc Nhà máy điện (Lambda).</p>
-<p>🔍 Đặc điểm:</p>
-<p>Có thể truy cập từ Internet:
-Bất kỳ ai, ở bất kỳ đâu trên thế giới (nếu được cấp quyền), đều có thể kết nối đến các dịch vụ này thông qua một public endpoint.
-Ví dụ: Truy cập file trong S3 qua đường link:
-https://...s3.amazonaws.com/...</p>
-<p>Không nằm trong Mạng riêng của bạn:
-Các dịch vụ này chạy trên hạ tầng chung khổng lồ của AWS, nằm ngoài VPC của bạn.</p>
-<p>Quản lý bởi AWS:
-AWS lo toàn bộ vận hành, mở rộng, và bảo trì các dịch vụ này.</p>
-<p>📦 Ví dụ về các Dịch vụ Công cộng:</p>
-<p>Amazon S3 (Simple Storage Service): Dịch vụ lưu trữ file.</p>
-<p>Amazon DynamoDB: Dịch vụ cơ sở dữ liệu NoSQL.</p>
-<p>Amazon SQS (Simple Queue Service): Hàng đợi tin nhắn.</p>
-<p>Amazon SNS (Simple Notification Service): Thông báo đẩy.</p>
-<p>AWS Lambda: Tính toán serverless (có thể vừa công cộng vừa riêng tư).</p>
-<p>AWS KMS (Key Management Service): Quản lý khóa mã hóa.</p>
+<p>🔍 <strong>Đặc điểm:</strong></p>
+<ul>
+<li>
+<p><strong>Có thể truy cập từ Internet:</strong><br />
+  Bất kỳ ai, ở bất kỳ đâu trên thế giới (nếu được cấp quyền), đều có thể kết nối đến các dịch vụ này thông qua một public endpoint.<br />
+  Ví dụ: Truy cập file trong S3 qua đường link:<br />
+<code>https://...s3.amazonaws.com/...</code></p>
+</li>
+<li>
+<p><strong>Không nằm trong Mạng riêng của bạn:</strong><br />
+  Các dịch vụ này chạy trên hạ tầng chung khổng lồ của AWS, nằm ngoài VPC của bạn.</p>
+</li>
+<li>
+<p><strong>Quản lý bởi AWS:</strong><br />
+  AWS lo toàn bộ vận hành, mở rộng, và bảo trì các dịch vụ này.</p>
+</li>
+</ul>
+<p>📦 <strong>Ví dụ về các Dịch vụ Công cộng:</strong></p>
+<ul>
+<li><strong>Amazon S3 (Simple Storage Service):</strong> Dịch vụ lưu trữ file.</li>
+<li><strong>Amazon DynamoDB:</strong> Dịch vụ cơ sở dữ liệu NoSQL.</li>
+<li><strong>Amazon SQS (Simple Queue Service):</strong> Hàng đợi tin nhắn.</li>
+<li><strong>Amazon SNS (Simple Notification Service):</strong> Thông báo đẩy.</li>
+<li><strong>AWS Lambda:</strong> Tính toán serverless (có thể vừa công cộng vừa riêng tư).</li>
+<li><strong>AWS KMS (Key Management Service):</strong> Quản lý khóa mã hóa.</li>
+</ul>
 <hr />
-<p>Dịch vụ Riêng tư (Private Service)</p>
-<p>🧠 Tưởng tượng:</p>
+<h2 id="dich-vu-rieng-tu-private-service">Dịch vụ Riêng tư (Private Service)<a class="headerlink" href="#dich-vu-rieng-tu-private-service" title="Permanent link">&para;</a></h2>
+<p>🧠 <strong>Tưởng tượng:</strong></p>
 <p>Tài sản riêng của bạn được đặt trong khu đô thị khép kín có bảo vệ – chính là VPC của bạn.</p>
-<p>🔍 Đặc điểm:</p>
-<p>Không thể truy cập trực tiếp từ Internet:
-Các tài nguyên này dùng Private IP, chỉ có thể giao tiếp trong cùng VPC theo mặc định.</p>
-<p>Nằm trong Mạng riêng của bạn:
-Bạn kiểm soát hoàn toàn mạng lưới: dải IP, subnet, firewall rules (Security Groups, NACLs).</p>
-<p>Bạn tự quản lý:
-Bạn cần cài đặt, cấu hình, bảo trì ứng dụng/dịch vụ chạy trên các tài nguyên này.</p>
-<p>📦 Ví dụ về các Dịch vụ Riêng tư:</p>
-<p>Amazon EC2: Máy chủ ảo đặt trong VPC.</p>
-<p>Amazon RDS: Cơ sở dữ liệu SQL nằm trong subnet riêng tư.</p>
-<p>Amazon ElastiCache (Redis, Memcached): Dịch vụ cache nằm trong VPC.</p>
-<p>Elastic Load Balancer (Internal): Cân bằng tải nội bộ cho EC2 trong VPC.</p>
+<p>🔍 <strong>Đặc điểm:</strong></p>
+<ul>
+<li>
+<p><strong>Không thể truy cập trực tiếp từ Internet:</strong><br />
+  Các tài nguyên này dùng Private IP, chỉ có thể giao tiếp trong cùng VPC theo mặc định.</p>
+</li>
+<li>
+<p><strong>Nằm trong Mạng riêng của bạn:</strong><br />
+  Bạn kiểm soát hoàn toàn mạng lưới: dải IP, subnet, firewall rules (Security Groups, NACLs).</p>
+</li>
+<li>
+<p><strong>Bạn tự quản lý:</strong><br />
+  Bạn cần cài đặt, cấu hình, bảo trì ứng dụng/dịch vụ chạy trên các tài nguyên này.</p>
+</li>
+</ul>
+<p>📦 <strong>Ví dụ về các Dịch vụ Riêng tư:</strong></p>
+<ul>
+<li><strong>Amazon EC2:</strong> Máy chủ ảo đặt trong VPC.</li>
+<li><strong>Amazon RDS:</strong> Cơ sở dữ liệu SQL nằm trong subnet riêng tư.</li>
+<li><strong>Amazon ElastiCache (Redis, Memcached):</strong> Dịch vụ cache nằm trong VPC.</li>
+<li><strong>Elastic Load Balancer (Internal):</strong> Cân bằng tải nội bộ cho EC2 trong VPC.</li>
+</ul>
 <hr />
-<p>Sự kết hợp và Cầu nối: VPC Endpoints</p>
-<p>❓ Vấn đề:</p>
+<h2 id="su-ket-hop-va-cau-noi-vpc-endpoints">Sự kết hợp và Cầu nối: VPC Endpoints<a class="headerlink" href="#su-ket-hop-va-cau-noi-vpc-endpoints" title="Permanent link">&para;</a></h2>
+<p>❓ <strong>Vấn đề:</strong></p>
 <p>Làm sao để tài nguyên riêng tư (như EC2) truy cập dịch vụ công cộng (như S3) mà không cần qua Internet?</p>
-<p>💡 Giải pháp:</p>
-<p>VPC Endpoint – giống như xây đường ống nước riêng, an toàn từ dịch vụ công cộng (S3) vào nội bộ VPC của bạn.</p>
-<p>⚙️ Cách hoạt động:</p>
-<p>Tạo kết nối riêng tư từ VPC đến dịch vụ AWS công cộng.</p>
-<p>Khi EC2 trong VPC muốn truy cập S3, traffic sẽ đi qua VPC Endpoint thay vì Internet Gateway.</p>
-<p>Tăng cường bảo mật và giảm độ trễ vì toàn bộ lưu lượng nằm trong mạng AWS.</p>
+<p>💡 <strong>Giải pháp:</strong></p>
+<p><strong>VPC Endpoint</strong> – giống như xây đường ống nước riêng, an toàn từ dịch vụ công cộng (S3) vào nội bộ VPC của bạn.</p>
+<p>⚙️ <strong>Cách hoạt động:</strong></p>
+<ul>
+<li>Tạo kết nối riêng tư từ VPC đến dịch vụ AWS công cộng.</li>
+<li>Khi EC2 trong VPC muốn truy cập S3, traffic sẽ đi qua VPC Endpoint thay vì Internet Gateway.</li>
+<li>Tăng cường bảo mật và giảm độ trễ vì toàn bộ lưu lượng nằm trong mạng AWS.</li>
+</ul>
 <hr />
-<p>🧾 Bảng Tóm tắt</p>
-<p>Tiêu chí    Dịch vụ Công cộng (Public)  Dịch vụ Riêng tư (Private)</p>
-<p>Vị trí  Bên ngoài VPC, trên hạ tầng chung của AWS   Bên trong VPC, không gian mạng biệt lập
-Cách truy cập   Qua Internet (Public Endpoint)  Chỉ trong VPC (Private IP)
-Ví dụ   S3, DynamoDB, SQS, SNS  EC2, RDS, ElastiCache
-Mục đích    Dịch vụ quản lý, có khả năng mở rộng cao    Tài nguyên riêng tư, an toàn
-Kết nối an toàn Dùng VPC Endpoint để truy cập từ dịch vụ riêng  —</p>
+<h2 id="bang-tom-tat">🧾 Bảng Tóm tắt<a class="headerlink" href="#bang-tom-tat" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tiêu chí</th>
+<th>Dịch vụ Công cộng (Public)</th>
+<th>Dịch vụ Riêng tư (Private)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Vị trí</strong></td>
+<td>Bên ngoài VPC, trên hạ tầng chung của AWS</td>
+<td>Bên trong VPC, không gian mạng biệt lập</td>
+</tr>
+<tr>
+<td><strong>Cách truy cập</strong></td>
+<td>Qua Internet (Public Endpoint)</td>
+<td>Chỉ trong VPC (Private IP)</td>
+</tr>
+<tr>
+<td><strong>Ví dụ</strong></td>
+<td>S3, DynamoDB, SQS, SNS</td>
+<td>EC2, RDS, ElastiCache</td>
+</tr>
+<tr>
+<td><strong>Mục đích</strong></td>
+<td>Dịch vụ quản lý, có khả năng mở rộng cao</td>
+<td>Tài nguyên riêng tư, an toàn</td>
+</tr>
+<tr>
+<td><strong>Kết nối an toàn</strong></td>
+<td>Dùng VPC Endpoint để truy cập từ dịch vụ riêng</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>👉 Hiểu rõ sự khác biệt này giúp bạn thiết kế kiến trúc ứng dụng an toàn theo nguyên tắc "bảo mật theo lớp" (defense in depth) trên AWS.</p>
+<hr />
+<p><strong>Bạn muốn xuất nội dung này thành file PDF, Markdown (.md), hay định dạng khác không?</strong></p>
 
 
 
@@ -1161,7 +1331,7 @@ Kết nối an toàn Dùng VPC Endpoint để truy cập từ dịch vụ riêng
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 8, 2025 04:43:28 UTC">7 tháng 8, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="7 tháng 8, 2025 04:44:47 UTC">7 tháng 8, 2025</span>
   </span>
 
     
