@@ -1,16 +1,13 @@
 # Luyện Đề AWS Certification
 
-## Đây là danh sách các tài liệu luyện đề cho các kỳ thi AWS mình sưu tầm . của stephane marek , neal davis và saa của jon bonso
+## Đây là danh sách các tài liệu luyện đề cho các kỳ thi AWS mình sưu tầm . của stephane marek , neal davis và saa của jon bonso 
 
-mình có lưu lại khóa học của cantrill trên youtube bạn nào muốn xem nhắn cho mình qua zalo 0987214065 , khóa học này thì để đi làm hơn , còn lấy cert của stephane marek
+bạn nào muốn học của cantrill thì mình lấy 100k để học chung 3 cái assosiate 2 cái professional  , khóa học này thì để đi làm hơn , còn lấy cert của stephane marek
 [https://learn.cantrill.io/courses](https://learn.cantrill.io/courses)
 
 nếu có vấn đề gì qua các đề bên dưới liên hệ mình qua zalo 0987214065 hoặc comment phía dưới
 
-ủng hộ mình nếu bạn muốn cho mình bữa sáng
-momo: 0987214065
 
-mình có thể tải mọi cert trên udemy business theo nhu cầu nếu bạn muốn
 
 ## Neal Davis
 
