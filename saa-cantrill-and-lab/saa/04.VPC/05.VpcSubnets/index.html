@@ -1743,6 +1743,70 @@
 <li><strong>→ Khi tính số IP usable luôn lấy tổng số IP trừ đi 5.</strong><br />
   Ví dụ: <code>/24</code> = 256 IP, usable = 251.</li>
 </ul>
+<details>
+<summary>< Giải thích chi tiết về 5 ip này (Bấm để xem)</summary>
+
+### **Tổng quan: Nền móng ẩn của mỗi Subnet**
+
+Hãy hình dung mỗi **subnet** bạn tạo ra như một **khu phố khép kín, được quy hoạch bài bản**. AWS, với vai trò là nhà phát triển hạ tầng, đã giữ lại 5 "lô đất" chiến lược trong mỗi khu phố này để xây dựng các tiện ích chung, đảm bảo toàn bộ khu phố vận hành trơn tru và an toàn.
+
+Việc giữ lại 5 địa chỉ IP này là một quy tắc **cố định và không thể thay đổi**.
+
+**Phạm vi:** Quy tắc này được áp dụng ở cấp độ **SUB-NET**. Nghĩa là, dù bạn tạo ra 1 hay 100 subnet, mỗi subnet trong số đó đều sẽ có 5 địa chỉ IP này bị giữ lại.
+
+---
+
+### **Chi tiết về 5 thành phần và tác động của chúng**
+
+Giả sử chúng ta có một subnet với dải IP là `10.0.1.0/24`.
+
+#### 1. Địa chỉ Mạng (`10.0.1.0`)
+
+* **Vai trò:** Đây là **danh tính** của subnet, giống như tên của khu phố (ví dụ: "Khu phố A"). Nó không phải là một địa chỉ cụ thể của một ngôi nhà nào, mà là địa chỉ định danh cho cả một khu vực.
+* **Tác động:**
+    * **Định nghĩa ranh giới:** Địa chỉ này xác định điểm bắt đầu của dải IP trong subnet.
+    * **Routing:** Bảng định tuyến (Route Table) sử dụng địa chỉ này để biết rằng "tất cả các địa chỉ từ 10.0.1.0 đến 10.0.1.255 đều thuộc về khu phố này".
+    * **Không thể sử dụng:** Bạn không bao giờ có thể gán địa chỉ này cho bất kỳ tài nguyên nào (EC2, RDS, v.v.).
+
+#### 2. VPC Router / Cổng Mặc Định (`10.0.1.1`)
+
+* **Vai trò:** Đây là **cổng ra vào duy nhất** của khu phố, do AWS quản lý. Mọi "thư từ" hay "xe cộ" (traffic) muốn đi từ trong subnet ra ngoài (Internet, VPC khác) hoặc từ ngoài vào trong đều phải đi qua cái cổng này.
+* **Tác động:**
+    * **Điểm trung chuyển bắt buộc:** Bất kỳ máy chủ EC2 nào trong subnet này muốn kết nối ra Internet đều phải gửi gói tin đến địa chỉ `10.0.1.1` này đầu tiên.
+    * **Tính sẵn sàng cao:** Đây không phải là một máy chủ vật lý duy nhất mà là một dịch vụ có tính sẵn sàng cao và khả năng mở rộng tự động do AWS quản lý.
+
+#### 3. Máy chủ DNS của Amazon (`10.0.1.2`)
+
+* **Vai trò:** Đây là **"bốt thông tin" hoặc "danh bạ điện thoại" nội bộ** của khu phố. Nó có hai chức năng chính:
+    1.  Giúp các máy chủ trong subnet phân giải tên miền công cộng (ví dụ: `google.com`).
+    2.  Giúp các máy chủ trong cùng VPC phân giải tên miền riêng tư của nhau (ví dụ: phân giải hostname `ip-10-0-1-50.ec2.internal`).
+* **Tác động:**
+    * **Phân giải tên miền hiệu quả:** Việc có một máy chủ DNS ngay trong subnet giúp giảm độ trễ và đảm bảo các tài nguyên có thể "tìm thấy" nhau một cách nhanh chóng.
+    * **Nền tảng của DHCP Option Set:** DHCP Option Set mặc định sẽ chỉ cho các máy chủ EC2 sử dụng địa chỉ `10.0.1.2` này làm DNS server.
+
+#### 4. Dành cho tương lai (`10.0.1.3`)
+
+* **Vai trò:** Đây là một **"lô đất trống"** mà AWS đã giữ lại để phòng trường hợp trong tương lai họ muốn triển khai thêm một dịch vụ mạng mới ở cấp độ subnet.
+* **Tác động:**
+    * **Không khả dụng:** Đơn giản là bạn không thể sử dụng địa chỉ này. Nó làm giảm đi một địa chỉ trong tổng số IP khả dụng của bạn.
+
+#### 5. Địa chỉ Broadcast (`10.0.1.255`)
+
+* **Vai trò:** Trong mạng truyền thống, đây là địa chỉ dùng để **gửi một gói tin đến tất cả các thiết bị** trong cùng một mạng, giống như một hệ thống "loa phát thanh" công cộng.
+* **Tác động:**
+    * **Bị vô hiệu hóa:** AWS **không hỗ trợ** giao thức broadcast trong VPC để tăng cường bảo mật và tránh các vấn đề về "bão broadcast" (broadcast storm).
+    * **Không thể sử dụng:** Vì tính năng này không được hỗ trợ, AWS giữ lại địa chỉ này để đảm bảo không ai có thể sử dụng nó sai mục đích.
+
+---
+
+### **Tóm tắt tác động chung lên Subnet**
+
+1.  **Giảm số lượng IP khả dụng:** Đây là tác động rõ ràng nhất. Khi bạn tính toán số lượng máy chủ có thể đặt trong một subnet, bạn phải luôn lấy tổng số IP của dải CIDR đó **trừ đi 5**. Một subnet `/24` (256 IP) chỉ có 251 IP để bạn sử dụng.
+2.  **Cung cấp các chức năng mạng cốt lõi:** 5 địa chỉ này không chỉ làm giảm IP mà còn là nền tảng cung cấp các dịch vụ thiết yếu (định tuyến, DNS) giúp subnet hoạt động như một thực thể mạng hoàn chỉnh.
+3.  **Đảm bảo tính nhất quán và bảo mật:** Việc giữ lại các địa chỉ này tạo ra một kiến trúc mạng đồng nhất và có thể dự đoán được trên toàn bộ nền tảng AWS, đồng thời loại bỏ các giao thức kém an toàn như broadcast.
+
+</details>
+
 <h3 id="5-dhcp-option-set">5. <strong>DHCP Option Set</strong><a class="headerlink" href="#5-dhcp-option-set" title="Permanent link">&para;</a></h3>
 <ul>
 <li>VPC auto có 1 DHCP Option Set – giúp EC2 trong subnet tự nhận IP, DNS server, NTP server…</li>
@@ -1891,7 +1955,7 @@ Bạn chỉ thực sự cần tạo một DHCP Option Set tùy chỉnh trong cá
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="13 tháng 8, 2025 15:45:46 UTC">13 tháng 8, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="13 tháng 8, 2025 16:07:56 UTC">13 tháng 8, 2025</span>
   </span>
 
     
