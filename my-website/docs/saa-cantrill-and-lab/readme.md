@@ -11,3 +11,5 @@ https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 https://aws.amazon.com/free/
+
+https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html
