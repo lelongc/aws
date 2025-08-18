@@ -1724,6 +1724,7 @@
 <h1 id="phan-biet-firewall-stateful-stateless-cuc-de-hieu-cho-aws-thi-cert-i-lam">🔥 Phân biệt Firewall Stateful &amp; Stateless – Cực dễ hiểu cho AWS, thi cert &amp; đi làm<a class="headerlink" href="#phan-biet-firewall-stateful-stateless-cuc-de-hieu-cho-aws-thi-cert-i-lam" title="Permanent link">&para;</a></h1>
 <hr />
 <h2 id="phan-1-on-lai-networking-tcpip-co-gi-lien-quan">PHẦN 1: Ôn lại Networking – TCP/IP có gì liên quan?<a class="headerlink" href="#phan-1-on-lai-networking-tcpip-co-gi-lien-quan" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/ef42cb5f-d643-4631-be5b-408625e36cf1" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="845" height="483" alt="image" src="https://github.com/user-attachments/assets/ef42cb5f-d643-4631-be5b-408625e36cf1" /></a></p>
 <ul>
 <li><strong>TCP/IP:</strong> Mỗi kết nối TCP gồm nhiều gói tin (packet), mỗi packet có:<ul>
 <li>Source IP &amp; port (máy gửi)</li>
@@ -1744,13 +1745,18 @@
 </li>
 </ul>
 <blockquote>
-<p><strong>Lưu ý:</strong> Outbound hay inbound là do "GÓC NHÌN"<br />
-- Với client: Request là outbound, response là inbound<br />
-- Với server: Request là inbound, response là outbound</p>
+<p><strong>Lưu ý:</strong> Outbound hay inbound là do "GÓC NHÌN"
+ <a class="glightbox" href="https://github.com/user-attachments/assets/b92ebae4-8f28-4a56-b253-4efe3b8c0bbf" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="829" height="482" alt="image" src="https://github.com/user-attachments/assets/b92ebae4-8f28-4a56-b253-4efe3b8c0bbf" /></a></p>
+<ul>
+<li>Với client: Request là outbound, response là inbound  </li>
+<li>Với server: Request là inbound, response là outbound</li>
+</ul>
 </blockquote>
 <hr />
 <h2 id="phan-2-stateless-firewall-ngo-va-phien-phuc">PHẦN 2: Stateless Firewall – “Ngố” và phiền phức<a class="headerlink" href="#phan-2-stateless-firewall-ngo-va-phien-phuc" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/f6764587-f204-4242-af23-57ae7c8ece2f" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="840" height="479" alt="image" src="https://github.com/user-attachments/assets/f6764587-f204-4242-af23-57ae7c8ece2f" /></a></p>
 <h3 id="stateless-firewall-la-gi"><strong>Stateless firewall là gì?</strong><a class="headerlink" href="#stateless-firewall-la-gi" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/3f967093-0c24-474e-ae4c-85ad05432c8f" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="839" height="477" alt="image" src="https://github.com/user-attachments/assets/3f967093-0c24-474e-ae4c-85ad05432c8f" /></a></p>
 <ul>
 <li>Không nhớ trạng thái kết nối, chỉ biết packet này vào hay ra, port nào, IP nào.</li>
 <li><strong>Muốn cho phép 1 kết nối → phải tạo 2 rule</strong>:<ul>
@@ -1775,6 +1781,7 @@
 <hr />
 <h2 id="phan-3-stateful-firewall-thong-minh-va-bao-mat-hon">PHẦN 3: Stateful Firewall – “Thông minh” và bảo mật hơn<a class="headerlink" href="#phan-3-stateful-firewall-thong-minh-va-bao-mat-hon" title="Permanent link">&para;</a></h2>
 <h3 id="stateful-firewall-la-gi"><strong>Stateful firewall là gì?</strong><a class="headerlink" href="#stateful-firewall-la-gi" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/8ac0f407-4b25-4943-a25d-9130eb30a491" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="842" height="498" alt="image" src="https://github.com/user-attachments/assets/8ac0f407-4b25-4943-a25d-9130eb30a491" /></a></p>
 <ul>
 <li><strong>Nhớ trạng thái kết nối!</strong><ul>
 <li>Khi thấy packet request được allow, nó tự động allow response về.</li>
@@ -1876,7 +1883,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 tháng 8, 2025 14:13:11 UTC">18 tháng 8, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 tháng 8, 2025 14:17:03 UTC">18 tháng 8, 2025</span>
   </span>
 
     
