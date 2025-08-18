@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/03.Custom%20VPCs1/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/08.lab-publicSubnet-BastionHost/">
       
       
-        <link rel="prev" href="../02.ip-plan2/">
+        <link rel="prev" href="../07.vpcRouting-IGW-bastionHost/">
       
       
-        <link rel="next" href="../04.custom-vpc-lab/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>03.Custom VPCs1 - DraDoc</title>
+        <title>08.lab publicSubnet BastionHost - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" class="md-skip">
+        <a href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              03.Custom VPCs1
+              08.lab publicSubnet BastionHost
             
           </span>
         </div>
@@ -1164,30 +1164,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    03.Custom VPCs1
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../03.Custom%20VPCs1/" class="md-nav__link">
         
   
   
@@ -1198,180 +1178,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      🏗️ Xây dựng VPC Custom đa tầng trên AWS – Lý thuyết nền tảng cho người mới
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-custom-vpc-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Custom VPC là gì?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Tư duy thiết kế từng bước như chơi Lego
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. IP Plan thực tế (ví dụ cho account general, US region 1)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-cac-thanh-phan-se-bo-sung-dan" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Các thành phần sẽ bổ sung dần:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Lý thuyết kiến trúc VPC cần nhớ để thi &amp; đi làm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-tuy-chon-tenancy-rat-hay-ra-e-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Tùy chọn Tenancy (RẤT hay ra đề thi)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-cau-hinh-ip-cho-vpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Cấu hình IP cho VPC
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. DNS trong VPC (Rất hay bị hỏi &amp; dính lỗi thật khi đi làm)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 2: Checklist kiến thức cần nhớ để đi thi &amp; đi làm
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-ung-dung-thuc-te-bai-tap-hands-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tinh-huong-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tình huống thực tế
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cau-hoi-phong-vancert-hay-gap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Câu hỏi phỏng vấn/cert hay gặp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#practice-tao-vpc-shell-au-tien-cho-animals4life" class="md-nav__link">
-    <span class="md-ellipsis">
-      Practice: Tạo VPC shell đầu tiên cho Animals4Life
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-4-tong-ket-tips-nho-lau" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 4: Tổng kết &amp; tips nhớ lâu
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1473,10 +1279,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../08.lab-publicSubnet-BastionHost/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    08.lab publicSubnet BastionHost
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1487,6 +1313,309 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ DEMO: Tạo Internet Gateway &amp; Public Subnet trên AWS (Step-by-step cho người mới)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#muc-tieu-demo-nay" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Mục tiêu demo này
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiem-tra-ieu-kien-truoc-khi-bat-au" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Kiểm tra điều kiện trước khi bắt đầu
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Kiểm tra điều kiện trước khi bắt đầu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yeu-cau-moi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Yêu cầu môi trường:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kiem-tra-nhanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kiểm tra nhanh:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-1-tao-internet-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 1: Tạo Internet Gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 1: Tạo Internet Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-tao-igw-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Tạo IGW mới
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-attach-igw-vao-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Attach IGW vào VPC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-2-tao-route-table-cho-public-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 2: Tạo Route Table cho Public Subnets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 2: Tạo Route Table cho Public Subnets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-tao-route-table-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Tạo Route Table mới
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-associate-route-table-voi-web-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Associate Route Table với Web Subnets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-3-them-default-routes-vao-route-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 3: Thêm Default Routes vào Route Table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 3: Thêm Default Routes vào Route Table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-kiem-tra-local-routes-hien-tai" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Kiểm tra Local Routes hiện tại
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-them-ipv4-default-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Thêm IPv4 Default Route
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-them-ipv6-default-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Thêm IPv6 Default Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-4-enable-auto-assign-public-ip-cho-web-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 4: Enable Auto-assign Public IP cho Web Subnets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 4: Enable Auto-assign Public IP cho Web Subnets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-cau-hinh-cho-web-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Cấu hình cho web-A
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cau-hinh-cho-web-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Cấu hình cho web-B
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-cau-hinh-cho-web-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Cấu hình cho web-C
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tong-ket-nhung-gi-a-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Tổng kết những gì đã làm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Tổng kết những gì đã làm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-hoan-thanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Checklist hoàn thành:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luong-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Luồng hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kien-thuc-can-nho-e-thi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Kiến thức cần nhớ để thi &amp; đi làm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Kiến thức cần nhớ để thi &amp; đi làm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-subnet-4-ieu-kien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Subnet = 4 điều kiện:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#route-priority-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Priority Rules:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#igw-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      IGW Characteristics:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuan-bi-cho-phan-2-launch-bastion-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Chuẩn bị cho phần 2: Launch Bastion Host
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1600,91 +1729,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" class="md-nav__link">
+  <a href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" class="md-nav__link">
     <span class="md-ellipsis">
-      🏗️ Xây dựng VPC Custom đa tầng trên AWS – Lý thuyết nền tảng cho người mới
+      🛠️ DEMO: Tạo Internet Gateway &amp; Public Subnet trên AWS (Step-by-step cho người mới)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi" class="md-nav__link">
+  <a href="#muc-tieu-demo-nay" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)
+      🎯 Mục tiêu demo này
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kiem-tra-ieu-kien-truoc-khi-bat-au" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Kiểm tra điều kiện trước khi bắt đầu
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📋 Kiểm tra điều kiện trước khi bắt đầu">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-custom-vpc-la-gi" class="md-nav__link">
+  <a href="#yeu-cau-moi-truong" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Custom VPC là gì?
+      Yêu cầu môi trường:
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego" class="md-nav__link">
+  <a href="#kiem-tra-nhanh" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Tư duy thiết kế từng bước như chơi Lego
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. IP Plan thực tế (ví dụ cho account general, US region 1)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-cac-thanh-phan-se-bo-sung-dan" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Các thành phần sẽ bổ sung dần:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Lý thuyết kiến trúc VPC cần nhớ để thi &amp; đi làm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-tuy-chon-tenancy-rat-hay-ra-e-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Tùy chọn Tenancy (RẤT hay ra đề thi)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-cau-hinh-ip-cho-vpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Cấu hình IP cho VPC
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. DNS trong VPC (Rất hay bị hỏi &amp; dính lỗi thật khi đi làm)
+      Kiểm tra nhanh:
     </span>
   </a>
   
@@ -1696,46 +1780,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam" class="md-nav__link">
+  <a href="#buoc-1-tao-internet-gateway" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 2: Checklist kiến thức cần nhớ để đi thi &amp; đi làm
+      Bước 1: Tạo Internet Gateway
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-ung-dung-thuc-te-bai-tap-hands-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on">
+    <nav class="md-nav" aria-label="Bước 1: Tạo Internet Gateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tinh-huong-thuc-te" class="md-nav__link">
+  <a href="#11-tao-igw-moi" class="md-nav__link">
     <span class="md-ellipsis">
-      Tình huống thực tế
+      1.1. Tạo IGW mới
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cau-hoi-phong-vancert-hay-gap" class="md-nav__link">
+  <a href="#12-attach-igw-vao-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      Câu hỏi phỏng vấn/cert hay gặp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#practice-tao-vpc-shell-au-tien-cho-animals4life" class="md-nav__link">
-    <span class="md-ellipsis">
-      Practice: Tạo VPC shell đầu tiên cho Animals4Life
+      1.2. Attach IGW vào VPC
     </span>
   </a>
   
@@ -1747,9 +1813,201 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-4-tong-ket-tips-nho-lau" class="md-nav__link">
+  <a href="#buoc-2-tao-route-table-cho-public-subnets" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 4: Tổng kết &amp; tips nhớ lâu
+      Bước 2: Tạo Route Table cho Public Subnets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 2: Tạo Route Table cho Public Subnets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-tao-route-table-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Tạo Route Table mới
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-associate-route-table-voi-web-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Associate Route Table với Web Subnets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-3-them-default-routes-vao-route-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 3: Thêm Default Routes vào Route Table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 3: Thêm Default Routes vào Route Table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-kiem-tra-local-routes-hien-tai" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Kiểm tra Local Routes hiện tại
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-them-ipv4-default-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Thêm IPv4 Default Route
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-them-ipv6-default-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Thêm IPv6 Default Route
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-4-enable-auto-assign-public-ip-cho-web-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bước 4: Enable Auto-assign Public IP cho Web Subnets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bước 4: Enable Auto-assign Public IP cho Web Subnets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-cau-hinh-cho-web-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Cấu hình cho web-A
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-cau-hinh-cho-web-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Cấu hình cho web-B
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-cau-hinh-cho-web-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3. Cấu hình cho web-C
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tong-ket-nhung-gi-a-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Tổng kết những gì đã làm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Tổng kết những gì đã làm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checklist-hoan-thanh" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Checklist hoàn thành:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luong-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Luồng hoạt động:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kien-thuc-can-nho-e-thi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Kiến thức cần nhớ để thi &amp; đi làm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Kiến thức cần nhớ để thi &amp; đi làm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-subnet-4-ieu-kien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Public Subnet = 4 điều kiện:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#route-priority-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Priority Rules:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#igw-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      IGW Characteristics:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuan-bi-cho-phan-2-launch-bastion-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Chuẩn bị cho phần 2: Launch Bastion Host
     </span>
   </a>
   
@@ -1771,7 +2029,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/03.Custom VPCs1.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/08.lab-publicSubnet-BastionHost.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1779,127 +2037,164 @@
   
 
 
-  <h1>03.Custom VPCs1</h1>
+  <h1>08.lab publicSubnet BastionHost</h1>
 
-<h2 id="xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi">🏗️ Xây dựng VPC Custom đa tầng trên AWS – Lý thuyết nền tảng cho người mới<a class="headerlink" href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" title="Permanent link">&para;</a></h2>
+<h2 id="demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi">🛠️ DEMO: Tạo Internet Gateway &amp; Public Subnet trên AWS (Step-by-step cho người mới)<a class="headerlink" href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" title="Permanent link">&para;</a></h2>
 <hr />
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/52822379-dfdb-4246-9397-24d99471d87f" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="847" height="486" alt="image" src="https://github.com/user-attachments/assets/52822379-dfdb-4246-9397-24d99471d87f" /></a></p>
-<h2 id="phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi">PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)<a class="headerlink" href="#phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi" title="Permanent link">&para;</a></h2>
-<h3 id="1-custom-vpc-la-gi">1. <strong>Custom VPC là gì?</strong><a class="headerlink" href="#1-custom-vpc-la-gi" title="Permanent link">&para;</a></h3>
+<h2 id="muc-tieu-demo-nay">🎯 Mục tiêu demo này<a class="headerlink" href="#muc-tieu-demo-nay" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>VPC (Virtual Private Cloud)</strong>: Mạng riêng ảo, tách biệt hoàn toàn, chỉ bạn kiểm soát trong 1 AWS Region.</li>
-<li><strong>Custom VPC</strong> là VPC do bạn tự thiết kế, tự cấu hình IP, subnet, bảo mật, khác hoàn toàn với Default VPC (AWS tạo sẵn, cứng nhắc, ít tùy biến).</li>
-<li><strong>Multi-tier VPC</strong>: VPC chia thành nhiều lớp (tier) – ví dụ: Web, App, Database, Reserved – để tăng bảo mật, mở rộng, dễ quản trị.</li>
-</ul>
-<h3 id="2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego">2. <strong>Tư duy thiết kế từng bước như chơi Lego</strong><a class="headerlink" href="#2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Đừng sợ sơ đồ phức tạp! Xây từng layer, từng phần, giống như lắp Lego.</li>
-<li>Bắt đầu từ “vỏ” (shell) VPC, sau đó thêm subnet, gateway, routing, security…</li>
-<li>Mục tiêu: Đến cuối section này, bạn sẽ tự tin xây dựng mạng riêng phức tạp trên AWS.</li>
-</ul>
-<h3 id="3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1">3. <strong>IP Plan thực tế (ví dụ cho account general, US region 1)</strong><a class="headerlink" href="#3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>CIDR cho VPC:</strong> <code>10.16.0.0/16</code> (65,536 IP usable)</li>
-<li><strong>4 tiers x 4 AZ = 16 subnet</strong> (Web, App, DB, Reserved × AZ a/b/c/d)</li>
-<li><strong>Demo này tạo 4 tier × 3 AZ (A, B, C) = 12 subnet</strong>. Dành phần AZ D để mở rộng về sau (theo best practice “luôn dự phòng”).</li>
-</ul>
-<h3 id="4-cac-thanh-phan-se-bo-sung-dan">4. <strong>Các thành phần sẽ bổ sung dần:</strong><a class="headerlink" href="#4-cac-thanh-phan-se-bo-sung-dan" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Internet Gateway</strong>: Cho phép tài nguyên trong VPC ra/vào Internet (sau bài shell sẽ tạo).</li>
-<li><strong>NAT Gateway</strong>: Cho phép private subnet truy cập Internet (outbound only).</li>
-<li><strong>Bastion Host</strong>: Máy chủ “trạm trung gian” SSH vào VPC (dùng để học, thực tế sẽ thay bằng giải pháp an toàn hơn).</li>
-<li><strong>NACLs (Network ACL)</strong>: Tường lửa lớp mạng, bổ sung bảo mật cho VPC.</li>
-<li><strong>Data transfer cost</strong>: Cần tính toán khi thiết kế mạng (in-out giữa VPC, Internet, cross-AZ…).</li>
-</ul>
-<h3 id="5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam">5. <strong>Lý thuyết kiến trúc VPC cần nhớ để thi &amp; đi làm</strong><a class="headerlink" href="#5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>VPC là dịch vụ “regional” – tạo trong 1 region, dùng được tất cả AZ của region đó</strong></li>
-<li><strong>Một account có thể có nhiều VPC, mỗi VPC là “rào chắn” bảo vệ – không gì tự do ra/vào nếu chưa explicit allow</strong></li>
-<li><strong>VPC = blast radius boundary</strong>: Nếu bị hack/lỗi, chỉ ảnh hưởng trong VPC (giới hạn thiệt hại)</li>
-<li><strong>Default VPC</strong>: AWS tự cấu hình, 1 subnet/AZ, IP range giống nhau, không cần setup gì</li>
-<li><strong>Custom VPC</strong>: Bạn tự quyết định mọi thứ, phù hợp cho production, dễ mở rộng/hybrid</li>
-<li><strong>Hỗ trợ Hybrid networking</strong>: Kết nối VPC với on-premises hoặc cloud khác (VPN, Direct Connect, Peering...)</li>
-</ul>
-<h3 id="6-tuy-chon-tenancy-rat-hay-ra-e-thi">6. <strong>Tùy chọn Tenancy (RẤT hay ra đề thi)</strong><a class="headerlink" href="#6-tuy-chon-tenancy-rat-hay-ra-e-thi" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Default tenancy</strong>: Tài nguyên dùng shared hardware (dùng chung vật lý, tách biệt logical). Có thể chọn dedicated khi tạo EC2.</li>
-<li><strong>Dedicated tenancy</strong>: Toàn bộ tài nguyên chạy trên dedicated hardware riêng biệt, đắt tiền, chỉ chọn khi có nhu cầu compliance đặc biệt (PCI, ngân hàng…). Nếu chọn nhầm thì không đổi lại được, chỉ dùng khi thực sự cần.</li>
-</ul>
-<h3 id="7-cau-hinh-ip-cho-vpc">7. <strong>Cấu hình IP cho VPC</strong><a class="headerlink" href="#7-cau-hinh-ip-cho-vpc" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Bắt buộc có 1 dải private IPv4 khi tạo VPC</strong> (CIDR block), ví dụ: /16 = 65,536 IP, /28 = 16 IP (dùng được ~11 IP do AWS giữ lại 5).</li>
-<li><strong>Có thể gán thêm tối đa 5 CIDR block phụ sau khi tạo (mở support request thì tăng được)</strong></li>
-<li><strong>IPv6</strong>: Có thể thêm /56 IPv6 CIDR, AWS cấp range (không chọn được như IPv4). IPv6 trên AWS đều là public-routeable (bật/tắt kết nối Internet bằng security, chứ không phân public/private IP như IPv4).</li>
-<li><strong>Tip</strong>: Dù IPv6 là public, nhưng phải cấu hình rule thì mới kết nối ra ngoài được – mặc định vẫn an toàn.</li>
-</ul>
-<h3 id="8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam">8. <strong>DNS trong VPC (Rất hay bị hỏi &amp; dính lỗi thật khi đi làm)</strong><a class="headerlink" href="#8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Route53 Resolver</strong>: Mỗi VPC auto có DNS. IP DNS là [Base IP của VPC] + 2 (ví dụ VPC 10.0.0.0/16 → DNS server: 10.0.0.2).</li>
-<li><strong>2 Option quan trọng:</strong></li>
-</ul>
-<p><strong>1. <code>enableDnsSupport</code></strong></p>
-<p>Đây là công tắc chính để bật <strong>dịch vụ phân giải tên miền (DNS)</strong> cho toàn bộ VPC.</p>
-<ul>
-<li><strong>Chức năng:</strong> Cho phép các máy chủ (EC2 instance) trong VPC của bạn có thể sử dụng tên miền (ví dụ: <code>google.com</code>) thay vì phải nhớ địa chỉ IP.</li>
-<li><strong>Ví dụ ngắn gọn:</strong> Khi bật tính năng này, các EC2 instance trong VPC có thể truy cập <code>s3.amazonaws.com</code>. Nếu tắt, chúng không thể làm điều đó.</li>
-<li><strong>Vị trí máy chủ DNS:</strong> AWS tự động tạo một máy chủ DNS và gán cho nó địa chỉ IP đặc biệt: <strong>địa chỉ IP đầu tiên của VPC cộng 2</strong> (ví dụ: <code>10.0.0.2</code> nếu VPC là <code>10.0.0.0/16</code>).</li>
-</ul>
-<p><strong>2. <code>enableDnsHostnames</code></strong></p>
-<p>Đây là công tắc phụ, dựa trên <code>enableDnsSupport</code> đã được bật.</p>
-<ul>
-<li><strong>Chức năng:</strong> Gán một <strong>tên miền công cộng (public DNS name)</strong> cho các EC2 instance có địa chỉ IP công cộng (Public IP).</li>
-<li><strong>Ví dụ ngắn gọn:</strong> Một EC2 instance có địa chỉ IP công cộng là <code>34.200.1.20</code> sẽ được gán tên miền công cộng là <code>ec2-34-200-1-20.compute.amazonaws.com</code>.</li>
-<li><strong>Điều kiện:</strong> Thuộc tính này <strong>chỉ hoạt động khi <code>enableDnsSupport</code> đã được bật</strong>.</li>
-</ul>
-<p><strong>Tóm tắt đơn giản:</strong></p>
-<ul>
-<li><strong><code>enableDnsSupport</code></strong>: Bật chức năng DNS cho VPC, giúp các máy chủ trong đó truy cập được các tên miền.</li>
-<li><strong><code>enableDnsHostnames</code></strong>: Gán tên miền công cộng cho các máy chủ có Public IP.</li>
-</ul>
-<h2 id="phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam">PHẦN 2: Checklist kiến thức cần nhớ để đi thi &amp; đi làm<a class="headerlink" href="#phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[x] VPC là gì? Tách biệt, bảo mật, giới hạn blast radius</li>
-<li>[x] VPC là dịch vụ regional, dùng được mọi AZ của region</li>
-<li>[x] Default VPC vs Custom VPC: khác biệt lớn về tùy chỉnh, bảo mật, mở rộng</li>
-<li>[x] Tùy chọn tenancy (Default vs Dedicated): khi nào dùng, lưu ý chi phí</li>
-<li>[x] Khi tạo VPC phải chọn IPv4 CIDR, có thể thêm IPv6</li>
-<li>[x] IPv4 chia subnet theo AZ, mỗi subnet nằm trong 1 AZ duy nhất</li>
-<li>[x] IPv6 là public, không phân biệt public/private, quản bằng security</li>
-<li>[x] DNS trong VPC: nhớ 2 setting enableDnsHostnames &amp; enableDnsSupport</li>
-<li>[x] File IP plan là “bảo bối” khi làm dự án thật</li>
+<li>Biến các <strong>private subnet</strong> thành <strong>public subnet</strong> có thể kết nối Internet 2-way.</li>
+<li>Hiểu rõ từng bước cấu hình <strong>Internet Gateway, Route Table, Public IP</strong>.</li>
+<li>Chuẩn bị môi trường để launch <strong>Bastion Host</strong> (phần 2).</li>
 </ul>
 <hr />
-<h2 id="phan-3-ung-dung-thuc-te-bai-tap-hands-on">PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on<a class="headerlink" href="#phan-3-ung-dung-thuc-te-bai-tap-hands-on" title="Permanent link">&para;</a></h2>
-<h3 id="tinh-huong-thuc-te"><strong>Tình huống thực tế</strong><a class="headerlink" href="#tinh-huong-thuc-te" title="Permanent link">&para;</a></h3>
+<h2 id="kiem-tra-ieu-kien-truoc-khi-bat-au">📋 Kiểm tra điều kiện trước khi bắt đầu<a class="headerlink" href="#kiem-tra-ieu-kien-truoc-khi-bat-au" title="Permanent link">&para;</a></h2>
+<h3 id="yeu-cau-moi-truong"><strong>Yêu cầu môi trường:</strong><a class="headerlink" href="#yeu-cau-moi-truong" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Công ty cần VPC riêng cho từng môi trường (general, prod, dev), mỗi VPC theo chuẩn 4 tier × 4 AZ → 16 subnet. Dễ mở rộng, dễ quản trị, bảo mật tốt, dễ kết nối hybrid.</li>
-<li>Mỗi khi tạo VPC, luôn lưu lại IP plan, subnet plan để tránh trùng lặp, dễ audit, dễ troubleshoot.</li>
+<li>[x] Đã tạo VPC <code>a4l-vpc1</code> với CIDR <code>10.16.0.0/16</code></li>
+<li>[x] Đã tạo đủ 12 subnets (3 web, 3 app, 3 db, 3 reserved) trong 3 AZ</li>
+<li>[x] Login với IAM admin user</li>
+<li>[x] Region: US East 1 (N. Virginia)</li>
 </ul>
-<h3 id="cau-hoi-phong-vancert-hay-gap"><strong>Câu hỏi phỏng vấn/cert hay gặp</strong><a class="headerlink" href="#cau-hoi-phong-vancert-hay-gap" title="Permanent link">&para;</a></h3>
+<h3 id="kiem-tra-nhanh"><strong>Kiểm tra nhanh:</strong><a class="headerlink" href="#kiem-tra-nhanh" title="Permanent link">&para;</a></h3>
+<ol>
+<li>VPC Console → Subnets → Thấy có 12 subnet của <code>a4l-vpc1</code></li>
+<li>Đặc biệt check có 3 web subnet: <code>web-A</code>, <code>web-B</code>, <code>web-C</code></li>
+</ol>
+<hr />
+<h2 id="buoc-1-tao-internet-gateway">Bước 1: Tạo Internet Gateway<a class="headerlink" href="#buoc-1-tao-internet-gateway" title="Permanent link">&para;</a></h2>
+<h3 id="11-tao-igw-moi">1.1. <strong>Tạo IGW mới</strong><a class="headerlink" href="#11-tao-igw-moi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 VPC Console → Internet Gateways → Create Internet Gateway</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="l l-Scalar l-Scalar-Plain">Name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1-IGW</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">Meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Animals4Life - VPC1 - Internet Gateway</span>
+</code></pre></div>
+<h3 id="12-attach-igw-vao-vpc">1.2. <strong>Attach IGW vào VPC</strong><a class="headerlink" href="#12-attach-igw-vao-vpc" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Actions → Attach to VPC</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">Select VPC</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">Click</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Attach Internet Gateway</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="l l-Scalar l-Scalar-Plain">✅ Status từ &quot;Detached&quot; → &quot;Attached&quot;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Lưu ý:</strong> IGW ban đầu luôn ở trạng thái "Detached", phải attach thủ công!</p>
+</blockquote>
+<hr />
+<h2 id="buoc-2-tao-route-table-cho-public-subnets">Bước 2: Tạo Route Table cho Public Subnets<a class="headerlink" href="#buoc-2-tao-route-table-cho-public-subnets" title="Permanent link">&para;</a></h2>
+<h3 id="21-tao-route-table-moi">2.1. <strong>Tạo Route Table mới</strong><a class="headerlink" href="#21-tao-route-table-moi" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 VPC Console → Route Tables → Create Route Table</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="l l-Scalar l-Scalar-Plain">Name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1-RT-web</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">VPC</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1</span><span class="w">  </span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">Meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Animals4Life - VPC1 - Route Table - web tier</span>
+</code></pre></div>
+<h3 id="22-associate-route-table-voi-web-subnets">2.2. <strong>Associate Route Table với Web Subnets</strong><a class="headerlink" href="#22-associate-route-table-voi-web-subnets" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Chọn route table vừa tạo → Subnet Associations → Edit Associations</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="l l-Scalar l-Scalar-Plain">Select 3 subnets</span><span class="p p-Indicator">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">☑️ web-A</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">☑️ web-B</span><span class="w">  </span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">☑️ web-C</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nt">Click</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save Associations</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Giải thích:</strong> Subnet chỉ được associate với 1 route table. Khi associate với custom route table, nó sẽ tự động rời khỏi main route table.</p>
+</blockquote>
+<hr />
+<h2 id="buoc-3-them-default-routes-vao-route-table">Bước 3: Thêm Default Routes vào Route Table<a class="headerlink" href="#buoc-3-them-default-routes-vao-route-table" title="Permanent link">&para;</a></h2>
+<h3 id="31-kiem-tra-local-routes-hien-tai">3.1. <strong>Kiểm tra Local Routes hiện tại</strong><a class="headerlink" href="#31-kiem-tra-local-routes-hien-tai" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Routes tab của route table vừa tạo</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="l l-Scalar l-Scalar-Plain">Sẽ thấy 2 local routes</span><span class="p p-Indicator">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">10.16.0.0/16 → local (IPv4)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2600:1f14:xxx::/56 → local (IPv6)</span>
+</code></pre></div>
+<h3 id="32-them-ipv4-default-route">3.2. <strong>Thêm IPv4 Default Route</strong><a class="headerlink" href="#32-them-ipv4-default-route" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Routes → Edit Routes → Add Route</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="l l-Scalar l-Scalar-Plain">Destination</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span><span class="w">  </span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">Target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internet Gateway → A4L-VPC1-IGW</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nt">✅ Meaning</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mọi</span><span class="nv"> </span><span class="s">traffic</span><span class="nv"> </span><span class="s">IPv4</span><span class="nv"> </span><span class="s">không</span><span class="nv"> </span><span class="s">match</span><span class="nv"> </span><span class="s">local</span><span class="nv"> </span><span class="s">route</span><span class="nv"> </span><span class="s">→</span><span class="nv"> </span><span class="s">đi</span><span class="nv"> </span><span class="s">ra</span><span class="nv"> </span><span class="s">IGW&quot;</span>
+</code></pre></div>
+<h3 id="33-them-ipv6-default-route">3.3. <strong>Thêm IPv6 Default Route</strong><a class="headerlink" href="#33-them-ipv6-default-route" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Add Route (tiếp)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="l l-Scalar l-Scalar-Plain">Destination</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">::/0</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">Target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internet Gateway → A4L-VPC1-IGW</span><span class="w">  </span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">✅ Meaning</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mọi</span><span class="nv"> </span><span class="s">traffic</span><span class="nv"> </span><span class="s">IPv6</span><span class="nv"> </span><span class="s">không</span><span class="nv"> </span><span class="s">match</span><span class="nv"> </span><span class="s">local</span><span class="nv"> </span><span class="s">route</span><span class="nv"> </span><span class="s">→</span><span class="nv"> </span><span class="s">đi</span><span class="nv"> </span><span class="s">ra</span><span class="nv"> </span><span class="s">IGW&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nt">Click</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save Changes</span>
+</code></pre></div>
+<hr />
+<h2 id="buoc-4-enable-auto-assign-public-ip-cho-web-subnets">Bước 4: Enable Auto-assign Public IP cho Web Subnets<a class="headerlink" href="#buoc-4-enable-auto-assign-public-ip-cho-web-subnets" title="Permanent link">&para;</a></h2>
+<h3 id="41-cau-hinh-cho-web-a">4.1. <strong>Cấu hình cho web-A</strong><a class="headerlink" href="#41-cau-hinh-cho-web-a" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Subnets → Select web-A → Actions → Edit Subnet Settings</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="l l-Scalar l-Scalar-Plain">☑️ Enable auto-assign public IPv4 address</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="l l-Scalar l-Scalar-Plain">Click</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save</span>
+</code></pre></div>
+<h3 id="42-cau-hinh-cho-web-b">4.2. <strong>Cấu hình cho web-B</strong><a class="headerlink" href="#42-cau-hinh-cho-web-b" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Subnets → Select web-B → Actions → Edit Subnet Settings</span><span class="w">  </span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="l l-Scalar l-Scalar-Plain">☑️ Enable auto-assign public IPv4 address</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="l l-Scalar l-Scalar-Plain">Click</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save</span>
+</code></pre></div>
+<h3 id="43-cau-hinh-cho-web-c">4.3. <strong>Cấu hình cho web-C</strong><a class="headerlink" href="#43-cau-hinh-cho-web-c" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Subnets → Select web-C → Actions → Edit Subnet Settings</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="l l-Scalar l-Scalar-Plain">☑️ Enable auto-assign public IPv4 address</span><span class="w">  </span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="l l-Scalar l-Scalar-Plain">Click</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save</span>
+</code></pre></div>
+<hr />
+<h2 id="tong-ket-nhung-gi-a-lam">🎯 Tổng kết những gì đã làm<a class="headerlink" href="#tong-ket-nhung-gi-a-lam" title="Permanent link">&para;</a></h2>
+<h3 id="checklist-hoan-thanh"><strong>✅ Checklist hoàn thành:</strong><a class="headerlink" href="#checklist-hoan-thanh" title="Permanent link">&para;</a></h3>
 <ul>
-<li>So sánh Default VPC và Custom VPC?</li>
-<li>Tenancy là gì? Khi nào chọn dedicated?</li>
-<li>IPv6 trên AWS khác gì IPv4 về khái niệm public/private?</li>
-<li>DNS trong VPC hoạt động thế nào? Nếu EC2 không resolve được DNS thì kiểm tra gì trước?</li>
-<li>Maximum/minimum CIDR VPC là gì? (Min: /28, Max: /16)</li>
+<li>[x] <strong>Internet Gateway:</strong> Tạo &amp; attach vào VPC</li>
+<li>[x] <strong>Route Table:</strong> Tạo route table riêng cho web tier</li>
+<li>[x] <strong>Subnet Association:</strong> Gán 3 web subnet vào route table mới</li>
+<li>[x] <strong>Default Routes:</strong> Thêm 0.0.0.0/0 &amp; ::/0 → IGW</li>
+<li>[x] <strong>Public IP:</strong> Enable auto-assign cho 3 web subnet</li>
 </ul>
-<h3 id="practice-tao-vpc-shell-au-tien-cho-animals4life"><strong>Practice: Tạo VPC shell đầu tiên cho Animals4Life</strong><a class="headerlink" href="#practice-tao-vpc-shell-au-tien-cho-animals4life" title="Permanent link">&para;</a></h3>
+<h3 id="luong-hoat-ong"><strong>🔄 Luồng hoạt động:</strong><a class="headerlink" href="#luong-hoat-ong" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>EC2 launch vào web subnet</strong> → Tự động có public IP</li>
+<li><strong>Traffic ra ngoài</strong> → Route table check → Match 0.0.0.0/0 → Đi IGW → Internet</li>
+<li><strong>Traffic vào từ Internet</strong> → IGW → Route đến private IP của EC2</li>
+</ol>
+<hr />
+<h2 id="kien-thuc-can-nho-e-thi-i-lam">📚 Kiến thức cần nhớ để thi &amp; đi làm<a class="headerlink" href="#kien-thuc-can-nho-e-thi-i-lam" title="Permanent link">&para;</a></h2>
+<h3 id="public-subnet-4-ieu-kien"><strong>Public Subnet = 4 điều kiện:</strong><a class="headerlink" href="#public-subnet-4-ieu-kien" title="Permanent link">&para;</a></h3>
+<ol>
+<li>✅ <strong>Route table có default route</strong> ra IGW</li>
+<li>✅ <strong>Associate với subnet</strong> </li>
+<li>✅ <strong>IGW attached</strong> vào VPC</li>
+<li>✅ <strong>Auto-assign public IP</strong> enabled</li>
+</ol>
+<h3 id="route-priority-rules"><strong>Route Priority Rules:</strong><a class="headerlink" href="#route-priority-rules" title="Permanent link">&para;</a></h3>
 <ul>
-<li>VPC CIDR: 10.16.0.0/16</li>
-<li>Chọn 3 AZ đầu tiên (A, B, C), mỗi AZ sau này sẽ có 4 subnet (web, app, db, reserved)</li>
-<li>Enable DNS support &amp; DNS hostnames</li>
-<li>Tenancy: Default</li>
-<li>Chưa tạo subnet, gateway – để ở bài sau</li>
+<li><strong>Local routes luôn ưu tiên cao nhất</strong> (10.16.0.0/16 &gt; 0.0.0.0/0)</li>
+<li><strong>Prefix càng cao càng ưu tiên</strong> (/32 &gt; /24 &gt; /16 &gt; /0)</li>
+<li><strong>Default route chỉ dùng khi không match rule nào khác</strong></li>
+</ul>
+<h3 id="igw-characteristics"><strong>IGW Characteristics:</strong><a class="headerlink" href="#igw-characteristics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Regionally resilient</strong> (1 IGW cho cả region)</li>
+<li><strong>1:1 relationship</strong> với VPC</li>
+<li><strong>Managed service</strong> (AWS lo availability)</li>
 </ul>
 <hr />
-<h2 id="phan-4-tong-ket-tips-nho-lau">PHẦN 4: Tổng kết &amp; tips nhớ lâu<a class="headerlink" href="#phan-4-tong-ket-tips-nho-lau" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Xây VPC custom là bước đầu tiên, cực kỳ quan trọng khi làm cloud thực tế và đi thi AWS.</li>
-<li>Đừng ngại sơ đồ phức tạp, cứ chia nhỏ từng bước, làm từng phần (giống chơi Lego).</li>
-<li>Ghi nhớ: VPC là “rào chắn” bảo mật, blast radius, mỗi VPC là 1 vùng an toàn tách biệt.</li>
-<li>Lúc nào cũng phải có file IP plan/subnet plan – đi làm không có là “toang”!</li>
-<li>Khi gặp lỗi DNS/route, luôn check 2 setting enableDnsHostnames &amp; enableDnsSupport trước!</li>
-</ul>
+<h2 id="chuan-bi-cho-phan-2-launch-bastion-host">🚀 Chuẩn bị cho phần 2: Launch Bastion Host<a class="headerlink" href="#chuan-bi-cho-phan-2-launch-bastion-host" title="Permanent link">&para;</a></h2>
+<p><strong>Phần 2 sẽ:</strong>
+- Launch EC2 instance vào public subnet
+- Configure Security Group cho SSH access
+- Test connectivity từ Internet vào VPC
+- Tạo "cửa ngõ" vào private infrastructure</p>
+<hr />
+<p><strong>Nghỉ ngơi 5 phút rồi tiếp tục phần 2! Tới đây bạn đã hiểu 80% cách AWS networking hoạt động rồi! 💪</strong></p>
 
 
 
@@ -2007,7 +2302,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../02.ip-plan2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 02.ip plan2">
+          <a href="../07.vpcRouting-IGW-bastionHost/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 07.vpcRouting IGW bastionHost">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2017,20 +2312,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                02.ip plan2
+                07.vpcRouting IGW bastionHost
               </div>
             </div>
           </a>
         
         
           
-          <a href="../04.custom-vpc-lab/" class="md-footer__link md-footer__link--next" aria-label="Sau: 04.custom vpc lab">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                04.custom vpc lab
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
