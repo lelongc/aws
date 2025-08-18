@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/stephane/01.saa/23.orther/Cost-explorer/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/09.lab2-publicSubnet-BastionHost/">
       
       
-        <link rel="prev" href="../CF-serviceRole/">
+        <link rel="prev" href="../08.lab-publicSubnet-BastionHost/">
       
       
-        <link rel="next" href="../InstanceScheduler/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>AWS Cost Explorer là gì? 💰📊 - DraDoc</title>
+        <title>🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết) - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-cost-explorer-la-gi" class="md-skip">
+        <a href="#demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AWS Cost Explorer là gì? 💰📊
+              🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)
             
           </span>
         </div>
@@ -326,11 +326,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../saa-cantrill-and-lab/00.roadmap/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../00.roadmap/" class="md-tabs__link">
           
   
   
@@ -348,8 +350,6 @@
   
   
   
-    
-  
   
     
     
@@ -357,13 +357,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../readme/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../stephane/01.saa/readme/" class="md-tabs__link">
           
   
   
@@ -641,41 +639,44 @@
       
   
   
-  
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
   
-    <a href="../../../../saa-cantrill-and-lab/00.roadmap/" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -684,172 +685,13 @@
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Stephane
-    
-  </span>
-  
-
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Stephane
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    01.saa
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_1">
-            <span class="md-nav__icon md-icon"></span>
-            01.saa
+            Saa cantrill and lab
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -860,7 +702,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../../readme/" class="md-nav__link">
+      <a href="../../../00.roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    00.roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../readme/" class="md-nav__link">
         
   
   
@@ -887,6 +752,149 @@
       
         
       
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Image.md
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Image.md
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../image.md/share-res-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Share res model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Saa
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Saa
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
         
       
     
@@ -909,12 +917,12 @@
   
   
   
-    <a href="../../00.prerequisite/db/" class="md-nav__link">
+    <a href="../../00.pre/01.account/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    00.prerequisite
+    00.pre
     
   </span>
   
@@ -966,12 +974,12 @@
   
   
   
-    <a href="../../01.ec2/lab-ec2/" class="md-nav__link">
+    <a href="../../01.fundamental/01.public-private-services/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    01.ec2
+    01.fundamental
     
   </span>
   
@@ -996,10 +1004,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -1023,1370 +1027,12 @@
   
   
   
-    
-  
-  
-  
-    <a href="../../02.ec2-storage/lab/ebs-ec2-format-extend/" class="md-nav__link">
+    <a href="../../03.S3/Multi-Region-AccessPoint/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    02.ec2 storage
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ALB/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    03.High availability vs Scalability
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    04.RDB Aurora elasticCache
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../05.route53-dns/5/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    05.route53 dns
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../06.classic-sa/6/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    06.classic sa
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../07.s3/lab/s3-static-web/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    07.s3
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../08.Cloudfront/CloudFront-Geo-Restriction/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    08.Cloudfront
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../09.AWS-Storage-Extras/Fsx/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    09.AWS Storage Extras
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    10.sqs sns activeMQ kinesis
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../11.ecs/a2c/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    11.ecs
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../12.serverless/api-gateway/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    12.serverless
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../13.serverless-architecture/microservice/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    13.serverless architecture
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../14.db-aws/db/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    14.db aws
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../15.data-analytics/amazon-EMR/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    15.data analytics
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../16.machine-learning/a-comprehend-medical/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    16.machine learning
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../17.monitor/CloudWatch-Insights/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    17.monitor
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../18.iam-advance/AWS%20IAM%20Identity%20Center/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    18.iam advance
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../19.security/ACM-amaz-cert-manager/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    19.security
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../20.network/CIDR-public-private-ip/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    20.network
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../21.disaster-recovery/DMS-lab/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    21.disaster recovery
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../22.more-saa/Caching%20Strategies/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    22.more saa
+    03.S3
     
   </span>
   
@@ -2413,14 +1059,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -2455,15 +1093,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_25" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_7_1_25" id="__nav_7_1_25_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
-    23.orther
+    04.VPC
     
   </span>
   
@@ -2471,10 +1109,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_25_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_1_25">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_4">
             <span class="md-nav__icon md-icon"></span>
-            23.orther
+            04.VPC
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2485,12 +1123,173 @@
   
   
     <li class="md-nav__item">
-      <a href="../CF-serviceRole/" class="md-nav__link">
+      <a href="../01.IP-plan/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    CloudFormation Service Role là gì? 🤔
+    01.IP plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.ip-plan2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.ip plan2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.Custom%20VPCs1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.Custom VPCs1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.custom-vpc-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.custom vpc lab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.VpcSubnets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.VpcSubnets
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.subnet-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06.subnet lab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.vpcRouting-IGW-bastionHost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07.vpcRouting IGW bastionHost
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08.lab-publicSubnet-BastionHost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08.lab publicSubnet BastionHost
     
   </span>
   
@@ -2522,7 +1321,7 @@
   
   
   <span class="md-ellipsis">
-    AWS Cost Explorer là gì? 💰📊
+    🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)
     
   </span>
   
@@ -2535,7 +1334,7 @@
   
   
   <span class="md-ellipsis">
-    AWS Cost Explorer là gì? 💰📊
+    🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)
     
   </span>
   
@@ -2558,27 +1357,171 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cac-tinh-nang-chinh" class="md-nav__link">
+  <a href="#muc-tieu" class="md-nav__link">
     <span class="md-ellipsis">
-      🦸 Các tính năng chính
+      🎯 Mục tiêu
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-du-thuc-te-nhu-trong-bai-giang" class="md-nav__link">
+  <a href="#phan-1-launch-ec2-bastion-host-vao-web-subnet" class="md-nav__link">
     <span class="md-ellipsis">
-      📈 Ví dụ thực tế (Như trong bài giảng)
+      Phần 1: Launch EC2 Bastion Host vào Web Subnet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 1: Launch EC2 Bastion Host vào Web Subnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-vao-ec2-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Vào EC2 Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-launch-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Launch Instance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-key-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Key Pair
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-network-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4. Network settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-security-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5. Security Group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6. Launch!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-2-ket-noi-ssh-vao-bastion-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phần 2: Kết nối SSH vào Bastion Host
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 2: Kết nối SSH vào Bastion Host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-kiem-tra-thong-tin" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Kiểm tra thông tin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Kết nối SSH (Tùy chọn 1: EC2 Instance Connect)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ket-noi-ssh-tuy-chon-2-local-ssh-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Kết nối SSH (Tùy chọn 2: Local SSH Client)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-xoa-bastion-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Xóa Bastion Host
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Xóa toàn bộ VPC (và các tài nguyên liên quan)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Kinh nghiệm thực tế &amp; ghi nhớ khi đi làm/thi
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bo-tui-cho-ky-thi" class="md-nav__link">
+  <a href="#tom-tat-cac-buoc-a-thuc-hien" class="md-nav__link">
     <span class="md-ellipsis">
-      📝 "Bỏ túi" cho kỳ thi
+      ✅ Tóm tắt các bước đã thực hiện
     </span>
   </a>
   
@@ -2593,254 +1536,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../InstanceScheduler/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    InstanceScheduler
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SES/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SES
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SSM-more/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSM more
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SSM/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    SSM Session Manager là gì mà "vi diệu" vậy? 🤔
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../aws-amplify/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Aws amplify
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../aws-appFlow/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    aws appFlow
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../aws-batch/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Aws batch
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../aws-outpost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Aws outpost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cloudformation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    AWS CloudFormation là gì mà "thần thánh" vậy? 🤔
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cost-anomaly-detection/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    AWS Cost Anomaly Detection – “Chuyên gia bắt gian lận chi phí” 😉
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pinpoint/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Pinpoint
-    
-  </span>
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2860,117 +1558,9 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
     
       
       
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    02.dva
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            02.dva
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../02.dva/03.High-availability-vs-Scalability/01.InstanceRefresh/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    03.High availability vs Scalability
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
   
   
   
@@ -3002,12 +1592,16 @@
   
   
   
-    <a href="../../../02.dva/04.RDB-Aurora-elasticCache/01.ElastiCacheStrategies/" class="md-nav__link">
+    
+  
+  
+  
+    <a href="../../../../stephane/01.saa/readme/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    04.RDB Aurora elasticCache
+    Stephane
     
   </span>
   
@@ -3018,22 +1612,8 @@
     </a>
   
 
-      
-    </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -3066,27 +1646,171 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cac-tinh-nang-chinh" class="md-nav__link">
+  <a href="#muc-tieu" class="md-nav__link">
     <span class="md-ellipsis">
-      🦸 Các tính năng chính
+      🎯 Mục tiêu
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-du-thuc-te-nhu-trong-bai-giang" class="md-nav__link">
+  <a href="#phan-1-launch-ec2-bastion-host-vao-web-subnet" class="md-nav__link">
     <span class="md-ellipsis">
-      📈 Ví dụ thực tế (Như trong bài giảng)
+      Phần 1: Launch EC2 Bastion Host vào Web Subnet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 1: Launch EC2 Bastion Host vào Web Subnet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-vao-ec2-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Vào EC2 Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-launch-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Launch Instance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-key-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Key Pair
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-network-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4. Network settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-security-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5. Security Group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-launch" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6. Launch!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-2-ket-noi-ssh-vao-bastion-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phần 2: Kết nối SSH vào Bastion Host
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 2: Kết nối SSH vào Bastion Host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-kiem-tra-thong-tin" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Kiểm tra thông tin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. Kết nối SSH (Tùy chọn 1: EC2 Instance Connect)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-ket-noi-ssh-tuy-chon-2-local-ssh-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3. Kết nối SSH (Tùy chọn 2: Local SSH Client)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-xoa-bastion-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Xóa Bastion Host
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Xóa toàn bộ VPC (và các tài nguyên liên quan)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Kinh nghiệm thực tế &amp; ghi nhớ khi đi làm/thi
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bo-tui-cho-ky-thi" class="md-nav__link">
+  <a href="#tom-tat-cac-buoc-a-thuc-hien" class="md-nav__link">
     <span class="md-ellipsis">
-      📝 "Bỏ túi" cho kỳ thi
+      ✅ Tóm tắt các bước đã thực hiện
     </span>
   </a>
   
@@ -3108,7 +1832,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/stephane/01.saa/23.orther/Cost-explorer.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/09.lab2-publicSubnet-BastionHost.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -3116,64 +1840,124 @@
   
 
 
-<h1 id="aws-cost-explorer-la-gi">AWS Cost Explorer là gì? 💰📊<a class="headerlink" href="#aws-cost-explorer-la-gi" title="Permanent link">&para;</a></h1>
-<p><strong>AWS Cost Explorer</strong> là dịch vụ giúp bạn <strong>trực quan hóa, hiểu rõ và quản lý chi phí</strong> cũng như việc sử dụng tài nguyên AWS theo thời gian.<br />
-Bạn có thể tạo các <strong>báo cáo tùy chỉnh</strong> với biểu đồ, dashboard để phân tích dữ liệu.</p>
+<h1 id="demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet">🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)<a class="headerlink" href="#demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet" title="Permanent link">&para;</a></h1>
 <hr />
-<h2 id="cac-tinh-nang-chinh">🦸 Các tính năng chính<a class="headerlink" href="#cac-tinh-nang-chinh" title="Permanent link">&para;</a></h2>
+<h2 id="muc-tieu">🎯 Mục tiêu<a class="headerlink" href="#muc-tieu" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Phân tích chi phí đa chiều</strong>:</li>
-<li><strong>Tổng quan</strong>: Xem tổng chi phí trên tất cả các tài khoản.</li>
-<li>
-<p><strong>Chi tiết</strong>: Theo tháng, theo giờ, hoặc từng tài nguyên cụ thể.</p>
-</li>
-<li>
-<p><strong>Tìm cơ hội tiết kiệm</strong>:</p>
-</li>
-<li>
-<p>Giúp bạn chọn <strong>Savings Plan</strong> tối ưu để giảm hóa đơn, dựa trên <strong>việc sử dụng thực tế</strong> của bạn.</p>
-</li>
-<li>
-<p><strong>Dự báo chi tiêu</strong>:</p>
-</li>
-<li>Dự đoán chi phí trong <strong>tối đa 12 tháng tới</strong> dựa trên lịch sử sử dụng.</li>
-<li>Rất hữu ích cho việc <strong>lập kế hoạch ngân sách</strong>.</li>
+<li>Thực hành launch <strong>EC2 Bastion Host</strong> vào web subnet đã public.</li>
+<li>Test kết nối từ ngoài Internet vào VPC qua Bastion.</li>
+<li>Hướng dẫn <strong>dọn sạch (clean-up)</strong> infrastructure về trạng thái ban đầu (không mất phí).</li>
 </ul>
 <hr />
-<h2 id="vi-du-thuc-te-nhu-trong-bai-giang">📈 Ví dụ thực tế (Như trong bài giảng)<a class="headerlink" href="#vi-du-thuc-te-nhu-trong-bai-giang" title="Permanent link">&para;</a></h2>
+<h2 id="phan-1-launch-ec2-bastion-host-vao-web-subnet">Phần 1: Launch EC2 Bastion Host vào Web Subnet<a class="headerlink" href="#phan-1-launch-ec2-bastion-host-vao-web-subnet" title="Permanent link">&para;</a></h2>
+<h3 id="11-vao-ec2-console">1.1. <strong>Vào EC2 Console</strong><a class="headerlink" href="#11-vao-ec2-console" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p><strong>Xem "Chi phí hàng tháng theo Dịch vụ AWS"</strong>:<br />
-  Giúp bạn nhận ra, ví dụ, loại <strong>EC2 instance nào đang "ngốn" nhiều tiền nhất</strong> để tối ưu.</p>
-</li>
-<li>
-<p><strong>Xem "Chi phí theo Giờ và theo Tài nguyên"</strong>:<br />
-  Cung cấp cái nhìn <strong>chi tiết hơn</strong> về chi phí phát sinh.</p>
-</li>
-<li>
-<p><strong>Đề xuất Savings Plan</strong>:<br />
-  Cost Explorer sẽ hiển thị <strong>các gợi ý Savings Plan phù hợp</strong> dựa trên thói quen sử dụng.</p>
-</li>
-<li>
-<p><strong>Biểu đồ Dự báo Chi phí</strong>:<br />
-  Cho bạn thấy <strong>xu hướng chi tiêu tương lai</strong> giúp chủ động kiểm soát ngân sách.</p>
+<li>AWS Console → Services → EC2</li>
+</ul>
+<h3 id="12-launch-instance">1.2. <strong>Launch Instance</strong><a class="headerlink" href="#12-launch-instance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Click <code>Launch instance</code></li>
+<li><strong>Name:</strong> <code>A4L-Bastion</code></li>
+<li><strong>AMI:</strong> Chọn <code>Amazon Linux</code> (latest, Free Tier Eligible)</li>
+<li><strong>Architecture:</strong> 64-bit (x86)</li>
+<li><strong>Instance type:</strong> <code>t2.micro</code> hoặc <code>t3.micro</code> (Free Tier eligible)</li>
+</ul>
+<h3 id="13-key-pair">1.3. <strong>Key Pair</strong><a class="headerlink" href="#13-key-pair" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Chọn:</strong> Key pair có tên <code>A4L</code> (nếu đã tạo)</li>
+<li>Nếu chưa có, click <code>Create new key pair</code>:<ul>
+<li>Name: <code>A4L</code></li>
+<li>Type: RSA</li>
+<li>Format: <code>.pem</code></li>
+<li>Download file này về máy (rất quan trọng!)</li>
+</ul>
 </li>
 </ul>
-<hr />
-<h2 id="bo-tui-cho-ky-thi">📝 "Bỏ túi" cho kỳ thi<a class="headerlink" href="#bo-tui-cho-ky-thi" title="Permanent link">&para;</a></h2>
+<h3 id="14-network-settings">1.4. <strong>Network settings</strong><a class="headerlink" href="#14-network-settings" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>AWS Cost Explorer</strong> là <strong>công cụ chính</strong> để <strong>hiểu và quản lý chi phí</strong> trên AWS.</li>
-<li>Nhớ <strong>các chức năng chính</strong>:</li>
-<li><strong>Trực quan hóa chi phí</strong></li>
-<li><strong>Xác định cơ hội tiết kiệm</strong> (đặc biệt là với <strong>Savings Plans</strong>)</li>
-<li><strong>Dự báo chi phí trong tương lai</strong></li>
-<li>Đây rất có thể là <strong>dịch vụ thanh toán (billing service)</strong> <strong>duy nhất AWS sẽ hỏi bạn trong kỳ thi</strong>.</li>
+<li><strong>VPC:</strong> Chọn <code>A4L-VPC1</code></li>
+<li><strong>Subnet:</strong> Chọn <code>SN-EN-web-A</code> (hoặc tên subnet web-A của bạn)</li>
+<li><strong>Auto-assign public IP:</strong> Enabled</li>
+<li><strong>Auto-assign IPv6 IP:</strong> Enabled (nếu có)</li>
+</ul>
+<h3 id="15-security-group">1.5. <strong>Security Group</strong><a class="headerlink" href="#15-security-group" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Chọn <code>Create security group</code><ul>
+<li><strong>Name:</strong> <code>A4L-bastion-SG</code></li>
+<li><strong>Description:</strong> <code>A4L bastion SG</code></li>
+<li><strong>Rule:</strong> SSH (port 22)  <ul>
+<li>Source: <code>0.0.0.0/0</code> và <code>::/0</code> (chấp nhận từ mọi IP – chỉ dùng khi học, production cần giới hạn IP)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Các setting còn lại:</strong> Giữ mặc định</li>
+</ul>
+<h3 id="16-launch">1.6. <strong>Launch!</strong><a class="headerlink" href="#16-launch" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Click <code>Launch instance</code></li>
+<li>Vào <code>Instances</code> → kiểm tra instance đang khởi tạo (<code>initializing</code>).<br />
+  Đợi trạng thái chuyển sang <code>2/2 status checks</code>.</li>
 </ul>
 <hr />
+<h2 id="phan-2-ket-noi-ssh-vao-bastion-host">Phần 2: Kết nối SSH vào Bastion Host<a class="headerlink" href="#phan-2-ket-noi-ssh-vao-bastion-host" title="Permanent link">&para;</a></h2>
+<h3 id="21-kiem-tra-thong-tin">2.1. <strong>Kiểm tra thông tin</strong><a class="headerlink" href="#21-kiem-tra-thong-tin" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Chọn instance vừa launch</li>
+<li>Lấy <strong>Public IPv4 address</strong> (dùng để SSH)</li>
+<li>Lấy <strong>Private IPv4 address</strong> (dùng cho kiểm tra nội bộ)</li>
+</ul>
+<h3 id="22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect">2.2. <strong>Kết nối SSH</strong> (Tùy chọn 1: EC2 Instance Connect)<a class="headerlink" href="#22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Chọn instance → <code>Connect</code> → <code>EC2 Instance Connect</code></li>
+<li><strong>Username:</strong> <code>ec2-user</code></li>
+<li>Click <code>Connect</code> (sẽ mở web SSH terminal)</li>
+</ul>
+<h3 id="23-ket-noi-ssh-tuy-chon-2-local-ssh-client">2.3. <strong>Kết nối SSH</strong> (Tùy chọn 2: Local SSH Client)<a class="headerlink" href="#23-ket-noi-ssh-tuy-chon-2-local-ssh-client" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Đảm bảo file key pair <code>.pem</code> trong thư mục (VD: <code>~/Downloads</code>)</li>
+<li><strong>Lệnh SSH mẫu:</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>A4L.pem<span class="w">  </span><span class="c1"># Sửa permission cho key (Linux/Mac)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>A4L.pem<span class="w"> </span>ec2-user@&lt;Public-IP-v4-address&gt;
+</code></pre></div></li>
+<li>Nếu lần đầu, nhập <code>yes</code> khi được hỏi xác nhận fingerprint.</li>
+</ul>
 <blockquote>
-<p>✅ <strong>Kết luận</strong>:<br />
-<strong>Cost Explorer</strong> giúp bạn kiểm soát "hầu bao" khi dùng AWS <strong>hiệu quả và thông minh hơn</strong>.</p>
+<p><strong>Tip:</strong> Nếu lỗi “WARNING: UNPROTECTED PRIVATE KEY FILE!”, dùng <code>chmod 400</code> sửa lại quyền file key.</p>
 </blockquote>
+<hr />
+<h2 id="phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua">Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)<a class="headerlink" href="#phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua" title="Permanent link">&para;</a></h2>
+<h3 id="31-xoa-bastion-host">3.1. <strong>Xóa Bastion Host</strong><a class="headerlink" href="#31-xoa-bastion-host" title="Permanent link">&para;</a></h3>
+<ul>
+<li>EC2 Console → Chọn <code>A4L-Bastion</code></li>
+<li>Right click → <code>Instance State</code> → <code>Terminate instance</code></li>
+<li>Confirm → Đợi trạng thái thành <code>terminated</code></li>
+</ul>
+<h3 id="32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan">3.2. <strong>Xóa toàn bộ VPC (và các tài nguyên liên quan)</strong><a class="headerlink" href="#32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan" title="Permanent link">&para;</a></h3>
+<ul>
+<li>VPC Console → <code>Your VPCs</code> → Chọn <code>A4L-VPC1</code></li>
+<li>Actions → <code>Delete VPC</code></li>
+<li>Gõ <code>delete</code> để xác nhận → Click <code>Delete</code></li>
+</ul>
+<blockquote>
+<p><strong>Khi xóa VPC</strong>: AWS tự động xóa luôn IGW, subnet, route table… liên quan, cực nhanh và sạch.</p>
+</blockquote>
+<hr />
+<h2 id="kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi">📚 Kinh nghiệm thực tế &amp; ghi nhớ khi đi làm/thi<a class="headerlink" href="#kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Bastion host chỉ nên dùng cho lab hoặc tạm thời – production nên dùng SSM Session Manager, EC2 Instance Connect.</li>
+<li>Sau mỗi bài thực hành, <strong>nên xóa (clean-up)</strong> để tránh phát sinh phí vô ý!</li>
+<li>Khi gặp lỗi SSH: kiểm tra đúng public IP, đúng username (<code>ec2-user</code>), đúng permission file key.</li>
+</ul>
+<hr />
+<h2 id="tom-tat-cac-buoc-a-thuc-hien">✅ Tóm tắt các bước đã thực hiện<a class="headerlink" href="#tom-tat-cac-buoc-a-thuc-hien" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Launch EC2 Bastion Host vào public subnet</li>
+<li>Kết nối SSH từ Internet vào instance</li>
+<li>Thực hành dọn sạch (terminate + delete VPC)</li>
+</ol>
+<hr />
+<p><strong>Sau bài này, bạn đã thực sự làm chủ quy trình tạo public subnet, kiểm tra kết nối, clean-up AWS lab cực kỳ bài bản. Chuẩn bị cho các bài networking nâng cao tiếp theo! 🚀</strong></p>
 
 
 
@@ -3281,7 +2065,7 @@ Bạn có thể tạo các <strong>báo cáo tùy chỉnh</strong> với biểu 
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../CF-serviceRole/" class="md-footer__link md-footer__link--prev" aria-label="Trước: CloudFormation Service Role là gì? 🤔">
+          <a href="../08.lab-publicSubnet-BastionHost/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 08.lab publicSubnet BastionHost">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3291,20 +2075,20 @@ Bạn có thể tạo các <strong>báo cáo tùy chỉnh</strong> với biểu 
                 Trước
               </span>
               <div class="md-ellipsis">
-                CloudFormation Service Role là gì? 🤔
+                08.lab publicSubnet BastionHost
               </div>
             </div>
           </a>
         
         
           
-          <a href="../InstanceScheduler/" class="md-footer__link md-footer__link--next" aria-label="Sau: InstanceScheduler">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                InstanceScheduler
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
