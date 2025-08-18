@@ -1995,6 +1995,7 @@
 <li><strong>Relationship 1:1 với VPC</strong> – 1 VPC tối đa 1 IGW, 1 IGW chỉ attach 1 VPC.</li>
 </ul>
 <h3 id="2-cach-igw-hoat-ong">2. <strong>Cách IGW hoạt động</strong><a class="headerlink" href="#2-cach-igw-hoat-ong" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/87f0cfbf-6e7b-4b7e-87de-0775cf5f50fe" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="870" height="405" alt="image" src="https://github.com/user-attachments/assets/87f0cfbf-6e7b-4b7e-87de-0775cf5f50fe" /></a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">🔄 IGW Process</span><span class="p">:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="l l-Scalar l-Scalar-Plain">1. Tạo IGW → Attach vào VPC</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">2. Tạo custom route table cho public subnet</span>
@@ -2027,6 +2028,8 @@
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">IGW giữ mapping</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">private IP ↔ public IP</span>
 </code></pre></div>
 <h3 id="2-flow-du-lieu-qua-igw">2. <strong>Flow dữ liệu qua IGW</strong><a class="headerlink" href="#2-flow-du-lieu-qua-igw" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/570a0865-f18c-4f53-951e-a0f8797e8d71" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="855" height="496" alt="image" src="https://github.com/user-attachments/assets/570a0865-f18c-4f53-951e-a0f8797e8d71" /></a>
+<a class="glightbox" href="https://github.com/user-attachments/assets/ece95db0-b2ed-4624-8503-b478610c1ad2" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="856" height="493" alt="image" src="https://github.com/user-attachments/assets/ece95db0-b2ed-4624-8503-b478610c1ad2" /></a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">🔄 Outbound (EC2 → Internet)</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">1. EC2 tạo packet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src=10.16.16.20, dst=Linux_Update_Server</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="l l-Scalar l-Scalar-Plain">2. Packet đến IGW qua default route</span>
@@ -2163,7 +2166,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 tháng 8, 2025 05:39:56 UTC">18 tháng 8, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 tháng 8, 2025 06:16:39 UTC">18 tháng 8, 2025</span>
   </span>
 
     
