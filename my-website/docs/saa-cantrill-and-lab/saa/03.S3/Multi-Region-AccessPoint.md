@@ -1,4 +1,4 @@
-# AWS S3 Multi-Region Access Points - Hướng dẫn từ Zero đến Hero 🚀
+## AWS S3 Multi-Region Access Points - Hướng dẫn từ Zero đến Hero 🚀
 
 ## 🎯 Mục tiêu học tập
 Sau khi hoàn thành bài học này, bạn sẽ:
