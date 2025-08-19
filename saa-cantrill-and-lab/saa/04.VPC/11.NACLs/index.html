@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/08.lab-publicSubnet-BastionHost/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/11.NACLs/">
       
       
-        <link rel="prev" href="../07.vpcRouting-IGW-bastionHost/">
+        <link rel="prev" href="../10.StateFull-StateLess/">
       
       
-        <link rel="next" href="../09.lab2-publicSubnet-BastionHost/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>08.lab publicSubnet BastionHost - DraDoc</title>
+        <title>🛡️ Network ACL (NACL) trên AWS: Lý thuyết & thực chiến cho người mới (Đủ thi cert & đi làm) - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" class="md-skip">
+        <a href="#network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              08.lab publicSubnet BastionHost
+              🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp; thực chiến cho người mới (Đủ thi cert &amp; đi làm)
             
           </span>
         </div>
@@ -1285,30 +1285,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    08.lab publicSubnet BastionHost
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../08.lab-publicSubnet-BastionHost/" class="md-nav__link">
         
   
   
@@ -1319,309 +1299,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛠️ DEMO: Tạo Internet Gateway &amp; Public Subnet trên AWS (Step-by-step cho người mới)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#muc-tieu-demo-nay" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Mục tiêu demo này
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kiem-tra-ieu-kien-truoc-khi-bat-au" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Kiểm tra điều kiện trước khi bắt đầu
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📋 Kiểm tra điều kiện trước khi bắt đầu">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yeu-cau-moi-truong" class="md-nav__link">
-    <span class="md-ellipsis">
-      Yêu cầu môi trường:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kiem-tra-nhanh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kiểm tra nhanh:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#buoc-1-tao-internet-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bước 1: Tạo Internet Gateway
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bước 1: Tạo Internet Gateway">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-tao-igw-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1. Tạo IGW mới
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-attach-igw-vao-vpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2. Attach IGW vào VPC
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#buoc-2-tao-route-table-cho-public-subnets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bước 2: Tạo Route Table cho Public Subnets
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bước 2: Tạo Route Table cho Public Subnets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-tao-route-table-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1. Tạo Route Table mới
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-associate-route-table-voi-web-subnets" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2. Associate Route Table với Web Subnets
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#buoc-3-them-default-routes-vao-route-table" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bước 3: Thêm Default Routes vào Route Table
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bước 3: Thêm Default Routes vào Route Table">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-kiem-tra-local-routes-hien-tai" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1. Kiểm tra Local Routes hiện tại
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-them-ipv4-default-route" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2. Thêm IPv4 Default Route
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-them-ipv6-default-route" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3. Thêm IPv6 Default Route
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#buoc-4-enable-auto-assign-public-ip-cho-web-subnets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bước 4: Enable Auto-assign Public IP cho Web Subnets
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Bước 4: Enable Auto-assign Public IP cho Web Subnets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-cau-hinh-cho-web-a" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1. Cấu hình cho web-A
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-cau-hinh-cho-web-b" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2. Cấu hình cho web-B
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-cau-hinh-cho-web-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3. Cấu hình cho web-C
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tong-ket-nhung-gi-a-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Tổng kết những gì đã làm
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🎯 Tổng kết những gì đã làm">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#checklist-hoan-thanh" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Checklist hoàn thành:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#luong-hoat-ong" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔄 Luồng hoạt động:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kien-thuc-can-nho-e-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      📚 Kiến thức cần nhớ để thi &amp; đi làm
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📚 Kiến thức cần nhớ để thi &amp; đi làm">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#public-subnet-4-ieu-kien" class="md-nav__link">
-    <span class="md-ellipsis">
-      Public Subnet = 4 điều kiện:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#route-priority-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      Route Priority Rules:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#igw-characteristics" class="md-nav__link">
-    <span class="md-ellipsis">
-      IGW Characteristics:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chuan-bi-cho-phan-2-launch-bastion-host" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Chuẩn bị cho phần 2: Launch Bastion Host
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1677,10 +1354,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../11.NACLs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp; thực chiến cho người mới (Đủ thi cert &amp; đi làm)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1691,6 +1390,275 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#phan-1-network-acl-nacl-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 1: Network ACL (NACL) là gì?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 1: Network ACL (NACL) là gì?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inh-nghia-co-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      Định nghĩa cơ bản
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iem-quan-trong-can-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      Điểm quan trọng cần nhớ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-2-cach-nacl-hoat-ong-cuc-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 2: Cách NACL hoạt động (Cực quan trọng)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 2: Cách NACL hoạt động (Cực quan trọng)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-truc-rule-trong-nacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cấu trúc rule trong NACL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rule-processing-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule processing logic
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-3-vi-sao-nacl-phuc-tap-stateless-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-thuc-te-web-server-nhan-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ví dụ thực tế: Web server nhận HTTPS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-tier-architecture-nightmare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-tier architecture nightmare
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#van-e-ephemeral-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vấn đề ephemeral port
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-4-default-nacl-vs-custom-nacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 4: Default NACL vs Custom NACL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 4: Default NACL vs Custom NACL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-nacl-khi-tao-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default NACL (khi tạo VPC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-nacl-tu-tao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom NACL (tự tạo)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-5-nacl-key-characteristics-can-thuoc-long" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Properties
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-cases-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases thực tế
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 6: NACL vs Security Group (So sánh cực quan trọng)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-7-best-practices-real-world-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 7: Best Practices &amp; Real-world Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 7: Best Practices &amp; Real-world Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thuc-te-khi-i-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thực tế khi đi làm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Mistakes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-8-checklist-kien-thuc-thi-cert-phong-van" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cau-hoi-exam-thuong-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Câu hỏi exam thường gặp
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-9-tong-ket-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 9: Tổng kết &amp; takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1796,6 +1764,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1804,46 +1774,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" class="md-nav__link">
+  <a href="#phan-1-network-acl-nacl-la-gi" class="md-nav__link">
     <span class="md-ellipsis">
-      🛠️ DEMO: Tạo Internet Gateway &amp; Public Subnet trên AWS (Step-by-step cho người mới)
+      PHẦN 1: Network ACL (NACL) là gì?
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#muc-tieu-demo-nay" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Mục tiêu demo này
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kiem-tra-ieu-kien-truoc-khi-bat-au" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Kiểm tra điều kiện trước khi bắt đầu
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📋 Kiểm tra điều kiện trước khi bắt đầu">
+    <nav class="md-nav" aria-label="PHẦN 1: Network ACL (NACL) là gì?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#yeu-cau-moi-truong" class="md-nav__link">
+  <a href="#inh-nghia-co-ban" class="md-nav__link">
     <span class="md-ellipsis">
-      Yêu cầu môi trường:
+      Định nghĩa cơ bản
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kiem-tra-nhanh" class="md-nav__link">
+  <a href="#iem-quan-trong-can-nho" class="md-nav__link">
     <span class="md-ellipsis">
-      Kiểm tra nhanh:
+      Điểm quan trọng cần nhớ
     </span>
   </a>
   
@@ -1855,28 +1807,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#buoc-1-tao-internet-gateway" class="md-nav__link">
+  <a href="#phan-2-cach-nacl-hoat-ong-cuc-quan-trong" class="md-nav__link">
     <span class="md-ellipsis">
-      Bước 1: Tạo Internet Gateway
+      PHẦN 2: Cách NACL hoạt động (Cực quan trọng)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Bước 1: Tạo Internet Gateway">
+    <nav class="md-nav" aria-label="PHẦN 2: Cách NACL hoạt động (Cực quan trọng)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-tao-igw-moi" class="md-nav__link">
+  <a href="#cau-truc-rule-trong-nacl" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1. Tạo IGW mới
+      Cấu trúc rule trong NACL
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-attach-igw-vao-vpc" class="md-nav__link">
+  <a href="#rule-processing-logic" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2. Attach IGW vào VPC
+      Rule processing logic
     </span>
   </a>
   
@@ -1888,28 +1840,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#buoc-2-tao-route-table-cho-public-subnets" class="md-nav__link">
+  <a href="#phan-3-vi-sao-nacl-phuc-tap-stateless-problems" class="md-nav__link">
     <span class="md-ellipsis">
-      Bước 2: Tạo Route Table cho Public Subnets
+      PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Bước 2: Tạo Route Table cho Public Subnets">
+    <nav class="md-nav" aria-label="PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-tao-route-table-moi" class="md-nav__link">
+  <a href="#vi-du-thuc-te-web-server-nhan-https" class="md-nav__link">
     <span class="md-ellipsis">
-      2.1. Tạo Route Table mới
+      Ví dụ thực tế: Web server nhận HTTPS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-associate-route-table-voi-web-subnets" class="md-nav__link">
+  <a href="#multi-tier-architecture-nightmare" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2. Associate Route Table với Web Subnets
+      Multi-tier architecture nightmare
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#van-e-ephemeral-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vấn đề ephemeral port
     </span>
   </a>
   
@@ -1921,37 +1882,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#buoc-3-them-default-routes-vao-route-table" class="md-nav__link">
+  <a href="#phan-4-default-nacl-vs-custom-nacl" class="md-nav__link">
     <span class="md-ellipsis">
-      Bước 3: Thêm Default Routes vào Route Table
+      PHẦN 4: Default NACL vs Custom NACL
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Bước 3: Thêm Default Routes vào Route Table">
+    <nav class="md-nav" aria-label="PHẦN 4: Default NACL vs Custom NACL">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-kiem-tra-local-routes-hien-tai" class="md-nav__link">
+  <a href="#default-nacl-khi-tao-vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. Kiểm tra Local Routes hiện tại
+      Default NACL (khi tạo VPC)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-them-ipv4-default-route" class="md-nav__link">
+  <a href="#custom-nacl-tu-tao" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2. Thêm IPv4 Default Route
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-them-ipv6-default-route" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3. Thêm IPv6 Default Route
+      Custom NACL (tự tạo)
     </span>
   </a>
   
@@ -1963,37 +1915,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#buoc-4-enable-auto-assign-public-ip-cho-web-subnets" class="md-nav__link">
+  <a href="#phan-5-nacl-key-characteristics-can-thuoc-long" class="md-nav__link">
     <span class="md-ellipsis">
-      Bước 4: Enable Auto-assign Public IP cho Web Subnets
+      PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Bước 4: Enable Auto-assign Public IP cho Web Subnets">
+    <nav class="md-nav" aria-label="PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-cau-hinh-cho-web-a" class="md-nav__link">
+  <a href="#core-properties" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Cấu hình cho web-A
+      Core Properties
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-cau-hinh-cho-web-b" class="md-nav__link">
+  <a href="#use-cases-thuc-te" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Cấu hình cho web-B
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-cau-hinh-cho-web-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3. Cấu hình cho web-C
+      Use Cases thực tế
     </span>
   </a>
   
@@ -2005,28 +1948,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tong-ket-nhung-gi-a-lam" class="md-nav__link">
+  <a href="#phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong" class="md-nav__link">
     <span class="md-ellipsis">
-      🎯 Tổng kết những gì đã làm
+      PHẦN 6: NACL vs Security Group (So sánh cực quan trọng)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🎯 Tổng kết những gì đã làm">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-7-best-practices-real-world-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 7: Best Practices &amp; Real-world Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 7: Best Practices &amp; Real-world Tips">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#checklist-hoan-thanh" class="md-nav__link">
+  <a href="#thuc-te-khi-i-lam" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ Checklist hoàn thành:
+      Thực tế khi đi làm
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#luong-hoat-ong" class="md-nav__link">
+  <a href="#common-mistakes" class="md-nav__link">
     <span class="md-ellipsis">
-      🔄 Luồng hoạt động:
+      Common Mistakes
     </span>
   </a>
   
@@ -2038,37 +1990,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#kien-thuc-can-nho-e-thi-i-lam" class="md-nav__link">
+  <a href="#phan-8-checklist-kien-thuc-thi-cert-phong-van" class="md-nav__link">
     <span class="md-ellipsis">
-      📚 Kiến thức cần nhớ để thi &amp; đi làm
+      PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📚 Kiến thức cần nhớ để thi &amp; đi làm">
+    <nav class="md-nav" aria-label="PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#public-subnet-4-ieu-kien" class="md-nav__link">
+  <a href="#cau-hoi-exam-thuong-gap" class="md-nav__link">
     <span class="md-ellipsis">
-      Public Subnet = 4 điều kiện:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#route-priority-rules" class="md-nav__link">
-    <span class="md-ellipsis">
-      Route Priority Rules:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#igw-characteristics" class="md-nav__link">
-    <span class="md-ellipsis">
-      IGW Characteristics:
+      Câu hỏi exam thường gặp
     </span>
   </a>
   
@@ -2080,9 +2014,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#chuan-bi-cho-phan-2-launch-bastion-host" class="md-nav__link">
+  <a href="#phan-9-tong-ket-takeaways" class="md-nav__link">
     <span class="md-ellipsis">
-      🚀 Chuẩn bị cho phần 2: Launch Bastion Host
+      PHẦN 9: Tổng kết &amp; takeaways
     </span>
   </a>
   
@@ -2104,7 +2038,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/08.lab-publicSubnet-BastionHost.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/11.NACLs.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2112,164 +2046,221 @@
   
 
 
-  <h1>08.lab publicSubnet BastionHost</h1>
-
-<h2 id="demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi">🛠️ DEMO: Tạo Internet Gateway &amp; Public Subnet trên AWS (Step-by-step cho người mới)<a class="headerlink" href="#demo-tao-internet-gateway-public-subnet-tren-aws-step-by-step-cho-nguoi-moi" title="Permanent link">&para;</a></h2>
+<h1 id="network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam">🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp; thực chiến cho người mới (Đủ thi cert &amp; đi làm)<a class="headerlink" href="#network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam" title="Permanent link">&para;</a></h1>
 <hr />
-<h2 id="muc-tieu-demo-nay">🎯 Mục tiêu demo này<a class="headerlink" href="#muc-tieu-demo-nay" title="Permanent link">&para;</a></h2>
+<h2 id="phan-1-network-acl-nacl-la-gi">PHẦN 1: Network ACL (NACL) là gì?<a class="headerlink" href="#phan-1-network-acl-nacl-la-gi" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/cdd31e15-df34-499b-af2a-1df0f1abe14e" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="836" height="473" alt="image" src="https://github.com/user-attachments/assets/cdd31e15-df34-499b-af2a-1df0f1abe14e" /></a></p>
+<h3 id="inh-nghia-co-ban"><strong>Định nghĩa cơ bản</strong><a class="headerlink" href="#inh-nghia-co-ban" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Biến các <strong>private subnet</strong> thành <strong>public subnet</strong> có thể kết nối Internet 2-way.</li>
-<li>Hiểu rõ từng bước cấu hình <strong>Internet Gateway, Route Table, Public IP</strong>.</li>
-<li>Chuẩn bị môi trường để launch <strong>Bastion Host</strong> (phần 2).</li>
+<li><strong>Network Access Control List (NACL)</strong> = <strong>firewall truyền thống</strong> ở cấp subnet trong AWS VPC</li>
+<li><strong>Associate với subnet</strong>, không phải với instance</li>
+<li><strong>Stateless firewall</strong> (không nhớ trạng thái kết nối)</li>
+<li><strong>Filter traffic khi đi qua biên giới subnet</strong> (vào/ra subnet)</li>
+</ul>
+<h3 id="iem-quan-trong-can-nho"><strong>Điểm quan trọng cần nhớ</strong><a class="headerlink" href="#iem-quan-trong-can-nho" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ <strong>Traffic vào/ra subnet:</strong> Bị NACL kiểm soát</li>
+<li>❌ <strong>Traffic giữa các instance trong cùng subnet:</strong> KHÔNG bị NACL kiểm soát</li>
+<li>🔄 <strong>Cần 2 rule cho 1 kết nối:</strong> Inbound rule + Outbound rule (vì stateless)</li>
 </ul>
 <hr />
-<h2 id="kiem-tra-ieu-kien-truoc-khi-bat-au">📋 Kiểm tra điều kiện trước khi bắt đầu<a class="headerlink" href="#kiem-tra-ieu-kien-truoc-khi-bat-au" title="Permanent link">&para;</a></h2>
-<h3 id="yeu-cau-moi-truong"><strong>Yêu cầu môi trường:</strong><a class="headerlink" href="#yeu-cau-moi-truong" title="Permanent link">&para;</a></h3>
-<ul>
-<li>[x] Đã tạo VPC <code>a4l-vpc1</code> với CIDR <code>10.16.0.0/16</code></li>
-<li>[x] Đã tạo đủ 12 subnets (3 web, 3 app, 3 db, 3 reserved) trong 3 AZ</li>
-<li>[x] Login với IAM admin user</li>
-<li>[x] Region: US East 1 (N. Virginia)</li>
-</ul>
-<h3 id="kiem-tra-nhanh"><strong>Kiểm tra nhanh:</strong><a class="headerlink" href="#kiem-tra-nhanh" title="Permanent link">&para;</a></h3>
-<ol>
-<li>VPC Console → Subnets → Thấy có 12 subnet của <code>a4l-vpc1</code></li>
-<li>Đặc biệt check có 3 web subnet: <code>web-A</code>, <code>web-B</code>, <code>web-C</code></li>
-</ol>
-<hr />
-<h2 id="buoc-1-tao-internet-gateway">Bước 1: Tạo Internet Gateway<a class="headerlink" href="#buoc-1-tao-internet-gateway" title="Permanent link">&para;</a></h2>
-<h3 id="11-tao-igw-moi">1.1. <strong>Tạo IGW mới</strong><a class="headerlink" href="#11-tao-igw-moi" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 VPC Console → Internet Gateways → Create Internet Gateway</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="l l-Scalar l-Scalar-Plain">Name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1-IGW</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">Meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Animals4Life - VPC1 - Internet Gateway</span>
+<h2 id="phan-2-cach-nacl-hoat-ong-cuc-quan-trong">PHẦN 2: Cách NACL hoạt động (Cực quan trọng)<a class="headerlink" href="#phan-2-cach-nacl-hoat-ong-cuc-quan-trong" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/e2555731-bae9-491b-b841-85d821ed208f" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="859" height="468" alt="image" src="https://github.com/user-attachments/assets/e2555731-bae9-491b-b841-85d821ed208f" /></a></p>
+<h3 id="cau-truc-rule-trong-nacl"><strong>Cấu trúc rule trong NACL</strong><a class="headerlink" href="#cau-truc-rule-trong-nacl" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">NACL Rules Structure</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">Inbound Rules</span><span class="p">:</span><span class="w">    </span><span class="c1"># Traffic vào subnet</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#100: Allow TCP 443 from 0.0.0.0/0</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#200: Allow TCP 80 from 0.0.0.0/0</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#*: DENY all (implicit deny)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">Outbound Rules</span><span class="p">:</span><span class="w">   </span><span class="c1"># Traffic ra khỏi subnet</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#100: Allow TCP 1024-65535 to 0.0.0.0/0</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#*: DENY all (implicit deny)</span>
 </code></pre></div>
-<h3 id="12-attach-igw-vao-vpc">1.2. <strong>Attach IGW vào VPC</strong><a class="headerlink" href="#12-attach-igw-vao-vpc" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Actions → Attach to VPC</span>
+<h3 id="rule-processing-logic"><strong>Rule processing logic</strong><a class="headerlink" href="#rule-processing-logic" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>NACL xác định:</strong> Dùng inbound hay outbound rule set</li>
+<li><strong>Process theo thứ tự:</strong> Rule number thấp nhất trước (100 → 200 → 300...)</li>
+<li><strong>First match wins:</strong> Gặp rule khớp đầu tiên → apply → dừng</li>
+<li><strong>Implicit deny (*):</strong> Nếu không match rule nào → deny</li>
+</ol>
+<blockquote>
+<p><strong>Critical:</strong> Rule 100 DENY sẽ block ngay, dù rule 200 ALLOW cùng traffic!</p>
+</blockquote>
+<hr />
+<h2 id="phan-3-vi-sao-nacl-phuc-tap-stateless-problems">PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)<a class="headerlink" href="#phan-3-vi-sao-nacl-phuc-tap-stateless-problems" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/76b100de-b09e-45ed-91f4-e0725ca338fe" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="848" height="466" alt="image" src="https://github.com/user-attachments/assets/76b100de-b09e-45ed-91f4-e0725ca338fe" /></a></p>
+<h3 id="vi-du-thuc-te-web-server-nhan-https"><strong>Ví dụ thực tế: Web server nhận HTTPS</strong><a class="headerlink" href="#vi-du-thuc-te-web-server-nhan-https" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">🌐 User (Bob) → Web Server (HTTPS)</span><span class="p">:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">Select VPC</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">Click</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Attach Internet Gateway</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">Request</span><span class="p">:</span><span class="w"> </span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Bob:random_port → Server:443 (inbound to subnet)</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="l l-Scalar l-Scalar-Plain">✅ Status từ &quot;Detached&quot; → &quot;Attached&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">Response</span><span class="p">:</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Server:443 → Bob:random_port (outbound from subnet)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">Required NACL Rules</span><span class="p">:</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow TCP 443 from 0.0.0.0/0</span><span class="w">    </span><span class="c1"># Cho request</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow TCP 1024-65535 to 0.0.0.0/0</span><span class="w">  </span><span class="c1"># Cho response (ephemeral)</span>
 </code></pre></div>
-<blockquote>
-<p><strong>Lưu ý:</strong> IGW ban đầu luôn ở trạng thái "Detached", phải attach thủ công!</p>
-</blockquote>
-<hr />
-<h2 id="buoc-2-tao-route-table-cho-public-subnets">Bước 2: Tạo Route Table cho Public Subnets<a class="headerlink" href="#buoc-2-tao-route-table-cho-public-subnets" title="Permanent link">&para;</a></h2>
-<h3 id="21-tao-route-table-moi">2.1. <strong>Tạo Route Table mới</strong><a class="headerlink" href="#21-tao-route-table-moi" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 VPC Console → Route Tables → Create Route Table</span>
+<h3 id="multi-tier-architecture-nightmare"><strong>Multi-tier architecture nightmare</strong><a class="headerlink" href="#multi-tier-architecture-nightmare" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">🏗️ Kiến trúc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bob → Web Subnet → App Subnet</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="l l-Scalar l-Scalar-Plain">Name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1-RT-web</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">VPC</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L-VPC1</span><span class="w">  </span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">Meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Animals4Life - VPC1 - Route Table - web tier</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">Cần rules</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">1. Bob → Web</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow 443</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow ephemeral</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nt">2. Web → App</span><span class="p">:</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow app_port</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">App subnet inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow app_port</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">App subnet outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow ephemeral</span><span class="w">  </span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow ephemeral</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nt">Kết quả</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1 kết nối end-to-end = 6 rules! 😵</span>
 </code></pre></div>
-<h3 id="22-associate-route-table-voi-web-subnets">2.2. <strong>Associate Route Table với Web Subnets</strong><a class="headerlink" href="#22-associate-route-table-voi-web-subnets" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Chọn route table vừa tạo → Subnet Associations → Edit Associations</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="l l-Scalar l-Scalar-Plain">Select 3 subnets</span><span class="p p-Indicator">:</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">☑️ web-A</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">☑️ web-B</span><span class="w">  </span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">☑️ web-C</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nt">Click</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save Associations</span>
-</code></pre></div>
-<blockquote>
-<p><strong>Giải thích:</strong> Subnet chỉ được associate với 1 route table. Khi associate với custom route table, nó sẽ tự động rời khỏi main route table.</p>
-</blockquote>
-<hr />
-<h2 id="buoc-3-them-default-routes-vao-route-table">Bước 3: Thêm Default Routes vào Route Table<a class="headerlink" href="#buoc-3-them-default-routes-vao-route-table" title="Permanent link">&para;</a></h2>
-<h3 id="31-kiem-tra-local-routes-hien-tai">3.1. <strong>Kiểm tra Local Routes hiện tại</strong><a class="headerlink" href="#31-kiem-tra-local-routes-hien-tai" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Routes tab của route table vừa tạo</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="l l-Scalar l-Scalar-Plain">Sẽ thấy 2 local routes</span><span class="p p-Indicator">:</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">10.16.0.0/16 → local (IPv4)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2600:1f14:xxx::/56 → local (IPv6)</span>
-</code></pre></div>
-<h3 id="32-them-ipv4-default-route">3.2. <strong>Thêm IPv4 Default Route</strong><a class="headerlink" href="#32-them-ipv4-default-route" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Routes → Edit Routes → Add Route</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="l l-Scalar l-Scalar-Plain">Destination</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span><span class="w">  </span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">Target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internet Gateway → A4L-VPC1-IGW</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nt">✅ Meaning</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mọi</span><span class="nv"> </span><span class="s">traffic</span><span class="nv"> </span><span class="s">IPv4</span><span class="nv"> </span><span class="s">không</span><span class="nv"> </span><span class="s">match</span><span class="nv"> </span><span class="s">local</span><span class="nv"> </span><span class="s">route</span><span class="nv"> </span><span class="s">→</span><span class="nv"> </span><span class="s">đi</span><span class="nv"> </span><span class="s">ra</span><span class="nv"> </span><span class="s">IGW&quot;</span>
-</code></pre></div>
-<h3 id="33-them-ipv6-default-route">3.3. <strong>Thêm IPv6 Default Route</strong><a class="headerlink" href="#33-them-ipv6-default-route" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Add Route (tiếp)</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="l l-Scalar l-Scalar-Plain">Destination</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">::/0</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">Target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Internet Gateway → A4L-VPC1-IGW</span><span class="w">  </span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nt">✅ Meaning</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Mọi</span><span class="nv"> </span><span class="s">traffic</span><span class="nv"> </span><span class="s">IPv6</span><span class="nv"> </span><span class="s">không</span><span class="nv"> </span><span class="s">match</span><span class="nv"> </span><span class="s">local</span><span class="nv"> </span><span class="s">route</span><span class="nv"> </span><span class="s">→</span><span class="nv"> </span><span class="s">đi</span><span class="nv"> </span><span class="s">ra</span><span class="nv"> </span><span class="s">IGW&quot;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nt">Click</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save Changes</span>
-</code></pre></div>
-<hr />
-<h2 id="buoc-4-enable-auto-assign-public-ip-cho-web-subnets">Bước 4: Enable Auto-assign Public IP cho Web Subnets<a class="headerlink" href="#buoc-4-enable-auto-assign-public-ip-cho-web-subnets" title="Permanent link">&para;</a></h2>
-<h3 id="41-cau-hinh-cho-web-a">4.1. <strong>Cấu hình cho web-A</strong><a class="headerlink" href="#41-cau-hinh-cho-web-a" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Subnets → Select web-A → Actions → Edit Subnet Settings</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="l l-Scalar l-Scalar-Plain">☑️ Enable auto-assign public IPv4 address</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="l l-Scalar l-Scalar-Plain">Click</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save</span>
-</code></pre></div>
-<h3 id="42-cau-hinh-cho-web-b">4.2. <strong>Cấu hình cho web-B</strong><a class="headerlink" href="#42-cau-hinh-cho-web-b" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Subnets → Select web-B → Actions → Edit Subnet Settings</span><span class="w">  </span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="l l-Scalar l-Scalar-Plain">☑️ Enable auto-assign public IPv4 address</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="l l-Scalar l-Scalar-Plain">Click</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save</span>
-</code></pre></div>
-<h3 id="43-cau-hinh-cho-web-c">4.3. <strong>Cấu hình cho web-C</strong><a class="headerlink" href="#43-cau-hinh-cho-web-c" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="l l-Scalar l-Scalar-Plain">📍 Subnets → Select web-C → Actions → Edit Subnet Settings</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="l l-Scalar l-Scalar-Plain">☑️ Enable auto-assign public IPv4 address</span><span class="w">  </span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="l l-Scalar l-Scalar-Plain">Click</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Save</span>
-</code></pre></div>
-<hr />
-<h2 id="tong-ket-nhung-gi-a-lam">🎯 Tổng kết những gì đã làm<a class="headerlink" href="#tong-ket-nhung-gi-a-lam" title="Permanent link">&para;</a></h2>
-<h3 id="checklist-hoan-thanh"><strong>✅ Checklist hoàn thành:</strong><a class="headerlink" href="#checklist-hoan-thanh" title="Permanent link">&para;</a></h3>
+<h3 id="van-e-ephemeral-port"><strong>Vấn đề ephemeral port</strong><a class="headerlink" href="#van-e-ephemeral-port" title="Permanent link">&para;</a></h3>
 <ul>
-<li>[x] <strong>Internet Gateway:</strong> Tạo &amp; attach vào VPC</li>
-<li>[x] <strong>Route Table:</strong> Tạo route table riêng cho web tier</li>
-<li>[x] <strong>Subnet Association:</strong> Gán 3 web subnet vào route table mới</li>
-<li>[x] <strong>Default Routes:</strong> Thêm 0.0.0.0/0 &amp; ::/0 → IGW</li>
-<li>[x] <strong>Public IP:</strong> Enable auto-assign cho 3 web subnet</li>
+<li><strong>Response luôn dùng ephemeral port</strong> (1024-65535)</li>
+<li><strong>NACL phải allow cả dải</strong> (kém bảo mật)</li>
+<li><strong>Không biết trước port nào</strong> → mở rộng</li>
 </ul>
-<h3 id="luong-hoat-ong"><strong>🔄 Luồng hoạt động:</strong><a class="headerlink" href="#luong-hoat-ong" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="phan-4-default-nacl-vs-custom-nacl">PHẦN 4: Default NACL vs Custom NACL<a class="headerlink" href="#phan-4-default-nacl-vs-custom-nacl" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/a78fc820-499d-42ce-a290-22f040838828" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="851" height="433" alt="image" src="https://github.com/user-attachments/assets/a78fc820-499d-42ce-a290-22f040838828" /></a></p>
+<h3 id="default-nacl-khi-tao-vpc"><strong>Default NACL (khi tạo VPC)</strong><a class="headerlink" href="#default-nacl-khi-tao-vpc" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">✅ Default NACL behavior</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Auto tạo cùng VPC</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow all (Rule</span><span class="w"> </span><span class="c1">#100: 0.0.0.0/0)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow all (Rule</span><span class="w"> </span><span class="c1">#100: 0.0.0.0/0)  </span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Net effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Không block gì cả</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Beginner-friendly</span>
+</code></pre></div>
+<h3 id="custom-nacl-tu-tao"><strong>Custom NACL (tự tạo)</strong><a class="headerlink" href="#custom-nacl-tu-tao" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">❌ Custom NACL behavior</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tạo riêng cho VPC</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ban đầu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chỉ có implicit deny (*)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Associate với subnet → block ALL traffic</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Phải tự add allow rules</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Khá nguy hiểm nếu không cẩn thận!</span>
+</code></pre></div>
+<hr />
+<h2 id="phan-5-nacl-key-characteristics-can-thuoc-long">PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)<a class="headerlink" href="#phan-5-nacl-key-characteristics-can-thuoc-long" title="Permanent link">&para;</a></h2>
+<h3 id="core-properties"><strong>Core Properties</strong><a class="headerlink" href="#core-properties" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Stateless:</strong> Request &amp; response cần rule riêng</li>
+<li><strong>Subnet-level:</strong> 1 subnet = 1 NACL, 1 NACL = nhiều subnet</li>
+<li><strong>Ordered processing:</strong> Rule number thứ tự xử lý</li>
+<li><strong>Allow &amp; Deny:</strong> Có thể explicit allow + explicit deny</li>
+<li><strong>Protocol/Port/IP based:</strong> Không reference logical AWS resources</li>
+</ul>
+<h3 id="use-cases-thuc-te"><strong>Use Cases thực tế</strong><a class="headerlink" href="#use-cases-thuc-te" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">✅ NACL tốt cho</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Block specific malicious IPs/ranges</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Compliance requirements (explicit deny)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Network-level security (defense in depth)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Backup security layer</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nt">❌ NACL không tốt cho</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Primary security control (dùng Security Group)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Complex application rules</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dynamic resources (Auto Scaling...)</span>
+</code></pre></div>
+<hr />
+<h2 id="phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong">PHẦN 6: NACL vs Security Group (So sánh cực quan trọng)<a class="headerlink" href="#phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>NACL</th>
+<th>Security Group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Level</strong></td>
+<td>Subnet</td>
+<td>Instance/ENI</td>
+</tr>
+<tr>
+<td><strong>State</strong></td>
+<td>Stateless</td>
+<td>Stateful</td>
+</tr>
+<tr>
+<td><strong>Rules needed</strong></td>
+<td>2 (inbound + outbound)</td>
+<td>1 (auto allow response)</td>
+</tr>
+<tr>
+<td><strong>Allow/Deny</strong></td>
+<td>Both</td>
+<td>Allow only</td>
+</tr>
+<tr>
+<td><strong>Processing</strong></td>
+<td>Ordered (first match)</td>
+<td>All rules evaluated</td>
+</tr>
+<tr>
+<td><strong>Default behavior</strong></td>
+<td>Allow all (default NACL)</td>
+<td>Deny all</td>
+</tr>
+<tr>
+<td><strong>Use case</strong></td>
+<td>Block bad actors</td>
+<td>Primary access control</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phan-7-best-practices-real-world-tips">PHẦN 7: Best Practices &amp; Real-world Tips<a class="headerlink" href="#phan-7-best-practices-real-world-tips" title="Permanent link">&para;</a></h2>
+<h3 id="thuc-te-khi-i-lam"><strong>Thực tế khi đi làm</strong><a class="headerlink" href="#thuc-te-khi-i-lam" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">🔧 Production practices</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dùng Security Group làm primary security</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dùng NACL để block malicious IPs</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Giữ NACL rules đơn giản, ít rule</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Document rule numbers &amp; purposes</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test carefully trước khi apply production</span>
+</code></pre></div>
+<h3 id="common-mistakes"><strong>Common Mistakes</strong><a class="headerlink" href="#common-mistakes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Quên rule cho response (ephemeral ports)</li>
+<li>Rule ordering sai (deny trước allow)</li>
+<li>Associate custom NACL mà chưa có allow rules</li>
+<li>Quên subnet boundary behavior</li>
+</ul>
+<hr />
+<h2 id="phan-8-checklist-kien-thuc-thi-cert-phong-van">PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn<a class="headerlink" href="#phan-8-checklist-kien-thuc-thi-cert-phong-van" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[x] NACL là stateless, cần 2 rule/kết nối</li>
+<li>[x] Process theo rule number order, first match wins</li>
+<li>[x] 1 subnet = 1 NACL, 1 NACL = nhiều subnet</li>
+<li>[x] Default NACL allow all, custom NACL deny all</li>
+<li>[x] Chỉ filter traffic cross subnet boundary</li>
+<li>[x] Có thể explicit deny (khác Security Group)</li>
+<li>[x] Không reference AWS logical resources</li>
+</ul>
+<h3 id="cau-hoi-exam-thuong-gap"><strong>Câu hỏi exam thường gặp</strong><a class="headerlink" href="#cau-hoi-exam-thuong-gap" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>EC2 launch vào web subnet</strong> → Tự động có public IP</li>
-<li><strong>Traffic ra ngoài</strong> → Route table check → Match 0.0.0.0/0 → Đi IGW → Internet</li>
-<li><strong>Traffic vào từ Internet</strong> → IGW → Route đến private IP của EC2</li>
+<li><strong>"EC2 trong subnet không access được Internet, có thể do NACL?"</strong></li>
+<li><strong>"Muốn block specific IP range, dùng NACL hay Security Group?"</strong></li>
+<li><strong>"Custom NACL associate với subnet, traffic bị block hết. Tại sao?"</strong></li>
+<li><strong>"NACL rule 100 DENY, rule 200 ALLOW cùng traffic. Kết quả?"</strong></li>
 </ol>
 <hr />
-<h2 id="kien-thuc-can-nho-e-thi-i-lam">📚 Kiến thức cần nhớ để thi &amp; đi làm<a class="headerlink" href="#kien-thuc-can-nho-e-thi-i-lam" title="Permanent link">&para;</a></h2>
-<h3 id="public-subnet-4-ieu-kien"><strong>Public Subnet = 4 điều kiện:</strong><a class="headerlink" href="#public-subnet-4-ieu-kien" title="Permanent link">&para;</a></h3>
-<ol>
-<li>✅ <strong>Route table có default route</strong> ra IGW</li>
-<li>✅ <strong>Associate với subnet</strong> </li>
-<li>✅ <strong>IGW attached</strong> vào VPC</li>
-<li>✅ <strong>Auto-assign public IP</strong> enabled</li>
-</ol>
-<h3 id="route-priority-rules"><strong>Route Priority Rules:</strong><a class="headerlink" href="#route-priority-rules" title="Permanent link">&para;</a></h3>
+<h2 id="phan-9-tong-ket-takeaways">PHẦN 9: Tổng kết &amp; takeaways<a class="headerlink" href="#phan-9-tong-ket-takeaways" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Local routes luôn ưu tiên cao nhất</strong> (10.16.0.0/16 &gt; 0.0.0.0/0)</li>
-<li><strong>Prefix càng cao càng ưu tiên</strong> (/32 &gt; /24 &gt; /16 &gt; /0)</li>
-<li><strong>Default route chỉ dùng khi không match rule nào khác</strong></li>
-</ul>
-<h3 id="igw-characteristics"><strong>IGW Characteristics:</strong><a class="headerlink" href="#igw-characteristics" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Regionally resilient</strong> (1 IGW cho cả region)</li>
-<li><strong>1:1 relationship</strong> với VPC</li>
-<li><strong>Managed service</strong> (AWS lo availability)</li>
+<li><strong>NACL = subnet-level stateless firewall</strong></li>
+<li><strong>Phức tạp để setup đúng</strong> → chỉ dùng khi cần thiết</li>
+<li><strong>Combination với Security Group</strong> = defense in depth</li>
+<li><strong>Primary use: Block bad actors, compliance</strong></li>
+<li><strong>Rule ordering matters!</strong> Deny trước có thể block allow sau</li>
 </ul>
 <hr />
-<h2 id="chuan-bi-cho-phan-2-launch-bastion-host">🚀 Chuẩn bị cho phần 2: Launch Bastion Host<a class="headerlink" href="#chuan-bi-cho-phan-2-launch-bastion-host" title="Permanent link">&para;</a></h2>
-<p><strong>Phần 2 sẽ:</strong>
-- Launch EC2 instance vào public subnet
-- Configure Security Group cho SSH access
-- Test connectivity từ Internet vào VPC
-- Tạo "cửa ngõ" vào private infrastructure</p>
-<hr />
-<p><strong>Nghỉ ngơi 5 phút rồi tiếp tục phần 2! Tới đây bạn đã hiểu 80% cách AWS networking hoạt động rồi! 💪</strong></p>
+<p><strong>Ghi nhớ:</strong> NACL là tool mạnh nhưng phức tạp. Trong thực tế, Security Group đơn giản và hiệu quả hơn cho hầu hết use case. NACL dùng khi cần explicit deny specific IPs/ranges!</p>
+<p><strong>Đọc lại bài này trước khi design VPC security hoặc chuẩn bị thi AWS SAA!</strong></p>
 
 
 
@@ -2377,7 +2368,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../07.vpcRouting-IGW-bastionHost/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 07.vpcRouting IGW bastionHost">
+          <a href="../10.StateFull-StateLess/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 🔥 Phân biệt Firewall Stateful &amp;amp; Stateless – Cực dễ hiểu cho AWS, thi cert &amp;amp; đi làm">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2387,20 +2378,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                07.vpcRouting IGW bastionHost
+                🔥 Phân biệt Firewall Stateful &amp; Stateless – Cực dễ hiểu cho AWS, thi cert &amp; đi làm
               </div>
             </div>
           </a>
         
         
           
-          <a href="../09.lab2-publicSubnet-BastionHost/" class="md-footer__link md-footer__link--next" aria-label="Sau: 🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
