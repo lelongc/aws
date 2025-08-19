@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/12.SecurityGroups/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/13.NAT/">
       
       
-        <link rel="prev" href="../11.NACLs/">
+        <link rel="prev" href="../12.SecurityGroups/">
       
       
-        <link rel="next" href="../13.NAT/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới) - DraDoc</title>
+        <title>🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert & đi làm) - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-security-groups-firewall-thong-minh-cho-ec2-ly-thuyet-thuc-chien-cho-nguoi-moi" class="md-skip">
+        <a href="#aws-nat-gateway-ly-thuyet-nen-tang-cho-nguoi-moi-hieu-tu-a-z-e-thi-cert-i-lam" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới)
+              🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert &amp; đi làm)
             
           </span>
         </div>
@@ -1381,6 +1381,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.SecurityGroups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1398,7 +1421,7 @@
   
   
   <span class="md-ellipsis">
-    🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới)
+    🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert &amp; đi làm)
     
   </span>
   
@@ -1411,7 +1434,7 @@
   
   
   <span class="md-ellipsis">
-    🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới)
+    🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert &amp; đi làm)
     
   </span>
   
@@ -1434,28 +1457,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#phan-1-security-groups-la-gi" class="md-nav__link">
+  <a href="#phan-1-nat-la-gi-tai-sao-can-nat" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 1: Security Groups là gì?
+      PHẦN 1: NAT là gì? Tại sao cần NAT?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 1: Security Groups là gì?">
+    <nav class="md-nav" aria-label="PHẦN 1: NAT là gì? Tại sao cần NAT?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inh-nghia-co-ban" class="md-nav__link">
+  <a href="#network-address-translation-nat-inh-nghia" class="md-nav__link">
     <span class="md-ellipsis">
-      Định nghĩa cơ bản
+      Network Address Translation (NAT) - Định nghĩa
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#iem-khac-biet-quan-trong-voi-nacl" class="md-nav__link">
+  <a href="#van-e-thuc-te-nat-giai-quyet" class="md-nav__link">
     <span class="md-ellipsis">
-      Điểm khác biệt quan trọng với NACL
+      Vấn đề thực tế NAT giải quyết
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outbound-only-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outbound-only là gì?
     </span>
   </a>
   
@@ -1467,37 +1499,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-2-security-groups-key-features" class="md-nav__link">
+  <a href="#phan-2-nat-gateway-vs-ec2-nat-instance" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 2: Security Groups Key Features
+      PHẦN 2: NAT Gateway vs EC2 NAT Instance
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 2: Security Groups Key Features">
+    <nav class="md-nav" aria-label="PHẦN 2: NAT Gateway vs EC2 NAT Instance">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-stateful-behavior" class="md-nav__link">
+  <a href="#aws-cung-cap-2-cach-lam-nat" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Stateful Behavior
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-implicit-deny-khong-co-explicit-deny" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Implicit Deny (Không có Explicit Deny)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-attach-to-eni-khong-phai-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Attach to ENI (không phải instance)
+      AWS cung cấp 2 cách làm NAT:
     </span>
   </a>
   
@@ -1509,28 +1523,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-3-advanced-features-logical-references" class="md-nav__link">
+  <a href="#phan-3-kien-truc-nat-gateway-hoat-ong" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 3: Advanced Features - Logical References
+      PHẦN 3: Kiến trúc NAT Gateway hoạt động
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 3: Advanced Features - Logical References">
+    <nav class="md-nav" aria-label="PHẦN 3: Kiến trúc NAT Gateway hoạt động">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-reference-security-groups" class="md-nav__link">
+  <a href="#architecture-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. Reference Security Groups
+      Architecture Overview
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-self-referencing" class="md-nav__link">
+  <a href="#packet-flow-chi-tiet" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2. Self-Referencing
+      Packet Flow chi tiết
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation Table
     </span>
   </a>
   
@@ -1542,37 +1565,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-4-real-world-use-cases-best-practices" class="md-nav__link">
+  <a href="#phan-4-nat-gateway-key-facts-cuc-quan-trong-cho-thi" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 4: Real-world Use Cases &amp; Best Practices
+      PHẦN 4: NAT Gateway Key Facts (Cực quan trọng cho thi)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 4: Real-world Use Cases &amp; Best Practices">
+    <nav class="md-nav" aria-label="PHẦN 4: NAT Gateway Key Facts (Cực quan trọng cho thi)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-multi-tier-application" class="md-nav__link">
+  <a href="#41-deployment-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Multi-tier Application
+      4.1. Deployment Requirements
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-auto-scaling-groups" class="md-nav__link">
+  <a href="#42-availability-resilience" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Auto Scaling Groups
+      4.2. Availability &amp; Resilience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-defense-in-depth" class="md-nav__link">
+  <a href="#43-performance-scaling" class="md-nav__link">
     <span class="md-ellipsis">
-      4.3. Defense in Depth
+      4.3. Performance &amp; Scaling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-pricing-exam-frequently-asks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Pricing (Exam frequently asks!)
     </span>
   </a>
   
@@ -1584,28 +1616,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-5-security-groups-limitations-solutions" class="md-nav__link">
+  <a href="#phan-5-nat-gateway-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 5: Security Groups Limitations &amp; Solutions
+      PHẦN 5: NAT Gateway Best Practices
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 5: Security Groups Limitations &amp; Solutions">
+    <nav class="md-nav" aria-label="PHẦN 5: NAT Gateway Best Practices">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-cannot-block-specific-ips" class="md-nav__link">
+  <a href="#51-high-availability-design" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1. Cannot Block Specific IPs
+      5.1. High Availability Design
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-default-behavior" class="md-nav__link">
+  <a href="#52-cost-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      5.2. Default Behavior
+      5.2. Cost Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Security Considerations
     </span>
   </a>
   
@@ -1636,9 +1677,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#advanced-features" class="md-nav__link">
+  <a href="#architecture-design" class="md-nav__link">
     <span class="md-ellipsis">
-      Advanced Features
+      Architecture Design
     </span>
   </a>
   
@@ -1659,37 +1700,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-7-so-sanh-cuoi-cung-khi-nao-dung-sg-vs-nacl" class="md-nav__link">
+  <a href="#phan-7-nat-vs-vpc-endpoints-cost-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 7: So sánh cuối cùng - Khi nào dùng SG vs NACL?
+      PHẦN 7: NAT vs VPC Endpoints (Cost optimization)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 7: So sánh cuối cùng - Khi nào dùng SG vs NACL?">
+    <nav class="md-nav" aria-label="PHẦN 7: NAT vs VPC Endpoints (Cost optimization)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#use-security-groups-when" class="md-nav__link">
+  <a href="#khi-nao-dung-nat-vs-vpc-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
-      Use Security Groups when:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use-nacl-when" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use NACL when:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-use-both" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practice: Use both!
+      Khi nào dùng NAT vs VPC Endpoints?
     </span>
   </a>
   
@@ -1701,9 +1724,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-8-tong-ket" class="md-nav__link">
+  <a href="#phan-8-troubleshooting-common-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 8: Tổng kết
+      PHẦN 8: Troubleshooting Common Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 8: Troubleshooting Common Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-problems-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Problems &amp; Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-9-tong-ket" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 9: Tổng kết
     </span>
   </a>
   
@@ -1713,29 +1760,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.NAT/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert &amp; đi làm)
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1851,28 +1875,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#phan-1-security-groups-la-gi" class="md-nav__link">
+  <a href="#phan-1-nat-la-gi-tai-sao-can-nat" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 1: Security Groups là gì?
+      PHẦN 1: NAT là gì? Tại sao cần NAT?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 1: Security Groups là gì?">
+    <nav class="md-nav" aria-label="PHẦN 1: NAT là gì? Tại sao cần NAT?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inh-nghia-co-ban" class="md-nav__link">
+  <a href="#network-address-translation-nat-inh-nghia" class="md-nav__link">
     <span class="md-ellipsis">
-      Định nghĩa cơ bản
+      Network Address Translation (NAT) - Định nghĩa
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#iem-khac-biet-quan-trong-voi-nacl" class="md-nav__link">
+  <a href="#van-e-thuc-te-nat-giai-quyet" class="md-nav__link">
     <span class="md-ellipsis">
-      Điểm khác biệt quan trọng với NACL
+      Vấn đề thực tế NAT giải quyết
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outbound-only-la-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outbound-only là gì?
     </span>
   </a>
   
@@ -1884,37 +1917,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-2-security-groups-key-features" class="md-nav__link">
+  <a href="#phan-2-nat-gateway-vs-ec2-nat-instance" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 2: Security Groups Key Features
+      PHẦN 2: NAT Gateway vs EC2 NAT Instance
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 2: Security Groups Key Features">
+    <nav class="md-nav" aria-label="PHẦN 2: NAT Gateway vs EC2 NAT Instance">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-stateful-behavior" class="md-nav__link">
+  <a href="#aws-cung-cap-2-cach-lam-nat" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Stateful Behavior
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-implicit-deny-khong-co-explicit-deny" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Implicit Deny (Không có Explicit Deny)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-attach-to-eni-khong-phai-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Attach to ENI (không phải instance)
+      AWS cung cấp 2 cách làm NAT:
     </span>
   </a>
   
@@ -1926,28 +1941,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-3-advanced-features-logical-references" class="md-nav__link">
+  <a href="#phan-3-kien-truc-nat-gateway-hoat-ong" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 3: Advanced Features - Logical References
+      PHẦN 3: Kiến trúc NAT Gateway hoạt động
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 3: Advanced Features - Logical References">
+    <nav class="md-nav" aria-label="PHẦN 3: Kiến trúc NAT Gateway hoạt động">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-reference-security-groups" class="md-nav__link">
+  <a href="#architecture-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. Reference Security Groups
+      Architecture Overview
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-self-referencing" class="md-nav__link">
+  <a href="#packet-flow-chi-tiet" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2. Self-Referencing
+      Packet Flow chi tiết
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Translation Table
     </span>
   </a>
   
@@ -1959,37 +1983,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-4-real-world-use-cases-best-practices" class="md-nav__link">
+  <a href="#phan-4-nat-gateway-key-facts-cuc-quan-trong-cho-thi" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 4: Real-world Use Cases &amp; Best Practices
+      PHẦN 4: NAT Gateway Key Facts (Cực quan trọng cho thi)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 4: Real-world Use Cases &amp; Best Practices">
+    <nav class="md-nav" aria-label="PHẦN 4: NAT Gateway Key Facts (Cực quan trọng cho thi)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-multi-tier-application" class="md-nav__link">
+  <a href="#41-deployment-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      4.1. Multi-tier Application
+      4.1. Deployment Requirements
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-auto-scaling-groups" class="md-nav__link">
+  <a href="#42-availability-resilience" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Auto Scaling Groups
+      4.2. Availability &amp; Resilience
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-defense-in-depth" class="md-nav__link">
+  <a href="#43-performance-scaling" class="md-nav__link">
     <span class="md-ellipsis">
-      4.3. Defense in Depth
+      4.3. Performance &amp; Scaling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-pricing-exam-frequently-asks" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4. Pricing (Exam frequently asks!)
     </span>
   </a>
   
@@ -2001,28 +2034,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-5-security-groups-limitations-solutions" class="md-nav__link">
+  <a href="#phan-5-nat-gateway-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 5: Security Groups Limitations &amp; Solutions
+      PHẦN 5: NAT Gateway Best Practices
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 5: Security Groups Limitations &amp; Solutions">
+    <nav class="md-nav" aria-label="PHẦN 5: NAT Gateway Best Practices">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-cannot-block-specific-ips" class="md-nav__link">
+  <a href="#51-high-availability-design" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1. Cannot Block Specific IPs
+      5.1. High Availability Design
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-default-behavior" class="md-nav__link">
+  <a href="#52-cost-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      5.2. Default Behavior
+      5.2. Cost Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Security Considerations
     </span>
   </a>
   
@@ -2053,9 +2095,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#advanced-features" class="md-nav__link">
+  <a href="#architecture-design" class="md-nav__link">
     <span class="md-ellipsis">
-      Advanced Features
+      Architecture Design
     </span>
   </a>
   
@@ -2076,37 +2118,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-7-so-sanh-cuoi-cung-khi-nao-dung-sg-vs-nacl" class="md-nav__link">
+  <a href="#phan-7-nat-vs-vpc-endpoints-cost-optimization" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 7: So sánh cuối cùng - Khi nào dùng SG vs NACL?
+      PHẦN 7: NAT vs VPC Endpoints (Cost optimization)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 7: So sánh cuối cùng - Khi nào dùng SG vs NACL?">
+    <nav class="md-nav" aria-label="PHẦN 7: NAT vs VPC Endpoints (Cost optimization)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#use-security-groups-when" class="md-nav__link">
+  <a href="#khi-nao-dung-nat-vs-vpc-endpoints" class="md-nav__link">
     <span class="md-ellipsis">
-      Use Security Groups when:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use-nacl-when" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use NACL when:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#best-practice-use-both" class="md-nav__link">
-    <span class="md-ellipsis">
-      Best Practice: Use both!
+      Khi nào dùng NAT vs VPC Endpoints?
     </span>
   </a>
   
@@ -2118,9 +2142,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-8-tong-ket" class="md-nav__link">
+  <a href="#phan-8-troubleshooting-common-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 8: Tổng kết
+      PHẦN 8: Troubleshooting Common Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN 8: Troubleshooting Common Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-problems-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Problems &amp; Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-9-tong-ket" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHẦN 9: Tổng kết
     </span>
   </a>
   
@@ -2142,7 +2190,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/12.SecurityGroups.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/13.NAT.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2150,205 +2198,270 @@
   
 
 
-<h1 id="aws-security-groups-firewall-thong-minh-cho-ec2-ly-thuyet-thuc-chien-cho-nguoi-moi">🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới)<a class="headerlink" href="#aws-security-groups-firewall-thong-minh-cho-ec2-ly-thuyet-thuc-chien-cho-nguoi-moi" title="Permanent link">&para;</a></h1>
+<h1 id="aws-nat-gateway-ly-thuyet-nen-tang-cho-nguoi-moi-hieu-tu-a-z-e-thi-cert-i-lam">🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert &amp; đi làm)<a class="headerlink" href="#aws-nat-gateway-ly-thuyet-nen-tang-cho-nguoi-moi-hieu-tu-a-z-e-thi-cert-i-lam" title="Permanent link">&para;</a></h1>
 <hr />
-<h2 id="phan-1-security-groups-la-gi">PHẦN 1: Security Groups là gì?<a class="headerlink" href="#phan-1-security-groups-la-gi" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/7dc801d9-711f-423b-a8c6-ed24ecaa8ec6" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="843" height="464" alt="image" src="https://github.com/user-attachments/assets/7dc801d9-711f-423b-a8c6-ed24ecaa8ec6" /></a></p>
-<h3 id="inh-nghia-co-ban"><strong>Định nghĩa cơ bản</strong><a class="headerlink" href="#inh-nghia-co-ban" title="Permanent link">&para;</a></h3>
+<h2 id="phan-1-nat-la-gi-tai-sao-can-nat">PHẦN 1: NAT là gì? Tại sao cần NAT?<a class="headerlink" href="#phan-1-nat-la-gi-tai-sao-can-nat" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/398aa017-4ff5-43a0-a2da-2858a50111bd" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="846" height="474" alt="image" src="https://github.com/user-attachments/assets/398aa017-4ff5-43a0-a2da-2858a50111bd" /></a>
+<a class="glightbox" href="https://github.com/user-attachments/assets/44314c3e-9509-48f8-a38d-3b0d7fd12976" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="837" height="461" alt="image" src="https://github.com/user-attachments/assets/44314c3e-9509-48f8-a38d-3b0d7fd12976" /></a>
+<a class="glightbox" href="https://github.com/user-attachments/assets/533df5b5-a495-4149-82f5-3ea1a74f95bd" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="837" height="476" alt="image" src="https://github.com/user-attachments/assets/533df5b5-a495-4149-82f5-3ea1a74f95bd" /></a></p>
+<h3 id="network-address-translation-nat-inh-nghia"><strong>Network Address Translation (NAT) - Định nghĩa</strong><a class="headerlink" href="#network-address-translation-nat-inh-nghia" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Security Groups (SG)</strong> = <strong>stateful firewall</strong> ở cấp <strong>Network Interface (ENI)</strong></li>
-<li><strong>Attach vào ENI</strong>, không phải subnet hay instance</li>
-<li><strong>Stateful</strong> → chỉ cần 1 rule, response tự động được allow</li>
-<li><strong>Virtual firewall</strong> bao quanh từng ENI</li>
+<li><strong>NAT = quá trình thay đổi source/destination IP trong packets</strong></li>
+<li><strong>Có nhiều loại NAT:</strong><ul>
+<li><strong>Static NAT:</strong> 1 private IP ↔ 1 public IP (như Internet Gateway)</li>
+<li><strong>IP Masquerading:</strong> Nhiều private IP → 1 public IP (như NAT Gateway)</li>
 </ul>
-<h3 id="iem-khac-biet-quan-trong-voi-nacl"><strong>Điểm khác biệt quan trọng với NACL</strong><a class="headerlink" href="#iem-khac-biet-quan-trong-voi-nacl" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">Security Groups vs NACL</span><span class="p">:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="l l-Scalar l-Scalar-Plain">┌─────────────────────┬──────────────────┬─────────────────┐</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="l l-Scalar l-Scalar-Plain">│ Aspect              │ Security Group   │ NACL            │</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="l l-Scalar l-Scalar-Plain">├─────────────────────┼──────────────────┼─────────────────┤</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="l l-Scalar l-Scalar-Plain">│ Level               │ ENI/Instance     │ Subnet          │</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="l l-Scalar l-Scalar-Plain">│ State               │ Stateful         │ Stateless       │</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="l l-Scalar l-Scalar-Plain">│ Rules needed        │ 1 (auto response)│ 2 (in + out)    │</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="l l-Scalar l-Scalar-Plain">│ Allow/Deny          │ Allow only       │ Both            │</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="l l-Scalar l-Scalar-Plain">│ Rule processing     │ All rules eval   │ First match     │</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="l l-Scalar l-Scalar-Plain">│ Logical references  │ ✅ Yes           │ ❌ No           │</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="l l-Scalar l-Scalar-Plain">│ Ephemeral ports     │ Auto handled     │ Manual config   │</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="l l-Scalar l-Scalar-Plain">└─────────────────────┴──────────────────┴─────────────────┘</span>
+</li>
+</ul>
+<h3 id="van-e-thuc-te-nat-giai-quyet"><strong>Vấn đề thực tế NAT giải quyết</strong><a class="headerlink" href="#van-e-thuc-te-nat-giai-quyet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">🤔 Scenario</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Private instances cần software updates</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">❌ Problem</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Private subnet không có public IP</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Không thể connect trực tiếp ra Internet</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Making subnet public = phá vỡ security design</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">✅ NAT Solution</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cho phép outbound-only access</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Giữ nguyên private architecture</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Multiple instances share 1 public IP</span>
 </code></pre></div>
+<h3 id="outbound-only-la-gi"><strong>Outbound-only là gì?</strong><a class="headerlink" href="#outbound-only-la-gi" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ <strong>Private instances có thể initiate connection</strong> ra Internet (software updates, API calls...)</li>
+<li>❌ <strong>Internet KHÔNG thể initiate connection</strong> vào private instances</li>
+<li>🔄 <strong>Response traffic được allow</strong> (stateful)</li>
+</ul>
 <hr />
-<h2 id="phan-2-security-groups-key-features">PHẦN 2: Security Groups Key Features<a class="headerlink" href="#phan-2-security-groups-key-features" title="Permanent link">&para;</a></h2>
-<h3 id="1-stateful-behavior"><strong>1. Stateful Behavior</strong><a class="headerlink" href="#1-stateful-behavior" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">🌐 Example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Web server HTTPS (port 443)</span>
+<h2 id="phan-2-nat-gateway-vs-ec2-nat-instance">PHẦN 2: NAT Gateway vs EC2 NAT Instance<a class="headerlink" href="#phan-2-nat-gateway-vs-ec2-nat-instance" title="Permanent link">&para;</a></h2>
+<h3 id="aws-cung-cap-2-cach-lam-nat"><strong>AWS cung cấp 2 cách làm NAT:</strong><a class="headerlink" href="#aws-cung-cap-2-cach-lam-nat" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>NAT Gateway (Recommended)</th>
+<th>EC2 NAT Instance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Management</strong></td>
+<td>Fully managed by AWS</td>
+<td>Self-managed</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>AZ-resilient</td>
+<td>Single instance</td>
+</tr>
+<tr>
+<td><strong>Bandwidth</strong></td>
+<td>Up to 45 Gbps</td>
+<td>Instance type limit</td>
+</tr>
+<tr>
+<td><strong>Security Groups</strong></td>
+<td>Cannot be assigned</td>
+<td>Can be assigned</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Higher</td>
+<td>Lower (but more admin)</td>
+</tr>
+<tr>
+<td><strong>Maintenance</strong></td>
+<td>Zero</td>
+<td>OS updates, patches...</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Best Practice:</strong> Dùng NAT Gateway trừ khi có requirements đặc biệt!</p>
+</blockquote>
+<hr />
+<h2 id="phan-3-kien-truc-nat-gateway-hoat-ong">PHẦN 3: Kiến trúc NAT Gateway hoạt động<a class="headerlink" href="#phan-3-kien-truc-nat-gateway-hoat-ong" title="Permanent link">&para;</a></h2>
+<h3 id="architecture-overview"><strong>Architecture Overview</strong><a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">🏗️ NAT Gateway Architecture</span><span class="p">:</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">SG Rule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow inbound TCP 443 from 0.0.0.0/0</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">Result</span><span class="p">:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">✅ Request</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any IP → Instance:443 (allowed by rule)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">✅ Response</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instance:443 → Any IP:ephemeral (auto allowed)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="l l-Scalar l-Scalar-Plain">No need to configure outbound ephemeral ports! 🎉</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="l l-Scalar l-Scalar-Plain">Internet ←→ Internet Gateway ←→ NAT Gateway (Public Subnet)</span><span class="w"> </span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">                                      </span><span class="l l-Scalar l-Scalar-Plain">↕</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">                              </span><span class="l l-Scalar l-Scalar-Plain">Private Instances (Private Subnet)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nt">Private subnet route table</span><span class="p">:</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.16.0.0/16 → local</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0 → NAT Gateway</span>
 </code></pre></div>
-<h3 id="2-implicit-deny-khong-co-explicit-deny"><strong>2. Implicit Deny (Không có Explicit Deny)</strong><a class="headerlink" href="#2-implicit-deny-khong-co-explicit-deny" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">❌ Security Group LIMITATION</span><span class="p">:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Chỉ có ALLOW rules</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Không có EXPLICIT DENY</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Default = deny all (implicit)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">⚠️ Problem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Không block được specific bad IPs</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nt">Example</span><span class="p">:</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">Rule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow 0.0.0.0/0 on port 443</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nt">Bad actor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.3.4 tấn công</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">SG không thể block riêng 1.2.3.4!</span>
+<h3 id="packet-flow-chi-tiet"><strong>Packet Flow chi tiết</strong><a class="headerlink" href="#packet-flow-chi-tiet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">📦 Step-by-step packet flow</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">1. Private Instance tạo packet</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">   </span><span class="nt">Source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.16.32.10 (private)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">   </span><span class="nt">Dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.3.3.7 (software update server)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="l l-Scalar l-Scalar-Plain">2. Route table → forward to NAT Gateway</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nt">3. NAT Gateway processes</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Record vào translation table</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Change source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.16.32.10 → NAT_Private_IP</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Forward to Internet Gateway</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nt">4. Internet Gateway processes</span><span class="p">:</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Change source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NAT_Private_IP → NAT_Public_IP</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Send to Internet</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="l l-Scalar l-Scalar-Plain">5. Response follows reverse path</span>
 </code></pre></div>
-<h3 id="3-attach-to-eni-khong-phai-instance"><strong>3. Attach to ENI (không phải instance)</strong><a class="headerlink" href="#3-attach-to-eni-khong-phai-instance" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">🔧 Technical reality</span><span class="p">:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">UI shows</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Attach</span><span class="nv"> </span><span class="s">SG</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">EC2</span><span class="nv"> </span><span class="s">instance&quot;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">Actually</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SG attaches to Primary ENI of instance</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1 instance có thể nhiều ENI → nhiều SG</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1 ENI có thể gán nhiều SG (max 5)</span>
+<h3 id="translation-table"><strong>Translation Table</strong><a class="headerlink" href="#translation-table" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">🗃️ NAT Gateway maintains translation table</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="l l-Scalar l-Scalar-Plain">Private_IP:Port    ↔    NAT_IP:Port    ↔    Dest_IP:Port</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="l l-Scalar l-Scalar-Plain">10.16.32.10:1234  ↔    172.31.1.5:5678  ↔    1.3.3.7:443</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="l l-Scalar l-Scalar-Plain">10.16.32.20:2345  ↔    172.31.1.5:6789  ↔    8.8.8.8:53</span>
 </code></pre></div>
 <hr />
-<h2 id="phan-3-advanced-features-logical-references">PHẦN 3: Advanced Features - Logical References<a class="headerlink" href="#phan-3-advanced-features-logical-references" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/d2dd1a74-8fd9-42a3-a07f-34ca845859cf" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="856" height="478" alt="image" src="https://github.com/user-attachments/assets/d2dd1a74-8fd9-42a3-a07f-34ca845859cf" /></a>
-<a class="glightbox" href="https://github.com/user-attachments/assets/c11c344f-2a2a-4288-9c47-0e1acd8b2266" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="844" height="485" alt="image" src="https://github.com/user-attachments/assets/c11c344f-2a2a-4288-9c47-0e1acd8b2266" /></a></p>
-<h3 id="31-reference-security-groups"><strong>3.1. Reference Security Groups</strong><a class="headerlink" href="#31-reference-security-groups" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">🏗️ Architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Web tier → App tier</span>
+<h2 id="phan-4-nat-gateway-key-facts-cuc-quan-trong-cho-thi">PHẦN 4: NAT Gateway Key Facts (Cực quan trọng cho thi)<a class="headerlink" href="#phan-4-nat-gateway-key-facts-cuc-quan-trong-cho-thi" title="Permanent link">&para;</a></h2>
+<h3 id="41-deployment-requirements"><strong>4.1. Deployment Requirements</strong><a class="headerlink" href="#41-deployment-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ <strong>Phải deploy trong public subnet</strong> (cần public IP)</li>
+<li>✅ <strong>Public subnet phải có IGW + default route</strong></li>
+<li>✅ <strong>Phải có Elastic IP</strong> (static public IP)</li>
+</ul>
+<h3 id="42-availability-resilience"><strong>4.2. Availability &amp; Resilience</strong><a class="headerlink" href="#42-availability-resilience" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">⚠️ CRITICAL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NAT Gateway chỉ AZ-resilient, KHÔNG regional-resilient!</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">Web SG (A4L-web)</span><span class="p">:</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow TCP 443 from 0.0.0.0/0</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">Single AZ design</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">❌ AZ failure → NAT Gateway down → private instances lose Internet</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">App SG (A4L-app)</span><span class="p">:</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow TCP 1337 from A4L-web</span><span class="w">  </span><span class="c1"># ← Logical reference!</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nt">Meaning</span><span class="p">:</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instances có A4L-web SG → có thể connect đến instances có A4L-app SG</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Không cần hardcode IP addresses</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Auto scale friendly!</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">Multi-AZ design (Recommended)</span><span class="p">:</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ 1 NAT Gateway per AZ</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ 1 Route table per AZ</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ Each private subnet routes to NAT in same AZ</span>
 </code></pre></div>
-<h3 id="32-self-referencing"><strong>3.2. Self-Referencing</strong><a class="headerlink" href="#32-self-referencing" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">🔄 Self-reference example</span><span class="p">:</span>
+<h3 id="43-performance-scaling"><strong>4.3. Performance &amp; Scaling</strong><a class="headerlink" href="#43-performance-scaling" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Bandwidth:</strong> Up to 45 Gbps per NAT Gateway</li>
+<li><strong>Scaling:</strong> Deploy multiple NAT Gateways, split traffic</li>
+<li><strong>Managed:</strong> AWS handles all scaling automatically</li>
+</ul>
+<h3 id="44-pricing-exam-frequently-asks"><strong>4.4. Pricing (Exam frequently asks!)</strong><a class="headerlink" href="#44-pricing-exam-frequently-asks" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">💰 NAT Gateway costs 2 components</span><span class="p">:</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">App Cluster SG (A4L-cluster)</span><span class="p">:</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">Inbound</span><span class="p">:</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow TCP 1337 from A4L-web</span><span class="w">        </span><span class="c1"># External access</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow ALL traffic from A4L-cluster</span><span class="w">  </span><span class="c1"># ← Self-reference!</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nt">Result</span><span class="p">:</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instances trong cluster có thể nói chuyện với nhau</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tự động adapt khi instances scale up/down</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Perfect cho</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB clusters, domain controllers, HA applications</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">1. Hourly charge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~$0.045/hour (partial hours = full hours)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">2. Data processing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~$0.045/GB processed</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nt">Example monthly cost</span><span class="p">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">24/7 running</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$32.40/month</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">100GB data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$4.50/month</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Total</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~$37/month per NAT Gateway</span>
 </code></pre></div>
 <hr />
-<h2 id="phan-4-real-world-use-cases-best-practices">PHẦN 4: Real-world Use Cases &amp; Best Practices<a class="headerlink" href="#phan-4-real-world-use-cases-best-practices" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/b928e298-786c-43b7-8988-a19d5f2438f5" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="845" height="466" alt="image" src="https://github.com/user-attachments/assets/b928e298-786c-43b7-8988-a19d5f2438f5" /></a></p>
-<h3 id="41-multi-tier-application"><strong>4.1. Multi-tier Application</strong><a class="headerlink" href="#41-multi-tier-application" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">🏢 Typical 3-tier architecture</span><span class="p">:</span>
+<h2 id="phan-5-nat-gateway-best-practices">PHẦN 5: NAT Gateway Best Practices<a class="headerlink" href="#phan-5-nat-gateway-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="51-high-availability-design"><strong>5.1. High Availability Design</strong><a class="headerlink" href="#51-high-availability-design" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">🏗️ Multi-AZ NAT Design</span><span class="p">:</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">Web SG</span><span class="p">:</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP/HTTPS from Internet</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB port to DB-SG</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">us-east-1a</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Public subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NAT-GW-A</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Private subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Route table → NAT-GW-A</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nt">App SG</span><span class="p">:</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">App port from Web-SG</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DB port to DB-SG</span><span class="w">  </span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nt">us-east-1b</span><span class="p">:</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Public subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NAT-GW-B</span><span class="w">  </span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Private subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Route table → NAT-GW-B</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nt">DB SG</span><span class="p">:</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MySQL from Web-SG and App-SG</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None needed (stateful response)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nt">us-east-1c</span><span class="p">:</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Public subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NAT-GW-C</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Private subnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Route table → NAT-GW-C</span>
 </code></pre></div>
-<h3 id="42-auto-scaling-groups"><strong>4.2. Auto Scaling Groups</strong><a class="headerlink" href="#42-auto-scaling-groups" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">⚡ Auto scaling scenario</span><span class="p">:</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New instances launch → auto get SG</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SG logical references still work</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No IP management overhead</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Zero manual intervention needed</span>
+<h3 id="52-cost-optimization"><strong>5.2. Cost Optimization</strong><a class="headerlink" href="#52-cost-optimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">💡 Cost saving strategies</span><span class="p">:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nt">1. Consolidate traffic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Route multiple subnets to 1 NAT Gateway (same AZ)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nt">2. VPC Endpoints</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use for AWS services (S3, DynamoDB) instead of NAT</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nt">3. S3 Gateway Endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Free alternative for S3 access</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nt">4. Monitor data transfer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Optimize applications to reduce NAT usage</span>
 </code></pre></div>
-<h3 id="43-defense-in-depth"><strong>4.3. Defense in Depth</strong><a class="headerlink" href="#43-defense-in-depth" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">🛡️ Security layers</span><span class="p">:</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">1. NACL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Block known bad IP ranges</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">2. Security Group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow legitimate traffic</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="nt">3. OS firewall</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Additional host-level protection</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="nt">4. Application security</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Input validation, etc.</span>
-</code></pre></div>
-<hr />
-<h2 id="phan-5-security-groups-limitations-solutions">PHẦN 5: Security Groups Limitations &amp; Solutions<a class="headerlink" href="#phan-5-security-groups-limitations-solutions" title="Permanent link">&para;</a></h2>
-<h3 id="51-cannot-block-specific-ips"><strong>5.1. Cannot Block Specific IPs</strong><a class="headerlink" href="#51-cannot-block-specific-ips" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">❌ Problem</span><span class="p">:</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">SG rule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow 0.0.0.0/0 port 80</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nt">Bad actor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.100 attacking</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Cannot block just 192.168.1.100!</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nt">✅ Solution</span><span class="p">:</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="nt">NACL rule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DENY 192.168.1.100 (processed first)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="nt">SG rule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow 0.0.0.0/0 port 80</span>
-</code></pre></div>
-<h3 id="52-default-behavior"><strong>5.2. Default Behavior</strong><a class="headerlink" href="#52-default-behavior" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">🔒 New Security Group defaults</span><span class="p">:</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DENY ALL (empty rules)</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">  </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALLOW ALL (to 0.0.0.0/0)</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nt">⚠️ Common mistake</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Launch instance, forget inbound rules → cannot connect!</span>
+<h3 id="53-security-considerations"><strong>5.3. Security Considerations</strong><a class="headerlink" href="#53-security-considerations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">🔒 NAT Gateway security</span><span class="p">:</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">✅ Good</span><span class="p">:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cannot assign Security Groups to NAT Gateway</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Outbound-only by design</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS managed, regularly patched</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="nt">⚠️ Consider</span><span class="p">:</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All private instances share same public IP</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Need NACLs for additional filtering</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Monitor CloudTrail for NAT Gateway changes</span>
 </code></pre></div>
 <hr />
 <h2 id="phan-6-checklist-kien-thuc-thi-cert-phong-van">PHẦN 6: Checklist kiến thức thi cert &amp; phỏng vấn<a class="headerlink" href="#phan-6-checklist-kien-thuc-thi-cert-phong-van" title="Permanent link">&para;</a></h2>
 <h3 id="core-concepts"><strong>Core Concepts</strong><a class="headerlink" href="#core-concepts" title="Permanent link">&para;</a></h3>
 <ul>
-<li>[x] SG là stateful, attach to ENI (not subnet/instance)</li>
-<li>[x] Chỉ có allow rules, không có explicit deny</li>
-<li>[x] Response traffic tự động allowed</li>
-<li>[x] Có thể reference other SGs và self-reference</li>
-<li>[x] Default: deny inbound, allow outbound</li>
+<li>[x] NAT Gateway cho phép outbound-only Internet access</li>
+<li>[x] Phải deploy trong public subnet với Elastic IP</li>
+<li>[x] AZ-resilient, không regional-resilient</li>
+<li>[x] Managed service, scale to 45 Gbps</li>
+<li>[x] 2 cost components: hourly + data processing</li>
 </ul>
-<h3 id="advanced-features"><strong>Advanced Features</strong><a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h3>
+<h3 id="architecture-design"><strong>Architecture Design</strong><a class="headerlink" href="#architecture-design" title="Permanent link">&para;</a></h3>
 <ul>
-<li>[x] Logical references giúp scale và simplify management</li>
-<li>[x] Self-reference cho intra-cluster communication</li>
-<li>[x] Multiple SGs per ENI (max 5)</li>
-<li>[x] Combine với NACL để có explicit deny capability</li>
+<li>[x] Multi-AZ design: 1 NAT Gateway per AZ</li>
+<li>[x] Route table per AZ pointing to NAT Gateway in same AZ</li>
+<li>[x] Private instances → NAT Gateway → IGW → Internet</li>
+<li>[x] Cannot receive inbound connections from Internet</li>
 </ul>
 <h3 id="cau-hoi-exam-thuong-gap"><strong>Câu hỏi exam thường gặp</strong><a class="headerlink" href="#cau-hoi-exam-thuong-gap" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>"SG attach vào đâu: instance, subnet hay ENI?"</strong></li>
-<li><strong>"Muốn block specific IP, dùng SG hay NACL?"</strong></li>
-<li><strong>"SG reference SG khác có nghĩa gì?"</strong></li>
-<li><strong>"Self-reference SG dùng để làm gì?"</strong></li>
-<li><strong>"EC2 launch mà không connect được, có thể do SG?"</strong></li>
+<li><strong>"Private instances cần software updates, dùng gì?"</strong></li>
+<li><strong>"NAT Gateway deploy ở đâu: public hay private subnet?"</strong></li>
+<li><strong>"1 NAT Gateway có cover được multiple AZ không?"</strong></li>
+<li><strong>"NAT Gateway pricing có những component nào?"</strong></li>
+<li><strong>"Design high availability cho NAT, cần mấy NAT Gateway?"</strong></li>
 </ol>
 <hr />
-<h2 id="phan-7-so-sanh-cuoi-cung-khi-nao-dung-sg-vs-nacl">PHẦN 7: So sánh cuối cùng - Khi nào dùng SG vs NACL?<a class="headerlink" href="#phan-7-so-sanh-cuoi-cung-khi-nao-dung-sg-vs-nacl" title="Permanent link">&para;</a></h2>
-<h3 id="use-security-groups-when"><strong>Use Security Groups when:</strong><a class="headerlink" href="#use-security-groups-when" title="Permanent link">&para;</a></h3>
-<ul>
-<li>✅ Primary access control cho instances</li>
-<li>✅ Multi-tier applications</li>
-<li>✅ Auto scaling environments  </li>
-<li>✅ Need logical resource references</li>
-<li>✅ Simple rule management</li>
-</ul>
-<h3 id="use-nacl-when"><strong>Use NACL when:</strong><a class="headerlink" href="#use-nacl-when" title="Permanent link">&para;</a></h3>
-<ul>
-<li>✅ Need explicit deny (block bad actors)</li>
-<li>✅ Compliance requirements</li>
-<li>✅ Subnet-level broad filtering</li>
-<li>✅ Defense in depth backup layer</li>
-</ul>
-<h3 id="best-practice-use-both"><strong>Best Practice: Use both!</strong><a class="headerlink" href="#best-practice-use-both" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">🎯 Recommended approach</span><span class="p">:</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">1. SG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Primary security, allow legitimate traffic</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="nt">2. NACL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secondary defense, block known threats</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">3. Both together = comprehensive security</span>
+<h2 id="phan-7-nat-vs-vpc-endpoints-cost-optimization">PHẦN 7: NAT vs VPC Endpoints (Cost optimization)<a class="headerlink" href="#phan-7-nat-vs-vpc-endpoints-cost-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="khi-nao-dung-nat-vs-vpc-endpoints"><strong>Khi nào dùng NAT vs VPC Endpoints?</strong><a class="headerlink" href="#khi-nao-dung-nat-vs-vpc-endpoints" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">🎯 Decision matrix</span><span class="p">:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">Use NAT Gateway for</span><span class="p">:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ General Internet access</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ Software updates</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ 3rd party APIs</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ Public services không có VPC Endpoint</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nt">Use VPC Endpoints for</span><span class="p">:</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ AWS services (S3, DynamoDB, SNS...)</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ Cost optimization (many are free)</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ Better security (traffic stays in AWS)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">✅ Better performance (no Internet routing)</span>
 </code></pre></div>
 <hr />
-<h2 id="phan-8-tong-ket">PHẦN 8: Tổng kết<a class="headerlink" href="#phan-8-tong-ket" title="Permanent link">&para;</a></h2>
+<h2 id="phan-8-troubleshooting-common-issues">PHẦN 8: Troubleshooting Common Issues<a class="headerlink" href="#phan-8-troubleshooting-common-issues" title="Permanent link">&para;</a></h2>
+<h3 id="common-problems-solutions"><strong>Common Problems &amp; Solutions</strong><a class="headerlink" href="#common-problems-solutions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="l l-Scalar l-Scalar-Plain">🐛 &quot;Private instance cannot reach Internet&quot;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="l l-Scalar l-Scalar-Plain">Check list</span><span class="p p-Indicator">:</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1. ✅ NAT Gateway in public subnet?</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2. ✅ NAT Gateway has Elastic IP?</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">3. ✅ Public subnet has IGW route?</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">4. ✅ Private subnet has NAT Gateway route?</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">5. ✅ Security Groups allow outbound?</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">6. ✅ NACLs allow traffic?</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">7. ✅ NAT Gateway in same AZ as private subnet?</span>
+</code></pre></div>
+<hr />
+<h2 id="phan-9-tong-ket">PHẦN 9: Tổng kết<a class="headerlink" href="#phan-9-tong-ket" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Security Groups = instance-level intelligent firewall</strong></li>
-<li><strong>Stateful, logical references, auto-scaling friendly</strong></li>
-<li><strong>Perfect cho primary access control</strong></li>
-<li><strong>Limitation: Không block specific IPs (dùng NACL bổ sung)</strong></li>
-<li><strong>Core tool cho mọi AWS production deployment</strong></li>
+<li><strong>NAT Gateway = managed solution cho outbound Internet access</strong></li>
+<li><strong>AZ-resilient, cần multi-AZ design cho HA</strong></li>
+<li><strong>Cost: hourly + data processing</strong></li>
+<li><strong>Deploy trong public subnet, cần Elastic IP</strong></li>
+<li><strong>Cannot receive inbound connections</strong></li>
+<li><strong>Combine với VPC Endpoints để optimize cost</strong></li>
 </ul>
 <hr />
-<p><strong>Ghi nhớ:</strong> Security Groups là tool chính để secure EC2 instances. Hiểu rõ logical references và stateful behavior sẽ giúp bạn design security architecture hiệu quả và scale được!</p>
-<p><strong>Đọc lại bài này trước khi thiết kế VPC security hoặc chuẩn bị thi AWS Solutions Architect!</strong></p>
+<p><strong>Tiếp theo: Demo implement NAT Gateway trong Animals4Life VPC!</strong></p>
+<p><strong>Ghi nhớ:</strong> NAT Gateway là component thiết yếu cho mọi production VPC có private subnets. Hiểu rõ multi-AZ design và cost implications!</p>
 
 
 
@@ -2456,7 +2569,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../11.NACLs/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp;amp; thực chiến cho người mới (Đủ thi cert &amp;amp; đi làm)">
+          <a href="../12.SecurityGroups/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2466,20 +2579,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp; thực chiến cho người mới (Đủ thi cert &amp; đi làm)
+                🛡️ AWS Security Groups: Firewall thông minh cho EC2 (Lý thuyết + thực chiến cho người mới)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../13.NAT/" class="md-footer__link md-footer__link--next" aria-label="Sau: 🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert &amp;amp; đi làm)">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                🌐 AWS NAT Gateway: Lý thuyết nền tảng cho người mới (Hiểu từ A-Z để thi cert &amp; đi làm)
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
