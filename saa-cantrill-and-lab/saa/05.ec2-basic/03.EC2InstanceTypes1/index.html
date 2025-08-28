@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/11.NACLs/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/03.EC2InstanceTypes1/">
       
       
-        <link rel="prev" href="../10.StateFull-StateLess/">
+        <link rel="prev" href="../02.EC2architectureResilience/">
       
       
-        <link rel="next" href="../12.SecurityGroups/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>11.NACLs - DraDoc</title>
+        <title>03.EC2InstanceTypes1 - DraDoc</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam" class="md-skip">
+        <a href="#ec2-instance-types-chon-ung-instance-cho-performance-cost" class="md-skip">
           Bỏ qua
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11.NACLs
+              03.EC2InstanceTypes1
             
           </span>
         </div>
@@ -1055,8 +1055,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1085,6 +1083,65 @@
         
       
         
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../04.VPC/01.IP-plan/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    04.VPC
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
         
       
@@ -1107,15 +1164,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
-    04.VPC
+    05.ec2 basic
     
   </span>
   
@@ -1123,10 +1180,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_5">
             <span class="md-nav__icon md-icon"></span>
-            04.VPC
+            05.ec2 basic
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1137,12 +1194,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../01.IP-plan/" class="md-nav__link">
+      <a href="../01.Virtualization/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    01.IP plan
+    01.Virtualization
     
   </span>
   
@@ -1160,196 +1217,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../02.ip-plan2/" class="md-nav__link">
+      <a href="../02.EC2architectureResilience/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    02.ip plan2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03.Custom%20VPCs1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    03.Custom VPCs1
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.custom-vpc-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04.custom vpc lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05.VpcSubnets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    05.VpcSubnets
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06.subnet-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06.subnet lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.vpcRouting-IGW-bastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07.vpcRouting IGW bastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08.lab-publicSubnet-BastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    08.lab publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09.lab2-publicSubnet-BastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    09.lab2 publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10.StateFull-StateLess/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    10.StateFull StateLess
+    02.EC2architectureResilience
     
   </span>
   
@@ -1379,7 +1252,7 @@
   
   
   <span class="md-ellipsis">
-    11.NACLs
+    03.EC2InstanceTypes1
     
   </span>
   
@@ -1392,7 +1265,7 @@
   
   
   <span class="md-ellipsis">
-    11.NACLs
+    03.EC2InstanceTypes1
     
   </span>
   
@@ -1413,37 +1286,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam" class="md-nav__link">
+  <a href="#ec2-instance-types-chon-ung-instance-cho-performance-cost" class="md-nav__link">
     <span class="md-ellipsis">
-      🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp; thực chiến cho người mới (Đủ thi cert &amp; đi làm)
+      🖥️ EC2 Instance Types: Chọn đúng instance cho performance &amp; cost
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-1-network-acl-nacl-la-gi" class="md-nav__link">
+  <a href="#instance-type-anh-huong-gi" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 1: Network ACL (NACL) là gì?
+      Instance Type ảnh hưởng gì?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 1: Network ACL (NACL) là gì?">
+    <nav class="md-nav" aria-label="Instance Type ảnh hưởng gì?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inh-nghia-co-ban" class="md-nav__link">
+  <a href="#core-factors" class="md-nav__link">
     <span class="md-ellipsis">
-      Định nghĩa cơ bản
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iem-quan-trong-can-nho" class="md-nav__link">
-    <span class="md-ellipsis">
-      Điểm quan trọng cần nhớ
+      Core Factors
     </span>
   </a>
   
@@ -1455,28 +1319,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-2-cach-nacl-hoat-ong-cuc-quan-trong" class="md-nav__link">
+  <a href="#5-main-categories" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 2: Cách NACL hoạt động (Cực quan trọng)
+      5 Main Categories
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 2: Cách NACL hoạt động (Cực quan trọng)">
+    <nav class="md-nav" aria-label="5 Main Categories">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cau-truc-rule-trong-nacl" class="md-nav__link">
+  <a href="#1-general-purpose-default-choice" class="md-nav__link">
     <span class="md-ellipsis">
-      Cấu trúc rule trong NACL
+      1. General Purpose ⭐ (Default choice)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rule-processing-logic" class="md-nav__link">
+  <a href="#2-compute-optimized" class="md-nav__link">
     <span class="md-ellipsis">
-      Rule processing logic
+      2. Compute Optimized 🚀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-memory-optimized" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Memory Optimized 🧠
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-accelerated-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Accelerated Computing ⚡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-storage-optimized" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Storage Optimized 💾
     </span>
   </a>
   
@@ -1488,37 +1379,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-3-vi-sao-nacl-phuc-tap-stateless-problems" class="md-nav__link">
+  <a href="#instance-naming-r5dn8xlarge" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)
+      Instance Naming: R5DN.8xlarge
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)">
+    <nav class="md-nav" aria-label="Instance Naming: R5DN.8xlarge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vi-du-thuc-te-web-server-nhan-https" class="md-nav__link">
+  <a href="#common-families" class="md-nav__link">
     <span class="md-ellipsis">
-      Ví dụ thực tế: Web server nhận HTTPS
+      Common Families
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#multi-tier-architecture-nightmare" class="md-nav__link">
+  <a href="#common-suffixes" class="md-nav__link">
     <span class="md-ellipsis">
-      Multi-tier architecture nightmare
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#van-e-ephemeral-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vấn đề ephemeral port
+      Common Suffixes
     </span>
   </a>
   
@@ -1530,28 +1412,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-4-default-nacl-vs-custom-nacl" class="md-nav__link">
+  <a href="#selection-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 4: Default NACL vs Custom NACL
+      Selection Strategy
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 4: Default NACL vs Custom NACL">
+    <nav class="md-nav" aria-label="Selection Strategy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#default-nacl-khi-tao-vpc" class="md-nav__link">
+  <a href="#step-1-start-general-purpose" class="md-nav__link">
     <span class="md-ellipsis">
-      Default NACL (khi tạo VPC)
+      Step 1: Start General Purpose
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#custom-nacl-tu-tao" class="md-nav__link">
+  <a href="#step-2-identify-bottlenecks" class="md-nav__link">
     <span class="md-ellipsis">
-      Custom NACL (tự tạo)
+      Step 2: Identify Bottlenecks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Cost Optimization
     </span>
   </a>
   
@@ -1563,61 +1454,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-5-nacl-key-characteristics-can-thuoc-long" class="md-nav__link">
+  <a href="#real-world-tips" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)
+      Real-world Tips
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)">
+    <nav class="md-nav" aria-label="Real-world Tips">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-properties" class="md-nav__link">
+  <a href="#production-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Properties
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use-cases-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use Cases thực tế
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 6: NACL vs Security Group (So sánh cực quan trọng)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-7-best-practices-real-world-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 7: Best Practices &amp; Real-world Tips
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 7: Best Practices &amp; Real-world Tips">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#thuc-te-khi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thực tế khi đi làm
+      Production Best Practices
     </span>
   </a>
   
@@ -1638,33 +1487,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-8-checklist-kien-thuc-thi-cert-phong-van" class="md-nav__link">
+  <a href="#exam-questions-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cau-hoi-exam-thuong-gap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Câu hỏi exam thường gặp
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-9-tong-ket-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 9: Tổng kết &amp; takeaways
+      Exam Questions Pattern
     </span>
   </a>
   
@@ -1679,157 +1504,8 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12.SecurityGroups/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    12.SecurityGroups
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.NAT/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    13.NAT
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14.NAT2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    14.NAT2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15.lab-natGW-private-internet-access/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    15.lab natGW private internet access
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../05.ec2-basic/01.Virtualization/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    05.ec2 basic
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
       
     </li>
   
@@ -1936,37 +1612,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam" class="md-nav__link">
+  <a href="#ec2-instance-types-chon-ung-instance-cho-performance-cost" class="md-nav__link">
     <span class="md-ellipsis">
-      🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp; thực chiến cho người mới (Đủ thi cert &amp; đi làm)
+      🖥️ EC2 Instance Types: Chọn đúng instance cho performance &amp; cost
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-1-network-acl-nacl-la-gi" class="md-nav__link">
+  <a href="#instance-type-anh-huong-gi" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 1: Network ACL (NACL) là gì?
+      Instance Type ảnh hưởng gì?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 1: Network ACL (NACL) là gì?">
+    <nav class="md-nav" aria-label="Instance Type ảnh hưởng gì?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inh-nghia-co-ban" class="md-nav__link">
+  <a href="#core-factors" class="md-nav__link">
     <span class="md-ellipsis">
-      Định nghĩa cơ bản
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iem-quan-trong-can-nho" class="md-nav__link">
-    <span class="md-ellipsis">
-      Điểm quan trọng cần nhớ
+      Core Factors
     </span>
   </a>
   
@@ -1978,28 +1645,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-2-cach-nacl-hoat-ong-cuc-quan-trong" class="md-nav__link">
+  <a href="#5-main-categories" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 2: Cách NACL hoạt động (Cực quan trọng)
+      5 Main Categories
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 2: Cách NACL hoạt động (Cực quan trọng)">
+    <nav class="md-nav" aria-label="5 Main Categories">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cau-truc-rule-trong-nacl" class="md-nav__link">
+  <a href="#1-general-purpose-default-choice" class="md-nav__link">
     <span class="md-ellipsis">
-      Cấu trúc rule trong NACL
+      1. General Purpose ⭐ (Default choice)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rule-processing-logic" class="md-nav__link">
+  <a href="#2-compute-optimized" class="md-nav__link">
     <span class="md-ellipsis">
-      Rule processing logic
+      2. Compute Optimized 🚀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-memory-optimized" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Memory Optimized 🧠
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-accelerated-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Accelerated Computing ⚡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-storage-optimized" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Storage Optimized 💾
     </span>
   </a>
   
@@ -2011,37 +1705,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-3-vi-sao-nacl-phuc-tap-stateless-problems" class="md-nav__link">
+  <a href="#instance-naming-r5dn8xlarge" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)
+      Instance Naming: R5DN.8xlarge
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)">
+    <nav class="md-nav" aria-label="Instance Naming: R5DN.8xlarge">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vi-du-thuc-te-web-server-nhan-https" class="md-nav__link">
+  <a href="#common-families" class="md-nav__link">
     <span class="md-ellipsis">
-      Ví dụ thực tế: Web server nhận HTTPS
+      Common Families
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#multi-tier-architecture-nightmare" class="md-nav__link">
+  <a href="#common-suffixes" class="md-nav__link">
     <span class="md-ellipsis">
-      Multi-tier architecture nightmare
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#van-e-ephemeral-port" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vấn đề ephemeral port
+      Common Suffixes
     </span>
   </a>
   
@@ -2053,28 +1738,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-4-default-nacl-vs-custom-nacl" class="md-nav__link">
+  <a href="#selection-strategy" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 4: Default NACL vs Custom NACL
+      Selection Strategy
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 4: Default NACL vs Custom NACL">
+    <nav class="md-nav" aria-label="Selection Strategy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#default-nacl-khi-tao-vpc" class="md-nav__link">
+  <a href="#step-1-start-general-purpose" class="md-nav__link">
     <span class="md-ellipsis">
-      Default NACL (khi tạo VPC)
+      Step 1: Start General Purpose
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#custom-nacl-tu-tao" class="md-nav__link">
+  <a href="#step-2-identify-bottlenecks" class="md-nav__link">
     <span class="md-ellipsis">
-      Custom NACL (tự tạo)
+      Step 2: Identify Bottlenecks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Cost Optimization
     </span>
   </a>
   
@@ -2086,61 +1780,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-5-nacl-key-characteristics-can-thuoc-long" class="md-nav__link">
+  <a href="#real-world-tips" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)
+      Real-world Tips
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)">
+    <nav class="md-nav" aria-label="Real-world Tips">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#core-properties" class="md-nav__link">
+  <a href="#production-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Properties
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#use-cases-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use Cases thực tế
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 6: NACL vs Security Group (So sánh cực quan trọng)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-7-best-practices-real-world-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 7: Best Practices &amp; Real-world Tips
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 7: Best Practices &amp; Real-world Tips">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#thuc-te-khi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thực tế khi đi làm
+      Production Best Practices
     </span>
   </a>
   
@@ -2161,33 +1813,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-8-checklist-kien-thuc-thi-cert-phong-van" class="md-nav__link">
+  <a href="#exam-questions-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cau-hoi-exam-thuong-gap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Câu hỏi exam thường gặp
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-9-tong-ket-takeaways" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 9: Tổng kết &amp; takeaways
+      Exam Questions Pattern
     </span>
   </a>
   
@@ -2209,7 +1837,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/11.NACLs.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/03.EC2InstanceTypes1.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2217,223 +1845,267 @@
   
 
 
-  <h1>11.NACLs</h1>
+  <h1>03.EC2InstanceTypes1</h1>
 
-<h2 id="network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam">🛡️ Network ACL (NACL) trên AWS: Lý thuyết &amp; thực chiến cho người mới (Đủ thi cert &amp; đi làm)<a class="headerlink" href="#network-acl-nacl-tren-aws-ly-thuyet-thuc-chien-cho-nguoi-moi-u-thi-cert-i-lam" title="Permanent link">&para;</a></h2>
+<p><a href="https://aws.amazon.com/ec2/instance-types/">https://aws.amazon.com/ec2/instance-types/</a></p>
+<p><a href="https://ec2instances.info/">https://ec2instances.info/</a></p>
+<h2 id="ec2-instance-types-chon-ung-instance-cho-performance-cost">🖥️ EC2 Instance Types: Chọn đúng instance cho performance &amp; cost<a class="headerlink" href="#ec2-instance-types-chon-ung-instance-cho-performance-cost" title="Permanent link">&para;</a></h2>
 <hr />
-<h2 id="phan-1-network-acl-nacl-la-gi">PHẦN 1: Network ACL (NACL) là gì?<a class="headerlink" href="#phan-1-network-acl-nacl-la-gi" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/cdd31e15-df34-499b-af2a-1df0f1abe14e" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="836" height="473" alt="image" src="https://github.com/user-attachments/assets/cdd31e15-df34-499b-af2a-1df0f1abe14e" /></a></p>
-<h3 id="inh-nghia-co-ban"><strong>Định nghĩa cơ bản</strong><a class="headerlink" href="#inh-nghia-co-ban" title="Permanent link">&para;</a></h3>
+<h2 id="instance-type-anh-huong-gi">Instance Type ảnh hưởng gì?<a class="headerlink" href="#instance-type-anh-huong-gi" title="Permanent link">&para;</a></h2>
+<h3 id="core-factors"><strong>Core Factors</strong><a class="headerlink" href="#core-factors" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Network Access Control List (NACL)</strong> = <strong>firewall truyền thống</strong> ở cấp subnet trong AWS VPC</li>
-<li><strong>Associate với subnet</strong>, không phải với instance</li>
-<li><strong>Stateless firewall</strong> (không nhớ trạng thái kết nối)</li>
-<li><strong>Filter traffic khi đi qua biên giới subnet</strong> (vào/ra subnet)</li>
-</ul>
-<h3 id="iem-quan-trong-can-nho"><strong>Điểm quan trọng cần nhớ</strong><a class="headerlink" href="#iem-quan-trong-can-nho" title="Permanent link">&para;</a></h3>
-<ul>
-<li>✅ <strong>Traffic vào/ra subnet:</strong> Bị NACL kiểm soát</li>
-<li>❌ <strong>Traffic giữa các instance trong cùng subnet:</strong> KHÔNG bị NACL kiểm soát</li>
-<li>🔄 <strong>Cần 2 rule cho 1 kết nối:</strong> Inbound rule + Outbound rule (vì stateless)</li>
+<li><strong>Resources:</strong> vCPU, Memory, Storage, Network</li>
+<li><strong>Cost:</strong> Price per hour</li>
+<li><strong>Performance:</strong> Network bandwidth, storage IOPS</li>
+<li><strong>Hardware:</strong> Intel/AMD/ARM, GPU, FPGA</li>
 </ul>
 <hr />
-<h2 id="phan-2-cach-nacl-hoat-ong-cuc-quan-trong">PHẦN 2: Cách NACL hoạt động (Cực quan trọng)<a class="headerlink" href="#phan-2-cach-nacl-hoat-ong-cuc-quan-trong" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/e2555731-bae9-491b-b841-85d821ed208f" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="859" height="468" alt="image" src="https://github.com/user-attachments/assets/e2555731-bae9-491b-b841-85d821ed208f" /></a></p>
-<h3 id="cau-truc-rule-trong-nacl"><strong>Cấu trúc rule trong NACL</strong><a class="headerlink" href="#cau-truc-rule-trong-nacl" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">NACL Rules Structure</span><span class="p">:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">Inbound Rules</span><span class="p">:</span><span class="w">    </span><span class="c1"># Traffic vào subnet</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#100: Allow TCP 443 from 0.0.0.0/0</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#200: Allow TCP 80 from 0.0.0.0/0</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#*: DENY all (implicit deny)</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">Outbound Rules</span><span class="p">:</span><span class="w">   </span><span class="c1"># Traffic ra khỏi subnet</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#100: Allow TCP 1024-65535 to 0.0.0.0/0</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rule</span><span class="w"> </span><span class="c1">#*: DENY all (implicit deny)</span>
+<h2 id="5-main-categories">5 Main Categories<a class="headerlink" href="#5-main-categories" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="https://github.com/user-attachments/assets/d3169f24-3985-4f8a-974b-c5f96f9bbf9e" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="836" height="475" alt="image" src="https://github.com/user-attachments/assets/d3169f24-3985-4f8a-974b-c5f96f9bbf9e" /></a></p>
+<h3 id="1-general-purpose-default-choice"><strong>1. General Purpose</strong> ⭐ (Default choice)<a class="headerlink" href="#1-general-purpose-default-choice" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">Families</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">T3, T4g, M5, M6i</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">Use cases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Web servers, small DBs, dev environments</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">When</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Balanced workloads, starting point</span>
 </code></pre></div>
-<h3 id="rule-processing-logic"><strong>Rule processing logic</strong><a class="headerlink" href="#rule-processing-logic" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>NACL xác định:</strong> Dùng inbound hay outbound rule set</li>
-<li><strong>Process theo thứ tự:</strong> Rule number thấp nhất trước (100 → 200 → 300...)</li>
-<li><strong>First match wins:</strong> Gặp rule khớp đầu tiên → apply → dừng</li>
-<li><strong>Implicit deny (*):</strong> Nếu không match rule nào → deny</li>
-</ol>
-<blockquote>
-<p><strong>Critical:</strong> Rule 100 DENY sẽ block ngay, dù rule 200 ALLOW cùng traffic!</p>
-</blockquote>
+<h3 id="2-compute-optimized"><strong>2. Compute Optimized</strong> 🚀<a class="headerlink" href="#2-compute-optimized" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">Families</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">C5, C6i, C6g</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">Use cases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HPC, gaming, ML inference, media processing</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">When</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">High CPU utilization, CPU-bound applications</span>
+</code></pre></div>
+<a href="https://www.ibm.com/think/topics/hpc">HPC</a>
+<a href="https://aws.amazon.com/what-is/hpc/">HPC2</a></p>
+<details>
+  <summary>why  HPC, gaming, ML inference, media processing need high compute </summary>
+  Để dễ hiểu hơn, các tác vụ như HPC, gaming, ML inference, và xử lý media đều cần sức mạnh tính toán cao (compute optimized) vì chúng có một đặc điểm chung: **tất cả đều là các bài toán có thể chia nhỏ ra và xử lý đồng thời trên hàng trăm, thậm chí hàng nghìn nhân xử lý.**
+
+---
+
+### **1. HPC (Điện toán hiệu năng cao)**
+
+HPC giải quyết các vấn đề khoa học lớn bằng cách chia nhỏ chúng. Ví dụ, mô phỏng khí hậu không phải là một phép tính duy nhất; nó là hàng tỷ phép tính nhỏ về nhiệt độ, áp suất, độ ẩm tại từng điểm trên Trái đất, được thực hiện cùng lúc.
+
+**Tóm lại:** HPC cần máy tính tối ưu hóa tính toán vì nó xử lý các **bài toán lớn bằng cách giải quyết song song các bài toán nhỏ.**
+
+---
+
+### **2. Gaming**
+
+Game là một mô phỏng tương tác liên tục. Mỗi khung hình (frame) cần được xử lý riêng biệt nhưng cực nhanh. Một cảnh game không phải là một hình ảnh tĩnh, mà là hàng triệu điểm ảnh, hiệu ứng ánh sáng, vật lý va chạm, và AI của nhân vật, tất cả đều phải tính toán và dựng lại **mỗi 1/60 giây** hoặc nhanh hơn.
+
+**Tóm lại:** Gaming cần hiệu năng tính toán cao để **xử lý hàng triệu phép tính đồ họa và vật lý theo thời gian thực** để mang lại trải nghiệm mượt mà.
+
+---
+
+### **3. ML Inference (Suy luận máy học)**
+
+Suy luận ML là quá trình đưa ra dự đoán dựa trên một mô hình đã được huấn luyện. Các mô hình này có hàng tỷ tham số. Ví dụ, khi bạn hỏi một chatbot AI, nó phải thực hiện hàng nghìn phép nhân ma trận để hiểu câu hỏi và tạo ra câu trả lời **chỉ trong vài mili giây.**
+
+**Tóm lại:** Suy luận ML cần sức mạnh tính toán để **thực hiện hàng loạt phép tính phức tạp một cách cực nhanh** cho các mô hình AI khổng lồ.
+
+---
+
+### **4. Xử lý Media**
+
+Xử lý media, như biên tập video, liên quan đến việc xử lý từng khung hình một cách độc lập. Khi bạn chỉnh sửa một video 4K, mỗi giây video chứa hàng chục đến hàng trăm khung hình, và mỗi khung hình lại có hàng triệu điểm ảnh. Thêm một hiệu ứng hay chuyển đổi định dạng đòi hỏi phải tính toán lại từng điểm ảnh đó.
+
+**Tóm lại:** Xử lý media cần tính toán tối ưu để **làm việc với khối lượng dữ liệu khổng lồ (video, hình ảnh độ phân giải cao) một cách song song.**
+
+---
+
+**Điểm mấu chốt là:** tất cả các tác vụ này đều tận dụng lợi thế của việc xử lý song song để đạt được tốc độ cao, từ đó cần các loại máy tính được tối ưu hóa cho mục đích này.
+</details>
+
+<h3 id="3-memory-optimized"><strong>3. Memory Optimized</strong> 🧠<a class="headerlink" href="#3-memory-optimized" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">Families</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">R5, R6i, X1e</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">Use cases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Redis, in-memory DBs, real-time analytics</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">When</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">High memory usage, large datasets</span>
+</code></pre></div>
+<details>
+  <summary>Redis, in-memory DBs, real-time analytics tại sao cần memory optimize</summary>
+Các công nghệ như Redis, cơ sở dữ liệu in-memory (in-memory DBs), và phân tích thời gian thực (real-time analytics) đều cần tối ưu hóa bộ nhớ (memory optimized) vì một lý do cốt lõi: **chúng ưu tiên tốc độ truy cập dữ liệu cực nhanh bằng cách giữ toàn bộ hoặc phần lớn dữ liệu trong RAM thay vì trên ổ đĩa.**
+
+Đây là giải thích chi tiết cho từng trường hợp:
+
+### 1. Redis và Cơ sở dữ liệu In-memory
+
+Redis là một ví dụ điển hình của cơ sở dữ liệu in-memory. Đúng như tên gọi, nó lưu trữ dữ liệu trực tiếp trong RAM (bộ nhớ truy cập ngẫu nhiên) thay vì trên ổ cứng (SSD hoặc HDD).
+
+* **Tại sao cần tối ưu hóa bộ nhớ?**
+    * **Tốc độ:** RAM nhanh hơn SSD hàng trăm lần và nhanh hơn HDD hàng nghìn lần. Bằng cách giữ dữ liệu trong RAM, Redis có thể đọc và ghi dữ liệu với độ trễ chỉ tính bằng mili giây hoặc thậm chí micro giây, lý tưởng cho các ứng dụng cần phản hồi nhanh như caching, quản lý session, và bảng xếp hạng.
+    * **Tránh I/O từ ổ đĩa:** Các thao tác đọc/ghi từ ổ đĩa (I/O) là một nút thắt cổ chai lớn trong hiệu suất của nhiều hệ thống. Khi dữ liệu được lưu trong bộ nhớ, các thao tác này được loại bỏ, giúp hệ thống không bị chậm lại.
+    * **Chi phí:** Mặc dù RAM đắt hơn ổ cứng, việc tối ưu hóa cách dữ liệu được lưu trữ trong bộ nhớ giúp giảm thiểu chi phí. Redis sử dụng cấu trúc dữ liệu hiệu quả (như chuỗi nén, danh sách liên kết, hash tables) để lưu trữ dữ liệu gọn gàng nhất có thể, giúp bạn lưu trữ nhiều dữ liệu hơn trên cùng một lượng RAM.
+
+### 2. Phân tích Thời gian thực (Real-time Analytics)
+
+Phân tích thời gian thực yêu cầu xử lý dữ liệu ngay lập tức khi nó đến, để đưa ra các insights (thông tin chi tiết) và quyết định gần như ngay lập tức. Ví dụ: phát hiện gian lận trong giao dịch tài chính, phân tích hành vi người dùng trên một trang web.
+
+* **Tại sao cần tối ưu hóa bộ nhớ?**
+    * **Xử lý luồng dữ liệu (Data Streaming):** Dữ liệu trong phân tích thời gian thực thường là một luồng (stream) liên tục. Để xử lý hiệu quả, các hệ thống cần giữ một "cửa sổ" dữ liệu gần nhất trong bộ nhớ để thực hiện các phép tính nhanh chóng (ví dụ: tính trung bình di chuyển của một giá trị trong 5 phút gần nhất).
+    * **Độ trễ thấp:** Phân tích thời gian thực không thể chấp nhận độ trễ. Để phân tích một giao dịch gian lận, hệ thống cần đưa ra quyết định trong vài mili giây. Việc truy cập dữ liệu từ RAM là yếu tố then chốt để đạt được tốc độ này.
+    * **Khả năng mở rộng:** Các nền tảng phân tích thời gian thực cần khả năng xử lý hàng triệu sự kiện mỗi giây. Tối ưu hóa bộ nhớ cho phép hệ thống xử lý nhiều sự kiện hơn trên mỗi đơn vị RAM, giúp mở rộng hệ thống một cách hiệu quả hơn.
+
+### Tóm lại:
+
+Tất cả ba trường hợp trên đều cần **tối ưu hóa bộ nhớ** vì chúng đều theo đuổi một mục tiêu chung: **ưu tiên hiệu suất và tốc độ hơn dung lượng lưu trữ.**
+
+* **Redis và In-memory DBs:** Mục tiêu là **truy cập dữ liệu cực nhanh (nanosecond/microsecond latency)**.
+* **Real-time Analytics:** Mục tiêu là **xử lý và phân tích dữ liệu ngay lập tức (instant insights)**.
+
+Trong cả hai trường hợp, việc giữ dữ liệu trong bộ nhớ là cách duy nhất để loại bỏ nút thắt cổ chai từ I/O của ổ đĩa, và tối ưu hóa cách sử dụng RAM là cần thiết để đạt được hiệu suất cao nhất với chi phí hợp lý.
+</details>
+
+<h3 id="4-accelerated-computing"><strong>4. Accelerated Computing</strong> ⚡<a class="headerlink" href="#4-accelerated-computing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">Families</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">P3, P4, G4, F1</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">Use cases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ML training, 3D rendering, AI workloads</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">When</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Need GPU/FPGA, parallel processing</span>
+</code></pre></div>
+<details>
+  <summary> ML training, 3D rendering, AI workloads sao cần Accelerated Computing </summary>
+Các tác vụ như **đào tạo máy học (ML training), kết xuất 3D (3D rendering), và các khối lượng công việc AI (AI workloads)** cần **điện toán tăng tốc (accelerated computing)** vì chúng có một điểm chung: **tất cả đều đòi hỏi xử lý song song một lượng lớn các phép tính đơn giản nhưng lặp đi lặp lại.**
+
+Để hiểu rõ, hãy nghĩ về một CPU (bộ xử lý trung tâm) và một GPU (bộ xử lý đồ họa).
+
+* **CPU** giống như một đội trưởng nhỏ nhưng cực kỳ thông minh. Anh ấy có thể thực hiện nhiều loại nhiệm vụ phức tạp khác nhau, nhưng chỉ một vài việc cùng một lúc.
+* **GPU** giống như một đội quân khổng lồ gồm hàng nghìn binh lính đơn giản. Mỗi binh lính chỉ có thể làm một việc rất đơn giản (ví dụ: cộng, nhân), nhưng vì có số lượng lớn nên họ có thể làm hàng triệu việc đó cùng lúc.
+
+Điện toán tăng tốc sử dụng những "đội quân" này (GPU hoặc các bộ tăng tốc chuyên dụng khác) để tăng tốc các tác vụ cụ thể.
+
+---
+
+### **1. Đào tạo Máy học (ML Training)**
+
+Quá trình đào tạo một mô hình máy học (ví dụ: mô hình nhận diện hình ảnh) đòi hỏi việc truyền một lượng lớn dữ liệu (hàng triệu hình ảnh) qua một mạng lưới thần kinh phức tạp. Mỗi lần truyền qua, mô hình phải thực hiện hàng tỷ phép tính nhân ma trận và cộng đơn giản để điều chỉnh các tham số của nó.
+
+* **Tại sao cần tăng tốc?** Hàng tỷ phép tính này có thể được chia nhỏ và chạy song song. Một GPU với hàng nghìn nhân xử lý có thể thực hiện những phép tính này nhanh hơn rất nhiều so với CPU, rút ngắn thời gian đào tạo từ nhiều tuần xuống còn vài giờ hoặc vài ngày.
+
+---
+
+### **2. Kết xuất 3D (3D Rendering)**
+
+Kết xuất 3D là quá trình tạo ra một hình ảnh hoặc video 3D từ một mô hình máy tính. Để tạo ra một hình ảnh, máy tính phải tính toán vị trí, màu sắc, ánh sáng và bóng của hàng triệu đa giác và pixel.
+
+* **Tại sao cần tăng tốc?** Mỗi pixel trong một khung hình 3D cần được tính toán riêng biệt. Đây là một tác vụ có thể song song hóa một cách hoàn hảo. GPU được thiết kế đặc biệt cho việc này, cho phép các nhà làm phim hoạt hình hoặc thiết kế đồ họa tạo ra các hình ảnh thực tế phức tạp một cách nhanh chóng.
+
+---
+
+### **3. Các Khối lượng Công việc AI (AI Workloads)**
+
+Các tác vụ AI rộng lớn hơn ML, bao gồm xử lý ngôn ngữ tự nhiên (NLP), thị giác máy tính, và robot học. Chúng có thể là suy luận (inference) hoặc đào tạo (training).
+
+* **Tại sao cần tăng tốc?** Tương tự như đào tạo ML, các tác vụ AI liên quan đến việc xử lý dữ liệu với tốc độ cao. Ví dụ, một hệ thống xe tự lái cần phải xử lý dữ liệu từ camera và cảm biến theo thời gian thực để nhận diện các vật thể và đưa ra quyết định ngay lập tức. Các bộ tăng tốc (ví dụ: GPU của NVIDIA hoặc TPU của Google) được tối ưu hóa cho các loại phép tính này, giúp hệ thống hoạt động mượt mà và an toàn.
+
+**Tóm lại:** Tất cả ba lĩnh vực này đều dựa vào các phép tính đơn giản nhưng số lượng khổng lồ. Điện toán tăng tốc cung cấp một kiến trúc phần cứng (như GPU) có thể xử lý các phép tính này song song, giúp tăng tốc độ xử lý lên nhiều lần so với chỉ dùng CPU.
+</details>
+
+<h3 id="5-storage-optimized"><strong>5. Storage Optimized</strong> 💾<a class="headerlink" href="#5-storage-optimized" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">Families</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">I3, I4i, D2, D3</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">Use cases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data warehousing, Elasticsearch, NoSQL</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">When</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">High IOPS, sequential read/write</span>
+</code></pre></div>
+<details>
+  <summary> Data warehousing, Elasticsearch, NoSQL sao cần Storage Optimized</summary>
+ Các hệ thống như **Data warehousing (Kho dữ liệu), Elasticsearch, và NoSQL** cần **tối ưu hóa lưu trữ (storage optimized)** vì chúng phải xử lý và lưu trữ **một lượng dữ liệu khổng lồ trong thời gian dài.** Khác với các hệ thống cần tốc độ truy cập tức thời (như Redis), những công nghệ này ưu tiên khả năng lưu trữ hiệu quả, khả năng mở rộng và truy vấn dữ liệu phức tạp trên các tập dữ liệu lớn.
+
+Dưới đây là lý do chi tiết cho từng trường hợp:
+
+### 1. Data Warehousing (Kho dữ liệu)
+
+Kho dữ liệu được xây dựng để lưu trữ dữ liệu lịch sử từ nhiều nguồn khác nhau nhằm mục đích phân tích, lập báo cáo và ra quyết định. Dữ liệu trong kho dữ liệu thường không thay đổi, nhưng khối lượng của nó lại tăng lên không ngừng.
+
+* **Tại sao cần tối ưu hóa lưu trữ?**
+    * **Khối lượng dữ liệu khổng lồ:** Kho dữ liệu chứa hàng petabyte hoặc thậm chí exabyte dữ liệu, đòi hỏi giải pháp lưu trữ có dung lượng lớn, giá thành hợp lý.
+    * **Tối ưu hóa cho truy vấn phân tích:** Dữ liệu được lưu trữ theo cách tối ưu cho các truy vấn phức tạp (ví dụ: truy vấn qua nhiều bảng, tổng hợp dữ liệu). Các kỹ thuật như **phân vùng (partitioning), nén dữ liệu (data compression), và lưu trữ theo cột (columnar storage)** giúp giảm thiểu dung lượng lưu trữ và tăng tốc độ truy vấn.
+    * **Chi phí lưu trữ:** Với lượng dữ liệu lớn, chi phí lưu trữ trên ổ đĩa là một yếu tố quan trọng. Tối ưu hóa lưu trữ giúp giảm chi phí và quản lý dữ liệu hiệu quả hơn.
+
+### 2. Elasticsearch
+
+Elasticsearch là một công cụ tìm kiếm và phân tích dữ liệu phân tán. Nó lưu trữ dữ liệu theo cấu trúc index để có thể tìm kiếm toàn văn và phân tích nhanh chóng. Dữ liệu thường là các log, sự kiện, hoặc các bản ghi sản phẩm.
+
+* **Tại sao cần tối ưu hóa lưu trữ?**
+    * **Tìm kiếm và phân tích trên dữ liệu lớn:** Elasticsearch phải lưu trữ một lượng lớn dữ liệu phi cấu trúc để có thể tìm kiếm trong mili giây. Kỹ thuật lưu trữ được tối ưu hóa để đảm bảo việc truy cập ngẫu nhiên và tìm kiếm nhanh trên các index lớn.
+    * **Quản lý vòng đời dữ liệu (Data Lifecycle Management):** Dữ liệu trong Elasticsearch thường có "tuổi". Dữ liệu mới (hot data) cần được truy cập nhanh, trong khi dữ liệu cũ (cold data) có thể được chuyển sang các tầng lưu trữ rẻ hơn và chậm hơn (ví dụ: từ SSD sang HDD hoặc sang các dịch vụ lưu trữ đám mây).
+    * **Nén và giảm trùng lặp:** Elasticsearch sử dụng các kỹ thuật nén và tối ưu hóa lưu trữ để giảm thiểu dung lượng cần thiết, vì các bản ghi log hay sự kiện thường có nhiều dữ liệu lặp lại.
+
+### 3. NoSQL Databases (Cơ sở dữ liệu NoSQL)
+
+NoSQL là một tập hợp các cơ sở dữ liệu phi quan hệ, được thiết kế để xử lý dữ liệu phi cấu trúc hoặc bán cấu trúc với khả năng mở rộng linh hoạt. Các loại NoSQL khác nhau (document, key-value, column-family) có cách tối ưu hóa lưu trữ riêng biệt.
+
+* **Tại sao cần tối ưu hóa lưu trữ?**
+    * **Lưu trữ dữ liệu phi cấu trúc và bán cấu trúc:** NoSQL không có schema cố định, cho phép lưu trữ nhiều loại dữ liệu khác nhau. Việc tối ưu hóa lưu trữ giúp xử lý hiệu quả các tài liệu (document) có kích thước khác nhau hoặc các hàng (row) có số cột thay đổi.
+    * **Mở rộng theo chiều ngang (Horizontal Scaling):** NoSQL được thiết kế để dễ dàng mở rộng bằng cách thêm nhiều máy chủ. Điều này đòi hỏi một kiến trúc lưu trữ phân tán, nơi dữ liệu được phân chia và sao chép trên nhiều node để đảm bảo tính sẵn sàng và khả năng chịu lỗi. Tối ưu hóa lưu trữ giúp việc quản lý các phân vùng (partition) này trở nên hiệu quả.
+    * **Giảm chi phí và tăng hiệu suất I/O:** Mặc dù không cần tốc độ siêu nhanh như in-memory DB, NoSQL vẫn cần tối ưu hóa việc đọc/ghi từ ổ đĩa để duy trì hiệu suất. Các kỹ thuật như nén, mã hóa, và phân tán dữ liệu giúp giảm thiểu các thao tác I/O không cần thiết, đặc biệt với các hệ thống lớn.
+
+**Tóm lại:** Các công nghệ này cần tối ưu hóa lưu trữ vì chúng phải quản lý **khối lượng dữ liệu cực lớn trên các thiết bị lưu trữ vật lý (ổ đĩa)**, và mục tiêu là **làm cho việc lưu trữ đó hiệu quả, tiết kiệm chi phí, và đủ nhanh để đáp ứng các yêu cầu truy vấn phức tạp và tìm kiếm.**
+</details>
+
 <hr />
-<h2 id="phan-3-vi-sao-nacl-phuc-tap-stateless-problems">PHẦN 3: Vì sao NACL phức tạp? (Stateless Problems)<a class="headerlink" href="#phan-3-vi-sao-nacl-phuc-tap-stateless-problems" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/76b100de-b09e-45ed-91f4-e0725ca338fe" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="848" height="466" alt="image" src="https://github.com/user-attachments/assets/76b100de-b09e-45ed-91f4-e0725ca338fe" /></a></p>
-<h3 id="vi-du-thuc-te-web-server-nhan-https"><strong>Ví dụ thực tế: Web server nhận HTTPS</strong><a class="headerlink" href="#vi-du-thuc-te-web-server-nhan-https" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">🌐 User (Bob) → Web Server (HTTPS)</span><span class="p">:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">Request</span><span class="p">:</span><span class="w"> </span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Bob:random_port → Server:443 (inbound to subnet)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">Response</span><span class="p">:</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">Server:443 → Bob:random_port (outbound from subnet)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">Required NACL Rules</span><span class="p">:</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow TCP 443 from 0.0.0.0/0</span><span class="w">    </span><span class="c1"># Cho request</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow TCP 1024-65535 to 0.0.0.0/0</span><span class="w">  </span><span class="c1"># Cho response (ephemeral)</span>
+<h2 id="instance-naming-r5dn8xlarge">Instance Naming: <code>R5DN.8xlarge</code><a class="headerlink" href="#instance-naming-r5dn8xlarge" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="l l-Scalar l-Scalar-Plain">R    - Family (R = Memory optimized)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="l l-Scalar l-Scalar-Plain">5    - Generation (latest = better price/performance)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="l l-Scalar l-Scalar-Plain">DN   - Capabilities (d=NVMe, n=Network optimized)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="l l-Scalar l-Scalar-Plain">8xlarge - Size (linear scaling)</span>
 </code></pre></div>
-<h3 id="multi-tier-architecture-nightmare"><strong>Multi-tier architecture nightmare</strong><a class="headerlink" href="#multi-tier-architecture-nightmare" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">🏗️ Kiến trúc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bob → Web Subnet → App Subnet</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">Cần rules</span><span class="p">:</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">1. Bob → Web</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow 443</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow ephemeral</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nt">2. Web → App</span><span class="p">:</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow app_port</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">App subnet inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow app_port</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">App subnet outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow ephemeral</span><span class="w">  </span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Web subnet inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow ephemeral</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nt">Kết quả</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1 kết nối end-to-end = 6 rules! 😵</span>
-</code></pre></div>
-<h3 id="van-e-ephemeral-port"><strong>Vấn đề ephemeral port</strong><a class="headerlink" href="#van-e-ephemeral-port" title="Permanent link">&para;</a></h3>
+<h3 id="common-families"><strong>Common Families</strong><a class="headerlink" href="#common-families" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Response luôn dùng ephemeral port</strong> (1024-65535)</li>
-<li><strong>NACL phải allow cả dải</strong> (kém bảo mật)</li>
-<li><strong>Không biết trước port nào</strong> → mở rộng</li>
+<li><strong>T</strong> = Burstable performance</li>
+<li><strong>M</strong> = General purpose (balanced)</li>
+<li><strong>C</strong> = Compute optimized</li>
+<li><strong>R</strong> = Memory optimized</li>
+<li><strong>I</strong> = Storage optimized</li>
+</ul>
+<h3 id="common-suffixes"><strong>Common Suffixes</strong><a class="headerlink" href="#common-suffixes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>d</strong> = Local NVMe storage</li>
+<li><strong>n</strong> = Enhanced networking</li>
+<li><strong>a</strong> = AMD processors</li>
+<li><strong>g</strong> = AWS Graviton (ARM)</li>
 </ul>
 <hr />
-<h2 id="phan-4-default-nacl-vs-custom-nacl">PHẦN 4: Default NACL vs Custom NACL<a class="headerlink" href="#phan-4-default-nacl-vs-custom-nacl" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://github.com/user-attachments/assets/a78fc820-499d-42ce-a290-22f040838828" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img width="851" height="433" alt="image" src="https://github.com/user-attachments/assets/a78fc820-499d-42ce-a290-22f040838828" /></a></p>
-<h3 id="default-nacl-khi-tao-vpc"><strong>Default NACL (khi tạo VPC)</strong><a class="headerlink" href="#default-nacl-khi-tao-vpc" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">✅ Default NACL behavior</span><span class="p">:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Auto tạo cùng VPC</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Inbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow all (Rule</span><span class="w"> </span><span class="c1">#100: 0.0.0.0/0)</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Outbound</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Allow all (Rule</span><span class="w"> </span><span class="c1">#100: 0.0.0.0/0)  </span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Net effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Không block gì cả</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Beginner-friendly</span>
+<h2 id="selection-strategy">Selection Strategy<a class="headerlink" href="#selection-strategy" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-start-general-purpose"><strong>Step 1: Start General Purpose</strong><a class="headerlink" href="#step-1-start-general-purpose" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">Default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">M5.large or T3.medium</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nt">Monitor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CPU, Memory, Storage, Network</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">Scale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Based on bottlenecks</span>
 </code></pre></div>
-<h3 id="custom-nacl-tu-tao"><strong>Custom NACL (tự tạo)</strong><a class="headerlink" href="#custom-nacl-tu-tao" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">❌ Custom NACL behavior</span><span class="p">:</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tạo riêng cho VPC</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ban đầu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chỉ có implicit deny (*)</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Associate với subnet → block ALL traffic</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Phải tự add allow rules</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Khá nguy hiểm nếu không cẩn thận!</span>
+<h3 id="step-2-identify-bottlenecks"><strong>Step 2: Identify Bottlenecks</strong><a class="headerlink" href="#step-2-identify-bottlenecks" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="l l-Scalar l-Scalar-Plain">High CPU (&gt;80%) → Compute Optimized (C5)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="l l-Scalar l-Scalar-Plain">High Memory → Memory Optimized (R5)</span><span class="w">  </span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="l l-Scalar l-Scalar-Plain">High Storage I/O → Storage Optimized (I3)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="l l-Scalar l-Scalar-Plain">ML/Graphics → Accelerated (P3, G4)</span>
+</code></pre></div>
+<h3 id="step-3-cost-optimization"><strong>Step 3: Cost Optimization</strong><a class="headerlink" href="#step-3-cost-optimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">Scale out &gt; Scale up</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4x small &gt; 1x large</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nt">Latest generation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Better price/performance</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nt">Reserved Instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1-3 year savings</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nt">Spot Instances</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Up to 90% off</span>
 </code></pre></div>
 <hr />
-<h2 id="phan-5-nacl-key-characteristics-can-thuoc-long">PHẦN 5: NACL Key Characteristics (Cần thuộc lòng)<a class="headerlink" href="#phan-5-nacl-key-characteristics-can-thuoc-long" title="Permanent link">&para;</a></h2>
-<h3 id="core-properties"><strong>Core Properties</strong><a class="headerlink" href="#core-properties" title="Permanent link">&para;</a></h3>
+<h2 id="real-world-tips">Real-world Tips<a class="headerlink" href="#real-world-tips" title="Permanent link">&para;</a></h2>
+<h3 id="production-best-practices"><strong>Production Best Practices</strong><a class="headerlink" href="#production-best-practices" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Stateless:</strong> Request &amp; response cần rule riêng</li>
-<li><strong>Subnet-level:</strong> 1 subnet = 1 NACL, 1 NACL = nhiều subnet</li>
-<li><strong>Ordered processing:</strong> Rule number thứ tự xử lý</li>
-<li><strong>Allow &amp; Deny:</strong> Có thể explicit allow + explicit deny</li>
-<li><strong>Protocol/Port/IP based:</strong> Không reference logical AWS resources</li>
+<li>Monitor với CloudWatch metrics</li>
+<li>Use AWS Compute Optimizer recommendations</li>
+<li>Test với realistic workloads</li>
+<li>Consider fault tolerance (multiple smaller instances)</li>
 </ul>
-<h3 id="use-cases-thuc-te"><strong>Use Cases thực tế</strong><a class="headerlink" href="#use-cases-thuc-te" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">✅ NACL tốt cho</span><span class="p">:</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Block specific malicious IPs/ranges</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Compliance requirements (explicit deny)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Network-level security (defense in depth)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Backup security layer</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nt">❌ NACL không tốt cho</span><span class="p">:</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Primary security control (dùng Security Group)</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Complex application rules</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dynamic resources (Auto Scaling...)</span>
-</code></pre></div>
-<hr />
-<h2 id="phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong">PHẦN 6: NACL vs Security Group (So sánh cực quan trọng)<a class="headerlink" href="#phan-6-nacl-vs-security-group-so-sanh-cuc-quan-trong" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th>NACL</th>
-<th>Security Group</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Level</strong></td>
-<td>Subnet</td>
-<td>Instance/ENI</td>
-</tr>
-<tr>
-<td><strong>State</strong></td>
-<td>Stateless</td>
-<td>Stateful</td>
-</tr>
-<tr>
-<td><strong>Rules needed</strong></td>
-<td>2 (inbound + outbound)</td>
-<td>1 (auto allow response)</td>
-</tr>
-<tr>
-<td><strong>Allow/Deny</strong></td>
-<td>Both</td>
-<td>Allow only</td>
-</tr>
-<tr>
-<td><strong>Processing</strong></td>
-<td>Ordered (first match)</td>
-<td>All rules evaluated</td>
-</tr>
-<tr>
-<td><strong>Default behavior</strong></td>
-<td>Allow all (default NACL)</td>
-<td>Deny all</td>
-</tr>
-<tr>
-<td><strong>Use case</strong></td>
-<td>Block bad actors</td>
-<td>Primary access control</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="phan-7-best-practices-real-world-tips">PHẦN 7: Best Practices &amp; Real-world Tips<a class="headerlink" href="#phan-7-best-practices-real-world-tips" title="Permanent link">&para;</a></h2>
-<h3 id="thuc-te-khi-i-lam"><strong>Thực tế khi đi làm</strong><a class="headerlink" href="#thuc-te-khi-i-lam" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">🔧 Production practices</span><span class="p">:</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dùng Security Group làm primary security</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dùng NACL để block malicious IPs</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Giữ NACL rules đơn giản, ít rule</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Document rule numbers &amp; purposes</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test carefully trước khi apply production</span>
-</code></pre></div>
 <h3 id="common-mistakes"><strong>Common Mistakes</strong><a class="headerlink" href="#common-mistakes" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Quên rule cho response (ephemeral ports)</li>
-<li>Rule ordering sai (deny trước allow)</li>
-<li>Associate custom NACL mà chưa có allow rules</li>
-<li>Quên subnet boundary behavior</li>
+<li>Over-provisioning resources</li>
+<li>Using old generations</li>
+<li>Single large instance vs multiple small</li>
+<li>Ignoring network/storage requirements</li>
 </ul>
 <hr />
-<h2 id="phan-8-checklist-kien-thuc-thi-cert-phong-van">PHẦN 8: Checklist kiến thức thi cert &amp; phỏng vấn<a class="headerlink" href="#phan-8-checklist-kien-thuc-thi-cert-phong-van" title="Permanent link">&para;</a></h2>
-<ul>
-<li>[x] NACL là stateless, cần 2 rule/kết nối</li>
-<li>[x] Process theo rule number order, first match wins</li>
-<li>[x] 1 subnet = 1 NACL, 1 NACL = nhiều subnet</li>
-<li>[x] Default NACL allow all, custom NACL deny all</li>
-<li>[x] Chỉ filter traffic cross subnet boundary</li>
-<li>[x] Có thể explicit deny (khác Security Group)</li>
-<li>[x] Không reference AWS logical resources</li>
-</ul>
-<h3 id="cau-hoi-exam-thuong-gap"><strong>Câu hỏi exam thường gặp</strong><a class="headerlink" href="#cau-hoi-exam-thuong-gap" title="Permanent link">&para;</a></h3>
+<h2 id="exam-questions-pattern">Exam Questions Pattern<a class="headerlink" href="#exam-questions-pattern" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>"EC2 trong subnet không access được Internet, có thể do NACL?"</strong></li>
-<li><strong>"Muốn block specific IP range, dùng NACL hay Security Group?"</strong></li>
-<li><strong>"Custom NACL associate với subnet, traffic bị block hết. Tại sao?"</strong></li>
-<li><strong>"NACL rule 100 DENY, rule 200 ALLOW cùng traffic. Kết quả?"</strong></li>
+<li><strong>"High CPU usage" → C5 (Compute Optimized)</strong></li>
+<li><strong>"In-memory database" → R5 (Memory Optimized)</strong></li>
+<li><strong>"What does 'd' mean?" → Local NVMe storage</strong></li>
+<li><strong>"ML training workload" → P3 (GPU instances)</strong></li>
+<li><strong>"Data warehousing" → I3 (Storage Optimized)</strong></li>
 </ol>
 <hr />
-<h2 id="phan-9-tong-ket-takeaways">PHẦN 9: Tổng kết &amp; takeaways<a class="headerlink" href="#phan-9-tong-ket-takeaways" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong>NACL = subnet-level stateless firewall</strong></li>
-<li><strong>Phức tạp để setup đúng</strong> → chỉ dùng khi cần thiết</li>
-<li><strong>Combination với Security Group</strong> = defense in depth</li>
-<li><strong>Primary use: Block bad actors, compliance</strong></li>
-<li><strong>Rule ordering matters!</strong> Deny trước có thể block allow sau</li>
-</ul>
-<hr />
-<p><strong>Ghi nhớ:</strong> NACL là tool mạnh nhưng phức tạp. Trong thực tế, Security Group đơn giản và hiệu quả hơn cho hầu hết use case. NACL dùng khi cần explicit deny specific IPs/ranges!</p>
-<p><strong>Đọc lại bài này trước khi design VPC security hoặc chuẩn bị thi AWS SAA!</strong></p>
+<p><strong>Key Takeaway:</strong> Start với General Purpose, monitor metrics, chọn specialized family dựa trên bottlenecks. Latest generation luôn tốt hơn về price/performance!</p>
 
 
 
@@ -2541,7 +2213,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang" >
         
           
-          <a href="../10.StateFull-StateLess/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 10.StateFull StateLess">
+          <a href="../02.EC2architectureResilience/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 02.EC2architectureResilience">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2551,20 +2223,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                10.StateFull StateLess
+                02.EC2architectureResilience
               </div>
             </div>
           </a>
         
         
           
-          <a href="../12.SecurityGroups/" class="md-footer__link md-footer__link--next" aria-label="Sau: 12.SecurityGroups">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                12.SecurityGroups
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
