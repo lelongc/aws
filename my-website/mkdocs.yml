@@ -56,9 +56,8 @@ plugins:
   - search
   - glightbox
   - git-revision-date-localized
-
+  
 markdown_extensions:
-  markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.highlight:
@@ -68,7 +67,7 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
-
+  
 
 extra:
   generator: false
