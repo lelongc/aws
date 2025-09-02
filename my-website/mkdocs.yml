@@ -80,5 +80,5 @@ extra:
 copyright: 'Copyright &copy; Lê Long C. 2025'
 
 extra_css:
-  - extra_css/extra.css
+  - custom.css
 
