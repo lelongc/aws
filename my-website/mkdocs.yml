@@ -1,8 +1,9 @@
 # Thông tin cơ bản
 site_name: DraDoc
-repo_url: https://github.com/lelongc/aws # Link đến repo của bạn
-site_url: https://lelongc.github.io/aws/ # Thêm URL khi bạn triển khai
-edit_uri: edit/main/my-website/docs/ # <<< BỎ COMMENT VÀ ĐÃ CẤU HÌNH
+repo_url: https://github.com/lelongc/aws
+site_url: https://lelongc.github.io/aws/
+edit_uri: edit/main/my-website/docs/
+copyright: "Copyright © Lê Long C. 2025"
 
 # Theme Material for MkDocs
 theme:
@@ -11,8 +12,6 @@ theme:
   custom_dir: overrides
   icon:
     logo: material/aws
-
-
   palette:
     - scheme: default
       primary: indigo
@@ -26,48 +25,50 @@ theme:
       toggle:
         icon: material/weather-night
         name: Chuyển sang chế độ sáng
-
   features:
-  # - navigation.instant
-  # - navigation.instant.progress
-  - navigation.top
-  - navigation.sections
-  - navigation.search
-  - navigation.tabs
-  - navigation.tabs.sticky
-  - navigation.footer
-  - navigation.paths
-  - navigation.indexes
-  - navigation.indexes.sticky
-  - navigation.prune
+    # - navigation.instant
+    # - navigation.instant.progress
+    - navigation.top
+    - navigation.sections
+    - navigation.search
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.footer
+    - navigation.paths
+    - navigation.indexes
+    - navigation.indexes.sticky
+    - navigation.prune
+    - content.code.copy
+    - content.action.edit
+    - content.images.lazy
+    # - toc.integrate
+    - toc.follow
+    - toc.expand
+    # - header.autohide
 
-  - content.code.copy
-  - content.action.edit
-  - content.images.lazy
-
-  # - toc.integrate
-  - toc.follow
-  - toc.expand
-  # - header.autohide
-
+# Plugins
 plugins:
-  - meta:
-      meta_file: meta.yml
   - search
   - glightbox
   - git-revision-date-localized
-  
+  # Nếu muốn bật meta descriptions thì thêm vào requirements.txt:
+  # - meta:
+  #     meta_file: meta.yml
+
+# Markdown Extensions
 markdown_extensions:
   - toc:
       permalink: true
+  - tables
+  - fenced_code
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
   - admonition
   - attr_list
   - md_in_html
-  
 
+# Extra config
 extra:
   generator: false
   social:
@@ -75,5 +76,3 @@ extra:
       link: https://github.com/lelongc
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/long-lê-190l/
-copyright: 'Copyright &copy; Lê Long C. 2025'
-
