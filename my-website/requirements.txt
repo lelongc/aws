@@ -1,6 +1,6 @@
-mkdocs
-mkdocs-material
 mkdocs-git-revision-date-localized-plugin
 mkdocs-glightbox
-pymdown-extensions
 # mkdocs-meta-descriptions-plugin
+mkdocs==1.5.3
+mkdocs-material==9.5.17
+pymdown-extensions==10.9
