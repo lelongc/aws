@@ -1,27 +1,14 @@
-details[data-admonition] {
-    background-color: var(--md-code-bg-color, #fafafa);
-    border: 1px solid var(--md-code-fg-color, rgba(0, 0, 0, .07));
-    border-left: 4px solid var(--md-admonition-icon-color);
-    border-radius: 4px;
-    padding: 1rem;
-    margin-bottom: 1rem;
+/* extra.css */
+
+details {
+  background-color: #f0f8ff; /* Light blue background */
+  border: 1px solid #b0e0e6;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
 }
 
-details[data-admonition] summary {
-    font-weight: bold;
-    cursor: pointer;
-    padding: 0;
-    list-style: none;
-    display: block;
-    position: relative;
-}
-
-details[data-admonition] summary::before {
-    content: 'ⓘ'; /* The 'i' for info or note icon */
-    font-family: 'Material Icons';
-    position: absolute;
-    left: -1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--md-admonition-icon-color);
+details > summary {
+  cursor: pointer;
+  font-weight: bold;
 }
