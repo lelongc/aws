@@ -13,3 +13,5 @@ https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 https://aws.amazon.com/free/
 
 https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html
+https://aws.amazon.com/ec2/instance-types/
+https://instances.vantage.sh/
