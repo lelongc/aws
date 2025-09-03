@@ -15,3 +15,4 @@ https://aws.amazon.com/free/
 https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html
 https://aws.amazon.com/ec2/instance-types/
 https://instances.vantage.sh/
+https://ip-ranges.amazonaws.com/ip-ranges.json
