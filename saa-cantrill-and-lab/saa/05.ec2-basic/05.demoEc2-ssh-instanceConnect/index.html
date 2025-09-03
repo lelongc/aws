@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/03.Custom%20VPCs1/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/05.demoEc2-ssh-instanceConnect/">
       
       
-        <link rel="prev" href="../02.ip-plan2/">
+        <link rel="prev" href="../04.EC2InstanceTypes2/">
       
       
-        <link rel="next" href="../04.custom-vpc-lab/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>03.Custom VPCs1 - DraDoc</title>
+        <title>05.demoEc2 ssh instanceConnect - DraDoc</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" class="md-skip">
+        <a href="#ec2-connection-methods-ssh-vs-instance-connect-demo-thuc-hanh" class="md-skip">
           Bỏ qua
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              03.Custom VPCs1
+              05.demoEc2 ssh instanceConnect
             
           </span>
         </div>
@@ -1053,8 +1053,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1079,610 +1077,6 @@
         
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    04.VPC
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            04.VPC
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.IP-plan/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    01.IP plan
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02.ip-plan2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    02.ip plan2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    03.Custom VPCs1
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    03.Custom VPCs1
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      🏗️ Xây dựng VPC Custom đa tầng trên AWS – Lý thuyết nền tảng cho người mới
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-custom-vpc-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Custom VPC là gì?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Tư duy thiết kế từng bước như chơi Lego
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. IP Plan thực tế (ví dụ cho account general, US region 1)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-cac-thanh-phan-se-bo-sung-dan" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Các thành phần sẽ bổ sung dần:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Lý thuyết kiến trúc VPC cần nhớ để thi &amp; đi làm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-tuy-chon-tenancy-rat-hay-ra-e-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Tùy chọn Tenancy (RẤT hay ra đề thi)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-cau-hinh-ip-cho-vpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Cấu hình IP cho VPC
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. DNS trong VPC (Rất hay bị hỏi &amp; dính lỗi thật khi đi làm)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 2: Checklist kiến thức cần nhớ để đi thi &amp; đi làm
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-ung-dung-thuc-te-bai-tap-hands-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tinh-huong-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tình huống thực tế
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cau-hoi-phong-vancert-hay-gap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Câu hỏi phỏng vấn/cert hay gặp
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#practice-tao-vpc-shell-au-tien-cho-animals4life" class="md-nav__link">
-    <span class="md-ellipsis">
-      Practice: Tạo VPC shell đầu tiên cho Animals4Life
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-4-tong-ket-tips-nho-lau" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 4: Tổng kết &amp; tips nhớ lâu
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.custom-vpc-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04.custom vpc lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05.VpcSubnets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    05.VpcSubnets
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06.subnet-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06.subnet lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.vpcRouting-IGW-bastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07.vpcRouting IGW bastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08.lab-publicSubnet-BastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    08.lab publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09.lab2-publicSubnet-BastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    09.lab2 publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10.StateFull-StateLess/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    10.StateFull StateLess
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11.NACLs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    11.NACLs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12.SecurityGroups/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    12.SecurityGroups
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.NAT/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    13.NAT
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14.NAT2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    14.NAT2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15.lab-natGW-private-internet-access/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    15.lab natGW private internet access
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
       
         
       
@@ -1714,12 +1108,12 @@
   
   
   
-    <a href="../../05.ec2-basic/01.Virtualization/" class="md-nav__link">
+    <a href="../../04.VPC/01.IP-plan/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    05.ec2 basic
+    04.VPC
     
   </span>
   
@@ -1730,6 +1124,530 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    05.ec2 basic
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            05.ec2 basic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.Virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.Virtualization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.EC2architectureResilience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.EC2architectureResilience
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.EC2InstanceTypes1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.EC2InstanceTypes1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.EC2InstanceTypes2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.EC2InstanceTypes2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    05.demoEc2 ssh instanceConnect
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.demoEc2 ssh instanceConnect
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muc-tieu-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Mục tiêu Demo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuan-bi-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chuẩn bị Infrastructure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chuẩn bị Infrastructure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tao-key-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Tạo Key Pair
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-deploy-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Deploy Infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-kiem-tra-security-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Kiểm tra Security Group
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-1-ssh-client-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 1: SSH Client (Local)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 1: SSH Client (Local)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-connect-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Connect Command
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-fix-permissions-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Fix Permissions Error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ssh-connection-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SSH Connection Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-ec2-instance-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 2: EC2 Instance Connect
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 2: EC2 Instance Connect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-connect-via-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Connect via Browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-key-differences-vs-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Key Differences vs SSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-security-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔥 Critical Security Demo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔥 Critical Security Demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-restrict-to-my-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test 1: Restrict to "My IP"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-allow-instance-connect-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test 2: Allow Instance Connect Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Insights
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Insights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Connect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-group-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Group Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Common Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Common Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-connection-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Connection Failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-connect-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Connect Failed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exam-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exam Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exam Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-points-to-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Points to Remember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clean Up
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1828,6 +1746,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1836,91 +1756,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" class="md-nav__link">
+  <a href="#muc-tieu-demo" class="md-nav__link">
     <span class="md-ellipsis">
-      🏗️ Xây dựng VPC Custom đa tầng trên AWS – Lý thuyết nền tảng cho người mới
+      🎯 Mục tiêu Demo
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi" class="md-nav__link">
+  <a href="#chuan-bi-infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)
+      Chuẩn bị Infrastructure
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)">
+    <nav class="md-nav" aria-label="Chuẩn bị Infrastructure">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-custom-vpc-la-gi" class="md-nav__link">
+  <a href="#1-tao-key-pair" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Custom VPC là gì?
+      1. Tạo Key Pair
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego" class="md-nav__link">
+  <a href="#2-deploy-infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Tư duy thiết kế từng bước như chơi Lego
+      2. Deploy Infrastructure
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1" class="md-nav__link">
+  <a href="#3-kiem-tra-security-group" class="md-nav__link">
     <span class="md-ellipsis">
-      3. IP Plan thực tế (ví dụ cho account general, US region 1)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-cac-thanh-phan-se-bo-sung-dan" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Các thành phần sẽ bổ sung dần:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Lý thuyết kiến trúc VPC cần nhớ để thi &amp; đi làm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-tuy-chon-tenancy-rat-hay-ra-e-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Tùy chọn Tenancy (RẤT hay ra đề thi)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-cau-hinh-ip-cho-vpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Cấu hình IP cho VPC
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. DNS trong VPC (Rất hay bị hỏi &amp; dính lỗi thật khi đi làm)
+      3. Kiểm tra Security Group
     </span>
   </a>
   
@@ -1932,46 +1807,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam" class="md-nav__link">
+  <a href="#method-1-ssh-client-local" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 2: Checklist kiến thức cần nhớ để đi thi &amp; đi làm
+      Method 1: SSH Client (Local)
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-ung-dung-thuc-te-bai-tap-hands-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on">
+    <nav class="md-nav" aria-label="Method 1: SSH Client (Local)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tinh-huong-thuc-te" class="md-nav__link">
+  <a href="#1-connect-command" class="md-nav__link">
     <span class="md-ellipsis">
-      Tình huống thực tế
+      1. Connect Command
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cau-hoi-phong-vancert-hay-gap" class="md-nav__link">
+  <a href="#2-fix-permissions-error" class="md-nav__link">
     <span class="md-ellipsis">
-      Câu hỏi phỏng vấn/cert hay gặp
+      2. Fix Permissions Error
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#practice-tao-vpc-shell-au-tien-cho-animals4life" class="md-nav__link">
+  <a href="#3-ssh-connection-process" class="md-nav__link">
     <span class="md-ellipsis">
-      Practice: Tạo VPC shell đầu tiên cho Animals4Life
+      3. SSH Connection Process
     </span>
   </a>
   
@@ -1983,9 +1849,207 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-4-tong-ket-tips-nho-lau" class="md-nav__link">
+  <a href="#method-2-ec2-instance-connect" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 4: Tổng kết &amp; tips nhớ lâu
+      Method 2: EC2 Instance Connect
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 2: EC2 Instance Connect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-connect-via-browser" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Connect via Browser
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-key-differences-vs-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Key Differences vs SSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#critical-security-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔥 Critical Security Demo
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔥 Critical Security Demo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-1-restrict-to-my-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test 1: Restrict to "My IP"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-2-allow-instance-connect-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test 2: Allow Instance Connect Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Insights
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Insights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Connect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-group-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Group Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Common Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Common Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-connection-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSH Connection Failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-connect-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Connect Failed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exam-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exam Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exam Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-points-to-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Points to Remember
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Questions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clean Up
     </span>
   </a>
   
@@ -2007,7 +2071,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/03.Custom VPCs1.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/05.demoEc2-ssh-instanceConnect.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -2015,127 +2079,194 @@
   
 
 
-  <h1>03.Custom VPCs1</h1>
-
-<h2 id="xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi">🏗️ Xây dựng VPC Custom đa tầng trên AWS – Lý thuyết nền tảng cho người mới<a class="headerlink" href="#xay-dung-vpc-custom-a-tang-tren-aws-ly-thuyet-nen-tang-cho-nguoi-moi" title="Permanent link">¶</a></h2>
+<p>1-Click Deployment</p>
+<p><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0021-aws-associate-ec2-instance-connect-vs-ssh/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=EC2INSTANCECONNECTvsSSH">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0021-aws-associate-ec2-instance-connect-vs-ssh/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=EC2INSTANCECONNECTvsSSH
+</a></p>
+<p>AWS IP Ranges
+<a href="https://ip-ranges.amazonaws.com/ip-ranges.json">https://ip-ranges.amazonaws.com/ip-ranges.json</a></p>
+<h1 id="ec2-connection-methods-ssh-vs-instance-connect-demo-thuc-hanh">🔐 EC2 Connection Methods: SSH vs Instance Connect (Demo thực hành)<a class="headerlink" href="#ec2-connection-methods-ssh-vs-instance-connect-demo-thuc-hanh" title="Permanent link">¶</a></h1>
 <hr>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/52822379-dfdb-4246-9397-24d99471d87f" data-desc-position="bottom"><img width="847" height="486" alt="image" src="https://github.com/user-attachments/assets/52822379-dfdb-4246-9397-24d99471d87f"></a></p>
-<h2 id="phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi">PHẦN 1: Lý thuyết nền tảng (CẦN NHỚ ĐỂ LÀM VÀ THI)<a class="headerlink" href="#phan-1-ly-thuyet-nen-tang-can-nho-e-lam-va-thi" title="Permanent link">¶</a></h2>
-<h3 id="1-custom-vpc-la-gi">1. <strong>Custom VPC là gì?</strong><a class="headerlink" href="#1-custom-vpc-la-gi" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>VPC (Virtual Private Cloud)</strong>: Mạng riêng ảo, tách biệt hoàn toàn, chỉ bạn kiểm soát trong 1 AWS Region.</li>
-<li><strong>Custom VPC</strong> là VPC do bạn tự thiết kế, tự cấu hình IP, subnet, bảo mật, khác hoàn toàn với Default VPC (AWS tạo sẵn, cứng nhắc, ít tùy biến).</li>
-<li><strong>Multi-tier VPC</strong>: VPC chia thành nhiều lớp (tier) – ví dụ: Web, App, Database, Reserved – để tăng bảo mật, mở rộng, dễ quản trị.</li>
-</ul>
-<h3 id="2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego">2. <strong>Tư duy thiết kế từng bước như chơi Lego</strong><a class="headerlink" href="#2-tu-duy-thiet-ke-tung-buoc-nhu-choi-lego" title="Permanent link">¶</a></h3>
-<ul>
-<li>Đừng sợ sơ đồ phức tạp! Xây từng layer, từng phần, giống như lắp Lego.</li>
-<li>Bắt đầu từ “vỏ” (shell) VPC, sau đó thêm subnet, gateway, routing, security…</li>
-<li>Mục tiêu: Đến cuối section này, bạn sẽ tự tin xây dựng mạng riêng phức tạp trên AWS.</li>
-</ul>
-<h3 id="3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1">3. <strong>IP Plan thực tế (ví dụ cho account general, US region 1)</strong><a class="headerlink" href="#3-ip-plan-thuc-te-vi-du-cho-account-general-us-region-1" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>CIDR cho VPC:</strong> <code>10.16.0.0/16</code> (65,536 IP usable)</li>
-<li><strong>4 tiers x 4 AZ = 16 subnet</strong> (Web, App, DB, Reserved × AZ a/b/c/d)</li>
-<li><strong>Demo này tạo 4 tier × 3 AZ (A, B, C) = 12 subnet</strong>. Dành phần AZ D để mở rộng về sau (theo best practice “luôn dự phòng”).</li>
-</ul>
-<h3 id="4-cac-thanh-phan-se-bo-sung-dan">4. <strong>Các thành phần sẽ bổ sung dần:</strong><a class="headerlink" href="#4-cac-thanh-phan-se-bo-sung-dan" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Internet Gateway</strong>: Cho phép tài nguyên trong VPC ra/vào Internet (sau bài shell sẽ tạo).</li>
-<li><strong>NAT Gateway</strong>: Cho phép private subnet truy cập Internet (outbound only).</li>
-<li><strong>Bastion Host</strong>: Máy chủ “trạm trung gian” SSH vào VPC (dùng để học, thực tế sẽ thay bằng giải pháp an toàn hơn).</li>
-<li><strong>NACLs (Network ACL)</strong>: Tường lửa lớp mạng, bổ sung bảo mật cho VPC.</li>
-<li><strong>Data transfer cost</strong>: Cần tính toán khi thiết kế mạng (in-out giữa VPC, Internet, cross-AZ…).</li>
-</ul>
-<h3 id="5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam">5. <strong>Lý thuyết kiến trúc VPC cần nhớ để thi &amp; đi làm</strong><a class="headerlink" href="#5-ly-thuyet-kien-truc-vpc-can-nho-e-thi-i-lam" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>VPC là dịch vụ “regional” – tạo trong 1 region, dùng được tất cả AZ của region đó</strong></li>
-<li><strong>Một account có thể có nhiều VPC, mỗi VPC là “rào chắn” bảo vệ – không gì tự do ra/vào nếu chưa explicit allow</strong></li>
-<li><strong>VPC = blast radius boundary</strong>: Nếu bị hack/lỗi, chỉ ảnh hưởng trong VPC (giới hạn thiệt hại)</li>
-<li><strong>Default VPC</strong>: AWS tự cấu hình, 1 subnet/AZ, IP range giống nhau, không cần setup gì</li>
-<li><strong>Custom VPC</strong>: Bạn tự quyết định mọi thứ, phù hợp cho production, dễ mở rộng/hybrid</li>
-<li><strong>Hỗ trợ Hybrid networking</strong>: Kết nối VPC với on-premises hoặc cloud khác (VPN, Direct Connect, Peering...)</li>
-</ul>
-<h3 id="6-tuy-chon-tenancy-rat-hay-ra-e-thi">6. <strong>Tùy chọn Tenancy (RẤT hay ra đề thi)</strong><a class="headerlink" href="#6-tuy-chon-tenancy-rat-hay-ra-e-thi" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Default tenancy</strong>: Tài nguyên dùng shared hardware (dùng chung vật lý, tách biệt logical). Có thể chọn dedicated khi tạo EC2.</li>
-<li><strong>Dedicated tenancy</strong>: Toàn bộ tài nguyên chạy trên dedicated hardware riêng biệt, đắt tiền, chỉ chọn khi có nhu cầu compliance đặc biệt (PCI, ngân hàng…). Nếu chọn nhầm thì không đổi lại được, chỉ dùng khi thực sự cần.</li>
-</ul>
-<h3 id="7-cau-hinh-ip-cho-vpc">7. <strong>Cấu hình IP cho VPC</strong><a class="headerlink" href="#7-cau-hinh-ip-cho-vpc" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Bắt buộc có 1 dải private IPv4 khi tạo VPC</strong> (CIDR block), ví dụ: /16 = 65,536 IP, /28 = 16 IP (dùng được ~11 IP do AWS giữ lại 5).</li>
-<li><strong>Có thể gán thêm tối đa 5 CIDR block phụ sau khi tạo (mở support request thì tăng được)</strong></li>
-<li><strong>IPv6</strong>: Có thể thêm /56 IPv6 CIDR, AWS cấp range (không chọn được như IPv4). IPv6 trên AWS đều là public-routeable (bật/tắt kết nối Internet bằng security, chứ không phân public/private IP như IPv4).</li>
-<li><strong>Tip</strong>: Dù IPv6 là public, nhưng phải cấu hình rule thì mới kết nối ra ngoài được – mặc định vẫn an toàn.</li>
-</ul>
-<h3 id="8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam">8. <strong>DNS trong VPC (Rất hay bị hỏi &amp; dính lỗi thật khi đi làm)</strong><a class="headerlink" href="#8-dns-trong-vpc-rat-hay-bi-hoi-dinh-loi-that-khi-i-lam" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Route53 Resolver</strong>: Mỗi VPC auto có DNS. IP DNS là [Base IP của VPC] + 2 (ví dụ VPC 10.0.0.0/16 → DNS server: 10.0.0.2).</li>
-<li><strong>2 Option quan trọng:</strong></li>
-</ul>
-<p><strong>1. <code>enableDnsSupport</code></strong></p>
-<p>Đây là công tắc chính để bật <strong>dịch vụ phân giải tên miền (DNS)</strong> cho toàn bộ VPC.</p>
-<ul>
-<li><strong>Chức năng:</strong> Cho phép các máy chủ (EC2 instance) trong VPC của bạn có thể sử dụng tên miền (ví dụ: <code>google.com</code>) thay vì phải nhớ địa chỉ IP.</li>
-<li><strong>Ví dụ ngắn gọn:</strong> Khi bật tính năng này, các EC2 instance trong VPC có thể truy cập <code>s3.amazonaws.com</code>. Nếu tắt, chúng không thể làm điều đó.</li>
-<li><strong>Vị trí máy chủ DNS:</strong> AWS tự động tạo một máy chủ DNS và gán cho nó địa chỉ IP đặc biệt: <strong>địa chỉ IP đầu tiên của VPC cộng 2</strong> (ví dụ: <code>10.0.0.2</code> nếu VPC là <code>10.0.0.0/16</code>).</li>
-</ul>
-<p><strong>2. <code>enableDnsHostnames</code></strong></p>
-<p>Đây là công tắc phụ, dựa trên <code>enableDnsSupport</code> đã được bật.</p>
-<ul>
-<li><strong>Chức năng:</strong> Gán một <strong>tên miền công cộng (public DNS name)</strong> cho các EC2 instance có địa chỉ IP công cộng (Public IP).</li>
-<li><strong>Ví dụ ngắn gọn:</strong> Một EC2 instance có địa chỉ IP công cộng là <code>34.200.1.20</code> sẽ được gán tên miền công cộng là <code>ec2-34-200-1-20.compute.amazonaws.com</code>.</li>
-<li><strong>Điều kiện:</strong> Thuộc tính này <strong>chỉ hoạt động khi <code>enableDnsSupport</code> đã được bật</strong>.</li>
-</ul>
-<p><strong>Tóm tắt đơn giản:</strong></p>
-<ul>
-<li><strong><code>enableDnsSupport</code></strong>: Bật chức năng DNS cho VPC, giúp các máy chủ trong đó truy cập được các tên miền.</li>
-<li><strong><code>enableDnsHostnames</code></strong>: Gán tên miền công cộng cho các máy chủ có Public IP.</li>
-</ul>
-<h2 id="phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam">PHẦN 2: Checklist kiến thức cần nhớ để đi thi &amp; đi làm<a class="headerlink" href="#phan-2-checklist-kien-thuc-can-nho-e-i-thi-i-lam" title="Permanent link">¶</a></h2>
-<ul>
-<li>[x] VPC là gì? Tách biệt, bảo mật, giới hạn blast radius</li>
-<li>[x] VPC là dịch vụ regional, dùng được mọi AZ của region</li>
-<li>[x] Default VPC vs Custom VPC: khác biệt lớn về tùy chỉnh, bảo mật, mở rộng</li>
-<li>[x] Tùy chọn tenancy (Default vs Dedicated): khi nào dùng, lưu ý chi phí</li>
-<li>[x] Khi tạo VPC phải chọn IPv4 CIDR, có thể thêm IPv6</li>
-<li>[x] IPv4 chia subnet theo AZ, mỗi subnet nằm trong 1 AZ duy nhất</li>
-<li>[x] IPv6 là public, không phân biệt public/private, quản bằng security</li>
-<li>[x] DNS trong VPC: nhớ 2 setting enableDnsHostnames &amp; enableDnsSupport</li>
-<li>[x] File IP plan là “bảo bối” khi làm dự án thật</li>
-</ul>
+<h2 id="muc-tieu-demo">🎯 Mục tiêu Demo<a class="headerlink" href="#muc-tieu-demo" title="Permanent link">¶</a></h2>
+<p>So sánh 2 cách connect EC2:
+1. <strong>SSH Client</strong> (local machine)
+2. <strong>EC2 Instance Connect</strong> (browser-based)</p>
 <hr>
-<h2 id="phan-3-ung-dung-thuc-te-bai-tap-hands-on">PHẦN 3: Ứng dụng thực tế &amp; bài tập hands-on<a class="headerlink" href="#phan-3-ung-dung-thuc-te-bai-tap-hands-on" title="Permanent link">¶</a></h2>
-<h3 id="tinh-huong-thuc-te"><strong>Tình huống thực tế</strong><a class="headerlink" href="#tinh-huong-thuc-te" title="Permanent link">¶</a></h3>
-<ul>
-<li>Công ty cần VPC riêng cho từng môi trường (general, prod, dev), mỗi VPC theo chuẩn 4 tier × 4 AZ → 16 subnet. Dễ mở rộng, dễ quản trị, bảo mật tốt, dễ kết nối hybrid.</li>
-<li>Mỗi khi tạo VPC, luôn lưu lại IP plan, subnet plan để tránh trùng lặp, dễ audit, dễ troubleshoot.</li>
-</ul>
-<h3 id="cau-hoi-phong-vancert-hay-gap"><strong>Câu hỏi phỏng vấn/cert hay gặp</strong><a class="headerlink" href="#cau-hoi-phong-vancert-hay-gap" title="Permanent link">¶</a></h3>
-<ul>
-<li>So sánh Default VPC và Custom VPC?</li>
-<li>Tenancy là gì? Khi nào chọn dedicated?</li>
-<li>IPv6 trên AWS khác gì IPv4 về khái niệm public/private?</li>
-<li>DNS trong VPC hoạt động thế nào? Nếu EC2 không resolve được DNS thì kiểm tra gì trước?</li>
-<li>Maximum/minimum CIDR VPC là gì? (Min: /28, Max: /16)</li>
-</ul>
-<h3 id="practice-tao-vpc-shell-au-tien-cho-animals4life"><strong>Practice: Tạo VPC shell đầu tiên cho Animals4Life</strong><a class="headerlink" href="#practice-tao-vpc-shell-au-tien-cho-animals4life" title="Permanent link">¶</a></h3>
-<ul>
-<li>VPC CIDR: 10.16.0.0/16</li>
-<li>Chọn 3 AZ đầu tiên (A, B, C), mỗi AZ sau này sẽ có 4 subnet (web, app, db, reserved)</li>
-<li>Enable DNS support &amp; DNS hostnames</li>
-<li>Tenancy: Default</li>
-<li>Chưa tạo subnet, gateway – để ở bài sau</li>
-</ul>
+<h2 id="chuan-bi-infrastructure">Chuẩn bị Infrastructure<a class="headerlink" href="#chuan-bi-infrastructure" title="Permanent link">¶</a></h2>
+<h3 id="1-tao-key-pair">1. Tạo Key Pair<a class="headerlink" href="#1-tao-key-pair" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>EC2<span class="w"> </span>Console<span class="w"> </span>→<span class="w"> </span>Key<span class="w"> </span>Pairs<span class="w"> </span>→<span class="w"> </span>Create<span class="w"> </span>Key<span class="w"> </span>Pair
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Name:<span class="w"> </span>A4L
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Format:<span class="w"> </span>.pem<span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span><span class="m">10</span>+/Mac/Linux<span class="o">)</span><span class="w"> </span>hoặc<span class="w"> </span>.ppk<span class="w"> </span><span class="o">(</span>Windows<span class="w"> </span>cũ<span class="o">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>→<span class="w"> </span>Download<span class="w"> </span>file<span class="w"> </span>về<span class="w"> </span>máy
+</code></pre></div>
+<h3 id="2-deploy-infrastructure">2. Deploy Infrastructure<a class="headerlink" href="#2-deploy-infrastructure" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">CloudFormation One-click deployment</span><span class="p">:</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">Stack name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2-instance-connect-vs-SSH</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">Key name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A4L (auto-populated)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="l l-Scalar l-Scalar-Plain">→ Wait for CREATE_COMPLETE</span>
+</code></pre></div>
+<h3 id="3-kiem-tra-security-group">3. Kiểm tra Security Group<a class="headerlink" href="#3-kiem-tra-security-group" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">EC2 Instance → Security tab → Inbound rules</span><span class="p">:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Port 80 (HTTP)</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Port 22 (SSH IPv4)</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0/0</span><span class="w">  </span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Port 22 (SSH IPv6)</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">::/0</span>
+</code></pre></div>
 <hr>
-<h2 id="phan-4-tong-ket-tips-nho-lau">PHẦN 4: Tổng kết &amp; tips nhớ lâu<a class="headerlink" href="#phan-4-tong-ket-tips-nho-lau" title="Permanent link">¶</a></h2>
+<h2 id="method-1-ssh-client-local">Method 1: SSH Client (Local)<a class="headerlink" href="#method-1-ssh-client-local" title="Permanent link">¶</a></h2>
+<h3 id="1-connect-command">1. Connect Command<a class="headerlink" href="#1-connect-command" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># AWS Console → Instance → Connect → SSH Client</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># Copy command example:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>ssh<span class="w"> </span>-i<span class="w"> </span><span class="s2">"A4L.pem"</span><span class="w"> </span>ec2-user@ec2-xx-xx-xx-xx.compute-1.amazonaws.com
+</code></pre></div>
+<h3 id="2-fix-permissions-error">2. Fix Permissions Error<a class="headerlink" href="#2-fix-permissions-error" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Lỗi thường gặp: "Permissions 0644 for 'A4L.pem' are too open"</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>A4L.pem
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Windows: Right-click file → Properties → Security → </span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Remove access for all users except current user</span>
+</code></pre></div>
+<h3 id="3-ssh-connection-process">3. SSH Connection Process<a class="headerlink" href="#3-ssh-connection-process" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Verify server fingerprint (type 'yes')</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># 2. Authenticate with private key</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># 3. Connected to EC2 instance terminal</span>
+</code></pre></div>
+<hr>
+<h2 id="method-2-ec2-instance-connect">Method 2: EC2 Instance Connect<a class="headerlink" href="#method-2-ec2-instance-connect" title="Permanent link">¶</a></h2>
+<h3 id="1-connect-via-browser">1. Connect via Browser<a class="headerlink" href="#1-connect-via-browser" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="l l-Scalar l-Scalar-Plain">EC2 Console → Instance → Connect → EC2 Instance Connect</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="l l-Scalar l-Scalar-Plain">Instance ID</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto-filled</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">Public IP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto-filled</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nt">User name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ec2-user (auto-detected)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="l l-Scalar l-Scalar-Plain">→ Click Connect</span>
+</code></pre></div>
+<h3 id="2-key-differences-vs-ssh">2. Key Differences vs SSH<a class="headerlink" href="#2-key-differences-vs-ssh" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="l l-Scalar l-Scalar-Plain">✅ No key file needed</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="l l-Scalar l-Scalar-Plain">✅ Uses AWS IAM permissions</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="l l-Scalar l-Scalar-Plain">✅ Browser-based terminal</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="l l-Scalar l-Scalar-Plain">✅ Good for team access</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="l l-Scalar l-Scalar-Plain">❌ Requires specific IP ranges in Security Group</span>
+</code></pre></div>
+<hr>
+<h2 id="critical-security-demo">🔥 Critical Security Demo<a class="headerlink" href="#critical-security-demo" title="Permanent link">¶</a></h2>
+<h3 id="test-1-restrict-to-my-ip">Test 1: Restrict to "My IP"<a class="headerlink" href="#test-1-restrict-to-my-ip" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="l l-Scalar l-Scalar-Plain">1. Security Group → Edit Inbound Rules</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="l l-Scalar l-Scalar-Plain">2. SSH rule</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Change 0.0.0.0/0 → My IP</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="l l-Scalar l-Scalar-Plain">3. Save rules</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nt">Results</span><span class="p">:</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nt">✅ SSH Client</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Still works (from your IP)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nt">❌ Instance Connect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fails to connect</span>
+</code></pre></div>
+<h3 id="test-2-allow-instance-connect-service">Test 2: Allow Instance Connect Service<a class="headerlink" href="#test-2-allow-instance-connect-service" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">1. Get AWS IP ranges</span><span class="p">:</span><span class="w"> </span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">https://ip-ranges.amazonaws.com/ip-ranges.json</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nt">2. Search for</span><span class="p">:</span><span class="w"> </span><span class="s">"EC2_INSTANCE_CONNECT"</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">+ your region</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">Example</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"18.206.107.24/29"</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">for us-east-1</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt">3. Security Group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Add this IP range for SSH</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="l l-Scalar l-Scalar-Plain">4. Remove "My IP" rule</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="nt">Results</span><span class="p">:</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="nt">❌ SSH Client</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cannot connect</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nt">✅ Instance Connect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Works perfectly</span>
+</code></pre></div>
+<hr>
+<h2 id="key-insights">Key Insights<a class="headerlink" href="#key-insights" title="Permanent link">¶</a></h2>
+<h3 id="ssh-client">SSH Client<a class="headerlink" href="#ssh-client" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">How it works</span><span class="p">:</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="l l-Scalar l-Scalar-Plain">Your Machine → Internet → EC2 Instance</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nt">Requirements</span><span class="p">:</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="l l-Scalar l-Scalar-Plain">✅ Private key file (.pem)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="l l-Scalar l-Scalar-Plain">✅ Correct file permissions (400)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="l l-Scalar l-Scalar-Plain">✅ Security Group allows your IP</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="l l-Scalar l-Scalar-Plain">✅ Network connectivity</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nt">Pros/Cons</span><span class="p">:</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="l l-Scalar l-Scalar-Plain">✅ Direct connection</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="l l-Scalar l-Scalar-Plain">✅ Works from anywhere</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="l l-Scalar l-Scalar-Plain">❌ Key management overhead</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="l l-Scalar l-Scalar-Plain">❌ Each user needs key copy</span>
+</code></pre></div>
+<h3 id="instance-connect">Instance Connect<a class="headerlink" href="#instance-connect" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">How it works</span><span class="p">:</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="l l-Scalar l-Scalar-Plain">Your Browser → AWS Service → EC2 Instance</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nt">Requirements</span><span class="p">:</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="l l-Scalar l-Scalar-Plain">✅ IAM permissions</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="l l-Scalar l-Scalar-Plain">✅ Security Group allows AWS service IPs</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="l l-Scalar l-Scalar-Plain">✅ Correct username</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nt">Pros/Cons</span><span class="p">:</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="l l-Scalar l-Scalar-Plain">✅ No key management</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="l l-Scalar l-Scalar-Plain">✅ IAM-based access control</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="l l-Scalar l-Scalar-Plain">✅ Audit trail in CloudTrail</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="l l-Scalar l-Scalar-Plain">❌ AWS service dependency</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="l l-Scalar l-Scalar-Plain">❌ Requires specific IP ranges</span>
+</code></pre></div>
+<hr>
+<h2 id="production-best-practices">Production Best Practices<a class="headerlink" href="#production-best-practices" title="Permanent link">¶</a></h2>
+<h3 id="security-group-strategy">Security Group Strategy<a class="headerlink" href="#security-group-strategy" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">🔒 Recommended approach</span><span class="p">:</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">Development</span><span class="p">:</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SSH from specific office IPs</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Instance Connect for team access</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nt">Production</span><span class="p">:</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bastion hosts in public subnets</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Private instances via Session Manager</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No direct SSH from internet</span>
+</code></pre></div>
+<h3 id="key-management">Key Management<a class="headerlink" href="#key-management" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">🔑 SSH Key best practices</span><span class="p">:</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="l l-Scalar l-Scalar-Plain">✅ One key per person/team</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="l l-Scalar l-Scalar-Plain">✅ Rotate keys regularly</span><span class="w">  </span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="l l-Scalar l-Scalar-Plain">✅ Use AWS Systems Manager Session Manager</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="l l-Scalar l-Scalar-Plain">✅ Audit access with CloudTrail</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="l l-Scalar l-Scalar-Plain">❌ Don't share private keys</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="l l-Scalar l-Scalar-Plain">❌ Don't commit keys to code repos</span>
+</code></pre></div>
+<hr>
+<h2 id="troubleshooting-common-issues">Troubleshooting Common Issues<a class="headerlink" href="#troubleshooting-common-issues" title="Permanent link">¶</a></h2>
+<h3 id="ssh-connection-failed">SSH Connection Failed<a class="headerlink" href="#ssh-connection-failed" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Check these in order:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="m">1</span>.<span class="w"> </span>Key<span class="w"> </span>file<span class="w"> </span>permissions:<span class="w"> </span>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>key.pem
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="m">2</span>.<span class="w"> </span>Security<span class="w"> </span>Group<span class="w"> </span>allows<span class="w"> </span>your<span class="w"> </span>IP
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="m">3</span>.<span class="w"> </span>Instance<span class="w"> </span>is<span class="w"> </span>running
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="m">4</span>.<span class="w"> </span>Correct<span class="w"> </span>username<span class="w"> </span><span class="o">(</span>ec2-user,<span class="w"> </span>ubuntu,<span class="w"> </span>admin<span class="o">)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="m">5</span>.<span class="w"> </span>Network<span class="w"> </span>connectivity
+</code></pre></div>
+<h3 id="instance-connect-failed">Instance Connect Failed<a class="headerlink" href="#instance-connect-failed" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">🐛 Common issues</span><span class="p">:</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="l l-Scalar l-Scalar-Plain">1. Security Group doesn't allow AWS service IPs</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="l l-Scalar l-Scalar-Plain">2. Wrong username (check AMI documentation)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="l l-Scalar l-Scalar-Plain">3. No IAM permissions for EC2:SendSSHPublicKey</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="l l-Scalar l-Scalar-Plain">4. Instance not supported (very old AMIs)</span>
+</code></pre></div>
+<hr>
+<h2 id="exam-tips">Exam Tips<a class="headerlink" href="#exam-tips" title="Permanent link">¶</a></h2>
+<h3 id="key-points-to-remember">Key Points to Remember<a class="headerlink" href="#key-points-to-remember" title="Permanent link">¶</a></h3>
 <ul>
-<li>Xây VPC custom là bước đầu tiên, cực kỳ quan trọng khi làm cloud thực tế và đi thi AWS.</li>
-<li>Đừng ngại sơ đồ phức tạp, cứ chia nhỏ từng bước, làm từng phần (giống chơi Lego).</li>
-<li>Ghi nhớ: VPC là “rào chắn” bảo mật, blast radius, mỗi VPC là 1 vùng an toàn tách biệt.</li>
-<li>Lúc nào cũng phải có file IP plan/subnet plan – đi làm không có là “toang”!</li>
-<li>Khi gặp lỗi DNS/route, luôn check 2 setting enableDnsHostnames &amp; enableDnsSupport trước!</li>
+<li><strong>Instance Connect ≠ direct connection</strong> từ browser</li>
+<li><strong>Instance Connect cần AWS service IP ranges</strong> trong Security Group</li>
+<li><strong>SSH Client cần private key + đúng permissions</strong></li>
+<li><strong>Security Group rules apply differently</strong> cho 2 methods</li>
 </ul>
+<h3 id="common-questions">Common Questions<a class="headerlink" href="#common-questions" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>"User can't connect via Instance Connect but SSH works"</strong> → Check Security Group for AWS service IPs</li>
+<li><strong>"SSH permission denied"</strong> → Check file permissions (chmod 400)</li>
+<li><strong>"Best practice for team access"</strong> → Instance Connect với IAM permissions</li>
+<li><strong>"Production security"</strong> → Use Session Manager, not direct SSH</li>
+</ol>
+<hr>
+<h2 id="clean-up">Clean Up<a class="headerlink" href="#clean-up" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>CloudFormation<span class="w"> </span>→<span class="w"> </span>Delete<span class="w"> </span>stack<span class="w"> </span><span class="s2">"EC2-instance-connect-vs-SSH"</span>
+</code></pre></div>
+<hr>
+<p><strong>Takeaway:</strong> Instance Connect tốt cho team access với IAM control, SSH Client tốt cho individual access. Production nên dùng Session Manager thay vì expose SSH ra internet!</p>
 
 
 
@@ -2192,7 +2323,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../02.ip-plan2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 02.ip plan2">
+          <a href="../04.EC2InstanceTypes2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 04.EC2InstanceTypes2">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -2202,20 +2333,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                02.ip plan2
+                04.EC2InstanceTypes2
               </div>
             </div>
           </a>
         
         
           
-          <a href="../04.custom-vpc-lab/" class="md-footer__link md-footer__link--next" aria-label="Sau: 04.custom vpc lab">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                04.custom vpc lab
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
