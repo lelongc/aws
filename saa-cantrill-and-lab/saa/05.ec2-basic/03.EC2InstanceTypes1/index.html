@@ -1984,24 +1984,20 @@
 <p><strong>Key Takeaway:</strong> Start với General Purpose, monitor metrics, chọn specialized family dựa trên bottlenecks. Latest generation luôn tốt hơn về price/performance!</p>
 <p>??? info why  HPC, gaming, ML inference, media processing need high compute</p>
 <p>Để dễ hiểu hơn, các tác vụ như HPC, gaming, ML inference, và xử lý media đều cần sức mạnh tính toán cao (compute optimized) vì chúng có một đặc điểm chung: <strong>tất cả đều là       các bài toán có thể chia nhỏ ra và xử lý đồng thời trên hàng trăm, thậm chí hàng nghìn nhân xử lý.</strong></p>
-<hr />
 <p>### <strong>1. HPC (Điện toán hiệu năng cao)</strong>
   HPC giải quyết các vấn đề khoa học lớn bằng cách chia nhỏ chúng. Ví dụ, mô phỏng khí hậu không phải là một phép tính duy nhất; nó là hàng tỷ phép tính nhỏ về nhiệt độ, áp suất, độ ẩm tại từng điểm trên Trái đất, được thực hiện cùng lúc.
   <strong>Tóm lại:</strong> HPC cần máy tính tối ưu hóa tính toán vì nó xử lý các <strong>bài toán lớn bằng cách giải quyết song song các bài toán nhỏ.</strong></p>
-<hr />
 <p>### <strong>2. Gaming</strong>
   Game là một mô phỏng tương tác liên tục. Mỗi khung hình (frame) cần được xử lý riêng biệt nhưng cực nhanh. Một cảnh game không phải là một hình ảnh tĩnh, mà là hàng triệu điểm ảnh, hiệu ứng ánh sáng, vật lý va chạm, và AI của nhân vật, tất cả đều phải tính toán và dựng lại <strong>mỗi 1/60 giây</strong> hoặc nhanh hơn.
   <strong>Tóm lại:</strong> Gaming cần hiệu năng tính toán cao để <strong>xử lý hàng triệu phép tính đồ họa và vật lý theo thời gian thực</strong> để mang lại trải nghiệm mượt mà.</p>
-<hr />
 <p>### <strong>3. ML Inference (Suy luận máy học)</strong>
   Suy luận ML là quá trình đưa ra dự đoán dựa trên một mô hình đã được huấn luyện. Các mô hình này có hàng tỷ tham số. Ví dụ, khi bạn hỏi một chatbot AI, nó phải thực hiện hàng nghìn phép nhân ma trận để hiểu câu hỏi và tạo ra câu trả lời <strong>chỉ trong vài mili giây.</strong>
   <strong>Tóm lại:</strong> Suy luận ML cần sức mạnh tính toán để <strong>thực hiện hàng loạt phép tính phức tạp một cách cực nhanh</strong> cho các mô hình AI khổng lồ.</p>
-<hr />
 <p>### <strong>4. Xử lý Media</strong>
   Xử lý media, như biên tập video, liên quan đến việc xử lý từng khung hình một cách độc lập. Khi bạn chỉnh sửa một video 4K, mỗi giây video chứa hàng chục đến hàng trăm khung hình, và mỗi khung hình lại có hàng triệu điểm ảnh. Thêm một hiệu ứng hay chuyển đổi định dạng đòi hỏi phải tính toán lại từng điểm ảnh đó.
   <strong>Tóm lại:</strong> Xử lý media cần tính toán tối ưu để <strong>làm việc với khối lượng dữ liệu khổng lồ (video, hình ảnh độ phân giải cao) một cách song song.</strong></p>
-<hr />
 <p><strong>Điểm mấu chốt là:</strong> tất cả các tác vụ này đều tận dụng lợi thế của việc xử lý song song để đạt được tốc độ cao, từ đó cần các loại máy tính được tối ưu hóa cho mục đích này.</p>
+<hr />
 <p>??? info Redis, in-memory DBs, real-time analytics tại sao cần memory optimize
   Các công nghệ như Redis, cơ sở dữ liệu in-memory (in-memory DBs), và phân tích thời gian thực (real-time analytics) đều cần tối ưu hóa bộ nhớ (memory optimized) vì một lý do cốt lõi: <strong>chúng ưu tiên tốc độ truy cập dữ liệu cực nhanh bằng cách giữ toàn bộ hoặc phần lớn dữ liệu trong RAM thay vì trên ổ đĩa.</strong>
   Đây là giải thích chi tiết cho từng trường hợp:
@@ -2028,19 +2024,17 @@
   * <strong>CPU</strong> giống như một đội trưởng nhỏ nhưng cực kỳ thông minh. Anh ấy có thể thực hiện nhiều loại nhiệm vụ phức tạp khác nhau, nhưng chỉ một vài việc cùng một lúc.
   * <strong>GPU</strong> giống như một đội quân khổng lồ gồm hàng nghìn binh lính đơn giản. Mỗi binh lính chỉ có thể làm một việc rất đơn giản (ví dụ: cộng, nhân), nhưng vì có số lượng lớn nên họ có thể làm hàng triệu việc đó cùng lúc.
   Điện toán tăng tốc sử dụng những "đội quân" này (GPU hoặc các bộ tăng tốc chuyên dụng khác) để tăng tốc các tác vụ cụ thể.</p>
-<hr />
 <p>### <strong>1. Đào tạo Máy học (ML Training)</strong>
   Quá trình đào tạo một mô hình máy học (ví dụ: mô hình nhận diện hình ảnh) đòi hỏi việc truyền một lượng lớn dữ liệu (hàng triệu hình ảnh) qua một mạng lưới thần kinh phức tạp. Mỗi lần truyền qua, mô hình phải thực hiện hàng tỷ phép tính nhân ma trận và cộng đơn giản để điều chỉnh các tham số của nó.
   * <strong>Tại sao cần tăng tốc?</strong> Hàng tỷ phép tính này có thể được chia nhỏ và chạy song song. Một GPU với hàng nghìn nhân xử lý có thể thực hiện những phép tính này nhanh hơn rất nhiều so với CPU, rút ngắn thời gian đào tạo từ nhiều tuần xuống còn vài giờ hoặc vài ngày.</p>
-<hr />
 <p>### <strong>2. Kết xuất 3D (3D Rendering)</strong>
   Kết xuất 3D là quá trình tạo ra một hình ảnh hoặc video 3D từ một mô hình máy tính. Để tạo ra một hình ảnh, máy tính phải tính toán vị trí, màu sắc, ánh sáng và bóng của hàng triệu đa giác và pixel.
   * <strong>Tại sao cần tăng tốc?</strong> Mỗi pixel trong một khung hình 3D cần được tính toán riêng biệt. Đây là một tác vụ có thể song song hóa một cách hoàn hảo. GPU được thiết kế đặc biệt cho việc này, cho phép các nhà làm phim hoạt hình hoặc thiết kế đồ họa tạo ra các hình ảnh thực tế phức tạp một cách nhanh chóng.</p>
-<hr />
 <p>### <strong>3. Các Khối lượng Công việc AI (AI Workloads)</strong>
   Các tác vụ AI rộng lớn hơn ML, bao gồm xử lý ngôn ngữ tự nhiên (NLP), thị giác máy tính, và robot học. Chúng có thể là suy luận (inference) hoặc đào tạo (training).
   * <strong>Tại sao cần tăng tốc?</strong> Tương tự như đào tạo ML, các tác vụ AI liên quan đến việc xử lý dữ liệu với tốc độ cao. Ví dụ, một hệ thống xe tự lái cần phải xử lý dữ liệu từ camera và cảm biến theo thời gian thực để nhận diện các vật thể và đưa ra quyết định ngay lập tức. Các bộ tăng tốc (ví dụ: GPU của NVIDIA hoặc TPU của Google) được tối ưu hóa cho các loại phép tính này, giúp hệ thống hoạt động mượt mà và an toàn.
   <strong>Tóm lại:</strong> Tất cả ba lĩnh vực này đều dựa vào các phép tính đơn giản nhưng số lượng khổng lồ. Điện toán tăng tốc cung cấp một kiến trúc phần cứng (như GPU) có thể xử lý các phép tính này song song, giúp tăng tốc độ xử lý lên nhiều lần so với chỉ dùng CPU.</p>
+<hr />
 <p>??? info Data warehousing, Elasticsearch, NoSQL sao cần Storage Optimized</p>
 <p>Các hệ thống như <strong>Data warehousing (Kho dữ liệu), Elasticsearch, và NoSQL</strong> cần <strong>tối ưu hóa lưu trữ (storage optimized)</strong> vì chúng phải xử lý và lưu trữ <strong>một lượng dữ liệu khổng lồ trong thời gian dài.</strong> Khác với các hệ thống cần tốc độ truy cập tức thời (như Redis), những công nghệ này ưu tiên khả năng lưu trữ hiệu quả, khả năng mở rộng và truy vấn dữ liệu phức tạp trên các tập dữ liệu lớn.
   Dưới đây là lý do chi tiết cho từng trường hợp:
@@ -2083,7 +2077,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 9, 2025 12:24:56 UTC">3 tháng 9, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 9, 2025 12:29:26 UTC">3 tháng 9, 2025</span>
   </span>
 
     
