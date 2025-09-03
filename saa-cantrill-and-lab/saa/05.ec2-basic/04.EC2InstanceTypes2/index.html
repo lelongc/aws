@@ -1390,39 +1390,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. Kinh nghiệm thực tế">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cpu-credit" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚡ CPU Credit
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#han-che" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚠️ Hạn chế
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1619,39 +1586,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="7. Kinh nghiệm thực tế">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cpu-credit" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚡ CPU Credit
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#uu-iem" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Ưu điểm
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#han-che" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚠️ Hạn chế
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1689,12 +1623,39 @@
 <li>Dùng chung, cân bằng CPU/RAM</li>
 <li>T3, T4g: Burstable, tiết kiệm cho web nhẹ/dev</li>
 <li>M5, M6g: Ổn định, cho app server</li>
-<li>
-<p>A1, M6g: ARM (Graviton), tiết kiệm chi phí, cần app/OS hỗ trợ ARM</p>
-</li>
-<li>
-<p><strong>Compute Optimized (C)</strong></p>
-</li>
+<li>A1, M6g: ARM (Graviton), tiết kiệm chi phí, cần app/OS hỗ trợ ARM</li>
+</ul>
+<p>??? info "Burstable EC2 là gì?"
+    Trong <strong>AWS EC2</strong>, có một loại máy chủ gọi là <strong>burstable instances</strong> (dòng <code>t2</code>, <code>t3</code>, <code>t4g</code>).<br />
+    - Bình thường: chạy ở <strong>mức CPU cơ bản (baseline performance)</strong>.<br />
+    - Khi workload tăng đột ngột → có thể <strong>burst</strong> (bùng nổ) dùng <strong>toàn bộ CPU</strong> trong thời gian ngắn.<br />
+    - Cơ chế này hoạt động nhờ <strong>CPU credits</strong>.<br />
+    ---
+    ### ⚡ CPU Credit
+    - Instance <strong>tích lũy credit</strong> khi chạy dưới baseline.<br />
+    - Khi workload vượt baseline → <strong>tiêu credit</strong> để chạy nhanh hơn.<br />
+    - Hết credit → CPU bị giới hạn về lại baseline.<br />
+    Ví dụ:<br />
+    - Một <code>t3.micro</code> có baseline ~10% CPU.<br />
+    - Nếu workload thấp → tích lũy credit.<br />
+    - Khi workload tăng → dùng 100% CPU nhờ credit.<br />
+    - Hết credit → quay về tối đa 10%.<br />
+    ---
+    ### ✅ Ưu điểm
+    - Giá <strong>rẻ</strong> hơn so với instance hiệu năng cố định.<br />
+    - Phù hợp cho:<br />
+      - Web/app nhỏ<br />
+      - Blog cá nhân<br />
+      - Dev/test<br />
+      - Database nhẹ<br />
+    ### ⚠️ Hạn chế
+    - Không hợp cho workload <strong>nặng, liên tục</strong> (VD: video encoding, big data).<br />
+    - Hết credit → hiệu năng giảm rõ rệt.<br />
+    ---
+    👉 Nói ngắn gọn:<br />
+<strong>Burstable EC2 = máy chủ “chạy tiết kiệm”, nhưng có thể “bùng nổ” mạnh khi cần, miễn là còn CPU credit.</strong></p>
+<ul>
+<li><strong>Compute Optimized (C)</strong></li>
 <li>CPU nhiều, dùng cho xử lý nặng, HPC, ML inference, gaming server</li>
 <li>
 <p>C5, C6i, C6g</p>
@@ -1808,43 +1769,6 @@
 <p><strong>Ghi nhớ:</strong><br />
 - Hiểu Family &amp; Suffix là đủ đi thi &amp; đi làm!
 - Bắt đầu General, monitor, chuyển loại khi cần, luôn chọn latest gen nếu có.</p>
-<details class="info">
-<summary>Burstable EC2 là gì?</summary>
-<p>Trong <strong>AWS EC2</strong>, có một loại máy chủ gọi là <strong>burstable instances</strong> (dòng <code>t2</code>, <code>t3</code>, <code>t4g</code>).<br />
-- Bình thường: chạy ở <strong>mức CPU cơ bản (baseline performance)</strong>.<br />
-- Khi workload tăng đột ngột → có thể <strong>burst</strong> (bùng nổ) dùng <strong>toàn bộ CPU</strong> trong thời gian ngắn.<br />
-- Cơ chế này hoạt động nhờ <strong>CPU credits</strong>.  </p>
-<hr />
-<h3 id="cpu-credit">⚡ CPU Credit<a class="headerlink" href="#cpu-credit" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Instance <strong>tích lũy credit</strong> khi chạy dưới baseline.  </li>
-<li>Khi workload vượt baseline → <strong>tiêu credit</strong> để chạy nhanh hơn.  </li>
-<li>Hết credit → CPU bị giới hạn về lại baseline.<br />
-Ví dụ:  </li>
-<li>Một <code>t3.micro</code> có baseline ~10% CPU.  </li>
-<li>Nếu workload thấp → tích lũy credit.  </li>
-<li>Khi workload tăng → dùng 100% CPU nhờ credit.  </li>
-<li>Hết credit → quay về tối đa 10%.  </li>
-</ul>
-<hr />
-<h3 id="uu-iem">✅ Ưu điểm<a class="headerlink" href="#uu-iem" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Giá <strong>rẻ</strong> hơn so với instance hiệu năng cố định.  </li>
-<li>Phù hợp cho:  </li>
-<li>Web/app nhỏ  </li>
-<li>Blog cá nhân  </li>
-<li>Dev/test  </li>
-<li>Database nhẹ  </li>
-</ul>
-<h3 id="han-che">⚠️ Hạn chế<a class="headerlink" href="#han-che" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Không hợp cho workload <strong>nặng, liên tục</strong> (VD: video encoding, big data).  </li>
-<li>Hết credit → hiệu năng giảm rõ rệt.  </li>
-</ul>
-<hr />
-<p>👉 Nói ngắn gọn:<br />
-<strong>Burstable EC2 = máy chủ “chạy tiết kiệm”, nhưng có thể “bùng nổ” mạnh khi cần, miễn là còn CPU credit.</strong></p>
-</details>
 
 
 
@@ -1865,7 +1789,7 @@ Ví dụ:  </li>
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 9, 2025 11:52:24 UTC">3 tháng 9, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="3 tháng 9, 2025 12:03:50 UTC">3 tháng 9, 2025</span>
   </span>
 
     
