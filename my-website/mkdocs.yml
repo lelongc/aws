@@ -63,10 +63,12 @@ markdown_extensions:
   - fenced_code
   - pymdownx.highlight:
       anchor_linenums: true
-  - pymdownx.superfences
-  - admonition
   - attr_list
   - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.extra
 
 # Extra config
 extra:
