@@ -13,4 +13,5 @@ mọi thứ này được tạo ra để giúp bạn ôn tập cho kỳ thi AWS 
 
 nếu bạn muốn cho mình bữa sáng 
 momo , mbbank :  0987214065
-nếu bạn có nhu cầu học khoá udemy giá rẻ 100k 1 khoá mình sẽ tải hết cho bạn 
+
+nếu bạn có nhu cầu học khoá udemy giá rẻ 100k 1 khoá mình sẽ tải cho bạn 
