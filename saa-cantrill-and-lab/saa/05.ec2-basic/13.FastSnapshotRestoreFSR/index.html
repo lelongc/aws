@@ -5,28 +5,28 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/stephane/01.saa/01.ec2/l%C3%BD-thuy%E1%BA%BFt/ec2-elastic-network-interface/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/13.FastSnapshotRestoreFSR/">
       
       
-        <link rel="prev" href="../../lab-ec2/">
+        <link rel="prev" href="../12.gp2-3-io1-2/">
       
       
-        <link rel="next" href="../ec2-hibernate/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
-      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
-        <title>Ec2 elastic network interface - DraDoc</title>
+        <title>13.FastSnapshotRestoreFSR - DraDoc</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -45,14 +45,14 @@
       
     
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eni-la-gi" class="md-skip">
+        <a href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" class="md-skip">
           Bỏ qua
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Đầu trang">
-    <a href="../../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ec2 elastic network interface
+              13.FastSnapshotRestoreFSR
             
           </span>
         </div>
@@ -222,7 +222,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
   
@@ -241,7 +241,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+      <a href="../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
         
   
   
@@ -262,7 +262,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../cer/link/" class="md-tabs__link">
+        <a href="../../../../cer/link/" class="md-tabs__link">
           
   
   
@@ -284,7 +284,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../lab/" class="md-tabs__link">
+        <a href="../../../../lab/" class="md-tabs__link">
           
   
   
@@ -306,7 +306,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../orther-note/readme/" class="md-tabs__link">
+        <a href="../../../../orther-note/readme/" class="md-tabs__link">
           
   
   
@@ -324,11 +324,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../../saa-cantrill-and-lab/00.roadmap/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../00.roadmap/" class="md-tabs__link">
           
   
   
@@ -346,8 +348,6 @@
   
   
   
-    
-  
   
     
     
@@ -355,13 +355,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../readme/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../stephane/01.saa/readme/" class="md-tabs__link">
           
   
   
@@ -406,7 +404,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+    <a href="../../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
@@ -436,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -458,7 +456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
+      <a href="../../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
         
   
   
@@ -506,7 +504,7 @@
   
   
   
-    <a href="../../../../../cer/link/" class="md-nav__link">
+    <a href="../../../../cer/link/" class="md-nav__link">
       
   
   
@@ -560,7 +558,7 @@
   
   
   
-    <a href="../../../../../lab/" class="md-nav__link">
+    <a href="../../../../lab/" class="md-nav__link">
       
   
   
@@ -614,7 +612,7 @@
   
   
   
-    <a href="../../../../../orther-note/readme/" class="md-nav__link">
+    <a href="../../../../orther-note/readme/" class="md-nav__link">
       
   
   
@@ -639,41 +637,44 @@
       
   
   
-  
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
   
-    <a href="../../../../../saa-cantrill-and-lab/00.roadmap/" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -682,70 +683,13 @@
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    Stephane
-    
-  </span>
-  
-
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Stephane
+            Saa cantrill and lab
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -753,103 +697,24 @@
                 
   
   
-    
   
   
-  
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../../../00.roadmap/" class="md-nav__link">
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="">
-            
   
   
   <span class="md-ellipsis">
-    01.saa
+    00.roadmap
     
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_1">
-            <span class="md-nav__icon md-icon"></span>
-            01.saa
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -885,6 +750,151 @@
       
         
       
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3">
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Image.md
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Image.md
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../image.md/share-res-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Share res model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Saa
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Saa
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
         
       
     
@@ -907,12 +917,203 @@
   
   
   
-    <a href="../../../00.prerequisite/db/" class="md-nav__link">
+    <a href="../../00.pre/01.account/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    00.prerequisite
+    00.pre
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../01.fundamental/01.public-private-services/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    01.fundamental
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../03.S3/Multi-Region-AccessPoint/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    03.S3
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../04.VPC/01.IP-plan/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    04.VPC
     
   </span>
   
@@ -946,6 +1147,26 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -961,15 +1182,15 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_7_1_3" id="__nav_7_1_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
-    01.ec2
+    05.ec2 basic
     
   </span>
   
@@ -977,10 +1198,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_1_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_5">
             <span class="md-nav__icon md-icon"></span>
-            01.ec2
+            05.ec2 basic
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -991,12 +1212,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab-ec2/" class="md-nav__link">
+      <a href="../01.Virtualization/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Lab ec2
+    01.Virtualization
     
   </span>
   
@@ -1011,68 +1232,254 @@
                 
   
   
-    
   
   
-  
-    
-    
-      
+    <li class="md-nav__item">
+      <a href="../02.EC2architectureResilience/" class="md-nav__link">
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_3_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7_1_3_2" id="__nav_7_1_3_2_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
-    Lý thuyết
+    02.EC2architectureResilience
     
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.EC2InstanceTypes1/" class="md-nav__link">
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_7_1_3_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_1_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            Lý thuyết
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+  
+  
+  <span class="md-ellipsis">
+    03.EC2InstanceTypes1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.EC2InstanceTypes2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.EC2InstanceTypes2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.demoEc2-ssh-instanceConnect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.demoEc2 ssh instanceConnect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.StorageRefresher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06.StorageRefresher
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.EBS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07.EBS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08.EBSVolumeTypes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08.EBSVolumeTypes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.EBSVolumeType2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ⚡️ AWS EBS Provisioned IOPS SSD: io1, io2, io2 Block Express – Đủ kiến thức đi làm &amp; đi thi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.EBS-HDD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10.EBS HDD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.InstanceStoreVolumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11.InstanceStoreVolumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.gp2-3-io1-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12.gp2 3 io1 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1093,7 +1500,7 @@
   
   
   <span class="md-ellipsis">
-    Ec2 elastic network interface
+    13.FastSnapshotRestoreFSR
     
   </span>
   
@@ -1106,7 +1513,7 @@
   
   
   <span class="md-ellipsis">
-    Ec2 elastic network interface
+    13.FastSnapshotRestoreFSR
     
   </span>
   
@@ -1127,45 +1534,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#eni-la-gi" class="md-nav__link">
+  <a href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" class="md-nav__link">
     <span class="md-ellipsis">
-      ENI là gì?
+      📸 AWS EBS Snapshot – Thực tế đi làm &amp; mẹo exam (script chi tiết)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tinh-nang-chinh-cua-eni" class="md-nav__link">
+  <a href="#1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te" class="md-nav__link">
     <span class="md-ellipsis">
-      Tính năng chính của ENI:
+      1. EBS Snapshot là gì? Kiến trúc &amp; ứng dụng thực tế
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#han-che" class="md-nav__link">
+  <a href="#2-co-che-billing-chi-phi" class="md-nav__link">
     <span class="md-ellipsis">
-      Hạn chế:
+      2. Cơ chế, billing &amp; chi phí
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-du-su-dung-eni" class="md-nav__link">
+  <a href="#3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang" class="md-nav__link">
     <span class="md-ellipsis">
-      Ví dụ sử dụng ENI:
+      3. Restore volume từ snapshot: Thực tế &amp; tối ưu hiệu năng
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ung-dung-thuc-te" class="md-nav__link">
+  <a href="#4-quy-trinh-thuc-te-script-i-lam" class="md-nav__link">
     <span class="md-ellipsis">
-      Ứng dụng thực tế:
+      4. Quy trình thực tế (script đi làm)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-meo-exam-luu-y-thuc-te-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Mẹo exam &amp; lưu ý thực tế quan trọng
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-nho-lau" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Tóm tắt nhớ lâu
     </span>
   </a>
   
@@ -1180,1921 +1605,8 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-hibernate/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ec2 hibernate
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-ip/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ec2 ip
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-placement-groups/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ec2 placement groups
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-price/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ec2 price
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-role/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Quản Lý Quyền Truy Cập AWS Trên EC2 Instance: Sử Dụng IAM Role
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-security-groups/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ec2 security groups
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-ssh/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Hướng Dẫn Khắc Phục Sự Cố SSH
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ec2-type/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Ec2 type
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ACID/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    Lý thuyết bên lề
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../../02.ec2-storage/lab/ebs-ec2-format-extend/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    02.ec2 storage
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../../03.High-availability-vs-Scalability/l%C3%BD-thuy%E1%BA%BFt/ALB/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    03.High availability vs Scalability
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../../04.RDB-Aurora-elasticCache/l%C3%BD-thuy%E1%BA%BFt/Aurora/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    04.RDB Aurora elasticCache
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../05.route53-dns/5/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    05.route53 dns
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../06.classic-sa/6/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    06.classic sa
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    
-  
-  
-  
-    <a href="../../../07.s3/lab/s3-static-web/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    07.s3
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../08.Cloudfront/CloudFront-Geo-Restriction/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    08.Cloudfront
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../09.AWS-Storage-Extras/Fsx/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    09.AWS Storage Extras
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../10.sqs-sns-activeMQ-kinesis/Amazon%20Data%20Firehose%20gi%E1%BB%9D%20%C4%91%E1%BB%95i%20t%C3%AAn%20th%C3%A0nh%20delivery%20stream%27ata-firehose/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    10.sqs sns activeMQ kinesis
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../11.ecs/a2c/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    11.ecs
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../12.serverless/api-gateway/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    12.serverless
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../13.serverless-architecture/microservice/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    13.serverless architecture
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../14.db-aws/db/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    14.db aws
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../15.data-analytics/amazon-EMR/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    15.data analytics
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../16.machine-learning/a-comprehend-medical/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    16.machine learning
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../17.monitor/CloudWatch-Insights/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    17.monitor
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../18.iam-advance/AWS%20IAM%20Identity%20Center/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    18.iam advance
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../19.security/ACM-amaz-cert-manager/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    19.security
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../20.network/CIDR-public-private-ip/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    20.network
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../21.disaster-recovery/DMS-lab/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    21.disaster recovery
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../22.more-saa/Caching%20Strategies/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    22.more saa
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../23.orther/CF-serviceRole/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    23.orther
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2">
-        
-          
-          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="">
-            
-  
-  
-  <span class="md-ellipsis">
-    02.dva
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_2">
-            <span class="md-nav__icon md-icon"></span>
-            02.dva
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../../02.dva/03.High-availability-vs-Scalability/01.InstanceRefresh/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    03.High availability vs Scalability
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../../../02.dva/04.RDB-Aurora-elasticCache/01.ElastiCacheStrategies/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    04.RDB Aurora elasticCache
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
       
     </li>
   
@@ -3111,6 +1623,66 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../../stephane/01.saa/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Stephane
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
       
     </li>
   
@@ -3141,45 +1713,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#eni-la-gi" class="md-nav__link">
+  <a href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" class="md-nav__link">
     <span class="md-ellipsis">
-      ENI là gì?
+      📸 AWS EBS Snapshot – Thực tế đi làm &amp; mẹo exam (script chi tiết)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tinh-nang-chinh-cua-eni" class="md-nav__link">
+  <a href="#1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te" class="md-nav__link">
     <span class="md-ellipsis">
-      Tính năng chính của ENI:
+      1. EBS Snapshot là gì? Kiến trúc &amp; ứng dụng thực tế
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#han-che" class="md-nav__link">
+  <a href="#2-co-che-billing-chi-phi" class="md-nav__link">
     <span class="md-ellipsis">
-      Hạn chế:
+      2. Cơ chế, billing &amp; chi phí
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vi-du-su-dung-eni" class="md-nav__link">
+  <a href="#3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang" class="md-nav__link">
     <span class="md-ellipsis">
-      Ví dụ sử dụng ENI:
+      3. Restore volume từ snapshot: Thực tế &amp; tối ưu hiệu năng
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ung-dung-thuc-te" class="md-nav__link">
+  <a href="#4-quy-trinh-thuc-te-script-i-lam" class="md-nav__link">
     <span class="md-ellipsis">
-      Ứng dụng thực tế:
+      4. Quy trình thực tế (script đi làm)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-meo-exam-luu-y-thuc-te-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Mẹo exam &amp; lưu ý thực tế quan trọng
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tom-tat-nho-lau" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Tóm tắt nhớ lâu
     </span>
   </a>
   
@@ -3201,7 +1791,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/stephane/01.saa/01.ec2/lý-thuyết/ec2-elastic-network-interface.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/13.FastSnapshotRestoreFSR.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -3209,70 +1799,91 @@
   
 
 
-  <h1>Ec2 elastic network interface</h1>
+  <h1>13.FastSnapshotRestoreFSR</h1>
 
-<h3 id="eni-la-gi"><strong>ENI là gì?</strong><a class="headerlink" href="#eni-la-gi" title="Permanent link">¶</a></h3>
+<h2 id="aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet">📸 AWS EBS Snapshot – Thực tế đi làm &amp; mẹo exam (script chi tiết)<a class="headerlink" href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/e726e4e3-240b-4d7f-88ac-5576732cc2c0" data-desc-position="bottom"><img width="818" height="458" alt="image" src="https://github.com/user-attachments/assets/e726e4e3-240b-4d7f-88ac-5576732cc2c0"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/7ea4189b-9fc5-4408-bcf2-ccead49c07e8" data-desc-position="bottom"><img width="828" height="454" alt="image" src="https://github.com/user-attachments/assets/7ea4189b-9fc5-4408-bcf2-ccead49c07e8"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/46d6c649-8bef-4be5-8fed-50c5fa3cc1bf" data-desc-position="bottom"><img width="793" height="465" alt="image" src="https://github.com/user-attachments/assets/46d6c649-8bef-4be5-8fed-50c5fa3cc1bf"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/d8b41b14-e257-499d-b737-1865bf742c8c" data-desc-position="bottom"><img width="827" height="468" alt="image" src="https://github.com/user-attachments/assets/d8b41b14-e257-499d-b737-1865bf742c8c"></a></p>
+<hr>
+<h2 id="1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te">1. EBS Snapshot là gì? Kiến trúc &amp; ứng dụng thực tế<a class="headerlink" href="#1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Elastic Network Interface (ENI)</strong> là một thành phần logic trong VPC, đại diện cho một <strong>card mạng ảo</strong>.</li>
-<li>ENI cho phép các <strong>EC2 instances</strong> kết nối với mạng và cũng có thể được sử dụng ngoài EC2 instances.</li>
+<li><strong>Snapshot = backup EBS volume lên S3</strong> (region-level durability, chống mất AZ/local disk, DR/migration).</li>
+<li><strong>Incremental:</strong>  </li>
+<li>Lần đầu: full backup (chỉ data đã dùng, không phải toàn bộ size volume).</li>
+<li>Các lần sau: chỉ lưu <strong>data thay đổi</strong> so với snapshot trước.</li>
+<li><strong>Self-sufficient:</strong>  </li>
+<li>Xóa snapshot giữa chuỗi không làm mất data, vì AWS tự di chuyển data cần thiết để mọi snapshot sau vẫn restore được.</li>
+<li><strong>Dùng snapshot để:</strong></li>
+<li>Khôi phục (restore) volume khi mất/hỏng.</li>
+<li>Clone volume (tạo volume mới từ snapshot, có thể ở AZ khác, region khác).</li>
+<li>Di chuyển dữ liệu giữa AZ/region (DR/migration).</li>
 </ul>
 <hr>
-<h3 id="tinh-nang-chinh-cua-eni"><strong>Tính năng chính của ENI:</strong><a class="headerlink" href="#tinh-nang-chinh-cua-eni" title="Permanent link">¶</a></h3>
-<ol>
-<li><strong>Primary private IPv4 và Secondary IPv4</strong>:  </li>
-<li>Mỗi ENI có thể có một <strong>Primary IPv4</strong> và <strong>nhiều Secondary IPv4</strong>.</li>
-<li>
-<p>Bạn có thể gắn thêm ENI vào một EC2 instance (eth1, eth2,...) để có thêm các địa chỉ IP.</p>
-</li>
-<li>
-<p><strong>Elastic IPv4 hoặc Public IPv4</strong>:  </p>
-</li>
-<li>Mỗi ENI có thể có:
-        Một hoặc nhiều địa chỉ Private IPv4.
-        Elastic IPv4 (nếu bạn muốn địa chỉ IP tĩnh để sử dụng với dịch vụ bên ngoài).
-        Public IPv4 (nếu bạn không cần Elastic IPv4 và chấp nhận sử dụng địa chỉ IP động).</li>
-<li>
-<p>Khi bạn gắn Elastic IP vào ENI, nó sẽ ánh xạ tới Private IP của ENI, và từ đó bạn có thể truy cập EC2 instance từ bên ngoài.
-    Một ENI có thể có nhiều địa chỉ Private IPv4 (1 Primary + nhiều Secondary).
-    <a href="../../l%C3%BD-thuy%E1%BA%BFt-b%C3%AAn-l%E1%BB%81/ENI/">Link đến file chi tiết lý thuyết hơn về eni về failover </a></p>
-<p>Sử dụng nhiều Private IPv4 giúp tối ưu hóa tài nguyên và hỗ trợ failover trong nhiều tình huống.</p>
-</li>
-<li>
-<p><strong>Security Groups</strong>:  </p>
-</li>
-<li>
-<p>ENI có thể gắn với một hoặc nhiều <strong>Security Groups</strong> để quản lý lưu lượng mạng.</p>
-</li>
-<li>
-<p><strong>MAC Address</strong>:  </p>
-</li>
-<li>
-<p>Mỗi ENI có một <strong>MAC address</strong> riêng, giúp định danh trong mạng.</p>
-</li>
-<li>
-<p><strong>Tạo và Quản lý ENI</strong>:  </p>
-</li>
-<li>ENI có thể được tạo độc lập và gắn hoặc tháo gỡ từ các EC2 instance bất kỳ lúc nào.</li>
-<li>ENI có thể di chuyển từ EC2 instance này sang EC2 instance khác trong cùng <strong>Availability Zone (AZ)</strong> để hỗ trợ <strong>failover</strong>.</li>
-</ol>
-<hr>
-<h3 id="han-che"><strong>Hạn chế:</strong><a class="headerlink" href="#han-che" title="Permanent link">¶</a></h3>
+<h2 id="2-co-che-billing-chi-phi">2. Cơ chế, billing &amp; chi phí<a class="headerlink" href="#2-co-che-billing-chi-phi" title="Permanent link">¶</a></h2>
 <ul>
-<li>ENI được <strong>ràng buộc với một AZ cụ thể</strong>, nghĩa là nếu bạn tạo ENI trong một AZ (ví dụ: us-east-1a), nó chỉ có thể được sử dụng trong AZ đó và không thể di chuyển sang AZ khác.</li>
+<li><strong>Snapshot lưu trên S3 (region-level):</strong> Không phụ thuộc AZ.</li>
+<li><strong>Chỉ tính phí theo **data thực sử dụng</strong> (used data), không phải toàn bộ dung lượng volume.</li>
+<li>Ví dụ: Volume 40GB, dùng 10GB → snapshot full đầu tiên chỉ tính phí 10GB.</li>
+<li><strong>Incremental:</strong>  </li>
+<li>Mỗi snapshot chỉ tính phần data phát sinh/chỉnh sửa so với lần trước.</li>
+<li>Snapshot nhiều lần/ngày cũng không tăng phí nếu data không đổi.</li>
+<li><strong>Billing:</strong> GB-tháng (10GB snapshot 1 tháng = 10GB-tháng).</li>
 </ul>
 <hr>
-<h3 id="vi-du-su-dung-eni"><strong>Ví dụ sử dụng ENI:</strong><a class="headerlink" href="#vi-du-su-dung-eni" title="Permanent link">¶</a></h3>
+<h2 id="3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang">3. Restore volume từ snapshot: Thực tế &amp; tối ưu hiệu năng<a class="headerlink" href="#3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang" title="Permanent link">¶</a></h2>
 <ul>
-<li>Khi một EC2 instance bị lỗi, bạn có thể di chuyển ENI (và private IP của nó) từ instance bị lỗi sang instance khác để tiếp tục hoạt động, đảm bảo tính liên tục của dịch vụ.</li>
-<li>Điều này rất hữu ích khi dịch vụ của bạn yêu cầu một <strong>Private IP cố định</strong> để truy cập.</li>
+<li><strong>Restore volume từ snapshot:</strong>  </li>
+<li>Volume tạo ra <em>chưa có toàn bộ data local</em>, data được copy dần từ S3 về EBS khi truy cập (lazy restore).</li>
+<li>Lần đầu truy cập block chưa copy sẽ bị <strong>performance thấp</strong> hơn; sau khi data local → hiệu năng tối đa.</li>
+<li><strong>Tối ưu:</strong>  </li>
+<li><strong>Force read all blocks</strong>: Dùng <code>dd</code>/<code>fio</code>/<code>cat</code> để đọc hết block → force data từ S3 về volume mới.</li>
+<li><strong>Fast Snapshot Restore (FSR):</strong>  <ul>
+<li>Bật FSR lên snapshot + AZ cần dùng → volume restore ra sẽ luôn ready, không cần force read.</li>
+<li><strong>Giới hạn:</strong> 50 FSR/AZ/region, tính phí riêng.</li>
+<li>FSR = chọn snapshot + AZ, mỗi cặp snapshot/AZ tính 1 quota (VD: 1 snap x 4 AZ = 4 FSR).</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h3 id="ung-dung-thuc-te"><strong>Ứng dụng thực tế:</strong><a class="headerlink" href="#ung-dung-thuc-te" title="Permanent link">¶</a></h3>
-<p>ENI hỗ trợ nhiều trường hợp như:
-1. <strong>Multi-homing</strong>: Một EC2 instance có thể có nhiều ENI để kết nối với nhiều mạng khác nhau.
-2. <strong>Failover</strong>: Di chuyển ENI giữa các EC2 instances để đảm bảo độ tin cậy.
-3. <strong>Network Separation</strong>: Tách biệt lưu lượng giữa các dịch vụ trong cùng một instance. </p>
-<p>Bạn có thể kiểm tra thêm trong phần <strong>hands-on</strong> để hiểu rõ cách sử dụng thực tế của ENI trong AWS.</p>
+<h2 id="4-quy-trinh-thuc-te-script-i-lam">4. Quy trình thực tế (script đi làm)<a class="headerlink" href="#4-quy-trinh-thuc-te-script-i-lam" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Tạo snapshot từ volume</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-snapshot<span class="w"> </span>--volume-id<span class="w"> </span>vol-0123456789abcdef<span class="w"> </span>--description<span class="w"> </span><span class="s2">"Backup daily"</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Tạo volume mới từ snapshot (có thể chọn AZ khác)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--snapshot-id<span class="w"> </span>snap-0123abcd<span class="w"> </span>--availability-zone<span class="w"> </span>ap-southeast-1b<span class="w"> </span>--volume-type<span class="w"> </span>gp3
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Force restore (Linux)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/xvdf<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/null<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Bật FSR cho snapshot</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>aws<span class="w"> </span>ec2<span class="w"> </span>enable-fast-snapshot-restores<span class="w"> </span>--source-snapshot-ids<span class="w"> </span>snap-0123abcd<span class="w"> </span>--availability-zones<span class="w"> </span>ap-southeast-1a
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Xem trạng thái FSR</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-fast-snapshot-restores<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>snapshot-id,Values<span class="o">=</span>snap-0123abcd
+</code></pre></div>
+<hr>
+<h2 id="5-meo-exam-luu-y-thuc-te-quan-trong">5. Mẹo exam &amp; lưu ý thực tế quan trọng<a class="headerlink" href="#5-meo-exam-luu-y-thuc-te-quan-trong" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Snapshot chỉ backup data đã dùng, không phải toàn bộ volume size.</strong></li>
+<li><strong>Snapshot nhiều lần/ngày không tăng phí nếu không đổi/chỉnh sửa dữ liệu.</strong></li>
+<li><strong>Dùng snapshot để clone/migrate volume giữa AZ/region (DR, blue/green).</strong></li>
+<li><strong>Restore từ snapshot = hiệu năng thấp lúc đầu (trừ khi dùng FSR hoặc force read block).</strong></li>
+<li><strong>FSR có phí riêng, tối đa 50 FSR/snapshot/region.</strong></li>
+<li><strong>Xóa snapshot giữa chain không mất data, AWS auto giữ các block cần cho các snapshot sau.</strong></li>
+<li><strong>Snapshot cũng backup encryption (volume encrypted → snapshot cũng encrypted).</strong></li>
+<li><strong>Snapshot lưu trữ ở S3, không hiển thị trực tiếp trong bucket S3, chỉ quản lý qua EBS API/Console.</strong></li>
+<li><strong>Billing tính theo GB-tháng dùng thực tế (không phải toàn bộ disk).</strong></li>
+</ul>
+<hr>
+<h2 id="6-tom-tat-nho-lau">6. Tóm tắt nhớ lâu<a class="headerlink" href="#6-tom-tat-nho-lau" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Snapshot = backup EBS lên S3, incremental, chi phí trên data thực dùng, restore nhanh với FSR hoặc force read.</strong></li>
+<li><strong>Dùng snapshot cho backup định kỳ, DR, clone/migrate giữa AZ/region, rollback trước khi upgrade.</strong></li>
+<li><strong>Luôn nhớ tối ưu hiệu năng restore bằng FSR hoặc force read khi cần production ready!</strong></li>
+</ul>
+<hr>
 
 
 
@@ -3329,7 +1940,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../../lab-ec2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: Lab ec2">
+          <a href="../12.gp2-3-io1-2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 12.gp2 3 io1 2">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3339,20 +1950,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                Lab ec2
+                12.gp2 3 io1 2
               </div>
             </div>
           </a>
         
         
           
-          <a href="../ec2-hibernate/" class="md-footer__link md-footer__link--next" aria-label="Sau: Ec2 hibernate">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                Ec2 hibernate
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3414,10 +2025,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
     
   
