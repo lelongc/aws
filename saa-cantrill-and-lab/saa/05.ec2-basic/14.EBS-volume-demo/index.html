@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/09.lab2-publicSubnet-BastionHost/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/14.EBS-volume-demo/">
       
       
-        <link rel="prev" href="../08.lab-publicSubnet-BastionHost/">
+        <link rel="prev" href="../13.FastSnapshotRestoreFSR/">
       
       
-        <link rel="next" href="../10.StateFull-StateLess/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>09.lab2 publicSubnet BastionHost - DraDoc</title>
+        <title>14.EBS volume demo - DraDoc</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet" class="md-skip">
+        <a href="#demo-thuc-te-lam-viec-voi-ebs-instance-store-tren-ec2-script-ay-u-i-lam-i-thi" class="md-skip">
           Bỏ qua
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              09.lab2 publicSubnet BastionHost
+              14.EBS volume demo
             
           </span>
         </div>
@@ -1053,660 +1053,12 @@
                 
   
   
-    
-  
   
   
     
     
       
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    04.VPC
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            04.VPC
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.IP-plan/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    01.IP plan
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02.ip-plan2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    02.ip plan2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03.Custom%20VPCs1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    03.Custom VPCs1
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.custom-vpc-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04.custom vpc lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05.VpcSubnets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    05.VpcSubnets
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06.subnet-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06.subnet lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.vpcRouting-IGW-bastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07.vpcRouting IGW bastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08.lab-publicSubnet-BastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    08.lab publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    09.lab2 publicSubnet BastionHost
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    09.lab2 publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#muc-tieu" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎯 Mục tiêu
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-1-launch-ec2-bastion-host-vao-web-subnet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phần 1: Launch EC2 Bastion Host vào Web Subnet
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Phần 1: Launch EC2 Bastion Host vào Web Subnet">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-vao-ec2-console" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1. Vào EC2 Console
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-launch-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2. Launch Instance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-key-pair" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3. Key Pair
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-network-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4. Network settings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-security-group" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.5. Security Group
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#16-launch" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.6. Launch!
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-2-ket-noi-ssh-vao-bastion-host" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phần 2: Kết nối SSH vào Bastion Host
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Phần 2: Kết nối SSH vào Bastion Host">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-kiem-tra-thong-tin" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1. Kiểm tra thông tin
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2. Kết nối SSH (Tùy chọn 1: EC2 Instance Connect)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-ket-noi-ssh-tuy-chon-2-local-ssh-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3. Kết nối SSH (Tùy chọn 2: Local SSH Client)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-xoa-bastion-host" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1. Xóa Bastion Host
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2. Xóa toàn bộ VPC (và các tài nguyên liên quan)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi" class="md-nav__link">
-    <span class="md-ellipsis">
-      📚 Kinh nghiệm thực tế &amp; ghi nhớ khi đi làm/thi
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tom-tat-cac-buoc-a-thuc-hien" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ Tóm tắt các bước đã thực hiện
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10.StateFull-StateLess/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    10.StateFull StateLess
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11.NACLs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    11.NACLs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12.SecurityGroups/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    12.SecurityGroups
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.NAT/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    13.NAT
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14.NAT2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    14.NAT2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15.lab-natGW-private-internet-access/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    15.lab natGW private internet access
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
       
         
       
@@ -1756,12 +1108,12 @@
   
   
   
-    <a href="../../05.ec2-basic/01.Virtualization/" class="md-nav__link">
+    <a href="../../04.VPC/01.IP-plan/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    05.ec2 basic
+    04.VPC
     
   </span>
   
@@ -1772,6 +1124,559 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    05.ec2 basic
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            05.ec2 basic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.Virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.Virtualization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.EC2architectureResilience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.EC2architectureResilience
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.EC2InstanceTypes1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.EC2InstanceTypes1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.EC2InstanceTypes2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.EC2InstanceTypes2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.demoEc2-ssh-instanceConnect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.demoEc2 ssh instanceConnect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.StorageRefresher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06.StorageRefresher
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.EBS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07.EBS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08.EBSVolumeTypes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08.EBSVolumeTypes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.EBSVolumeType2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09.EBSVolumeType2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.EBS-HDD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10.EBS HDD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.InstanceStoreVolumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11.InstanceStoreVolumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.gp2-3-io1-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12.gp2 3 io1 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.FastSnapshotRestoreFSR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13.FastSnapshotRestoreFSR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    14.EBS volume demo
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    14.EBS volume demo
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#demo-thuc-te-lam-viec-voi-ebs-instance-store-tren-ec2-script-ay-u-i-lam-i-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Demo thực tế: Làm việc với EBS &amp; Instance Store Trên EC2 (script đầy đủ đi làm &amp; đi thi)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-boi-canh-luu-y-chi-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Bối cảnh &amp; lưu ý chi phí
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chuan-bi-moi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Chuẩn bị môi trường
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-kiem-tra-ebs-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Kiểm tra EBS volumes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tao-ebs-volume-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tạo EBS volume mới
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-attach-volume-vao-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Attach volume vào EC2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sshconnect-vao-ec2-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. SSH/Connect vào EC2 instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-thao-tac-tren-linux-copy-paste-tung-dong" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Thao tác trên Linux (copy, paste từng dòng)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-kiem-tra-lai-sau-reboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Kiểm tra lại sau reboot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-kien-thuc-bo-sung-meo-i-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Kiến thức bổ sung &amp; mẹo đi thi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-lenh-tham-khao-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Lệnh tham khảo khác
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-luu-y-chi-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Lưu ý chi phí
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1878,180 +1783,108 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet" class="md-nav__link">
+  <a href="#demo-thuc-te-lam-viec-voi-ebs-instance-store-tren-ec2-script-ay-u-i-lam-i-thi" class="md-nav__link">
     <span class="md-ellipsis">
-      🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)
+      🛠️ Demo thực tế: Làm việc với EBS &amp; Instance Store Trên EC2 (script đầy đủ đi làm &amp; đi thi)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#muc-tieu" class="md-nav__link">
+  <a href="#1-boi-canh-luu-y-chi-phi" class="md-nav__link">
     <span class="md-ellipsis">
-      🎯 Mục tiêu
+      1. Bối cảnh &amp; lưu ý chi phí
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-1-launch-ec2-bastion-host-vao-web-subnet" class="md-nav__link">
+  <a href="#2-chuan-bi-moi-truong" class="md-nav__link">
     <span class="md-ellipsis">
-      Phần 1: Launch EC2 Bastion Host vào Web Subnet
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Phần 1: Launch EC2 Bastion Host vào Web Subnet">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-vao-ec2-console" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.1. Vào EC2 Console
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-launch-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2. Launch Instance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-key-pair" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3. Key Pair
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-network-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4. Network settings
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-security-group" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.5. Security Group
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#16-launch" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.6. Launch!
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-2-ket-noi-ssh-vao-bastion-host" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phần 2: Kết nối SSH vào Bastion Host
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Phần 2: Kết nối SSH vào Bastion Host">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-kiem-tra-thong-tin" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.1. Kiểm tra thông tin
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.2. Kết nối SSH (Tùy chọn 1: EC2 Instance Connect)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-ket-noi-ssh-tuy-chon-2-local-ssh-client" class="md-nav__link">
-    <span class="md-ellipsis">
-      2.3. Kết nối SSH (Tùy chọn 2: Local SSH Client)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua" class="md-nav__link">
-    <span class="md-ellipsis">
-      Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-xoa-bastion-host" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1. Xóa Bastion Host
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2. Xóa toàn bộ VPC (và các tài nguyên liên quan)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi" class="md-nav__link">
-    <span class="md-ellipsis">
-      📚 Kinh nghiệm thực tế &amp; ghi nhớ khi đi làm/thi
+      2. Chuẩn bị môi trường
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tom-tat-cac-buoc-a-thuc-hien" class="md-nav__link">
+  <a href="#3-kiem-tra-ebs-volumes" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ Tóm tắt các bước đã thực hiện
+      3. Kiểm tra EBS volumes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tao-ebs-volume-moi" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Tạo EBS volume mới
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-attach-volume-vao-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Attach volume vào EC2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sshconnect-vao-ec2-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. SSH/Connect vào EC2 instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-thao-tac-tren-linux-copy-paste-tung-dong" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Thao tác trên Linux (copy, paste từng dòng)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-kiem-tra-lai-sau-reboot" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Kiểm tra lại sau reboot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-kien-thuc-bo-sung-meo-i-thi" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Kiến thức bổ sung &amp; mẹo đi thi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-lenh-tham-khao-khac" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Lệnh tham khảo khác
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-luu-y-chi-phi" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Lưu ý chi phí
     </span>
   </a>
   
@@ -2073,7 +1906,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/09.lab2-publicSubnet-BastionHost.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/14.EBS-volume-demo.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -2081,126 +1914,139 @@
   
 
 
-  <h1>09.lab2 publicSubnet BastionHost</h1>
+  <h1>14.EBS volume demo</h1>
 
-<h2 id="demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet">🛠️ DEMO: Launch Bastion Host vào Public Subnet + Clean-up VPC (Step-by-step cực chi tiết)<a class="headerlink" href="#demo-launch-bastion-host-vao-public-subnet-clean-up-vpc-step-by-step-cuc-chi-tiet" title="Permanent link">¶</a></h2>
+<h2 id="demo-thuc-te-lam-viec-voi-ebs-instance-store-tren-ec2-script-ay-u-i-lam-i-thi">🛠️ Demo thực tế: Làm việc với EBS &amp; Instance Store Trên EC2 (script đầy đủ đi làm &amp; đi thi)<a class="headerlink" href="#demo-thuc-te-lam-viec-voi-ebs-instance-store-tren-ec2-script-ay-u-i-lam-i-thi" title="Permanent link">¶</a></h2>
 <hr>
-<h2 id="muc-tieu">🎯 Mục tiêu<a class="headerlink" href="#muc-tieu" title="Permanent link">¶</a></h2>
+<h2 id="1-boi-canh-luu-y-chi-phi">1. Bối cảnh &amp; lưu ý chi phí<a class="headerlink" href="#1-boi-canh-luu-y-chi-phi" title="Permanent link">¶</a></h2>
 <ul>
-<li>Thực hành launch <strong>EC2 Bastion Host</strong> vào web subnet đã public.</li>
-<li>Test kết nối từ ngoài Internet vào VPC qua Bastion.</li>
-<li>Hướng dẫn <strong>dọn sạch (clean-up)</strong> infrastructure về trạng thái ban đầu (không mất phí).</li>
-</ul>
-<hr>
-<h2 id="phan-1-launch-ec2-bastion-host-vao-web-subnet">Phần 1: Launch EC2 Bastion Host vào Web Subnet<a class="headerlink" href="#phan-1-launch-ec2-bastion-host-vao-web-subnet" title="Permanent link">¶</a></h2>
-<h3 id="11-vao-ec2-console">1.1. <strong>Vào EC2 Console</strong><a class="headerlink" href="#11-vao-ec2-console" title="Permanent link">¶</a></h3>
-<ul>
-<li>AWS Console → Services → EC2</li>
-</ul>
-<h3 id="12-launch-instance">1.2. <strong>Launch Instance</strong><a class="headerlink" href="#12-launch-instance" title="Permanent link">¶</a></h3>
-<ul>
-<li>Click <code>Launch instance</code></li>
-<li><strong>Name:</strong> <code>A4L-Bastion</code></li>
-<li><strong>AMI:</strong> Chọn <code>Amazon Linux</code> (latest, Free Tier Eligible)</li>
-<li><strong>Architecture:</strong> 64-bit (x86)</li>
-<li><strong>Instance type:</strong> <code>t2.micro</code> hoặc <code>t3.micro</code> (Free Tier eligible)</li>
-</ul>
-<h3 id="13-key-pair">1.3. <strong>Key Pair</strong><a class="headerlink" href="#13-key-pair" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Chọn:</strong> Key pair có tên <code>A4L</code> (nếu đã tạo)</li>
-<li>Nếu chưa có, click <code>Create new key pair</code>:<ul>
-<li>Name: <code>A4L</code></li>
-<li>Type: RSA</li>
-<li>Format: <code>.pem</code></li>
-<li>Download file này về máy (rất quan trọng!)</li>
-</ul>
-</li>
-</ul>
-<h3 id="14-network-settings">1.4. <strong>Network settings</strong><a class="headerlink" href="#14-network-settings" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>VPC:</strong> Chọn <code>A4L-VPC1</code></li>
-<li><strong>Subnet:</strong> Chọn <code>SN-EN-web-A</code> (hoặc tên subnet web-A của bạn)</li>
-<li><strong>Auto-assign public IP:</strong> Enabled</li>
-<li><strong>Auto-assign IPv6 IP:</strong> Enabled (nếu có)</li>
-</ul>
-<h3 id="15-security-group">1.5. <strong>Security Group</strong><a class="headerlink" href="#15-security-group" title="Permanent link">¶</a></h3>
-<ul>
-<li>Chọn <code>Create security group</code><ul>
-<li><strong>Name:</strong> <code>A4L-bastion-SG</code></li>
-<li><strong>Description:</strong> <code>A4L bastion SG</code></li>
-<li><strong>Rule:</strong> SSH (port 22)  <ul>
-<li>Source: <code>0.0.0.0/0</code> và <code>::/0</code> (chấp nhận từ mọi IP – chỉ dùng khi học, production cần giới hạn IP)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>Các setting còn lại:</strong> Giữ mặc định</li>
-</ul>
-<h3 id="16-launch">1.6. <strong>Launch!</strong><a class="headerlink" href="#16-launch" title="Permanent link">¶</a></h3>
-<ul>
-<li>Click <code>Launch instance</code></li>
-<li>Vào <code>Instances</code> → kiểm tra instance đang khởi tạo (<code>initializing</code>).<br>
-  Đợi trạng thái chuyển sang <code>2/2 status checks</code>.</li>
+<li><strong>Phần 1:</strong> Demo EBS &amp; snapshot (trong Free Tier)</li>
+<li><strong>Phần 2:</strong> Demo Instance Store (có thể mất phí, ~0.13$/giờ cho instance lớn, không Free Tier)</li>
 </ul>
 <hr>
-<h2 id="phan-2-ket-noi-ssh-vao-bastion-host">Phần 2: Kết nối SSH vào Bastion Host<a class="headerlink" href="#phan-2-ket-noi-ssh-vao-bastion-host" title="Permanent link">¶</a></h2>
-<h3 id="21-kiem-tra-thong-tin">2.1. <strong>Kiểm tra thông tin</strong><a class="headerlink" href="#21-kiem-tra-thong-tin" title="Permanent link">¶</a></h3>
+<h2 id="2-chuan-bi-moi-truong">2. Chuẩn bị môi trường<a class="headerlink" href="#2-chuan-bi-moi-truong" title="Permanent link">¶</a></h2>
 <ul>
-<li>Chọn instance vừa launch</li>
-<li>Lấy <strong>Public IPv4 address</strong> (dùng để SSH)</li>
-<li>Lấy <strong>Private IPv4 address</strong> (dùng cho kiểm tra nội bộ)</li>
+<li>Đăng nhập AWS management account, chọn region <strong>N. Virginia (us-east-1)</strong></li>
+<li>Dùng CloudFormation template để tạo sẵn <strong>3 EC2 instances</strong> (2 ở AZ A, 1 ở AZ B)</li>
+<li>Mở EC2 Console &gt; Instances, kiểm tra có 3 instance: instance-1a, instance-2a, instance-1ab</li>
 </ul>
-<h3 id="22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect">2.2. <strong>Kết nối SSH</strong> (Tùy chọn 1: EC2 Instance Connect)<a class="headerlink" href="#22-ket-noi-ssh-tuy-chon-1-ec2-instance-connect" title="Permanent link">¶</a></h3>
+<hr>
+<h2 id="3-kiem-tra-ebs-volumes">3. Kiểm tra EBS volumes<a class="headerlink" href="#3-kiem-tra-ebs-volumes" title="Permanent link">¶</a></h2>
 <ul>
-<li>Chọn instance → <code>Connect</code> → <code>EC2 Instance Connect</code></li>
-<li><strong>Username:</strong> <code>ec2-user</code></li>
-<li>Click <code>Connect</code> (sẽ mở web SSH terminal)</li>
+<li>EC2 Console &gt; Elastic Block Store &gt; Volumes</li>
+<li>Có 3 volume 8 GiB, mỗi cái gắn với 1 instance làm boot volume</li>
 </ul>
-<h3 id="23-ket-noi-ssh-tuy-chon-2-local-ssh-client">2.3. <strong>Kết nối SSH</strong> (Tùy chọn 2: Local SSH Client)<a class="headerlink" href="#23-ket-noi-ssh-tuy-chon-2-local-ssh-client" title="Permanent link">¶</a></h3>
+<hr>
+<h2 id="4-tao-ebs-volume-moi">4. Tạo EBS volume mới<a class="headerlink" href="#4-tao-ebs-volume-moi" title="Permanent link">¶</a></h2>
 <ul>
-<li>Đảm bảo file key pair <code>.pem</code> trong thư mục (VD: <code>~/Downloads</code>)</li>
-<li><strong>Lệnh SSH mẫu:</strong>
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>A4L.pem<span class="w">  </span><span class="c1"># Sửa permission cho key (Linux/Mac)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>A4L.pem<span class="w"> </span>ec2-user@&lt;Public-IP-v4-address&gt;
+<li><strong>Create Volume</strong></li>
+<li>Volume type: <strong>gp3</strong></li>
+<li>Size: <strong>10 GiB</strong></li>
+<li>AZ: <strong>us-east-1a</strong></li>
+<li>Tag: key = <code>Name</code>, value = <code>EBS test volume</code></li>
+<li>Bấm <strong>Create volume</strong>, chờ trạng thái “available”</li>
+</ul>
+<hr>
+<h2 id="5-attach-volume-vao-ec2">5. Attach volume vào EC2<a class="headerlink" href="#5-attach-volume-vao-ec2" title="Permanent link">¶</a></h2>
+<ul>
+<li>Chọn volume vừa tạo &gt; Actions &gt; Attach volume</li>
+<li>Chọn instance <strong>instance-1a</strong> (chỉ thấy instance cùng AZ)</li>
+<li>Device: <code>/dev/sdf</code> (Linux có thể nhận là <code>/dev/xvdf</code>)</li>
+<li>Bấm <strong>Attach</strong></li>
+</ul>
+<hr>
+<h2 id="6-sshconnect-vao-ec2-instance">6. SSH/Connect vào EC2 instance<a class="headerlink" href="#6-sshconnect-vao-ec2-instance" title="Permanent link">¶</a></h2>
+<ul>
+<li>EC2 Console &gt; Instances &gt; Chọn <strong>instance-1a</strong> &gt; Connect &gt; EC2 Instance Connect</li>
+<li>User: <code>ec2-user</code></li>
+</ul>
+<hr>
+<h2 id="7-thao-tac-tren-linux-copy-paste-tung-dong">7. Thao tác trên Linux (copy, paste từng dòng)<a class="headerlink" href="#7-thao-tac-tren-linux-copy-paste-tung-dong" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Xem block devices</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>lsblk
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Kiểm tra file system (vd: trên xvdf)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>file<span class="w"> </span>-s<span class="w"> </span>/dev/xvdf
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Nếu trả về "data", chưa có file system</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Tạo file system (XFS)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>sudo<span class="w"> </span>mkfs<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>/dev/xvdf
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Kiểm tra lại file system</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>sudo<span class="w"> </span>file<span class="w"> </span>-s<span class="w"> </span>/dev/xvdf
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># Tạo mount point</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>/EBS-test
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># Mount volume vào thư mục</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdf<span class="w"> </span>/EBS-test
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># Kiểm tra mount</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>df<span class="w"> </span>-h
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># Chuyển vào thư mục mount</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="nb">cd</span><span class="w"> </span>/EBS-test
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1"># Tạo file test</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>sudo<span class="w"> </span>nano<span class="w"> </span>amazing-test-file.txt
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="c1"># (Nhập nội dung, Ctrl+O để lưu, Ctrl+X để thoát)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="c1"># Hiển thị nội dung file</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>cat<span class="w"> </span>amazing-test-file.txt
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1"># Liệt kê file</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>ls<span class="w"> </span>-l
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="c1"># Reboot instance để test persistence</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>sudo<span class="w"> </span>reboot
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="c1"># (Đợi vài phút, sau đó connect lại instance)</span>
+</code></pre></div>
+<hr>
+<h2 id="8-kiem-tra-lai-sau-reboot">8. Kiểm tra lại sau reboot<a class="headerlink" href="#8-kiem-tra-lai-sau-reboot" title="Permanent link">¶</a></h2>
+<ul>
+<li>SSH lại instance, chạy:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lsblk
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdf<span class="w"> </span>/EBS-test
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>ls<span class="w"> </span>/EBS-test
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>cat<span class="w"> </span>/EBS-test/amazing-test-file.txt
 </code></pre></div></li>
-<li>Nếu lần đầu, nhập <code>yes</code> khi được hỏi xác nhận fingerprint.</li>
+<li>File vẫn còn, chứng minh <strong>EBS là persistent storage</strong></li>
 </ul>
-<blockquote>
-<p><strong>Tip:</strong> Nếu lỗi “WARNING: UNPROTECTED PRIVATE KEY FILE!”, dùng <code>chmod 400</code> sửa lại quyền file key.</p>
-</blockquote>
 <hr>
-<h2 id="phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua">Phần 3: Clean-up (Xóa Bastion Host và toàn bộ VPC khi không dùng nữa)<a class="headerlink" href="#phan-3-clean-up-xoa-bastion-host-va-toan-bo-vpc-khi-khong-dung-nua" title="Permanent link">¶</a></h2>
-<h3 id="31-xoa-bastion-host">3.1. <strong>Xóa Bastion Host</strong><a class="headerlink" href="#31-xoa-bastion-host" title="Permanent link">¶</a></h3>
+<h2 id="9-kien-thuc-bo-sung-meo-i-thi">9. Kiến thức bổ sung &amp; mẹo đi thi<a class="headerlink" href="#9-kien-thuc-bo-sung-meo-i-thi" title="Permanent link">¶</a></h2>
 <ul>
-<li>EC2 Console → Chọn <code>A4L-Bastion</code></li>
-<li>Right click → <code>Instance State</code> → <code>Terminate instance</code></li>
-<li>Confirm → Đợi trạng thái thành <code>terminated</code></li>
+<li><strong>Chỉ attach EBS volume vào instance cùng AZ</strong></li>
+<li><strong>EBS volume tách rời vòng đời EC2:</strong> Dừng/xóa instance, volume vẫn còn (trừ khi chọn delete on termination)</li>
+<li><strong>EBS volume dùng được cho nhiều EC2 (sequential attach, không parallel)</strong></li>
+<li><strong>Instance Store:</strong> Chỉ add khi launch, mất data khi stop/start/terminate, chỉ dùng cho temp/cache</li>
+<li><strong>Boot volume chỉ dùng EBS, không dùng instance store</strong></li>
+<li><strong>EBS volume có thể tạo từ snapshot, restore/migrate/clone sang AZ/region khác</strong></li>
 </ul>
-<h3 id="32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan">3.2. <strong>Xóa toàn bộ VPC (và các tài nguyên liên quan)</strong><a class="headerlink" href="#32-xoa-toan-bo-vpc-va-cac-tai-nguyen-lien-quan" title="Permanent link">¶</a></h3>
+<hr>
+<h2 id="10-lenh-tham-khao-khac">10. Lệnh tham khảo khác<a class="headerlink" href="#10-lenh-tham-khao-khac" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Format ext4 thay cho xfs</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>mkfs.ext4<span class="w"> </span>/dev/xvdf
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Unmount volume</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>umount<span class="w"> </span>/EBS-test
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Xóa volume khỏi EC2 (detach)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># AWS Console &gt; Volumes &gt; Actions &gt; Detach</span>
+</code></pre></div>
+<hr>
+<h2 id="11-luu-y-chi-phi">11. Lưu ý chi phí<a class="headerlink" href="#11-luu-y-chi-phi" title="Permanent link">¶</a></h2>
 <ul>
-<li>VPC Console → <code>Your VPCs</code> → Chọn <code>A4L-VPC1</code></li>
-<li>Actions → <code>Delete VPC</code></li>
-<li>Gõ <code>delete</code> để xác nhận → Click <code>Delete</code></li>
-</ul>
-<blockquote>
-<p><strong>Khi xóa VPC</strong>: AWS tự động xóa luôn IGW, subnet, route table… liên quan, cực nhanh và sạch.</p>
-</blockquote>
-<hr>
-<h2 id="kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi">📚 Kinh nghiệm thực tế &amp; ghi nhớ khi đi làm/thi<a class="headerlink" href="#kinh-nghiem-thuc-te-ghi-nho-khi-i-lamthi" title="Permanent link">¶</a></h2>
-<ul>
-<li>Bastion host chỉ nên dùng cho lab hoặc tạm thời – production nên dùng SSM Session Manager, EC2 Instance Connect.</li>
-<li>Sau mỗi bài thực hành, <strong>nên xóa (clean-up)</strong> để tránh phát sinh phí vô ý!</li>
-<li>Khi gặp lỗi SSH: kiểm tra đúng public IP, đúng username (<code>ec2-user</code>), đúng permission file key.</li>
+<li><strong>EBS gp3:</strong> ~$0.08/GB/tháng (10GB ~ $0.8/tháng)</li>
+<li><strong>Instance store:</strong> Không tính riêng, đã include trong giá EC2</li>
+<li><strong>Part 2 (instance store):</strong> Dùng instance lớn tốn ~0.13$/giờ</li>
+<li><strong>Snapshot:</strong> ~$0.05/GB/tháng trên data thực dùng</li>
 </ul>
 <hr>
-<h2 id="tom-tat-cac-buoc-a-thuc-hien">✅ Tóm tắt các bước đã thực hiện<a class="headerlink" href="#tom-tat-cac-buoc-a-thuc-hien" title="Permanent link">¶</a></h2>
-<ol>
-<li>Launch EC2 Bastion Host vào public subnet</li>
-<li>Kết nối SSH từ Internet vào instance</li>
-<li>Thực hành dọn sạch (terminate + delete VPC)</li>
-</ol>
+<p><strong>Tóm tắt:</strong>
+- EBS: Persistent, attach/detach linh hoạt, backup được (snapshot), chỉ attach cùng AZ.
+- Instance store: Hiệu năng cao, ephemeral, chỉ add lúc launch, mất data khi stop/start, không backup.
+- Thực hành đủ quy trình: tạo, attach, mount, test persistence, reboot, detach, xóa...</p>
 <hr>
-<p><strong>Sau bài này, bạn đã thực sự làm chủ quy trình tạo public subnet, kiểm tra kết nối, clean-up AWS lab cực kỳ bài bản. Chuẩn bị cho các bài networking nâng cao tiếp theo! 🚀</strong></p>
 
 
 
@@ -2257,7 +2103,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../08.lab-publicSubnet-BastionHost/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 08.lab publicSubnet BastionHost">
+          <a href="../13.FastSnapshotRestoreFSR/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 13.FastSnapshotRestoreFSR">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -2267,20 +2113,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                08.lab publicSubnet BastionHost
+                13.FastSnapshotRestoreFSR
               </div>
             </div>
           </a>
         
         
           
-          <a href="../10.StateFull-StateLess/" class="md-footer__link md-footer__link--next" aria-label="Sau: 10.StateFull StateLess">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                10.StateFull StateLess
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
