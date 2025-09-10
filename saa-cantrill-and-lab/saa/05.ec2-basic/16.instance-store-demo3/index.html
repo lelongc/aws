@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/15.EBS-volume-demo2/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/16.instance-store-demo3/">
       
       
-        <link rel="prev" href="../14.EBS-volume-demo/">
+        <link rel="prev" href="../15.EBS-volume-demo2/">
       
       
-        <link rel="next" href="../16.instance-store-demo3/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>15.EBS volume demo2 - DraDoc</title>
+        <title>16.instance store demo3 - DraDoc</title>
       
     
     
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              15.EBS volume demo2
+              16.instance store demo3
             
           </span>
         </div>
@@ -1537,6 +1537,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.EBS-volume-demo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15.EBS volume demo2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1554,7 +1577,7 @@
   
   
   <span class="md-ellipsis">
-    15.EBS volume demo2
+    16.instance store demo3
     
   </span>
   
@@ -1567,7 +1590,7 @@
   
   
   <span class="md-ellipsis">
-    15.EBS volume demo2
+    16.instance store demo3
     
   </span>
   
@@ -1854,29 +1877,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../16.instance-store-demo3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    16.instance store demo3
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2268,7 +2268,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/15.EBS-volume-demo2.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/16.instance-store-demo3.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -2879,7 +2879,8 @@
 <a id="__codelineno-0-599" name="__codelineno-0-599" href="#__codelineno-0-599"></a>      Name: a4l-vpc1-subnet-reservedc
 </code></pre></div>
 </details>
-<p><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0004-aws-associate-ec2-ebs-demo/A4L_VPC_3PUBLICINSTANCES_AL2023.yaml&amp;stackName=EBSDEMO">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0004-aws-associate-ec2-ebs-demo/A4L_VPC_3PUBLICINSTANCES_AL2023.yaml&amp;stackName=EBSDEMO</a></p>
+<p><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0004-aws-associate-ec2-ebs-demo/A4L_VPC_3PUBLICINSTANCES_AL2023.yaml&amp;stackName=EBSDEMO">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0004-aws-associate-ec2-ebs-demo/A4L_VPC_3PUBLICINSTANCES_AL2023.yaml&amp;stackName=EBSDEMO
+</a></p>
 <details class="info">
 <summary>Lesson Commands</summary>
 <h1 id="commands-user">Commands User<a class="headerlink" href="#commands-user" title="Permanent link">¶</a></h1>
@@ -3063,7 +3064,6 @@ ls -la</p>
 <li><strong>fstab + UUID để auto-mount khi reboot</strong></li>
 <li><strong>Không thể attach EBS volume cross-AZ, chỉ cross-AZ bằng snapshot</strong></li>
 <li><strong>Always cleanup sau thực hành tránh phát sinh phí</strong></li>
-<li>snapshot thì <strong>tạo volume trực tiếp</strong> từ az này qua az khác (cùng region được) . còn muốn volume qua bên region khác thì phải tạo <strong>copy của snapshot ở az trong region này</strong> </li>
 </ul>
 <hr>
 <h2 id="7-lenh-tong-hop-thuc-te">7. Lệnh tổng hợp thực tế<a class="headerlink" href="#7-lenh-tong-hop-thuc-te" title="Permanent link">¶</a></h2>
@@ -3149,7 +3149,7 @@ ls -la</p>
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../14.EBS-volume-demo/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 14.EBS volume demo">
+          <a href="../15.EBS-volume-demo2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 15.EBS volume demo2">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -3159,20 +3159,20 @@ ls -la</p>
                 Trước
               </span>
               <div class="md-ellipsis">
-                14.EBS volume demo
+                15.EBS volume demo2
               </div>
             </div>
           </a>
         
         
           
-          <a href="../16.instance-store-demo3/" class="md-footer__link md-footer__link--next" aria-label="Sau: 16.instance store demo3">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                16.instance store demo3
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
