@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-ebs-encryption-script-thuc-te-i-lam-meo-thi-ay-u" class="md-skip">
+        <a href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" class="md-skip">
           Bỏ qua
         </a>
       
@@ -1634,82 +1634,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws-ebs-encryption-script-thuc-te-i-lam-meo-thi-ay-u" class="md-nav__link">
+  <a href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" class="md-nav__link">
     <span class="md-ellipsis">
-      🔒 AWS EBS Encryption – Script thực tế đi làm &amp; mẹo thi (đầy đủ)
+      🔒 Hiểu chuẩn quy trình EBS Encryption với KMS – Script thực tế, tổng hợp chi tiết nhất
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-ebs-encryption-la-gi-kien-truc-nguyen-ly-thuc-te" class="md-nav__link">
+  <a href="#1-cac-khai-niem-nen-tang" class="md-nav__link">
     <span class="md-ellipsis">
-      1. EBS Encryption là gì? Kiến trúc &amp; nguyên lý thực tế
+      1. Các khái niệm nền tảng
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-quy-trinh-hoat-ong-ma-hoa" class="md-nav__link">
+  <a href="#2-quy-trinh-chi-tiet-tung-buoc" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Quy trình hoạt động mã hóa
+      2. Quy trình chi tiết từng bước
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-meo-exam-cac-iem-bay-thuong-gap" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Mẹo exam: Các điểm “bẫy” thường gặp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-quy-trinh-thuc-te-script-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Quy trình thực tế (script đi làm)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Quy trình thực tế (script đi làm)">
+    <nav class="md-nav" aria-label="2. Quy trình chi tiết từng bước">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-tao-volume-encrypted-voi-aws-cli" class="md-nav__link">
+  <a href="#a-tao-volume-moi" class="md-nav__link">
     <span class="md-ellipsis">
-      a. Tạo volume encrypted với AWS CLI
+      A. Tạo volume mới
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-xem-trang-thai-encryption-cua-volume" class="md-nav__link">
+  <a href="#b-ghi-du-lieu-vao-ebs-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      b. Xem trạng thái encryption của volume
+      B. Ghi dữ liệu vào EBS volume
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c-tao-snapshot-tu-encrypted-volume-snapshot-se-tu-encrypted" class="md-nav__link">
+  <a href="#c-oc-du-lieu-tu-ebs-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      c. Tạo snapshot từ encrypted volume (snapshot sẽ tự encrypted)
+      C. Đọc dữ liệu từ EBS volume
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#d-tao-volume-moi-tu-snapshot-encrypted-volume-se-luon-encrypted" class="md-nav__link">
+  <a href="#d-rebootattach-volume-sang-host-khac" class="md-nav__link">
     <span class="md-ellipsis">
-      d. Tạo volume mới từ snapshot encrypted (volume sẽ luôn encrypted)
+      D. Reboot/attach volume sang host khác
     </span>
   </a>
   
@@ -1721,36 +1703,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-xu-ly-khi-can-go-ma-hoa-un-encryptconvert-ve-unencrypted" class="md-nav__link">
+  <a href="#3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Xử lý khi cần “gỡ mã hóa” (un-encrypt/convert về unencrypted)
+      3. Quy trình snapshot và tạo volume mới từ snapshot
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-script-kiem-tracopy-data-linux" class="md-nav__link">
+  <a href="#4-ac-iem-bao-mat-van-hanh" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Script kiểm tra/copy data (Linux)
+      4. Đặc điểm bảo mật &amp; vận hành
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-cac-cau-hoi-examphong-van-hay-gap" class="md-nav__link">
+  <a href="#5-so-o-flowchart-minh-hoa-tong-the" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Các câu hỏi exam/phỏng vấn hay gặp
+      5. Sơ đồ flowchart minh họa tổng thể
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-tom-tat-nho-lau" class="md-nav__link">
+  <a href="#6-cac-meo-exam-phong-van-thuc-te" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Tóm tắt nhớ lâu
+      6. Các mẹo exam, phỏng vấn, thực tế
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-script-thao-tac-thuc-te-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Script thao tác thực tế (AWS CLI)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-tong-ket-de-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Tổng kết dễ nhớ
     </span>
   </a>
   
@@ -1873,82 +1873,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws-ebs-encryption-script-thuc-te-i-lam-meo-thi-ay-u" class="md-nav__link">
+  <a href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" class="md-nav__link">
     <span class="md-ellipsis">
-      🔒 AWS EBS Encryption – Script thực tế đi làm &amp; mẹo thi (đầy đủ)
+      🔒 Hiểu chuẩn quy trình EBS Encryption với KMS – Script thực tế, tổng hợp chi tiết nhất
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-ebs-encryption-la-gi-kien-truc-nguyen-ly-thuc-te" class="md-nav__link">
+  <a href="#1-cac-khai-niem-nen-tang" class="md-nav__link">
     <span class="md-ellipsis">
-      1. EBS Encryption là gì? Kiến trúc &amp; nguyên lý thực tế
+      1. Các khái niệm nền tảng
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-quy-trinh-hoat-ong-ma-hoa" class="md-nav__link">
+  <a href="#2-quy-trinh-chi-tiet-tung-buoc" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Quy trình hoạt động mã hóa
+      2. Quy trình chi tiết từng bước
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-meo-exam-cac-iem-bay-thuong-gap" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Mẹo exam: Các điểm “bẫy” thường gặp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-quy-trinh-thuc-te-script-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Quy trình thực tế (script đi làm)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Quy trình thực tế (script đi làm)">
+    <nav class="md-nav" aria-label="2. Quy trình chi tiết từng bước">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-tao-volume-encrypted-voi-aws-cli" class="md-nav__link">
+  <a href="#a-tao-volume-moi" class="md-nav__link">
     <span class="md-ellipsis">
-      a. Tạo volume encrypted với AWS CLI
+      A. Tạo volume mới
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-xem-trang-thai-encryption-cua-volume" class="md-nav__link">
+  <a href="#b-ghi-du-lieu-vao-ebs-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      b. Xem trạng thái encryption của volume
+      B. Ghi dữ liệu vào EBS volume
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c-tao-snapshot-tu-encrypted-volume-snapshot-se-tu-encrypted" class="md-nav__link">
+  <a href="#c-oc-du-lieu-tu-ebs-volume" class="md-nav__link">
     <span class="md-ellipsis">
-      c. Tạo snapshot từ encrypted volume (snapshot sẽ tự encrypted)
+      C. Đọc dữ liệu từ EBS volume
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#d-tao-volume-moi-tu-snapshot-encrypted-volume-se-luon-encrypted" class="md-nav__link">
+  <a href="#d-rebootattach-volume-sang-host-khac" class="md-nav__link">
     <span class="md-ellipsis">
-      d. Tạo volume mới từ snapshot encrypted (volume sẽ luôn encrypted)
+      D. Reboot/attach volume sang host khác
     </span>
   </a>
   
@@ -1960,36 +1942,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-xu-ly-khi-can-go-ma-hoa-un-encryptconvert-ve-unencrypted" class="md-nav__link">
+  <a href="#3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Xử lý khi cần “gỡ mã hóa” (un-encrypt/convert về unencrypted)
+      3. Quy trình snapshot và tạo volume mới từ snapshot
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-script-kiem-tracopy-data-linux" class="md-nav__link">
+  <a href="#4-ac-iem-bao-mat-van-hanh" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Script kiểm tra/copy data (Linux)
+      4. Đặc điểm bảo mật &amp; vận hành
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-cac-cau-hoi-examphong-van-hay-gap" class="md-nav__link">
+  <a href="#5-so-o-flowchart-minh-hoa-tong-the" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Các câu hỏi exam/phỏng vấn hay gặp
+      5. Sơ đồ flowchart minh họa tổng thể
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-tom-tat-nho-lau" class="md-nav__link">
+  <a href="#6-cac-meo-exam-phong-van-thuc-te" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Tóm tắt nhớ lâu
+      6. Các mẹo exam, phỏng vấn, thực tế
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-script-thao-tac-thuc-te-aws-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Script thao tác thực tế (AWS CLI)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-tong-ket-de-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Tổng kết dễ nhớ
     </span>
   </a>
   
@@ -2021,111 +2021,129 @@
 
   <h1>17.EBS Encryption</h1>
 
-<h2 id="aws-ebs-encryption-script-thuc-te-i-lam-meo-thi-ay-u">🔒 AWS EBS Encryption – Script thực tế đi làm &amp; mẹo thi (đầy đủ)<a class="headerlink" href="#aws-ebs-encryption-script-thuc-te-i-lam-meo-thi-ay-u" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/35e2417c-cbe0-4b2b-90c5-41fa9b721ba6" data-desc-position="bottom"><img width="1285" height="687" alt="image" src="https://github.com/user-attachments/assets/35e2417c-cbe0-4b2b-90c5-41fa9b721ba6"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/2d9e071f-2380-4540-b5c9-5a9cc586126b" data-desc-position="bottom"><img width="1310" height="693" alt="image" src="https://github.com/user-attachments/assets/2d9e071f-2380-4540-b5c9-5a9cc586126b"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/3d3471b4-39e3-4f1d-b646-e252d85c4c45" data-desc-position="bottom"><img width="1291" height="693" alt="image" src="https://github.com/user-attachments/assets/3d3471b4-39e3-4f1d-b646-e252d85c4c45"></a></p>
+<h2 id="hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat">🔒 Hiểu chuẩn quy trình <strong>EBS Encryption với KMS</strong> – Script thực tế, tổng hợp chi tiết nhất<a class="headerlink" href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" title="Permanent link">¶</a></h2>
 <hr>
-<h2 id="1-ebs-encryption-la-gi-kien-truc-nguyen-ly-thuc-te">1. EBS Encryption là gì? Kiến trúc &amp; nguyên lý thực tế<a class="headerlink" href="#1-ebs-encryption-la-gi-kien-truc-nguyen-ly-thuc-te" title="Permanent link">¶</a></h2>
+<h2 id="1-cac-khai-niem-nen-tang">1. Các khái niệm nền tảng<a class="headerlink" href="#1-cac-khai-niem-nen-tang" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>EBS encryption = mã hóa dữ liệu lưu trên volume EBS và snapshot của nó, ở trạng thái “at rest”</strong></li>
-<li><strong>Mặc định:</strong> EBS không mã hóa, dữ liệu ghi lên disk là plain text.</li>
-<li><strong>Kích hoạt encryption:</strong>  </li>
-<li>Dùng AWS managed key (<code>aws/ebs</code>) hoặc customer managed key (KMS key tự tạo).</li>
-<li>Khi tạo volume encrypted, EBS dùng KMS để sinh ra <strong>data encryption key (DEK) riêng cho từng volume</strong>.</li>
-<li>DEK chỉ lưu encrypted (do KMS mã hóa) cùng volume trên disk vật lý.</li>
+<li><strong>CMK (Customer Master Key):</strong> Khóa gốc do KMS quản lý, có thể là AWS managed key hoặc tự tạo. Khóa này <strong>không bao giờ rời khỏi KMS</strong>.</li>
+<li><strong>DEK (Data Encryption Key):</strong> Khóa con sinh từ CMK, dùng trực tiếp để mã hóa/giải mã block dữ liệu trên EBS volume.</li>
+<li><strong>Envelope Encryption:</strong> Cơ chế AWS kết hợp CMK &amp; DEK:<ul>
+<li>KMS sinh DEK → trả về <strong>2 bản</strong>:<ul>
+<li><strong>Plaintext DEK:</strong> Dùng ngay cho encrypt/decrypt trên host.</li>
+<li><strong>Encrypted DEK:</strong> Được mã hóa bằng CMK, lưu trong metadata của volume/snapshot.</li>
 </ul>
-<hr>
-<h2 id="2-quy-trinh-hoat-ong-ma-hoa">2. Quy trình hoạt động mã hóa<a class="headerlink" href="#2-quy-trinh-hoat-ong-ma-hoa" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/35e2417c-cbe0-4b2b-90c5-41fa9b721ba6" data-desc-position="bottom"><img width="1285" height="687" alt="image" src="https://github.com/user-attachments/assets/35e2417c-cbe0-4b2b-90c5-41fa9b721ba6"></a></p>
-<ul>
-<li><strong>Khi EC2 host cần đọc/ghi EBS encrypted volume:</strong></li>
-<li>Host hỏi KMS để giải mã DEK của volume.</li>
-<li>DEK decrypted chỉ lưu trong RAM của EC2 host đang dùng (không ghi ra disk).</li>
-<li>Dữ liệu giữa EC2 instance và EBS volume được mã hóa bằng DEK (AES-256).</li>
-<li>Dữ liệu lưu trên disk vật lý là <strong>cipher text</strong> (mã hóa).</li>
-<li>
-<p>Khi instance move sang host khác, DEK bị xóa khỏi RAM, cần KMS giải mã lại.
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/2d9e071f-2380-4540-b5c9-5a9cc586126b" data-desc-position="bottom"><img width="1310" height="693" alt="image" src="https://github.com/user-attachments/assets/2d9e071f-2380-4540-b5c9-5a9cc586126b"></a></p>
 </li>
-<li>
-<p><strong>Snapshot của encrypted volume:</strong>  </p>
+</ul>
 </li>
-<li>Sử dụng chung DEK của volume gốc.</li>
-<li>Volume mới từ snapshot cũng mã hóa với DEK đó.</li>
-<li>
-<p><strong>Volume mới tạo từ snapshot encrypted = tiếp tục dùng DEK của snapshot đó!</strong></p>
+</ul>
+<hr>
+<h2 id="2-quy-trinh-chi-tiet-tung-buoc">2. Quy trình chi tiết từng bước<a class="headerlink" href="#2-quy-trinh-chi-tiet-tung-buoc" title="Permanent link">¶</a></h2>
+<h3 id="a-tao-volume-moi">A. <strong>Tạo volume mới</strong><a class="headerlink" href="#a-tao-volume-moi" title="Permanent link">¶</a></h3>
+<ol>
+<li>EBS gọi KMS để sinh DEK dựa trên CMK chỉ định.</li>
+<li>KMS trả về:<ul>
+<li><strong>Plaintext DEK</strong> (chỉ lưu trong RAM host EC2/EBS, dùng trực tiếp cho encrypt/decrypt).</li>
+<li><strong>Encrypted DEK</strong> (lưu kèm metadata volume/snapshot, không bao giờ bị lộ ra ngoài).</li>
+</ul>
 </li>
-<li>
-<p><strong>Volume mới tạo từ đầu (không phải từ snapshot):</strong></p>
+<li>EBS chỉ giữ plaintext DEK trong RAM host đang attach volume.</li>
+<li>Encrypted DEK dùng lại cho các lần attach sau này, hoặc khi tạo snapshot từ volume.</li>
+</ol>
+<h3 id="b-ghi-du-lieu-vao-ebs-volume">B. <strong>Ghi dữ liệu vào EBS volume</strong><a class="headerlink" href="#b-ghi-du-lieu-vao-ebs-volume" title="Permanent link">¶</a></h3>
+<ul>
+<li>Ứng dụng/OS gửi data → EC2 host/EBS dùng plaintext DEK để mã hóa block-level trước khi ghi xuống disk.</li>
+<li><strong>Không cần gọi lại KMS mỗi lần ghi</strong>, chỉ dùng plaintext DEK đã sinh.</li>
+</ul>
+<h3 id="c-oc-du-lieu-tu-ebs-volume">C. <strong>Đọc dữ liệu từ EBS volume</strong><a class="headerlink" href="#c-oc-du-lieu-tu-ebs-volume" title="Permanent link">¶</a></h3>
+<ul>
+<li>EC2 host/EBS lấy block đã mã hóa từ disk.</li>
+<li>Plaintext DEK dùng để giải mã ngay trên host, trả dữ liệu cho app/OS.</li>
+<li><strong>Không cần gọi lại KMS mỗi lần đọc</strong>.</li>
+</ul>
+<h3 id="d-rebootattach-volume-sang-host-khac">D. <strong>Reboot/attach volume sang host khác</strong><a class="headerlink" href="#d-rebootattach-volume-sang-host-khac" title="Permanent link">¶</a></h3>
+<ul>
+<li>Nếu host không còn plaintext DEK trong RAM:<ol>
+<li>EBS lấy encrypted DEK từ metadata volume.</li>
+<li>Gửi encrypted DEK lên KMS để nhờ giải mã bằng CMK.</li>
+<li>KMS trả về plaintext DEK mới cho host đó.</li>
+<li>Host giữ plaintext DEK trong RAM để tiếp tục encrypt/decrypt.</li>
+</ol>
 </li>
-<li>Sinh DEK mới, không dùng lại DEK của volume khác.</li>
 </ul>
 <hr>
-<h2 id="3-meo-exam-cac-iem-bay-thuong-gap">3. Mẹo exam: Các điểm “bẫy” thường gặp<a class="headerlink" href="#3-meo-exam-cac-iem-bay-thuong-gap" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/3d3471b4-39e3-4f1d-b646-e252d85c4c45" data-desc-position="bottom"><img width="1291" height="693" alt="image" src="https://github.com/user-attachments/assets/3d3471b4-39e3-4f1d-b646-e252d85c4c45"></a></p>
+<h2 id="3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot">3. Quy trình snapshot và tạo volume mới từ snapshot<a class="headerlink" href="#3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Account có thể bật mặc định encryption cho EBS (default KMS key).</strong></li>
-<li><strong>KMS key không trực tiếp mã hóa data, chỉ dùng để mã hóa DEK.</strong></li>
-<li><strong>Mỗi volume/snapshot chain có 1 DEK riêng biệt.</strong></li>
-<li><strong>Không thể “un-encrypt” volume/snapshot đã mã hóa – chỉ có thể copy data ra volume mới không mã hóa (OS-level).</strong></li>
-<li><strong>OS không nhìn thấy encryption – chỉ thấy plain text.</strong></li>
-<li><strong>Nếu cần OS tự quản lý key → dùng software disk encryption (LUKS, BitLocker, Veracrypt...), có thể kết hợp với EBS encryption nhưng hiếm khi cần.</strong></li>
-<li><strong>EBS encryption không có phí thêm, không giảm hiệu năng.</strong></li>
-<li><strong>AES-256 là thuật toán mã hóa EBS sử dụng.</strong></li>
+<li><strong>Snapshot từ volume encrypted:</strong>  <ul>
+<li>Lưu encrypted DEK của volume gốc kèm snapshot.</li>
+</ul>
+</li>
+<li><strong>Tạo volume mới từ snapshot:</strong>  <ul>
+<li>DEK của snapshot được dùng lại cho volume mới (volume mới vẫn được mã hóa bằng DEK đó).</li>
+<li>Chỉ sinh DEK mới khi tạo volume mới hoàn toàn (không từ snapshot).</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h2 id="4-quy-trinh-thuc-te-script-i-lam">4. Quy trình thực tế (script đi làm)<a class="headerlink" href="#4-quy-trinh-thuc-te-script-i-lam" title="Permanent link">¶</a></h2>
-<h3 id="a-tao-volume-encrypted-voi-aws-cli">a. Tạo volume encrypted với AWS CLI<a class="headerlink" href="#a-tao-volume-encrypted-voi-aws-cli" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Tạo volume encrypted với default KMS key</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--size<span class="w"> </span><span class="m">10</span><span class="w"> </span>--region<span class="w"> </span>us-east-1<span class="w"> </span>--availability-zone<span class="w"> </span>us-east-1a<span class="w"> </span>--volume-type<span class="w"> </span>gp3<span class="w"> </span>--encrypted
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Tạo volume encrypted với customer managed key</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--size<span class="w"> </span><span class="m">10</span><span class="w"> </span>--region<span class="w"> </span>us-east-1<span class="w"> </span>--availability-zone<span class="w"> </span>us-east-1a<span class="w"> </span>--volume-type<span class="w"> </span>gp3<span class="w"> </span>--encrypted<span class="w"> </span>--kms-key-id<span class="w"> </span>&lt;your-kms-key-id&gt;
-</code></pre></div>
-<h3 id="b-xem-trang-thai-encryption-cua-volume">b. Xem trạng thái encryption của volume<a class="headerlink" href="#b-xem-trang-thai-encryption-cua-volume" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--volume-ids<span class="w"> </span>&lt;volume-id&gt;<span class="w"> </span>--query<span class="w"> </span><span class="s2">"Volumes[*].Encrypted"</span>
-</code></pre></div>
-<h3 id="c-tao-snapshot-tu-encrypted-volume-snapshot-se-tu-encrypted">c. Tạo snapshot từ encrypted volume (snapshot sẽ tự encrypted)<a class="headerlink" href="#c-tao-snapshot-tu-encrypted-volume-snapshot-se-tu-encrypted" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-snapshot<span class="w"> </span>--volume-id<span class="w"> </span>&lt;volume-id&gt;<span class="w"> </span>--description<span class="w"> </span><span class="s2">"Encrypted backup"</span>
-</code></pre></div>
-<h3 id="d-tao-volume-moi-tu-snapshot-encrypted-volume-se-luon-encrypted">d. Tạo volume mới từ snapshot encrypted (volume sẽ luôn encrypted)<a class="headerlink" href="#d-tao-volume-moi-tu-snapshot-encrypted-volume-se-luon-encrypted" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--snapshot-id<span class="w"> </span>&lt;snapshot-id&gt;<span class="w"> </span>--availability-zone<span class="w"> </span>us-east-1a<span class="w"> </span>--volume-type<span class="w"> </span>gp3
-</code></pre></div>
-<hr>
-<h2 id="5-xu-ly-khi-can-go-ma-hoa-un-encryptconvert-ve-unencrypted">5. Xử lý khi cần “gỡ mã hóa” (un-encrypt/convert về unencrypted)<a class="headerlink" href="#5-xu-ly-khi-can-go-ma-hoa-un-encryptconvert-ve-unencrypted" title="Permanent link">¶</a></h2>
+<h2 id="4-ac-iem-bao-mat-van-hanh">4. Đặc điểm bảo mật &amp; vận hành<a class="headerlink" href="#4-ac-iem-bao-mat-van-hanh" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Không có cách trực tiếp!</strong></li>
-<li>Cách workaround:  </li>
-<li>Attach volume encrypted vào EC2.</li>
-<li>Copy toàn bộ data sang volume mới không encrypted (ví dụ: dùng <code>dd</code>, <code>rsync</code>, <code>cp</code>…).</li>
-<li>Xóa volume/snapshot encrypted cũ nếu cần.</li>
+<li><strong>Plaintext DEK chỉ tồn tại trong RAM trên host EC2/EBS, không ghi ra disk.</strong></li>
+<li><strong>Encrypted DEK luôn lưu cùng metadata volume/snapshot, dùng lại khi cần.</strong></li>
+<li><strong>CMK không bao giờ rời khỏi KMS.</strong></li>
+<li><strong>KMS chỉ bị gọi khi tạo volume hoặc cần giải mã lại DEK (attach, reboot), KHÔNG mỗi lần IO (đọc/ghi).</strong></li>
+<li><strong>Mọi dữ liệu lưu trên EBS disk hoặc snapshot đều là encrypted-at-rest bằng DEK (không lộ plaintext ra ngoài host).</strong></li>
+<li><strong>OS/app chỉ nhìn thấy plain text, không biết phía dưới đang mã hóa.</strong></li>
+<li><strong>Không thể “gỡ mã hóa”/un-encrypt volume/snapshot trực tiếp, chỉ có thể copy data sang volume mới không mã hóa (OS-level).</strong></li>
 </ul>
 <hr>
-<h2 id="6-script-kiem-tracopy-data-linux">6. Script kiểm tra/copy data (Linux)<a class="headerlink" href="#6-script-kiem-tracopy-data-linux" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Kiểm tra volume encrypted</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>lsblk
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>sudo<span class="w"> </span>file<span class="w"> </span>-s<span class="w"> </span>/dev/xvdf
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Copy data từ encrypted volume sang volume mới không encrypted</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdf<span class="w"> </span>/encrypted-vol
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>sudo<span class="w"> </span>mount<span class="w"> </span>/dev/xvdg<span class="w"> </span>/unencrypted-vol
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>sudo<span class="w"> </span>rsync<span class="w"> </span>-avh<span class="w"> </span>/encrypted-vol/<span class="w"> </span>/unencrypted-vol/
+<h2 id="5-so-o-flowchart-minh-hoa-tong-the">5. Sơ đồ flowchart minh họa tổng thể<a class="headerlink" href="#5-so-o-flowchart-minh-hoa-tong-the" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    A[Tạo Volume] --&gt; B{KMS sinh DEK}
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    B --&gt; C[DEK plaintext (RAM host)]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    B --&gt; D[DEK encrypted (metadata volume/snapshot)]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    C --&gt; E[Ghi/đọc data: dùng DEK plaintext RAM]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    D --&gt; F{Reboot/attach host mới?}
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    F --&gt;|Có| G[Lấy encrypted DEK, gọi KMS để giải mã]
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    G --&gt; C
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    F --&gt;|Không| E
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    D --&gt; H[Tạo snapshot]
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    H --&gt; I[Snapshot lưu encrypted DEK]
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    I --&gt; J[Tạo volume mới từ snapshot dùng lại DEK snapshot]
 </code></pre></div>
 <hr>
-<h2 id="7-cac-cau-hoi-examphong-van-hay-gap">7. Các câu hỏi exam/phỏng vấn hay gặp<a class="headerlink" href="#7-cac-cau-hoi-examphong-van-hay-gap" title="Permanent link">¶</a></h2>
+<h2 id="6-cac-meo-exam-phong-van-thuc-te">6. Các mẹo exam, phỏng vấn, thực tế<a class="headerlink" href="#6-cac-meo-exam-phong-van-thuc-te" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>“EBS encryption dùng thuật toán gì?”</strong> → AES-256</li>
-<li><strong>“Có phí thêm khi dùng EBS encryption không?”</strong> → Không</li>
-<li><strong>“Có thể “gỡ” encryption volume/snapshot không?”</strong> → Không, chỉ copy data ra volume mới không encrypted.</li>
-<li><strong>“KMS key dùng như thế nào?”</strong> → Mã hóa DEK, không mã hóa trực tiếp data.</li>
-<li><strong>“Volume mới từ snapshot encrypted có mã hóa không?”</strong> → Có, dùng lại DEK của snapshot.</li>
-<li><strong>“OS có thấy mã hóa không?”</strong> → Không, OS chỉ thấy plain text.</li>
+<li><strong>DEK plaintext chỉ tồn tại trong RAM host EC2/EBS, không ghi ra disk.</strong></li>
+<li><strong>Encrypted DEK lưu kèm metadata volume/snapshot, dùng lại khi attach/reboot.</strong></li>
+<li><strong>CMK luôn ở trong KMS, không lộ ra ngoài.</strong></li>
+<li><strong>KMS chỉ được gọi khi tạo volume hoặc cần giải mã lại DEK, không mỗi IO.</strong></li>
+<li><strong>Snapshot/volume mới từ snapshot dùng lại encrypted DEK gốc, không sinh DEK mới.</strong></li>
+<li><strong>Muốn “gỡ mã hóa” phải copy data ra volume mới không encrypted (OS-level).</strong></li>
+<li><strong>Không có phí thêm, không giảm hiệu năng khi dùng EBS encryption.</strong></li>
 </ul>
 <hr>
-<h2 id="8-tom-tat-nho-lau">8. Tóm tắt nhớ lâu<a class="headerlink" href="#8-tom-tat-nho-lau" title="Permanent link">¶</a></h2>
+<h2 id="7-script-thao-tac-thuc-te-aws-cli">7. Script thao tác thực tế (AWS CLI)<a class="headerlink" href="#7-script-thao-tac-thuc-te-aws-cli" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Tạo volume encrypted với CMK cụ thể</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--size<span class="w"> </span><span class="m">10</span><span class="w"> </span>--region<span class="w"> </span>us-east-1<span class="w"> </span>--availability-zone<span class="w"> </span>us-east-1a<span class="w"> </span>--volume-type<span class="w"> </span>gp3<span class="w"> </span>--encrypted<span class="w"> </span>--kms-key-id<span class="w"> </span>&lt;your-kms-key-id&gt;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Tạo snapshot từ volume encrypted</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-snapshot<span class="w"> </span>--volume-id<span class="w"> </span>&lt;volume-id&gt;<span class="w"> </span>--description<span class="w"> </span><span class="s2">"Encrypted backup"</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Tạo volume mới từ snapshot encrypted (volume sẽ luôn encrypted)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--snapshot-id<span class="w"> </span>&lt;snapshot-id&gt;<span class="w"> </span>--availability-zone<span class="w"> </span>us-east-1a<span class="w"> </span>--volume-type<span class="w"> </span>gp3
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Kiểm tra trạng thái encryption của volume</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--volume-ids<span class="w"> </span>&lt;volume-id&gt;<span class="w"> </span>--query<span class="w"> </span><span class="s2">"Volumes[*].Encrypted"</span>
+</code></pre></div>
+<hr>
+<h2 id="8-tong-ket-de-nho">8. Tổng kết dễ nhớ<a class="headerlink" href="#8-tong-ket-de-nho" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>EBS encryption nên bật mặc định cho bảo mật, không ảnh hưởng hiệu năng, không tăng phí.</strong></li>
-<li><strong>Mỗi volume/snapshot chain có DEK riêng.</strong></li>
-<li><strong>OS chỉ thấy plain text, encryption nằm ở layer EC2 host/EBS.</strong></li>
-<li><strong>Không thể un-encrypt trực tiếp, copy data sang volume mới nếu cần.</strong></li>
+<li><strong>EBS encryption = envelope encryption với KMS, DEK plaintext chỉ RAM, encrypted DEK lưu metadata, CMK luôn nằm ở KMS.</strong></li>
+<li><strong>Chỉ cần KMS khi tạo volume hoặc attach/reboot, không mỗi lần IO.</strong></li>
+<li><strong>Snapshot và volume mới từ snapshot dùng lại DEK gốc.</strong></li>
+<li><strong>Không thể “un-encrypt” trực tiếp, chỉ copy data ra volume mới (OS-level).</strong></li>
 </ul>
 <hr>
 
@@ -2148,7 +2166,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 tháng 9, 2025 13:19:25 UTC">18 tháng 9, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="18 tháng 9, 2025 13:55:49 UTC">18 tháng 9, 2025</span>
   </span>
 
     
