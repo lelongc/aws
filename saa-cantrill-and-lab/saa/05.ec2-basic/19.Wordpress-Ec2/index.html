@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/17.EBS%20Encryption/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/19.Wordpress-Ec2/">
       
       
-        <link rel="prev" href="../16.instance-store-demo3/">
+        <link rel="prev" href="../18.NetworkInterfacesInstanceIPsDNS/">
       
       
-        <link rel="next" href="../18.NetworkInterfacesInstanceIPsDNS/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>17.EBS Encryption - DraDoc</title>
+        <title>19.Wordpress Ec2 - DraDoc</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" class="md-skip">
+        <a href="#cai-at-wordpress-thu-cong-tren-ec2-phan-1-hoc-cach-khong-nen-lam" class="md-skip">
           Bỏ qua
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              17.EBS Encryption
+              19.Wordpress Ec2
             
           </span>
         </div>
@@ -1589,30 +1589,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    17.EBS Encryption
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../17.EBS%20Encryption/" class="md-nav__link">
         
   
   
@@ -1623,147 +1603,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Hiểu chuẩn quy trình EBS Encryption với KMS – Script thực tế, tổng hợp chi tiết nhất
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-cac-khai-niem-nen-tang" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Các khái niệm nền tảng
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-quy-trinh-chi-tiet-tung-buoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Quy trình chi tiết từng bước
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Quy trình chi tiết từng bước">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a-tao-volume-moi" class="md-nav__link">
-    <span class="md-ellipsis">
-      A. Tạo volume mới
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-ghi-du-lieu-vao-ebs-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      B. Ghi dữ liệu vào EBS volume
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c-oc-du-lieu-tu-ebs-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      C. Đọc dữ liệu từ EBS volume
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d-rebootattach-volume-sang-host-khac" class="md-nav__link">
-    <span class="md-ellipsis">
-      D. Reboot/attach volume sang host khác
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Quy trình snapshot và tạo volume mới từ snapshot
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-ac-iem-bao-mat-van-hanh" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Đặc điểm bảo mật &amp; vận hành
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-so-o-flowchart-minh-hoa-tong-the" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Sơ đồ flowchart minh họa tổng thể
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-cac-meo-exam-phong-van-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Các mẹo exam, phỏng vấn, thực tế
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-script-thao-tac-thuc-te-aws-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Script thao tác thực tế (AWS CLI)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-tong-ket-de-nho" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Tổng kết dễ nhớ
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1796,10 +1635,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../19.Wordpress-Ec2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    19.Wordpress Ec2
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1810,6 +1669,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cai-at-wordpress-thu-cong-tren-ec2-phan-1-hoc-cach-khong-nen-lam" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Cài đặt WordPress thủ công trên EC2 – Phần 1 (Học cách KHÔNG nên làm)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-muc-tieu-boi-canh" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Mục tiêu &amp; Bối cảnh
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-buoc-1-chuan-bi-moi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Bước 1: Chuẩn bị môi trường
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-buoc-2-ket-noi-vao-ec2-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Bước 2: Kết nối vào EC2 Instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-buoc-3-cai-at-thu-cong-tren-ec2-qua-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Bước 3: Cài đặt thủ công trên EC2 (qua Terminal)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Bước 3: Cài đặt thủ công trên EC2 (qua Terminal)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-thiet-lap-bien-moi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Thiết lập biến môi trường
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cai-at-cac-goi-phan-mem-can-thiet" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Cài đặt các gói phần mềm cần thiết
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-kich-hoat-va-khoi-ong-cac-dich-vu" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Kích hoạt và khởi động các dịch vụ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-thiet-lap-mat-khau-root-cho-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Thiết lập mật khẩu root cho Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tai-va-giai-nen-ma-nguon-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Tải và giải nén mã nguồn WordPress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1923,64 +1896,91 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" class="md-nav__link">
+  <a href="#cai-at-wordpress-thu-cong-tren-ec2-phan-1-hoc-cach-khong-nen-lam" class="md-nav__link">
     <span class="md-ellipsis">
-      🔒 Hiểu chuẩn quy trình EBS Encryption với KMS – Script thực tế, tổng hợp chi tiết nhất
+      💻 Cài đặt WordPress thủ công trên EC2 – Phần 1 (Học cách KHÔNG nên làm)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-cac-khai-niem-nen-tang" class="md-nav__link">
+  <a href="#1-muc-tieu-boi-canh" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Các khái niệm nền tảng
+      1. Mục tiêu &amp; Bối cảnh
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-quy-trinh-chi-tiet-tung-buoc" class="md-nav__link">
+  <a href="#2-buoc-1-chuan-bi-moi-truong" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Quy trình chi tiết từng bước
+      2. Bước 1: Chuẩn bị môi trường
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Quy trình chi tiết từng bước">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-buoc-2-ket-noi-vao-ec2-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Bước 2: Kết nối vào EC2 Instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-buoc-3-cai-at-thu-cong-tren-ec2-qua-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Bước 3: Cài đặt thủ công trên EC2 (qua Terminal)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Bước 3: Cài đặt thủ công trên EC2 (qua Terminal)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-tao-volume-moi" class="md-nav__link">
+  <a href="#31-thiet-lap-bien-moi-truong" class="md-nav__link">
     <span class="md-ellipsis">
-      A. Tạo volume mới
+      3.1. Thiết lập biến môi trường
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-ghi-du-lieu-vao-ebs-volume" class="md-nav__link">
+  <a href="#32-cai-at-cac-goi-phan-mem-can-thiet" class="md-nav__link">
     <span class="md-ellipsis">
-      B. Ghi dữ liệu vào EBS volume
+      3.2. Cài đặt các gói phần mềm cần thiết
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#c-oc-du-lieu-tu-ebs-volume" class="md-nav__link">
+  <a href="#33-kich-hoat-va-khoi-ong-cac-dich-vu" class="md-nav__link">
     <span class="md-ellipsis">
-      C. Đọc dữ liệu từ EBS volume
+      3.3. Kích hoạt và khởi động các dịch vụ
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#d-rebootattach-volume-sang-host-khac" class="md-nav__link">
+  <a href="#34-thiet-lap-mat-khau-root-cho-database" class="md-nav__link">
     <span class="md-ellipsis">
-      D. Reboot/attach volume sang host khác
+      3.4. Thiết lập mật khẩu root cho Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tai-va-giai-nen-ma-nguon-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5. Tải và giải nén mã nguồn WordPress
     </span>
   </a>
   
@@ -1988,60 +1988,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Quy trình snapshot và tạo volume mới từ snapshot
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-ac-iem-bao-mat-van-hanh" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Đặc điểm bảo mật &amp; vận hành
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-so-o-flowchart-minh-hoa-tong-the" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Sơ đồ flowchart minh họa tổng thể
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-cac-meo-exam-phong-van-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Các mẹo exam, phỏng vấn, thực tế
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-script-thao-tac-thuc-te-aws-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Script thao tác thực tế (AWS CLI)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-tong-ket-de-nho" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Tổng kết dễ nhớ
-    </span>
-  </a>
   
 </li>
       
@@ -2061,7 +2007,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/17.EBS Encryption.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/19.Wordpress-Ec2.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -2069,133 +2015,776 @@
   
 
 
-  <h1>17.EBS Encryption</h1>
+  <h1>19.Wordpress Ec2</h1>
 
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/35e2417c-cbe0-4b2b-90c5-41fa9b721ba6" data-desc-position="bottom"><img width="1285" height="687" alt="image" src="https://github.com/user-attachments/assets/35e2417c-cbe0-4b2b-90c5-41fa9b721ba6"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/2d9e071f-2380-4540-b5c9-5a9cc586126b" data-desc-position="bottom"><img width="1310" height="693" alt="image" src="https://github.com/user-attachments/assets/2d9e071f-2380-4540-b5c9-5a9cc586126b"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/3d3471b4-39e3-4f1d-b646-e252d85c4c45" data-desc-position="bottom"><img width="1291" height="693" alt="image" src="https://github.com/user-attachments/assets/3d3471b4-39e3-4f1d-b646-e252d85c4c45"></a></p>
-<h2 id="hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat">🔒 Hiểu chuẩn quy trình <strong>EBS Encryption với KMS</strong> – Script thực tế, tổng hợp chi tiết nhất<a class="headerlink" href="#hieu-chuan-quy-trinh-ebs-encryption-voi-kms-script-thuc-te-tong-hop-chi-tiet-nhat" title="Permanent link">¶</a></h2>
+<p>1-Click Deployment
+<a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=WORDPRESS">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=WORDPRESS
+</a>
+info ??? "1-Click Deployment"</p>
+<div class="highlight"><pre><span></span><code>Description: Animals4Life base VPC Template + Public Instance
+Parameters:
+  LatestAmiId:
+    Description: AMI for EC2 (default is latest AmaLinux2023)
+    Type: AWS::SSM::Parameter::Value&lt;AWS::EC2::Image::Id&gt;
+    Default: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.16.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: a4l-vpc1
+  IPv6CidrBlock:
+    Type: AWS::EC2::VPCCidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AmazonProvidedIpv6CidrBlock: true
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: A4L-vpc1-igw
+  InternetGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+  RouteTableWeb:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: A4L-vpc1-rt-web
+  RouteTableWebDefaultIPv4:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGatewayAttachment
+    Properties:
+      RouteTableId: !Ref RouteTableWeb
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+  RouteTableWebDefaultIPv6:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGatewayAttachment
+    Properties:
+      RouteTableId: !Ref RouteTableWeb
+      DestinationIpv6CidrBlock: '::/0'
+      GatewayId: !Ref InternetGateway
+  RouteTableAssociationWebA:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref SubnetWEBA
+      RouteTableId: !Ref RouteTableWeb
+  RouteTableAssociationWebB:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref SubnetWEBB
+      RouteTableId: !Ref RouteTableWeb
+  RouteTableAssociationWebC:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref SubnetWEBC
+      RouteTableId: !Ref RouteTableWeb
+  SubnetReservedA:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs ''
+      CidrBlock: 10.16.0.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 00::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-reserved-A
+  SubnetReservedB:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 1
+        - !GetAZs ''
+      CidrBlock: 10.16.64.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 04::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-reserved-B
+  SubnetReservedC:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 2
+        - !GetAZs ''
+      CidrBlock: 10.16.128.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 08::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-reserved-C
+  SubnetDBA:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs ''
+      CidrBlock: 10.16.16.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 01::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-db-A
+  SubnetDBB:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 1
+        - !GetAZs ''
+      CidrBlock: 10.16.80.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 05::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-db-B
+  SubnetDBC:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 2
+        - !GetAZs ''
+      CidrBlock: 10.16.144.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 09::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-db-C
+  SubnetAPPA:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs ''
+      CidrBlock: 10.16.32.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 02::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-app-A
+  SubnetAPPB:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 1
+        - !GetAZs ''
+      CidrBlock: 10.16.96.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 06::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-app-B
+  SubnetAPPC:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 2
+        - !GetAZs ''
+      CidrBlock: 10.16.160.0/20
+      AssignIpv6AddressOnCreation: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 0A::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-app-C
+  SubnetWEBA:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 0
+        - !GetAZs ''
+      CidrBlock: 10.16.48.0/20
+      MapPublicIpOnLaunch: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 03::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-web-A
+  SubnetWEBB:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 1
+        - !GetAZs ''
+      CidrBlock: 10.16.112.0/20
+      MapPublicIpOnLaunch: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 07::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-web-B
+  SubnetWEBC:
+    Type: AWS::EC2::Subnet
+    DependsOn: IPv6CidrBlock
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select
+        - 2
+        - !GetAZs ''
+      CidrBlock: 10.16.176.0/20
+      MapPublicIpOnLaunch: true
+      Ipv6CidrBlock: !Sub
+        - ${VpcPart}${SubnetPart}
+        - SubnetPart: 0B::/64
+          VpcPart: !Select
+            - 0
+            - !Split
+              - 00::/56
+              - !Select
+                - 0
+                - !GetAtt VPC.Ipv6CidrBlocks
+      Tags:
+        - Key: Name
+          Value: sn-web-C
+  IPv6WorkaroundSubnetWEBA:
+    Type: Custom::SubnetModify
+    Properties:
+      ServiceToken: !GetAtt IPv6WorkaroundLambda.Arn
+      SubnetId: !Ref SubnetWEBA
+  IPv6WorkaroundSubnetWEBB:
+    Type: Custom::SubnetModify
+    Properties:
+      ServiceToken: !GetAtt IPv6WorkaroundLambda.Arn
+      SubnetId: !Ref SubnetWEBB
+  IPv6WorkaroundSubnetWEBC:
+    Type: Custom::SubnetModify
+    Properties:
+      ServiceToken: !GetAtt IPv6WorkaroundLambda.Arn
+      SubnetId: !Ref SubnetWEBC
+  IPv6WorkaroundRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      Policies:
+        - PolicyName: !Sub ipv6-fix-logs-${AWS::StackName}
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: arn:aws:logs:*:*:*
+        - PolicyName: !Sub ipv6-fix-modify-${AWS::StackName}
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ec2:ModifySubnetAttribute
+                Resource: '*'
+  IPv6WorkaroundLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.lambda_handler
+      Code:
+        #import cfnresponse below required to send respose back to CFN
+        ZipFile: !Sub |
+          import cfnresponse
+          import boto3
+
+          def lambda_handler(event, context):
+            if event['RequestType'] is 'Delete':
+              cfnresponse.send(event, context, cfnresponse.SUCCESS)
+              return
+
+            responseValue = event['ResourceProperties']['SubnetId']
+            ec2 = boto3.client('ec2', region_name='${AWS::Region}')
+            ec2.modify_subnet_attribute(AssignIpv6AddressOnCreation={
+                            'Value': True
+                            },
+                            SubnetId=responseValue)
+            responseData = {}
+            responseData['SubnetId'] = responseValue
+            cfnresponse.send(event, context, cfnresponse.SUCCESS, responseData, "CustomResourcePhysicalID")
+      Runtime: python3.9
+      Role: !GetAtt IPv6WorkaroundRole.Arn
+      Timeout: 30
+  PublicEC2:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: !Ref LatestAmiId
+      IamInstanceProfile: !Ref SessionManagerInstanceProfile
+      SubnetId: !Ref SubnetWEBA
+      SecurityGroupIds:
+        - !Ref InstanceSecurityGroup
+      Tags:
+        - Key: Name
+          Value: A4L-PublicEC2
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VPC
+      GroupDescription: Enable SSH access via port 22 IPv4 &amp; v6
+      SecurityGroupIngress:
+        - Description: Allow SSH IPv4 IN
+          IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 0.0.0.0/0
+        - Description: Allow HTTP IPv4 IN
+          IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+        - Description: Allow SSH IPv6 IN
+          IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIpv6: '::/0'
+  SessionManagerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Path: /
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - ssm:DescribeAssociation
+                  - ssm:GetDeployablePatchSnapshotForInstance
+                  - ssm:GetDocument
+                  - ssm:DescribeDocument
+                  - ssm:GetManifest
+                  - ssm:GetParameter
+                  - ssm:GetParameters
+                  - ssm:ListAssociations
+                  - ssm:ListInstanceAssociations
+                  - ssm:PutInventory
+                  - ssm:PutComplianceItems
+                  - ssm:PutConfigurePackageResult
+                  - ssm:UpdateAssociationStatus
+                  - ssm:UpdateInstanceAssociationStatus
+                  - ssm:UpdateInstanceInformation
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - ssmmessages:CreateControlChannel
+                  - ssmmessages:CreateDataChannel
+                  - ssmmessages:OpenControlChannel
+                  - ssmmessages:OpenDataChannel
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - ec2messages:AcknowledgeMessage
+                  - ec2messages:DeleteMessage
+                  - ec2messages:FailMessage
+                  - ec2messages:GetEndpoint
+                  - ec2messages:GetMessages
+                  - ec2messages:SendReply
+                Resource: '*'
+  SessionManagerInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Path: /
+      Roles:
+        - !Ref SessionManagerRole
+Outputs:
+  a4lvpc1:
+    Description: Animals4Life VPC1_ID
+    Value: !Ref VPC
+    Export:
+      Name: a4l-vpc1
+  a4lvpc1subnetweba:
+    Description: Animals4Life VPC1 SubnetWEBA
+    Value: !Ref SubnetWEBA
+    Export:
+      Name: a4l-vpc1-subnet-weba
+  a4lvpc1subnetwebb:
+    Description: Animals4Life VPC1 SubnetWEBB
+    Value: !Ref SubnetWEBB
+    Export:
+      Name: a4l-vpc1-subnet-webb
+  a4lvpc1subnetwebc:
+    Description: Animals4Life VPC1 SubnetWEBC
+    Value: !Ref SubnetWEBC
+    Export:
+      Name: a4l-vpc1-subnet-webc
+  a4lvpc1subnetappa:
+    Description: Animals4Life VPC1 SubnetAPPA
+    Value: !Ref SubnetAPPA
+    Export:
+      Name: a4l-vpc1-subnet-appa
+  a4lvpc1subnetappb:
+    Description: Animals4Life VPC1 SubnetAPPB
+    Value: !Ref SubnetAPPB
+    Export:
+      Name: a4l-vpc1-subnet-appb
+  a4lvpc1subnetappc:
+    Description: Animals4Life VPC1 SubnetAPPC
+    Value: !Ref SubnetAPPC
+    Export:
+      Name: a4l-vpc1-subnet-appc
+  a4lvpc1subnetdba:
+    Description: Animals4Life VPC1 SubnetDBA
+    Value: !Ref SubnetDBA
+    Export:
+      Name: a4l-vpc1-subnet-dba
+  a4lvpc1subnetdbb:
+    Description: Animals4Life VPC1 SubnetDBB
+    Value: !Ref SubnetDBB
+    Export:
+      Name: a4l-vpc1-subnet-dbb
+  a4lvpc1subnetdbc:
+    Description: Animals4Life VPC1 SubnetDBC
+    Value: !Ref SubnetDBC
+    Export:
+      Name: a4l-vpc1-subnet-dbc
+  a4lvpc1subnetreserveda:
+    Description: Animals4Life VPC1 SubnetReservedA
+    Value: !Ref SubnetReservedA
+    Export:
+      Name: a4l-vpc1-subnet-reserveda
+  a4lvpc1subnetreservedb:
+    Description: Animals4Life VPC1 SubnetReservedB
+    Value: !Ref SubnetReservedB
+    Export:
+      Name: a4l-vpc1-subnet-reservedb
+  a4lvpc1subnetreservedc:
+    Description: Animals4Life VPC1 SubnetReservedC
+    Value: !Ref SubnetReservedC
+    Export:
+      Name: a4l-vpc1-subnet-reservedc
+</code></pre></div>
+<p>Lesson Commands
+<a href="https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/lesson_commands_AL2023.txt">https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/lesson_commands_AL2023.txt
+</a>
+info ??? "Lesson Commands"</p>
+<div class="highlight"><pre><span></span><code># DBName=database name for wordpress
+# DBUser=mariadb user for wordpress
+# DBPassword=password for the mariadb user for wordpress
+# DBRootPassword = root password for mariadb
+
+# STEP 1 - Configure Authentication Variables which are used below
+DBName='a4lwordpress'
+DBUser='a4lwordpress'
+DBPassword='4n1m4l$4L1f3'
+DBRootPassword='4n1m4l$4L1f3'
+
+# STEP 2 - Install system software - including Web and DB
+sudo dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
+
+
+# STEP 3 - Web and DB Servers Online - and set to startup
+
+sudo systemctl enable httpd
+sudo systemctl enable mariadb
+sudo systemctl start httpd
+sudo systemctl start mariadb
+
+
+# STEP 4 - Set Mariadb Root Password
+sudo mysqladmin -u root password $DBRootPassword
+
+
+# STEP 5 - Install Wordpress
+sudo wget http://wordpress.org/latest.tar.gz -P /var/www/html
+cd /var/www/html
+sudo tar -zxvf latest.tar.gz
+sudo cp -rvf wordpress/* .
+sudo rm -R wordpress
+sudo rm latest.tar.gz
+
+
+# STEP 6 - Configure Wordpress
+
+sudo cp ./wp-config-sample.php ./wp-config.php
+sudo sed -i "s/'database_name_here'/'$DBName'/g" wp-config.php
+sudo sed -i "s/'username_here'/'$DBUser'/g" wp-config.php
+sudo sed -i "s/'password_here'/'$DBPassword'/g" wp-config.php   
+sudo chown apache:apache * -R
+
+
+# STEP 7 Create Wordpress DB
+
+echo "CREATE DATABASE $DBName;" &gt;&gt; /tmp/db.setup
+echo "CREATE USER '$DBUser'@'localhost' IDENTIFIED BY '$DBPassword';" &gt;&gt; /tmp/db.setup
+echo "GRANT ALL ON $DBName.* TO '$DBUser'@'localhost';" &gt;&gt; /tmp/db.setup
+echo "FLUSH PRIVILEGES;" &gt;&gt; /tmp/db.setup
+mysql -u root --password=$DBRootPassword &lt; /tmp/db.setup
+sudo rm /tmp/db.setup
+
+
+# STEP 8 - Browse to http://your_instance_public_ipv4_ip
+</code></pre></div>
+<p>Blog Images
+<a href="https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/blogimages.zip">https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/blogimages.zip</a></p>
+<h2 id="cai-at-wordpress-thu-cong-tren-ec2-phan-1-hoc-cach-khong-nen-lam">💻 Cài đặt WordPress thủ công trên EC2 – Phần 1 (Học cách KHÔNG nên làm)<a class="headerlink" href="#cai-at-wordpress-thu-cong-tren-ec2-phan-1-hoc-cach-khong-nen-lam" title="Permanent link">¶</a></h2>
 <hr>
-<h2 id="1-cac-khai-niem-nen-tang">1. Các khái niệm nền tảng<a class="headerlink" href="#1-cac-khai-niem-nen-tang" title="Permanent link">¶</a></h2>
+<h2 id="1-muc-tieu-boi-canh">1. Mục tiêu &amp; Bối cảnh<a class="headerlink" href="#1-muc-tieu-boi-canh" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>CMK (Customer Master Key):</strong> Khóa gốc do KMS quản lý, có thể là AWS managed key hoặc tự tạo. Khóa này <strong>không bao giờ rời khỏi KMS</strong>.</li>
-<li><strong>DEK (Data Encryption Key):</strong> Khóa con sinh từ CMK, dùng trực tiếp để mã hóa/giải mã block dữ liệu trên EBS volume.</li>
-<li><strong>Envelope Encryption:</strong> Cơ chế AWS kết hợp CMK &amp; DEK:<ul>
-<li>KMS sinh DEK → trả về <strong>2 bản</strong>:<ul>
-<li><strong>Plaintext DEK:</strong> Dùng ngay cho encrypt/decrypt trên host.</li>
-<li><strong>Encrypted DEK:</strong> Được mã hóa bằng CMK, lưu trong metadata của volume/snapshot.</li>
-</ul>
-</li>
+<li><strong>Mục tiêu:</strong> Trải nghiệm quy trình cài đặt một ứng dụng (WordPress) thủ công trên EC2 để hiểu rõ các nhược điểm của phương pháp này.</li>
+<li><strong>Tại sao?</strong> Hiểu được sự phức tạp và rủi ro của việc cài đặt thủ công sẽ giúp ta đánh giá đúng giá trị của các công cụ tự động hóa trên AWS sau này.</li>
+<li><strong>Kiến trúc cuối cùng:</strong><ul>
+<li>Một trang WordPress hoạt động trên <strong>một EC2 instance duy nhất</strong>.</li>
+<li>Kiến trúc <strong>đơn khối (monolithic)</strong>: Cả web server (Apache) và database (MariaDB) đều chạy trên cùng một instance.</li>
+<li><strong>Không có tính sẵn sàng cao (High Availability)</strong>.</li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="2-quy-trinh-chi-tiet-tung-buoc">2. Quy trình chi tiết từng bước<a class="headerlink" href="#2-quy-trinh-chi-tiet-tung-buoc" title="Permanent link">¶</a></h2>
-<h3 id="a-tao-volume-moi">A. <strong>Tạo volume mới</strong><a class="headerlink" href="#a-tao-volume-moi" title="Permanent link">¶</a></h3>
+<h2 id="2-buoc-1-chuan-bi-moi-truong">2. Bước 1: Chuẩn bị môi trường<a class="headerlink" href="#2-buoc-1-chuan-bi-moi-truong" title="Permanent link">¶</a></h2>
 <ol>
-<li>EBS gọi KMS để sinh DEK dựa trên CMK chỉ định.</li>
-<li>KMS trả về:<ul>
-<li><strong>Plaintext DEK</strong> (chỉ lưu trong RAM host EC2/EBS, dùng trực tiếp cho encrypt/decrypt).</li>
-<li><strong>Encrypted DEK</strong> (lưu kèm metadata volume/snapshot, không bao giờ bị lộ ra ngoài).</li>
+<li><strong>Đăng nhập AWS:</strong> Sử dụng tài khoản Management Account của bạn.</li>
+<li><strong>Chọn Region:</strong> <code>us-east-1</code> (N. Virginia).</li>
+<li><strong>Deploy CloudFormation Stack:</strong><ul>
+<li>Sử dụng link "one-click deployment" được cung cấp kèm bài học.</li>
+<li>Stack name sẽ là <code>WordPress</code>.</li>
+<li>Kéo xuống dưới, tick vào ô "capabilities".</li>
+<li>Nhấn <strong>Create stack</strong>.</li>
+<li><strong>Quan trọng:</strong> Đợi đến khi trạng thái stack chuyển thành <strong>CREATE_COMPLETE</strong>.</li>
 </ul>
 </li>
-<li>EBS chỉ giữ plaintext DEK trong RAM host đang attach volume.</li>
-<li>Encrypted DEK dùng lại cho các lần attach sau này, hoặc khi tạo snapshot từ volume.</li>
+<li><strong>Mở tài liệu lệnh:</strong> Mở file "Lesson Commands Document" đính kèm để copy-paste các lệnh cần thiết.</li>
 </ol>
-<h3 id="b-ghi-du-lieu-vao-ebs-volume">B. <strong>Ghi dữ liệu vào EBS volume</strong><a class="headerlink" href="#b-ghi-du-lieu-vao-ebs-volume" title="Permanent link">¶</a></h3>
-<ul>
-<li>Ứng dụng/OS gửi data → EC2 host/EBS dùng plaintext DEK để mã hóa block-level trước khi ghi xuống disk.</li>
-<li><strong>Không cần gọi lại KMS mỗi lần ghi</strong>, chỉ dùng plaintext DEK đã sinh.</li>
-</ul>
-<h3 id="c-oc-du-lieu-tu-ebs-volume">C. <strong>Đọc dữ liệu từ EBS volume</strong><a class="headerlink" href="#c-oc-du-lieu-tu-ebs-volume" title="Permanent link">¶</a></h3>
-<ul>
-<li>EC2 host/EBS lấy block đã mã hóa từ disk.</li>
-<li>Plaintext DEK dùng để giải mã ngay trên host, trả dữ liệu cho app/OS.</li>
-<li><strong>Không cần gọi lại KMS mỗi lần đọc</strong>.</li>
-</ul>
-<h3 id="d-rebootattach-volume-sang-host-khac">D. <strong>Reboot/attach volume sang host khác</strong><a class="headerlink" href="#d-rebootattach-volume-sang-host-khac" title="Permanent link">¶</a></h3>
-<ul>
-<li>Nếu host không còn plaintext DEK trong RAM:<ol>
-<li>EBS lấy encrypted DEK từ metadata volume.</li>
-<li>Gửi encrypted DEK lên KMS để nhờ giải mã bằng CMK.</li>
-<li>KMS trả về plaintext DEK mới cho host đó.</li>
-<li>Host giữ plaintext DEK trong RAM để tiếp tục encrypt/decrypt.</li>
+<hr>
+<h2 id="3-buoc-2-ket-noi-vao-ec2-instance">3. Bước 2: Kết nối vào EC2 Instance<a class="headerlink" href="#3-buoc-2-ket-noi-vao-ec2-instance" title="Permanent link">¶</a></h2>
+<ol>
+<li>Truy cập <strong>EC2 Console</strong>.</li>
+<li>Vào mục <strong>Instances (running)</strong>.</li>
+<li>Bạn sẽ thấy một instance có tên <code>A4LE public EC2</code>.</li>
+<li>Chuột phải vào instance → <strong>Connect</strong>.</li>
+<li>Chọn tab <strong>EC2 Instance Connect</strong>.</li>
+<li>Username: <code>ec2-user</code>.</li>
+<li>Nhấn <strong>Connect</strong>.</li>
 </ol>
-</li>
-</ul>
 <hr>
-<h2 id="3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot">3. Quy trình snapshot và tạo volume mới từ snapshot<a class="headerlink" href="#3-quy-trinh-snapshot-va-tao-volume-moi-tu-snapshot" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Snapshot từ volume encrypted:</strong>  <ul>
-<li>Lưu encrypted DEK của volume gốc kèm snapshot.</li>
-</ul>
-</li>
-<li><strong>Tạo volume mới từ snapshot:</strong>  <ul>
-<li>DEK của snapshot được dùng lại cho volume mới (volume mới vẫn được mã hóa bằng DEK đó).</li>
-<li>Chỉ sinh DEK mới khi tạo volume mới hoàn toàn (không từ snapshot).</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="4-ac-iem-bao-mat-van-hanh">4. Đặc điểm bảo mật &amp; vận hành<a class="headerlink" href="#4-ac-iem-bao-mat-van-hanh" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Plaintext DEK chỉ tồn tại trong RAM trên host EC2/EBS, không ghi ra disk.</strong></li>
-<li><strong>Encrypted DEK luôn lưu cùng metadata volume/snapshot, dùng lại khi cần.</strong></li>
-<li><strong>CMK không bao giờ rời khỏi KMS.</strong></li>
-<li><strong>KMS chỉ bị gọi khi tạo volume hoặc cần giải mã lại DEK (attach, reboot), KHÔNG mỗi lần IO (đọc/ghi).</strong></li>
-<li><strong>Mọi dữ liệu lưu trên EBS disk hoặc snapshot đều là encrypted-at-rest bằng DEK (không lộ plaintext ra ngoài host).</strong></li>
-<li><strong>OS/app chỉ nhìn thấy plain text, không biết phía dưới đang mã hóa.</strong></li>
-<li><strong>Không thể “gỡ mã hóa”/un-encrypt volume/snapshot trực tiếp, chỉ có thể copy data sang volume mới không mã hóa (OS-level).</strong></li>
-</ul>
-<hr>
-<h2 id="5-so-o-flowchart-minh-hoa-tong-the">5. Sơ đồ flowchart minh họa tổng thể<a class="headerlink" href="#5-so-o-flowchart-minh-hoa-tong-the" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart TD
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    A[Tạo Volume] --&gt; B{KMS sinh DEK}
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    B --&gt; C[DEK plaintext (RAM host)]
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    B --&gt; D[DEK encrypted (metadata volume/snapshot)]
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    C --&gt; E[Ghi/đọc data: dùng DEK plaintext RAM]
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    D --&gt; F{Reboot/attach host mới?}
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    F --&gt;|Có| G[Lấy encrypted DEK, gọi KMS để giải mã]
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    G --&gt; C
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    F --&gt;|Không| E
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    D --&gt; H[Tạo snapshot]
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    H --&gt; I[Snapshot lưu encrypted DEK]
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    I --&gt; J[Tạo volume mới từ snapshot dùng lại DEK snapshot]
+<h2 id="4-buoc-3-cai-at-thu-cong-tren-ec2-qua-terminal">4. Bước 3: Cài đặt thủ công trên EC2 (qua Terminal)<a class="headerlink" href="#4-buoc-3-cai-at-thu-cong-tren-ec2-qua-terminal" title="Permanent link">¶</a></h2>
+<h3 id="31-thiet-lap-bien-moi-truong">3.1. Thiết lập biến môi trường<a class="headerlink" href="#31-thiet-lap-bien-moi-truong" title="Permanent link">¶</a></h3>
+<p>Mục đích: Lưu trữ các thông tin nhạy cảm (tên database, user, password) vào biến để tái sử dụng, tránh gõ lại và giảm lỗi.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Đặt tên database</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_NAME</span><span class="o">=</span><span class="s1">'a4l_wordpress_db'</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Đặt tên user database</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_USER</span><span class="o">=</span><span class="s1">'a4l_wordpress_user'</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Đặt mật khẩu cho user database</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s1">'Password123!!'</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Đặt mật khẩu cho user root của database</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_ROOT_PASSWORD</span><span class="o">=</span><span class="s1">'Password321!!'</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Kiểm tra lại một biến để chắc chắn</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$DB_NAME</span>
 </code></pre></div>
-<hr>
-<h2 id="6-cac-meo-exam-phong-van-thuc-te">6. Các mẹo exam, phỏng vấn, thực tế<a class="headerlink" href="#6-cac-meo-exam-phong-van-thuc-te" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>DEK plaintext chỉ tồn tại trong RAM host EC2/EBS, không ghi ra disk.</strong></li>
-<li><strong>Encrypted DEK lưu kèm metadata volume/snapshot, dùng lại khi attach/reboot.</strong></li>
-<li><strong>CMK luôn ở trong KMS, không lộ ra ngoài.</strong></li>
-<li><strong>KMS chỉ được gọi khi tạo volume hoặc cần giải mã lại DEK, không mỗi IO.</strong></li>
-<li><strong>Snapshot/volume mới từ snapshot dùng lại encrypted DEK gốc, không sinh DEK mới.</strong></li>
-<li><strong>Muốn “gỡ mã hóa” phải copy data ra volume mới không encrypted (OS-level).</strong></li>
-<li><strong>Không có phí thêm, không giảm hiệu năng khi dùng EBS encryption.</strong></li>
-</ul>
-<hr>
-<h2 id="7-script-thao-tac-thuc-te-aws-cli">7. Script thao tác thực tế (AWS CLI)<a class="headerlink" href="#7-script-thao-tac-thuc-te-aws-cli" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Tạo volume encrypted với CMK cụ thể</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--size<span class="w"> </span><span class="m">10</span><span class="w"> </span>--region<span class="w"> </span>us-east-1<span class="w"> </span>--availability-zone<span class="w"> </span>us-east-1a<span class="w"> </span>--volume-type<span class="w"> </span>gp3<span class="w"> </span>--encrypted<span class="w"> </span>--kms-key-id<span class="w"> </span>&lt;your-kms-key-id&gt;
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Tạo snapshot từ volume encrypted</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-snapshot<span class="w"> </span>--volume-id<span class="w"> </span>&lt;volume-id&gt;<span class="w"> </span>--description<span class="w"> </span><span class="s2">"Encrypted backup"</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># Tạo volume mới từ snapshot encrypted (volume sẽ luôn encrypted)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--snapshot-id<span class="w"> </span>&lt;snapshot-id&gt;<span class="w"> </span>--availability-zone<span class="w"> </span>us-east-1a<span class="w"> </span>--volume-type<span class="w"> </span>gp3
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># Kiểm tra trạng thái encryption của volume</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--volume-ids<span class="w"> </span>&lt;volume-id&gt;<span class="w"> </span>--query<span class="w"> </span><span class="s2">"Volumes[*].Encrypted"</span>
+<h3 id="32-cai-at-cac-goi-phan-mem-can-thiet">3.2. Cài đặt các gói phần mềm cần thiết<a class="headerlink" href="#32-cai-at-cac-goi-phan-mem-can-thiet" title="Permanent link">¶</a></h3>
+<p>Cài đặt web server (Apache), database server (MariaDB) và công cụ tải file (wget).</p>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Dùng dnf để cài đặt các gói</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>mariadb105-server<span class="w"> </span>httpd<span class="w"> </span>wget<span class="w"> </span>-y
 </code></pre></div>
-<hr>
-<h2 id="8-tong-ket-de-nho">8. Tổng kết dễ nhớ<a class="headerlink" href="#8-tong-ket-de-nho" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>EBS encryption = envelope encryption với KMS, DEK plaintext chỉ RAM, encrypted DEK lưu metadata, CMK luôn nằm ở KMS.</strong></li>
-<li><strong>Chỉ cần KMS khi tạo volume hoặc attach/reboot, không mỗi lần IO.</strong></li>
-<li><strong>Snapshot và volume mới từ snapshot dùng lại DEK gốc.</strong></li>
-<li><strong>Không thể “un-encrypt” trực tiếp, chỉ copy data ra volume mới (OS-level).</strong></li>
-</ul>
-<hr>
+<em>(Lưu ý: <code>-y</code> để tự động đồng ý cài đặt)</em><p></p>
+<h3 id="33-kich-hoat-va-khoi-ong-cac-dich-vu">3.3. Kích hoạt và khởi động các dịch vụ<a class="headerlink" href="#33-kich-hoat-va-khoi-ong-cac-dich-vu" title="Permanent link">¶</a></h3>
+<p>Đảm bảo web server và database tự động chạy khi instance khởi động lại và khởi chạy chúng ngay bây giờ.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Kích hoạt dịch vụ httpd (Apache)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Kích hoạt dịch vụ mariadb</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Khởi động dịch vụ httpd</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Khởi động dịch vụ mariadb</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
+</code></pre></div>
+<h3 id="34-thiet-lap-mat-khau-root-cho-database">3.4. Thiết lập mật khẩu root cho Database<a class="headerlink" href="#34-thiet-lap-mat-khau-root-cho-database" title="Permanent link">¶</a></h3>
+<p>Bảo mật cơ sở dữ liệu bằng cách đặt mật khẩu cho người dùng quản trị cao nhất (root).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Đặt mật khẩu root cho MariaDB, sử dụng biến đã tạo</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>mysqladmin<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>password<span class="w"> </span><span class="s2">"</span><span class="nv">$DB_ROOT_PASSWORD</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="35-tai-va-giai-nen-ma-nguon-wordpress">3.5. Tải và giải nén mã nguồn WordPress<a class="headerlink" href="#35-tai-va-giai-nen-ma-nguon-wordpress" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Tải WordPress về thư mục gốc của web server (<code>/var/www/html</code>)</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Dùng wget để tải file cài đặt mới nhất từ wordpress.org</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://wordpress.org/latest.tar.gz<span class="w"> </span>-P<span class="w"> </span>/var/www/html
+</code></pre></div>
+</li>
+<li>
+<p><strong>Di chuyển vào thư mục web root và giải nén</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Chuyển vào thư mục html</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>/var/www/html
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Giải nén file vừa tải</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>latest.tar.gz
+</code></pre></div>
+</li>
+<li>
+<p><strong>Di chuyển file từ thư mục con ra thư mục gốc</strong>:
+    Sau khi giải nén, các file nằm trong thư mục <code>/var/www/html/wordpress</code>. Ta cần chuyển chúng ra <code>/var/www/html</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Copy toàn bộ nội dung từ thư mục wordpress ra thư mục hiện tại (.)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>wordpress/*<span class="w"> </span>.
+</code></pre></div>
+</li>
+<li>
+<p><strong>Dọn dẹp các file không cần thiết</strong>:
+    Xóa thư mục <code>wordpress</code> rỗng và file nén <code>latest.tar.gz</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Xóa thư mục wordpress</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>wordpress
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Xóa file nén</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>latest.tar.gz
+</code></pre></div>
+</li>
+<li>
+<p><strong>Kiểm tra lại kết quả</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Liệt kê các file trong thư mục hiện tại</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ls<span class="w"> </span>-la
+</code></pre></div>
+</li>
+</ol>
+<p>Bạn sẽ thấy toàn bộ file và thư mục của WordPress đã nằm trực tiếp trong <code>/var/www/html</code>.</p>
 
 
 
@@ -2252,7 +2841,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../16.instance-store-demo3/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 16.instance store demo3">
+          <a href="../18.NetworkInterfacesInstanceIPsDNS/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 18.NetworkInterfacesInstanceIPsDNS">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -2262,20 +2851,20 @@
                 Trước
               </span>
               <div class="md-ellipsis">
-                16.instance store demo3
+                18.NetworkInterfacesInstanceIPsDNS
               </div>
             </div>
           </a>
         
         
           
-          <a href="../18.NetworkInterfacesInstanceIPsDNS/" class="md-footer__link md-footer__link--next" aria-label="Sau: 18.NetworkInterfacesInstanceIPsDNS">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                18.NetworkInterfacesInstanceIPsDNS
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
