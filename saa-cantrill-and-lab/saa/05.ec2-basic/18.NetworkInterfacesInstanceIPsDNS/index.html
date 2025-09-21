@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/04.VPC/05.VpcSubnets/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/18.NetworkInterfacesInstanceIPsDNS/">
       
       
-        <link rel="prev" href="../04.custom-vpc-lab/">
+        <link rel="prev" href="../17.EBS%20Encryption/">
       
       
-        <link rel="next" href="../06.subnet-lab/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>05.VpcSubnets - DraDoc</title>
+        <title>💻 Mạng EC2: ENI, IP, DNS – Kiến trúc, quy trình &amp; mẹo thi (đầy đủ) - DraDoc</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vpc-subnets-tren-aws-ly-thuyet-tu-duy-thuc-chien-de-hieu-cho-nguoi-moi-u-thi-i-lam" class="md-skip">
+        <a href="#mang-ec2-eni-ip-dns-kien-truc-quy-trinh-meo-thi-ay-u" class="md-skip">
           Bỏ qua
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              05.VpcSubnets
+              💻 Mạng EC2: ENI, IP, DNS – Kiến trúc, quy trình &amp; mẹo thi (đầy đủ)
             
           </span>
         </div>
@@ -1053,648 +1053,10 @@
                 
   
   
-    
-  
   
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_4" id="__nav_6_4_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    04.VPC
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            04.VPC
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01.IP-plan/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    01.IP plan
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02.ip-plan2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    02.ip plan2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03.Custom%20VPCs1/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    03.Custom VPCs1
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.custom-vpc-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04.custom vpc lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    05.VpcSubnets
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    05.VpcSubnets
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#vpc-subnets-tren-aws-ly-thuyet-tu-duy-thuc-chien-de-hieu-cho-nguoi-moi-u-thi-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌐 VPC Subnets trên AWS: Lý thuyết &amp; tư duy thực chiến (Dễ hiểu cho người mới, đủ thi &amp; đi làm)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-1-ly-thuyet-nen-tang-ve-subnet-can-nho" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 1: Lý thuyết nền tảng về Subnet (CẦN NHỚ)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 1: Lý thuyết nền tảng về Subnet (CẦN NHỚ)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-subnet-la-gi" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Subnet là gì?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-vai-tro-cua-subnet-trong-kien-truc-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Vai trò của subnet trong kiến trúc thực tế
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-quy-tac-vang-ve-subnet" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Quy tắc vàng về subnet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-aws-se-giu-lai-5-ip-trong-moi-subnet-ban-khong-dung-uoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. AWS sẽ giữ lại 5 IP trong mỗi subnet, bạn không dùng được!
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-dhcp-option-set" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. DHCP Option Set
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-option-quan-trong-khi-tao-subnet" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Option quan trọng khi tạo subnet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-ket-noi-giua-cac-subnet" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Kết nối giữa các subnet
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-2-tu-duy-thiet-ke-subnet-thuc-chien-i-lam-i-thi" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 2: Tư duy thiết kế subnet thực chiến (Đi làm &amp; đi thi)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 2: Tư duy thiết kế subnet thực chiến (Đi làm &amp; đi thi)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-multi-tier-subnet-mau-cho-production" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Multi-tier subnet mẫu cho production
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-vi-du-chia-subnet-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Ví dụ chia subnet thực tế
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-bai-hoc-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Bài học thực tế
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-3-checklist-cau-hoi-phong-vancert" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 3: Checklist &amp; câu hỏi phỏng vấn/cert
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 3: Checklist &amp; câu hỏi phỏng vấn/cert">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cau-hoi-i-thiphong-van" class="md-nav__link">
-    <span class="md-ellipsis">
-      Câu hỏi đi thi/phỏng vấn:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#phan-4-tong-ket-chuan-bi-demo-thuc-hanh" class="md-nav__link">
-    <span class="md-ellipsis">
-      PHẦN 4: Tổng kết &amp; chuẩn bị demo thực hành
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06.subnet-lab/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06.subnet lab
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.vpcRouting-IGW-bastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07.vpcRouting IGW bastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08.lab-publicSubnet-BastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    08.lab publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09.lab2-publicSubnet-BastionHost/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    09.lab2 publicSubnet BastionHost
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10.StateFull-StateLess/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    10.StateFull StateLess
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../11.NACLs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    11.NACLs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../12.SecurityGroups/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    12.SecurityGroups
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.NAT/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    13.NAT
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../14.NAT2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    14.NAT2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../15.lab-natGW-private-internet-access/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    15.lab natGW private internet access
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
       
         
       
@@ -1746,12 +1108,12 @@
   
   
   
-    <a href="../../05.ec2-basic/01.Virtualization/" class="md-nav__link">
+    <a href="../../04.VPC/01.IP-plan/" class="md-nav__link">
       
   
   
   <span class="md-ellipsis">
-    05.ec2 basic
+    04.VPC
     
   </span>
   
@@ -1762,6 +1124,642 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_5" id="__nav_6_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    05.ec2 basic
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            05.ec2 basic
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.Virtualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.Virtualization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.EC2architectureResilience/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.EC2architectureResilience
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.EC2InstanceTypes1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.EC2InstanceTypes1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.EC2InstanceTypes2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.EC2InstanceTypes2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.demoEc2-ssh-instanceConnect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.demoEc2 ssh instanceConnect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.StorageRefresher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06.StorageRefresher
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.EBS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    07.EBS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08.EBSVolumeTypes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    08.EBSVolumeTypes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.EBSVolumeType2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    09.EBSVolumeType2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.EBS-HDD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    10.EBS HDD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11.InstanceStoreVolumes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    11.InstanceStoreVolumes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12.gp2-3-io1-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    12.gp2 3 io1 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.FastSnapshotRestoreFSR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    13.FastSnapshotRestoreFSR
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14.EBS-volume-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    14.EBS volume demo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15.EBS-volume-demo2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    15.EBS volume demo2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16.instance-store-demo3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    16.instance store demo3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17.EBS%20Encryption/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    17.EBS Encryption
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    💻 Mạng EC2: ENI, IP, DNS – Kiến trúc, quy trình &amp; mẹo thi (đầy đủ)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    💻 Mạng EC2: ENI, IP, DNS – Kiến trúc, quy trình &amp; mẹo thi (đầy đủ)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-kien-truc-mang-ec2-eni-elastic-network-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Kiến trúc mạng EC2 &amp; ENI (Elastic Network Interface)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cac-thanh-phan-gan-voi-mot-eni" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Các thành phần gắn với một ENI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-phan-loai-ip-va-dns-tren-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Phân loại IP và DNS trên EC2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Phân loại IP và DNS trên EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-private-ip-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Private IP &amp; DNS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-public-ip-dynamic-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Public IP (Dynamic) &amp; DNS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-elastic-ip-eip" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Elastic IP (EIP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-meo-thi-thuc-te-quan-trong-exam-power-ups" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mẹo thi &amp; thực tế quan trọng (Exam Power-ups)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-so-o-kien-truc-tom-tat" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Sơ đồ kiến trúc (tóm tắt)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tong-ket-de-nho" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Tổng kết dễ nhớ
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1860,6 +1858,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1868,82 +1868,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#vpc-subnets-tren-aws-ly-thuyet-tu-duy-thuc-chien-de-hieu-cho-nguoi-moi-u-thi-i-lam" class="md-nav__link">
+  <a href="#1-kien-truc-mang-ec2-eni-elastic-network-interface" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 VPC Subnets trên AWS: Lý thuyết &amp; tư duy thực chiến (Dễ hiểu cho người mới, đủ thi &amp; đi làm)
+      1. Kiến trúc mạng EC2 &amp; ENI (Elastic Network Interface)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-1-ly-thuyet-nen-tang-ve-subnet-can-nho" class="md-nav__link">
+  <a href="#2-cac-thanh-phan-gan-voi-mot-eni" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 1: Lý thuyết nền tảng về Subnet (CẦN NHỚ)
+      2. Các thành phần gắn với một ENI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="PHẦN 1: Lý thuyết nền tảng về Subnet (CẦN NHỚ)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-phan-loai-ip-va-dns-tren-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Phân loại IP và DNS trên EC2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Phân loại IP và DNS trên EC2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-subnet-la-gi" class="md-nav__link">
+  <a href="#a-private-ip-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Subnet là gì?
+      A. Private IP &amp; DNS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-vai-tro-cua-subnet-trong-kien-truc-thuc-te" class="md-nav__link">
+  <a href="#b-public-ip-dynamic-dns" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Vai trò của subnet trong kiến trúc thực tế
+      B. Public IP (Dynamic) &amp; DNS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-quy-tac-vang-ve-subnet" class="md-nav__link">
+  <a href="#c-elastic-ip-eip" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Quy tắc vàng về subnet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-aws-se-giu-lai-5-ip-trong-moi-subnet-ban-khong-dung-uoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. AWS sẽ giữ lại 5 IP trong mỗi subnet, bạn không dùng được!
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-dhcp-option-set" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. DHCP Option Set
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-option-quan-trong-khi-tao-subnet" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Option quan trọng khi tạo subnet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-ket-noi-giua-cac-subnet" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Kết nối giữa các subnet
+      C. Elastic IP (EIP)
     </span>
   </a>
   
@@ -1955,75 +1928,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-2-tu-duy-thiet-ke-subnet-thuc-chien-i-lam-i-thi" class="md-nav__link">
+  <a href="#4-meo-thi-thuc-te-quan-trong-exam-power-ups" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 2: Tư duy thiết kế subnet thực chiến (Đi làm &amp; đi thi)
+      4. Mẹo thi &amp; thực tế quan trọng (Exam Power-ups)
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 2: Tư duy thiết kế subnet thực chiến (Đi làm &amp; đi thi)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-multi-tier-subnet-mau-cho-production" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Multi-tier subnet mẫu cho production
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-vi-du-chia-subnet-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Ví dụ chia subnet thực tế
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-bai-hoc-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Bài học thực tế
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-3-checklist-cau-hoi-phong-vancert" class="md-nav__link">
+  <a href="#5-so-o-kien-truc-tom-tat" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 3: Checklist &amp; câu hỏi phỏng vấn/cert
+      5. Sơ đồ kiến trúc (tóm tắt)
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="PHẦN 3: Checklist &amp; câu hỏi phỏng vấn/cert">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cau-hoi-i-thiphong-van" class="md-nav__link">
-    <span class="md-ellipsis">
-      Câu hỏi đi thi/phỏng vấn:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#phan-4-tong-ket-chuan-bi-demo-thuc-hanh" class="md-nav__link">
+  <a href="#6-tong-ket-de-nho" class="md-nav__link">
     <span class="md-ellipsis">
-      PHẦN 4: Tổng kết &amp; chuẩn bị demo thực hành
+      6. Tổng kết dễ nhớ
     </span>
   </a>
   
@@ -2045,7 +1970,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/04.VPC/05.VpcSubnets.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/18.NetworkInterfacesInstanceIPsDNS.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -2053,239 +1978,225 @@
   
 
 
-  <h1>05.VpcSubnets</h1>
-
-<h2 id="vpc-subnets-tren-aws-ly-thuyet-tu-duy-thuc-chien-de-hieu-cho-nguoi-moi-u-thi-i-lam">🌐 VPC Subnets trên AWS: Lý thuyết &amp; tư duy thực chiến (Dễ hiểu cho người mới, đủ thi &amp; đi làm)<a class="headerlink" href="#vpc-subnets-tren-aws-ly-thuyet-tu-duy-thuc-chien-de-hieu-cho-nguoi-moi-u-thi-i-lam" title="Permanent link">¶</a></h2>
+<h1 id="mang-ec2-eni-ip-dns-kien-truc-quy-trinh-meo-thi-ay-u">💻 Mạng EC2: ENI, IP, DNS – Kiến trúc, quy trình &amp; mẹo thi (đầy đủ)<a class="headerlink" href="#mang-ec2-eni-ip-dns-kien-truc-quy-trinh-meo-thi-ay-u" title="Permanent link">¶</a></h1>
 <hr>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/1c7118c1-56dc-4115-a565-1f2c664aad3a" data-desc-position="bottom"><img width="703" height="398" alt="image" src="https://github.com/user-attachments/assets/1c7118c1-56dc-4115-a565-1f2c664aad3a"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/27b30d96-08eb-4a17-aef4-9ac4e9250a66" data-desc-position="bottom"><img width="701" height="406" alt="image" src="https://github.com/user-attachments/assets/27b30d96-08eb-4a17-aef4-9ac4e9250a66"></a></p>
-<h2 id="phan-1-ly-thuyet-nen-tang-ve-subnet-can-nho">PHẦN 1: Lý thuyết nền tảng về Subnet (CẦN NHỚ)<a class="headerlink" href="#phan-1-ly-thuyet-nen-tang-ve-subnet-can-nho" title="Permanent link">¶</a></h2>
-<h3 id="1-subnet-la-gi">1. <strong>Subnet là gì?</strong><a class="headerlink" href="#1-subnet-la-gi" title="Permanent link">¶</a></h3>
+<h2 id="1-kien-truc-mang-ec2-eni-elastic-network-interface">1. Kiến trúc mạng EC2 &amp; ENI (Elastic Network Interface)<a class="headerlink" href="#1-kien-truc-mang-ec2-eni-elastic-network-interface" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Subnet = “phòng” nhỏ trong “ngôi nhà” VPC</strong></li>
-<li>Là <strong>khu vực mạng con</strong> nằm trọn vẹn trong 1 Availability Zone (AZ) cụ thể, không thể “kéo” qua AZ khác.</li>
-<li><strong>Một subnet = một AZ duy nhất</strong> (Đi thi cực hay hỏi!)</li>
-<li>Subnet là nơi các dịch vụ AWS (EC2, RDS, Lambda, …) thực sự “chạy”. Không thể chạy tài nguyên trực tiếp trên VPC, phải đặt trong subnet.</li>
+<li><strong>ENI (Elastic Network Interface):</strong> Là card mạng ảo gắn vào EC2 instance.</li>
+<li><strong>Mỗi EC2 instance có:</strong><ul>
+<li><strong>1 ENI chính (primary):</strong> Gắn cố định, không thể gỡ ra.</li>
+<li><strong>0 hoặc nhiều ENI phụ (secondary):</strong> Có thể gắn/gỡ và di chuyển giữa các instance.</li>
 </ul>
-<h3 id="2-vai-tro-cua-subnet-trong-kien-truc-thuc-te">2. <strong>Vai trò của subnet trong kiến trúc thực tế</strong><a class="headerlink" href="#2-vai-tro-cua-subnet-trong-kien-truc-thuc-te" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Tăng tính sẵn sàng (High Availability):</strong> Đặt từng thành phần (web, app, db, …) vào các subnet thuộc nhiều AZ khác nhau. Nếu 1 AZ chết, dịch vụ vẫn sống ở AZ khác.</li>
-<li><strong>Tách biệt chức năng:</strong> Tạo subnet riêng cho từng tier (web/app/db), dễ set rule bảo mật, quản lý traffic.</li>
-<li><strong>Kiểm soát public/private:</strong> Chỉ subnet nào cấu hình “public” (qua Internet Gateway &amp; auto-assign public IP) thì mới truy cập Internet được.</li>
+</li>
+<li><strong>Quan trọng:</strong> Tất cả các ENI của một instance có thể ở các subnet khác nhau, nhưng <strong>phải nằm trong cùng một Availability Zone (AZ)</strong>.</li>
 </ul>
-<h3 id="3-quy-tac-vang-ve-subnet">3. <strong>Quy tắc vàng về subnet</strong><a class="headerlink" href="#3-quy-tac-vang-ve-subnet" title="Permanent link">¶</a></h3>
+<hr>
+<h2 id="2-cac-thanh-phan-gan-voi-mot-eni">2. Các thành phần gắn với một ENI<a class="headerlink" href="#2-cac-thanh-phan-gan-voi-mot-eni" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/4eac129c-28cb-434b-840f-96368f6108b4" data-desc-position="bottom"><img width="718" height="423" alt="image" src="https://github.com/user-attachments/assets/4eac129c-28cb-434b-840f-96368f6108b4"></a></p>
+<p>Các thuộc tính mạng thực chất được gắn vào ENI, không phải trực tiếp vào instance.</p>
+<table>
+<thead>
+<tr>
+<th>Thành phần</th>
+<th>Mô tả &amp; Lưu ý</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAC Address</strong></td>
+<td>Địa chỉ phần cứng tĩnh của ENI. Dùng cho các phần mềm license theo MAC.</td>
+</tr>
+<tr>
+<td><strong>Primary Private IPv4</strong></td>
+<td>1 địa chỉ private IPv4 chính, lấy từ dải IP của subnet. Tĩnh, không đổi suốt vòng đời instance.</td>
+</tr>
+<tr>
+<td><strong>Secondary Private IPv4</strong></td>
+<td>0 hoặc nhiều địa chỉ private IPv4 phụ.</td>
+</tr>
+<tr>
+<td><strong>Public IPv4</strong></td>
+<td>0 hoặc 1 địa chỉ public IPv4 (loại dynamic).</td>
+</tr>
+<tr>
+<td><strong>Elastic IP (EIP)</strong></td>
+<td>1 EIP cho mỗi địa chỉ private IPv4 (cả chính và phụ).</td>
+</tr>
+<tr>
+<td><strong>IPv6 Address</strong></td>
+<td>0 hoặc nhiều địa chỉ IPv6 (mặc định là public).</td>
+</tr>
+<tr>
+<td><strong>Security Groups</strong></td>
+<td>Gắn vào ENI. Muốn có rule khác nhau cho các IP khác nhau → dùng nhiều ENI với nhiều security group.</td>
+</tr>
+<tr>
+<td><strong>Source/Dest Check</strong></td>
+<td>Mặc định bật. Tắt đi để instance hoạt động như một NAT instance.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-phan-loai-ip-va-dns-tren-ec2">3. Phân loại IP và DNS trên EC2<a class="headerlink" href="#3-phan-loai-ip-va-dns-tren-ec2" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/49a23345-7770-48f2-9319-577a21fe9e6b" data-desc-position="bottom"><img width="667" height="414" alt="image" src="https://github.com/user-attachments/assets/49a23345-7770-48f2-9319-577a21fe9e6b"></a></p>
+<h3 id="a-private-ip-dns">A. Private IP &amp; DNS<a class="headerlink" href="#a-private-ip-dns" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>1 subnet = 1 AZ.</strong> Không bao giờ có subnet nằm ở nhiều AZ.</li>
-<li><strong>1 AZ có thể có nhiều subnet, hoặc không có subnet nào.</strong></li>
-<li><strong>Subnet phải nằm hoàn toàn trong dải IP VPC, không được trùng nhau.</strong></li>
-<li><strong>Subnet có thể có cả IPv4 và IPv6 (nếu VPC bật IPv6).</strong></li>
-<li><strong>IPv4 CIDR của subnet là “con” của CIDR VPC.</strong> Ví dụ VPC <code>/16</code>, chia subnet <code>/20</code> hoặc <code>/24</code>…</li>
+<li><strong>Private IPv4 (vd: <code>10.16.0.10</code>):</strong><ul>
+<li>Tĩnh, không đổi.</li>
+<li>Dùng cho giao tiếp nội bộ trong VPC.</li>
 </ul>
-<h3 id="4-aws-se-giu-lai-5-ip-trong-moi-subnet-ban-khong-dung-uoc">4. <strong>AWS sẽ giữ lại 5 IP trong mỗi subnet, bạn không dùng được!</strong><a class="headerlink" href="#4-aws-se-giu-lai-5-ip-trong-moi-subnet-ban-khong-dung-uoc" title="Permanent link">¶</a></h3>
+</li>
+<li><strong>Internal DNS (vd: <code>ip-10-16-0-10.ec2.internal</code>):</strong><ul>
+<li>Tự động tạo, trỏ đến Private IPv4.</li>
+<li><strong>Chỉ phân giải được bên trong VPC</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="b-public-ip-dynamic-dns">B. Public IP (Dynamic) &amp; DNS<a class="headerlink" href="#b-public-ip-dynamic-dns" title="Permanent link">¶</a></h3>
 <ul>
-<li>5 IP này là:<ol>
-<li><strong>Network address</strong> (địa chỉ đầu tiên, dùng để định danh subnet)</li>
-<li><strong>Network+1</strong> (dùng cho VPC router – định tuyến giữa các subnet)</li>
-<li><strong>Network+2</strong> (dùng cho DNS server trong VPC)</li>
-<li><strong>Network+3</strong> (AWS dự phòng cho tương lai, hiện chưa dùng)</li>
-<li><strong>Broadcast address</strong> (địa chỉ cuối cùng – dù VPC không hỗ trợ broadcast, nhưng vẫn giữ lại)</li>
+<li><strong>Public IPv4 (Dynamic):</strong><ul>
+<li>Cấp phát tự động nếu subnet được cấu hình.</li>
+<li><strong>Thay đổi khi instance stop/start</strong>.</li>
+<li><strong>Không đổi khi reboot (restart)</strong>.</li>
+</ul>
+</li>
+<li><strong>Public DNS (vd: <code>ec2-xx-xx-xx-xx.compute-1.amazonaws.com</code>):</strong><ul>
+<li>Trỏ đến Public IPv4.</li>
+<li><strong>Đặc biệt:</strong><ul>
+<li><strong>Bên trong VPC:</strong> Phân giải ra <strong>Private IPv4</strong> (để tối ưu traffic nội bộ).</li>
+<li><strong>Bên ngoài VPC:</strong> Phân giải ra <strong>Public IPv4</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="c-elastic-ip-eip">C. Elastic IP (EIP)<a class="headerlink" href="#c-elastic-ip-eip" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Là địa chỉ Public IPv4 tĩnh, thuộc về tài khoản AWS của bạn.</strong></li>
+<li><strong>Quy trình hoạt động:</strong><ol>
+<li><strong>Allocate EIP:</strong> Xin một EIP từ AWS.</li>
+<li><strong>Associate EIP:</strong> Gắn EIP vào một địa chỉ private IPv4 trên ENI.</li>
+<li>Khi gắn EIP, địa chỉ Public IPv4 (dynamic) cũ sẽ bị <strong>mất vĩnh viễn</strong>.</li>
+<li>Khi gỡ EIP, instance sẽ nhận một địa chỉ Public IPv4 (dynamic) <strong>mới hoàn toàn</strong>, không lấy lại được IP cũ.</li>
 </ol>
 </li>
-<li><strong>→ Khi tính số IP usable luôn lấy tổng số IP trừ đi 5.</strong><br>
-  Ví dụ: <code>/24</code> = 256 IP, usable = 251.</li>
 </ul>
-<details>
-<summary>&lt; Giải thích chi tiết về 5 ip này (Bấm để xem)</summary>
-
-### **Tổng quan: Nền móng ẩn của mỗi Subnet**
-
-Hãy hình dung mỗi **subnet** bạn tạo ra như một **khu phố khép kín, được quy hoạch bài bản**. AWS, với vai trò là nhà phát triển hạ tầng, đã giữ lại 5 "lô đất" chiến lược trong mỗi khu phố này để xây dựng các tiện ích chung, đảm bảo toàn bộ khu phố vận hành trơn tru và an toàn.
-
-Việc giữ lại 5 địa chỉ IP này là một quy tắc **cố định và không thể thay đổi**.
-
-**Phạm vi:** Quy tắc này được áp dụng ở cấp độ **SUB-NET**. Nghĩa là, dù bạn tạo ra 1 hay 100 subnet, mỗi subnet trong số đó đều sẽ có 5 địa chỉ IP này bị giữ lại.
-
----
-
-### **Chi tiết về 5 thành phần và tác động của chúng**
-
-Giả sử chúng ta có một subnet với dải IP là `10.0.1.0/24`.
-
-#### 1. Địa chỉ Mạng (`10.0.1.0`)
-
-* **Vai trò:** Đây là **danh tính** của subnet, giống như tên của khu phố (ví dụ: "Khu phố A"). Nó không phải là một địa chỉ cụ thể của một ngôi nhà nào, mà là địa chỉ định danh cho cả một khu vực.
-* **Tác động:**
-    * **Định nghĩa ranh giới:** Địa chỉ này xác định điểm bắt đầu của dải IP trong subnet.
-    * **Routing:** Bảng định tuyến (Route Table) sử dụng địa chỉ này để biết rằng "tất cả các địa chỉ từ 10.0.1.0 đến 10.0.1.255 đều thuộc về khu phố này".
-    * **Không thể sử dụng:** Bạn không bao giờ có thể gán địa chỉ này cho bất kỳ tài nguyên nào (EC2, RDS, v.v.).
-
-#### 2. VPC Router / Cổng Mặc Định (`10.0.1.1`)
-
-* **Vai trò:** Đây là **cổng ra vào duy nhất** của khu phố, do AWS quản lý. Mọi "thư từ" hay "xe cộ" (traffic) muốn đi từ trong subnet ra ngoài (Internet, VPC khác) hoặc từ ngoài vào trong đều phải đi qua cái cổng này.
-* **Tác động:**
-    * **Điểm trung chuyển bắt buộc:** Bất kỳ máy chủ EC2 nào trong subnet này muốn kết nối ra Internet đều phải gửi gói tin đến địa chỉ `10.0.1.1` này đầu tiên.
-    * **Tính sẵn sàng cao:** Đây không phải là một máy chủ vật lý duy nhất mà là một dịch vụ có tính sẵn sàng cao và khả năng mở rộng tự động do AWS quản lý.
-
-#### 3. Máy chủ DNS của Amazon (`10.0.1.2`)
-
-* **Vai trò:** Đây là **"bốt thông tin" hoặc "danh bạ điện thoại" nội bộ** của khu phố. Nó có hai chức năng chính:
-    1.  Giúp các máy chủ trong subnet phân giải tên miền công cộng (ví dụ: `google.com`).
-    2.  Giúp các máy chủ trong cùng VPC phân giải tên miền riêng tư của nhau (ví dụ: phân giải hostname `ip-10-0-1-50.ec2.internal`).
-* **Tác động:**
-    * **Phân giải tên miền hiệu quả:** Việc có một máy chủ DNS ngay trong subnet giúp giảm độ trễ và đảm bảo các tài nguyên có thể "tìm thấy" nhau một cách nhanh chóng.
-    * **Nền tảng của DHCP Option Set:** DHCP Option Set mặc định sẽ chỉ cho các máy chủ EC2 sử dụng địa chỉ `10.0.1.2` này làm DNS server.
-
-#### 4. Dành cho tương lai (`10.0.1.3`)
-
-* **Vai trò:** Đây là một **"lô đất trống"** mà AWS đã giữ lại để phòng trường hợp trong tương lai họ muốn triển khai thêm một dịch vụ mạng mới ở cấp độ subnet.
-* **Tác động:**
-    * **Không khả dụng:** Đơn giản là bạn không thể sử dụng địa chỉ này. Nó làm giảm đi một địa chỉ trong tổng số IP khả dụng của bạn.
-
-#### 5. Địa chỉ Broadcast (`10.0.1.255`)
-
-* **Vai trò:** Trong mạng truyền thống, đây là địa chỉ dùng để **gửi một gói tin đến tất cả các thiết bị** trong cùng một mạng, giống như một hệ thống "loa phát thanh" công cộng.
-* **Tác động:**
-    * **Bị vô hiệu hóa:** AWS **không hỗ trợ** giao thức broadcast trong VPC để tăng cường bảo mật và tránh các vấn đề về "bão broadcast" (broadcast storm).
-    * **Không thể sử dụng:** Vì tính năng này không được hỗ trợ, AWS giữ lại địa chỉ này để đảm bảo không ai có thể sử dụng nó sai mục đích.
-
----
-
-### **Tóm tắt tác động chung lên Subnet**
-
-1.  **Giảm số lượng IP khả dụng:** Đây là tác động rõ ràng nhất. Khi bạn tính toán số lượng máy chủ có thể đặt trong một subnet, bạn phải luôn lấy tổng số IP của dải CIDR đó **trừ đi 5**. Một subnet `/24` (256 IP) chỉ có 251 IP để bạn sử dụng.
-2.  **Cung cấp các chức năng mạng cốt lõi:** 5 địa chỉ này không chỉ làm giảm IP mà còn là nền tảng cung cấp các dịch vụ thiết yếu (định tuyến, DNS) giúp subnet hoạt động như một thực thể mạng hoàn chỉnh.
-3.  **Đảm bảo tính nhất quán và bảo mật:** Việc giữ lại các địa chỉ này tạo ra một kiến trúc mạng đồng nhất và có thể dự đoán được trên toàn bộ nền tảng AWS, đồng thời loại bỏ các giao thức kém an toàn như broadcast.
-
-</details>
-
-<h3 id="5-dhcp-option-set">5. <strong>DHCP Option Set</strong><a class="headerlink" href="#5-dhcp-option-set" title="Permanent link">¶</a></h3>
-<ul>
-<li>VPC auto có 1 DHCP Option Set – giúp EC2 trong subnet tự nhận IP, DNS server, NTP server…</li>
-<li>Không chỉnh sửa được DHCP Option Set, muốn đổi phải tạo mới rồi gán vào VPC.</li>
-</ul>
-<details>
-<summary>&lt; Giải thích chi tiết về DHCP Option Set (Bấm để xem)</summary>
-
----
-
-### DHCP Option Set là gì?
-
-Nếu VPC là một khu mạng ảo riêng, thì **DHCP Option Set** chính là **bộ quy tắc cấu hình mạng mặc định** được áp dụng cho toàn bộ khu vực đó. Nó là một tập hợp các thông số mà giao thức DHCP (Dynamic Host Configuration Protocol) sẽ cung cấp tự động cho các máy chủ (EC2) mới được khởi tạo bên trong VPC.
-
-Mục tiêu chính của DHCP Option Set là **đơn giản hóa việc cấu hình mạng** và đảm bảo tính nhất quán cho toàn bộ hệ thống.
-
-
-
----
-### Các tùy chọn (Options) chính
-
-Một DHCP Option Set bao gồm nhiều tùy chọn, nhưng đây là những tùy chọn quan trọng nhất:
-
-* **Máy chủ DNS (`domain-name-servers`)**
-    * **Chức năng:** Chỉ định máy chủ DNS mà các EC2 sẽ dùng để phân giải tên miền (ví dụ: biến `google.com` thành địa chỉ IP).
-    * **Mặc định của AWS:** `AmazonProvidedDNS`, một dịch vụ đặc biệt có thể phân giải cả tên miền công cộng và tên miền riêng tư của các EC2 khác trong cùng VPC.
-    * **Tùy chỉnh:** Bạn có thể thay bằng DNS của công ty hoặc DNS công cộng như `8.8.8.8`.
-
-* **Tên Miền (`domain-name`)**
-    * **Chức năng:** Gán một tên miền mặc định cho các máy chủ, giúp tạo thành Tên miền Đầy đủ (FQDN). Ví dụ: `server-1.mycompany.local`.
-
-* **Máy chủ Thời gian NTP (`ntp-servers`)**
-    * **Chức năng:** Chỉ định máy chủ thời gian để các EC2 đồng bộ giờ giấc. Điều này rất quan trọng cho việc ghi log và bảo mật.
-
----
-### Tại sao không thể chỉnh sửa trực tiếp?
-
-Đây là một quy tắc thiết kế quan trọng của AWS nhằm đảm bảo **an toàn và nhất quán**.
-
-Việc cho phép sửa đổi trực tiếp một DHCP Option Set đang được sử dụng có thể gây ra sự cố mất kết nối mạng trên diện rộng nếu có lỗi xảy ra. Do đó, quy trình an toàn là:
-
-1.  **Tạo một DHCP Option Set mới** với cấu hình bạn muốn.
-2.  **Gán (associate)** set mới này vào VPC để thay thế cho set cũ.
-
----
-### Khi nào cần quan tâm?
-
-Bạn chỉ thực sự cần tạo một DHCP Option Set tùy chỉnh trong các trường hợp sau:
-
-* **Môi trường Lai (Hybrid Cloud):** Khi bạn muốn máy chủ trên AWS "thấy" và giao tiếp được với các máy chủ ở văn phòng công ty bằng tên miền nội bộ.
-* **Tích hợp Active Directory:** Khi các máy chủ Windows cần gia nhập vào miền (domain) của công ty.
-* **Tuân thủ chính sách nội bộ:** Khi công ty yêu cầu sử dụng máy chủ DNS hoặc NTP riêng.
-
-</details>
-
-<h3 id="6-option-quan-trong-khi-tao-subnet">6. <strong>Option quan trọng khi tạo subnet</strong><a class="headerlink" href="#6-option-quan-trong-khi-tao-subnet" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Auto-assign public IPv4:</strong> Nếu bật, mọi EC2 khi launch vào subnet này sẽ tự được gán public IP.<ul>
-<li><strong>Muốn subnet public:</strong> Bật option này + subnet có route ra Internet Gateway.</li>
-<li><strong>Muốn subnet private:</strong> Tắt option này, EC2 chỉ có private IP (muốn ra Internet phải qua NAT Gateway).</li>
+<hr>
+<h2 id="4-meo-thi-thuc-te-quan-trong-exam-power-ups">4. Mẹo thi &amp; thực tế quan trọng (Exam Power-ups)<a class="headerlink" href="#4-meo-thi-thuc-te-quan-trong-exam-power-ups" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/d2d18f09-2b28-4679-8f8d-c9113d4cd0ff" data-desc-position="bottom"><img width="718" height="404" alt="image" src="https://github.com/user-attachments/assets/d2d18f09-2b28-4679-8f8d-c9113d4cd0ff"></a></p>
+<ol>
+<li><strong>License theo MAC Address:</strong> Gắn ENI phụ vào instance, dùng MAC của ENI phụ để license. Khi cần di chuyển license, chỉ cần gỡ ENI phụ và gắn sang instance khác.</li>
+<li><strong>Multi-homed System:</strong> Dùng nhiều ENI cho các mục đích khác nhau (vd: 1 ENI cho management, 1 ENI cho data). Vì Security Group gắn vào ENI, đây là cách để áp các bộ quy tắc firewall khác nhau cho các luồng traffic khác nhau.</li>
+<li><strong>OS không thấy Public IP:</strong> Hệ điều hành bên trong EC2 (Windows/Linux) <strong>không bao giờ nhìn thấy Public IPv4</strong>. Nó chỉ làm việc với Private IPv4. Quá trình NAT 1-1 được xử lý bởi Internet Gateway.</li>
+<li><strong>Public IP (Dynamic) vs. EIP (Static):</strong><ul>
+<li>Public IP (dynamic) sẽ thay đổi khi <strong>stop/start</strong>.</li>
+<li>Muốn IP public cố định, <strong>phải dùng Elastic IP (EIP)</strong>.</li>
 </ul>
 </li>
-<li><strong>IPv6:</strong> Nếu subnet (và VPC) bật IPv6, EC2 vào subnet sẽ được gán IPv6 (public routeable).</li>
-</ul>
-<h3 id="7-ket-noi-giua-cac-subnet">7. <strong>Kết nối giữa các subnet</strong><a class="headerlink" href="#7-ket-noi-giua-cac-subnet" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Mặc định:</strong> Các subnet trong cùng VPC truy cập nhau tự do (do route table mặc định), không bị chặn (bảo mật dùng Security Group/Network ACL).</li>
-<li><strong>Isolation thực sự:</strong> Ở biên của VPC, không phải giữa các subnet.</li>
-</ul>
-<hr>
-<h2 id="phan-2-tu-duy-thiet-ke-subnet-thuc-chien-i-lam-i-thi">PHẦN 2: Tư duy thiết kế subnet thực chiến (Đi làm &amp; đi thi)<a class="headerlink" href="#phan-2-tu-duy-thiet-ke-subnet-thuc-chien-i-lam-i-thi" title="Permanent link">¶</a></h2>
-<h3 id="1-multi-tier-subnet-mau-cho-production">1. <strong>Multi-tier subnet mẫu cho production</strong><a class="headerlink" href="#1-multi-tier-subnet-mau-cho-production" title="Permanent link">¶</a></h3>
-<ul>
-<li><strong>Web tier:</strong> Chỉ web server, có thể đặt public nếu cần.</li>
-<li><strong>App tier:</strong> Logic xử lý, private subnet.</li>
-<li><strong>Database tier:</strong> Cơ sở dữ liệu, luôn ở private subnet.</li>
-<li><strong>Reserved tier:</strong> Để trống, dự phòng mở rộng.</li>
-<li><strong>Mỗi tier nhân với số AZ (thường là 3 hoặc 4) → tổng số subnet.</strong></li>
-</ul>
-<h3 id="2-vi-du-chia-subnet-thuc-te">2. <strong>Ví dụ chia subnet thực tế</strong><a class="headerlink" href="#2-vi-du-chia-subnet-thuc-te" title="Permanent link">¶</a></h3>
-<ul>
-<li>VPC: <code>10.16.0.0/16</code></li>
-<li>Chia 4 tier × 3 AZ (A, B, C) = <strong>12 subnet</strong><ul>
-<li>Web-A: <code>10.16.0.0/20</code></li>
-<li>Web-B: <code>10.16.16.0/20</code></li>
-<li>Web-C: <code>10.16.32.0/20</code></li>
-<li>App-A: <code>10.16.48.0/20</code></li>
-<li>...</li>
-<li>Reserved-C: <code>10.16.176.0/20</code></li>
+<li><strong>Public DNS Resolution:</strong> Nhớ kỹ cơ chế phân giải kép của Public DNS:<ul>
+<li><strong>Trong VPC → Private IP.</strong></li>
+<li><strong>Ngoài VPC → Public IP.</strong>
+(Rất quan trọng cho các chủ đề như VPC Peering, Hybrid Networking).</li>
 </ul>
 </li>
-<li><strong>Subnet nào AZ nào phải đặt đúng, không đảo lộn!</strong></li>
-</ul>
-<h3 id="3-bai-hoc-thuc-te">3. <strong>Bài học thực tế</strong><a class="headerlink" href="#3-bai-hoc-thuc-te" title="Permanent link">¶</a></h3>
+<li><strong>Gỡ EIP:</strong> Khi gỡ EIP, không có cách nào lấy lại được địa chỉ Public IP (dynamic) ban đầu. Instance sẽ được cấp một IP public mới.</li>
+</ol>
+<hr>
+<h2 id="5-so-o-kien-truc-tom-tat">5. Sơ đồ kiến trúc (tóm tắt)<a class="headerlink" href="#5-so-o-kien-truc-tom-tat" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    subgraph "Availability Zone A"
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        EC2["EC2 Instance"]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        subgraph "Subnet 1 (10.16.0.0/24)"
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>            ENI1["Primary ENI (eth0)"]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        end
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        subgraph "Subnet 2 (10.16.1.0/24)"
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            ENI2["Secondary ENI (eth1)"]
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        end
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    end
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    EC2 -- Gắn --o ENI1
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    EC2 -- Gắn --o ENI2
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    subgraph "Thuộc tính của ENI1"
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        MAC1["MAC Address"]
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        PrivIP1["Private IP: 10.16.0.10"]
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        PubIP1["Public IP / EIP"]
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        SG1["Security Group A"]
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    end
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    subgraph "Thuộc tính của ENI2"
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        MAC2["MAC Address"]
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        PrivIP2["Private IP: 10.16.1.20"]
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        PubIP2["Public IP / EIP"]
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        SG2["Security Group B"]
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    end
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    ENI1 --- MAC1 &amp; PrivIP1 &amp; PubIP1 &amp; SG1
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    ENI2 --- MAC2 &amp; PrivIP2 &amp; PubIP2 &amp; SG2
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    style EC2 fill:#f9f,stroke:#333,stroke-width:2px
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    style ENI1 fill:#bbf,stroke:#333,stroke-width:2px
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    style ENI2 fill:#bbf,stroke:#333,stroke-width:2px
+</code></pre></div>
+<hr>
+<h2 id="6-tong-ket-de-nho">6. Tổng kết dễ nhớ<a class="headerlink" href="#6-tong-ket-de-nho" title="Permanent link">¶</a></h2>
 <ul>
-<li>Sai subnet/AZ hoặc CIDR trùng lặp → hệ thống lỗi, rất khó sửa sau này.</li>
-<li>Quên bật/tắt auto-assign public IP → EC2 không truy cập Internet hoặc bị public ngoài ý muốn.</li>
-<li>Không tính trừ 5 IP → hết IP sớm, đặc biệt subnet nhỏ <code>/28</code>, <code>/27</code>.</li>
+<li><strong>ENI là card mạng ảo, Security Group gắn vào ENI.</strong></li>
+<li><strong>Tất cả ENI phải trong cùng một AZ.</strong></li>
+<li><strong>OS chỉ thấy Private IP, không thấy Public IP.</strong></li>
+<li><strong>Muốn IP public cố định, dùng EIP. Gắn/gỡ EIP làm mất IP public động cũ.</strong></li>
+<li><strong>Public DNS phân giải ra Private IP (nội bộ VPC) hoặc Public IP (bên ngoài).</strong></li>
 </ul>
 <hr>
-<h2 id="phan-3-checklist-cau-hoi-phong-vancert">PHẦN 3: Checklist &amp; câu hỏi phỏng vấn/cert<a class="headerlink" href="#phan-3-checklist-cau-hoi-phong-vancert" title="Permanent link">¶</a></h2>
+<details class="info">
+<summary>Ghi chú thêm &amp; chi tiết</summary>
 <ul>
-<li>[x] 1 subnet chỉ thuộc 1 AZ, AZ có thể nhiều subnet</li>
-<li>[x] CIDR subnet phải nằm trong CIDR VPC, không trùng nhau</li>
-<li>[x] 5 IP bị AWS giữ lại/subnet (network, router, DNS, dự phòng, broadcast)</li>
-<li>[x] Muốn subnet public phải bật auto-assign public IP &amp; có route ra IGW</li>
-<li>[x] Tất cả subnet trong 1 VPC mặc định truy cập nhau được</li>
-<li>[x] Khi chia subnet phải có file/subnet plan để tránh trùng</li>
-</ul>
-<h3 id="cau-hoi-i-thiphong-van"><strong>Câu hỏi đi thi/phỏng vấn:</strong><a class="headerlink" href="#cau-hoi-i-thiphong-van" title="Permanent link">¶</a></h3>
+<li>
+<p><strong>Số lượng ENI &amp; IP phụ thuộc vào Instance Type:</strong><br>
+    Mỗi loại instance (vd: <code>t3.micro</code>, <code>m5.large</code>) có giới hạn khác nhau về số lượng ENI có thể gắn và số lượng địa chỉ IP phụ trên mỗi ENI.</p>
+</li>
+<li>
+<p><strong>Primary ENI vs. Secondary ENI:</strong>  </p>
 <ul>
-<li>“Một subnet có thể nằm ở nhiều AZ không?”</li>
-<li>“Subnet có thể trùng CIDR không?”</li>
-<li>“Làm sao để subnet thành public/private?”</li>
-<li>“5 IP bị giữ lại là gì?”</li>
-<li>“Nếu EC2 không có public IP dù subnet public, kiểm tra gì?”</li>
+<li><strong>Primary ENI (eth0):</strong> Không thể gỡ khỏi instance, nó gắn liền với vòng đời của instance.  </li>
+<li><strong>Secondary ENI:</strong> Có thể gắn/gỡ và di chuyển giữa các instance (trong cùng AZ). Hữu ích cho các kịch bản <strong>failover</strong> hoặc <strong>di chuyển license</strong>.</li>
 </ul>
-<hr>
-<h2 id="phan-4-tong-ket-chuan-bi-demo-thuc-hanh">PHẦN 4: Tổng kết &amp; chuẩn bị demo thực hành<a class="headerlink" href="#phan-4-tong-ket-chuan-bi-demo-thuc-hanh" title="Permanent link">¶</a></h2>
+</li>
+<li>
+<p><strong>Source/Destination Check:</strong>  </p>
 <ul>
-<li>Subnet là nền tảng của mọi thiết kế mạng AWS – phải hiểu cực chắc.</li>
-<li>Tuyệt đối không được nhầm subnet/AZ, không được trùng CIDR.</li>
-<li>Muốn subnet public/private là do option khi tạo + route table, không phải do tên.</li>
-<li>Khi chia subnet nên làm bảng (excel/pdf) lưu lại mapping tier–AZ–CIDR.</li>
-<li><strong>Bài sau:</strong> Thực hành tạo 12 subnet cho VPC, cấu hình đúng từng AZ, đúng option!</li>
+<li>
+<ul>
+<li>IP <strong>nguồn</strong> không phải là một trong các IP gắn với ENI.  </li>
+<li>IP <strong>đích</strong> không phải là một trong các IP gắn với ENI.  </li>
 </ul>
-<hr>
-<p><strong>Đọc lại bài này trước khi đi thi hoặc bắt đầu làm bất kỳ dự án AWS production nào!</strong></p>
+<p>Khi <strong>bật</strong> (mặc định), ENI sẽ kiểm tra mọi packet đi qua nó. Gói tin sẽ bị <strong>discard</strong> nếu:  </p>
+<p>👉 Nói cách khác: ENI chỉ cho phép gói tin mà nó <strong>thực sự gửi đi hoặc nhận về chính nó</strong>. Nó sẽ không cho gói tin “đi nhờ” qua nó.  </p>
+<p><strong>Ví dụ:</strong> Một EC2 có ENI giống như <strong>cửa nhà bạn</strong>.<br>
+- Bạn chỉ nhận thư gửi đúng địa chỉ nhà mình.<br>
+- Bạn chỉ gửi thư có ghi địa chỉ nhà mình.<br>
+- Nếu có thư ghi địa chỉ nhà khác nhưng gửi qua bạn, bạn sẽ <strong>không chuyển hộ</strong> mà vứt đi.  </p>
+</li>
+<li>
+<p>Cần <strong>tắt (disable)</strong> khi instance đóng vai trò <strong>router, firewall, NAT instance</strong>, hoặc bất kỳ dịch vụ nào cần <strong>chuyển tiếp traffic cho máy khác</strong>.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>IPv6:</strong><br>
+    Không có khái niệm <em>private</em> hay <em>public</em> như IPv4. Tất cả địa chỉ IPv6 cấp cho EC2 đều có thể được định tuyến công khai trên Internet (tất nhiên vẫn bị kiểm soát bởi <strong>Security Group</strong> và <strong>Network ACL</strong>).</p>
+</li>
+<li>
+<p><strong>Gắn nhiều EIP trên một ENI:</strong><br>
+    Mỗi địa chỉ private IPv4 trên ENI có thể gắn một Elastic IP.<br>
+    Ví dụ: ENI có 1 private IP chính + 2 private IP phụ → gắn tối đa <strong>3 EIP</strong>.</p>
+</li>
+<li>
+<p><strong>Góc nhìn khái niệm:</strong><br>
+    Có thể coi <strong>Primary ENI chính là "instance"</strong> từ góc độ mạng. Hầu hết cấu hình mạng hiển thị trên console EC2 thực chất là thuộc tính của <strong>Primary ENI</strong>.</p>
+</li>
+</ul>
+</details>
 
 
 
@@ -2342,7 +2253,7 @@ Bạn chỉ thực sự cần tạo một DHCP Option Set tùy chỉnh trong cá
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../04.custom-vpc-lab/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 04.custom vpc lab">
+          <a href="../17.EBS%20Encryption/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 17.EBS Encryption">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -2352,20 +2263,20 @@ Bạn chỉ thực sự cần tạo một DHCP Option Set tùy chỉnh trong cá
                 Trước
               </span>
               <div class="md-ellipsis">
-                04.custom vpc lab
+                17.EBS Encryption
               </div>
             </div>
           </a>
         
         
           
-          <a href="../06.subnet-lab/" class="md-footer__link md-footer__link--next" aria-label="Sau: 06.subnet lab">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                06.subnet lab
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
