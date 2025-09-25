@@ -2020,9 +2020,9 @@
 <p>1-Click Deployment</p>
 <p><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=WORDPRESS">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=WORDPRESS
 </a></p>
-<hr>
 <p>info ??? "1-Click Deployment"</p>
-<div class="highlight"><pre><span></span><code>Description: Animals4Life base VPC Template + Public Instance
+<div class="highlight"><pre><span></span><code>```
+Description: Animals4Life base VPC Template + Public Instance
 Parameters:
   LatestAmiId:
     Description: AMI for EC2 (default is latest AmaLinux2023)
@@ -2597,14 +2597,14 @@ Outputs:
     Value: !Ref SubnetReservedC
     Export:
       Name: a4l-vpc1-subnet-reservedc
+```
 </code></pre></div>
-<hr>
 <p>Lesson Commands
 <a href="https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/lesson_commands_AL2023.txt">https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/lesson_commands_AL2023.txt
 </a></p>
-<hr>
 <p>info ??? "Lesson Commands"</p>
-<div class="highlight"><pre><span></span><code># DBName=database name for wordpress
+<div class="highlight"><pre><span></span><code>```
+# DBName=database name for wordpress
 # DBUser=mariadb user for wordpress
 # DBPassword=password for the mariadb user for wordpress
 # DBRootPassword = root password for mariadb
@@ -2660,6 +2660,7 @@ sudo rm /tmp/db.setup
 
 
 # STEP 8 - Browse to http://your_instance_public_ipv4_ip
+```
 </code></pre></div>
 <p>Blog Images
 <a href="https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/blogimages.zip">https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0006-aws-associate-ec2-wordpress-on-ec2/blogimages.zip</a></p>
@@ -2706,84 +2707,84 @@ sudo rm /tmp/db.setup
 <h2 id="4-buoc-3-cai-at-thu-cong-tren-ec2-qua-terminal">4. Bước 3: Cài đặt thủ công trên EC2 (qua Terminal)<a class="headerlink" href="#4-buoc-3-cai-at-thu-cong-tren-ec2-qua-terminal" title="Permanent link">¶</a></h2>
 <h3 id="31-thiet-lap-bien-moi-truong">3.1. Thiết lập biến môi trường<a class="headerlink" href="#31-thiet-lap-bien-moi-truong" title="Permanent link">¶</a></h3>
 <p>Mục đích: Lưu trữ các thông tin nhạy cảm (tên database, user, password) vào biến để tái sử dụng, tránh gõ lại và giảm lỗi.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Đặt tên database</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_NAME</span><span class="o">=</span><span class="s1">'a4l_wordpress_db'</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Đặt tên user database</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_USER</span><span class="o">=</span><span class="s1">'a4l_wordpress_user'</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Đặt mật khẩu cho user database</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s1">'Password123!!'</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Đặt mật khẩu cho user root của database</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_ROOT_PASSWORD</span><span class="o">=</span><span class="s1">'Password321!!'</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Kiểm tra lại một biến để chắc chắn</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$DB_NAME</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Đặt tên database</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_NAME</span><span class="o">=</span><span class="s1">'a4l_wordpress_db'</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Đặt tên user database</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_USER</span><span class="o">=</span><span class="s1">'a4l_wordpress_user'</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Đặt mật khẩu cho user database</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s1">'Password123!!'</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Đặt mật khẩu cho user root của database</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_ROOT_PASSWORD</span><span class="o">=</span><span class="s1">'Password321!!'</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># Kiểm tra lại một biến để chắc chắn</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$DB_NAME</span>
 </code></pre></div>
 <h3 id="32-cai-at-cac-goi-phan-mem-can-thiet">3.2. Cài đặt các gói phần mềm cần thiết<a class="headerlink" href="#32-cai-at-cac-goi-phan-mem-can-thiet" title="Permanent link">¶</a></h3>
 <p>Cài đặt web server (Apache), database server (MariaDB) và công cụ tải file (wget).</p>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Dùng dnf để cài đặt các gói</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>mariadb105-server<span class="w"> </span>httpd<span class="w"> </span>wget<span class="w"> </span>-y
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Dùng dnf để cài đặt các gói</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>mariadb105-server<span class="w"> </span>httpd<span class="w"> </span>wget<span class="w"> </span>-y
 </code></pre></div>
 <em>(Lưu ý: <code>-y</code> để tự động đồng ý cài đặt)</em><p></p>
 <h3 id="33-kich-hoat-va-khoi-ong-cac-dich-vu">3.3. Kích hoạt và khởi động các dịch vụ<a class="headerlink" href="#33-kich-hoat-va-khoi-ong-cac-dich-vu" title="Permanent link">¶</a></h3>
 <p>Đảm bảo web server và database tự động chạy khi instance khởi động lại và khởi chạy chúng ngay bây giờ.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Kích hoạt dịch vụ httpd (Apache)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Kích hoạt dịch vụ mariadb</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Khởi động dịch vụ httpd</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># Khởi động dịch vụ mariadb</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Kích hoạt dịch vụ httpd (Apache)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Kích hoạt dịch vụ mariadb</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Khởi động dịch vụ httpd</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># Khởi động dịch vụ mariadb</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
 </code></pre></div>
 <h3 id="34-thiet-lap-mat-khau-root-cho-database">3.4. Thiết lập mật khẩu root cho Database<a class="headerlink" href="#34-thiet-lap-mat-khau-root-cho-database" title="Permanent link">¶</a></h3>
 <p>Bảo mật cơ sở dữ liệu bằng cách đặt mật khẩu cho người dùng quản trị cao nhất (root).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Đặt mật khẩu root cho MariaDB, sử dụng biến đã tạo</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>mysqladmin<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>password<span class="w"> </span><span class="s2">"</span><span class="nv">$DB_ROOT_PASSWORD</span><span class="s2">"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Đặt mật khẩu root cho MariaDB, sử dụng biến đã tạo</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>mysqladmin<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>password<span class="w"> </span><span class="s2">"</span><span class="nv">$DB_ROOT_PASSWORD</span><span class="s2">"</span>
 </code></pre></div>
 <h3 id="35-tai-va-giai-nen-ma-nguon-wordpress">3.5. Tải và giải nén mã nguồn WordPress<a class="headerlink" href="#35-tai-va-giai-nen-ma-nguon-wordpress" title="Permanent link">¶</a></h3>
 <ol>
 <li>
 <p><strong>Tải WordPress về thư mục gốc của web server (<code>/var/www/html</code>)</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Dùng wget để tải file cài đặt mới nhất từ wordpress.org</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://wordpress.org/latest.tar.gz<span class="w"> </span>-P<span class="w"> </span>/var/www/html
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Dùng wget để tải file cài đặt mới nhất từ wordpress.org</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://wordpress.org/latest.tar.gz<span class="w"> </span>-P<span class="w"> </span>/var/www/html
 </code></pre></div>
 </li>
 <li>
 <p><strong>Di chuyển vào thư mục web root và giải nén</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Chuyển vào thư mục html</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>/var/www/html
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Giải nén file vừa tải</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>latest.tar.gz
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Chuyển vào thư mục html</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">cd</span><span class="w"> </span>/var/www/html
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Giải nén file vừa tải</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>latest.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p><strong>Di chuyển file từ thư mục con ra thư mục gốc</strong>:
     Sau khi giải nén, các file nằm trong thư mục <code>/var/www/html/wordpress</code>. Ta cần chuyển chúng ra <code>/var/www/html</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Copy toàn bộ nội dung từ thư mục wordpress ra thư mục hiện tại (.)</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>wordpress/*<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Copy toàn bộ nội dung từ thư mục wordpress ra thư mục hiện tại (.)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>wordpress/*<span class="w"> </span>.
 </code></pre></div>
 </li>
 <li>
 <p><strong>Dọn dẹp các file không cần thiết</strong>:
     Xóa thư mục <code>wordpress</code> rỗng và file nén <code>latest.tar.gz</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Xóa thư mục wordpress</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>wordpress
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># Xóa file nén</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>latest.tar.gz
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Xóa thư mục wordpress</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>wordpress
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Xóa file nén</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>latest.tar.gz
 </code></pre></div>
 </li>
 <li>
 <p><strong>Kiểm tra lại kết quả</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Liệt kê các file trong thư mục hiện tại</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ls<span class="w"> </span>-la
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Liệt kê các file trong thư mục hiện tại</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ls<span class="w"> </span>-la
 </code></pre></div>
 </li>
 </ol>
@@ -2808,7 +2809,7 @@ sudo rm /tmp/db.setup
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 tháng 9, 2025 13:58:37 UTC">25 tháng 9, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 tháng 9, 2025 14:01:32 UTC">25 tháng 9, 2025</span>
   </span>
 
     
