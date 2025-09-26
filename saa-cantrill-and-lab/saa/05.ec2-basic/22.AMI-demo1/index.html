@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/13.FastSnapshotRestoreFSR/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/saa-cantrill-and-lab/saa/05.ec2-basic/22.AMI-demo1/">
       
       
-        <link rel="prev" href="../12.gp2-3-io1-2/">
+        <link rel="prev" href="../21.AMI-AmazonMachineImages/">
       
       
-        <link rel="next" href="../14.EBS-volume-demo/">
+        <link rel="next" href="../../../../stephane/01.saa/readme/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -19,7 +19,7 @@
     
     
       
-        <title>13.FastSnapshotRestoreFSR - DraDoc</title>
+        <title>22.AMI demo1 - DraDoc</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" class="md-skip">
+        <a href="#demo-tao-custom-ami-tu-ec2-instance-cai-san-wordpress-animals-for-life-phan-1" class="md-skip">
           Bỏ qua
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              13.FastSnapshotRestoreFSR
+              22.AMI demo1
             
           </span>
         </div>
@@ -1503,30 +1503,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    13.FastSnapshotRestoreFSR
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../13.FastSnapshotRestoreFSR/" class="md-nav__link">
         
   
   
@@ -1537,87 +1517,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Mục lục
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" class="md-nav__link">
-    <span class="md-ellipsis">
-      📸 AWS EBS Snapshot – Thực tế đi làm &amp; mẹo exam (script chi tiết)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. EBS Snapshot là gì? Kiến trúc &amp; ứng dụng thực tế
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-co-che-billing-chi-phi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Cơ chế, billing &amp; chi phí
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Restore volume từ snapshot: Thực tế &amp; tối ưu hiệu năng
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-quy-trinh-thuc-te-script-i-lam" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Quy trình thực tế (script đi làm)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-meo-exam-luu-y-thuc-te-quan-trong" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Mẹo exam &amp; lưu ý thực tế quan trọng
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-tom-tat-nho-lau" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Tóm tắt nhớ lâu
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1811,10 +1710,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../22.AMI-demo1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    22.AMI demo1
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1825,6 +1744,216 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#demo-tao-custom-ami-tu-ec2-instance-cai-san-wordpress-animals-for-life-phan-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 Demo: Tạo custom AMI từ EC2 instance cài sẵn WordPress (Animals For Life) – Phần 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-muc-tieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Mục tiêu
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chuan-bi-ha-tang" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Chuẩn bị hạ tầng
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chuan-bi-ec2-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Chuẩn bị EC2 Instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cai-at-cau-hinh-wordpress-lam-nhanh-vi-a-thuc-hien-o-demo-truoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Cài đặt &amp; cấu hình WordPress (làm nhanh vì đã thực hiện ở demo trước)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Cài đặt &amp; cấu hình WordPress (làm nhanh vì đã thực hiện ở demo trước)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-at-bien-moi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Đặt biến môi trường
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-cai-at-phan-mem-can-thiet" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Cài đặt phần mềm cần thiết
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-enable-va-start-dich-vu" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Enable và start dịch vụ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-at-mat-khau-root-cho-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      d. Đặt mật khẩu root cho MariaDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-tai-va-giai-nen-wordpress-vao-web-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      e. Tải và giải nén WordPress vào web root
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-tao-file-wp-configphp-va-thay-the-thong-tin-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      f. Tạo file wp-config.php và thay thế thông tin DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-phan-quyen-cho-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      g. Phân quyền cho Apache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h-tao-script-cau-hinh-database-cho-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      h. Tạo script cấu hình database cho WordPress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-kiem-tra-trang-thai-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kiểm tra trạng thái WordPress
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-tuy-bien-ec2-banner-ong-vat-khi-ang-nhap" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Tuỳ biến EC2: Banner động vật khi đăng nhập
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Tuỳ biến EC2: Banner động vật khi đăng nhập">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-cai-at-cowsay-utility-tao-ascii-ong-vat" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Cài đặt cowsay (utility tạo ASCII động vật)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-tao-file-message-of-the-day-motd-ong-vat" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Tạo file message of the day (MOTD) động vật
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-set-permission-va-force-update-motd" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Set permission và force update MOTD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-reboot-lai-instance-e-kiem-tra-banner" class="md-nav__link">
+    <span class="md-ellipsis">
+      d. Reboot lại instance để kiểm tra banner
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-tong-ket-phan-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Tổng kết phần 1
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1938,63 +2067,192 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" class="md-nav__link">
+  <a href="#demo-tao-custom-ami-tu-ec2-instance-cai-san-wordpress-animals-for-life-phan-1" class="md-nav__link">
     <span class="md-ellipsis">
-      📸 AWS EBS Snapshot – Thực tế đi làm &amp; mẹo exam (script chi tiết)
+      🌟 Demo: Tạo custom AMI từ EC2 instance cài sẵn WordPress (Animals For Life) – Phần 1
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te" class="md-nav__link">
+  <a href="#1-muc-tieu" class="md-nav__link">
     <span class="md-ellipsis">
-      1. EBS Snapshot là gì? Kiến trúc &amp; ứng dụng thực tế
+      1. Mục tiêu
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-co-che-billing-chi-phi" class="md-nav__link">
+  <a href="#2-chuan-bi-ha-tang" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Cơ chế, billing &amp; chi phí
+      2. Chuẩn bị hạ tầng
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang" class="md-nav__link">
+  <a href="#3-chuan-bi-ec2-instance" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Restore volume từ snapshot: Thực tế &amp; tối ưu hiệu năng
+      3. Chuẩn bị EC2 Instance
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-quy-trinh-thuc-te-script-i-lam" class="md-nav__link">
+  <a href="#4-cai-at-cau-hinh-wordpress-lam-nhanh-vi-a-thuc-hien-o-demo-truoc" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Quy trình thực tế (script đi làm)
+      4. Cài đặt &amp; cấu hình WordPress (làm nhanh vì đã thực hiện ở demo trước)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Cài đặt &amp; cấu hình WordPress (làm nhanh vì đã thực hiện ở demo trước)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-at-bien-moi-truong" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Đặt biến môi trường
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-cai-at-phan-mem-can-thiet" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Cài đặt phần mềm cần thiết
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-enable-va-start-dich-vu" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Enable và start dịch vụ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-at-mat-khau-root-cho-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      d. Đặt mật khẩu root cho MariaDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-tai-va-giai-nen-wordpress-vao-web-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      e. Tải và giải nén WordPress vào web root
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f-tao-file-wp-configphp-va-thay-the-thong-tin-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      f. Tạo file wp-config.php và thay thế thông tin DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g-phan-quyen-cho-apache" class="md-nav__link">
+    <span class="md-ellipsis">
+      g. Phân quyền cho Apache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h-tao-script-cau-hinh-database-cho-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      h. Tạo script cấu hình database cho WordPress
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-kiem-tra-trang-thai-wordpress" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kiểm tra trạng thái WordPress
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-meo-exam-luu-y-thuc-te-quan-trong" class="md-nav__link">
+  <a href="#6-tuy-bien-ec2-banner-ong-vat-khi-ang-nhap" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Mẹo exam &amp; lưu ý thực tế quan trọng
+      6. Tuỳ biến EC2: Banner động vật khi đăng nhập
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Tuỳ biến EC2: Banner động vật khi đăng nhập">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-cai-at-cowsay-utility-tao-ascii-ong-vat" class="md-nav__link">
+    <span class="md-ellipsis">
+      a. Cài đặt cowsay (utility tạo ASCII động vật)
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#b-tao-file-message-of-the-day-motd-ong-vat" class="md-nav__link">
+    <span class="md-ellipsis">
+      b. Tạo file message of the day (MOTD) động vật
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-set-permission-va-force-update-motd" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Set permission và force update MOTD
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-reboot-lai-instance-e-kiem-tra-banner" class="md-nav__link">
+    <span class="md-ellipsis">
+      d. Reboot lại instance để kiểm tra banner
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#6-tom-tat-nho-lau" class="md-nav__link">
+  <a href="#7-tong-ket-phan-1" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Tóm tắt nhớ lâu
+      7. Tổng kết phần 1
     </span>
   </a>
   
@@ -2016,7 +2274,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/13.FastSnapshotRestoreFSR.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/saa-cantrill-and-lab/saa/05.ec2-basic/22.AMI-demo1.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -2024,104 +2282,215 @@
   
 
 
-  <h1>13.FastSnapshotRestoreFSR</h1>
+  <h1>22.AMI demo1</h1>
 
-<h2 id="aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet">📸 AWS EBS Snapshot – Thực tế đi làm &amp; mẹo exam (script chi tiết)<a class="headerlink" href="#aws-ebs-snapshot-thuc-te-i-lam-meo-exam-script-chi-tiet" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/e726e4e3-240b-4d7f-88ac-5576732cc2c0" data-desc-position="bottom"><img width="818" height="458" alt="image" src="https://github.com/user-attachments/assets/e726e4e3-240b-4d7f-88ac-5576732cc2c0"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/7ea4189b-9fc5-4408-bcf2-ccead49c07e8" data-desc-position="bottom"><img width="828" height="454" alt="image" src="https://github.com/user-attachments/assets/7ea4189b-9fc5-4408-bcf2-ccead49c07e8"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/46d6c649-8bef-4be5-8fed-50c5fa3cc1bf" data-desc-position="bottom"><img width="793" height="465" alt="image" src="https://github.com/user-attachments/assets/46d6c649-8bef-4be5-8fed-50c5fa3cc1bf"></a>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/d8b41b14-e257-499d-b737-1865bf742c8c" data-desc-position="bottom"><img width="827" height="468" alt="image" src="https://github.com/user-attachments/assets/d8b41b14-e257-499d-b737-1865bf742c8c"></a></p>
-<hr>
-<h2 id="1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te">1. EBS Snapshot là gì? Kiến trúc &amp; ứng dụng thực tế<a class="headerlink" href="#1-ebs-snapshot-la-gi-kien-truc-ung-dung-thuc-te" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Snapshot = backup EBS volume lên S3</strong> (region-level durability, chống mất AZ/local disk, DR/migration).</li>
-<li><strong>Incremental:</strong>  </li>
-<li>Lần đầu: full backup (chỉ data đã dùng, không phải toàn bộ size volume).</li>
-<li>Các lần sau: chỉ lưu <strong>data thay đổi</strong> so với snapshot trước , volume 40 dùng 10 thì snapshot là 10 GB</li>
-<li><strong>Self-sufficient:</strong>  </li>
-<li>Xóa snapshot giữa chuỗi không làm mất data, vì AWS tự di chuyển data cần thiết để mọi snapshot sau vẫn restore được.</li>
-</ul>
 <details class="info">
-<summary>Self-sufficient</summary>
-<ul>
-<li>Khi bạn <strong>xóa một snapshot ở giữa chuỗi</strong> (không phải snapshot đầu hoặc cuối), <strong>dữ liệu của bạn không bị mất</strong>.</li>
-<li><strong>AWS tự động chuyển các phần dữ liệu cần thiết</strong> từ snapshot bị xóa sang các snapshot sau nó, để đảm bảo các snapshot sau này <strong>vẫn có đầy đủ dữ liệu để phục hồi (restore)</strong>.</li>
-<li>Vì vậy, <strong>bạn có thể xóa snapshot cũ mà không lo mất dữ liệu</strong>, miễn là vẫn còn snapshot mới hơn trong chuỗi.</li>
-</ul>
-<p><strong>Ví dụ dễ hiểu:</strong><br>
-Giả sử bạn có 3 snapshot: A → B → C<br>
-- Nếu xóa B, thì AWS sẽ chuyển dữ liệu cần thiết từ B sang C.<br>
-- Kết quả: Bạn vẫn có thể restore từ C đầy đủ như chưa từng xóa B.</p>
-<p><strong>Tóm lại:</strong> Xóa snapshot giữa chuỗi KHÔNG làm mất data, vì AWS tự xử lý để các snapshot còn lại luôn đủ dữ liệu để khôi phục.
-- <strong>Dùng snapshot để:</strong>
-  - Khôi phục (restore) volume khi mất/hỏng.
-  - Clone volume (tạo volume mới từ snapshot, có thể ở AZ khác, region khác).
-  - Di chuyển dữ liệu giữa AZ/region (DR/migration).</p>
+<summary>1-Click Deployment</summary>
 </details>
+<p><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=AMIDEMO">https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/A4L_VPC_PUBLICINSTANCE_AL2023.yaml&amp;stackName=AMIDEMO
+</a></p>
+<details class="info">
+<summary>Lesson Commands</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># DBName=database name for wordpress
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a># DBUser=mariadb user for wordpress
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a># DBPassword=password for the mariadb user for wordpress
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a># DBRootPassword = root password for mariadb
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a># STEP 1 - Configure Authentication Variables which are used below
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>DBName='a4lwordpress'
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>DBUser='a4lwordpress'
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>DBPassword='4n1m4l$L1f3'
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>DBRootPassword='4n1m4l$L1f3'
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a># STEP 2 - Install system software - including Web and DB
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>sudo dnf install wget php-mysqlnd httpd php-fpm php-mysqli mariadb105-server php-json php php-devel -y
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a># STEP 3 - Web and DB Servers Online - and set to startup
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>sudo systemctl enable httpd
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>sudo systemctl enable mariadb
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>sudo systemctl start httpd
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>sudo systemctl start mariadb
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a># STEP 4 - Set Mariadb Root Password
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>sudo mysqladmin -u root password $DBRootPassword
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a># STEP 5 - Install Wordpress
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>sudo wget http://wordpress.org/latest.tar.gz -P /var/www/html
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>cd /var/www/html
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>sudo tar -zxvf latest.tar.gz
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>sudo cp -rvf wordpress/* .
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>sudo rm -R wordpress
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>sudo rm latest.tar.gz
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a># STEP 6 - Configure Wordpress
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>sudo cp ./wp-config-sample.php ./wp-config.php
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>sudo sed -i "s/'database_name_here'/'$DBName'/g" wp-config.php
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>sudo sed -i "s/'username_here'/'$DBUser'/g" wp-config.php
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>sudo sed -i "s/'password_here'/'$DBPassword'/g" wp-config.php   
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>sudo chown apache:apache * -R
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a># STEP 7 Create Wordpress DB
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>echo "CREATE DATABASE $DBName;" &gt;&gt; /tmp/db.setup
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>echo "CREATE USER '$DBUser'@'localhost' IDENTIFIED BY '$DBPassword';" &gt;&gt; /tmp/db.setup
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>echo "GRANT ALL ON $DBName.* TO '$DBUser'@'localhost';" &gt;&gt; /tmp/db.setup
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>echo "FLUSH PRIVILEGES;" &gt;&gt; /tmp/db.setup
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>mysql -u root --password=$DBRootPassword &lt; /tmp/db.setup
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>sudo rm /tmp/db.setup
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a># STEP 8 - Browse to http://your_instance_public_ipv4_ip
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a># Step 9
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>sudo dnf install -y cowsay
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>cowsay "oh hi"
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>Create file /etc/update-motd.d/40-cow
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>sudo nano /etc/update-motd.d/40-cow
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>#!/bin/sh
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>cowsay "Amazon Linux 2023 AMI - Animals4Life"
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>sudo chmod 755 /etc/update-motd.d/40-cow
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>sudo update-motd
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>sudo reboot
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>Relogin
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>## STEP 10 - CREATE AMI
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>## STEP 11 - USE AMI to launch an instance
+</code></pre></div>
+</details>
+<p><a href="https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/lesson_commands_AL2023.txt">https://learn-cantrill-labs.s3.amazonaws.com/awscoursedemos/0007-aws-associate-ec2-ami-demo/lesson_commands_AL2023.txt</a></p>
+<h2 id="demo-tao-custom-ami-tu-ec2-instance-cai-san-wordpress-animals-for-life-phan-1">🌟 Demo: Tạo custom AMI từ EC2 instance cài sẵn WordPress (Animals For Life) – Phần 1<a class="headerlink" href="#demo-tao-custom-ami-tu-ec2-instance-cai-san-wordpress-animals-for-life-phan-1" title="Permanent link">¶</a></h2>
 <hr>
-<h2 id="2-co-che-billing-chi-phi">2. Cơ chế, billing &amp; chi phí<a class="headerlink" href="#2-co-che-billing-chi-phi" title="Permanent link">¶</a></h2>
+<h2 id="1-muc-tieu">1. Mục tiêu<a class="headerlink" href="#1-muc-tieu" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Snapshot lưu trên S3 (region-level):</strong> Không phụ thuộc AZ.</li>
-<li><strong>Chỉ tính phí theo **data thực sử dụng</strong> (used data), không phải toàn bộ dung lượng volume.</li>
-<li>Ví dụ: Volume 40GB, dùng 10GB → snapshot full đầu tiên chỉ tính phí 10GB.</li>
-<li><strong>Incremental:</strong>  </li>
-<li>Mỗi snapshot chỉ tính phần data phát sinh/chỉnh sửa so với lần trước.</li>
-<li>Snapshot nhiều lần/ngày cũng không tăng phí nếu data không đổi.</li>
-<li><strong>Billing:</strong> GB-tháng (10GB snapshot 1 tháng = 10GB-tháng).</li>
+<li><strong>Tạo một Amazon Machine Image (AMI) từ EC2 đã cài đặt và cấu hình sẵn WordPress</strong></li>
+<li>AMI này sẽ là “mẫu” để deploy nhanh hàng loạt máy chủ WordPress cho business Animals For Life, với banner động vật độc đáo khi đăng nhập.</li>
 </ul>
 <hr>
-<h2 id="3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang">3. Restore volume từ snapshot: Thực tế &amp; tối ưu hiệu năng<a class="headerlink" href="#3-restore-volume-tu-snapshot-thuc-te-toi-uu-hieu-nang" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Restore volume từ snapshot:</strong>  </li>
-<li>Volume tạo ra <em>chưa có toàn bộ data local</em>, data được copy dần từ S3 về EBS khi truy cập (lazy restore).</li>
-<li>Lần đầu truy cập block chưa copy sẽ bị <strong>performance thấp</strong> hơn; sau khi data local → hiệu năng tối đa.</li>
-<li><strong>Tối ưu:</strong>  </li>
-<li><strong>Force read all blocks</strong>: Dùng <code>dd</code>/<code>fio</code>/<code>cat</code> để đọc hết block → force data từ S3 về volume mới.</li>
-<li><strong>Fast Snapshot Restore (FSR):</strong>  <ul>
-<li>Bật FSR lên snapshot + AZ cần dùng → volume restore ra sẽ luôn ready, không cần force read.</li>
-<li><strong>Giới hạn:</strong> 50 FSR/AZ/region, tính phí riêng.</li>
-<li>FSR = chọn snapshot + AZ, mỗi cặp snapshot/AZ tính 1 quota (VD: 1 snap x 4 AZ = 4 FSR).</li>
-</ul>
-</li>
-</ul>
+<h2 id="2-chuan-bi-ha-tang">2. Chuẩn bị hạ tầng<a class="headerlink" href="#2-chuan-bi-ha-tang" title="Permanent link">¶</a></h2>
+<ol>
+<li><strong>Đăng nhập AWS (management account)</strong></li>
+<li><strong>Chọn region:</strong> us-east-1 (Northern Virginia)</li>
+<li><strong>Deploy CloudFormation stack:</strong>  </li>
+<li>Dùng link "one-click deployment" với stack name: <code>AMI Demo</code></li>
+<li>Tick vào capabilities, nhấn <strong>Create stack</strong></li>
+<li>Đợi trạng thái chuyển thành <code>CREATE_COMPLETE</code></li>
+<li><strong>Mở tài liệu lệnh:</strong> “Lesson Commands Document” (chứa toàn bộ các command cần chạy trên EC2)</li>
+</ol>
 <hr>
-<h2 id="4-quy-trinh-thuc-te-script-i-lam">4. Quy trình thực tế (script đi làm)<a class="headerlink" href="#4-quy-trinh-thuc-te-script-i-lam" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Tạo snapshot từ volume</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-snapshot<span class="w"> </span>--volume-id<span class="w"> </span>vol-0123456789abcdef<span class="w"> </span>--description<span class="w"> </span><span class="s2">"Backup daily"</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Tạo volume mới từ snapshot (có thể chọn AZ khác)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-volume<span class="w"> </span>--snapshot-id<span class="w"> </span>snap-0123abcd<span class="w"> </span>--availability-zone<span class="w"> </span>ap-southeast-1b<span class="w"> </span>--volume-type<span class="w"> </span>gp3
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Force restore (Linux)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/xvdf<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/null<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Bật FSR cho snapshot</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>aws<span class="w"> </span>ec2<span class="w"> </span>enable-fast-snapshot-restores<span class="w"> </span>--source-snapshot-ids<span class="w"> </span>snap-0123abcd<span class="w"> </span>--availability-zones<span class="w"> </span>ap-southeast-1a
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Xem trạng thái FSR</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-fast-snapshot-restores<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>snapshot-id,Values<span class="o">=</span>snap-0123abcd
+<h2 id="3-chuan-bi-ec2-instance">3. Chuẩn bị EC2 Instance<a class="headerlink" href="#3-chuan-bi-ec2-instance" title="Permanent link">¶</a></h2>
+<ol>
+<li><strong>Vào AWS Console → EC2 → Instances (running)</strong></li>
+<li><strong>Chọn instance:</strong> <code>A4L public EC2</code></li>
+<li><strong>Kết nối:</strong>  </li>
+<li>Chuột phải → Connect → EC2 Instance Connect</li>
+<li>Username: <code>ec2-user</code> → Connect</li>
+</ol>
+<hr>
+<h2 id="4-cai-at-cau-hinh-wordpress-lam-nhanh-vi-a-thuc-hien-o-demo-truoc">4. Cài đặt &amp; cấu hình WordPress (làm nhanh vì đã thực hiện ở demo trước)<a class="headerlink" href="#4-cai-at-cau-hinh-wordpress-lam-nhanh-vi-a-thuc-hien-o-demo-truoc" title="Permanent link">¶</a></h2>
+<h3 id="a-at-bien-moi-truong">a. Đặt biến môi trường<a class="headerlink" href="#a-at-bien-moi-truong" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_NAME</span><span class="o">=</span><span class="s1">'a4l_wordpress_db'</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_USER</span><span class="o">=</span><span class="s1">'a4l_wordpress_user'</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="s1">'Password123!!'</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DB_ROOT_PASSWORD</span><span class="o">=</span><span class="s1">'Password321!!'</span>
+</code></pre></div>
+<h3 id="b-cai-at-phan-mem-can-thiet">b. Cài đặt phần mềm cần thiết<a class="headerlink" href="#b-cai-at-phan-mem-can-thiet" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>mariadb105-server<span class="w"> </span>httpd<span class="w"> </span>wget<span class="w"> </span>-y
+</code></pre></div>
+<h3 id="c-enable-va-start-dich-vu">c. Enable và start dịch vụ<a class="headerlink" href="#c-enable-va-start-dich-vu" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>httpd
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mariadb
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>httpd
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mariadb
+</code></pre></div>
+<h3 id="d-at-mat-khau-root-cho-mariadb">d. Đặt mật khẩu root cho MariaDB<a class="headerlink" href="#d-at-mat-khau-root-cho-mariadb" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo<span class="w"> </span>mysqladmin<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>password<span class="w"> </span><span class="s2">"</span><span class="nv">$DB_ROOT_PASSWORD</span><span class="s2">"</span>
+</code></pre></div>
+<h3 id="e-tai-va-giai-nen-wordpress-vao-web-root">e. Tải và giải nén WordPress vào web root<a class="headerlink" href="#e-tai-va-giai-nen-wordpress-vao-web-root" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>wget<span class="w"> </span>https://wordpress.org/latest.tar.gz<span class="w"> </span>-P<span class="w"> </span>/var/www/html
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>/var/www/html
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>latest.tar.gz
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>sudo<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>wordpress/*<span class="w"> </span>.
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>wordpress
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>latest.tar.gz
+</code></pre></div>
+<h3 id="f-tao-file-wp-configphp-va-thay-the-thong-tin-db">f. Tạo file wp-config.php và thay thế thông tin DB<a class="headerlink" href="#f-tao-file-wp-configphp-va-thay-the-thong-tin-db" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>wp-config-sample.php<span class="w"> </span>wp-config.php
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">"s/database_name_here/</span><span class="nv">$DB_NAME</span><span class="s2">/"</span><span class="w"> </span>wp-config.php
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">"s/username_here/</span><span class="nv">$DB_USER</span><span class="s2">/"</span><span class="w"> </span>wp-config.php
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">"s/password_here/</span><span class="nv">$DB_PASSWORD</span><span class="s2">/"</span><span class="w"> </span>wp-config.php
+</code></pre></div>
+<h3 id="g-phan-quyen-cho-apache">g. Phân quyền cho Apache<a class="headerlink" href="#g-phan-quyen-cho-apache" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>apache:apache<span class="w"> </span>/var/www/html
+</code></pre></div>
+<h3 id="h-tao-script-cau-hinh-database-cho-wordpress">h. Tạo script cấu hình database cho WordPress<a class="headerlink" href="#h-tao-script-cau-hinh-database-cho-wordpress" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"CREATE DATABASE </span><span class="nv">$DB_NAME</span><span class="s2">;"</span><span class="w"> </span>&gt;<span class="w"> </span>/tmp/dbsetup.sql
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"CREATE USER '</span><span class="nv">$DB_USER</span><span class="s2">'@'localhost' IDENTIFIED BY '</span><span class="nv">$DB_PASSWORD</span><span class="s2">';"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/tmp/dbsetup.sql
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"GRANT ALL PRIVILEGES ON </span><span class="nv">$DB_NAME</span><span class="s2">.* TO '</span><span class="nv">$DB_USER</span><span class="s2">'@'localhost';"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/tmp/dbsetup.sql
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"FLUSH PRIVILEGES;"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/tmp/dbsetup.sql
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="s2">"</span><span class="nv">$DB_ROOT_PASSWORD</span><span class="s2">"</span><span class="w"> </span>&lt;<span class="w"> </span>/tmp/dbsetup.sql
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>rm<span class="w"> </span>-f<span class="w"> </span>/tmp/dbsetup.sql
 </code></pre></div>
 <hr>
-<h2 id="5-meo-exam-luu-y-thuc-te-quan-trong">5. Mẹo exam &amp; lưu ý thực tế quan trọng<a class="headerlink" href="#5-meo-exam-luu-y-thuc-te-quan-trong" title="Permanent link">¶</a></h2>
+<h2 id="5-kiem-tra-trang-thai-wordpress">5. Kiểm tra trạng thái WordPress<a class="headerlink" href="#5-kiem-tra-trang-thai-wordpress" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Snapshot chỉ backup data đã dùng, không phải toàn bộ volume size.</strong></li>
-<li><strong>Snapshot nhiều lần/ngày không tăng phí nếu không đổi/chỉnh sửa dữ liệu.</strong></li>
-<li><strong>Dùng snapshot để clone/migrate volume giữa AZ/region (DR, blue/green).</strong></li>
-<li><strong>Restore từ snapshot = hiệu năng thấp lúc đầu (trừ khi dùng FSR hoặc force read block).</strong></li>
-<li><strong>FSR có phí riêng, tối đa 50 FSR/snapshot/region.</strong></li>
-<li><strong>Xóa snapshot giữa chain không mất data, AWS auto giữ các block cần cho các snapshot sau.</strong></li>
-<li><strong>Snapshot cũng backup encryption (volume encrypted → snapshot cũng encrypted).</strong></li>
-<li><strong>Snapshot lưu trữ ở S3, không hiển thị trực tiếp trong bucket S3, chỉ quản lý qua EBS API/Console.</strong></li>
-<li>**Billing tính theo GB-tháng dùng thực tế (không phải toàn bộ disk).10 GB dùng 4 GB thì giá 4GB , 20GB nửa tháng thì giá  là 10GB 1 tháng **</li>
+<li><strong>Lấy IP public của EC2</strong></li>
+<li>Truy cập <code>http://&lt;EC2_Public_IP&gt;</code> trên trình duyệt</li>
+<li>Nếu đúng, thấy giao diện cài đặt WordPress (chưa hoàn tất setup – chính xác như mong muốn để tạo AMI!)</li>
 </ul>
 <hr>
-<h2 id="6-tom-tat-nho-lau">6. Tóm tắt nhớ lâu<a class="headerlink" href="#6-tom-tat-nho-lau" title="Permanent link">¶</a></h2>
+<h2 id="6-tuy-bien-ec2-banner-ong-vat-khi-ang-nhap">6. Tuỳ biến EC2: Banner động vật khi đăng nhập<a class="headerlink" href="#6-tuy-bien-ec2-banner-ong-vat-khi-ang-nhap" title="Permanent link">¶</a></h2>
+<h3 id="a-cai-at-cowsay-utility-tao-ascii-ong-vat">a. Cài đặt cowsay (utility tạo ASCII động vật)<a class="headerlink" href="#a-cai-at-cowsay-utility-tao-ascii-ong-vat" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>cowsay<span class="w"> </span>-y
+</code></pre></div>
+<h3 id="b-tao-file-message-of-the-day-motd-ong-vat">b. Tạo file message of the day (MOTD) động vật<a class="headerlink" href="#b-tao-file-message-of-the-day-motd-ong-vat" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/update-motd.d/40-cow
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># Dán vào bên trong file:</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1">#!/bin/bash</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>cowsay<span class="w"> </span><span class="s2">"Welcome to Animals For Life EC2!"</span>
+</code></pre></div>
+- Ctrl+O để save, Ctrl+X để thoát<p></p>
+<h3 id="c-set-permission-va-force-update-motd">c. Set permission và force update MOTD<a class="headerlink" href="#c-set-permission-va-force-update-motd" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/update-motd.d/40-cow
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo<span class="w"> </span>run-parts<span class="w"> </span>/etc/update-motd.d<span class="w"> </span>&gt;<span class="w"> </span>/run/motd.dynamic
+</code></pre></div>
+<h3 id="d-reboot-lai-instance-e-kiem-tra-banner">d. Reboot lại instance để kiểm tra banner<a class="headerlink" href="#d-reboot-lai-instance-e-kiem-tra-banner" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>reboot
+</code></pre></div>
 <ul>
-<li><strong>Snapshot = backup EBS lên S3, incremental, chi phí trên data thực dùng, restore nhanh với FSR hoặc force read.</strong></li>
-<li><strong>Dùng snapshot cho backup định kỳ, DR, clone/migrate giữa AZ/region, rollback trước khi upgrade.</strong></li>
-<li><strong>Luôn nhớ tối ưu hiệu năng restore bằng FSR hoặc force read khi cần production ready!</strong></li>
+<li>Sau khi reboot, reconnect lại EC2 (Instance Connect) sẽ thấy <strong>banner động vật</strong> khi đăng nhập.</li>
 </ul>
 <hr>
+<h2 id="7-tong-ket-phan-1">7. Tổng kết phần 1<a class="headerlink" href="#7-tong-ket-phan-1" title="Permanent link">¶</a></h2>
+<ul>
+<li>EC2 đã được cài sẵn WordPress (chưa hoàn tất cài đặt) + banner động vật cho business Animals For Life.</li>
+<li>Đây là “mẫu gốc” để <strong>tạo AMI</strong>.</li>
+<li>AMI này giúp deploy nhanh nhiều EC2 với cấu hình giống hệt (WordPress sẵn sàng, banner động vật).</li>
+</ul>
+<hr>
+<p><strong>Tiếp tục phần 2: Hướng dẫn tạo AMI từ instance này và kiểm tra launch EC2 mới từ AMI.</strong></p>
 
 
 
@@ -2178,7 +2547,7 @@ Giả sử bạn có 3 snapshot: A → B → C<br>
       <nav class="md-footer__inner md-grid" aria-label="Chân trang">
         
           
-          <a href="../12.gp2-3-io1-2/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 12.gp2 3 io1 2">
+          <a href="../21.AMI-AmazonMachineImages/" class="md-footer__link md-footer__link--prev" aria-label="Trước: 21.AMI AmazonMachineImages">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -2188,20 +2557,20 @@ Giả sử bạn có 3 snapshot: A → B → C<br>
                 Trước
               </span>
               <div class="md-ellipsis">
-                12.gp2 3 io1 2
+                21.AMI AmazonMachineImages
               </div>
             </div>
           </a>
         
         
           
-          <a href="../14.EBS-volume-demo/" class="md-footer__link md-footer__link--next" aria-label="Sau: 14.EBS volume demo">
+          <a href="../../../../stephane/01.saa/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Sau
               </span>
               <div class="md-ellipsis">
-                14.EBS volume demo
+                Readme
               </div>
             </div>
             <div class="md-footer__button md-icon">
