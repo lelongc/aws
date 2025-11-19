@@ -11,7 +11,4 @@ mọi thứ này được tạo ra để giúp bạn ôn tập cho kỳ thi AWS 
 
   nên ôn đi kèm với doc aws và các bài blog lab của [FCJ](https://cloudjourney.awsstudygroup.com/) để làm lab
 
-nếu bạn muốn cho mình bữa sáng 
-momo , mbbank :  0987214065
 
-nếu bạn có nhu cầu học khoá udemy giá rẻ 100k 1 khoá mình sẽ tải cho bạn 
