@@ -1,0 +1,708 @@
+
+
+# **BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS**
+
+## **MỤC TIÊU**
+- Tạo 1 S3 bucket để lưu file
+- Tạo 2 user với quyền khác nhau: **Admin** và **ReadOnly**  
+- Demo mã hóa file với KMS
+- Chứng minh phân quyền hoạt động như thế nào
+
+## **CHUẨN BỊ**
+- Tài khoản AWS (có thể dùng Free Tier)
+- Trình duyệt web
+- Không cần cài đặt gì thêm
+
+---
+
+## **BƯỚC 1: TẠO S3 BUCKET**
+
+1. Đăng nhập AWS Console → tìm **S3** <img width="1355" height="648" alt="image" src="https://github.com/user-attachments/assets/d07e725d-1659-4ed6-9c03-b418a1139d66" />
+2. **Region**: Chọn  `us-east-1`  <img width="621" height="616" alt="image" src="https://github.com/user-attachments/assets/aea8a995-d364-40fc-8260-ff3c779b1795" />
+
+3. Click **"Create bucket"** <img width="1363" height="664" alt="image" src="https://github.com/user-attachments/assets/6235e6fc-57b8-4aae-8326-b8078bfd5db0" />
+
+4. **Bucket name**: `lelong-security-demo-20251119` (thay `lelong` bằng tên bạn) <img width="1352" height="615" alt="image" src="https://github.com/user-attachments/assets/9fc3718e-da03-4576-9ac8-e7e452084af1" />
+
+
+5. Giữ nguyên các setting khác → **Create bucket** 
+
+<img width="1362" height="598" alt="image" src="https://github.com/user-attachments/assets/8d45b10f-afab-41f0-a0b8-356ec74e16b7" />
+
+
+---
+
+## **BƯỚC 2: TẠO KMS KEY**
+
+1. Tìm service **Key Management Service (KMS)** <img width="1353" height="642" alt="image" src="https://github.com/user-attachments/assets/e3298b25-faf9-474a-b923-0c1be53b031f" />
+
+2. Click **"Create key"** <img width="1341" height="606" alt="image" src="https://github.com/user-attachments/assets/ec32a80d-45d9-453c-94e8-42aabbf2ea34" />
+
+3. **Key type**: `Symmetric` → **Next**  <img width="1355" height="627" alt="image" src="https://github.com/user-attachments/assets/ced8d6b5-950f-46fe-91f8-b7c47e7d21cd" />
+
+4. **Alias**: `demo-encryption-key` → **Next** 
+5. **Key administrators**: (sẽ cấu hình sau) → Next
+6. **Key users**: (sẽ cấu hình sau) → Next
+7. **Create key** <img width="1352" height="564" alt="image" src="https://github.com/user-attachments/assets/7c1a3263-5042-42a7-a34d-46d9876e3526" />
+
+8. Vào key vừa tạo, **copy ARN** (dạng: `arn:aws:kms:us-east-1:123456789:key/abc-def`) <img width="1361" height="535" alt="image" src="https://github.com/user-attachments/assets/2e3abd4e-a6fb-40a6-98f3-76c9a3bc571b" />
+
+
+
+---
+
+## **BƯỚC 3: TẠO IAM USERS**
+
+### Tạo User Admin:
+1. Tìm service **IAM** → **Users** → **Create user** <img width="1392" height="620" alt="image" src="https://github.com/user-attachments/assets/b39e6a22-9f0a-4763-94a6-a0c140856bdc" />
+
+2. **Username**: `demo-admin` <img width="1353" height="565" alt="image" src="https://github.com/user-attachments/assets/7bc8a577-fe03-4d06-8713-cc472fbd3de5" />
+
+3. **Next** → **Attach policies directly**  
+4. Tìm và tick: `AmazonS3FullAccess` <img width="1342" height="540" alt="image" src="https://github.com/user-attachments/assets/2215d5d3-3444-4413-b88f-343abfb7606e" />
+
+5. **Next** → **Create user**
+
+### Tạo User ReadOnly:
+1. **Create user** tiếp
+2. **Username**: `demo-readonly`  
+3. **Next** → **Attach policies directly**
+4. Tìm và tick: `AmazonS3ReadOnlyAccess`
+5. **Next** → **Create user**
+
+<img width="1366" height="593" alt="image" src="https://github.com/user-attachments/assets/2bee7167-0bd4-4b9a-9cc3-5726de361307" />
+
+
+---
+
+## **BƯỚC 4: TẠO ACCESS KEYS**
+
+### Cho demo-admin:
+1. Click vào user `demo-admin` 
+2. Tab **"Security credentials"**  <img width="1352" height="627" alt="image" src="https://github.com/user-attachments/assets/60a9eba3-0be2-4f10-908b-d96607b6620e" />
+
+3. **Create access key** → chọn **"Command Line Interface"** <img width="1352" height="627" alt="image" src="https://github.com/user-attachments/assets/13d66d01-246f-468f-a736-73298b12b7cf" />
+<img width="1070" height="501" alt="image" src="https://github.com/user-attachments/assets/f041a029-cb93-45fe-97af-44d427b04788" />
+
+4. Tick xác nhận → **Next** → **Create access key** <img width="1342" height="615" alt="image" src="https://github.com/user-attachments/assets/913b2a1e-538a-42c1-9216-751948662b52" />
+
+5. **Lưu LẠI** Access Key ID và Secret Key <img width="1353" height="541" alt="image" src="https://github.com/user-attachments/assets/c6989471-1c8a-4f97-baee-ec8fe591277d" />
+
+
+### Cho demo-readonly:
+- Làm tương tự cho user `demo-readonly`
+
+
+## Sửa KMS Key Policy (KHUYÊN DÙNG)
+
+1. Vào **KMS Console** → **Customer managed keys**
+2. Click vào key `demo-encryption-key`
+3. Tab **Key policy** → Click **Edit** <img width="1313" height="479" alt="image" src="https://github.com/user-attachments/assets/53a6c620-e689-4327-a2b8-5b897b2b30a9" />
+
+4. Tìm phần có `"Sid": "Allow use of the key"` (nếu chưa có thì thêm vào)
+5. Sửa thành như sau (thay `026090510378` bằng Account ID của bạn):
+
+```json
+{
+	"Version": "2012-10-17",
+	"Id": "key-consolepolicy-3",
+	"Statement": [
+		{
+			"Sid": "Enable IAM User Permissions",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::026090510378:root"
+			},
+			"Action": "kms:*",
+			"Resource": "*"
+		},
+		{
+			"Sid": "Allow use of the key for demo-admin",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::026090510378:user/demo-admin"
+			},
+			"Action": [
+				"kms:Decrypt",
+				"kms:GenerateDataKey",
+				"kms:DescribeKey"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "Allow use of the key for demo-readonly",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::026090510378:user/demo-readonly"
+			},
+			"Action": [
+				"kms:Decrypt",
+				"kms:DescribeKey"
+			],
+			"Resource": "*"
+		}
+	]
+}
+```
+
+6. **Save changes**
+
+---
+
+## **BƯỚC 5: TEST BẰNG AWS CLOUDSHELL**
+
+AWS CloudShell là terminal online, không cần cài đặt gì!
+
+1. Ở góc trên cùng AWS Console, click icon **CloudShell** (hình terminal) <img width="1146" height="171" alt="image" src="https://github.com/user-attachments/assets/e1bbbd51-445b-45bc-8f8f-38d8634a396b" />
+
+2. Đợi 0.5 phút để CloudShell khởi động , thêm 1 tab để demo 2 user cùng lúc <img width="1356" height="629" alt="image" src="https://github.com/user-attachments/assets/3994cd96-68e4-438a-9e5d-d23006fb3471" />
+
+
+### Config profile cho demo-admin:
+```bash
+aws configure set aws_access_key_id YOUR_ADMIN_ACCESS_KEY --profile admin
+aws configure set aws_secret_access_key YOUR_ADMIN_SECRET_KEY --profile admin  
+aws configure set region us-east-1 --profile admin
+```
+
+### Config profile cho demo-readonly:
+```bash
+aws configure set aws_access_key_id YOUR_READONLY_ACCESS_KEY --profile readonly
+aws configure set aws_secret_access_key YOUR_READONLY_SECRET_KEY --profile readonly
+aws configure set region us-east-1 --profile readonly
+```
+### chạy kiểm tra đủ user chưa   
+`aws configure list-profiles`
+
+<img width="854" height="120" alt="image" src="https://github.com/user-attachments/assets/c8a01c79-0348-4504-b88d-371df1352d83" />
+<img width="1087" height="320" alt="image" src="https://github.com/user-attachments/assets/83274383-edf5-4f39-925a-75abdcbff03a" />
+
+
+---
+
+## **BƯỚC 6: DEMO QUYỀN ADMIN**
+
+### Tạo file test:
+```bash
+echo "Long muốn có việc" > secret-file.txt
+```
+
+### Upload file KHÔNG mã hóa: 
+```bash
+aws s3 cp secret-file.txt s3://lelong-security-demo-20251119/normal-file.txt --profile admin
+```
+<img width="834" height="241" alt="image" src="https://github.com/user-attachments/assets/9cb77c29-c785-4d65-b964-6fcf94e17f57" />
+
+### Upload file CÓ mã hóa KMS: 
+
+```bash  
+aws s3 cp secret-file.txt s3://lelong-security-demo-20251119/encrypted-file.txt --profile admin --sse aws:kms --sse-kms-key-id alias/demo-encryption-key
+```
+<img width="1218" height="219" alt="image" src="https://github.com/user-attachments/assets/c41ae7c9-b192-47f0-9a8c-5b9383df57bb" />
+
+### Xem kết quả:
+```bash
+aws s3 ls s3://lelong-security-demo-20251119/ --profile admin
+```
+<img width="1092" height="95" alt="image" src="https://github.com/user-attachments/assets/18a46279-4aee-4e80-aea3-9e8633003ea5" />
+
+
+---
+
+## **BƯỚC 7: KIỂM TRA MÃ HÓA TRÊN S3 CONSOLE**
+
+1. Quay lại S3 Console → vào bucket của bạn 
+2. Click vào file `encrypted-file.txt` <img width="1358" height="581" alt="image" src="https://github.com/user-attachments/assets/9860ee35-77f0-4c6a-99db-cbf1b7d9dd1f" />
+3. Xem tab **"Properties"** 
+4. Kéo xuống phần **"Server-side encryption"**
+5. Sẽ thấy: `AWS-KMS` và key `demo-encryption-key`
+
+
+<img width="1366" height="609" alt="image" src="https://github.com/user-attachments/assets/6d95aedd-3b7f-406a-b984-c099739e41b6" /> 
+<img width="1364" height="552" alt="image" src="https://github.com/user-attachments/assets/a12cf7bf-b3e7-4bd4-ba8f-f7a34f656761" />
+
+
+---
+
+## **BƯỚC 8: DEMO QUYỀN READONLY**
+
+Quay lại CloudShell:
+
+### Thử upload (sẽ THẤT BẠI):
+```bash
+echo "Readonly khong duoc upload" > test.txt
+aws s3 cp test.txt s3://lelong-security-demo-20251119/test.txt --profile readonly
+```
+<img width="977" height="111" alt="image" src="https://github.com/user-attachments/assets/4012d2e7-ed78-4780-8655-0f4581858392" />
+<img width="1322" height="105" alt="image" src="https://github.com/user-attachments/assets/118b6722-3764-470c-9185-84c12bbfefe2" />
+
+**Kết quả**: `AccessDenied` error
+
+### Thử download (sẽ THÀNH CÔNG):
+```bash
+aws s3 cp s3://lelong-security-demo-20251119/normal-file.txt downloaded-normal.txt --profile readonly
+aws s3 cp s3://lelong-security-demo-20251119/encrypted-file.txt downloaded-encrypted.txt --profile readonly
+```
+<img width="854" height="145" alt="image" src="https://github.com/user-attachments/assets/fcb62f5f-3812-4af1-bede-160014cf3c6b" />
+<img width="849" height="93" alt="image" src="https://github.com/user-attachments/assets/5416fd20-e927-4663-b4ef-a70b0b45dbbc" />
+
+
+### Thử xóa (sẽ THẤT BẠI):
+```bash
+aws s3 rm s3://lelong-security-demo-20251119/normal-file.txt --profile readonly
+```
+<img width="1360" height="154" alt="image" src="https://github.com/user-attachments/assets/420c201a-e6fb-49f5-b9f6-cf6b4f3acb05" />
+
+**Kết quả**: `AccessDenied` error
+
+
+### Xem nội dung file đã download:
+```bash
+cat downloaded-normal.txt
+cat downloaded-encrypted.txt  
+```
+
+> Nội dung file sau khi download và decrypt thành công
+<img width="337" height="76" alt="image" src="https://github.com/user-attachments/assets/82881143-a3b5-49b9-b98e-be34ba787675" />
+
+
+---
+
+## **BƯỚC 9: SO SÁNH FILE GỐC VÀ FILE GIẢI MÃ**
+
+```bash
+echo "=== File gốc ==="
+cat secret-file.txt
+
+echo "=== File download không mã hóa ==="  
+cat downloaded-normal.txt
+
+echo "=== File download có mã hóa (đã tự động giải mã) ==="
+cat downloaded-encrypted.txt
+
+echo "=== So sánh MD5 hash ==="
+md5sum secret-file.txt downloaded-encrypted.txt
+```
+
+<img width="593" height="340" alt="image" src="https://github.com/user-attachments/assets/cbde1fef-2bff-4c63-8f57-3a97881ea0bc" />
+
+
+---
+
+
+## **KẾT QUẢ DEMO**
+
+Bài lab này đã chứng minh:
+✅ **Phân quyền hoạt động**: Admin làm được mọi thứ, ReadOnly bị chặn upload/delete  
+✅ **Mã hóa tự động**: File được mã hóa và giải mã trong suốt  
+✅ **Tính toàn vẹn**: Hash của file gốc = hash của file giải mã  
+✅ **Bảo mật**: Chỉ user có quyền mới truy cập được KMS key  
+
+## **DỌN DẸP**
+1. S3: Empty bucket → Delete bucket
+2. IAM: Delete 2 users  
+3. KMS: Schedule key deletion (7 ngày)
+
+
+
+---
+
+# **PHẦN GIẢI THÍCH LÝ THUYẾT AN TOÀN THÔNG TIN**
+
+---
+
+## **1. CHỨNG THỰC (Authentication) - "Chứng minh bạn là ai"**
+
+### 🏠 **Ví dụ đời thường:**
+- Giống như khi bạn vào cổng trường, bạn phải đưa **thẻ sinh viên** để bảo vệ biết bạn là ai.
+- **Thẻ sinh viên = Giấy chứng minh bạn là sinh viên thật**, không phải người lạ.
+
+### 💻 **Trong bài lab:**
+- **Access Key ID** = Tên đăng nhập (công khai, như MSSV)
+- **Secret Access Key** = Mật khẩu (bí mật, như chữ ký của bạn)
+
+### 🔍 **Cách hoạt động:**
+Khi bạn chạy lệnh:
+```bash
+aws s3 cp secret-file.txt s3://bucket/ --profile admin
+```
+
+**Điều gì xảy ra?**
+1. AWS CLI lấy **Secret Access Key** của bạn
+2. Tạo một **chữ ký điện tử** cho câu lệnh này (dùng thuật toán HMAC-SHA256)
+3. Gửi kèm chữ ký lên server AWS
+4. AWS kiểm tra: "Chữ ký này có khớp với Access Key ID không?"
+5. ✅ Nếu đúng → "OK, bạn là demo-admin thật"
+6. ❌ Nếu sai → Lỗi `InvalidAccessKeyId` 
+
+### 📸 **Bằng chứng trong lab:**
+- Khi bạn dùng sai Access Key → Lỗi ngay lập tức
+- Khi đúng → Lệnh chạy thành công
+
+---
+
+## **2. PHÂN QUYỀN (Authorization) - "Bạn được phép làm gì"**
+
+### 🏠 **Ví dụ đời thường:**
+Sau khi vào trường, **thẻ sinh viên** quyết định bạn vào được đâu:
+- **Sinh viên thường**: Vào thư viện, lớp học (chỉ đọc sách, nghe giảng)
+- **Giáo viên**: Vào phòng máy chủ, sửa điểm (làm được nhiều hơn)
+- **Bảo vệ**: Không cho vào khu vực cấm
+
+### 💻 **Trong bài lab:**
+
+| User | Policy gắn | Quyền thực tế |
+|------|-----------|---------------|
+| **demo-admin** | `S3FullAccess` | Upload ✅ / Download ✅ / Delete ✅ |
+| **demo-readonly** | `S3ReadOnlyAccess` | Upload ❌ / Download ✅ / Delete ❌ |
+
+### 🔍 **Cách hoạt động:**
+
+**Khi demo-readonly thử upload:**
+```bash
+aws s3 cp test.txt s3://bucket/ --profile readonly
+```
+
+**Điều gì xảy ra?**
+1. AWS đã chứng thực: "OK, bạn là demo-readonly" ✅
+2. AWS kiểm tra policy: "Hmm, demo-readonly có quyền `s3:PutObject` không?"
+3. Tra trong policy `S3ReadOnlyAccess` → **KHÔNG CÓ**
+4. ❌ Trả về lỗi: `AccessDenied`
+
+**Khi demo-readonly thử download:**
+```bash
+aws s3 cp s3://bucket/file.txt local.txt --profile readonly  
+```
+
+1. AWS chứng thực: "OK, bạn là demo-readonly" ✅
+2. Kiểm tra policy: "demo-readonly có quyền `s3:GetObject` không?"
+3. Tra trong policy → **CÓ** ✅
+4. ✅ Download thành công!
+
+### 📊 **Nguyên tắc quan trọng:**
+**Principle of Least Privilege** (Đặc quyền tối thiểu):
+- Chỉ cấp đúng quyền cần thiết, không cho thừa
+- Giống như: Nhân viên bán hàng không cần quyền truy cập két sắt
+
+---
+
+## **3. MÃ HÓA ĐỐI XỨNG (Symmetric Encryption) - "Khóa bí mật chung"**
+
+### 🏠 **Ví dụ đời thường:**
+Bạn và bạn thân có chung một **chiếc chìa khóa** để mở cùng một cái két:
+- Bạn dùng chìa khóa này **KHÓA két** → Bỏ tiền vào
+- Bạn thân dùng chìa khóa này **MỞ két** → Lấy tiền ra
+- **Cùng 1 chìa khóa** để khóa và mở
+
+### 💻 **Trong bài lab:**
+
+Khi bạn upload file với KMS:
+```bash
+aws s3 cp secret-file.txt s3://bucket/encrypted-file.txt --sse aws:kms
+```
+
+**Điều gì xảy ra? (Envelope Encryption)**
+
+```
+┌─────────────────────────────────────────┐
+│  1. File gốc: "Day la file bi mat"     │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  2. AWS KMS tạo Data Key (256 bit)     │
+│     Ví dụ: "X7k9mP2nQ8..."             │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  3. Dùng Data Key mã hóa file          │
+│     Thuật toán: AES-256                 │
+│     Kết quả: "A8x@#mKp9L..."          │
+│     (File đã mã hóa)                    │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  4. Dùng KMS Master Key mã hóa Data Key│
+│     Data Key mã hóa: "9Lp#x@A8..."     │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  5. Lưu lên S3:                         │
+│     - File đã mã hóa                    │
+│     - Data Key đã mã hóa (kèm theo)    │
+└─────────────────────────────────────────┘
+```
+
+**Khi download về:**
+```
+┌─────────────────────────────────────────┐
+│  1. Download file mã hóa + Data Key     │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  2. Gửi Data Key đã mã hóa cho KMS      │
+│     Yêu cầu: "Giải mã Data Key giùm tôi"│
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  3. KMS kiểm tra quyền:                 │
+│     "User này có quyền kms:Decrypt?"    │
+│     ✅ demo-admin: CÓ                   │
+│     ✅ demo-readonly: CÓ (đã cấp)       │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  4. KMS trả về Data Key đã giải mã      │
+└─────────────────────────────────────────┘
+              ↓
+┌─────────────────────────────────────────┐
+│  5. Dùng Data Key giải mã file          │
+│     Kết quả: "Day la file bi mat"      │
+└─────────────────────────────────────────┘
+```
+
+### 🔑 **Tại sao dùng 2 lớp mã hóa?**
+- **Mã hóa file trực tiếp bằng Master Key** → Chậm, nguy hiểm
+- **Mã hóa bằng Data Key → Nhanh**
+- **Data Key được bảo vệ bởi Master Key** → An toàn
+
+### 📊 **Thuật toán AES-256:**
+- **AES** = Advanced Encryption Standard
+- **256** = Độ dài khóa 256 bit
+- Được chính phủ Mỹ dùng để mã hóa tài liệu mật
+- Nếu dùng siêu máy tính thử hết tổ hợp → Mất **hàng tỷ năm** mới bẻ khóa được
+
+---
+
+## **4. HÀM BĂM (Hash Functions) - "Dấu vân tay số"**
+
+### 🏠 **Ví dụ đời thường:**
+- **Vân tay** của mỗi người là duy nhất
+- Nếu có 2 người có cùng vân tay → Họ là cùng 1 người
+- Nếu vân tay khác → Chắc chắn là người khác
+
+### 💻 **Trong bài lab:**
+
+Khi upload file lên S3, AWS tự động tính **MD5 hash**:
+
+```bash
+# File gốc
+echo "Day la file bi mat" > file.txt
+
+# Tính hash
+md5sum file.txt
+# Kết quả: a1b2c3d4e5f6...  file.txt
+```
+
+**Đặc điểm của Hash:**
+1. **Một chiều**: Không thể từ hash tìm ngược lại nội dung
+2. **Deterministic**: Cùng file → Cùng hash
+3. **Nhạy cảm**: Thay đổi 1 ký tự → Hash hoàn toàn khác
+
+```
+File A: "Hello"     → Hash: 8b1a9953c4611296a827abf8c47804d7
+File B: "Hello"     → Hash: 8b1a9953c4611296a827abf8c47804d7  ✅ Giống nhau
+File C: "Hellp"     → Hash: 5d41402abc4b2a76b9719d911017c592  ❌ Khác hoàn toàn
+```
+
+### 🔍 **Trong bài lab:**
+
+```bash
+# So sánh hash
+md5sum secret-file.txt
+# Output: a1b2c3d4...  secret-file.txt
+
+md5sum downloaded-encrypted.txt  
+# Output: a1b2c3d4...  downloaded-encrypted.txt
+```
+
+**Hash giống nhau** → Chứng minh:
+- File không bị thay đổi trong quá trình truyền
+- File được giải mã chính xác 100%
+- **Tính toàn vẹn (Integrity)** được đảm bảo
+
+### 📊 **ETag trên S3:**
+Khi bạn xem Properties của file trên S3 Console, sẽ thấy **ETag**:
+- ETag = MD5 hash của file
+- S3 dùng nó để check xem file có bị hỏng trong quá trình upload không
+
+---
+
+## **5. CHỮ KÝ SỐ (Digital Signature) - "Chữ ký không thể giả mạo"**
+
+### 🏠 **Ví dụ đời thường:**
+- Bạn ký tên vào giấy hợp đồng
+- Người ta xem chữ ký để biết: "Đây đúng là lelongc ký, không ai giả mạo"
+
+### 💻 **Trong bài lab (ẩn bên dưới):**
+
+Mỗi khi bạn chạy AWS CLI, điều này xảy ra:
+
+```
+┌────────────────────────────────────┐
+│ Bạn: aws s3 cp file.txt s3://...  │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ AWS CLI tạo request:               │
+│ PUT /file.txt                      │
+│ Host: s3.amazonaws.com             │
+│ Date: 2025-11-19T09:17:54Z         │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ Tính hash của request:             │
+│ SHA256(request) = abc123def...     │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ Dùng Secret Key "ký" hash này:    │
+│ Signature = HMAC(hash, SecretKey)  │
+│           = xyz789mnp...           │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ Gửi lên AWS:                       │
+│ - Request gốc                      │
+│ - Access Key ID                    │
+│ - Signature (chữ ký)               │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ AWS nhận được, kiểm tra:           │
+│ 1. Lấy Secret Key từ Access Key ID│
+│ 2. Tự tính signature của request  │
+│ 3. So sánh với signature gửi lên  │
+└────────────────────────────────────┘
+           ↓
+     ✅ Giống nhau → Cho phép
+     ❌ Khác nhau → AccessDenied
+```
+
+### 🔒 **Bảo vệ gì?**
+1. **Chứng thực**: Đảm bảo request từ đúng người (có Secret Key)
+2. **Toàn vẹn**: Request không bị sửa đổi trên đường đi
+3. **Chống giả mạo**: Không ai có thể tạo chữ ký giả
+
+---
+
+## **6. MÃ HÓA BẤT ĐỐI XỨNG (Asymmetric Encryption) - "Khóa công khai, khóa riêng"**
+
+### 🏠 **Ví dụ đời thường:**
+Hòm thư tại nhà bạn:
+- **Khóa công khai (Public Key)**: Khe bỏ thư → **AI CŨNG BỎ ĐƯỢC**
+- **Khóa riêng (Private Key)**: Chìa khóa mở hòm thư → **CHỈ BẠN CÓ**
+
+Ai cũng bỏ thư vào được, nhưng chỉ bạn mở và đọc được.
+
+### 💻 **Trong bài lab (HTTPS/TLS):**
+
+Khi bạn chạy `aws s3 cp`, kết nối HTTPS được thiết lập:
+
+```
+┌────────────────────────────────────┐
+│ 1. Máy bạn → AWS:                 │
+│    "Xin chào, tôi muốn kết nối"   │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ 2. AWS → Máy bạn:                 │
+│    "OK, đây là Public Key của tôi" │
+│    [Gửi chứng chỉ SSL + Public Key]│
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ 3. Máy bạn:                        │
+│    Tạo Session Key (khóa đối xứng) │
+│    Ví dụ: "K789xyz..."             │
+│    Mã hóa Session Key bằng         │
+│    Public Key của AWS              │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ 4. Máy bạn → AWS:                 │
+│    Gửi Session Key đã mã hóa       │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ 5. AWS:                            │
+│    Dùng Private Key giải mã        │
+│    → Lấy được Session Key          │
+└────────────────────────────────────┘
+           ↓
+┌────────────────────────────────────┐
+│ 6. Cả 2 bên giờ có chung Session  │
+│    Key → Dùng mã hóa đối xứng      │
+│    (nhanh hơn) cho phần còn lại    │
+└────────────────────────────────────┘
+```
+
+### 🔑 **Tại sao không dùng mã hóa bất đối xứng cho mọi thứ?**
+- **Chậm hơn 1000 lần** so với mã hóa đối xứng
+- Chỉ dùng để **trao đổi khóa an toàn**
+- Sau đó chuyển sang đối xứng để **truyền dữ liệu nhanh**
+
+---
+
+## **📊 TỔNG KẾT: LUỒNG BẢO MẬT HOÀN CHỈNH TRONG BÀI LAB**
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                  BẠN CHẠY LỆNH UPLOAD                        │
+│  aws s3 cp secret.txt s3://bucket/ --sse aws:kms             │
+└──────────────────────────────────────────────────────────────┘
+                          ↓
+┌──────────────────────────────────────────────────────────────┐
+│  1. CHỨNG THỰC (Authentication)                              │
+│     - AWS CLI ký request bằng Secret Key                     │
+│     - AWS xác minh: "Bạn là demo-admin" ✅                   │
+└──────────────────────────────────────────────────────────────┘
+                          ↓
+┌──────────────────────────────────────────────────────────────┐
+│  2. PHÂN QUYỀN (Authorization)                               │
+│     - Kiểm tra policy: demo-admin có quyền PutObject? ✅     │
+│     - Kiểm tra policy: demo-admin có quyền dùng KMS? ✅      │
+└──────────────────────────────────────────────────────────────┘
+                          ↓
+┌──────────────────────────────────────────────────────────────┐
+│  3. MÃ HÓA BẤT ĐỐI XỨNG (TLS/HTTPS)                         │
+│     - Thiết lập kết nối an toàn với S3                       │
+│     - Trao đổi Session Key bằng RSA                          │
+└──────────────────────────────────────────────────────────────┘
+                          ↓
+┌──────────────────────────────────────────────────────────────┐
+│  4. MÃ HÓA ĐỐI XỨNG (KMS)                                    │
+│     - KMS tạo Data Key                                        │
+│     - Mã hóa file bằng AES-256                               │
+│     - Mã hóa Data Key bằng Master Key                        │
+└──────────────────────────────────────────────────────────────┘
+                          ↓
+┌──────────────────────────────────────────────────────────────┐
+│  5. HÀM BĂM (Integrity Check)                                │
+│     - S3 tính MD5 hash của file                              │
+│     - Lưu hash vào ETag                                      │
+│     - Dùng để verify khi download                            │
+└──────────────────────────────────────────────────────────────┘
+                          ↓
+┌──────────────────────────────────────────────────────────────┐
+│               FILE ĐƯỢC LƯU AN TOÀN TRÊN S3                  │
+│  ✅ Chỉ người có quyền mới truy cập được                     │
+│  ✅ Dữ liệu được mã hóa, không ai đọc được                   │
+│  ✅ Toàn vẹn được đảm bảo bởi hash                           │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## **💡 KẾT LUẬN**
+
+Bài lab tuy đơn giản nhưng đã minh họa **5 trụ cột bảo mật**:
+
+| Khái niệm | Câu hỏi trả lời | Công nghệ trong lab |
+|-----------|-----------------|---------------------|
+| **Chứng thực** | Bạn là ai? | Access Key + Secret Key |
+| **Phân quyền** | Bạn được làm gì? | IAM Policies |
+| **Mã hóa đối xứng** | Bảo vệ dữ liệu như thế nào? | AES-256 + KMS |
+| **Hàm băm** | Dữ liệu có bị sửa không? | MD5/SHA256 |
+| **Mã hóa bất đối xứng** | Kết nối an toàn ra sao? | RSA + TLS/HTTPS |
+
+## dù bài lab đơn giản mong thầy cho em điểm cao ạ 😁🤞
