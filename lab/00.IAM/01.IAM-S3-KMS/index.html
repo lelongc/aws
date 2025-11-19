@@ -5,7 +5,7 @@
       
       
       
-        <link rel="canonical" href="https://lelongc.github.io/aws/lab/00.IAM/IAM-S3-KMS/">
+        <link rel="canonical" href="https://lelongc.github.io/aws/lab/00.IAM/01.IAM-S3-KMS/">
       
       
         <link rel="prev" href="../../">
@@ -22,7 +22,7 @@
     
     
       
-        <title>BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS - DraDoc</title>
+        <title>01.IAM S3 KMS - DraDoc</title>
       
     
     
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+              01.IAM S3 KMS
             
           </span>
         </div>
@@ -694,8 +694,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -704,7 +702,7 @@
   <span class="md-ellipsis">
     
   
-    BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+    01.IAM S3 KMS
   
 
     
@@ -722,7 +720,7 @@
   <span class="md-ellipsis">
     
   
-    BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+    01.IAM S3 KMS
   
 
     
@@ -738,14 +736,23 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Mục lục
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bai-lab-demo-bao-mat-s3-iam-kms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#muc-tieu" class="md-nav__link">
@@ -1093,6 +1100,400 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phan-giai-thich-ly-thuyet-an-toan-thong-tin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHẦN GIẢI THÍCH LÝ THUYẾT AN TOÀN THÔNG TIN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN GIẢI THÍCH LÝ THUYẾT AN TOÀN THÔNG TIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-chung-thuc-authentication-chung-minh-ban-la-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CHỨNG THỰC (Authentication) - "Chứng minh bạn là ai"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. CHỨNG THỰC (Authentication) - &quot;Chứng minh bạn là ai&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Cách hoạt động:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bang-chung-trong-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📸 Bằng chứng trong lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-phan-quyen-authorization-ban-uoc-phep-lam-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PHÂN QUYỀN (Authorization) - "Bạn được phép làm gì"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PHÂN QUYỀN (Authorization) - &quot;Bạn được phép làm gì&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Cách hoạt động:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nguyen-tac-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Nguyên tắc quan trọng:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ma-hoa-oi-xung-symmetric-encryption-khoa-bi-mat-chung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. MÃ HÓA ĐỐI XỨNG (Symmetric Encryption) - "Khóa bí mật chung"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MÃ HÓA ĐỐI XỨNG (Symmetric Encryption) - &quot;Khóa bí mật chung&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-sao-dung-2-lop-ma-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Tại sao dùng 2 lớp mã hóa?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thuat-toan-aes-256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Thuật toán AES-256:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ham-bam-hash-functions-dau-van-tay-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. HÀM BĂM (Hash Functions) - "Dấu vân tay số"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. HÀM BĂM (Hash Functions) - &quot;Dấu vân tay số&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etag-tren-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 ETag trên S3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-chu-ky-so-digital-signature-chu-ky-khong-the-gia-mao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. CHỮ KÝ SỐ (Digital Signature) - "Chữ ký không thể giả mạo"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. CHỮ KÝ SỐ (Digital Signature) - &quot;Chữ ký không thể giả mạo&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab-an-ben-duoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab (ẩn bên dưới):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bao-ve-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔒 Bảo vệ gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-ma-hoa-bat-oi-xung-asymmetric-encryption-khoa-cong-khai-khoa-rieng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. MÃ HÓA BẤT ĐỐI XỨNG (Asymmetric Encryption) - "Khóa công khai, khóa riêng"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. MÃ HÓA BẤT ĐỐI XỨNG (Asymmetric Encryption) - &quot;Khóa công khai, khóa riêng&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab-httpstls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab (HTTPS/TLS):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-sao-khong-dung-ma-hoa-bat-oi-xung-cho-moi-thu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Tại sao không dùng mã hóa bất đối xứng cho mọi thứ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tong-ket-luong-bao-mat-hoan-chinh-trong-bai-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 TỔNG KẾT: LUỒNG BẢO MẬT HOÀN CHỈNH TRONG BÀI LAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 KẾT LUẬN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#du-bai-lab-on-gian-mong-thay-cho-em-iem-cao-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dù bài lab đơn giản mong thầy cho em điểm cao ạ 😁🤞
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1324,14 +1725,23 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Mục lục
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bai-lab-demo-bao-mat-s3-iam-kms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#muc-tieu" class="md-nav__link">
@@ -1682,6 +2092,400 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#phan-giai-thich-ly-thuyet-an-toan-thong-tin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PHẦN GIẢI THÍCH LÝ THUYẾT AN TOÀN THÔNG TIN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PHẦN GIẢI THÍCH LÝ THUYẾT AN TOÀN THÔNG TIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-chung-thuc-authentication-chung-minh-ban-la-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. CHỨNG THỰC (Authentication) - "Chứng minh bạn là ai"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. CHỨNG THỰC (Authentication) - &quot;Chứng minh bạn là ai&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Cách hoạt động:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bang-chung-trong-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📸 Bằng chứng trong lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-phan-quyen-authorization-ban-uoc-phep-lam-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PHÂN QUYỀN (Authorization) - "Bạn được phép làm gì"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PHÂN QUYỀN (Authorization) - &quot;Bạn được phép làm gì&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cach-hoat-ong_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Cách hoạt động:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nguyen-tac-quan-trong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Nguyên tắc quan trọng:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ma-hoa-oi-xung-symmetric-encryption-khoa-bi-mat-chung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. MÃ HÓA ĐỐI XỨNG (Symmetric Encryption) - "Khóa bí mật chung"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. MÃ HÓA ĐỐI XỨNG (Symmetric Encryption) - &quot;Khóa bí mật chung&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-sao-dung-2-lop-ma-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Tại sao dùng 2 lớp mã hóa?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thuat-toan-aes-256" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Thuật toán AES-256:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ham-bam-hash-functions-dau-van-tay-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. HÀM BĂM (Hash Functions) - "Dấu vân tay số"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. HÀM BĂM (Hash Functions) - &quot;Dấu vân tay số&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Trong bài lab:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etag-tren-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 ETag trên S3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-chu-ky-so-digital-signature-chu-ky-khong-the-gia-mao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. CHỮ KÝ SỐ (Digital Signature) - "Chữ ký không thể giả mạo"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. CHỮ KÝ SỐ (Digital Signature) - &quot;Chữ ký không thể giả mạo&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab-an-ben-duoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab (ẩn bên dưới):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bao-ve-gi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔒 Bảo vệ gì?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-ma-hoa-bat-oi-xung-asymmetric-encryption-khoa-cong-khai-khoa-rieng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. MÃ HÓA BẤT ĐỐI XỨNG (Asymmetric Encryption) - "Khóa công khai, khóa riêng"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. MÃ HÓA BẤT ĐỐI XỨNG (Asymmetric Encryption) - &quot;Khóa công khai, khóa riêng&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-oi-thuong_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏠 Ví dụ đời thường:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trong-bai-lab-httpstls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 Trong bài lab (HTTPS/TLS):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tai-sao-khong-dung-ma-hoa-bat-oi-xung-cho-moi-thu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 Tại sao không dùng mã hóa bất đối xứng cho mọi thứ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tong-ket-luong-bao-mat-hoan-chinh-trong-bai-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 TỔNG KẾT: LUỒNG BẢO MẬT HOÀN CHỈNH TRONG BÀI LAB
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ket-luan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 KẾT LUẬN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#du-bai-lab-on-gian-mong-thay-cho-em-iem-cao-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dù bài lab đơn giản mong thầy cho em điểm cao ạ 😁🤞
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1699,7 +2503,7 @@
 
 
   
-    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/lab/00.IAM/IAM-S3-KMS.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/lab/00.IAM/01.IAM-S3-KMS.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
@@ -1707,7 +2511,7 @@
   
 
 
-<h1 id="bai-lab-demo-bao-mat-s3-iam-kms"><strong>BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS</strong><a class="headerlink" href="#bai-lab-demo-bao-mat-s3-iam-kms" title="Permanent link">¶</a></h1>
+<h2 id="bai-lab-demo-bao-mat-s3-iam-kms"><strong>BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS</strong><a class="headerlink" href="#bai-lab-demo-bao-mat-s3-iam-kms" title="Permanent link">¶</a></h2>
 <h2 id="muc-tieu"><strong>MỤC TIÊU</strong><a class="headerlink" href="#muc-tieu" title="Permanent link">¶</a></h2>
 <ul>
 <li>Tạo 1 S3 bucket để lưu file</li>
@@ -2392,7 +3196,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 tháng 11, 2025 11:00:26 UTC">19 tháng 11, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 tháng 11, 2025 11:04:47 UTC">19 tháng 11, 2025</span>
   </span>
 
     
