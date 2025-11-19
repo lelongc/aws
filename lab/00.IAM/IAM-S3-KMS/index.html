@@ -1,0 +1,2526 @@
+<!DOCTYPE html><html lang="vi" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lelongc.github.io/aws/lab/00.IAM/IAM-S3-KMS/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../../../orther-note/readme/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS - DraDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bai-lab-demo-bao-mat-s3-iam-kms" class="md-skip">
+          Bỏ qua
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Đầu trang">
+    <a href="../../.." title="DraDoc" class="md-header__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DraDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ tối" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ tối" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo" aria-label="Chuyển sang chế độ sáng" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Chuyển sang chế độ sáng" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Tìm kiếm" placeholder="Tìm kiếm" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Tìm kiếm">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Xoá" aria-label="Xoá" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to DraDoc
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  List of Ports to be familiar with
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cer/link/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cer
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../orther-note/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Orther note
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../saa-cantrill-and-lab/00.roadmap/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Saa cantrill and lab
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../stephane/01.saa/readme/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Stephane
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Thanh điều hướng" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DraDoc" class="md-nav__button md-logo" aria-label="DraDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.64 10.38c0 .25.02.45.07.62.05.12.12.28.21.46.04.04.05.1.05.15 0 .07-.04.13-.13.2l-.42.28c-.06.04-.12.06-.17.06-.07 0-.13-.04-.2-.1-.09-.1-.17-.2-.24-.31-.06-.11-.13-.24-.2-.39-.52.61-1.17.92-1.96.92-.56 0-1-.16-1.33-.48-.32-.32-.49-.75-.49-1.29 0-.55.2-1 .6-1.36.41-.34.95-.52 1.63-.52.23 0 .44.02.71.06.23.03.5.08.76.14v-.48c0-.51-.1-.84-.31-1.07-.22-.21-.57-.3-1.08-.3-.24 0-.48.03-.72.08-.25.06-.49.13-.72.23-.11.04-.2.07-.23.08-.05.02-.08.02-.11.02-.09 0-.14-.06-.14-.2v-.33c0-.1.01-.18.05-.23q.045-.075.18-.12c.24-.14.51-.24.84-.32a4 4 0 0 1 1.04-.13q1.185 0 1.74.54c.37.36.55.91.55 1.64v2.15zm-2.7 1.02c.22 0 .44-.04.68-.12s.45-.23.63-.43c.11-.13.19-.27.25-.43 0-.16.05-.35.05-.58v-.27c-.2-.07-.4-.07-.62-.12a7 7 0 0 0-.62-.04c-.45 0-.77.09-.99.27s-.32.43-.32.76c0 .32.07.56.24.71.16.17.39.25.7.25m5.34.71a.6.6 0 0 1-.28-.06c-.03-.05-.08-.14-.12-.26L8.32 6.65c-.04-.15-.06-.22-.06-.27 0-.11.05-.17.16-.17h.65c.13 0 .22.02.26.07.06.04.1.13.14.26l1.11 4.4 1.04-4.4c.03-.13.07-.22.13-.26.05-.04.14-.07.25-.07h.55c.12 0 .21.02.26.07.05.04.1.13.13.26L14 11l1.14-4.46c.04-.13.09-.22.13-.26.06-.04.14-.07.26-.07h.62c.11 0 .17.06.17.17 0 .03-.01.07-.02.12 0 0-.02.08-.04.15l-1.61 5.14c-.04.14-.08.21-.15.26-.04.04-.13.07-.24.07h-.57c-.13 0-.19-.02-.27-.07a.45.45 0 0 1-.12-.26L12.27 7.5l-1.03 4.28q-.045.195-.12.27a.5.5 0 0 1-.27.06zm8.55.18c-.33 0-.7-.04-1.03-.12s-.59-.17-.76-.26a.5.5 0 0 1-.21-.19.4.4 0 0 1-.04-.18v-.34c0-.14.05-.2.15-.2h.12c.04 0 .1.05.17.08.22.1.47.18.73.23.27.05.54.08.79.08.42 0 .75-.07.97-.22.23-.17.35-.36.35-.63 0-.19-.07-.34-.18-.47-.12-.12-.35-.24-.67-.34l-.97-.3c-.48-.16-.84-.38-1.06-.68a1.58 1.58 0 0 1-.33-.97c0-.28.06-.52.18-.73.12-.22.28-.4.46-.55.22-.15.44-.26.71-.34q.39-.12.84-.12.21 0 .45.03c.14.02.28.05.42.07.14.04.26.07.38.11s.2.08.28.12c.09.05.16.1.2.16s.06.13.06.22v.32q0 .21-.15.21c-.05 0-.14-.03-.26-.08-.37-.17-.8-.26-1.27-.26-.38 0-.66.06-.89.19-.2.12-.31.32-.31.59 0 .19.07.35.2.47.13.13.38.25.73.37l.95.3c.48.14.82.36 1.03.64q.3.405.3.93c0 .28-.06.54-.17.77-.12.22-.28.42-.5.58-.19.17-.44.29-.72.38s-.62.13-.95.13m1.25 3.24C17.89 17.14 14.71 18 12 18c-3.85 0-7.3-1.42-9.91-3.77-.21-.19-.02-.44.23-.29 2.82 1.63 6.29 2.62 9.89 2.62 2.43 0 5.1-.5 7.55-1.56.37-.15.68.26.32.53M21 14.5c-.29-.37-1.86-.18-2.57-.1-.21.03-.24-.16-.05-.3 1.25-.87 3.31-.6 3.54-.33.24.3-.06 2.36-1.23 3.34-.19.15-.36.07-.28-.11.27-.68.86-2.16.59-2.5"></path></svg>
+
+    </a>
+    DraDoc
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/lelongc/aws" title="Xem mã nguồn" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to DraDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../List%20of%20Ports%20to%20be%20familiar%20with/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    List of Ports to be familiar with
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../cer/link/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cer
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lab
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lab
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    00.IAM
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    00.IAM
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muc-tieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MỤC TIÊU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuan-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CHUẨN BỊ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-1-tao-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 1: TẠO S3 BUCKET
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-2-tao-kms-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 2: TẠO KMS KEY
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-3-tao-iam-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 3: TẠO IAM USERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 3: TẠO IAM USERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tao-user-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo User Admin:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tao-user-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo User ReadOnly:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-4-tao-access-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 4: TẠO ACCESS KEYS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 4: TẠO ACCESS KEYS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cho-demo-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cho demo-admin:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cho-demo-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cho demo-readonly:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sua-kms-key-policy-khuyen-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sửa KMS Key Policy (KHUYÊN DÙNG)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-5-test-bang-aws-cloudshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 5: TEST BẰNG AWS CLOUDSHELL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 5: TEST BẰNG AWS CLOUDSHELL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-profile-cho-demo-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config profile cho demo-admin:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-profile-cho-demo-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config profile cho demo-readonly:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chay-kiem-tra-u-user-chua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chạy kiểm tra đủ user chưa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-6-demo-quyen-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 6: DEMO QUYỀN ADMIN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 6: DEMO QUYỀN ADMIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tao-file-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo file test:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-file-khong-ma-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload file KHÔNG mã hóa:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-file-co-ma-hoa-kms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload file CÓ mã hóa KMS:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xem-ket-qua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xem kết quả:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-7-kiem-tra-ma-hoa-tren-s3-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 7: KIỂM TRA MÃ HÓA TRÊN S3 CONSOLE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-8-demo-quyen-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 8: DEMO QUYỀN READONLY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 8: DEMO QUYỀN READONLY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thu-upload-se-that-bai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử upload (sẽ THẤT BẠI):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thu-download-se-thanh-cong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử download (sẽ THÀNH CÔNG):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thu-xoa-se-that-bai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử xóa (sẽ THẤT BẠI):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xem-noi-dung-file-a-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xem nội dung file đã download:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-9-so-sanh-file-goc-va-file-giai-ma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 9: SO SÁNH FILE GỐC VÀ FILE GIẢI MÃ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-qua-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KẾT QUẢ DEMO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#don-dep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DỌN DẸP
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../orther-note/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orther note
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../saa-cantrill-and-lab/00.roadmap/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Saa cantrill and lab
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../../stephane/01.saa/readme/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stephane
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Mục lục">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Mục lục
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#muc-tieu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MỤC TIÊU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chuan-bi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CHUẨN BỊ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-1-tao-s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 1: TẠO S3 BUCKET
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-2-tao-kms-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 2: TẠO KMS KEY
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-3-tao-iam-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 3: TẠO IAM USERS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 3: TẠO IAM USERS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tao-user-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo User Admin:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tao-user-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo User ReadOnly:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-4-tao-access-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 4: TẠO ACCESS KEYS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 4: TẠO ACCESS KEYS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cho-demo-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cho demo-admin:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cho-demo-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cho demo-readonly:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sua-kms-key-policy-khuyen-dung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sửa KMS Key Policy (KHUYÊN DÙNG)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-5-test-bang-aws-cloudshell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 5: TEST BẰNG AWS CLOUDSHELL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 5: TEST BẰNG AWS CLOUDSHELL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-profile-cho-demo-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config profile cho demo-admin:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-profile-cho-demo-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config profile cho demo-readonly:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chay-kiem-tra-u-user-chua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chạy kiểm tra đủ user chưa
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-6-demo-quyen-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 6: DEMO QUYỀN ADMIN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 6: DEMO QUYỀN ADMIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tao-file-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tạo file test:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-file-khong-ma-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload file KHÔNG mã hóa:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-file-co-ma-hoa-kms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Upload file CÓ mã hóa KMS:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xem-ket-qua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xem kết quả:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-7-kiem-tra-ma-hoa-tren-s3-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 7: KIỂM TRA MÃ HÓA TRÊN S3 CONSOLE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-8-demo-quyen-readonly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 8: DEMO QUYỀN READONLY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 8: DEMO QUYỀN READONLY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thu-upload-se-that-bai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử upload (sẽ THẤT BẠI):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thu-download-se-thanh-cong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử download (sẽ THÀNH CÔNG):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thu-xoa-se-that-bai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Thử xóa (sẽ THẤT BẠI):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xem-noi-dung-file-a-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Xem nội dung file đã download:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buoc-9-so-sanh-file-goc-va-file-giai-ma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 9: SO SÁNH FILE GỐC VÀ FILE GIẢI MÃ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ket-qua-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KẾT QUẢ DEMO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#don-dep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DỌN DẸP
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/lelongc/aws/edit/main/my-website/docs/lab/00.IAM/IAM-S3-KMS.md" title="Chỉnh sửa" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+
+
+<h1 id="bai-lab-demo-bao-mat-s3-iam-kms"><strong>BÀI LAB: DEMO BẢO MẬT S3 + IAM + KMS</strong><a class="headerlink" href="#bai-lab-demo-bao-mat-s3-iam-kms" title="Permanent link">¶</a></h1>
+<h2 id="muc-tieu"><strong>MỤC TIÊU</strong><a class="headerlink" href="#muc-tieu" title="Permanent link">¶</a></h2>
+<ul>
+<li>Tạo 1 S3 bucket để lưu file</li>
+<li>Tạo 2 user với quyền khác nhau: <strong>Admin</strong> và <strong>ReadOnly</strong>  </li>
+<li>Demo mã hóa file với KMS</li>
+<li>Chứng minh phân quyền hoạt động như thế nào</li>
+</ul>
+<h2 id="chuan-bi"><strong>CHUẨN BỊ</strong><a class="headerlink" href="#chuan-bi" title="Permanent link">¶</a></h2>
+<ul>
+<li>Tài khoản AWS (có thể dùng Free Tier)</li>
+<li>Trình duyệt web</li>
+<li>Không cần cài đặt gì thêm</li>
+</ul>
+<hr>
+<h2 id="buoc-1-tao-s3-bucket"><strong>BƯỚC 1: TẠO S3 BUCKET</strong><a class="headerlink" href="#buoc-1-tao-s3-bucket" title="Permanent link">¶</a></h2>
+<ol>
+<li>Đăng nhập AWS Console → tìm <strong>S3</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/d07e725d-1659-4ed6-9c03-b418a1139d66" data-desc-position="bottom"><img width="1355" height="648" alt="image" src="https://github.com/user-attachments/assets/d07e725d-1659-4ed6-9c03-b418a1139d66"></a></li>
+<li>
+<p><strong>Region</strong>: Chọn  <code>us-east-1</code>  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/aea8a995-d364-40fc-8260-ff3c779b1795" data-desc-position="bottom"><img width="621" height="616" alt="image" src="https://github.com/user-attachments/assets/aea8a995-d364-40fc-8260-ff3c779b1795"></a></p>
+</li>
+<li>
+<p>Click <strong>"Create bucket"</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/6235e6fc-57b8-4aae-8326-b8078bfd5db0" data-desc-position="bottom"><img width="1363" height="664" alt="image" src="https://github.com/user-attachments/assets/6235e6fc-57b8-4aae-8326-b8078bfd5db0"></a></p>
+</li>
+<li>
+<p><strong>Bucket name</strong>: <code>lelong-security-demo-20251119</code> (thay <code>lelong</code> bằng tên bạn) <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/9fc3718e-da03-4576-9ac8-e7e452084af1" data-desc-position="bottom"><img width="1352" height="615" alt="image" src="https://github.com/user-attachments/assets/9fc3718e-da03-4576-9ac8-e7e452084af1"></a></p>
+</li>
+<li>
+<p>Giữ nguyên các setting khác → <strong>Create bucket</strong> </p>
+</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/8d45b10f-afab-41f0-a0b8-356ec74e16b7" data-desc-position="bottom"><img width="1362" height="598" alt="image" src="https://github.com/user-attachments/assets/8d45b10f-afab-41f0-a0b8-356ec74e16b7"></a></p>
+<hr>
+<h2 id="buoc-2-tao-kms-key"><strong>BƯỚC 2: TẠO KMS KEY</strong><a class="headerlink" href="#buoc-2-tao-kms-key" title="Permanent link">¶</a></h2>
+<ol>
+<li>
+<p>Tìm service <strong>Key Management Service (KMS)</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/e3298b25-faf9-474a-b923-0c1be53b031f" data-desc-position="bottom"><img width="1353" height="642" alt="image" src="https://github.com/user-attachments/assets/e3298b25-faf9-474a-b923-0c1be53b031f"></a></p>
+</li>
+<li>
+<p>Click <strong>"Create key"</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/ec32a80d-45d9-453c-94e8-42aabbf2ea34" data-desc-position="bottom"><img width="1341" height="606" alt="image" src="https://github.com/user-attachments/assets/ec32a80d-45d9-453c-94e8-42aabbf2ea34"></a></p>
+</li>
+<li>
+<p><strong>Key type</strong>: <code>Symmetric</code> → <strong>Next</strong>  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/ced8d6b5-950f-46fe-91f8-b7c47e7d21cd" data-desc-position="bottom"><img width="1355" height="627" alt="image" src="https://github.com/user-attachments/assets/ced8d6b5-950f-46fe-91f8-b7c47e7d21cd"></a></p>
+</li>
+<li>
+<p><strong>Alias</strong>: <code>demo-encryption-key</code> → <strong>Next</strong> </p>
+</li>
+<li><strong>Key administrators</strong>: (sẽ cấu hình sau) → Next</li>
+<li><strong>Key users</strong>: (sẽ cấu hình sau) → Next</li>
+<li>
+<p><strong>Create key</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/7c1a3263-5042-42a7-a34d-46d9876e3526" data-desc-position="bottom"><img width="1352" height="564" alt="image" src="https://github.com/user-attachments/assets/7c1a3263-5042-42a7-a34d-46d9876e3526"></a></p>
+</li>
+<li>
+<p>Vào key vừa tạo, <strong>copy ARN</strong> (dạng: <code>arn:aws:kms:us-east-1:123456789:key/abc-def</code>) <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/2e3abd4e-a6fb-40a6-98f3-76c9a3bc571b" data-desc-position="bottom"><img width="1361" height="535" alt="image" src="https://github.com/user-attachments/assets/2e3abd4e-a6fb-40a6-98f3-76c9a3bc571b"></a></p>
+</li>
+</ol>
+<hr>
+<h2 id="buoc-3-tao-iam-users"><strong>BƯỚC 3: TẠO IAM USERS</strong><a class="headerlink" href="#buoc-3-tao-iam-users" title="Permanent link">¶</a></h2>
+<h3 id="tao-user-admin">Tạo User Admin:<a class="headerlink" href="#tao-user-admin" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p>Tìm service <strong>IAM</strong> → <strong>Users</strong> → <strong>Create user</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/b39e6a22-9f0a-4763-94a6-a0c140856bdc" data-desc-position="bottom"><img width="1392" height="620" alt="image" src="https://github.com/user-attachments/assets/b39e6a22-9f0a-4763-94a6-a0c140856bdc"></a></p>
+</li>
+<li>
+<p><strong>Username</strong>: <code>demo-admin</code> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/7bc8a577-fe03-4d06-8713-cc472fbd3de5" data-desc-position="bottom"><img width="1353" height="565" alt="image" src="https://github.com/user-attachments/assets/7bc8a577-fe03-4d06-8713-cc472fbd3de5"></a></p>
+</li>
+<li>
+<p><strong>Next</strong> → <strong>Attach policies directly</strong>  </p>
+</li>
+<li>
+<p>Tìm và tick: <code>AmazonS3FullAccess</code> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/2215d5d3-3444-4413-b88f-343abfb7606e" data-desc-position="bottom"><img width="1342" height="540" alt="image" src="https://github.com/user-attachments/assets/2215d5d3-3444-4413-b88f-343abfb7606e"></a></p>
+</li>
+<li>
+<p><strong>Next</strong> → <strong>Create user</strong></p>
+</li>
+</ol>
+<h3 id="tao-user-readonly">Tạo User ReadOnly:<a class="headerlink" href="#tao-user-readonly" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Create user</strong> tiếp</li>
+<li><strong>Username</strong>: <code>demo-readonly</code>  </li>
+<li><strong>Next</strong> → <strong>Attach policies directly</strong></li>
+<li>Tìm và tick: <code>AmazonS3ReadOnlyAccess</code></li>
+<li><strong>Next</strong> → <strong>Create user</strong></li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/2bee7167-0bd4-4b9a-9cc3-5726de361307" data-desc-position="bottom"><img width="1366" height="593" alt="image" src="https://github.com/user-attachments/assets/2bee7167-0bd4-4b9a-9cc3-5726de361307"></a></p>
+<hr>
+<h2 id="buoc-4-tao-access-keys"><strong>BƯỚC 4: TẠO ACCESS KEYS</strong><a class="headerlink" href="#buoc-4-tao-access-keys" title="Permanent link">¶</a></h2>
+<h3 id="cho-demo-admin">Cho demo-admin:<a class="headerlink" href="#cho-demo-admin" title="Permanent link">¶</a></h3>
+<ol>
+<li>Click vào user <code>demo-admin</code> </li>
+<li>
+<p>Tab <strong>"Security credentials"</strong>  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/60a9eba3-0be2-4f10-908b-d96607b6620e" data-desc-position="bottom"><img width="1352" height="627" alt="image" src="https://github.com/user-attachments/assets/60a9eba3-0be2-4f10-908b-d96607b6620e"></a></p>
+</li>
+<li>
+<p><strong>Create access key</strong> → chọn <strong>"Command Line Interface"</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/13d66d01-246f-468f-a736-73298b12b7cf" data-desc-position="bottom"><img width="1352" height="627" alt="image" src="https://github.com/user-attachments/assets/13d66d01-246f-468f-a736-73298b12b7cf"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/f041a029-cb93-45fe-97af-44d427b04788" data-desc-position="bottom"><img width="1070" height="501" alt="image" src="https://github.com/user-attachments/assets/f041a029-cb93-45fe-97af-44d427b04788"></a></p>
+</li>
+<li>
+<p>Tick xác nhận → <strong>Next</strong> → <strong>Create access key</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/913b2a1e-538a-42c1-9216-751948662b52" data-desc-position="bottom"><img width="1342" height="615" alt="image" src="https://github.com/user-attachments/assets/913b2a1e-538a-42c1-9216-751948662b52"></a></p>
+</li>
+<li>
+<p><strong>Lưu LẠI</strong> Access Key ID và Secret Key <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/c6989471-1c8a-4f97-baee-ec8fe591277d" data-desc-position="bottom"><img width="1353" height="541" alt="image" src="https://github.com/user-attachments/assets/c6989471-1c8a-4f97-baee-ec8fe591277d"></a></p>
+</li>
+</ol>
+<h3 id="cho-demo-readonly">Cho demo-readonly:<a class="headerlink" href="#cho-demo-readonly" title="Permanent link">¶</a></h3>
+<ul>
+<li>Làm tương tự cho user <code>demo-readonly</code></li>
+</ul>
+<h2 id="sua-kms-key-policy-khuyen-dung">Sửa KMS Key Policy (KHUYÊN DÙNG)<a class="headerlink" href="#sua-kms-key-policy-khuyen-dung" title="Permanent link">¶</a></h2>
+<ol>
+<li>Vào <strong>KMS Console</strong> → <strong>Customer managed keys</strong></li>
+<li>Click vào key <code>demo-encryption-key</code></li>
+<li>
+<p>Tab <strong>Key policy</strong> → Click <strong>Edit</strong> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/53a6c620-e689-4327-a2b8-5b897b2b30a9" data-desc-position="bottom"><img width="1313" height="479" alt="image" src="https://github.com/user-attachments/assets/53a6c620-e689-4327-a2b8-5b897b2b30a9"></a></p>
+</li>
+<li>
+<p>Tìm phần có <code>"Sid": "Allow use of the key"</code> (nếu chưa có thì thêm vào)</p>
+</li>
+<li>Sửa thành như sau (thay <code>026090510378</code> bằng Account ID của bạn):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">"Id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"key-consolepolicy-3"</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enable IAM User Permissions"</span><span class="p">,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::026090510378:root"</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kms:*"</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow use of the key for demo-admin"</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">                </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::026090510378:user/demo-admin"</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">                </span><span class="s2">"kms:Decrypt"</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">                </span><span class="s2">"kms:GenerateDataKey"</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">                </span><span class="s2">"kms:DescribeKey"</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">            </span><span class="p">],</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">            </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow use of the key for demo-readonly"</span><span class="p">,</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">            </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">            </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">                </span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::026090510378:user/demo-readonly"</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">            </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">                </span><span class="s2">"kms:Decrypt"</span><span class="p">,</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">                </span><span class="s2">"kms:DescribeKey"</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">            </span><span class="p">],</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">            </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="p">}</span>
+</code></pre></div>
+<ol>
+<li><strong>Save changes</strong></li>
+</ol>
+<hr>
+<h2 id="buoc-5-test-bang-aws-cloudshell"><strong>BƯỚC 5: TEST BẰNG AWS CLOUDSHELL</strong><a class="headerlink" href="#buoc-5-test-bang-aws-cloudshell" title="Permanent link">¶</a></h2>
+<p>AWS CloudShell là terminal online, không cần cài đặt gì!</p>
+<ol>
+<li>
+<p>Ở góc trên cùng AWS Console, click icon <strong>CloudShell</strong> (hình terminal) <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/e1bbbd51-445b-45bc-8f8f-38d8634a396b" data-desc-position="bottom"><img width="1146" height="171" alt="image" src="https://github.com/user-attachments/assets/e1bbbd51-445b-45bc-8f8f-38d8634a396b"></a></p>
+</li>
+<li>
+<p>Đợi 0.5 phút để CloudShell khởi động , thêm 1 tab để demo 2 user cùng lúc <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/3994cd96-68e4-438a-9e5d-d23006fb3471" data-desc-position="bottom"><img width="1356" height="629" alt="image" src="https://github.com/user-attachments/assets/3994cd96-68e4-438a-9e5d-d23006fb3471"></a></p>
+</li>
+</ol>
+<h3 id="config-profile-cho-demo-admin">Config profile cho demo-admin:<a class="headerlink" href="#config-profile-cho-demo-admin" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span>YOUR_ADMIN_ACCESS_KEY<span class="w"> </span>--profile<span class="w"> </span>admin
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span>YOUR_ADMIN_SECRET_KEY<span class="w"> </span>--profile<span class="w"> </span>admin<span class="w">  </span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span>us-east-1<span class="w"> </span>--profile<span class="w"> </span>admin
+</code></pre></div>
+<h3 id="config-profile-cho-demo-readonly">Config profile cho demo-readonly:<a class="headerlink" href="#config-profile-cho-demo-readonly" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span>YOUR_READONLY_ACCESS_KEY<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span>YOUR_READONLY_SECRET_KEY<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span>us-east-1<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+</code></pre></div>
+<h3 id="chay-kiem-tra-u-user-chua">chạy kiểm tra đủ user chưa<a class="headerlink" href="#chay-kiem-tra-u-user-chua" title="Permanent link">¶</a></h3>
+<p><code>aws configure list-profiles</code></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/c8a01c79-0348-4504-b88d-371df1352d83" data-desc-position="bottom"><img width="854" height="120" alt="image" src="https://github.com/user-attachments/assets/c8a01c79-0348-4504-b88d-371df1352d83"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/83274383-edf5-4f39-925a-75abdcbff03a" data-desc-position="bottom"><img width="1087" height="320" alt="image" src="https://github.com/user-attachments/assets/83274383-edf5-4f39-925a-75abdcbff03a"></a></p>
+<hr>
+<h2 id="buoc-6-demo-quyen-admin"><strong>BƯỚC 6: DEMO QUYỀN ADMIN</strong><a class="headerlink" href="#buoc-6-demo-quyen-admin" title="Permanent link">¶</a></h2>
+<h3 id="tao-file-test">Tạo file test:<a class="headerlink" href="#tao-file-test" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Long muốn có việc"</span><span class="w"> </span>&gt;<span class="w"> </span>secret-file.txt
+</code></pre></div>
+<h3 id="upload-file-khong-ma-hoa">Upload file KHÔNG mã hóa:<a class="headerlink" href="#upload-file-khong-ma-hoa" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>secret-file.txt<span class="w"> </span>s3://lelong-security-demo-20251119/normal-file.txt<span class="w"> </span>--profile<span class="w"> </span>admin
+</code></pre></div>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/9cb77c29-c785-4d65-b964-6fcf94e17f57" data-desc-position="bottom"><img width="834" height="241" alt="image" src="https://github.com/user-attachments/assets/9cb77c29-c785-4d65-b964-6fcf94e17f57"></a><p></p>
+<h3 id="upload-file-co-ma-hoa-kms">Upload file CÓ mã hóa KMS:<a class="headerlink" href="#upload-file-co-ma-hoa-kms" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>secret-file.txt<span class="w"> </span>s3://lelong-security-demo-20251119/encrypted-file.txt<span class="w"> </span>--profile<span class="w"> </span>admin<span class="w"> </span>--sse<span class="w"> </span>aws:kms<span class="w"> </span>--sse-kms-key-id<span class="w"> </span>alias/demo-encryption-key
+</code></pre></div>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/c41ae7c9-b192-47f0-9a8c-5b9383df57bb" data-desc-position="bottom"><img width="1218" height="219" alt="image" src="https://github.com/user-attachments/assets/c41ae7c9-b192-47f0-9a8c-5b9383df57bb"></a><p></p>
+<h3 id="xem-ket-qua">Xem kết quả:<a class="headerlink" href="#xem-ket-qua" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://lelong-security-demo-20251119/<span class="w"> </span>--profile<span class="w"> </span>admin
+</code></pre></div>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/18a46279-4aee-4e80-aea3-9e8633003ea5" data-desc-position="bottom"><img width="1092" height="95" alt="image" src="https://github.com/user-attachments/assets/18a46279-4aee-4e80-aea3-9e8633003ea5"></a><p></p>
+<hr>
+<h2 id="buoc-7-kiem-tra-ma-hoa-tren-s3-console"><strong>BƯỚC 7: KIỂM TRA MÃ HÓA TRÊN S3 CONSOLE</strong><a class="headerlink" href="#buoc-7-kiem-tra-ma-hoa-tren-s3-console" title="Permanent link">¶</a></h2>
+<ol>
+<li>Quay lại S3 Console → vào bucket của bạn </li>
+<li>Click vào file <code>encrypted-file.txt</code> <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/9860ee35-77f0-4c6a-99db-cbf1b7d9dd1f" data-desc-position="bottom"><img width="1358" height="581" alt="image" src="https://github.com/user-attachments/assets/9860ee35-77f0-4c6a-99db-cbf1b7d9dd1f"></a></li>
+<li>Xem tab <strong>"Properties"</strong> </li>
+<li>Kéo xuống phần <strong>"Server-side encryption"</strong></li>
+<li>Sẽ thấy: <code>AWS-KMS</code> và key <code>demo-encryption-key</code></li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/6d95aedd-3b7f-406a-b984-c099739e41b6" data-desc-position="bottom"><img width="1366" height="609" alt="image" src="https://github.com/user-attachments/assets/6d95aedd-3b7f-406a-b984-c099739e41b6"></a> 
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/a12cf7bf-b3e7-4bd4-ba8f-f7a34f656761" data-desc-position="bottom"><img width="1364" height="552" alt="image" src="https://github.com/user-attachments/assets/a12cf7bf-b3e7-4bd4-ba8f-f7a34f656761"></a></p>
+<hr>
+<h2 id="buoc-8-demo-quyen-readonly"><strong>BƯỚC 8: DEMO QUYỀN READONLY</strong><a class="headerlink" href="#buoc-8-demo-quyen-readonly" title="Permanent link">¶</a></h2>
+<p>Quay lại CloudShell:</p>
+<h3 id="thu-upload-se-that-bai">Thử upload (sẽ THẤT BẠI):<a class="headerlink" href="#thu-upload-se-that-bai" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Readonly khong duoc upload"</span><span class="w"> </span>&gt;<span class="w"> </span>test.txt
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>test.txt<span class="w"> </span>s3://lelong-security-demo-20251119/test.txt<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+</code></pre></div>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/4012d2e7-ed78-4780-8655-0f4581858392" data-desc-position="bottom"><img width="977" height="111" alt="image" src="https://github.com/user-attachments/assets/4012d2e7-ed78-4780-8655-0f4581858392"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/118b6722-3764-470c-9185-84c12bbfefe2" data-desc-position="bottom"><img width="1322" height="105" alt="image" src="https://github.com/user-attachments/assets/118b6722-3764-470c-9185-84c12bbfefe2"></a><p></p>
+<p><strong>Kết quả</strong>: <code>AccessDenied</code> error</p>
+<h3 id="thu-download-se-thanh-cong">Thử download (sẽ THÀNH CÔNG):<a class="headerlink" href="#thu-download-se-thanh-cong" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://lelong-security-demo-20251119/normal-file.txt<span class="w"> </span>downloaded-normal.txt<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://lelong-security-demo-20251119/encrypted-file.txt<span class="w"> </span>downloaded-encrypted.txt<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+</code></pre></div>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/fcb62f5f-3812-4af1-bede-160014cf3c6b" data-desc-position="bottom"><img width="854" height="145" alt="image" src="https://github.com/user-attachments/assets/fcb62f5f-3812-4af1-bede-160014cf3c6b"></a>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/5416fd20-e927-4663-b4ef-a70b0b45dbbc" data-desc-position="bottom"><img width="849" height="93" alt="image" src="https://github.com/user-attachments/assets/5416fd20-e927-4663-b4ef-a70b0b45dbbc"></a><p></p>
+<h3 id="thu-xoa-se-that-bai">Thử xóa (sẽ THẤT BẠI):<a class="headerlink" href="#thu-xoa-se-that-bai" title="Permanent link">¶</a></h3>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://lelong-security-demo-20251119/normal-file.txt<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+</code></pre></div>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/420c201a-e6fb-49f5-b9f6-cf6b4f3acb05" data-desc-position="bottom"><img width="1360" height="154" alt="image" src="https://github.com/user-attachments/assets/420c201a-e6fb-49f5-b9f6-cf6b4f3acb05"></a><p></p>
+<p><strong>Kết quả</strong>: <code>AccessDenied</code> error</p>
+<h3 id="xem-noi-dung-file-a-download">Xem nội dung file đã download:<a class="headerlink" href="#xem-noi-dung-file-a-download" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>cat<span class="w"> </span>downloaded-normal.txt
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>cat<span class="w"> </span>downloaded-encrypted.txt<span class="w">  </span>
+</code></pre></div>
+<blockquote>
+<p>Nội dung file sau khi download và decrypt thành công
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/82881143-a3b5-49b9-b98e-be34ba787675" data-desc-position="bottom"><img width="337" height="76" alt="image" src="https://github.com/user-attachments/assets/82881143-a3b5-49b9-b98e-be34ba787675"></a></p>
+</blockquote>
+<hr>
+<h2 id="buoc-9-so-sanh-file-goc-va-file-giai-ma"><strong>BƯỚC 9: SO SÁNH FILE GỐC VÀ FILE GIẢI MÃ</strong><a class="headerlink" href="#buoc-9-so-sanh-file-goc-va-file-giai-ma" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== File gốc ==="</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>cat<span class="w"> </span>secret-file.txt
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== File download không mã hóa ==="</span><span class="w">  </span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>cat<span class="w"> </span>downloaded-normal.txt
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== File download có mã hóa (đã tự động giải mã) ==="</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>cat<span class="w"> </span>downloaded-encrypted.txt
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"=== So sánh MD5 hash ==="</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>md5sum<span class="w"> </span>secret-file.txt<span class="w"> </span>downloaded-encrypted.txt
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://github.com/user-attachments/assets/cbde1fef-2bff-4c63-8f57-3a97881ea0bc" data-desc-position="bottom"><img width="593" height="340" alt="image" src="https://github.com/user-attachments/assets/cbde1fef-2bff-4c63-8f57-3a97881ea0bc"></a></p>
+<hr>
+<h2 id="ket-qua-demo"><strong>KẾT QUẢ DEMO</strong><a class="headerlink" href="#ket-qua-demo" title="Permanent link">¶</a></h2>
+<p>Bài lab này đã chứng minh:
+✅ <strong>Phân quyền hoạt động</strong>: Admin làm được mọi thứ, ReadOnly bị chặn upload/delete<br>
+✅ <strong>Mã hóa tự động</strong>: File được mã hóa và giải mã trong suốt<br>
+✅ <strong>Tính toàn vẹn</strong>: Hash của file gốc = hash của file giải mã<br>
+✅ <strong>Bảo mật</strong>: Chỉ user có quyền mới truy cập được KMS key  </p>
+<h2 id="don-dep"><strong>DỌN DẸP</strong><a class="headerlink" href="#don-dep" title="Permanent link">¶</a></h2>
+<ol>
+<li>S3: Empty bucket → Delete bucket</li>
+<li>IAM: Delete 2 users  </li>
+<li>KMS: Schedule key deletion (7 ngày)</li>
+</ol>
+<hr>
+<h1 id="phan-giai-thich-ly-thuyet-an-toan-thong-tin"><strong>PHẦN GIẢI THÍCH LÝ THUYẾT AN TOÀN THÔNG TIN</strong><a class="headerlink" href="#phan-giai-thich-ly-thuyet-an-toan-thong-tin" title="Permanent link">¶</a></h1>
+<hr>
+<h2 id="1-chung-thuc-authentication-chung-minh-ban-la-ai"><strong>1. CHỨNG THỰC (Authentication) - "Chứng minh bạn là ai"</strong><a class="headerlink" href="#1-chung-thuc-authentication-chung-minh-ban-la-ai" title="Permanent link">¶</a></h2>
+<h3 id="vi-du-oi-thuong">🏠 <strong>Ví dụ đời thường:</strong><a class="headerlink" href="#vi-du-oi-thuong" title="Permanent link">¶</a></h3>
+<ul>
+<li>Giống như khi bạn vào cổng trường, bạn phải đưa <strong>thẻ sinh viên</strong> để bảo vệ biết bạn là ai.</li>
+<li><strong>Thẻ sinh viên = Giấy chứng minh bạn là sinh viên thật</strong>, không phải người lạ.</li>
+</ul>
+<h3 id="trong-bai-lab">💻 <strong>Trong bài lab:</strong><a class="headerlink" href="#trong-bai-lab" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Access Key ID</strong> = Tên đăng nhập (công khai, như MSSV)</li>
+<li><strong>Secret Access Key</strong> = Mật khẩu (bí mật, như chữ ký của bạn)</li>
+</ul>
+<h3 id="cach-hoat-ong">🔍 <strong>Cách hoạt động:</strong><a class="headerlink" href="#cach-hoat-ong" title="Permanent link">¶</a></h3>
+<p>Khi bạn chạy lệnh:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>secret-file.txt<span class="w"> </span>s3://bucket/<span class="w"> </span>--profile<span class="w"> </span>admin
+</code></pre></div><p></p>
+<p><strong>Điều gì xảy ra?</strong>
+1. AWS CLI lấy <strong>Secret Access Key</strong> của bạn
+2. Tạo một <strong>chữ ký điện tử</strong> cho câu lệnh này (dùng thuật toán HMAC-SHA256)
+3. Gửi kèm chữ ký lên server AWS
+4. AWS kiểm tra: "Chữ ký này có khớp với Access Key ID không?"
+5. ✅ Nếu đúng → "OK, bạn là demo-admin thật"
+6. ❌ Nếu sai → Lỗi <code>InvalidAccessKeyId</code> </p>
+<h3 id="bang-chung-trong-lab">📸 <strong>Bằng chứng trong lab:</strong><a class="headerlink" href="#bang-chung-trong-lab" title="Permanent link">¶</a></h3>
+<ul>
+<li>Khi bạn dùng sai Access Key → Lỗi ngay lập tức</li>
+<li>Khi đúng → Lệnh chạy thành công</li>
+</ul>
+<hr>
+<h2 id="2-phan-quyen-authorization-ban-uoc-phep-lam-gi"><strong>2. PHÂN QUYỀN (Authorization) - "Bạn được phép làm gì"</strong><a class="headerlink" href="#2-phan-quyen-authorization-ban-uoc-phep-lam-gi" title="Permanent link">¶</a></h2>
+<h3 id="vi-du-oi-thuong_1">🏠 <strong>Ví dụ đời thường:</strong><a class="headerlink" href="#vi-du-oi-thuong_1" title="Permanent link">¶</a></h3>
+<p>Sau khi vào trường, <strong>thẻ sinh viên</strong> quyết định bạn vào được đâu:
+- <strong>Sinh viên thường</strong>: Vào thư viện, lớp học (chỉ đọc sách, nghe giảng)
+- <strong>Giáo viên</strong>: Vào phòng máy chủ, sửa điểm (làm được nhiều hơn)
+- <strong>Bảo vệ</strong>: Không cho vào khu vực cấm</p>
+<h3 id="trong-bai-lab_1">💻 <strong>Trong bài lab:</strong><a class="headerlink" href="#trong-bai-lab_1" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>User</th>
+<th>Policy gắn</th>
+<th>Quyền thực tế</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>demo-admin</strong></td>
+<td><code>S3FullAccess</code></td>
+<td>Upload ✅ / Download ✅ / Delete ✅</td>
+</tr>
+<tr>
+<td><strong>demo-readonly</strong></td>
+<td><code>S3ReadOnlyAccess</code></td>
+<td>Upload ❌ / Download ✅ / Delete ❌</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cach-hoat-ong_1">🔍 <strong>Cách hoạt động:</strong><a class="headerlink" href="#cach-hoat-ong_1" title="Permanent link">¶</a></h3>
+<p><strong>Khi demo-readonly thử upload:</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>test.txt<span class="w"> </span>s3://bucket/<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span>
+</code></pre></div><p></p>
+<p><strong>Điều gì xảy ra?</strong>
+1. AWS đã chứng thực: "OK, bạn là demo-readonly" ✅
+2. AWS kiểm tra policy: "Hmm, demo-readonly có quyền <code>s3:PutObject</code> không?"
+3. Tra trong policy <code>S3ReadOnlyAccess</code> → <strong>KHÔNG CÓ</strong>
+4. ❌ Trả về lỗi: <code>AccessDenied</code></p>
+<p><strong>Khi demo-readonly thử download:</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://bucket/file.txt<span class="w"> </span>local.txt<span class="w"> </span>--profile<span class="w"> </span><span class="nb">readonly</span><span class="w">  </span>
+</code></pre></div><p></p>
+<ol>
+<li>AWS chứng thực: "OK, bạn là demo-readonly" ✅</li>
+<li>Kiểm tra policy: "demo-readonly có quyền <code>s3:GetObject</code> không?"</li>
+<li>Tra trong policy → <strong>CÓ</strong> ✅</li>
+<li>✅ Download thành công!</li>
+</ol>
+<h3 id="nguyen-tac-quan-trong">📊 <strong>Nguyên tắc quan trọng:</strong><a class="headerlink" href="#nguyen-tac-quan-trong" title="Permanent link">¶</a></h3>
+<p><strong>Principle of Least Privilege</strong> (Đặc quyền tối thiểu):
+- Chỉ cấp đúng quyền cần thiết, không cho thừa
+- Giống như: Nhân viên bán hàng không cần quyền truy cập két sắt</p>
+<hr>
+<h2 id="3-ma-hoa-oi-xung-symmetric-encryption-khoa-bi-mat-chung"><strong>3. MÃ HÓA ĐỐI XỨNG (Symmetric Encryption) - "Khóa bí mật chung"</strong><a class="headerlink" href="#3-ma-hoa-oi-xung-symmetric-encryption-khoa-bi-mat-chung" title="Permanent link">¶</a></h2>
+<h3 id="vi-du-oi-thuong_2">🏠 <strong>Ví dụ đời thường:</strong><a class="headerlink" href="#vi-du-oi-thuong_2" title="Permanent link">¶</a></h3>
+<p>Bạn và bạn thân có chung một <strong>chiếc chìa khóa</strong> để mở cùng một cái két:
+- Bạn dùng chìa khóa này <strong>KHÓA két</strong> → Bỏ tiền vào
+- Bạn thân dùng chìa khóa này <strong>MỞ két</strong> → Lấy tiền ra
+- <strong>Cùng 1 chìa khóa</strong> để khóa và mở</p>
+<h3 id="trong-bai-lab_2">💻 <strong>Trong bài lab:</strong><a class="headerlink" href="#trong-bai-lab_2" title="Permanent link">¶</a></h3>
+<p>Khi bạn upload file với KMS:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>secret-file.txt<span class="w"> </span>s3://bucket/encrypted-file.txt<span class="w"> </span>--sse<span class="w"> </span>aws:kms
+</code></pre></div><p></p>
+<p><strong>Điều gì xảy ra? (Envelope Encryption)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>│  1. File gốc: "Day la file bi mat"     │
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>              ↓
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>│  2. AWS KMS tạo Data Key (256 bit)     │
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>│     Ví dụ: "X7k9mP2nQ8..."             │
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>              ↓
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>│  3. Dùng Data Key mã hóa file          │
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>│     Thuật toán: AES-256                 │
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>│     Kết quả: "A8x@#mKp9L..."          │
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>│     (File đã mã hóa)                    │
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>              ↓
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>│  4. Dùng KMS Master Key mã hóa Data Key│
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>│     Data Key mã hóa: "9Lp#x@A8..."     │
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>              ↓
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>│  5. Lưu lên S3:                         │
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>│     - File đã mã hóa                    │
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>│     - Data Key đã mã hóa (kèm theo)    │
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>└─────────────────────────────────────────┘
+</code></pre></div>
+<p><strong>Khi download về:</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>│  1. Download file mã hóa + Data Key     │
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>              ↓
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>│  2. Gửi Data Key đã mã hóa cho KMS      │
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>│     Yêu cầu: "Giải mã Data Key giùm tôi"│
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>              ↓
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>│  3. KMS kiểm tra quyền:                 │
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>│     "User này có quyền kms:Decrypt?"    │
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>│     ✅ demo-admin: CÓ                   │
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>│     ✅ demo-readonly: CÓ (đã cấp)       │
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>              ↓
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>│  4. KMS trả về Data Key đã giải mã      │
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>└─────────────────────────────────────────┘
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>              ↓
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>┌─────────────────────────────────────────┐
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>│  5. Dùng Data Key giải mã file          │
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>│     Kết quả: "Day la file bi mat"      │
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>└─────────────────────────────────────────┘
+</code></pre></div><p></p>
+<h3 id="tai-sao-dung-2-lop-ma-hoa">🔑 <strong>Tại sao dùng 2 lớp mã hóa?</strong><a class="headerlink" href="#tai-sao-dung-2-lop-ma-hoa" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Mã hóa file trực tiếp bằng Master Key</strong> → Chậm, nguy hiểm</li>
+<li><strong>Mã hóa bằng Data Key → Nhanh</strong></li>
+<li><strong>Data Key được bảo vệ bởi Master Key</strong> → An toàn</li>
+</ul>
+<h3 id="thuat-toan-aes-256">📊 <strong>Thuật toán AES-256:</strong><a class="headerlink" href="#thuat-toan-aes-256" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>AES</strong> = Advanced Encryption Standard</li>
+<li><strong>256</strong> = Độ dài khóa 256 bit</li>
+<li>Được chính phủ Mỹ dùng để mã hóa tài liệu mật</li>
+<li>Nếu dùng siêu máy tính thử hết tổ hợp → Mất <strong>hàng tỷ năm</strong> mới bẻ khóa được</li>
+</ul>
+<hr>
+<h2 id="4-ham-bam-hash-functions-dau-van-tay-so"><strong>4. HÀM BĂM (Hash Functions) - "Dấu vân tay số"</strong><a class="headerlink" href="#4-ham-bam-hash-functions-dau-van-tay-so" title="Permanent link">¶</a></h2>
+<h3 id="vi-du-oi-thuong_3">🏠 <strong>Ví dụ đời thường:</strong><a class="headerlink" href="#vi-du-oi-thuong_3" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Vân tay</strong> của mỗi người là duy nhất</li>
+<li>Nếu có 2 người có cùng vân tay → Họ là cùng 1 người</li>
+<li>Nếu vân tay khác → Chắc chắn là người khác</li>
+</ul>
+<h3 id="trong-bai-lab_3">💻 <strong>Trong bài lab:</strong><a class="headerlink" href="#trong-bai-lab_3" title="Permanent link">¶</a></h3>
+<p>Khi upload file lên S3, AWS tự động tính <strong>MD5 hash</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># File gốc</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Day la file bi mat"</span><span class="w"> </span>&gt;<span class="w"> </span>file.txt
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Tính hash</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>md5sum<span class="w"> </span>file.txt
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># Kết quả: a1b2c3d4e5f6...  file.txt</span>
+</code></pre></div>
+<p><strong>Đặc điểm của Hash:</strong>
+1. <strong>Một chiều</strong>: Không thể từ hash tìm ngược lại nội dung
+2. <strong>Deterministic</strong>: Cùng file → Cùng hash
+3. <strong>Nhạy cảm</strong>: Thay đổi 1 ký tự → Hash hoàn toàn khác</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>File A: "Hello"     → Hash: 8b1a9953c4611296a827abf8c47804d7
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>File B: "Hello"     → Hash: 8b1a9953c4611296a827abf8c47804d7  ✅ Giống nhau
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>File C: "Hellp"     → Hash: 5d41402abc4b2a76b9719d911017c592  ❌ Khác hoàn toàn
+</code></pre></div>
+<h3 id="trong-bai-lab_4">🔍 <strong>Trong bài lab:</strong><a class="headerlink" href="#trong-bai-lab_4" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># So sánh hash</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>md5sum<span class="w"> </span>secret-file.txt
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># Output: a1b2c3d4...  secret-file.txt</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>md5sum<span class="w"> </span>downloaded-encrypted.txt<span class="w">  </span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="c1"># Output: a1b2c3d4...  downloaded-encrypted.txt</span>
+</code></pre></div>
+<p><strong>Hash giống nhau</strong> → Chứng minh:
+- File không bị thay đổi trong quá trình truyền
+- File được giải mã chính xác 100%
+- <strong>Tính toàn vẹn (Integrity)</strong> được đảm bảo</p>
+<h3 id="etag-tren-s3">📊 <strong>ETag trên S3:</strong><a class="headerlink" href="#etag-tren-s3" title="Permanent link">¶</a></h3>
+<p>Khi bạn xem Properties của file trên S3 Console, sẽ thấy <strong>ETag</strong>:
+- ETag = MD5 hash của file
+- S3 dùng nó để check xem file có bị hỏng trong quá trình upload không</p>
+<hr>
+<h2 id="5-chu-ky-so-digital-signature-chu-ky-khong-the-gia-mao"><strong>5. CHỮ KÝ SỐ (Digital Signature) - "Chữ ký không thể giả mạo"</strong><a class="headerlink" href="#5-chu-ky-so-digital-signature-chu-ky-khong-the-gia-mao" title="Permanent link">¶</a></h2>
+<h3 id="vi-du-oi-thuong_4">🏠 <strong>Ví dụ đời thường:</strong><a class="headerlink" href="#vi-du-oi-thuong_4" title="Permanent link">¶</a></h3>
+<ul>
+<li>Bạn ký tên vào giấy hợp đồng</li>
+<li>Người ta xem chữ ký để biết: "Đây đúng là lelongc ký, không ai giả mạo"</li>
+</ul>
+<h3 id="trong-bai-lab-an-ben-duoi">💻 <strong>Trong bài lab (ẩn bên dưới):</strong><a class="headerlink" href="#trong-bai-lab-an-ben-duoi" title="Permanent link">¶</a></h3>
+<p>Mỗi khi bạn chạy AWS CLI, điều này xảy ra:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>┌────────────────────────────────────┐
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>│ Bạn: aws s3 cp file.txt s3://...  │
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>└────────────────────────────────────┘
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>           ↓
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>┌────────────────────────────────────┐
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>│ AWS CLI tạo request:               │
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>│ PUT /file.txt                      │
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>│ Host: s3.amazonaws.com             │
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>│ Date: 2025-11-19T09:17:54Z         │
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>└────────────────────────────────────┘
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>           ↓
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>┌────────────────────────────────────┐
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>│ Tính hash của request:             │
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>│ SHA256(request) = abc123def...     │
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>└────────────────────────────────────┘
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>           ↓
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>┌────────────────────────────────────┐
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>│ Dùng Secret Key "ký" hash này:    │
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>│ Signature = HMAC(hash, SecretKey)  │
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>│           = xyz789mnp...           │
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>└────────────────────────────────────┘
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>           ↓
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>┌────────────────────────────────────┐
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>│ Gửi lên AWS:                       │
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>│ - Request gốc                      │
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>│ - Access Key ID                    │
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>│ - Signature (chữ ký)               │
+<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>└────────────────────────────────────┘
+<a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a>           ↓
+<a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>┌────────────────────────────────────┐
+<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>│ AWS nhận được, kiểm tra:           │
+<a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a>│ 1. Lấy Secret Key từ Access Key ID│
+<a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a>│ 2. Tự tính signature của request  │
+<a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a>│ 3. So sánh với signature gửi lên  │
+<a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a>└────────────────────────────────────┘
+<a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a>           ↓
+<a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a>     ✅ Giống nhau → Cho phép
+<a id="__codelineno-21-38" name="__codelineno-21-38" href="#__codelineno-21-38"></a>     ❌ Khác nhau → AccessDenied
+</code></pre></div>
+<h3 id="bao-ve-gi">🔒 <strong>Bảo vệ gì?</strong><a class="headerlink" href="#bao-ve-gi" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Chứng thực</strong>: Đảm bảo request từ đúng người (có Secret Key)</li>
+<li><strong>Toàn vẹn</strong>: Request không bị sửa đổi trên đường đi</li>
+<li><strong>Chống giả mạo</strong>: Không ai có thể tạo chữ ký giả</li>
+</ol>
+<hr>
+<h2 id="6-ma-hoa-bat-oi-xung-asymmetric-encryption-khoa-cong-khai-khoa-rieng"><strong>6. MÃ HÓA BẤT ĐỐI XỨNG (Asymmetric Encryption) - "Khóa công khai, khóa riêng"</strong><a class="headerlink" href="#6-ma-hoa-bat-oi-xung-asymmetric-encryption-khoa-cong-khai-khoa-rieng" title="Permanent link">¶</a></h2>
+<h3 id="vi-du-oi-thuong_5">🏠 <strong>Ví dụ đời thường:</strong><a class="headerlink" href="#vi-du-oi-thuong_5" title="Permanent link">¶</a></h3>
+<p>Hòm thư tại nhà bạn:
+- <strong>Khóa công khai (Public Key)</strong>: Khe bỏ thư → <strong>AI CŨNG BỎ ĐƯỢC</strong>
+- <strong>Khóa riêng (Private Key)</strong>: Chìa khóa mở hòm thư → <strong>CHỈ BẠN CÓ</strong></p>
+<p>Ai cũng bỏ thư vào được, nhưng chỉ bạn mở và đọc được.</p>
+<h3 id="trong-bai-lab-httpstls">💻 <strong>Trong bài lab (HTTPS/TLS):</strong><a class="headerlink" href="#trong-bai-lab-httpstls" title="Permanent link">¶</a></h3>
+<p>Khi bạn chạy <code>aws s3 cp</code>, kết nối HTTPS được thiết lập:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>┌────────────────────────────────────┐
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>│ 1. Máy bạn → AWS:                 │
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>│    "Xin chào, tôi muốn kết nối"   │
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>└────────────────────────────────────┘
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>           ↓
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>┌────────────────────────────────────┐
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>│ 2. AWS → Máy bạn:                 │
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>│    "OK, đây là Public Key của tôi" │
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>│    [Gửi chứng chỉ SSL + Public Key]│
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>└────────────────────────────────────┘
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>           ↓
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>┌────────────────────────────────────┐
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>│ 3. Máy bạn:                        │
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>│    Tạo Session Key (khóa đối xứng) │
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>│    Ví dụ: "K789xyz..."             │
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>│    Mã hóa Session Key bằng         │
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>│    Public Key của AWS              │
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>└────────────────────────────────────┘
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>           ↓
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>┌────────────────────────────────────┐
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>│ 4. Máy bạn → AWS:                 │
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>│    Gửi Session Key đã mã hóa       │
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a>└────────────────────────────────────┘
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a>           ↓
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a>┌────────────────────────────────────┐
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a>│ 5. AWS:                            │
+<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a>│    Dùng Private Key giải mã        │
+<a id="__codelineno-22-28" name="__codelineno-22-28" href="#__codelineno-22-28"></a>│    → Lấy được Session Key          │
+<a id="__codelineno-22-29" name="__codelineno-22-29" href="#__codelineno-22-29"></a>└────────────────────────────────────┘
+<a id="__codelineno-22-30" name="__codelineno-22-30" href="#__codelineno-22-30"></a>           ↓
+<a id="__codelineno-22-31" name="__codelineno-22-31" href="#__codelineno-22-31"></a>┌────────────────────────────────────┐
+<a id="__codelineno-22-32" name="__codelineno-22-32" href="#__codelineno-22-32"></a>│ 6. Cả 2 bên giờ có chung Session  │
+<a id="__codelineno-22-33" name="__codelineno-22-33" href="#__codelineno-22-33"></a>│    Key → Dùng mã hóa đối xứng      │
+<a id="__codelineno-22-34" name="__codelineno-22-34" href="#__codelineno-22-34"></a>│    (nhanh hơn) cho phần còn lại    │
+<a id="__codelineno-22-35" name="__codelineno-22-35" href="#__codelineno-22-35"></a>└────────────────────────────────────┘
+</code></pre></div>
+<h3 id="tai-sao-khong-dung-ma-hoa-bat-oi-xung-cho-moi-thu">🔑 <strong>Tại sao không dùng mã hóa bất đối xứng cho mọi thứ?</strong><a class="headerlink" href="#tai-sao-khong-dung-ma-hoa-bat-oi-xung-cho-moi-thu" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Chậm hơn 1000 lần</strong> so với mã hóa đối xứng</li>
+<li>Chỉ dùng để <strong>trao đổi khóa an toàn</strong></li>
+<li>Sau đó chuyển sang đối xứng để <strong>truyền dữ liệu nhanh</strong></li>
+</ul>
+<hr>
+<h2 id="tong-ket-luong-bao-mat-hoan-chinh-trong-bai-lab"><strong>📊 TỔNG KẾT: LUỒNG BẢO MẬT HOÀN CHỈNH TRONG BÀI LAB</strong><a class="headerlink" href="#tong-ket-luong-bao-mat-hoan-chinh-trong-bai-lab" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>│                  BẠN CHẠY LỆNH UPLOAD                        │
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>│  aws s3 cp secret.txt s3://bucket/ --sse aws:kms             │
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>└──────────────────────────────────────────────────────────────┘
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>                          ↓
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>│  1. CHỨNG THỰC (Authentication)                              │
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>│     - AWS CLI ký request bằng Secret Key                     │
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>│     - AWS xác minh: "Bạn là demo-admin" ✅                   │
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>└──────────────────────────────────────────────────────────────┘
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>                          ↓
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>│  2. PHÂN QUYỀN (Authorization)                               │
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>│     - Kiểm tra policy: demo-admin có quyền PutObject? ✅     │
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>│     - Kiểm tra policy: demo-admin có quyền dùng KMS? ✅      │
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>└──────────────────────────────────────────────────────────────┘
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>                          ↓
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>│  3. MÃ HÓA BẤT ĐỐI XỨNG (TLS/HTTPS)                         │
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>│     - Thiết lập kết nối an toàn với S3                       │
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>│     - Trao đổi Session Key bằng RSA                          │
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>└──────────────────────────────────────────────────────────────┘
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>                          ↓
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>│  4. MÃ HÓA ĐỐI XỨNG (KMS)                                    │
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>│     - KMS tạo Data Key                                        │
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>│     - Mã hóa file bằng AES-256                               │
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>│     - Mã hóa Data Key bằng Master Key                        │
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>└──────────────────────────────────────────────────────────────┘
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>                          ↓
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>│  5. HÀM BĂM (Integrity Check)                                │
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>│     - S3 tính MD5 hash của file                              │
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>│     - Lưu hash vào ETag                                      │
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>│     - Dùng để verify khi download                            │
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>└──────────────────────────────────────────────────────────────┘
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>                          ↓
+<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>│               FILE ĐƯỢC LƯU AN TOÀN TRÊN S3                  │
+<a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>│  ✅ Chỉ người có quyền mới truy cập được                     │
+<a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>│  ✅ Dữ liệu được mã hóa, không ai đọc được                   │
+<a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a>│  ✅ Toàn vẹn được đảm bảo bởi hash                           │
+<a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>└──────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr>
+<h2 id="ket-luan"><strong>💡 KẾT LUẬN</strong><a class="headerlink" href="#ket-luan" title="Permanent link">¶</a></h2>
+<p>Bài lab tuy đơn giản nhưng đã minh họa <strong>5 trụ cột bảo mật</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Khái niệm</th>
+<th>Câu hỏi trả lời</th>
+<th>Công nghệ trong lab</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chứng thực</strong></td>
+<td>Bạn là ai?</td>
+<td>Access Key + Secret Key</td>
+</tr>
+<tr>
+<td><strong>Phân quyền</strong></td>
+<td>Bạn được làm gì?</td>
+<td>IAM Policies</td>
+</tr>
+<tr>
+<td><strong>Mã hóa đối xứng</strong></td>
+<td>Bảo vệ dữ liệu như thế nào?</td>
+<td>AES-256 + KMS</td>
+</tr>
+<tr>
+<td><strong>Hàm băm</strong></td>
+<td>Dữ liệu có bị sửa không?</td>
+<td>MD5/SHA256</td>
+</tr>
+<tr>
+<td><strong>Mã hóa bất đối xứng</strong></td>
+<td>Kết nối an toàn ra sao?</td>
+<td>RSA + TLS/HTTPS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="du-bai-lab-on-gian-mong-thay-cho-em-iem-cao-a">dù bài lab đơn giản mong thầy cho em điểm cao ạ 😁🤞<a class="headerlink" href="#du-bai-lab-on-gian-mong-thay-cho-em-iem-cao-a" title="Permanent link">¶</a></h2>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Cập nhật lần cuối">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 tháng 11, 2025 11:00:26 UTC">19 tháng 11, 2025</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Trở lại mục lục
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Chân trang">
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Trước: Index">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Trước
+              </span>
+              <div class="md-ellipsis">
+                Index
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../orther-note/readme/" class="md-footer__link md-footer__link--next" aria-label="Sau: Readme">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sau
+              </span>
+              <div class="md-ellipsis">
+                Readme
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © Lê Long C. 2025
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/lelongc" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/long-lê-190l/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.top", "navigation.sections", "navigation.search", "navigation.tabs", "navigation.tabs.sticky", "navigation.footer", "navigation.paths", "navigation.indexes", "navigation.indexes.sticky", "navigation.prune", "content.code.copy", "content.action.edit", "content.images.lazy", "toc.follow", "toc.expand"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
