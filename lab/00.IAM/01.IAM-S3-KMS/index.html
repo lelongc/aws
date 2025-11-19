@@ -910,10 +910,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sua-kms-key-policy-khuyen-dung" class="md-nav__link">
+  <a href="#sua-kms-key-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sửa KMS Key Policy (KHUYÊN DÙNG)
+        Sửa KMS Key Policy
       
     </span>
   </a>
@@ -1932,10 +1932,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sua-kms-key-policy-khuyen-dung" class="md-nav__link">
+  <a href="#sua-kms-key-policy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sửa KMS Key Policy (KHUYÊN DÙNG)
+        Sửa KMS Key Policy
       
     </span>
   </a>
@@ -2688,7 +2688,7 @@
 <ul>
 <li>Làm tương tự cho user <code>demo-readonly</code></li>
 </ul>
-<h2 id="sua-kms-key-policy-khuyen-dung">Sửa KMS Key Policy (KHUYÊN DÙNG)<a class="headerlink" href="#sua-kms-key-policy-khuyen-dung" title="Permanent link">¶</a></h2>
+<h2 id="sua-kms-key-policy">Sửa KMS Key Policy<a class="headerlink" href="#sua-kms-key-policy" title="Permanent link">¶</a></h2>
 <ol>
 <li>Vào <strong>KMS Console</strong> → <strong>Customer managed keys</strong></li>
 <li>Click vào key <code>demo-encryption-key</code></li>
@@ -2872,13 +2872,15 @@
 <p>Khi bạn chạy lệnh:
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>secret-file.txt<span class="w"> </span>s3://bucket/<span class="w"> </span>--profile<span class="w"> </span>admin
 </code></pre></div><p></p>
-<p><strong>Điều gì xảy ra?</strong>
-1. AWS CLI lấy <strong>Secret Access Key</strong> của bạn
-2. Tạo một <strong>chữ ký điện tử</strong> cho câu lệnh này (dùng thuật toán HMAC-SHA256)
-3. Gửi kèm chữ ký lên server AWS
-4. AWS kiểm tra: "Chữ ký này có khớp với Access Key ID không?"
-5. ✅ Nếu đúng → "OK, bạn là demo-admin thật"
-6. ❌ Nếu sai → Lỗi <code>InvalidAccessKeyId</code> </p>
+<p><strong>Điều gì xảy ra?</strong></p>
+<ol>
+<li>AWS CLI lấy <strong>Secret Access Key</strong> của bạn</li>
+<li>Tạo một <strong>chữ ký điện tử</strong> cho câu lệnh này (dùng thuật toán HMAC-SHA256)</li>
+<li>Gửi kèm chữ ký lên server AWS</li>
+<li>AWS kiểm tra: "Chữ ký này có khớp với Access Key ID không?"</li>
+<li>✅ Nếu đúng → "OK, bạn là demo-admin thật"</li>
+<li>❌ Nếu sai → Lỗi <code>InvalidAccessKeyId</code> </li>
+</ol>
 <h3 id="bang-chung-trong-lab">📸 <strong>Bằng chứng trong lab:</strong><a class="headerlink" href="#bang-chung-trong-lab" title="Permanent link">¶</a></h3>
 <ul>
 <li>Khi bạn dùng sai Access Key → Lỗi ngay lập tức</li>
@@ -3265,7 +3267,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 tháng 11, 2025 11:13:47 UTC">19 tháng 11, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 tháng 11, 2025 11:20:22 UTC">19 tháng 11, 2025</span>
   </span>
 
     
