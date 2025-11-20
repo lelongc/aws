@@ -1523,6 +1523,245 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="mong thầy cho em điểm cao ạ ಥ_ಥ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chung-ta-cung-lam-ro-lai-ve-tao-signature-hash-voi-mot-cach-giai-thich-on-gian-truc-quan-va-i-sau-vao-flow-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chúng ta cùng làm rõ lại về "TẠO SIGNATURE" &amp; "HASH" - với một cách giải thích đơn giản, trực quan và đi sâu vào FLOW thực tế.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-signature-am-bao-authentication-xac-thuc-va-tinh-toan-ven-lenh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SIGNATURE – ĐẢM BẢO AUTHENTICATION (XÁC THỰC) VÀ TÍNH TOÀN VẸN LỆNH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. SIGNATURE – ĐẢM BẢO AUTHENTICATION (XÁC THỰC) VÀ TÍNH TOÀN VẸN LỆNH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signature-giup-giai-quyet-cac-cau-hoi-sau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signature giúp giải quyết các câu hỏi sau:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-tao-signature-voi-vi-du-thuc-te-lenh-upload-nhu-bai-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quy trình tạo Signature với ví dụ thực tế (lệnh upload như bài lab):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-chuan-bi-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 1: CHUẨN BỊ REQUEST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 1: CHUẨN BỊ REQUEST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#goc-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gốc request:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-request-ban-se-gui-en-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ (Request bạn sẽ gửi đến S3):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-2-tao-canonical-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 2: TẠO "CANONICAL REQUEST"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 2: TẠO &quot;CANONICAL REQUEST&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-chuan-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách chuẩn hóa:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-canonical-body-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hash Canonical Body (file):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-3-tao-string-to-sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 3: TẠO "STRING TO SIGN"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-4-tinh-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 4: TÍNH SIGNATURE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-5-gui-request-voi-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 5: GỬI REQUEST VỚI SIGNATURE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-6-server-xac-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 6: SERVER XÁC THỰC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-am-bao-integrity-noi-dung-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HASH – ĐẢM BẢO INTEGRITY NỘI DUNG FILE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HASH – ĐẢM BẢO INTEGRITY NỘI DUNG FILE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#khi-upload-file-len-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khi upload file lên S3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khi-download-file-tu-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khi download file từ S3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-md5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ MD5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tong-ket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TỔNG KẾT:
+      
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -2545,6 +2784,245 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="mong thầy cho em điểm cao ạ ಥ_ಥ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chung-ta-cung-lam-ro-lai-ve-tao-signature-hash-voi-mot-cach-giai-thich-on-gian-truc-quan-va-i-sau-vao-flow-thuc-te" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chúng ta cùng làm rõ lại về "TẠO SIGNATURE" &amp; "HASH" - với một cách giải thích đơn giản, trực quan và đi sâu vào FLOW thực tế.
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-signature-am-bao-authentication-xac-thuc-va-tinh-toan-ven-lenh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SIGNATURE – ĐẢM BẢO AUTHENTICATION (XÁC THỰC) VÀ TÍNH TOÀN VẸN LỆNH
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. SIGNATURE – ĐẢM BẢO AUTHENTICATION (XÁC THỰC) VÀ TÍNH TOÀN VẸN LỆNH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#signature-giup-giai-quyet-cac-cau-hoi-sau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signature giúp giải quyết các câu hỏi sau:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quy-trinh-tao-signature-voi-vi-du-thuc-te-lenh-upload-nhu-bai-lab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quy trình tạo Signature với ví dụ thực tế (lệnh upload như bài lab):
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-1-chuan-bi-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 1: CHUẨN BỊ REQUEST
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 1: CHUẨN BỊ REQUEST">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#goc-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gốc request:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-request-ban-se-gui-en-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ (Request bạn sẽ gửi đến S3):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-2-tao-canonical-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 2: TẠO "CANONICAL REQUEST"
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BƯỚC 2: TẠO &quot;CANONICAL REQUEST&quot;">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cach-chuan-hoa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cách chuẩn hóa:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-canonical-body-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hash Canonical Body (file):
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-3-tao-string-to-sign" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 3: TẠO "STRING TO SIGN"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-4-tinh-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 4: TÍNH SIGNATURE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-5-gui-request-voi-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 5: GỬI REQUEST VỚI SIGNATURE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buoc-6-server-xac-thuc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BƯỚC 6: SERVER XÁC THỰC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hash-am-bao-integrity-noi-dung-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HASH – ĐẢM BẢO INTEGRITY NỘI DUNG FILE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HASH – ĐẢM BẢO INTEGRITY NỘI DUNG FILE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#khi-upload-file-len-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khi upload file lên S3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#khi-download-file-tu-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Khi download file từ S3:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi-du-md5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ví dụ MD5
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tong-ket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TỔNG KẾT:
+      
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -3246,6 +3724,128 @@
 </tbody>
 </table>
 <h2 id="mong-thay-cho-em-iem-cao-a-_">mong thầy cho em điểm cao ạ ಥ_ಥ<a class="headerlink" href="#mong-thay-cho-em-iem-cao-a-_" title="Permanent link">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Signature &amp; Hash – Giải thích chi tiết</p>
+<h3 id="chung-ta-cung-lam-ro-lai-ve-tao-signature-hash-voi-mot-cach-giai-thich-on-gian-truc-quan-va-i-sau-vao-flow-thuc-te"><strong>Chúng ta cùng làm rõ lại về "TẠO SIGNATURE" &amp; "HASH" - với một cách giải thích đơn giản, trực quan và đi sâu vào FLOW thực tế.</strong><a class="headerlink" href="#chung-ta-cung-lam-ro-lai-ve-tao-signature-hash-voi-mot-cach-giai-thich-on-gian-truc-quan-va-i-sau-vao-flow-thuc-te" title="Permanent link">¶</a></h3>
+<hr>
+<h1 id="1-signature-am-bao-authentication-xac-thuc-va-tinh-toan-ven-lenh"><strong>1. SIGNATURE – ĐẢM BẢO AUTHENTICATION (XÁC THỰC) VÀ TÍNH TOÀN VẸN LỆNH</strong><a class="headerlink" href="#1-signature-am-bao-authentication-xac-thuc-va-tinh-toan-ven-lenh" title="Permanent link">¶</a></h1>
+<h3 id="signature-giup-giai-quyet-cac-cau-hoi-sau"><strong>Signature giúp giải quyết các câu hỏi sau:</strong><a class="headerlink" href="#signature-giup-giai-quyet-cac-cau-hoi-sau" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>"AI gửi request này?" (Authenticate)</strong><br>
+    Đảm bảo user là người hợp lệ, có quyền gửi lệnh đến AWS.<br>
+    → AWS xác thực dựa trên Signature + Access Key ID.  </li>
+<li><strong>"Request này có bị thay đổi không?" (Integrity)</strong><br>
+    Nếu request bị chỉnh sửa (vd: thay URL, body), chữ ký (Signature) sẽ không hợp lệ.</li>
+</ul>
+<hr>
+<h3 id="quy-trinh-tao-signature-voi-vi-du-thuc-te-lenh-upload-nhu-bai-lab"><strong>Quy trình tạo Signature với ví dụ thực tế (lệnh upload như bài lab):</strong><a class="headerlink" href="#quy-trinh-tao-signature-voi-vi-du-thuc-te-lenh-upload-nhu-bai-lab" title="Permanent link">¶</a></h3>
+<p><strong>Lệnh:</strong><br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>secret-file.txt<span class="w"> </span>s3://bucket/encrypted-file.txt<span class="w"> </span>--profile<span class="w"> </span>admin
+</code></pre></div><p></p>
+<p>AWS sẽ thực hiện các bước sau:</p>
+<hr>
+<h3 id="buoc-1-chuan-bi-request"><strong>BƯỚC 1: CHUẨN BỊ REQUEST</strong><a class="headerlink" href="#buoc-1-chuan-bi-request" title="Permanent link">¶</a></h3>
+<h4 id="goc-request"><strong>Gốc request:</strong><a class="headerlink" href="#goc-request" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Method (HTTP):</strong> <code>PUT</code>  </li>
+<li><strong>Path:</strong> <code>/encrypted-file.txt</code>  </li>
+<li><strong>Headers:</strong> <code>Host</code>, <code>x-amz-date</code>, <code>x-amz-security-token</code>,...  </li>
+<li><strong>Body:</strong> Nội dung file (nếu có).</li>
+</ul>
+<h4 id="vi-du-request-ban-se-gui-en-s3"><strong>Ví dụ (Request bạn sẽ gửi đến S3):</strong><a class="headerlink" href="#vi-du-request-ban-se-gui-en-s3" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>PUT /encrypted-file.txt HTTP/1.1
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>Host: bucket.s3.us-east-1.amazonaws.com
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>x-amz-date: 20251120T151000Z
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>Content-Type: text/plain
+</code></pre></div>
+<hr>
+<h3 id="buoc-2-tao-canonical-request"><strong>BƯỚC 2: TẠO "CANONICAL REQUEST"</strong><a class="headerlink" href="#buoc-2-tao-canonical-request" title="Permanent link">¶</a></h3>
+<p>Canonical Request là "bản chuẩn hóa" của request, dùng để <strong>đảm bảo tính toàn vẹn lệnh</strong>.  </p>
+<h4 id="cach-chuan-hoa"><strong>Cách chuẩn hóa:</strong><a class="headerlink" href="#cach-chuan-hoa" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Sắp xếp headers</strong> theo thứ tự alphabet.  </li>
+<li>Chỉ giữ lại các headers cần thiết.  </li>
+<li>Tính <strong>Hash của Body</strong> (nếu có).</li>
+</ul>
+<p><strong>Ví dụ Canonical Request:</strong><br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>PUT
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>/encrypted-file.txt
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>(empty query string)
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>content-type:text/plain
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>host:bucket.s3.us-east-1.amazonaws.com
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>x-amz-date:20251120T151000Z
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>content-type;host;x-amz-date
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>&lt;hash của nội dung file&gt;
+</code></pre></div><p></p>
+<h4 id="hash-canonical-body-file"><strong>Hash Canonical Body (file):</strong><a class="headerlink" href="#hash-canonical-body-file" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>Nội dung file: "Day la file bi mat cua lelong"
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>→ Hash SHA-256: a7e251d4022b3e7689df314c0cbb4d5a7a5f621e0a9c7e89b6059463cab42f40
+</code></pre></div>
+<hr>
+<h3 id="buoc-3-tao-string-to-sign"><strong>BƯỚC 3: TẠO "STRING TO SIGN"</strong><a class="headerlink" href="#buoc-3-tao-string-to-sign" title="Permanent link">¶</a></h3>
+<p>Bao gồm:
+1. Thuật toán: <code>AWS4-HMAC-SHA256</code>
+2. Thời gian request: <code>20251120T151000Z</code>
+3. Region + Service: <code>us-east-1/s3/aws4_request</code>
+4. Hash của Canonical Request</p>
+<p><strong>Ví dụ String to Sign:</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>AWS4-HMAC-SHA256
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>20251120T151000Z
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>20251120/us-east-1/s3/aws4_request
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>aedbcd30b1f2c5ab72857d34ed2b701f9e48a4efef2f29c5df1cbabdc01dfb41
+</code></pre></div><p></p>
+<hr>
+<h3 id="buoc-4-tinh-signature"><strong>BƯỚC 4: TÍNH SIGNATURE</strong><a class="headerlink" href="#buoc-4-tinh-signature" title="Permanent link">¶</a></h3>
+<p>Dựa trên Secret Access Key với nhiều lớp HMAC</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>DateKey          = HMAC("AWS4" + SecretKey, "20251120")
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>DateRegionKey    = HMAC(DateKey, "us-east-1")
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>ServiceKey       = HMAC(DateRegionKey, "s3")
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>SigningKey       = HMAC(ServiceKey, "aws4_request")
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>Signature        = HMAC(SigningKey, StringToSign)
+</code></pre></div>
+<p><strong>Ví dụ Signature cuối:</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>a1b2c3d4e5f6789abcdef0123456789abcdef0123456789abcdef0123456789
+</code></pre></div><p></p>
+<hr>
+<h3 id="buoc-5-gui-request-voi-signature"><strong>BƯỚC 5: GỬI REQUEST VỚI SIGNATURE</strong><a class="headerlink" href="#buoc-5-gui-request-voi-signature" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="err">Authorization: AWS4-HMAC-SHA256 </span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="err">Credential=AKIA.../20251120/us-east-1/s3/aws4_request,</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="err">SignedHeaders=content-type;host;x-amz-date,</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="err">Signature=a1b2c3d4e5f6789abcdef0123456789abcdef0123456789abcdef0123456789</span>
+</code></pre></div>
+<hr>
+<h3 id="buoc-6-server-xac-thuc"><strong>BƯỚC 6: SERVER XÁC THỰC</strong><a class="headerlink" href="#buoc-6-server-xac-thuc" title="Permanent link">¶</a></h3>
+<ul>
+<li>So sánh signature tính lại với signature client gửi lên
+→ Không khớp sẽ lỗi <code>SignatureDoesNotMatch</code></li>
+</ul>
+<hr>
+<h2 id="hash-am-bao-integrity-noi-dung-file"><strong>HASH – ĐẢM BẢO INTEGRITY NỘI DUNG FILE</strong><a class="headerlink" href="#hash-am-bao-integrity-noi-dung-file" title="Permanent link">¶</a></h2>
+<h3 id="khi-upload-file-len-s3">Khi upload file lên S3:<a class="headerlink" href="#khi-upload-file-len-s3" title="Permanent link">¶</a></h3>
+<ol>
+<li>CLI tính MD5 → gửi kèm</li>
+<li>S3 kiểm tra lại → nếu sai báo lỗi</li>
+<li>ETag = MD5 của file</li>
+</ol>
+<hr>
+<h3 id="khi-download-file-tu-s3">Khi download file từ S3:<a class="headerlink" href="#khi-download-file-tu-s3" title="Permanent link">¶</a></h3>
+<ul>
+<li>CLI tính lại MD5 và so sánh với ETag<br>
+→ Sai = lỗi truyền tải</li>
+</ul>
+<hr>
+<h3 id="vi-du-md5"><strong>Ví dụ MD5</strong><a class="headerlink" href="#vi-du-md5" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>md5sum<span class="w"> </span>secret-file.txt
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>md5sum<span class="w"> </span>downloaded-file.txt
+</code></pre></div>
+<hr>
+<h2 id="tong-ket"><strong>TỔNG KẾT:</strong><a class="headerlink" href="#tong-ket" title="Permanent link">¶</a></h2>
+<ul>
+<li>Signature bảo vệ <strong>LỆNH</strong></li>
+<li>Hash bảo vệ <strong>FILE</strong></li>
+</ul>
+</div>
 
 
 
@@ -3266,7 +3866,7 @@
     <span class="md-icon" title="Cập nhật lần cuối">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="19 tháng 11, 2025 14:01:43 UTC">19 tháng 11, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="20 tháng 11, 2025 15:41:35 UTC">20 tháng 11, 2025</span>
   </span>
 
     
