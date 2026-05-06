@@ -25,7 +25,20 @@ jobs:
           cd my-website
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+          pip install google-genai beautifulsoup4 markdown
+
+      - name: Generate Audio files
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          cd my-website
+          python generate_audio.py
+
+      - name: Commit generated Audio files back to repository
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[skip ci] Auto-generate Audio via Gemini TTS"
+          file_pattern: my-website/docs/assets/audio/stephane/*
 
       - name: Build the MkDocs site
         run: |
