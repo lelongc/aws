@@ -1,33 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Check if SpeechSynthesis is supported
-    if (!('speechSynthesis' in window)) {
-        console.warn("Trình duyệt không hỗ trợ Web Speech API");
-        return;
-    }
-
     const contentContainer = document.querySelector('.md-content__inner') || document.querySelector('article');
     if (!contentContainer) return;
-
-    // Collect all text chunks to read
-    const elementsToRead = contentContainer.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li');
-    let textChunks = [];
-
-    elementsToRead.forEach(el => {
-        // Skip some elements that shouldn't be read (like code blocks, headers anchors)
-        if (el.closest('.md-source') || el.closest('.md-clipboard') || el.closest('pre')) {
-            return;
-        }
-        
-        let text = el.innerText || el.textContent;
-        // Clean up common symbols
-        text = text.replace(/¶/g, '').trim(); 
-        
-        if (text.length > 0) {
-            textChunks.push(text);
-        }
-    });
-
-    if (textChunks.length === 0) return;
 
     // Build UI
     const ttsContainer = document.createElement('div');
@@ -47,17 +20,16 @@ document.addEventListener("DOMContentLoaded", function() {
     stopBtn.className = 'tts-btn tts-btn-stop';
     stopBtn.innerHTML = stopIcon;
     stopBtn.title = 'Dừng lại';
-    stopBtn.style.display = 'none'; // Hide stop initially
+    stopBtn.style.display = 'none';
 
     const statusText = document.createElement('div');
     statusText.className = 'tts-status';
-    statusText.innerText = 'Nghe bài viết';
+    statusText.innerText = 'Nghe bài viết (Bản Premium)';
 
     ttsContainer.appendChild(playBtn);
     ttsContainer.appendChild(stopBtn);
     ttsContainer.appendChild(statusText);
 
-    // Insert into DOM just below h1, or at top
     const h1 = contentContainer.querySelector('h1');
     if (h1 && h1.nextSibling) {
         h1.parentNode.insertBefore(ttsContainer, h1.nextSibling);
@@ -65,102 +37,82 @@ document.addEventListener("DOMContentLoaded", function() {
         contentContainer.insertBefore(ttsContainer, contentContainer.firstChild);
     }
 
-    // State
-    let currentIndex = 0;
-    let isPlaying = false;
-    let currentUtterance = null;
+    // Determine Audio URL
+    // We use the Edit link to reliably get the current markdown file path
+    const editLink = document.querySelector('a.md-content__button');
+    let mp3Url = null;
 
-    // Helper: Find Vietnamese voice
-    function getVietnameseVoice() {
-        const voices = window.speechSynthesis.getVoices();
-        // Try finding a Vietnamese voice
-        const viVoice = voices.find(v => v.lang === 'vi-VN' || v.lang === 'vi');
-        // Fallback to first available voice if no VN voice found
-        return viVoice || voices[0];
+    if (editLink && editLink.href.includes('/docs/')) {
+        const mdRelPath = editLink.href.split('/docs/')[1]; // e.g. stephane/01.saa/01.md
+        if (mdRelPath) {
+            const logoLink = document.querySelector('.md-header__button.md-logo');
+            let baseUrl = '/';
+            if (logoLink) {
+                baseUrl = new URL(logoLink.getAttribute('href'), window.location.href).href;
+                if (!baseUrl.endsWith('/')) baseUrl += '/';
+            }
+            
+            mp3Url = baseUrl + "assets/audio/" + mdRelPath.replace('.md', '.wav');
+        }
     }
 
-    // Force load voices (Chrome quirk)
-    window.speechSynthesis.onvoiceschanged = getVietnameseVoice;
+    if (!mp3Url) {
+        // Fallback or not a standard markdown page
+        ttsContainer.style.display = 'none';
+        return;
+    }
 
-    function playChunk() {
-        if (currentIndex >= textChunks.length) {
-            stopTTS();
-            return;
-        }
+    // Create Audio Element
+    const audio = new Audio(mp3Url);
+    let isPlaying = false;
 
-        const text = textChunks[currentIndex];
-        currentUtterance = new SpeechSynthesisUtterance(text);
-        
-        const voice = getVietnameseVoice();
-        if (voice) {
-            currentUtterance.voice = voice;
-        }
-        currentUtterance.lang = 'vi-VN';
-        currentUtterance.rate = 1.0; // Tốc độ bình thường
-        currentUtterance.pitch = 1.0;
-
-        currentUtterance.onend = function() {
-            // Wait slightly before reading next chunk to simulate natural pause
-            setTimeout(() => {
-                if (isPlaying) {
-                    currentIndex++;
-                    playChunk();
-                }
-            }, 300); // 300ms pause between paragraphs
-        };
-
-        currentUtterance.onerror = function(e) {
-            console.error("Lỗi đọc văn bản:", e);
-            // Sometimes it errors out if cancelled. Just ignore if we cancelled it
-        };
-
-        window.speechSynthesis.speak(currentUtterance);
-        
+    audio.addEventListener('play', () => {
         isPlaying = true;
         ttsContainer.classList.add('tts-playing');
         playBtn.innerHTML = pauseIcon;
-        statusText.innerText = `Đang đọc (${currentIndex + 1}/${textChunks.length})...`;
+        statusText.innerText = 'Đang phát âm thanh...';
         stopBtn.style.display = 'flex';
-    }
+    });
 
-    function pauseTTS() {
-        // Instead of speechSynthesis.pause() which is buggy on mobile,
-        // we completely cancel it and keep the currentIndex to resume later.
-        window.speechSynthesis.cancel();
+    audio.addEventListener('pause', () => {
         isPlaying = false;
         ttsContainer.classList.remove('tts-playing');
         playBtn.innerHTML = playIcon;
         statusText.innerText = 'Đã tạm dừng';
-    }
+    });
 
-    function resumeTTS() {
-        playChunk();
-    }
-
-    function stopTTS() {
-        window.speechSynthesis.cancel();
+    audio.addEventListener('ended', () => {
         isPlaying = false;
-        currentIndex = 0;
         ttsContainer.classList.remove('tts-playing');
         playBtn.innerHTML = playIcon;
-        statusText.innerText = 'Nghe bài viết';
+        statusText.innerText = 'Nghe bài viết (Bản Premium)';
         stopBtn.style.display = 'none';
-    }
+    });
+
+    audio.addEventListener('error', () => {
+        statusText.innerText = 'Chưa có file Audio cho trang này';
+        playBtn.style.opacity = '0.5';
+        playBtn.disabled = true;
+    });
 
     playBtn.addEventListener('click', () => {
         if (isPlaying) {
-            pauseTTS();
+            audio.pause();
         } else {
-            resumeTTS();
+            audio.play().catch(e => {
+                console.error("Audio play error", e);
+                statusText.innerText = 'Lỗi phát Audio';
+            });
         }
     });
 
     stopBtn.addEventListener('click', () => {
-        stopTTS();
-    });
-
-    // Handle page unload or visibility change
-    window.addEventListener('beforeunload', () => {
-        if (isPlaying) stopTTS();
+        audio.pause();
+        audio.currentTime = 0;
+        isPlaying = false;
+        ttsContainer.classList.remove('tts-playing');
+        playBtn.innerHTML = playIcon;
+        statusText.innerText = 'Nghe bài viết (Bản Premium)';
+        stopBtn.style.display = 'none';
     });
 });
