@@ -1,0 +1,74 @@
+/* docs/css/tts.css */
+.tts-container {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    padding: 12px 16px;
+    background-color: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--light);
+    border-radius: 8px;
+    width: fit-content;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    gap: 12px;
+}
+
+.tts-btn {
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.tts-btn:hover {
+    background-color: var(--md-primary-fg-color--light);
+    transform: scale(1.05);
+}
+
+.tts-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+.tts-btn-stop {
+    background-color: transparent;
+    color: var(--md-typeset-color);
+    border: 1px solid var(--md-default-fg-color--light);
+}
+
+.tts-btn-stop:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: red;
+    border-color: red;
+}
+
+.tts-status {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--md-typeset-color);
+    user-select: none;
+}
+
+/* Pulse animation when playing */
+.tts-playing .tts-btn-play {
+    animation: tts-pulse 2s infinite;
+}
+
+@keyframes tts-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--md-primary-fg-color), 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(var(--md-primary-fg-color), 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--md-primary-fg-color), 0);
+    }
+}
