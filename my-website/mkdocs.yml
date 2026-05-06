@@ -78,3 +78,10 @@ extra:
       link: https://github.com/lelongc
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/long-lê-190l/
+
+# Custom CSS and JS for Text-to-Speech
+extra_css:
+  - css/tts.css
+
+extra_javascript:
+  - javascripts/tts.js
